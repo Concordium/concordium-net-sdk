@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+	<PackageReference Include="NBitcoin" Version="7.0.6" />
 	<Protobuf Include="Protos\concordium.proto">
 	  <GrpcServices>Client</GrpcServices>
 	  <Access>Public</Access>
