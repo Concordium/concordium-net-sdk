@@ -4,15 +4,15 @@
     <projectFile>src/ConcordiumNetSdk.TestConsoleApp/ConcordiumNetSdk.TestConsoleApp.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38beeede-530e-4d56-8585-bbb27a0ddaad" name="Changes" comment="csdk-24 implement integration tests for ConcordiumNodeClient GetAccountInfoAsync method">
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Types/AccountAddress.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Types/Address.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/ConcordiumNetSdk.UnitTests/TypeTests/AccountAddressTests.cs" afterDir="false" />
+    <list default="true" id="38beeede-530e-4d56-8585-bbb27a0ddaad" name="Changes" comment="csdk-24 implemented AccountAddress type and covered by unit tests">
+      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Types/BlockHash.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Types/Hash.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/ConcordiumNetSdk.UnitTests/TypeTests/BlockHashTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConcordiumNetSdk/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConcordiumNetSdk/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ConcordiumNetSdk.TestConsoleApp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk.TestConsoleApp/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ConcordiumNetSdk/ConcordiumNetSdk.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/ConcordiumNetSdk.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ConcordiumNetSdk/ConcordiumNodeClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/ConcordiumNodeClient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/ConcordiumNetSdk.UnitTests/ConcordiumNetSdk.UnitTests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/tests/ConcordiumNetSdk.UnitTests/ConcordiumNetSdk.UnitTests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ConcordiumNetSdk/Types/AccountAddress.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Types/AccountAddress.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/ConcordiumNetSdk.IntegrationTests/ConcordiumNodeClientTests/GetAccountInfoAsyncTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/ConcordiumNetSdk.IntegrationTests/ConcordiumNodeClientTests/GetAccountInfoAsyncTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,10 +23,21 @@
     <option name="RESET_MODE" value="SOFT" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/User/Desktop/ts/projects/repo/concordium-net-sdk/src/ConcordiumNetSdk.TestConsoleApp/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/User/Desktop/ts/projects/repo/concordium-net-sdk/src/ConcordiumNetSdk/Types/AccountAddress.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/User/Desktop/ts/projects/repo/concordium-net-sdk/src/ConcordiumNetSdk/ConcordiumNodeClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/933f374d88a082deeb91a8715cb947ccef921a3d1aa957af5ca5624f813a2b8/DateTime.Windows.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/User/Desktop/ts/projects/repo/concordium-net-sdk/src/ConcordiumNetSdk.TestConsoleApp/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a9cbda3784706aeeed61f1a08a18046925b69f777943eca27fbbcca09dff60/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/User/Desktop/ts/projects/repo/concordium-net-sdk/src/ConcordiumNetSdk.TestConsoleApp/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/User/Desktop/ts/projects/repo/concordium-net-sdk/tests/ConcordiumNetSdk.IntegrationTests/ConcordiumNodeClientTests/GetAccountInfoAsyncTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/User/Desktop/ts/projects/repo/concordium-net-sdk/tests/ConcordiumNetSdk.IntegrationTests/ConcordiumNodeClientTests/GetAccountInfoAsyncTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/User/Desktop/ts/projects/repo/concordium-net-sdk/src/ConcordiumNetSdk.TestConsoleApp/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/User/Desktop/ts/projects/repo/concordium-net-sdk/src/ConcordiumNetSdk.TestConsoleApp/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/User/Desktop/ts/projects/repo/concordium-net-sdk/src/ConcordiumNetSdk/ConcordiumNodeClient.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/User/Desktop/ts/projects/repo/concordium-net-sdk/src/ConcordiumNetSdk/ConcordiumNodeClient.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/User/Desktop/ts/projects/repo/concordium-net-sdk/src/ConcordiumNetSdk/ConcordiumNodeClient.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/User/Desktop/ts/projects/repo/concordium-net-sdk/tests/ConcordiumNetSdk.IntegrationTests/ConcordiumNodeClientTests/GetAccountInfoAsyncTests.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -94,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650909731036</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="csdk-24 implemented AccountAddress type and covered by unit tests">
+      <created>1650913609617</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1650913609617</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +150,7 @@
     <MESSAGE value="csdk-24 implement base projects skeleton" />
     <MESSAGE value="csdk-24 implement base projects skeleton with concordium grpc proto" />
     <MESSAGE value="csdk-24 implement concordium node client" />
-    <option name="LAST_COMMIT_MESSAGE" value="csdk-24 implement concordium node client" />
+    <MESSAGE value="csdk-24 implemented AccountAddress type and covered by unit tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="csdk-24 implemented AccountAddress type and covered by unit tests" />
   </component>
 </project>

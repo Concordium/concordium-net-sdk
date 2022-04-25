@@ -20,7 +20,7 @@ public class GetAccountInfoAsyncTests
     {
         // Arrange
         var accountAddress = AccountAddress.From("32gxbDZj3aCr5RYnKJFkigPazHinKcnAhkxpade17htB4fj6DN");
-        var blockHash = "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af";
+        var blockHash = BlockHash.From("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af");
 
         // Act
         var accountInfo = await ConcordiumNodeClient.GetAccountInfoAsync(accountAddress, blockHash);
