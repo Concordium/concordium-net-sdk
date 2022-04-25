@@ -27,6 +27,27 @@ public class ConcordiumNodeClient : IDisposable
         _client = new P2P.P2PClient(_grpcChannel);
     }
 
+    /// <summary>
+    /// Retrieves an information about a state of account corresponding to account address and block hash.
+    /// </summary>
+    /// <param name="accountAddress">Base-58 check with version byte 1 encoded address (with Bitcoin mapping table).</param>
+    /// <param name="blockHash">Base-16 encoded hash of a block (64 characters).</param>
+    public async Task<string?> GetAccountInfoAsync(string accountAddress, string blockHash)
+    {
+        var request = new GetAddressInfoRequest
+        {
+            Address = accountAddress,
+            BlockHash = blockHash
+        };
+        var response = await _client.GetAccountInfoAsync(request, CreateCallOptions());
+        return response.Value;
+    }
+
+    private CallOptions CreateCallOptions()
+    {
+        return new CallOptions(_metadata, DateTime.UtcNow.AddSeconds(30), CancellationToken.None);
+    }
+
     #region IDisposable Support
 
     private bool _disposedValue;
