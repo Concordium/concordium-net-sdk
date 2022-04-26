@@ -1,4 +1,5 @@
 ﻿using Concordium;
+using ConcordiumNetSdk.Responses.AccountInfoResponse;
 using Grpc.Core;
 using Grpc.Net.Client;
 using AccountAddress = ConcordiumNetSdk.Types.AccountAddress;
@@ -34,7 +35,8 @@ public class ConcordiumNodeClient : IDisposable
     /// </summary>
     /// <param name="accountAddress">base-58 check with version byte 1 encoded address (with Bitcoin mapping table).</param>
     /// <param name="blockHash">base-16 encoded hash of a block (64 characters).</param>
-    public async Task<string?> GetAccountInfoAsync(AccountAddress accountAddress, BlockHash blockHash)
+    /// <returns><see cref="AccountInfo"/> - state of an account in the given block.</returns>
+    public async Task<AccountInfo?> GetAccountInfoAsync(AccountAddress accountAddress, BlockHash blockHash)
     {
         var request = new GetAddressInfoRequest
         {
@@ -42,7 +44,7 @@ public class ConcordiumNodeClient : IDisposable
             BlockHash = blockHash.AsString
         };
         var response = await _client.GetAccountInfoAsync(request, CreateCallOptions());
-        return response.Value;
+        return CustomJsonSerializer.Deserialize<AccountInfo>(response.Value);
     }
 
     private CallOptions CreateCallOptions()

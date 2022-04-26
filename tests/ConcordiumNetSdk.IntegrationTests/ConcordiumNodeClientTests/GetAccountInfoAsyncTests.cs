@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using ConcordiumNetSdk.Responses.AccountInfoResponse;
 using ConcordiumNetSdk.Types;
 using FluentAssertions;
 using Xunit;
@@ -19,6 +20,8 @@ public class GetAccountInfoAsyncTests
     public async Task When_account_exists_should_return_correct_data()
     {
         // Arrange
+        // todo: think of better implementation of empty object
+        var emptyAccountInfo = new AccountInfo();
         var accountAddress = AccountAddress.From("32gxbDZj3aCr5RYnKJFkigPazHinKcnAhkxpade17htB4fj6DN");
         var blockHash = BlockHash.From("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af");
 
@@ -27,5 +30,6 @@ public class GetAccountInfoAsyncTests
 
         // Assert
         accountInfo.Should().NotBeNull();
+        accountInfo.Should().NotBeEquivalentTo(emptyAccountInfo);
     }
 }
