@@ -4,34 +4,8 @@
     <projectFile>src/ConcordiumNetSdk.TestConsoleApp/ConcordiumNetSdk.TestConsoleApp.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38beeede-530e-4d56-8585-bbb27a0ddaad" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/CustomJsonSerializer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/JsonConverters/AccountCredentialJsonConverter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/JsonConverters/JsonConverterHelper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Responses/AccountInfoResponse/AccountBaker.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Responses/AccountInfoResponse/AccountBakerDetailsCommon.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Responses/AccountInfoResponse/AccountCredential.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Responses/AccountInfoResponse/AccountEncryptedAmount.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Responses/AccountInfoResponse/AccountInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Responses/AccountInfoResponse/AccountReleaseSchedule.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Responses/AccountInfoResponse/ChainArData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Responses/AccountInfoResponse/CredentialCommitments.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Responses/AccountInfoResponse/CredentialDeploymentValues.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Responses/AccountInfoResponse/CredentialPublicKey.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Responses/AccountInfoResponse/CredentialPublicKeys.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Responses/AccountInfoResponse/InitialAccountCredential.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Responses/AccountInfoResponse/InitialCredentialDeploymentValues.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Responses/AccountInfoResponse/NormalAccountCredential.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Responses/AccountInfoResponse/Policy.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Responses/AccountInfoResponse/ReleaseSchedule.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Responses/AccountInfoResponse/SharedCredentialDeploymentValues.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/Responses/AccountInfoResponse/VersionedValue.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/ConcordiumNetSdk.UnitTests/CustomJsonSerializerTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/ConcordiumNetSdk.UnitTests/account-info.json" afterDir="false" />
+    <list default="true" id="38beeede-530e-4d56-8585-bbb27a0ddaad" name="Changes" comment="csdk-24 implement AccountInfo response type and cover by unit tests">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConcordiumNetSdk/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConcordiumNetSdk/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ConcordiumNetSdk/ConcordiumNetSdk.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/ConcordiumNetSdk.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ConcordiumNetSdk/ConcordiumNodeClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConcordiumNetSdk/ConcordiumNodeClient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/ConcordiumNetSdk.UnitTests/ConcordiumNetSdk.UnitTests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/tests/ConcordiumNetSdk.UnitTests/ConcordiumNetSdk.UnitTests.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +17,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/933f374d88a082deeb91a8715cb947ccef921a3d1aa957af5ca5624f813a2b8/DateTime.Windows.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/User/Desktop/ts/projects/repo/concordium-net-sdk/src/ConcordiumNetSdk/ConcordiumNodeClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a9cbda3784706aeeed61f1a08a18046925b69f777943eca27fbbcca09dff60/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d8a744f90f31646602060d25ae5e8d7c3c791ba27633035a1f3a67d476469/JTokenAssertions.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -60,7 +35,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Project.ConcordiumNetSdk.TestConsoleApp">
+  <component name="RunManager">
     <configuration name="ConcordiumNetSdk.TestConsoleApp" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -91,7 +66,7 @@
       <workItem from="1650906462790" duration="38000" />
       <workItem from="1650907149099" duration="2792000" />
       <workItem from="1650972032523" duration="119000" />
-      <workItem from="1650995386328" duration="7964000" />
+      <workItem from="1650995386328" duration="8836000" />
     </task>
     <task id="LOCAL-00001" summary="csdk-24 add concordium grpc proto">
       <created>1650907985505</created>
@@ -128,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650921620921</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="csdk-24 implement AccountInfo response type and cover by unit tests">
+      <created>1651004003363</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1651004003363</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,8 +148,9 @@
     <MESSAGE value="csdk-24 implement base projects skeleton" />
     <MESSAGE value="csdk-24 implement base projects skeleton with concordium grpc proto" />
     <MESSAGE value="csdk-24 implement concordium node client" />
-    <MESSAGE value="csdk-24 implemented AccountAddress type and covered by unit tests" />
-    <MESSAGE value="csdk-24 implemented BlockHash type and covered by unit tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="csdk-24 implemented BlockHash type and covered by unit tests" />
+    <MESSAGE value="csdk-24 implement AccountAddress type and cover by unit tests" />
+    <MESSAGE value="csdk-24 implement BlockHash type and cover by unit tests" />
+    <MESSAGE value="csdk-24 implement AccountInfo response type and cover by unit tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="csdk-24 implement AccountInfo response type and cover by unit tests" />
   </component>
 </project>
