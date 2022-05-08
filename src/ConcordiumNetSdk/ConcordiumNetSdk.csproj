@@ -8,6 +8,7 @@
 
   <ItemGroup>
 	<PackageReference Include="NBitcoin" Version="7.0.6" />
+	<PackageReference Include="NSec.Cryptography" Version="22.4.0" />
 	<Protobuf Include="Protos\concordium.proto">
 	  <GrpcServices>Client</GrpcServices>
 	  <Access>Public</Access>
