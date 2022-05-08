@@ -1,5 +1,6 @@
 ﻿using Concordium;
 using ConcordiumNetSdk.Responses.AccountInfoResponse;
+using ConcordiumNetSdk.Responses.NextAccountNonceResponse;
 using Grpc.Core;
 using Grpc.Net.Client;
 using AccountAddress = ConcordiumNetSdk.Types.AccountAddress;
@@ -39,6 +40,16 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         };
         JsonResponse response = await _client.GetAccountInfoAsync(request, CreateCallOptions());
         return CustomJsonSerializer.Deserialize<AccountInfo>(response.Value);
+    }
+
+    public async Task<NextAccountNonce?> GetNextAccountNonceAsync(AccountAddress accountAddress)
+    {
+        var request = new Concordium.AccountAddress
+        {
+            AccountAddress_ = accountAddress.AsString
+        };
+        JsonResponse response = await _client.GetNextAccountNonceAsync(request, CreateCallOptions());
+        return CustomJsonSerializer.Deserialize<NextAccountNonce>(response.Value);
     }
 
     private CallOptions CreateCallOptions()
