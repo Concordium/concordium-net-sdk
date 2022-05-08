@@ -1,6 +1,6 @@
 ﻿namespace ConcordiumNetSdk;
 
-public class Connection
+public record Connection
 {
     public string Address { get; init; }
 

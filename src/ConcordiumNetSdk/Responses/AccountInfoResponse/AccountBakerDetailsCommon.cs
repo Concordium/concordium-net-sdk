@@ -1,6 +1,6 @@
 ﻿namespace ConcordiumNetSdk.Responses.AccountInfoResponse;
 
-public abstract class AccountBakerDetailsCommon
+public abstract record AccountBakerDetailsCommon
 {
     public int BakerId { get; init; }
 

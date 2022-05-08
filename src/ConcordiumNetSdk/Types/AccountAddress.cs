@@ -5,71 +5,61 @@ namespace ConcordiumNetSdk.Types;
 /// <summary>
 /// Represents a base-58 check with version byte 1 encoded account address (with Bitcoin mapping table).
 /// </summary>
-public class AccountAddress : Address
+public class AccountAddress
 {
     private static readonly Base58CheckEncoder EncoderInstance = new();
-    private readonly byte[] _bytes;
+    private const int BytesLength = 32;
 
-    private AccountAddress(byte[] bytes)
+    private readonly string _formatted;
+    private readonly byte[] _value;
+
+    /// <summary>
+    /// Creates an instance from a base58 check encoded string representing account address.
+    /// </summary>
+    /// <param name="addressAsBase58String">the account address as base58 check encoded string.</param>
+    public AccountAddress(string addressAsBase58String)
     {
-        _bytes = bytes ?? throw new ArgumentNullException(nameof(bytes));
+        _formatted = addressAsBase58String;
+        var decodedBytes = EncoderInstance.DecodeData(addressAsBase58String);
+        _value = decodedBytes.Skip(1).ToArray(); // Remove version byte
+    }
 
-        if (_bytes.Length != 32) throw new ArgumentException("Expected length to be exactly 32 bytes");
-
+    /// <summary>
+    /// Creates an instance from a 32 bytes representing address (ie. excluding the version byte).
+    /// </summary>
+    /// <param name="addressAsBytes">the address as 32 bytes.</param>
+    public AccountAddress(byte[] addressAsBytes)
+    {
+        if (addressAsBytes.Length != BytesLength) throw new ArgumentException($"The address bytes length must be {BytesLength}.");
+        _value = addressAsBytes;
         var bytesToEncode = new byte[33];
         bytesToEncode[0] = 1;
-        bytes.CopyTo(bytesToEncode, 1);
-        AsString = EncoderInstance.EncodeData(bytesToEncode);
+        addressAsBytes.CopyTo(bytesToEncode, 1);
+        _formatted = EncoderInstance.EncodeData(bytesToEncode);
     }
 
-    private AccountAddress(string base58CheckEncodedAddress)
-    {
-        AsString = base58CheckEncodedAddress ?? throw new ArgumentNullException(nameof(base58CheckEncodedAddress));
-
-        var decodedBytes = EncoderInstance.DecodeData(base58CheckEncodedAddress);
-        _bytes = decodedBytes.Skip(1).ToArray(); // Remove version byte
-    }
+    /// <summary>
+    /// Gets the address as a base58 check encoded string.
+    /// </summary>
+    public string AsString => _formatted;
 
     /// <summary>
     /// Gets the address as a 32 byte array (without leading version byte).
     /// </summary>
-    public byte[] AsBytes => _bytes;
+    public byte[] AsBytes => _value;
 
     /// <summary>
-    /// Gets the address as a base-58 check encoded string.
+    /// Checks if passed string is base58 check encoded address with Bitcoin mapping table.
     /// </summary>
-    public string AsString { get; }
-
-    /// <summary>
-    /// Creates an instance from a 32 byte address (ie. excluding the version byte).
-    /// </summary>
-    /// <param name="bytes">32 byte address.</param>
-    public static AccountAddress From(byte[] bytes)
+    /// <param name="addressAsBase58String">the account address as base58 check encoded string.</param>
+    /// <returns><see cref="bool"/> - true or false base on validation result.</returns>
+    public static bool IsValid(string? addressAsBase58String)
     {
-        return new AccountAddress(bytes);
-    }
-    
-    /// <summary>
-    /// Creates an instance from a base-58 check encoded string address.
-    /// </summary>
-    /// <param name="base58CheckEncodedAddress">base-58 check encoded string address.</param>
-    public static AccountAddress From(string base58CheckEncodedAddress)
-    {
-        return new AccountAddress(base58CheckEncodedAddress);
-    }
-
-    /// <summary>
-    /// Checks if passed string is base-58 check encoded address with Bitcoin mapping table.
-    /// </summary>
-    /// <param name="base58CheckEncodedAddress">base-58 check encoded address.</param>
-    /// <returns><see cref="bool"/> true or false base on validation result.</returns>
-    public static bool IsValid(string? base58CheckEncodedAddress)
-    {
-        if (base58CheckEncodedAddress == null) return false;
+        if (addressAsBase58String == null) return false;
 
         try
         {
-            EncoderInstance.DecodeData(base58CheckEncodedAddress);
+            EncoderInstance.DecodeData(addressAsBase58String);
             return true;
         }
         catch (FormatException)

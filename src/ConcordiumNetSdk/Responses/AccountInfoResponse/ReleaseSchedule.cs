@@ -6,7 +6,7 @@ namespace ConcordiumNetSdk.Responses.AccountInfoResponse;
 /// <summary>
 /// Represents the scheduled release.
 /// </summary>
-public class ReleaseSchedule
+public record ReleaseSchedule
 {
     /// <summary>
     /// Gets or initiates the time at which this amount is released in milliseconds since the UNIX epoch.

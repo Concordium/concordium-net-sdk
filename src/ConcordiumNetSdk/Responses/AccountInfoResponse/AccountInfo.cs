@@ -5,7 +5,7 @@ namespace ConcordiumNetSdk.Responses.AccountInfoResponse;
 /// <summary>
 /// Represents the state of an account in the given block as response data of <see cref="ConcordiumNodeClient"/>.<see cref="ConcordiumNodeClient.GetAccountInfoAsync"/>.
 /// </summary>
-public class AccountInfo
+public record AccountInfo
 {
     /// <summary>
     /// Gets or initiates the sequential index of the account (in the order of creation). If the account is a baker this index is used as the bakerId.

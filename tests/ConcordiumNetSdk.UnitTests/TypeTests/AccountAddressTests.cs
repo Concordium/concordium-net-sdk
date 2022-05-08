@@ -12,55 +12,55 @@ public class AccountAddressTests
     // todo: write more unit tests if needed
 
     [Fact]
-    public void From_when_valid_string_passed_should_create_correct_instance()
+    public void Constructor_when_valid_string_passed_should_create_correct_instance()
+    {
+        // Arrange
+        var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
+
+        // Act
+        var accountAddress = new AccountAddress(addressAsBase58String);
+
+        // Assert
+        accountAddress.AsString.Should().Be(addressAsBase58String);
+    }
+
+    [Fact]
+    public void Constructor_when_valid_bytes_passed_should_create_correct_instance()
     {
         // Arrange
         var address = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
+        byte[] addressAsBytes = new Base58CheckEncoder().DecodeData(address).Skip(1).ToArray();
 
         // Act
-        var accountAddress = AccountAddress.From(address);
+        var accountAddress = new AccountAddress(addressAsBytes);
 
         // Assert
         accountAddress.AsString.Should().Be(address);
     }
 
     [Fact]
-    public void From_when_valid_bytes_passed_should_create_correct_instance()
+    public void Constructor_when_address_is_too_short_should_throw_appropriate_exception()
     {
         // Arrange
-        var address = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
-        byte[] bytes = new Base58CheckEncoder().DecodeData(address).Skip(1).ToArray();
+        var addressAsBytes = new byte[31];
 
         // Act
-        var accountAddress = AccountAddress.From(bytes);
+        Action result = () => new AccountAddress(addressAsBytes);
 
         // Assert
-        accountAddress.AsString.Should().Be(address);
+        result.Should().Throw<ArgumentException>().WithMessage("The address bytes length must be 32.");
     }
 
     [Fact]
-    public void From_when_address_is_too_short_should_throw_appropriate_exception()
+    public void Constructor_when_address_is_too_long_should_throw_appropriate_exception()
     {
         // Arrange
-        var bytes = new byte[31];
+        var addressAsBytes = new byte[33];
 
         // Act
-        Action result = () => AccountAddress.From(bytes);
+        Action result = () => new AccountAddress(addressAsBytes);
 
         // Assert
-        result.Should().Throw<ArgumentException>().WithMessage("Expected length to be exactly 32 bytes");
-    }
-
-    [Fact]
-    public void From_when_address_is_too_long_should_throw_appropriate_exception()
-    {
-        // Arrange
-        var bytes = new byte[33];
-
-        // Act
-        Action result = () => AccountAddress.From(bytes);
-
-        // Assert
-        result.Should().Throw<ArgumentException>().WithMessage("Expected length to be exactly 32 bytes");
+        result.Should().Throw<ArgumentException>().WithMessage("The address bytes length must be 32.");
     }
 }

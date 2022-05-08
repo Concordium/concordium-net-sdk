@@ -1,33 +1,23 @@
 ﻿namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Represents a base-16 encoded hash of a block (64 characters).
+/// Represents a base-16 encoded hash of a block.
 /// </summary>
 public class BlockHash : Hash
 {
-    private BlockHash(byte[] bytes) : base(bytes)
-    {
-    }
-
-    private BlockHash(string base16EncodedBlockHash) : base(base16EncodedBlockHash)
+    /// <summary>
+    /// Creates an instance from a base-16 encoded string representing block hash (64 characters).
+    /// </summary>
+    /// <param name="blockHashAsBase16String">the block hash as base16 encoded string.</param>  
+    public BlockHash(string blockHashAsBase16String) : base(blockHashAsBase16String)
     {
     }
 
     /// <summary>
-    /// Creates an instance from a 32 byte block hash.
+    /// Creates an instance from a 32 bytes representing block hash.
     /// </summary>
-    /// <param name="bytes">32 byte block hash.</param>
-    public static BlockHash From(byte[] bytes)
+    /// <param name="blockHashAsBytes">the block hash as 32 bytes.</param>
+    public BlockHash(byte[] blockHashAsBytes) : base(blockHashAsBytes)
     {
-        return new BlockHash(bytes);
-    }
-
-    /// <summary>
-    /// Creates an instance from a base-16 encoded string block hash.
-    /// </summary>
-    /// <param name="base16EncodedBlockHash">base-16 encoded block hash.</param>
-    public static BlockHash From(string base16EncodedBlockHash)
-    {
-        return new BlockHash(base16EncodedBlockHash);
     }
 }

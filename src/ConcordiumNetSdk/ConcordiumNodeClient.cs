@@ -7,7 +7,7 @@ using BlockHash = ConcordiumNetSdk.Types.BlockHash;
 
 namespace ConcordiumNetSdk;
 
-public class ConcordiumNodeClient : IDisposable
+public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
 {
     private readonly P2P.P2PClient _client;
     private readonly Metadata _metadata;
@@ -30,12 +30,6 @@ public class ConcordiumNodeClient : IDisposable
         _client = new P2P.P2PClient(_grpcChannel);
     }
 
-    /// <summary>
-    /// Retrieves an information about a state of account corresponding to account address and block hash.
-    /// </summary>
-    /// <param name="accountAddress">base-58 check with version byte 1 encoded address (with Bitcoin mapping table).</param>
-    /// <param name="blockHash">base-16 encoded hash of a block (64 characters).</param>
-    /// <returns><see cref="AccountInfo"/> - state of an account in the given block.</returns>
     public async Task<AccountInfo?> GetAccountInfoAsync(AccountAddress accountAddress, BlockHash blockHash)
     {
         var request = new GetAddressInfoRequest
@@ -43,7 +37,7 @@ public class ConcordiumNodeClient : IDisposable
             Address = accountAddress.AsString,
             BlockHash = blockHash.AsString
         };
-        var response = await _client.GetAccountInfoAsync(request, CreateCallOptions());
+        JsonResponse response = await _client.GetAccountInfoAsync(request, CreateCallOptions());
         return CustomJsonSerializer.Deserialize<AccountInfo>(response.Value);
     }
 
