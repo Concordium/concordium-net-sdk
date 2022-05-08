@@ -1,6 +1,7 @@
 ﻿using Concordium;
 using ConcordiumNetSdk.Responses.AccountInfoResponse;
 using ConcordiumNetSdk.Responses.NextAccountNonceResponse;
+using Google.Protobuf;
 using Grpc.Core;
 using Grpc.Net.Client;
 using AccountAddress = ConcordiumNetSdk.Types.AccountAddress;
@@ -50,6 +51,18 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         };
         JsonResponse response = await _client.GetNextAccountNonceAsync(request, CreateCallOptions());
         return CustomJsonSerializer.Deserialize<NextAccountNonce>(response.Value);
+    }
+
+    // todo: think how to implement tests
+    public async Task<bool> SendTransactionAsync(byte[] payload, uint networkId = 100)
+    {
+        var request = new SendTransactionRequest
+        {
+            NetworkId = networkId,
+            Payload = ByteString.CopyFrom(payload)
+        };
+        BoolResponse response = await _client.SendTransactionAsync(request, CreateCallOptions());
+        return response.Value;
     }
 
     private CallOptions CreateCallOptions()
