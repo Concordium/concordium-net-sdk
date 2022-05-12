@@ -53,8 +53,5 @@ public class SimpleTransferWithMemoPayload : IAccountTransactionPayload
         return result;
     }
 
-    public int GetBaseEnergyCost()
-    {
-        return 300;
-    }
+    public int GetBaseEnergyCost() => 300;
 }

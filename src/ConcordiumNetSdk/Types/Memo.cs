@@ -9,27 +9,34 @@ namespace ConcordiumNetSdk.Types;
 /// </summary>
 public class Memo
 {
+    private const int MaxBytesLength = 255;
+
     private readonly byte[] _bytes;
 
-    public Memo(byte[] bytes)
+    private Memo(byte[] bytes)
     {
-        if (bytes == null) throw new ArgumentNullException(nameof(bytes));
-        if (bytes.Length > 256) throw new ArgumentException("Size of a memo is not allowed to exceed 256 bytes.");
         _bytes = bytes;
     }
 
-    public static Memo CreateFromHex(string hexString)
+    public static Memo FromHex(string hexString)
     {
         var bytes = Convert.FromHexString(hexString);
-        return new Memo(bytes);
+        return From(bytes);
     }
 
-    public static Memo CreateCborEncodedFromText(string text)
+    public static Memo FromText(string text)
     {
         var encoder = new CborWriter();
         encoder.WriteTextString(text);
         var encodedBytes = encoder.Encode();
-        return new Memo(encodedBytes);
+        return From(encodedBytes);
+    }
+
+    public static Memo From(byte[] memoAsBytes)
+    {
+        if (memoAsBytes.Length > 256)
+            throw new ArgumentException($"Size of a memo is not allowed to exceed {MaxBytesLength} bytes.");
+        return new Memo(memoAsBytes);
     }
 
     public bool TryCborDecodeToText(out string? decodedText)
@@ -44,8 +51,12 @@ public class Memo
                 return true;
             }
         }
-        catch (CborContentException) { }
-        catch (InvalidOperationException) { }
+        catch (CborContentException)
+        {
+        }
+        catch (InvalidOperationException)
+        {
+        }
 
         decodedText = null;
         return false;
@@ -60,8 +71,8 @@ public class Memo
         if (ReferenceEquals(null, obj)) return false;
         if (ReferenceEquals(this, obj)) return true;
         if (obj.GetType() != GetType()) return false;
-        
-        var other = (Memo)obj;
+
+        var other = (Memo) obj;
         return _bytes.SequenceEqual(other._bytes);
     }
 

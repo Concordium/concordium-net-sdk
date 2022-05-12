@@ -22,7 +22,7 @@ public class GetNextAccountNonceTests
         // Arrange
         // todo: think of better implementation of empty object
         var emptyNextAccountNonce = new NextAccountNonce();
-        var accountAddress = new AccountAddress("32gxbDZj3aCr5RYnKJFkigPazHinKcnAhkxpade17htB4fj6DN");
+        var accountAddress = AccountAddress.From("32gxbDZj3aCr5RYnKJFkigPazHinKcnAhkxpade17htB4fj6DN");
 
         // Act
         var nextAccountNonce = await ConcordiumNodeClient.GetNextAccountNonceAsync(accountAddress);

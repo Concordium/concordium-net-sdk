@@ -6,7 +6,7 @@ namespace ConcordiumNetSdk.Types;
 /// <summary>
 /// Represents an amount of microCCD.
 /// </summary>
-public struct CcdAmount
+public readonly struct CcdAmount
 {
     private readonly ulong _microCcd;
 
@@ -19,35 +19,6 @@ public struct CcdAmount
     /// Creates an zero microCCD amount.
     /// </summary>
     public static CcdAmount Zero => new(0);
-
-    /// <summary>
-    /// Creates an instance from microCCD value.
-    /// </summary>
-    /// <param name="microCcd">the microCCD value.</param>
-    public static CcdAmount FromMicroCcd(ulong microCcd)
-    {
-        return new CcdAmount(microCcd);
-    }
-
-    /// <summary>
-    /// Creates an instance from microCCD value.
-    /// </summary>
-    /// <param name="microCcd">the microCCD value.</param>
-    public static CcdAmount FromMicroCcd(int microCcd)
-    {
-        if (microCcd < 0) throw new ArgumentOutOfRangeException(nameof(microCcd), "Cannot represent negative numbers");
-        return new CcdAmount(Convert.ToUInt64(microCcd));
-    }
-
-    /// <summary>
-    /// Creates an instance from CCD value.
-    /// </summary>
-    /// <param name="ccd">the CCD value.</param>
-    public static CcdAmount FromCcd(int ccd)
-    {
-        if (ccd < 0) throw new ArgumentOutOfRangeException(nameof(ccd), "Cannot represent negative numbers");
-        return new CcdAmount(Convert.ToUInt64(ccd * 1_000_000));
-    }
 
     /// <summary>
     /// Gets the microCCD amount value.
@@ -65,9 +36,38 @@ public struct CcdAmount
     public string FormattedCcd => $"{_microCcd / (decimal) 1000000}";
 
     /// <summary>
+    /// Creates an instance from microCCD value.
+    /// </summary>
+    /// <param name="microCcd">the microCCD value.</param>
+    public static CcdAmount FromMicroCcd(ulong microCcd)
+    {
+        return new CcdAmount(microCcd);
+    }
+
+    /// <summary>
+    /// Creates an instance from microCCD value.
+    /// </summary>
+    /// <param name="microCcd">the microCCD value.</param>
+    public static CcdAmount FromMicroCcd(int microCcd)
+    {
+        if (microCcd < 0) throw new ArgumentOutOfRangeException(nameof(microCcd), "Cannot represent negative numbers.");
+        return new CcdAmount(Convert.ToUInt64(microCcd));
+    }
+
+    /// <summary>
+    /// Creates an instance from CCD value.
+    /// </summary>
+    /// <param name="ccd">the CCD value.</param>
+    public static CcdAmount FromCcd(int ccd)
+    {
+        if (ccd < 0) throw new ArgumentOutOfRangeException(nameof(ccd), "Cannot represent negative numbers.");
+        return new CcdAmount((ulong) ccd * 1_000_000);
+    }
+
+    /// <summary>
     /// Serializes microCCD amount to byte format.
     /// </summary>
-    /// <returns><see cref="byte"/>[] - serialized microCCD amount in byte format.</returns>
+    /// <returns><see cref="T:byte[]"/> - serialized microCCD amount in byte format.</returns>
     public byte[] SerializeToBytes()
     {
         var bytes = new byte[8];

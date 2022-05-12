@@ -6,7 +6,6 @@ using Index = ConcordiumNetSdk.Types.Index;
 
 namespace ConcordiumNetSdk.Transactions;
 
-// todo: implement tests
 public class AccountTransactionService : IAccountTransactionService
 {
     private const byte Version = 0;
@@ -65,7 +64,7 @@ public class AccountTransactionService : IAccountTransactionService
         if (!isSuccessful) throw new InvalidOperationException("Response indicated that transaction was not successfully sent.");
         
         byte[] txHash = SHA256.Create().ComputeHash(serializedAccountTx);
-        return new TransactionHash(txHash);
+        return TransactionHash.From(txHash);
     }
 
     private int CalculateEnergyCost(
@@ -95,7 +94,7 @@ public class AccountTransactionService : IAccountTransactionService
     {
         Span<byte> serializedHeader = new byte[60];
         sender.AsBytes.CopyTo(serializedHeader.Slice(0, 32));
-        BinaryPrimitives.WriteUInt64BigEndian(serializedHeader.Slice(32, 8), accountNonce.AsUInt64);
+        accountNonce.SerializeToBytes().CopyTo(serializedHeader.Slice(32, 8));
         BinaryPrimitives.WriteUInt64BigEndian(serializedHeader.Slice(40, 8), (ulong) energyCost);
         BinaryPrimitives.WriteUInt32BigEndian(serializedHeader.Slice(48, 4), (uint) payloadSize);
         BinaryPrimitives.WriteUInt64BigEndian(serializedHeader.Slice(52, 8), (ulong) expiry.ToUnixTimeSeconds());

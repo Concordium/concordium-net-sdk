@@ -1,19 +1,19 @@
-﻿namespace ConcordiumNetSdk.Types;
+﻿using System.Buffers.Binary;
+
+namespace ConcordiumNetSdk.Types;
 
 /// <summary>
 /// Represents the nonce see <a href="https://developer.concordium.software/en/mainnet/net/resources/glossary.html?highlight=nonce#nonce">here</a>).
 /// </summary>
 public readonly struct Nonce
 {
+    public const int BytesLength = 8;
+
     private readonly ulong _value;
 
-    /// <summary>
-    /// Creates an instance from a ulong representing nonce.
-    /// </summary>
-    /// <param name="value">nonce as ulong.</param>
-    public Nonce(ulong value)
+    private Nonce(ulong nonce)
     {
-        _value = value;
+        _value = nonce;
     }
 
     /// <summary>
@@ -22,12 +22,32 @@ public readonly struct Nonce
     public ulong AsUInt64 => _value;
 
     /// <summary>
+    /// Creates an instance from a ulong representing nonce.
+    /// </summary>
+    /// <param name="nonce">nonce as ulong.</param>
+    public static Nonce Create(ulong nonce)
+    {
+        return new Nonce(nonce);
+    }
+
+    /// <summary>
     /// Increments nonce value by 1.
     /// </summary>
     /// <returns></returns>
     public Nonce Increment()
     {
         return new Nonce(_value + 1);
+    }
+
+    /// <summary>
+    /// Serializes nonce to byte format.
+    /// </summary>
+    /// <returns><see cref="T:byte[]"/> - serialized nonce in byte format.</returns>
+    public byte[] SerializeToBytes()
+    {
+        var bytes = new byte[8];
+        BinaryPrimitives.WriteUInt64BigEndian(new Span<byte>(bytes), _value);
+        return bytes;
     }
 
     public bool Equals(Nonce other)

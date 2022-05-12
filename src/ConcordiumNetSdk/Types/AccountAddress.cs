@@ -3,7 +3,7 @@ using NBitcoin.DataEncoders;
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Represents a base-58 check with version byte 1 encoded account address (with Bitcoin mapping table).
+/// Represents a base58 check with version byte 1 encoded account address (with Bitcoin mapping table).
 /// </summary>
 public class AccountAddress
 {
@@ -13,24 +13,15 @@ public class AccountAddress
     private readonly string _formatted;
     private readonly byte[] _value;
 
-    /// <summary>
-    /// Creates an instance from a base58 check encoded string representing account address.
-    /// </summary>
-    /// <param name="addressAsBase58String">the account address as base58 check encoded string.</param>
-    public AccountAddress(string addressAsBase58String)
+    private AccountAddress(string addressAsBase58String)
     {
         _formatted = addressAsBase58String;
         var decodedBytes = EncoderInstance.DecodeData(addressAsBase58String);
-        _value = decodedBytes.Skip(1).ToArray(); // Remove version byte
+        _value = decodedBytes.Skip(1).ToArray(); // Removes version byte
     }
 
-    /// <summary>
-    /// Creates an instance from a 32 bytes representing address (ie. excluding the version byte).
-    /// </summary>
-    /// <param name="addressAsBytes">the address as 32 bytes.</param>
-    public AccountAddress(byte[] addressAsBytes)
+    private AccountAddress(byte[] addressAsBytes)
     {
-        if (addressAsBytes.Length != BytesLength) throw new ArgumentException($"The address bytes length must be {BytesLength}.");
         _value = addressAsBytes;
         var bytesToEncode = new byte[33];
         bytesToEncode[0] = 1;
@@ -47,6 +38,25 @@ public class AccountAddress
     /// Gets the address as a 32 byte array (without leading version byte).
     /// </summary>
     public byte[] AsBytes => _value;
+
+    /// <summary>
+    /// Creates an instance from a base58 check encoded string representing account address.
+    /// </summary>
+    /// <param name="addressAsBase58String">the account address as base58 check encoded string.</param>
+    public static AccountAddress From(string addressAsBase58String)
+    {
+        return new AccountAddress(addressAsBase58String);
+    }
+
+    /// <summary>
+    /// Creates an instance from a 32 bytes representing address (ie. excluding the version byte).
+    /// </summary>
+    /// <param name="addressAsBytes">the account address as 32 bytes.</param>
+    public static AccountAddress From(byte[] addressAsBytes)
+    {
+        if (addressAsBytes.Length != BytesLength) throw new ArgumentException($"The account address bytes length must be {BytesLength}.");
+        return new AccountAddress(addressAsBytes);
+    }
 
     /// <summary>
     /// Checks if passed string is base58 check encoded address with Bitcoin mapping table.
@@ -71,7 +81,7 @@ public class AccountAddress
 
     public override string ToString()
     {
-        return AsString;
+        return _formatted;
     }
 
     public override bool Equals(object? obj)

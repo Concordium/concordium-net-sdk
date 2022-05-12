@@ -9,7 +9,7 @@ public class NonceConverter : JsonConverter<Nonce>
     public override Nonce Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         var value = reader.GetUInt64();
-        return new Nonce(value);
+        return Nonce.Create(value);
     }
 
     public override void Write(Utf8JsonWriter writer, Nonce value, JsonSerializerOptions options)

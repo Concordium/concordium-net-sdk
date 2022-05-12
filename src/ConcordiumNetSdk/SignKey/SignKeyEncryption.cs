@@ -5,7 +5,7 @@ namespace ConcordiumNetSdk.SignKey;
 
 public class SignKeyEncryption : ISignKeyEncryption
 {
-    public Ed25519SignKey Decrypt(EncryptedSignKey encryptedSignKey)
+    public string Decrypt(EncryptedSignKey encryptedSignKey)
     {
         byte[] initialVectorBytes = encryptedSignKey.Metadata.InitializationVector.AsBytes;
         byte[] saltValueBytes = encryptedSignKey.Metadata.Salt.AsBytes;
@@ -34,7 +34,6 @@ public class SignKeyEncryption : ISignKeyEncryption
         memStream.Close();
         symmetricKey.Clear();
 
-        var signKey = Encoding.ASCII.GetString(plainTextBytes.Slice(1, 64));
-        return new Ed25519SignKey(signKey);
+        return Encoding.ASCII.GetString(plainTextBytes.Slice(1, 64));
     }
 }
