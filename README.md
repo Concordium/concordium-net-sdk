@@ -44,3 +44,51 @@ AccountAddress accountAddress = new AccountAddress("3sAHwfehRNEnXk28W7A3XB3GzyBi
 BlockHash blockHash = new BlockHash("6b01f2043d5621192480f4223644ef659dd5cda1e54a78fc64ad642587c73def");
 AccountInfo accountInfo = await client.GetAccountInfoAsync(accountAddress, blockHash);
 ```
+
+
+## Decrypt encrypted sign key
+`ISignKeyEncryption.Decrypt` decrypts encrypted sign key. 
+
+```csharp
+public Ed25519SignKey Decrypt(EncryptedSignKey encryptedSignKey);
+```
+
+**Input:**
+
+- [EncryptedSignKey]() `encryptedSignKey`: encrypted sign key
+    - [Password]() `password`: password
+    - [EncryptedSignKeyMetadata]() `metadata`: encrypted sign key metadata
+        - [Salt]() `salt`: salt
+        - [InitializationVector]() `initializationVector`: initialization vector
+        - [int]() `iterations`: iterations
+        - [HashAlgorithmName]() `hashAlgorithmName`: hash algorithm name
+        - [int]() `keySize`: key size
+    - [CipherText]() `cipherText`: cipher text
+
+
+**Output:**
+
+- The [Ed25519SignKey]() object containing information about a hex encoded ed25519 sign key.
+
+### Code Sample
+```csharp
+Salt salt = new Salt("QsY4+h31LMs974pPN6QfsA==");
+InitializationVector initializationVector = new InitializationVector("kzyQ24xum3WibCKfvngMlg==");
+int iterations = 100000;
+HashAlgorithmName hashAlgorithmName = HashAlgorithmName.SHA256;
+string password = "111111";
+CipherText cipherText = new CipherText("9hTfvFaDb/AYD9xXZ2LVnJ2FrHQhP+daUOP3l6m1tKdP6sPrpvucnA1xcuSgjiX3jfLWCJYEvUMv8oubObe410tJU/PfRZeQeB4xUDs04eE=");
+
+EncryptedSignKeyMetadata encryptedSignKeyMetadata = new EncryptedSignKeyMetadata(
+    salt,
+    initializationVector,
+    iterations,
+    hashAlgorithmName);
+
+EncryptedSignKey encryptedSignKey = new EncryptedSignKey(
+    password,
+    encryptedSignKeyMetadata,
+    cipherText);
+
+Ed25519SignKey signKey = new SignKeyEncryption().Decrypt(encryptedSignKey);
+```

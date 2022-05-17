@@ -1,18 +1,18 @@
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Represents a base-16 encoded hash.
+/// Represents a base16 encoded hash.
 /// </summary>
 public abstract class Hash
 {
     private const int StringLength = 64;
-    private const int BytesLength = 32;
+    public const int BytesLength = 32;
 
     private readonly string _formatted;
     private readonly byte[] _value;
 
     /// <summary>
-    /// Creates an instance from a base-16 encoded string representing hash (64 characters).
+    /// Creates an instance from a base16 encoded string representing hash (64 characters).
     /// </summary>
     /// <param name="hashAsBase16String">the hash as base16 encoded string.</param>
     protected Hash(string hashAsBase16String)
@@ -34,7 +34,7 @@ public abstract class Hash
     }
 
     /// <summary>
-    /// Gets the hash as a base-16 encoded string.
+    /// Gets the hash as a base16 encoded string.
     /// </summary>
     public string AsString => _formatted;
 

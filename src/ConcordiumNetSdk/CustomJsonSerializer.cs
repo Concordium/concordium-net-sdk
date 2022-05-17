@@ -16,6 +16,7 @@ public static class CustomJsonSerializer
             Converters =
             {
                 new AccountCredentialJsonConverter(),
+                new NonceConverter(),
             }
         };
     }

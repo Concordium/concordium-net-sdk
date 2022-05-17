@@ -5,9 +5,9 @@ using FluentAssertions.Json;
 using Newtonsoft.Json.Linq;
 using Xunit;
 
-namespace ConcordiumNetSdk.UnitTests;
+namespace ConcordiumNetSdk.UnitTests.CustomJsonSerializerTests;
 
-public class CustomJsonSerializerTests
+public class AccountInfoTests
 {
     // todo: think how to implement it for all response types and for diff json data that is stored in file
     [Fact]
@@ -15,7 +15,7 @@ public class CustomJsonSerializerTests
     {
         // Arrange
         var currentDirectory = Directory.GetCurrentDirectory();
-        var filePath = Path.Combine(currentDirectory, @"account-info.json");
+        var filePath = Path.Combine(currentDirectory, @"CustomJsonSerializerTests/Files/account-info.json");
         var expectedJson = await File.ReadAllTextAsync(filePath);
 
         // Act
