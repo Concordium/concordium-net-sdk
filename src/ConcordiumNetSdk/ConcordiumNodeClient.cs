@@ -71,6 +71,17 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         return CustomJsonSerializer.Deserialize<BlockInfo>(response.Value);
     }
 
+    public async Task<List<BlockHash>> GetAncestorsAsync(ulong amount, BlockHash blockHash)
+    {
+        BlockHashAndAmount request = new BlockHashAndAmount
+        {
+            Amount = amount,
+            BlockHash = blockHash.AsString
+        };
+        JsonResponse response = await _client.GetAncestorsAsync(request, CreateCallOptions());
+        return CustomJsonSerializer.Deserialize<List<BlockHash>>(response.Value) ?? new List<BlockHash>();
+    }
+
     // todo: think how to implement tests
     public async Task<bool> SendTransactionAsync(byte[] payload, uint networkId = 100)
     {
