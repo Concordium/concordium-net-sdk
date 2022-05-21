@@ -6,7 +6,7 @@ namespace ConcordiumNetSdk.Responses.BlockInfoResponse;
 /// Represents the information about a particular block with various details as response data of <see cref="ConcordiumNodeClient"/>.<see cref="ConcordiumNodeClient.GetBlockInfoAsync"/>.
 /// See <a href="https://github.com/Concordium/concordium-node/edit/main/docs/grpc.md#getblockinfo--blockhash---blockinfo">here</a>.
 /// </summary>
-public class BlockInfo
+public record BlockInfo
 {
     /// <summary>
     /// Gets or initiates the hash of the block (base 16 encoded).
