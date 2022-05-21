@@ -1,4 +1,5 @@
 using ConcordiumNetSdk.Responses.AccountInfoResponse;
+using ConcordiumNetSdk.Responses.BlockInfoResponse;
 using ConcordiumNetSdk.Responses.ConsensusStatusResponse;
 using ConcordiumNetSdk.Responses.NextAccountNonceResponse;
 using ConcordiumNetSdk.Types;
@@ -10,8 +11,8 @@ public interface IConcordiumNodeClient
     /// <summary>
     /// Retrieves an information about a state of account corresponding to account address and block hash.
     /// </summary>
-    /// <param name="accountAddress">the base-58 check with version byte 1 encoded address (with Bitcoin mapping table).</param>
-    /// <param name="blockHash">the base-16 encoded hash of a block (64 characters).</param>
+    /// <param name="accountAddress">the base58 check with version byte 1 encoded address (with Bitcoin mapping table).</param>
+    /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
     /// <returns><see cref="AccountInfo"/> - the state of an account in the given block.</returns>
     Task<AccountInfo?> GetAccountInfoAsync(AccountAddress accountAddress, BlockHash blockHash);
 
@@ -20,7 +21,7 @@ public interface IConcordiumNodeClient
     /// If all account transactions are finalized then this information is reliable.
     /// Otherwise this is the best guess, assuming all other transactions will be committed to blocks and eventually finalized.
     /// </summary>
-    /// <param name="accountAddress">the base-58 check with version byte 1 encoded address (with Bitcoin mapping table).</param>
+    /// <param name="accountAddress">the base58 check with version byte 1 encoded address (with Bitcoin mapping table).</param>
     /// <returns><see cref="NextAccountNonce"/> - the next account nonce.</returns>
     Task<NextAccountNonce?> GetNextAccountNonceAsync(AccountAddress accountAddress);
 
@@ -29,6 +30,13 @@ public interface IConcordiumNodeClient
     /// </summary>
     /// <returns><see cref="ConsensusStatus"/> - the consensus status.</returns>
     Task<ConsensusStatus?> GetConsensusStatusAsync();
+
+    /// <summary>
+    /// Retrieves an information about a particular block with various details.
+    /// </summary>
+    /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
+    /// <returns><see cref="BlockInfo"/> - details about a particular block.</returns>
+    Task<BlockInfo?> GetBlockInfoAsync(BlockHash blockHash);
 
     /// <summary>
     /// Sends any account transaction.
