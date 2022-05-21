@@ -1,4 +1,5 @@
 using ConcordiumNetSdk.Responses.AccountInfoResponse;
+using ConcordiumNetSdk.Responses.ConsensusStatusResponse;
 using ConcordiumNetSdk.Responses.NextAccountNonceResponse;
 using ConcordiumNetSdk.Types;
 
@@ -22,6 +23,12 @@ public interface IConcordiumNodeClient
     /// <param name="accountAddress">the base-58 check with version byte 1 encoded address (with Bitcoin mapping table).</param>
     /// <returns><see cref="NextAccountNonce"/> - the next account nonce.</returns>
     Task<NextAccountNonce?> GetNextAccountNonceAsync(AccountAddress accountAddress);
+
+    /// <summary>
+    /// Retrieves an information about a current state of the consensus layer.
+    /// </summary>
+    /// <returns><see cref="ConsensusStatus"/> - the consensus status.</returns>
+    Task<ConsensusStatus?> GetConsensusStatusAsync();
 
     /// <summary>
     /// Sends any account transaction.
