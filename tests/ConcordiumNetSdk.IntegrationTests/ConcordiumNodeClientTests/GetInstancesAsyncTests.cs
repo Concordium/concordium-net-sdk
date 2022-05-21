@@ -5,11 +5,11 @@ using Xunit;
 
 namespace ConcordiumNetSdk.IntegrationTests.ConcordiumNodeClientTests;
 
-public class GetAccountListAsyncTests
+public class GetInstancesAsyncTests
 {
     private ConcordiumNodeClient ConcordiumNodeClient { get; }
 
-    public GetAccountListAsyncTests()
+    public GetInstancesAsyncTests()
     {
         var connection = new Connection {Address = "http://localhost:10001", AuthenticationToken = "rpcadmin"};
         ConcordiumNodeClient = new ConcordiumNodeClient(connection);
@@ -22,9 +22,9 @@ public class GetAccountListAsyncTests
         var blockHash = BlockHash.From("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af");
 
         // Act
-        var accountList = await ConcordiumNodeClient.GetAccountListAsync(blockHash);
+        var contractAddresses = await ConcordiumNodeClient.GetInstancesAsync(blockHash);
 
         // Assert
-        accountList.Should().NotBeEmpty();
+        contractAddresses.Should().NotBeEmpty();
     }
 }
