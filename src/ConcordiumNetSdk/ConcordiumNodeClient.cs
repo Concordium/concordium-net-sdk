@@ -35,6 +35,16 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         _client = new P2P.P2PClient(_grpcChannel);
     }
 
+    public async Task<List<AccountAddress>> GetAccountListAsync(BlockHash blockHash)
+    {
+        Concordium.BlockHash request = new Concordium.BlockHash
+        {
+            BlockHash_ = blockHash.AsString
+        };
+        JsonResponse response = await _client.GetAccountListAsync(request, CreateCallOptions());
+        return CustomJsonSerializer.Deserialize<List<AccountAddress>>(response.Value) ?? new List<AccountAddress>();
+    }
+
     public async Task<AccountInfo?> GetAccountInfoAsync(AccountAddress accountAddress, BlockHash blockHash)
     {
         var request = new GetAddressInfoRequest

@@ -17,14 +17,14 @@ public class AccountCredentialJsonConverter : JsonConverter<AccountCredential>
         if (reader.TokenType == JsonTokenType.Null) return null;
         JsonConverterHelper.EnsureTokenType(reader, JsonTokenType.StartObject);
 
-        var readerClone = reader;
+        Utf8JsonReader readerClone = reader;
         
-        using var jsonDocument = JsonDocument.ParseValue(ref readerClone);
-        var jsonObject = jsonDocument.RootElement;
-        var typeProperty = jsonObject.GetProperty("type");
-        var typeValue = typeProperty.GetString();
+        using JsonDocument jsonDocument = JsonDocument.ParseValue(ref readerClone);
+        JsonElement jsonObject = jsonDocument.RootElement;
+        JsonElement typeProperty = jsonObject.GetProperty("type");
+        string? typeValue = typeProperty.GetString();
 
-        if (string.IsNullOrEmpty(typeValue) || !TypeMap.TryGetValue(typeValue, out var targetType))
+        if (string.IsNullOrEmpty(typeValue) || !TypeMap.TryGetValue(typeValue, out Type? targetType))
             throw new JsonException($"Type value: '{typeValue ?? "null"}' is not supported.");
 
         return JsonSerializer.Deserialize(ref reader, targetType, options) as AccountCredential;
