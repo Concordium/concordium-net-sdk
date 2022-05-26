@@ -39,6 +39,17 @@ public interface IConcordiumNodeClient
     Task<BlockInfo?> GetBlockInfoAsync(BlockHash blockHash);
 
     /// <summary>
+    /// Returns the a list of the given block hash and the hashes of its ancestors going back the given number of generations.
+    /// The length of the list will be the given number, or the list will be the entire chain going back from the given block
+    /// until the closest genesis or regenesis block.
+    /// If the block is not live or finalized, the function returns null.
+    /// </summary>
+    /// <param name="amount">the number of hash and hashes of its ancestors generations.</param>
+    /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
+    /// <returns><see cref="List{BlockHash}"/> - the list of the given block hash and the hashes of its ancestors.</returns>
+    Task<List<BlockHash>> GetAncestorsAsync(ulong amount, BlockHash blockHash);
+
+    /// <summary>
     /// Sends any account transaction.
     /// </summary>
     /// <param name="payload">the binary encoding of the transaction (details <a href="https://github.com/Concordium/concordium-node/blob/main/docs/grpc-for-smart-contracts.md#sendtransaction">here</a>).</param>
