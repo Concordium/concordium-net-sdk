@@ -3,7 +3,7 @@ using ConcordiumNetSdk.Types;
 namespace ConcordiumNetSdk.Responses.RewardStatusResponse;
 
 /// <summary>
-/// Represents the information about a current balance of special accounts as response data of <see cref="IConcordiumNodeClient"/>.<see cref="IConcordiumNodeClient.GetGetRewardStatusAsync"/>.
+/// Represents the information about a current balance of special accounts as response data of <see cref="IConcordiumNodeClient"/>.<see cref="IConcordiumNodeClient.GetRewardStatusAsync"/>.
 /// See <a href="https://github.com/Concordium/concordium-node/edit/main/docs/grpc.md#getrewardstatus-blockhash---rewardstatus">here</a>.
 /// </summary>
 public record RewardStatus

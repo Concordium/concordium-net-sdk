@@ -52,6 +52,9 @@
     <None Update="CustomJsonSerializerTests\Files\reward-status.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="CustomJsonSerializerTests\Files\birk-parameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

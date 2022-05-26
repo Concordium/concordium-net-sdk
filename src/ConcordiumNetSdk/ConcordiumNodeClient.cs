@@ -1,5 +1,6 @@
 ﻿using Concordium;
 using ConcordiumNetSdk.Responses.AccountInfoResponse;
+using ConcordiumNetSdk.Responses.BirkParametersResponse;
 using ConcordiumNetSdk.Responses.BlockInfoResponse;
 using ConcordiumNetSdk.Responses.BranchResponse;
 using ConcordiumNetSdk.Responses.ConsensusStatusResponse;
@@ -98,6 +99,16 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         };
         JsonResponse response = await _client.GetRewardStatusAsync(request, CreateCallOptions());
         return CustomJsonSerializer.Deserialize<RewardStatus>(response.Value);
+    }
+
+    public async Task<BirkParameters?> GetBirkParametersAsync(BlockHash blockHash)
+    {
+        var request = new Concordium.BlockHash
+        {
+            BlockHash_ = blockHash.AsString
+        };
+        JsonResponse response = await _client.GetBirkParametersAsync(request, CreateCallOptions());
+        return CustomJsonSerializer.Deserialize<BirkParameters>(response.Value);
     }
 
     public async Task<ConsensusStatus?> GetConsensusStatusAsync()
