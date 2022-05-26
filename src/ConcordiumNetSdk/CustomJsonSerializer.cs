@@ -17,7 +17,9 @@ public static class CustomJsonSerializer
             {
                 new AccountCredentialJsonConverter(),
                 new NonceConverter(),
-            }
+                new BlockHashConverter(),
+                new DateTimeOffsetConverter(),
+            }   
         };
     }
 

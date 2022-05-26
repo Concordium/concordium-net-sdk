@@ -1,5 +1,6 @@
 ﻿using Concordium;
 using ConcordiumNetSdk.Responses.AccountInfoResponse;
+using ConcordiumNetSdk.Responses.ConsensusStatusResponse;
 using ConcordiumNetSdk.Responses.NextAccountNonceResponse;
 using Google.Protobuf;
 using Grpc.Core;
@@ -51,6 +52,12 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         };
         JsonResponse response = await _client.GetNextAccountNonceAsync(request, CreateCallOptions());
         return CustomJsonSerializer.Deserialize<NextAccountNonce>(response.Value);
+    }
+
+    public async Task<ConsensusStatus?> GetConsensusStatusAsync()
+    {
+        JsonResponse response = await _client.GetConsensusStatusAsync(new Empty(), CreateCallOptions());
+        return CustomJsonSerializer.Deserialize<ConsensusStatus>(response.Value);
     }
 
     // todo: think how to implement tests
