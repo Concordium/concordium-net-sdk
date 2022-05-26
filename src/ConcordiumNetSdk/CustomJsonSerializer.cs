@@ -20,6 +20,9 @@ public static class CustomJsonSerializer
                 new BlockHashConverter(),
                 new DateTimeOffsetConverter(),
                 new AccountAddressConverter(),
+                new ModuleRefConverter(),
+                new ContractAddressConverter(),
+                new CcdAmountConverter(),
             }   
         };
     }

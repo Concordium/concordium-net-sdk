@@ -1,0 +1,11 @@
+{
+  "amount": "0",
+  "sourceModule": "7f60dc4d93e491750ed09d2abb379286c5af6f4aca2310c0b09c3275e181f4a4",
+  "owner": "3DJoe7aUwMwVmdFdRU2QsnJfsBbCmQu1QHvEg7YtWFZWmsoBXe",
+  "methods": [
+    "counter.receive",
+    "counter.receive_optimized"
+  ],
+  "name": "init_counter",
+  "model": "0000000000"
+}
