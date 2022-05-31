@@ -4,6 +4,7 @@ using ConcordiumNetSdk.Responses.BlockInfoResponse;
 using ConcordiumNetSdk.Responses.BranchResponse;
 using ConcordiumNetSdk.Responses.ConsensusStatusResponse;
 using ConcordiumNetSdk.Responses.ContractInfoResponse;
+using ConcordiumNetSdk.Responses.IpInfoResponse;
 using ConcordiumNetSdk.Responses.NextAccountNonceResponse;
 using ConcordiumNetSdk.Responses.RewardStatusResponse;
 using ConcordiumNetSdk.Types;
@@ -59,6 +60,13 @@ public interface IConcordiumNodeClient
     /// <param name="moduleRef">the base16 encoded hash of a module ref (64 characters).</param>
     /// <returns><see cref="ByteString"/> - source of the module as it was deployed on the chain.</returns>
     Task<ByteString> GetModuleSourceAsync(BlockHash blockHash, ModuleRef moduleRef);
+
+    /// <summary>
+    /// Retrieves a list of identity providers in a specific block.
+    /// </summary>
+    /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
+    /// <returns><see cref="List{IpInfo}"/> - list of identity providers.</returns>
+    Task<List<IpInfo>> GetIdentityProvidersAsync(BlockHash blockHash);
 
     /// <summary>
     /// Retrieves an information about a current state of the consensus layer.
