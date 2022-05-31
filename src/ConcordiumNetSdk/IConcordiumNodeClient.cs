@@ -43,6 +43,14 @@ public interface IConcordiumNodeClient
     /// <returns><see cref="BirkParameters"/> - information about a parameters used for baking.</returns>
     Task<BirkParameters?> GetBirkParametersAsync(BlockHash blockHash);
 
+    //todo: find out why List T is showing instead of real type
+    /// <summary>
+    /// Retrieves the list of smart contract modules.
+    /// </summary>
+    /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
+    /// <returns><see cref="List{ModuleRef}"/> - list of smart contract modules.</returns>
+    Task<List<ModuleRef>> GetModuleListAsync(BlockHash blockHash);
+
     /// <summary>
     /// Retrieves an information about a current state of the consensus layer.
     /// </summary>

@@ -111,6 +111,16 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         return CustomJsonSerializer.Deserialize<BirkParameters>(response.Value);
     }
 
+    public async Task<List<ModuleRef>> GetModuleListAsync(BlockHash blockHash)
+    {
+        var request = new Concordium.BlockHash
+        {
+            BlockHash_ = blockHash.AsString
+        };
+        JsonResponse response = await _client.GetModuleListAsync(request, CreateCallOptions());
+        return CustomJsonSerializer.Deserialize<List<ModuleRef>>(response.Value) ?? new List<ModuleRef>();
+    }
+
     public async Task<ConsensusStatus?> GetConsensusStatusAsync()
     {
         JsonResponse response = await _client.GetConsensusStatusAsync(new Empty(), CreateCallOptions());
