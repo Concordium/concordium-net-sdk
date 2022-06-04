@@ -4,7 +4,7 @@ namespace ConcordiumNetSdk.Responses.IpInfoResponse;
 /// <summary>
 /// Represents the information about an identity provider description.
 /// </summary>
-public class IpDescription
+public class IdentityProviderDescription
 {
     /// <summary>
     /// Gets or initiates the name.

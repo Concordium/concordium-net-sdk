@@ -1,17 +1,17 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using ConcordiumNetSdk.Responses.IpInfoResponse;
+using ConcordiumNetSdk.Responses.AnonymityRevokerInfoResponse;
 using ConcordiumNetSdk.Types;
 using FluentAssertions;
 using Xunit;
 
 namespace ConcordiumNetSdk.IntegrationTests.ConcordiumNodeClientTests;
 
-public class GetIdentityProvidersAsyncTests
+public class GetAnonymityRevokersAsyncTests
 {
     private ConcordiumNodeClient ConcordiumNodeClient { get; }
 
-    public GetIdentityProvidersAsyncTests()
+    public GetAnonymityRevokersAsyncTests()
     {
         var connection = new Connection {Address = "http://localhost:10001", AuthenticationToken = "rpcadmin"};
         ConcordiumNodeClient = new ConcordiumNodeClient(connection);
@@ -21,14 +21,14 @@ public class GetIdentityProvidersAsyncTests
     public async Task When_block_exists_should_return_correct_data()
     {
         // Arrange
-        var emptyIdentityProviderInfo = new IdentityProviderInfo();
+        var emptyAnonymityRevokerInfo = new AnonymityRevokerInfo();
         var blockHash = BlockHash.From("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af");
 
         // Act
-        var identityProviderInfos = await ConcordiumNodeClient.GetIdentityProvidersAsync(blockHash);
+        var anonymityRevokerInfos = await ConcordiumNodeClient.GetAnonymityRevokersAsync(blockHash);
 
         // Assert
-        identityProviderInfos.Should().NotBeEmpty();
-        identityProviderInfos.First().Should().NotBeEquivalentTo(emptyIdentityProviderInfo);
+        anonymityRevokerInfos.Should().NotBeEmpty();
+        anonymityRevokerInfos.First().Should().NotBeEquivalentTo(emptyAnonymityRevokerInfo);
     }
 }

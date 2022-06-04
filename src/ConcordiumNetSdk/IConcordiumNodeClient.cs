@@ -1,4 +1,5 @@
 using ConcordiumNetSdk.Responses.AccountInfoResponse;
+using ConcordiumNetSdk.Responses.AnonymityRevokerInfoResponse;
 using ConcordiumNetSdk.Responses.BirkParametersResponse;
 using ConcordiumNetSdk.Responses.BlockInfoResponse;
 using ConcordiumNetSdk.Responses.BranchResponse;
@@ -65,8 +66,15 @@ public interface IConcordiumNodeClient
     /// Retrieves a list of identity providers in a specific block.
     /// </summary>
     /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
-    /// <returns><see cref="List{IpInfo}"/> - list of identity providers.</returns>
-    Task<List<IpInfo>> GetIdentityProvidersAsync(BlockHash blockHash);
+    /// <returns><see cref="List{IdentityProviderInfo}"/> - list of identity providers.</returns>
+    Task<List<IdentityProviderInfo>> GetIdentityProvidersAsync(BlockHash blockHash);
+
+    /// <summary>
+    /// Retrieves a list of anonymity revokers in a specific block.
+    /// </summary>
+    /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
+    /// <returns><see cref="List{AnonymityRevokerInfo}"/> - list of anonymity revokers.</returns>
+    Task<List<AnonymityRevokerInfo>> GetAnonymityRevokersAsync(BlockHash blockHash);
 
     /// <summary>
     /// Retrieves an information about a current state of the consensus layer.
