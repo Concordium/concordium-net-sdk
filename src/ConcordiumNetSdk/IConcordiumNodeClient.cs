@@ -5,7 +5,8 @@ using ConcordiumNetSdk.Responses.BlockInfoResponse;
 using ConcordiumNetSdk.Responses.BranchResponse;
 using ConcordiumNetSdk.Responses.ConsensusStatusResponse;
 using ConcordiumNetSdk.Responses.ContractInfoResponse;
-using ConcordiumNetSdk.Responses.IpInfoResponse;
+using ConcordiumNetSdk.Responses.CryptographicParametersResponse;
+using ConcordiumNetSdk.Responses.IdentityProviderInfo;
 using ConcordiumNetSdk.Responses.NextAccountNonceResponse;
 using ConcordiumNetSdk.Responses.RewardStatusResponse;
 using ConcordiumNetSdk.Types;
@@ -75,6 +76,13 @@ public interface IConcordiumNodeClient
     /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
     /// <returns><see cref="List{AnonymityRevokerInfo}"/> - list of anonymity revokers.</returns>
     Task<List<AnonymityRevokerInfo>> GetAnonymityRevokersAsync(BlockHash blockHash);
+
+    /// <summary>
+    /// Retrieves the information about a cryptographic parameters in a specific block.
+    /// </summary>
+    /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
+    /// <returns><see cref="CryptographicParameters"/> - information about a cryptographic parameters in a specific block.</returns>
+    Task<VersionedValue<CryptographicParameters>?> GetCryptographicParametersAsync(BlockHash blockHash);
 
     /// <summary>
     /// Retrieves an information about a current state of the consensus layer.

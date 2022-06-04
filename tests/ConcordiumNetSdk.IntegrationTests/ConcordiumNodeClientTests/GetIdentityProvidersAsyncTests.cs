@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using ConcordiumNetSdk.Responses.IpInfoResponse;
+using ConcordiumNetSdk.Responses.IdentityProviderInfo;
 using ConcordiumNetSdk.Types;
 using FluentAssertions;
 using Xunit;
@@ -9,7 +9,7 @@ namespace ConcordiumNetSdk.IntegrationTests.ConcordiumNodeClientTests;
 
 public class GetIdentityProvidersAsyncTests
 {
-    private ConcordiumNodeClient ConcordiumNodeClient { get; }
+    private IConcordiumNodeClient ConcordiumNodeClient { get; }
 
     public GetIdentityProvidersAsyncTests()
     {
