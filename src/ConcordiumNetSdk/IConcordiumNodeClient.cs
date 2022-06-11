@@ -41,6 +41,13 @@ public interface IConcordiumNodeClient
     /// <returns><see cref="UInt64"/> - the node uptime.</returns>
     Task<ulong> GetPeerUptimeAsync();
 
+    //todo: find more about documentation
+    /// <summary>
+    /// Retrieves an information about a node total send count.
+    /// </summary>
+    /// <returns><see cref="UInt64"/> - the node total send count.</returns>
+    Task<ulong> GetPeerTotalSentAsync();
+
     /// <summary>
     /// Retrieves an information about a state of account corresponding to account address and block hash.
     /// </summary>
