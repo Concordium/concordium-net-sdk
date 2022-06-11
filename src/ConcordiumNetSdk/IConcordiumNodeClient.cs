@@ -4,6 +4,7 @@ using ConcordiumNetSdk.Responses.BranchResponse;
 using ConcordiumNetSdk.Responses.ConsensusStatusResponse;
 using ConcordiumNetSdk.Responses.ContractInfoResponse;
 using ConcordiumNetSdk.Responses.NextAccountNonceResponse;
+using ConcordiumNetSdk.Responses.RewardStatusResponse;
 using ConcordiumNetSdk.Types;
 
 namespace ConcordiumNetSdk;
@@ -26,6 +27,13 @@ public interface IConcordiumNodeClient
     /// <param name="accountAddress">the base58 check with version byte 1 encoded address (with Bitcoin mapping table).</param>
     /// <returns><see cref="NextAccountNonce"/> - the next account nonce.</returns>
     Task<NextAccountNonce?> GetNextAccountNonceAsync(AccountAddress accountAddress);
+
+    /// <summary>
+    /// Retrieves the information about a current balance of special accounts.
+    /// </summary>
+    /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
+    /// <returns><see cref="RewardStatus"/> - information about a current balance of special accounts.</returns>
+    Task<RewardStatus?> GetRewardStatusAsync(BlockHash blockHash);
 
     /// <summary>
     /// Retrieves an information about a current state of the consensus layer.

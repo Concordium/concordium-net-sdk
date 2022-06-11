@@ -6,7 +6,7 @@ namespace ConcordiumNetSdk.IntegrationTests.ConcordiumNodeClientTests;
 
 public class GetBlocksAtHeightAsyncTests
 {
-    private ConcordiumNodeClient ConcordiumNodeClient { get; }
+    private IConcordiumNodeClient ConcordiumNodeClient { get; }
 
     public GetBlocksAtHeightAsyncTests()
     {

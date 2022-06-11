@@ -8,7 +8,7 @@ namespace ConcordiumNetSdk.IntegrationTests.ConcordiumNodeClientTests;
 
 public class GetInstanceInfoAsyncTests
 {
-    private ConcordiumNodeClient ConcordiumNodeClient { get; }
+    private IConcordiumNodeClient ConcordiumNodeClient { get; }
 
     public GetInstanceInfoAsyncTests()
     {

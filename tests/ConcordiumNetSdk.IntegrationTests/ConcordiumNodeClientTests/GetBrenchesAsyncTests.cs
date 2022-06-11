@@ -7,7 +7,7 @@ namespace ConcordiumNetSdk.IntegrationTests.ConcordiumNodeClientTests;
 
 public class GetBrenchesAsyncTests
 {
-    private ConcordiumNodeClient ConcordiumNodeClient { get; }
+    private IConcordiumNodeClient ConcordiumNodeClient { get; }
 
     public GetBrenchesAsyncTests()
     {

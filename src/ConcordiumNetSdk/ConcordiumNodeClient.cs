@@ -5,6 +5,7 @@ using ConcordiumNetSdk.Responses.BranchResponse;
 using ConcordiumNetSdk.Responses.ConsensusStatusResponse;
 using ConcordiumNetSdk.Responses.ContractInfoResponse;
 using ConcordiumNetSdk.Responses.NextAccountNonceResponse;
+using ConcordiumNetSdk.Responses.RewardStatusResponse;
 using ConcordiumNetSdk.Types;
 using Google.Protobuf;
 using Grpc.Core;
@@ -87,6 +88,16 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         };
         JsonResponse response = await _client.GetNextAccountNonceAsync(request, CreateCallOptions());
         return CustomJsonSerializer.Deserialize<NextAccountNonce>(response.Value);
+    }
+
+    public async Task<RewardStatus?> GetRewardStatusAsync(BlockHash blockHash)
+    {
+        var request = new Concordium.BlockHash
+        {
+            BlockHash_ = blockHash.AsString
+        };
+        JsonResponse response = await _client.GetRewardStatusAsync(request, CreateCallOptions());
+        return CustomJsonSerializer.Deserialize<RewardStatus>(response.Value);
     }
 
     public async Task<ConsensusStatus?> GetConsensusStatusAsync()
