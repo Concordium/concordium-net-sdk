@@ -1,3 +1,4 @@
+using Concordium;
 using ConcordiumNetSdk.Responses.AccountInfoResponse;
 using ConcordiumNetSdk.Responses.AnonymityRevokerInfoResponse;
 using ConcordiumNetSdk.Responses.BirkParametersResponse;
@@ -11,6 +12,8 @@ using ConcordiumNetSdk.Responses.NextAccountNonceResponse;
 using ConcordiumNetSdk.Responses.RewardStatusResponse;
 using ConcordiumNetSdk.Types;
 using Google.Protobuf;
+using AccountAddress = ConcordiumNetSdk.Types.AccountAddress;
+using BlockHash = ConcordiumNetSdk.Types.BlockHash;
 
 namespace ConcordiumNetSdk;
 
@@ -83,6 +86,12 @@ public interface IConcordiumNodeClient
     /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
     /// <returns><see cref="CryptographicParameters"/> - information about a cryptographic parameters in a specific block.</returns>
     Task<VersionedValue<CryptographicParameters>?> GetCryptographicParametersAsync(BlockHash blockHash);
+
+    /// <summary>
+    /// Retrieves the information about a banned peers.
+    /// </summary>
+    /// <returns><see cref="PeerListResponse"/> - information about a banned peers.</returns>
+    Task<PeerListResponse> GetBannedPeersAsync();
 
     /// <summary>
     /// Retrieves an information about a current state of the consensus layer.

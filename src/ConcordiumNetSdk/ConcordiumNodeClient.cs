@@ -165,6 +165,11 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         return CustomJsonSerializer.Deserialize<VersionedValue<CryptographicParameters>>(response.Value);
     }
 
+    public async Task<PeerListResponse> GetBannedPeersAsync()
+    {
+        return await _client.GetBannedPeersAsync(new Empty(), CreateCallOptions());
+    }
+
     public async Task<ConsensusStatus?> GetConsensusStatusAsync()
     {
         JsonResponse response = await _client.GetConsensusStatusAsync(new Empty(), CreateCallOptions());
