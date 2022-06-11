@@ -57,6 +57,18 @@ public interface IConcordiumNodeClient
     Task<Branch> GetBranchesAsync();
 
     /// <summary>
+    /// Returns all blocks at the given height.
+    /// </summary>
+    /// <param name="blockHeight">the height of the blocks to query.</param>
+    /// <param name="fromGenesisIndex">the base genesis index.</param>
+    /// <param name="restrictToGenesisIndex">does restrict to specified genesis index.</param>
+    /// <returns><see cref="List{BlockHash}"/> - the list of the blocks.</returns>
+    Task<List<BlockHash>> GetBlocksAtHeightAsync(
+        ulong blockHeight,
+        uint fromGenesisIndex = 0,
+        bool restrictToGenesisIndex = false);
+
+    /// <summary>
     /// Sends any account transaction.
     /// </summary>
     /// <param name="payload">the binary encoding of the transaction (details <a href="https://github.com/Concordium/concordium-node/blob/main/docs/grpc-for-smart-contracts.md#sendtransaction">here</a>).</param>

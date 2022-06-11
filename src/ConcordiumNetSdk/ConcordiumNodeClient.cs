@@ -89,6 +89,21 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         return CustomJsonSerializer.Deserialize<Branch>(response.Value);
     }
 
+    public async Task<List<BlockHash>> GetBlocksAtHeightAsync(
+        ulong blockHeight,
+        uint fromGenesisIndex = 0,
+        bool restrictToGenesisIndex = false)
+    {
+        BlockHeight request = new BlockHeight
+        {
+            BlockHeight_ = blockHeight,
+            FromGenesisIndex = fromGenesisIndex,
+            RestrictToGenesisIndex = restrictToGenesisIndex
+        };
+        JsonResponse response = await _client.GetBlocksAtHeightAsync(request, CreateCallOptions());
+        return CustomJsonSerializer.Deserialize<List<BlockHash>>(response.Value) ?? new List<BlockHash>();
+    }
+
     // todo: think how to implement tests
     public async Task<bool> SendTransactionAsync(byte[] payload, uint networkId = 100)
     {
