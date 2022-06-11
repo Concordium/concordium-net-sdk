@@ -42,6 +42,17 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         _client = new P2P.P2PClient(_grpcChannel);
     }
 
+    public async Task<bool> PeerConnectAsync(string ip, int? port = null)
+    {
+        PeerConnectRequest request = new PeerConnectRequest
+        {
+            Ip = ip,
+            Port = port
+        };
+        BoolResponse response = await _client.PeerConnectAsync(request, CreateCallOptions());
+        return response.Value;
+    }
+
     public async Task<List<AccountAddress>> GetAccountListAsync(BlockHash blockHash)
     {
         Concordium.BlockHash request = new Concordium.BlockHash
