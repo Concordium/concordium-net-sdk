@@ -64,6 +64,9 @@
     <None Update="CustomJsonSerializerTests\Files\anonymity-revoker-info.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="CustomJsonSerializerTests\Files\cryptographic-parameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

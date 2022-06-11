@@ -1,4 +1,4 @@
-namespace ConcordiumNetSdk.Responses.IpInfoResponse;
+namespace ConcordiumNetSdk.Responses.IdentityProviderInfo;
 
 //todo: find out about documentation of each property
 /// <summary>
