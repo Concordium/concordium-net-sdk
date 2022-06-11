@@ -53,6 +53,17 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         return response.Value;
     }
 
+    public async Task<bool> PeerDisconnectAsync(string ip, int? port = null)
+    {
+        PeerConnectRequest request = new PeerConnectRequest
+        {
+            Ip = ip,
+            Port = port
+        };
+        BoolResponse response = await _client.PeerDisconnectAsync(request, CreateCallOptions());
+        return response.Value;
+    }
+
     public async Task<List<AccountAddress>> GetAccountListAsync(BlockHash blockHash)
     {
         Concordium.BlockHash request = new Concordium.BlockHash
