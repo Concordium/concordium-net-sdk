@@ -1,6 +1,7 @@
 ﻿using Concordium;
 using ConcordiumNetSdk.Responses.AccountInfoResponse;
 using ConcordiumNetSdk.Responses.BlockInfoResponse;
+using ConcordiumNetSdk.Responses.BranchResponse;
 using ConcordiumNetSdk.Responses.ConsensusStatusResponse;
 using ConcordiumNetSdk.Responses.NextAccountNonceResponse;
 using Google.Protobuf;
@@ -80,6 +81,12 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         };
         JsonResponse response = await _client.GetAncestorsAsync(request, CreateCallOptions());
         return CustomJsonSerializer.Deserialize<List<BlockHash>>(response.Value) ?? new List<BlockHash>();
+    }
+
+    public async Task<Branch> GetBranchesAsync()
+    {
+        JsonResponse response = await _client.GetBranchesAsync(new Empty(), CreateCallOptions());
+        return CustomJsonSerializer.Deserialize<Branch>(response.Value);
     }
 
     // todo: think how to implement tests

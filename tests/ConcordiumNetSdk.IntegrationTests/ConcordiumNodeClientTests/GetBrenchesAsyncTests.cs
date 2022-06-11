@@ -1,31 +1,32 @@
 ﻿using System.Threading.Tasks;
-using ConcordiumNetSdk.Types;
+using ConcordiumNetSdk.Responses.BranchResponse;
 using FluentAssertions;
 using Xunit;
 
 namespace ConcordiumNetSdk.IntegrationTests.ConcordiumNodeClientTests;
 
-public class GetAncestorsAsyncTests
+public class GetBrenchesAsyncTests
 {
     private ConcordiumNodeClient ConcordiumNodeClient { get; }
 
-    public GetAncestorsAsyncTests()
+    public GetBrenchesAsyncTests()
     {
         var connection = new Connection {Address = "http://localhost:10001", AuthenticationToken = "rpcadmin"};
         ConcordiumNodeClient = new ConcordiumNodeClient(connection);
     }
 
     [Fact]
-    public async Task When_block_exists_should_return_correct_data()
+    public async Task Should_return_correct_data()
     {
         // Arrange
-        var amount = 10ul;
-        var blockHash = BlockHash.From("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af");
-
+        // todo: think of better implementation of empty object
+        var emptyBranch = new Branch();
+        
         // Act
-        var blocks = await ConcordiumNodeClient.GetAncestorsAsync(amount, blockHash);
+        var branch = await ConcordiumNodeClient.GetBranchesAsync();
 
         // Assert
-        blocks.Count.Should().Be((int)amount);
+        branch.Should().NotBeNull();
+        branch.Should().NotBeEquivalentTo(emptyBranch);
     }
 }
