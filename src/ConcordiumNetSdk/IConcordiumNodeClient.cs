@@ -33,6 +33,14 @@ public interface IConcordiumNodeClient
     Task<ConsensusStatus?> GetConsensusStatusAsync();
 
     /// <summary>
+    /// Retrieves a list of accounts that exist in the given block.
+    /// Empty list indicates the block does not exist.
+    /// </summary>
+    /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
+    /// <returns><see cref="List{AccountAddress}"/> - list of accounts that exist in the given block.</returns>
+    Task<List<AccountAddress>> GetAccountListAsync(BlockHash blockHash);
+
+    /// <summary>
     /// Retrieves an information about a particular block with various details.
     /// </summary>
     /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
