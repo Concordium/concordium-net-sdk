@@ -1,5 +1,6 @@
 ﻿using Concordium;
 using ConcordiumNetSdk.Responses.AccountInfoResponse;
+using ConcordiumNetSdk.Responses.AnonymityRevokerInfoResponse;
 using ConcordiumNetSdk.Responses.BirkParametersResponse;
 using ConcordiumNetSdk.Responses.BlockInfoResponse;
 using ConcordiumNetSdk.Responses.BranchResponse;
@@ -133,14 +134,24 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         return response.Value;
     }
 
-    public async Task<List<IpInfo>> GetIdentityProvidersAsync(BlockHash blockHash)
+    public async Task<List<IdentityProviderInfo>> GetIdentityProvidersAsync(BlockHash blockHash)
     {
         var request = new Concordium.BlockHash
         {
             BlockHash_ = blockHash.AsString
         };
         JsonResponse response = await _client.GetIdentityProvidersAsync(request, CreateCallOptions());
-        return CustomJsonSerializer.Deserialize<List<IpInfo>>(response.Value) ?? new List<IpInfo>();
+        return CustomJsonSerializer.Deserialize<List<IdentityProviderInfo>>(response.Value) ?? new List<IdentityProviderInfo>();
+    }
+
+    public async Task<List<AnonymityRevokerInfo>> GetAnonymityRevokersAsync(BlockHash blockHash)
+    {
+        var request = new Concordium.BlockHash
+        {
+            BlockHash_ = blockHash.AsString
+        };
+        JsonResponse response = await _client.GetAnonymityRevokersAsync(request, CreateCallOptions());
+        return CustomJsonSerializer.Deserialize<List<AnonymityRevokerInfo>>(response.Value) ?? new List<AnonymityRevokerInfo>();
     }
 
     public async Task<ConsensusStatus?> GetConsensusStatusAsync()

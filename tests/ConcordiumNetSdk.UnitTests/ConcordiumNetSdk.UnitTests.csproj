@@ -58,7 +58,10 @@
     <None Update="CustomJsonSerializerTests\Files\module-ref.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="CustomJsonSerializerTests\Files\ip-info.json">
+    <None Update="CustomJsonSerializerTests\Files\identity-provider-info.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="CustomJsonSerializerTests\Files\anonymity-revoker-info.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
