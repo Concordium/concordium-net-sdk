@@ -64,6 +64,12 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         return response.Value;
     }
 
+    public async Task<ulong> GetPeerUptimeAsync()
+    {
+        NumberResponse response = await _client.PeerUptimeAsync(new Empty(), CreateCallOptions());
+        return response.Value;
+    }
+
     public async Task<List<AccountAddress>> GetAccountListAsync(BlockHash blockHash)
     {
         Concordium.BlockHash request = new Concordium.BlockHash
