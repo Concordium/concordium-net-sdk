@@ -5,6 +5,7 @@ using ConcordiumNetSdk.Responses.BlockInfoResponse;
 using ConcordiumNetSdk.Responses.BranchResponse;
 using ConcordiumNetSdk.Responses.ConsensusStatusResponse;
 using ConcordiumNetSdk.Responses.ContractInfoResponse;
+using ConcordiumNetSdk.Responses.IpInfoResponse;
 using ConcordiumNetSdk.Responses.NextAccountNonceResponse;
 using ConcordiumNetSdk.Responses.RewardStatusResponse;
 using ConcordiumNetSdk.Types;
@@ -130,6 +131,16 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         };
         BytesResponse response = await _client.GetModuleSourceAsync(request, CreateCallOptions());
         return response.Value;
+    }
+
+    public async Task<List<IpInfo>> GetIdentityProvidersAsync(BlockHash blockHash)
+    {
+        var request = new Concordium.BlockHash
+        {
+            BlockHash_ = blockHash.AsString
+        };
+        JsonResponse response = await _client.GetIdentityProvidersAsync(request, CreateCallOptions());
+        return CustomJsonSerializer.Deserialize<List<IpInfo>>(response.Value) ?? new List<IpInfo>();
     }
 
     public async Task<ConsensusStatus?> GetConsensusStatusAsync()

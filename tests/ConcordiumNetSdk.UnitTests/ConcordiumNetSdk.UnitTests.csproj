@@ -58,6 +58,9 @@
     <None Update="CustomJsonSerializerTests\Files\module-ref.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="CustomJsonSerializerTests\Files\ip-info.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
