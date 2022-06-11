@@ -20,6 +20,14 @@ namespace ConcordiumNetSdk;
 public interface IConcordiumNodeClient
 {
     /// <summary>
+    ///  Connects to a specified peer.
+    /// </summary>
+    /// <param name="ip">the IP of the peer we want to connect to.</param>
+    /// <param name="port">the port of the peer we want to connect to.</param>
+    /// <returns><see cref="Boolean"/> - the result of connecting to a specified peer.</returns>
+    Task<bool> PeerConnectAsync(string ip, int? port = null);
+
+    /// <summary>
     /// Retrieves an information about a state of account corresponding to account address and block hash.
     /// </summary>
     /// <param name="accountAddress">the base58 check with version byte 1 encoded address (with Bitcoin mapping table).</param>
