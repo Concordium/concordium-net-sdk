@@ -36,6 +36,12 @@ public interface IConcordiumNodeClient
     Task<bool> PeerDisconnectAsync(string ip, int? port = null);
 
     /// <summary>
+    /// Retrieves an information about a node uptime.
+    /// </summary>
+    /// <returns><see cref="UInt64"/> - the node uptime.</returns>
+    Task<ulong> GetPeerUptimeAsync();
+
+    /// <summary>
     /// Retrieves an information about a state of account corresponding to account address and block hash.
     /// </summary>
     /// <param name="accountAddress">the base58 check with version byte 1 encoded address (with Bitcoin mapping table).</param>
