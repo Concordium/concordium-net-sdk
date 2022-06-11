@@ -3,6 +3,7 @@ using ConcordiumNetSdk.Responses.AccountInfoResponse;
 using ConcordiumNetSdk.Responses.BlockInfoResponse;
 using ConcordiumNetSdk.Responses.BranchResponse;
 using ConcordiumNetSdk.Responses.ConsensusStatusResponse;
+using ConcordiumNetSdk.Responses.ContractAddressResponse;
 using ConcordiumNetSdk.Responses.NextAccountNonceResponse;
 using Google.Protobuf;
 using Grpc.Core;
@@ -54,6 +55,16 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         };
         JsonResponse response = await _client.GetAccountInfoAsync(request, CreateCallOptions());
         return CustomJsonSerializer.Deserialize<AccountInfo>(response.Value);
+    }
+
+    public async Task<List<ContractAddress>> GetInstancesAsync(BlockHash blockHash)
+    {
+        var request = new Concordium.BlockHash
+        {
+            BlockHash_ = blockHash.AsString
+        };
+        JsonResponse response = await _client.GetInstancesAsync(request, CreateCallOptions());
+        return CustomJsonSerializer.Deserialize<List<ContractAddress>>(response.Value) ?? new List<ContractAddress>();
     }
 
     public async Task<NextAccountNonce?> GetNextAccountNonceAsync(AccountAddress accountAddress)

@@ -2,6 +2,7 @@ using ConcordiumNetSdk.Responses.AccountInfoResponse;
 using ConcordiumNetSdk.Responses.BlockInfoResponse;
 using ConcordiumNetSdk.Responses.BranchResponse;
 using ConcordiumNetSdk.Responses.ConsensusStatusResponse;
+using ConcordiumNetSdk.Responses.ContractAddressResponse;
 using ConcordiumNetSdk.Responses.NextAccountNonceResponse;
 using ConcordiumNetSdk.Types;
 
@@ -46,6 +47,14 @@ public interface IConcordiumNodeClient
     /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
     /// <returns><see cref="BlockInfo"/> - details about a particular block.</returns>
     Task<BlockInfo?> GetBlockInfoAsync(BlockHash blockHash);
+
+    /// <summary>
+    /// Retrieves a list of smart contract instances that exist in the given block.
+    /// Empty list indicates that the block does not exist.
+    /// </summary>
+    /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
+    /// <returns><see cref="List{ContractAddress}"/> - a list of contract instances.</returns>
+    Task<List<ContractAddress>> GetInstancesAsync(BlockHash blockHash);
 
     /// <summary>
     /// Returns the list of the given block hash and the hashes of its ancestors going back the given number of generations.

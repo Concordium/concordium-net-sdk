@@ -43,6 +43,9 @@
     <None Update="CustomJsonSerializerTests\Files\branch.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="CustomJsonSerializerTests\Files\contract-address.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
