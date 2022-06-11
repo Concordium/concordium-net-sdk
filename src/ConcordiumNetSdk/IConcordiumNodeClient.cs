@@ -1,4 +1,5 @@
 using ConcordiumNetSdk.Responses.AccountInfoResponse;
+using ConcordiumNetSdk.Responses.BirkParametersResponse;
 using ConcordiumNetSdk.Responses.BlockInfoResponse;
 using ConcordiumNetSdk.Responses.BranchResponse;
 using ConcordiumNetSdk.Responses.ConsensusStatusResponse;
@@ -34,6 +35,13 @@ public interface IConcordiumNodeClient
     /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
     /// <returns><see cref="RewardStatus"/> - information about a current balance of special accounts.</returns>
     Task<RewardStatus?> GetRewardStatusAsync(BlockHash blockHash);
+
+    /// <summary>
+    /// Retrieves the information about a parameters used for baking.
+    /// </summary>
+    /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
+    /// <returns><see cref="BirkParameters"/> - information about a parameters used for baking.</returns>
+    Task<BirkParameters?> GetBirkParametersAsync(BlockHash blockHash);
 
     /// <summary>
     /// Retrieves an information about a current state of the consensus layer.
