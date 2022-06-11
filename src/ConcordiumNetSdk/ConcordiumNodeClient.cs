@@ -121,6 +121,17 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         return CustomJsonSerializer.Deserialize<List<ModuleRef>>(response.Value) ?? new List<ModuleRef>();
     }
 
+    public async Task<ByteString> GetModuleSourceAsync(BlockHash blockHash, ModuleRef moduleRef)
+    {
+        var request = new GetModuleSourceRequest
+        {
+            BlockHash = blockHash.AsString,
+            ModuleRef = moduleRef.AsString
+        };
+        BytesResponse response = await _client.GetModuleSourceAsync(request, CreateCallOptions());
+        return response.Value;
+    }
+
     public async Task<ConsensusStatus?> GetConsensusStatusAsync()
     {
         JsonResponse response = await _client.GetConsensusStatusAsync(new Empty(), CreateCallOptions());

@@ -7,6 +7,7 @@ using ConcordiumNetSdk.Responses.ContractInfoResponse;
 using ConcordiumNetSdk.Responses.NextAccountNonceResponse;
 using ConcordiumNetSdk.Responses.RewardStatusResponse;
 using ConcordiumNetSdk.Types;
+using Google.Protobuf;
 
 namespace ConcordiumNetSdk;
 
@@ -50,6 +51,14 @@ public interface IConcordiumNodeClient
     /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
     /// <returns><see cref="List{ModuleRef}"/> - list of smart contract modules.</returns>
     Task<List<ModuleRef>> GetModuleListAsync(BlockHash blockHash);
+
+    /// <summary>
+    /// Retrieves the source of the module as it was deployed on the chain.
+    /// </summary>
+    /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
+    /// <param name="moduleRef">the base16 encoded hash of a module ref (64 characters).</param>
+    /// <returns><see cref="ByteString"/> - source of the module as it was deployed on the chain.</returns>
+    Task<ByteString> GetModuleSourceAsync(BlockHash blockHash, ModuleRef moduleRef);
 
     /// <summary>
     /// Retrieves an information about a current state of the consensus layer.
