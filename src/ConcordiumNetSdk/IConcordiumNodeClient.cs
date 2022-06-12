@@ -80,8 +80,23 @@ public interface IConcordiumNodeClient
     /// <param name="port">the node port.</param>
     /// <returns><see cref="Boolean"/> - the result of banning node.</returns>
     Task<bool> BanNodeAsync(
-        string ip,
-        string nodeId,
+        string? ip,
+        string? nodeId,
+        PeerElement.Types.CatchupStatus catchupStatus,
+        uint? port = null);
+
+    //todo: find more about documentation
+    /// <summary>
+    /// Unban a node. The node to unban can either be supplied via a node-id or via an IP.
+    /// </summary>
+    /// <param name="ip">the node IP.</param>
+    /// <param name="nodeId">the node ID.</param>
+    /// <param name="catchupStatus">the catchup status.</param>
+    /// <param name="port">the node port.</param>
+    /// <returns><see cref="Boolean"/> - the result of unbanning node.</returns>
+    Task<bool> UnbanNodeAsync(
+        string? ip,
+        string? nodeId,
         PeerElement.Types.CatchupStatus catchupStatus,
         uint? port = null);
 
