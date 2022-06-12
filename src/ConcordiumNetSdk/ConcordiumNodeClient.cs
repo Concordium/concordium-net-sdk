@@ -88,6 +88,15 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         return response.Value;
     }
 
+    public async Task<PeerStatsResponse> GetPeerStatsAsync(bool includeBootstrappers = false)
+    {
+        PeersRequest request = new PeersRequest
+        {
+            IncludeBootstrappers = includeBootstrappers
+        };
+        return await _client.PeerStatsAsync(request, CreateCallOptions());
+    }
+
     public async Task<List<AccountAddress>> GetAccountListAsync(BlockHash blockHash)
     {
         Concordium.BlockHash request = new Concordium.BlockHash

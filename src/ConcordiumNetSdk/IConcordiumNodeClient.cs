@@ -62,6 +62,14 @@ public interface IConcordiumNodeClient
     /// <returns><see cref="String"/> - the node version.</returns>
     Task<string> GetPeerVersionAsync();
 
+    //todo: find more about documentation
+    /// <summary>
+    /// Retrieves an information about a node stats.
+    /// </summary>
+    /// <param name="includeBootstrappers">does include bootstrappers.</param>
+    /// <returns><see cref="PeerStatsResponse"/> - the node stats.</returns>
+    Task<PeerStatsResponse> GetPeerStatsAsync(bool includeBootstrappers = false);
+
     /// <summary>
     /// Retrieves an information about a state of account corresponding to account address and block hash.
     /// </summary>
