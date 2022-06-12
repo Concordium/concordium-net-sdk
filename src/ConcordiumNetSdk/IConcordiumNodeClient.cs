@@ -100,6 +100,14 @@ public interface IConcordiumNodeClient
         PeerElement.Types.CatchupStatus catchupStatus,
         uint? port = null);
 
+    //todo: find more about documentation
+    /// <summary>
+    /// Join a network.
+    /// </summary>
+    /// <param name="networkId">the network id.</param>
+    /// <returns><see cref="Boolean"/> - the result of joining a network.</returns>
+    Task<bool> JoinNetworkAsync(int networkId);
+
     /// <summary>
     /// Retrieves an information about a state of account corresponding to account address and block hash.
     /// </summary>
