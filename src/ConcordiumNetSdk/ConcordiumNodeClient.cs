@@ -97,6 +97,23 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         return await _client.PeerStatsAsync(request, CreateCallOptions());
     }
 
+    public async Task<bool> BanNodeAsync(
+        string? ip,
+        string? nodeId,
+        PeerElement.Types.CatchupStatus catchupStatus,
+        uint? port = null)
+    {
+        PeerElement request = new PeerElement
+        {
+            Ip = ip,
+            NodeId = nodeId,
+            Port = port,
+            CatchupStatus = catchupStatus
+        };
+        BoolResponse response = await _client.BanNodeAsync(request, CreateCallOptions());
+        return response.Value;
+    }
+
     public async Task<PeerListResponse> GetPeerListAsync(bool includeBootstrappers = false)
     {
         PeersRequest request = new PeersRequest

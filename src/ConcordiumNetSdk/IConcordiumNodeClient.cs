@@ -70,6 +70,21 @@ public interface IConcordiumNodeClient
     /// <returns><see cref="PeerListResponse"/> - the node list.</returns>
     Task<PeerListResponse> GetPeerListAsync(bool includeBootstrappers = false);
 
+    //todo: find more about documentation
+    /// <summary>
+    /// Ban a node. The node to ban can either be supplied via a node-id or via an IP and port, but not both.
+    /// </summary>
+    /// <param name="ip">the node IP.</param>
+    /// <param name="nodeId">the node ID.</param>
+    /// <param name="catchupStatus">the catchup status.</param>
+    /// <param name="port">the node port.</param>
+    /// <returns><see cref="Boolean"/> - the result of banning node.</returns>
+    Task<bool> BanNodeAsync(
+        string ip,
+        string nodeId,
+        PeerElement.Types.CatchupStatus catchupStatus,
+        uint? port = null);
+
     /// <summary>
     /// Retrieves an information about a state of account corresponding to account address and block hash.
     /// </summary>
