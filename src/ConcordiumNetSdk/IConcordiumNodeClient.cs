@@ -55,6 +55,13 @@ public interface IConcordiumNodeClient
     /// <returns><see cref="UInt64"/> - the node total received count.</returns>
     Task<ulong> GetPeerTotalReceivedAsync();
 
+    //todo: find more about documentation
+    /// <summary>
+    /// Retrieves an information about a node version.
+    /// </summary>
+    /// <returns><see cref="String"/> - the node version.</returns>
+    Task<string> GetPeerVersionAsync();
+
     /// <summary>
     /// Retrieves an information about a state of account corresponding to account address and block hash.
     /// </summary>
