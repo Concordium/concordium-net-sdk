@@ -108,6 +108,14 @@ public interface IConcordiumNodeClient
     /// <returns><see cref="Boolean"/> - the result of joining a network.</returns>
     Task<bool> JoinNetworkAsync(int networkId);
 
+    //todo: find more about documentation
+    /// <summary>
+    /// Leave a network.
+    /// </summary>
+    /// <param name="networkId">the network id.</param>
+    /// <returns><see cref="Boolean"/> - the result of leaving a network.</returns>
+    Task<bool> LeaveNetworkAsync(int networkId);
+
     /// <summary>
     /// Retrieves an information about a state of account corresponding to account address and block hash.
     /// </summary>

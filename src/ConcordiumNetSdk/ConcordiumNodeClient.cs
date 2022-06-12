@@ -141,6 +141,16 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         return response.Value;
     }
 
+    public async Task<bool> LeaveNetworkAsync(int networkId)
+    {
+        NetworkChangeRequest request = new NetworkChangeRequest
+        {
+            NetworkId = networkId
+        };
+        BoolResponse response = await _client.LeaveNetworkAsync(request, CreateCallOptions());
+        return response.Value;
+    }
+
     public async Task<PeerListResponse> GetPeerListAsync(bool includeBootstrappers = false)
     {
         PeersRequest request = new PeersRequest
