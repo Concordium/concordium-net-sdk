@@ -64,11 +64,11 @@ public interface IConcordiumNodeClient
 
     //todo: find more about documentation
     /// <summary>
-    /// Retrieves an information about a node stats.
+    /// Retrieves an information about a node list.
     /// </summary>
     /// <param name="includeBootstrappers">does include bootstrappers.</param>
-    /// <returns><see cref="PeerStatsResponse"/> - the node stats.</returns>
-    Task<PeerStatsResponse> GetPeerStatsAsync(bool includeBootstrappers = false);
+    /// <returns><see cref="PeerListResponse"/> - the node list.</returns>
+    Task<PeerListResponse> GetPeerListAsync(bool includeBootstrappers = false);
 
     /// <summary>
     /// Retrieves an information about a state of account corresponding to account address and block hash.
