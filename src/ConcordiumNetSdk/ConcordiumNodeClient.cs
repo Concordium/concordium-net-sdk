@@ -151,6 +151,11 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         return response.Value;
     }
 
+    public async Task<NodeInfoResponse> GetNodeInfoAsync()
+    {
+        return await _client.NodeInfoAsync(new Empty(), CreateCallOptions());
+    }
+
     public async Task<PeerListResponse> GetPeerListAsync(bool includeBootstrappers = false)
     {
         PeersRequest request = new PeersRequest
