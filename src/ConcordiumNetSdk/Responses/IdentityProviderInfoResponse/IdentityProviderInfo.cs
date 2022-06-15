@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace ConcordiumNetSdk.Responses.IdentityProviderInfo;
+namespace ConcordiumNetSdk.Responses.IdentityProviderInfoResponse;
 
 //todo: find out about documentation of each property
 /// <summary>

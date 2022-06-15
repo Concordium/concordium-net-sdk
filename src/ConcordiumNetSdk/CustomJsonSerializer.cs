@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 using ConcordiumNetSdk.JsonConverters;
 
 namespace ConcordiumNetSdk;
@@ -23,6 +24,10 @@ public static class CustomJsonSerializer
                 new ModuleRefConverter(),
                 new ContractAddressConverter(),
                 new CcdAmountConverter(),
+                new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
+                new TransactionSummaryJsonConverter(),
+                new EventResultJsonConverter(),
+                new EventJsonConverter(),
             }   
         };
     }

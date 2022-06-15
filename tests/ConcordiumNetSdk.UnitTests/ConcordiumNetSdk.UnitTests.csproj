@@ -67,6 +67,9 @@
     <None Update="CustomJsonSerializerTests\Files\cryptographic-parameters.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="CustomJsonSerializerTests\Files\transaction-status.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -7,15 +7,17 @@ using ConcordiumNetSdk.Responses.BranchResponse;
 using ConcordiumNetSdk.Responses.ConsensusStatusResponse;
 using ConcordiumNetSdk.Responses.ContractInfoResponse;
 using ConcordiumNetSdk.Responses.CryptographicParametersResponse;
-using ConcordiumNetSdk.Responses.IdentityProviderInfo;
+using ConcordiumNetSdk.Responses.IdentityProviderInfoResponse;
 using ConcordiumNetSdk.Responses.NextAccountNonceResponse;
 using ConcordiumNetSdk.Responses.RewardStatusResponse;
+using ConcordiumNetSdk.Responses.TransactionStatusResponse;
 using ConcordiumNetSdk.Types;
 using Google.Protobuf;
 using Grpc.Core;
 using Grpc.Net.Client;
 using AccountAddress = ConcordiumNetSdk.Types.AccountAddress;
 using BlockHash = ConcordiumNetSdk.Types.BlockHash;
+using TransactionHash = ConcordiumNetSdk.Types.TransactionHash;
 
 namespace ConcordiumNetSdk;
 
@@ -339,6 +341,16 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         };
         JsonResponse response = await _client.GetBlocksAtHeightAsync(request, CreateCallOptions());
         return CustomJsonSerializer.Deserialize<List<BlockHash>>(response.Value) ?? new List<BlockHash>();
+    }
+
+    public async Task<TransactionStatus?> GetTransactionStatusAsync(TransactionHash transactionHash)
+    {
+        Concordium.TransactionHash request = new Concordium.TransactionHash
+        {
+            TransactionHash_ = transactionHash.AsString
+        };
+        JsonResponse response = await _client.GetTransactionStatusAsync(request, CreateCallOptions());
+        return CustomJsonSerializer.Deserialize<TransactionStatus>(response.Value);
     }
 
     // todo: think how to implement tests

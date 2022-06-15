@@ -7,6 +7,7 @@ namespace ConcordiumNetSdk.Responses.AccountInfoResponse;
 /// </summary>
 public record AccountInfo
 {
+    //todo: change long on ulong where it is needed
     /// <summary>
     /// Gets or initiates the sequential index of the account (in the order of creation). If the account is a baker this index is used as the bakerId.
     /// </summary>
