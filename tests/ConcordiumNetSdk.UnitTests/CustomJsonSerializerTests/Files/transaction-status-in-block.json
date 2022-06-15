@@ -1,0 +1,31 @@
+{
+  "status": "finalized",
+  "result": {
+    "hash": "b3c35887c7d3e41c8016f80e7566c43545509af5c51638b58e47161988841e37",
+    "sender": "45rzWwzY8hXFxQEAPMpR19RZJafAQV7iA3p3WP8xso49cVqArP",
+    "cost": "354600",
+    "energyCost": 501,
+    "result": {
+      "events": [
+        {
+          "amount": "100000000",
+          "tag": "Transferred",
+          "to": {
+            "address": "3V3QhN4USoMB8FMnPFHx8zoLoJexv8f5ka1a1uS8sERoSrahbw",
+            "type": "AddressAccount"
+          },
+          "from": {
+            "address": "45rzWwzY8hXFxQEAPMpR19RZJafAQV7iA3p3WP8xso49cVqArP",
+            "type": "AddressAccount"
+          }
+        }
+      ],
+      "outcome": "success"
+    },
+    "type": {
+      "contents": "transfer",
+      "type": "accountTransaction"
+    },
+    "index": 0
+  }
+}
