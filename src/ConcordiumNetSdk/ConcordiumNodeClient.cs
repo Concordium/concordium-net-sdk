@@ -10,6 +10,7 @@ using ConcordiumNetSdk.Responses.CryptographicParametersResponse;
 using ConcordiumNetSdk.Responses.IdentityProviderInfoResponse;
 using ConcordiumNetSdk.Responses.NextAccountNonceResponse;
 using ConcordiumNetSdk.Responses.RewardStatusResponse;
+using ConcordiumNetSdk.Responses.TransactionStatusInBlockResponse;
 using ConcordiumNetSdk.Responses.TransactionStatusResponse;
 using ConcordiumNetSdk.Types;
 using Google.Protobuf;
@@ -351,6 +352,17 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         };
         JsonResponse response = await _client.GetTransactionStatusAsync(request, CreateCallOptions());
         return CustomJsonSerializer.Deserialize<TransactionStatus>(response.Value);
+    }
+
+    public async Task<TransactionStatusInBlock?> GetTransactionStatusInBlockAsync(TransactionHash transactionHash, BlockHash blockHash)
+    {
+        GetTransactionStatusInBlockRequest request = new GetTransactionStatusInBlockRequest
+        {
+            TransactionHash = transactionHash.AsString,
+            BlockHash = blockHash.AsString
+        };
+        JsonResponse response = await _client.GetTransactionStatusInBlockAsync(request, CreateCallOptions());
+        return CustomJsonSerializer.Deserialize<TransactionStatusInBlock>(response.Value);
     }
 
     // todo: think how to implement tests
