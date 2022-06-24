@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using ConcordiumNetSdk.Responses.IdentityProviderInfo;
+using ConcordiumNetSdk.Responses.IdentityProviderInfoResponse;
 using ConcordiumNetSdk.Types;
 using FluentAssertions;
 using Xunit;

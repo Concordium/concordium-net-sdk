@@ -7,13 +7,15 @@ using ConcordiumNetSdk.Responses.BranchResponse;
 using ConcordiumNetSdk.Responses.ConsensusStatusResponse;
 using ConcordiumNetSdk.Responses.ContractInfoResponse;
 using ConcordiumNetSdk.Responses.CryptographicParametersResponse;
-using ConcordiumNetSdk.Responses.IdentityProviderInfo;
+using ConcordiumNetSdk.Responses.IdentityProviderInfoResponse;
 using ConcordiumNetSdk.Responses.NextAccountNonceResponse;
 using ConcordiumNetSdk.Responses.RewardStatusResponse;
+using ConcordiumNetSdk.Responses.TransactionStatusResponse;
 using ConcordiumNetSdk.Types;
 using Google.Protobuf;
 using AccountAddress = ConcordiumNetSdk.Types.AccountAddress;
 using BlockHash = ConcordiumNetSdk.Types.BlockHash;
+using TransactionHash = ConcordiumNetSdk.Types.TransactionHash;
 
 namespace ConcordiumNetSdk;
 
@@ -262,6 +264,13 @@ public interface IConcordiumNodeClient
         ulong blockHeight,
         uint fromGenesisIndex = 0,
         bool restrictToGenesisIndex = false);
+
+    /// <summary>
+    /// Retrieves the information about a transaction status.
+    /// </summary>
+    /// <param name="transactionHash">the base16 encoded hash of a transaction (64 characters).</param>
+    /// <returns><see cref="TransactionStatus"/> - the information about a transaction status.</returns>
+    Task<TransactionStatus?> GetTransactionStatusAsync(TransactionHash transactionHash);
 
     /// <summary>
     /// Sends any account transaction.

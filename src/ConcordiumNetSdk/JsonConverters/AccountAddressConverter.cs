@@ -6,7 +6,7 @@ namespace ConcordiumNetSdk.JsonConverters;
 
 public class AccountAddressConverter : JsonConverter<AccountAddress>
 {
-    public override AccountAddress Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override AccountAddress? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         string? value = reader.GetString();
         if (value == null) throw new JsonException("AccountAddress cannot be null.");

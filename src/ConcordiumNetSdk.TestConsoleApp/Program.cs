@@ -1,15 +1,48 @@
 ﻿using ConcordiumNetSdk;
+using ConcordiumNetSdk.Responses.TransactionStatusResponse;
 using ConcordiumNetSdk.Types;
 
-var connection = new Connection
+var jsonStr = @"{
+""hash"": ""b3c35887c7d3e41c8016f80e7566c43545509af5c51638b58e47161988841e37"",
+""sender"": ""45rzWwzY8hXFxQEAPMpR19RZJafAQV7iA3p3WP8xso49cVqArP"",
+""cost"": ""354600"",
+""energyCost"": 501,
+""result"": {
+    ""events"": [
+    {
+        ""amount"": ""100000000"",
+        ""tag"": ""Transferred"",
+        ""to"": {
+            ""address"": ""3V3QhN4USoMB8FMnPFHx8zoLoJexv8f5ka1a1uS8sERoSrahbw"",
+            ""type"": ""AddressAccount""
+        },
+        ""from"": {
+            ""address"": ""45rzWwzY8hXFxQEAPMpR19RZJafAQV7iA3p3WP8xso49cVqArP"",
+            ""type"": ""AddressAccount""
+        }
+    }
+    ],
+    ""outcome"": ""success""
+},
+""type"": {
+    ""contents"": ""transfer"",
+    ""type"": ""accountTransaction""
+},
+""index"": 0
+}";
+var res = CustomJsonSerializer.Deserialize<TransactionSummary>(jsonStr);
+Console.WriteLine(res);
+
+
+public record TestObject
 {
-    Address = "http://localhost:10001",
-    AuthenticationToken = "rpcadmin"
-};
-var concordiumNodeClient = new ConcordiumNodeClient(connection);
+    /// <summary>
+    /// Gets or initiates the hash of the block (base 16 encoded).
+    /// </summary>
+    public TransactionStatusType Status { get; init; }
 
-var accountAddress = AccountAddress.From("32gxbDZj3aCr5RYnKJFkigPazHinKcnAhkxpade17htB4fj6DN");
-var blockHash = BlockHash.From("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af");
-var actualAccountInfo = await concordiumNodeClient.GetAccountInfoAsync(accountAddress, blockHash);
-
-Console.WriteLine(actualAccountInfo);
+    /// <summary>
+    /// Gets or initiates the list of JSON objects encoding the children of the block, similarly encoded.
+    /// </summary>
+    public ulong Outcomes { get; init; }
+}
