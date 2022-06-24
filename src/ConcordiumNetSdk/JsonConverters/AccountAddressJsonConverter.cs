@@ -4,7 +4,7 @@ using ConcordiumNetSdk.Types;
 
 namespace ConcordiumNetSdk.JsonConverters;
 
-public class AccountAddressConverter : JsonConverter<AccountAddress>
+public class AccountAddressJsonConverter : JsonConverter<AccountAddress>
 {
     public override AccountAddress? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

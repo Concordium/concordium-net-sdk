@@ -6,7 +6,7 @@ namespace ConcordiumNetSdk.Responses.TransactionStatusResponse;
 /// <summary>
 /// Represents the information about an account address.
 /// </summary>
-public class AccountAddressInfo
+public record AccountAddressInfo
 {
     /// <summary>
     /// Gets or initiates the account address type.

@@ -4,7 +4,7 @@ using ConcordiumNetSdk.Types;
 
 namespace ConcordiumNetSdk.JsonConverters;
 
-public class BlockHashConverter : JsonConverter<BlockHash>
+public class BlockHashJsonConverter : JsonConverter<BlockHash>
 {
     public override BlockHash Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

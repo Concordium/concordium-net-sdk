@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace ConcordiumNetSdk.JsonConverters;
 
-public class DateTimeOffsetConverter : JsonConverter<DateTimeOffset>
+public class DateTimeOffsetJsonConverter : JsonConverter<DateTimeOffset>
 {
     const string TzDateFormat = "O";
 

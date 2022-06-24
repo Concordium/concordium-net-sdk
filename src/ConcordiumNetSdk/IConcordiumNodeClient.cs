@@ -3,6 +3,7 @@ using ConcordiumNetSdk.Responses.AccountInfoResponse;
 using ConcordiumNetSdk.Responses.AnonymityRevokerInfoResponse;
 using ConcordiumNetSdk.Responses.BirkParametersResponse;
 using ConcordiumNetSdk.Responses.BlockInfoResponse;
+using ConcordiumNetSdk.Responses.BlockSummaryResponse;
 using ConcordiumNetSdk.Responses.BranchResponse;
 using ConcordiumNetSdk.Responses.ConsensusStatusResponse;
 using ConcordiumNetSdk.Responses.ContractInfoResponse;
@@ -280,6 +281,13 @@ public interface IConcordiumNodeClient
     /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
     /// <returns><see cref="TransactionStatusInBlock"/> - the information about a transaction status in block.</returns>
     Task<TransactionStatusInBlock?> GetTransactionStatusInBlockAsync(TransactionHash transactionHash, BlockHash blockHash);
+
+    /// <summary>
+    /// Retrieves the information about a block summary.
+    /// </summary>
+    /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>
+    /// <returns><see cref="BlockSummary"/> - the information about a block summary.</returns>
+    Task<BlockSummary?> GetBlockSummaryAsync(BlockHash blockHash);
 
     /// <summary>
     /// Sends any account transaction.

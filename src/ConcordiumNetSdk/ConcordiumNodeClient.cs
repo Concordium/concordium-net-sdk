@@ -3,6 +3,7 @@ using ConcordiumNetSdk.Responses.AccountInfoResponse;
 using ConcordiumNetSdk.Responses.AnonymityRevokerInfoResponse;
 using ConcordiumNetSdk.Responses.BirkParametersResponse;
 using ConcordiumNetSdk.Responses.BlockInfoResponse;
+using ConcordiumNetSdk.Responses.BlockSummaryResponse;
 using ConcordiumNetSdk.Responses.BranchResponse;
 using ConcordiumNetSdk.Responses.ConsensusStatusResponse;
 using ConcordiumNetSdk.Responses.ContractInfoResponse;
@@ -91,6 +92,7 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         return response.Value;
     }
 
+    //todo: add in interface
     public async Task<PeerStatsResponse> GetPeerStatsAsync(bool includeBootstrappers = false)
     {
         PeersRequest request = new PeersRequest
@@ -363,6 +365,16 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         };
         JsonResponse response = await _client.GetTransactionStatusInBlockAsync(request, CreateCallOptions());
         return CustomJsonSerializer.Deserialize<TransactionStatusInBlock>(response.Value);
+    }
+
+    public async Task<BlockSummary?> GetBlockSummaryAsync(BlockHash blockHash)
+    {
+        Concordium.BlockHash request = new Concordium.BlockHash
+        {
+            BlockHash_ = blockHash.AsString
+        };
+        JsonResponse response = await _client.GetBlockSummaryAsync(request, CreateCallOptions());
+        return CustomJsonSerializer.Deserialize<BlockSummary>(response.Value);
     }
 
     // todo: think how to implement tests

@@ -4,7 +4,7 @@ using ConcordiumNetSdk.Types;
 
 namespace ConcordiumNetSdk.JsonConverters;
 
-public class ModuleRefConverter : JsonConverter<ModuleRef>
+public class ModuleRefJsonConverter : JsonConverter<ModuleRef>
 {
     public override ModuleRef Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
