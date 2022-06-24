@@ -4,7 +4,7 @@ using ConcordiumNetSdk.Types;
 
 namespace ConcordiumNetSdk.JsonConverters;
 
-public class CcdAmountConverter : JsonConverter<CcdAmount>
+public class CcdAmountJsonConverter : JsonConverter<CcdAmount>
 {
     public override CcdAmount Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

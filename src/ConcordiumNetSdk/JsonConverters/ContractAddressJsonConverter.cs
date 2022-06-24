@@ -4,7 +4,7 @@ using ConcordiumNetSdk.Types;
 
 namespace ConcordiumNetSdk.JsonConverters;
 
-public class ContractAddressConverter : JsonConverter<ContractAddress>
+public class ContractAddressJsonConverter : JsonConverter<ContractAddress>
 {
     public override ContractAddress Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

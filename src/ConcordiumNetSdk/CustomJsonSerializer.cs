@@ -17,17 +17,18 @@ public static class CustomJsonSerializer
             Converters =
             {
                 new AccountCredentialJsonConverter(),
-                new NonceConverter(),
-                new BlockHashConverter(),
-                new DateTimeOffsetConverter(),
-                new AccountAddressConverter(),
-                new ModuleRefConverter(),
-                new ContractAddressConverter(),
-                new CcdAmountConverter(),
+                new NonceJsonConverter(),
+                new BlockHashJsonConverter(),
+                new DateTimeOffsetJsonConverter(),
+                new AccountAddressJsonConverter(),
+                new ModuleRefJsonConverter(),
+                new ContractAddressJsonConverter(),
+                new CcdAmountJsonConverter(),
                 new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
                 new TransactionSummaryJsonConverter(),
                 new EventResultJsonConverter(),
                 new EventJsonConverter(),
+                new BlockSummaryJsonConverter(),
             }   
         };
     }

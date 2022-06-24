@@ -4,7 +4,7 @@ using ConcordiumNetSdk.Types;
 
 namespace ConcordiumNetSdk.JsonConverters;
 
-public class NonceConverter : JsonConverter<Nonce>
+public class NonceJsonConverter : JsonConverter<Nonce>
 {
     public override Nonce Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
