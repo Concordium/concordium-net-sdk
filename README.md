@@ -433,12 +433,12 @@ public Ed25519SignKey Decrypt(EncryptedSignKey encryptedSignKey);
 
 ### Code Sample
 ```csharp
-Salt salt = new Salt("QsY4+h31LMs974pPN6QfsA==");
-InitializationVector initializationVector = new InitializationVector("kzyQ24xum3WibCKfvngMlg==");
+Salt salt = Salt.From("9ghclsnOgezPZuEpynAg+A==");
+InitializationVector initializationVector = InitializationVector.From("e5STldOLG+ZEXf7UsV1pyg==");
 int iterations = 100000;
 HashAlgorithmName hashAlgorithmName = HashAlgorithmName.SHA256;
-string password = "111111";
-CipherText cipherText = new CipherText("9hTfvFaDb/AYD9xXZ2LVnJ2FrHQhP+daUOP3l6m1tKdP6sPrpvucnA1xcuSgjiX3jfLWCJYEvUMv8oubObe410tJU/PfRZeQeB4xUDs04eE=");
+string password = "qwaszx12";
+CipherText cipherText = CipherText.From("ShQe196p5DyR9uF7SOrvCutJmYhm+Ggf9ZDOp5nr7UfqB/FChqBa9XTaSPQFob+1CG7Sl9lwLAcZdi5O0Cq7rHXmAzDdK0pgrcH2eLd34Oc=");
 
 EncryptedSignKeyMetadata encryptedSignKeyMetadata = new EncryptedSignKeyMetadata(
     salt,
@@ -451,5 +451,367 @@ EncryptedSignKey encryptedSignKey = new EncryptedSignKey(
     encryptedSignKeyMetadata,
     cipherText);
 
-Ed25519SignKey signKey = new SignKeyEncryption().Decrypt(encryptedSignKey);
+string signKey = new SignKeyEncryption().Decrypt(encryptedSignKey);
+```
+
+## Send Simple Transfer Payload
+The `SimpleTransferPayload` represents an object which knows all the information needed to send simple transfer.
+Creating the instance of this object and passing it as a payload of the transaction in `AccountTransactionService` will send simple transfer.
+
+```csharp
+// create a concordiumNodeClient
+
+AccountTransactionService accountTransactionService = new AccountTransactionService(concordiumNodeClient);
+
+var fromAccountAddress = AccountAddress.From("45rzWwzY8hXFxQEAPMpR19RZJafAQV7iA3p3WP8xso49cVqArP");
+var toAccountAddress = AccountAddress.From("3V3QhN4USoMB8FMnPFHx8zoLoJexv8f5ka1a1uS8sERoSrahbw");
+var simpleTransferPayload = SimpleTransferPayload.Create(CcdAmount.FromCcd(100), toAccountAddress);
+var ed25519TransactionSigner = Ed25519SignKey.From("1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbbf23aad218e888bb26fda");
+var transactionSigner= new TransactionSigner();
+transactionSigner.AddSignerEntry(Index.Create(0), Index.Create(0), ed25519TransactionSigner);
+
+var transactionHash = await accountTransactionService.SendAccountTransactionAsync(fromAccountAddress, simpleTransferPayload, transactionSigner);
+
+```
+
+## Deploy Module
+The `DeployModulePayload` represents an object which knows all the information needed to deploy a module.
+Creating the instance of this object and passing it as a payload of the transaction in `AccountTransactionService` will deploy a module.
+
+```csharp
+// create a concordiumNodeClient
+
+AccountTransactionService accountTransactionService = new AccountTransactionService(concordiumNodeClient);
+
+string path = @"C:\Users\User\Your_Module_Directory_Path\a.wasm.v1"; // path to your module file (Your_Module_Directory_Path) as wasm file and your wasm file name (a.wasm.v1).
+byte[] module = File.ReadAllBytes(path);
+
+DeployModulePayload deployModulePayload = DeployModulePayload.Create(module);
+
+AccountAddress sender = AccountAddress.From("4hvvPeHb9HY4Lur7eUZv4KfL3tYBug8DRc4X9cVU8mpJLa1f2X");
+Ed25519SignKey ed25519TransactionSigner = Ed25519SignKey.From(signKey); // signKey can be decrypted using SignKeyEncryption or if you know it you can just pass as a string value.
+TransactionSigner transactionSigner = new TransactionSigner();
+transactionSigner.AddSignerEntry(Index.Create(0), Index.Create(0), ed25519TransactionSigner);
+
+var transactionHash = await accountTransactionService.SendAccountTransactionAsync(sender, deployModulePayload, transactionSigner);
+
+```
+
+## Init Contract
+The `InitContractPayload` represents an object which knows all the information needed to init a contract.
+Creating the instance of this object and passing it as a payload of the transaction in `AccountTransactionService` will init a contract.
+
+# Without Parameters
+```csharp
+// create a concordiumNodeClient
+
+AccountTransactionService accountTransactionService = new AccountTransactionService(concordiumNodeClient);
+
+InitContractPayload initContractPayload = InitContractPayload.Create(
+    CcdAmount.Zero,
+    ModuleRef.From("2c490881e1f87e46cac9a9419f1c669d5f6d74eabc3c5a4fd10d13ab29f8b8c2"),
+    "init_a",
+    InitContractParameter.Empty(),
+    10_000);
+
+AccountAddress sender = AccountAddress.From("4hvvPeHb9HY4Lur7eUZv4KfL3tYBug8DRc4X9cVU8mpJLa1f2X");
+Ed25519SignKey ed25519TransactionSigner = Ed25519SignKey.From(signKey); // signKey can be decrypted using SignKeyEncryption or if you know it you can just pass as a string value.
+TransactionSigner transactionSigner = new TransactionSigner();
+transactionSigner.AddSignerEntry(Index.Create(0), Index.Create(0), ed25519TransactionSigner);
+
+var transactionHash = await accountTransactionService.SendAccountTransactionAsync(sender, initContractPayload, transactionSigner);
+
+```
+
+# With Parameters
+```csharp
+// create a concordiumNodeClient
+
+AccountTransactionService accountTransactionService = new AccountTransactionService(concordiumNodeClient);
+
+// you can build your own schema if you know it exactly
+(string, Type)[] contents = new[]
+{
+    ("Bool", new Type(ParameterType.Bool)),
+    ("U8", new Type(ParameterType.U8)),
+    ("U16", new Type(ParameterType.U16)),
+    ("U32", new Type(ParameterType.U32)),
+    ("U64", new Type(ParameterType.U64)),
+    ("U128", new Type(ParameterType.U128)),
+    ("I8", new Type(ParameterType.I8)),
+    ("I16", new Type(ParameterType.I16)),
+    ("I32", new Type(ParameterType.I32)),
+    ("I64", new Type(ParameterType.I64)),
+    ("I128", new Type(ParameterType.I128)),
+    ("Amount", new Type(ParameterType.Amount)),
+    ("AccountAddress", new Type(ParameterType.AccountAddress)),
+    ("ContractAddress", new Type(ParameterType.ContractAddress)),
+    ("Timestamp", new Type(ParameterType.Timestamp)),
+    ("Duration", new Type(ParameterType.Duration)),
+    ("Pair", new PairType(new Type(ParameterType.I32), new Type(ParameterType.Bool))),
+    ("Array", new ArrayType(2, new Type(ParameterType.I32))),
+    ("Map", new MapType(
+        SizeLength.U8,
+        new Type(ParameterType.I32),
+        new Type(ParameterType.Bool))),
+    ("List", new ListType(
+        SizeLength.U8,
+        new Type(ParameterType.I32),
+        ParameterType.List)),
+    ("Set", new ListType(
+        SizeLength.U8,
+        new Type(ParameterType.I32),
+        ParameterType.Set)),
+    ("Struct", new StructType(
+        new NamedFields(
+            new (string FieldName, Type FieldType)[]
+            {
+                ("AccountAddress", new Type(ParameterType.AccountAddress)),
+                ("Amount", new Type(ParameterType.Amount))
+            }))),
+    ("Enumerable", new EnumType(
+        new (string VariantName, Fields VariantFields)[]
+        {
+            ("Some", new UnnamedFields(
+                new[]
+                {
+                    new Type(ParameterType.I32),
+                    new Type(ParameterType.Bool)
+                })),
+            ("Extra", new NamedFields(
+                new[]
+                {
+                    ("One", new Type(ParameterType.I32)),
+                    ("Two", new Type(ParameterType.I32))
+                }))
+        })),
+    ("String", new StringType(SizeLength.U8)),
+    ("InitName", new StringType(SizeLength.U8, ParameterType.ContractName)),
+    ("ReceiveName", new StringType(SizeLength.U8, ParameterType.ReceiveName))
+};
+NamedFields fields = new NamedFields(contents);
+StructType initParamType = new StructType(fields);
+Contract contractSchema = new Contract(null, initParamType, new Dictionary<string, Type>());
+Dictionary<string, Contract> contractSchemas = new Dictionary<string, Contract> { {"a", contractSchema}};
+Module schemaModule = new Module(contractSchemas);
+
+// or deserialize it if you have schema module as wasm file
+string path = @"C:\Users\User\Your_Schema_Module_Directory_Path\schema.wasm.v1"; // path to your schema module file (Your_Schema_Module_Directory_Path) as wasm file and your schema wasm file name (schema.wasm.v1).
+byte[] schemaModuleAsBytes = File.ReadAllBytes(path);
+
+Module schemaModule = ModuleDeserializer.Deserialize(schemaModuleAsBytes);
+
+var userInput = new
+{
+    Bool = true,
+    U8 = byte.MaxValue,
+    U16 = ushort.MaxValue,
+    U32 = uint.MaxValue,
+    U64 = ulong.MaxValue,
+    U128 = BigInteger.Parse("340282366920938463463374607431768211455"),
+    I8 = sbyte.MinValue,
+    I16 = short.MinValue,
+    I32 = int.MinValue,
+    I64 = long.MinValue,
+    I128 = BigInteger.Parse("-170141183460469231731687303715884105728"),
+    Amount = CcdAmount.FromMicroCcd(10),
+    AccountAddress = AccountAddress.From("4hvvPeHb9HY4Lur7eUZv4KfL3tYBug8DRc4X9cVU8mpJLa1f2X"),
+    ContractAddress = ContractAddress.Create(10, 0),
+    Timestamp = new DateTime(1998, 2, 20, 1, 1, 1),
+    Duration = "1d 1h 1m 1s 1ms",
+    Pair = new ArrayList {1, true},
+    Array = new[] {1, 2},
+    Map = new Dictionary<int, bool> {{1, true}},
+    List = new List<int> {1, 2, 3},
+    Set = new List<int> {1, 2, 3},
+    Struct = new
+    {
+        AccountAddress = AccountAddress.From("4hvvPeHb9HY4Lur7eUZv4KfL3tYBug8DRc4X9cVU8mpJLa1f2X"),
+        Amount = CcdAmount.FromMicroCcd(10)
+    },
+    Enumerable = new {Some = new ArrayList{1, true}, Extra = new {One = 1, Two = 2}},
+    String = "foo",
+    InitName = new {Contract = "contract"},
+    ReceiveName = new {Contract = "contract", Func = "func"}
+};
+
+InitContractParameter initContractParameter = InitContractParameter.Create(
+    "a",
+    userInput,
+    schemaModule);
+
+InitContractPayload initContractPayload = InitContractPayload.Create(
+    CcdAmount.Zero,
+    ModuleRef.From("2c490881e1f87e46cac9a9419f1c669d5f6d74eabc3c5a4fd10d13ab29f8b8c2"),
+    "init_a",
+    initContractParameter,
+    10_000);
+
+AccountAddress sender = AccountAddress.From("4hvvPeHb9HY4Lur7eUZv4KfL3tYBug8DRc4X9cVU8mpJLa1f2X");
+Ed25519SignKey ed25519TransactionSigner = Ed25519SignKey.From(signKey); // signKey can be decrypted using SignKeyEncryption or if you know it you can just pass as a string value.
+TransactionSigner transactionSigner = new TransactionSigner();
+transactionSigner.AddSignerEntry(Index.Create(0), Index.Create(0), ed25519TransactionSigner);
+
+var transactionHash = await accountTransactionService.SendAccountTransactionAsync(sender, initContractPayload, transactionSigner);
+
+```
+
+## Update Contract
+The `UpdateContractPayload` represents an object which knows all the information needed to update a contract.
+Creating the instance of this object and passing it as a payload of the transaction in `AccountTransactionService` will update a contract.
+
+# Without Parameters
+```csharp
+// create a concordiumNodeClient
+
+AccountTransactionService accountTransactionService = new AccountTransactionService(concordiumNodeClient);
+
+UpdateContractPayload updateContractPayload = UpdateContractPayload.Create(
+    CcdAmount.Zero,
+    ContractAddress.Create(96, 0),
+    "a.func",
+    UpdateContractParameter.Empty(),
+    10_000);
+
+AccountAddress sender = AccountAddress.From("4hvvPeHb9HY4Lur7eUZv4KfL3tYBug8DRc4X9cVU8mpJLa1f2X");
+Ed25519SignKey ed25519TransactionSigner = Ed25519SignKey.From(signKey); // signKey can be decrypted using SignKeyEncryption or if you know it you can just pass as a string value.
+TransactionSigner transactionSigner = new TransactionSigner();
+transactionSigner.AddSignerEntry(Index.Create(0), Index.Create(0), ed25519TransactionSigner);
+
+var transactionHash = await accountTransactionService.SendAccountTransactionAsync(sender, updateContractPayload, transactionSigner);
+
+```
+
+# With Parameters
+```csharp
+// create a concordiumNodeClient
+
+AccountTransactionService accountTransactionService = new AccountTransactionService(concordiumNodeClient);
+
+// you can build your own schema if you know it exactly
+(string, Type)[] contents = new[]
+{
+    ("Bool", new Type(ParameterType.Bool)),
+    ("U8", new Type(ParameterType.U8)),
+    ("U16", new Type(ParameterType.U16)),
+    ("U32", new Type(ParameterType.U32)),
+    ("U64", new Type(ParameterType.U64)),
+    ("U128", new Type(ParameterType.U128)),
+    ("I8", new Type(ParameterType.I8)),
+    ("I16", new Type(ParameterType.I16)),
+    ("I32", new Type(ParameterType.I32)),
+    ("I64", new Type(ParameterType.I64)),
+    ("I128", new Type(ParameterType.I128)),
+    ("Amount", new Type(ParameterType.Amount)),
+    ("AccountAddress", new Type(ParameterType.AccountAddress)),
+    ("ContractAddress", new Type(ParameterType.ContractAddress)),
+    ("Timestamp", new Type(ParameterType.Timestamp)),
+    ("Duration", new Type(ParameterType.Duration)),
+    ("Pair", new PairType(new Type(ParameterType.I32), new Type(ParameterType.Bool))),
+    ("Array", new ArrayType(2, new Type(ParameterType.I32))),
+    ("Map", new MapType(
+        SizeLength.U8,
+        new Type(ParameterType.I32),
+        new Type(ParameterType.Bool))),
+    ("List", new ListType(
+        SizeLength.U8,
+        new Type(ParameterType.I32),
+        ParameterType.List)),
+    ("Set", new ListType(
+        SizeLength.U8,
+        new Type(ParameterType.I32),
+        ParameterType.Set)),
+    ("Struct", new StructType(
+        new NamedFields(
+            new (string FieldName, Type FieldType)[]
+            {
+                ("AccountAddress", new Type(ParameterType.AccountAddress)),
+                ("Amount", new Type(ParameterType.Amount))
+            }))),
+    ("Enumerable", new EnumType(
+        new (string VariantName, Fields VariantFields)[]
+        {
+            ("Some", new UnnamedFields(
+                new[]
+                {
+                    new Type(ParameterType.I32),
+                    new Type(ParameterType.Bool)
+                })),
+            ("Extra", new NamedFields(
+                new[]
+                {
+                    ("One", new Type(ParameterType.I32)),
+                    ("Two", new Type(ParameterType.I32))
+                }))
+        })),
+    ("String", new StringType(SizeLength.U8)),
+    ("InitName", new StringType(SizeLength.U8, ParameterType.ContractName)),
+    ("ReceiveName", new StringType(SizeLength.U8, ParameterType.ReceiveName))
+};
+NamedFields fields = new NamedFields(contents);
+StructType initParamType = new StructType(fields);
+Contract contractSchema = new Contract(null, initParamType, new Dictionary<string, Type>());
+Dictionary<string, Contract> contractSchemas = new Dictionary<string, Contract> { {"a", contractSchema}};
+Module schemaModule = new Module(contractSchemas);
+
+// or deserialize it if you have schema module as wasm file
+string path = @"C:\Users\User\Your_Schema_Module_Directory_Path\schema.wasm.v1"; // path to your schema module file (Your_Schema_Module_Directory_Path) as wasm file and your schema wasm file name (schema.wasm.v1).
+byte[] schemaModuleAsBytes = File.ReadAllBytes(path);
+
+Module schemaModule = ModuleDeserializer.Deserialize(schemaModuleAsBytes);
+
+var userInput = new
+{
+    Bool = true,
+    U8 = byte.MaxValue,
+    U16 = ushort.MaxValue,
+    U32 = uint.MaxValue,
+    U64 = ulong.MaxValue,
+    U128 = BigInteger.Parse("340282366920938463463374607431768211455"),
+    I8 = sbyte.MinValue,
+    I16 = short.MinValue,
+    I32 = int.MinValue,
+    I64 = long.MinValue,
+    I128 = BigInteger.Parse("-170141183460469231731687303715884105728"),
+    Amount = CcdAmount.FromMicroCcd(10),
+    AccountAddress = AccountAddress.From("4hvvPeHb9HY4Lur7eUZv4KfL3tYBug8DRc4X9cVU8mpJLa1f2X"),
+    ContractAddress = ContractAddress.Create(10, 0),
+    Timestamp = new DateTime(1998, 2, 20, 1, 1, 1),
+    Duration = "1d 1h 1m 1s 1ms",
+    Pair = new ArrayList {1, true},
+    Array = new[] {1, 2},
+    Map = new Dictionary<int, bool> {{1, true}},
+    List = new List<int> {1, 2, 3},
+    Set = new List<int> {1, 2, 3},
+    Struct = new
+    {
+        AccountAddress = AccountAddress.From("4hvvPeHb9HY4Lur7eUZv4KfL3tYBug8DRc4X9cVU8mpJLa1f2X"),
+        Amount = CcdAmount.FromMicroCcd(10)
+    },
+    Enumerable = new {Some = new ArrayList{1, true}, Extra = new {One = 1, Two = 2}},
+    String = "foo",
+    InitName = new {Contract = "contract"},
+    ReceiveName = new {Contract = "contract", Func = "func"}
+};
+
+UpdateContractParameter updateContractParameter = UpdateContractParameter.Create(
+"a",
+"a.func",
+userInput,
+schemaModule);
+
+UpdateContractPayload updateContractPayload = UpdateContractPayload.Create(
+    CcdAmount.Zero,
+    ContractAddress.Create(96, 0),
+    "a.func",
+    updateContractParameter,
+    10_000);
+
+AccountAddress sender = AccountAddress.From("4hvvPeHb9HY4Lur7eUZv4KfL3tYBug8DRc4X9cVU8mpJLa1f2X");
+Ed25519SignKey ed25519TransactionSigner = Ed25519SignKey.From(signKey); // signKey can be decrypted using SignKeyEncryption or if you know it you can just pass as a string value.
+TransactionSigner transactionSigner = new TransactionSigner();
+transactionSigner.AddSignerEntry(Index.Create(0), Index.Create(0), ed25519TransactionSigner);
+
+var transactionHash = await accountTransactionService.SendAccountTransactionAsync(sender, updateContractPayload, transactionSigner);
+
 ```
