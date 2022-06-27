@@ -8,7 +8,7 @@ public interface IAccountTransactionPayload
     /// <summary>
     /// Serializes account transaction payload to byte format.
     /// </summary>
-    /// <returns><see cref="byte"/>[] - serialized payload in byte format.</returns>
+    /// <returns><see cref="T:byte[]"/> - serialized payload in byte format.</returns>
     byte[] SerializeToBytes();
 
     /// <summary>
@@ -16,6 +16,6 @@ public interface IAccountTransactionPayload
     /// Base energy cost is not final amount allocated for the execution of this transaction.
     /// The amount of energy allocated for the execution of this transaction is calculated during sending transaction see <see cref="IAccountTransactionService"/>.
     /// </summary>
-    /// <returns><see cref="int"/> - base energy cost value.</returns>
-    int GetBaseEnergyCost();
+    /// <returns><see cref="ulong"/> - base energy cost value.</returns>
+    ulong GetBaseEnergyCost();
 }

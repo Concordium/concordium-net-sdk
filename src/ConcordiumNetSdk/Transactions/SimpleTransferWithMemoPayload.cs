@@ -42,16 +42,14 @@ public class SimpleTransferWithMemoPayload : IAccountTransactionPayload
         var memoLength = Memo.AsBytes.Length;
         var serializedLength = 43 + memoLength;
         var result = new byte[serializedLength];
-
         Span<byte> buffer = result;
         buffer[0] = (byte) AccountTransactionType.SimpleTransferWithMemo;
         ToAddress.AsBytes.CopyTo(buffer.Slice(1, 32));
         BinaryPrimitives.WriteUInt16BigEndian(buffer.Slice(33, 2), Convert.ToUInt16(memoLength));
         Memo.AsBytes.CopyTo(buffer.Slice(35, memoLength));
         Amount.SerializeToBytes().CopyTo(buffer.Slice(35 + memoLength, 8));
-
         return result;
     }
 
-    public int GetBaseEnergyCost() => 300;
+    public ulong GetBaseEnergyCost() => 300;
 }

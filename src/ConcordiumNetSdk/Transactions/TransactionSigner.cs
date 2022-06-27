@@ -13,7 +13,7 @@ public class TransactionSigner : ITransactionSigner
 
     public Dictionary<Index, Dictionary<Index, ISigner>> SignerEntries => _signers;
 
-    public int SignatureCount => _signers.Values.SelectMany(x => x.Values).Count();
+    public uint SignatureCount => (uint) _signers.Values.SelectMany(x => x.Values).Count();
 
     public void AddSignerEntry(Index credentialIndex, Index keyIndex, ISigner signer)
     {

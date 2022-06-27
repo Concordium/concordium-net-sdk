@@ -42,13 +42,21 @@ public class ContractAddress
     /// Serializes contract address to byte format.
     /// </summary>
     /// <returns><see cref="T:byte[]"/> - serialized contract address in byte format.</returns>
-    public byte[] SerializeToBytes()
+    public byte[] SerializeToBytes(bool useLittleEndian = false)
     {
-        byte[] result = new byte[BytesLength];
-        Span<byte> buffer = result;
-        BinaryPrimitives.WriteUInt64BigEndian(buffer.Slice(0, 8), Convert.ToUInt64(Index));
-        BinaryPrimitives.WriteUInt64BigEndian(buffer.Slice(8, 8), Convert.ToUInt64(SubIndex));
+        byte[] bytes = new byte[BytesLength];
+        Span<byte> buffer = bytes;
+        if (useLittleEndian)
+        {
+            BinaryPrimitives.WriteUInt64LittleEndian(buffer.Slice(0, 8), Convert.ToUInt64(Index));
+            BinaryPrimitives.WriteUInt64LittleEndian(buffer.Slice(8, 8), Convert.ToUInt64(SubIndex));
+        }
+        else
+        {
+            BinaryPrimitives.WriteUInt64BigEndian(buffer.Slice(0, 8), Convert.ToUInt64(Index));
+            BinaryPrimitives.WriteUInt64BigEndian(buffer.Slice(8, 8), Convert.ToUInt64(SubIndex));
+        }
 
-        return result;
+        return bytes;
     }
 }

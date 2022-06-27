@@ -49,7 +49,7 @@ public class SimpleTransferPayloadTests
         var ccdAmount = CcdAmount.FromCcd(100);
         var toAccountAddress = AccountAddress.From("3V3QhN4USoMB8FMnPFHx8zoLoJexv8f5ka1a1uS8sERoSrahbw");
         var simpleTransferPayload = SimpleTransferPayload.Create(ccdAmount, toAccountAddress);
-        var expectedBaseEnergyCost = 300;
+        var expectedBaseEnergyCost = 300ul;
 
         // Act
         var baseEnergyCost = simpleTransferPayload.GetBaseEnergyCost();

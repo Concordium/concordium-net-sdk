@@ -19,7 +19,7 @@ public interface ITransactionSigner
     /// <summary>
     /// Gets the count of future signatures. Base on signer count.
     /// </summary>
-    int SignatureCount { get; }
+    uint SignatureCount { get; }
 
     /// <summary>
     /// Adds the signer entry to signer entries collection. Signer entry contains of an index of the credential, the key index and the actual signer.
