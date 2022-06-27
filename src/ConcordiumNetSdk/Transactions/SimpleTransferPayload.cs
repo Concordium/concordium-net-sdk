@@ -44,5 +44,5 @@ public class SimpleTransferPayload : IAccountTransactionPayload
         return result;
     }
 
-    public int GetBaseEnergyCost() => 300;
+    public ulong GetBaseEnergyCost() => 300;
 }

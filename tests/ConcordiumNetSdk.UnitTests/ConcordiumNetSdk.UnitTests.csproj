@@ -76,6 +76,9 @@
     <None Update="CustomJsonSerializerTests\Files\block-summary.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Transactions\Files\a.wasm.v1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

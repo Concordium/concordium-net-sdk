@@ -68,10 +68,18 @@ public readonly struct CcdAmount
     /// Serializes microCCD amount to byte format.
     /// </summary>
     /// <returns><see cref="T:byte[]"/> - serialized microCCD amount in byte format.</returns>
-    public byte[] SerializeToBytes()
+    public byte[] SerializeToBytes(bool useLittleEndian = false)
     {
         var bytes = new byte[8];
-        BinaryPrimitives.WriteUInt64BigEndian(new Span<byte>(bytes), _microCcd);
+        if (useLittleEndian)
+        {
+            BinaryPrimitives.WriteUInt64LittleEndian(bytes, _microCcd);
+        }
+        else
+        {
+            BinaryPrimitives.WriteUInt64BigEndian(bytes, _microCcd);
+        }
+
         return bytes;
     }
 

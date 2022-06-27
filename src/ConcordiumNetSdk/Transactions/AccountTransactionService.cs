@@ -47,10 +47,10 @@ public class AccountTransactionService : IAccountTransactionService
         ITransactionSigner transactionSigner)
     {
         byte[] serializedTxPayload = transactionPayload.SerializeToBytes();
-        int signatureCount = transactionSigner.SignatureCount;
-        int txPayloadSize = serializedTxPayload.Length;
-        int txSpecificCost = transactionPayload.GetBaseEnergyCost();
-        int energyCost = CalculateEnergyCost(signatureCount, txPayloadSize, txSpecificCost);
+        uint signatureCount = transactionSigner.SignatureCount;
+        uint txPayloadSize = Convert.ToUInt32(serializedTxPayload.Length);
+        ulong txSpecificCost = transactionPayload.GetBaseEnergyCost();
+        ulong energyCost = CalculateEnergyCost(signatureCount, txPayloadSize, txSpecificCost);
         byte[] serializedHeader = SerializeHeader(sender, txPayloadSize, nextAccountNonce, energyCost, expiry);
         byte[] serializedHeaderAndTxPayload = serializedHeader.Concat(serializedTxPayload).ToArray();
         byte[] signDigest = SHA256.Create().ComputeHash(serializedHeaderAndTxPayload);
@@ -67,18 +67,18 @@ public class AccountTransactionService : IAccountTransactionService
         return TransactionHash.From(txHash);
     }
 
-    private int CalculateEnergyCost(
-        int signatureCount,
-        int payloadSize,
-        int transactionSpecificCost)
+    private ulong CalculateEnergyCost(
+        uint signatureCount,
+        uint payloadSize,
+        ulong transactionSpecificCost)
     {
-        const int constantA = 100;
-        const int constantB = 1;
+        const uint constantA = 100;
+        const uint constantB = 1;
 
         // Account address (32 bytes), nonce (8 bytes), energy (8 bytes), payload size (4 bytes), expiry (8 bytes);
-        const int accountTransactionHeaderSize = 60;
+        const uint accountTransactionHeaderSize = 60;
 
-        int result = transactionSpecificCost +
+        ulong result = transactionSpecificCost +
                      constantA * signatureCount +
                      constantB * (accountTransactionHeaderSize + payloadSize);
 
@@ -87,16 +87,16 @@ public class AccountTransactionService : IAccountTransactionService
 
     private byte[] SerializeHeader(
         AccountAddress sender,
-        int payloadSize,
+        uint payloadSize,
         Nonce accountNonce,
-        int energyCost,
+        ulong energyCost,
         DateTimeOffset expiry)
     {
         Span<byte> serializedHeader = new byte[60];
         sender.AsBytes.CopyTo(serializedHeader.Slice(0, 32));
         accountNonce.SerializeToBytes().CopyTo(serializedHeader.Slice(32, 8));
-        BinaryPrimitives.WriteUInt64BigEndian(serializedHeader.Slice(40, 8), (ulong) energyCost);
-        BinaryPrimitives.WriteUInt32BigEndian(serializedHeader.Slice(48, 4), (uint) payloadSize);
+        BinaryPrimitives.WriteUInt64BigEndian(serializedHeader.Slice(40, 8), energyCost);
+        BinaryPrimitives.WriteUInt32BigEndian(serializedHeader.Slice(48, 4), payloadSize);
         BinaryPrimitives.WriteUInt64BigEndian(serializedHeader.Slice(52, 8), (ulong) expiry.ToUnixTimeSeconds());
 
         return serializedHeader.ToArray();
