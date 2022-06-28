@@ -1,17 +1,37 @@
 ﻿namespace ConcordiumNetSdk.Responses.AccountInfoResponse;
 
-// todo: ask do we need to implement AccountBaker hierarchy as in js sdk https://github.com/Concordium/concordium-node-sdk-js/blob/8d1e79b66a5756fe23625284b36e57cfc3a33894/src/types.ts#:~:text=export%20type-,AccountBakerDetailsV0,-%3D%20AccountBakerDetailsCommon%3B
+/// <summary>
+/// Represents the information about an account baker.
+/// </summary>
 public record AccountBaker
 {
+    /// <summary>
+    /// Gets or initiates the baker id.
+    /// </summary>
     public int BakerId { get; init; }
 
+    /// <summary>
+    /// Gets or initiates the staked amount.
+    /// </summary>
     public string StakedAmount { get; init; }
 
+    /// <summary>
+    /// Gets or initiates the restake earnings.
+    /// </summary>
     public bool RestakeEarnings { get; init; }
 
+    /// <summary>
+    /// Gets or initiates the baker election verify key.
+    /// </summary>
     public string BakerElectionVerifyKey { get; init; }
 
+    /// <summary>
+    /// Gets or initiates the baker signature verify key.
+    /// </summary>
     public string BakerSignatureVerifyKey { get; init; }
 
+    /// <summary>
+    /// Gets or initiates the baker aggregation verify key.
+    /// </summary>
     public string BakerAggregationVerifyKey { get; init; }
 }

@@ -16,7 +16,7 @@ public class InitContractPayloadTests
         var amount = CcdAmount.Zero;
         var moduleRef = ModuleRef.From("2c490881e1f87e46cac9a9419f1c669d5f6d74eabc3c5a4fd10d13ab29f8b8c2");
         var initName = "init_name";
-        var parameter = Array.Empty<byte>();
+        var parameter = InitContractParameter.Empty();
         var maxContractExecutionEnergy = 10_000ul;
 
         // Act
@@ -24,14 +24,14 @@ public class InitContractPayloadTests
             amount,
             moduleRef,
             initName,
-            InitContractParameter.Empty(),
+            parameter,
             maxContractExecutionEnergy);
 
         // Assert
         initContractPayload.Amount.Should().Be(amount);
         initContractPayload.ModuleRef.Should().Be(moduleRef);
         initContractPayload.InitName.Should().Be(initName);
-        initContractPayload.Parameter.Should().BeEquivalentTo(parameter);
+        initContractPayload.Parameter.Should().Be(parameter);
         initContractPayload.MaxContractExecutionEnergy.Should().Be(maxContractExecutionEnergy);
     }
 

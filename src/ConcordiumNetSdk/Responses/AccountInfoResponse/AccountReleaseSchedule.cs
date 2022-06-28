@@ -5,7 +5,6 @@
 /// </summary>
 public record AccountReleaseSchedule
 {
-    // todo: think of implementing value as type Amount look node sdk documentation
     /// <summary>
     /// Gets or initiates the total locked amount. 
     /// </summary>

@@ -1,14 +1,22 @@
 ﻿namespace ConcordiumNetSdk.Responses.AccountInfoResponse;
 
-// todo: ask do we need to make RevealedAttributes key as a separate AttributeKey object can be value type (struct)
-// todo: ask does AttributeKey have predefined keys and nothing else can be passed
-// todo: or it is sth like auth token claims
-// todo: find out more info for all properties and their insides, can not add xml documentation
+/// <summary>
+/// Represents the information about a policy.
+/// </summary>
 public record Policy
 {
+    /// <summary>
+    /// Gets or initiates the created at.
+    /// </summary>
     public string CreatedAt { get; init; }
 
+    /// <summary>
+    /// Gets or initiates the valid to.
+    /// </summary>
     public string ValidTo { get; init; }
 
+    /// <summary>
+    /// Gets or initiates the revealed attributes.
+    /// </summary>
     public Dictionary<string, string> RevealedAttributes { get; init; }
 }

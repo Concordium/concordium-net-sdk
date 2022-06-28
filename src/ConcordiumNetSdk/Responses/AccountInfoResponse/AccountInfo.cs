@@ -7,27 +7,24 @@ namespace ConcordiumNetSdk.Responses.AccountInfoResponse;
 /// </summary>
 public record AccountInfo
 {
-    //todo: change long on ulong where it is needed
     /// <summary>
     /// Gets or initiates the sequential index of the account (in the order of creation). If the account is a baker this index is used as the bakerId.
     /// </summary>
     [JsonPropertyName("accountIndex")]
-    public long Index { get; init; }
+    public ulong Index { get; init; }
 
     /// <summary>
     /// Gets or initiates the next available nonce on this account at this block.
     /// </summary>
     [JsonPropertyName("accountNonce")]
-    public long Nonce { get; init; }
+    public ulong Nonce { get; init; }
 
-    // todo: can be a separate type Amount, need clarification 
     /// <summary>
     /// Gets or initiates the current public account balance
     /// </summary>
     [JsonPropertyName("accountAmount")]
     public string Amount { get; init; }
 
-    // todo: can be a separate type Amount, need clarification 
     /// <summary>
     /// Gets or initiates the Elgamal public key used to send encrypted transfers to the account.
     /// </summary>

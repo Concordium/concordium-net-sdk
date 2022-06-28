@@ -2,7 +2,6 @@
 
 namespace ConcordiumNetSdk.Responses.AccountInfoResponse;
 
-// todo: implement as value type with all methods maybe some where on T
 /// <summary>
 /// Represents the versioned values.
 /// </summary>

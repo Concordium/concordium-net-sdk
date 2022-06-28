@@ -3,7 +3,6 @@ using ConcordiumNetSdk.Types;
 namespace ConcordiumNetSdk.Responses.TransactionStatusResponse;
 
 //todo: look at js sdk think can we add default checks for some type properties or enum values
-//todo: find out about documentation of each property
 /// <summary>
 /// Represents the information about a transaction status as response data of <see cref="IConcordiumNodeClient"/>.<see cref="IConcordiumNodeClient.GetTransactionStatusAsync"/>.
 /// </summary>

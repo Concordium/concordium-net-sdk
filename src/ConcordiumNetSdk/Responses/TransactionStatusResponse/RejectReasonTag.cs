@@ -1,6 +1,5 @@
 namespace ConcordiumNetSdk.Responses.TransactionStatusResponse;
 
-//todo: find out about documentation of each property
 /// <summary>
 /// Represents the collection of a reject reason tag constants.
 /// </summary>

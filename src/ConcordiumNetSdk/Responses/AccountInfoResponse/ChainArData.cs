@@ -1,7 +1,12 @@
 ﻿namespace ConcordiumNetSdk.Responses.AccountInfoResponse;
 
-// todo: find out more info for all properties and their insides, can not add xml documentation
+/// <summary>
+/// Represents the information about a chain ar data.
+/// </summary>
 public record ChainArData
 {
+    /// <summary>
+    /// Gets or initiates the enc id cred pub share. 
+    /// </summary>
     public string EncIdCredPubShare { get; init; }
 }

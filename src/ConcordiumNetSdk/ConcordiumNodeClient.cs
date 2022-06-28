@@ -367,6 +367,16 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         return CustomJsonSerializer.Deserialize<TransactionStatusInBlock>(response.Value);
     }
 
+    public async Task<List<TransactionHash>> GetAccountNonFinalizedTransactionsAsync(AccountAddress accountAddress)
+    {
+        Concordium.AccountAddress request = new Concordium.AccountAddress
+        {
+            AccountAddress_ = accountAddress.AsString
+        };
+        JsonResponse response = await _client.GetAccountNonFinalizedTransactionsAsync(request, CreateCallOptions());
+        return CustomJsonSerializer.Deserialize<List<TransactionHash>>(response.Value) ?? new List<TransactionHash>();
+    }
+
     public async Task<BlockSummary?> GetBlockSummaryAsync(BlockHash blockHash)
     {
         Concordium.BlockHash request = new Concordium.BlockHash

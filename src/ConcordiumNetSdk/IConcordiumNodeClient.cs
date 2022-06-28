@@ -283,6 +283,13 @@ public interface IConcordiumNodeClient
     Task<TransactionStatusInBlock?> GetTransactionStatusInBlockAsync(TransactionHash transactionHash, BlockHash blockHash);
 
     /// <summary>
+    /// Retrieves the information about a non finalized account transactions.
+    /// </summary>
+    /// <param name="accountAddress">the base58 check with version byte 1 encoded address (with Bitcoin mapping table).</param>
+    /// <returns><see cref="List{TransactionHash}"/> - list of transaction hashes.</returns>
+    Task<List<TransactionHash>> GetAccountNonFinalizedTransactionsAsync(AccountAddress accountAddress);
+
+    /// <summary>
     /// Retrieves the information about a block summary.
     /// </summary>
     /// <param name="blockHash">the base16 encoded hash of a block (64 characters).</param>

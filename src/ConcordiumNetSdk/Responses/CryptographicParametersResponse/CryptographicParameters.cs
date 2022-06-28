@@ -1,6 +1,5 @@
 namespace ConcordiumNetSdk.Responses.CryptographicParametersResponse;
 
-//todo: find out about documentation of each property
 /// <summary>
 /// Represents the information about a cryptographic parameters in a specific block as response data of <see cref="IConcordiumNodeClient"/>.<see cref="IConcordiumNodeClient.GetCryptographicParametersAsync"/>.
 /// </summary>

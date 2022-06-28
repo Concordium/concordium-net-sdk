@@ -16,7 +16,7 @@ public class UpdateContractPayloadTests
         var amount = CcdAmount.Zero;
         var contractAddress = ContractAddress.Create(96, 0);
         var receiveName = "contractName.receiveFunc";
-        var parameter = Array.Empty<byte>();
+        var parameter = UpdateContractParameter.Empty();
         var maxContractExecutionEnergy = 10_000ul;
 
         // Act
@@ -24,14 +24,14 @@ public class UpdateContractPayloadTests
             amount,
             contractAddress,
             receiveName,
-            UpdateContractParameter.Empty(),
+            parameter,
             maxContractExecutionEnergy);
 
         // Assert
         updateContractPayload.Amount.Should().Be(amount);
         updateContractPayload.ContractAddress.Should().Be(contractAddress);
         updateContractPayload.ReceiveName.Should().Be(receiveName);
-        updateContractPayload.Parameter.Should().BeEquivalentTo(parameter);
+        updateContractPayload.Parameter.Should().Be(parameter);
         updateContractPayload.MaxContractExecutionEnergy.Should().Be(maxContractExecutionEnergy);
     }
 

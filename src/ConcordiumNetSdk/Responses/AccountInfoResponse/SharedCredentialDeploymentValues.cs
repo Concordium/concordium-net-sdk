@@ -1,15 +1,22 @@
 ﻿namespace ConcordiumNetSdk.Responses.AccountInfoResponse;
 
-// todo: find out more info for all properties and their insides, can not add xml documentation
 /// <summary>
-/// Represents the credential values deployed on the account.
-/// It is base class with base date for credential values.
+/// Represents the base class for credential values deployed on the account.
 /// </summary>
 public abstract record SharedCredentialDeploymentValues
 {
+    /// <summary>
+    /// Gets or initiates the ip identity.
+    /// </summary>
     public int IpIdentity { get; init; }
 
+    /// <summary>
+    /// Gets or initiates the credential public keys.
+    /// </summary>
     public CredentialPublicKeys CredentialPublicKeys { get; init; }
 
+    /// <summary>
+    /// Gets or initiates the policy.
+    /// </summary>
     public Policy Policy { get; init; }
 }

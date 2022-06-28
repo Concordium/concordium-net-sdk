@@ -1,8 +1,12 @@
 namespace ConcordiumNetSdk.Responses.AccountInfoResponse;
 
-// todo: find out more info about class and all properties and their insides, can not add xml documentation
+/// <summary>
+/// Represents the base class for an account credential.
+/// </summary>
 public abstract record AccountCredential
 {
-    // todo: implement type as enum or enum class
+    /// <summary>
+    /// Gets or initiates the account credential type.
+    /// </summary>
     public string Type { get; init; }
 }

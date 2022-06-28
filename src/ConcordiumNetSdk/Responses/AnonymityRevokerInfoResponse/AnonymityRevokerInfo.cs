@@ -2,7 +2,6 @@
 
 namespace ConcordiumNetSdk.Responses.AnonymityRevokerInfoResponse;
 
-//todo: find out about documentation of each property
 /// <summary>
 /// Represents the information about an anonymity revoker in a specific block as response data of <see cref="IConcordiumNodeClient"/>.<see cref="IConcordiumNodeClient.GetAnonymityRevokersAsync"/>.
 /// </summary>
