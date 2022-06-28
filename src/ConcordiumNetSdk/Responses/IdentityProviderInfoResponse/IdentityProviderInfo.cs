@@ -2,7 +2,6 @@
 
 namespace ConcordiumNetSdk.Responses.IdentityProviderInfoResponse;
 
-//todo: find out about documentation of each property
 /// <summary>
 /// Represents the information about an identity provider in a specific block as response data of <see cref="IConcordiumNodeClient"/>.<see cref="IConcordiumNodeClient.GetIdentityProvidersAsync"/>.
 /// </summary>

@@ -2,24 +2,38 @@
 
 namespace ConcordiumNetSdk.Responses.AccountInfoResponse;
 
-// todo: think do we need to make CmmAttributes key as a separate AttributeKey object can be value type (struct) look at js repo
-// todo: ask does AttributeKey have predefined keys and nothing else can be passed 
-// todo: or it is sth like auth token claims
-// todo: find out more info for all properties and their insides, can not add xml documentation
-public record CredentialCommitments
+/// <summary>
+/// Represents the information about a credential deployment commitments.
+/// </summary>
+public record CredentialDeploymentCommitments
 {
+    /// <summary>
+    /// Gets or initiates the prf. 
+    /// </summary>
     [JsonPropertyName("cmmPrf")]
     public string Prf { get; init; }
 
+    /// <summary>
+    /// Gets or initiates the cred counter. 
+    /// </summary>
     [JsonPropertyName("cmmCredCounter")]
     public string CredCounter { get; init; }
 
+    /// <summary>
+    /// Gets or initiates the id cred sec sharing coeff. 
+    /// </summary>
     [JsonPropertyName("cmmIdCredSecSharingCoeff")]
     public List<string> IdCredSecSharingCoeff { get; init; }
 
+    /// <summary>
+    /// Gets or initiates the attributes. 
+    /// </summary>
     [JsonPropertyName("cmmAttributes")]
     public Dictionary<string, string> Attributes { get; init; }
 
+    /// <summary>
+    /// Gets or initiates the max accounts. 
+    /// </summary>
     [JsonPropertyName("cmmMaxAccounts")]
     public string MaxAccounts { get; init; }
 }

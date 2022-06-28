@@ -1,6 +1,5 @@
 namespace ConcordiumNetSdk.Responses.AnonymityRevokerInfoResponse;
 
-//todo: find out about documentation of each property
 /// <summary>
 /// Represents the information about an anonymity revoker description.
 /// </summary>

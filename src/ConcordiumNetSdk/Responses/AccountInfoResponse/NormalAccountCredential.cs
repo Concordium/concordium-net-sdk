@@ -1,7 +1,12 @@
 ﻿namespace ConcordiumNetSdk.Responses.AccountInfoResponse;
 
-// todo: find out more info about class and all properties and their insides, can not add xml documentation
+/// <summary>
+/// Represents the information about a normal account credential.
+/// </summary>
 public record NormalAccountCredential : AccountCredential
 {
+    /// <summary>
+    /// Gets or initiates the contents.
+    /// </summary>
     public CredentialDeploymentValues Contents { get; init; }
 }
