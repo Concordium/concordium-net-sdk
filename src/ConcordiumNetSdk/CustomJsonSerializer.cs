@@ -24,11 +24,14 @@ public static class CustomJsonSerializer
                 new ModuleRefJsonConverter(),
                 new ContractAddressJsonConverter(),
                 new CcdAmountJsonConverter(),
-                new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
+                new JsonStringEnumMemberConverter(),
                 new TransactionSummaryJsonConverter(),
                 new EventResultJsonConverter(),
                 new EventJsonConverter(),
                 new BlockSummaryJsonConverter(),
+                new AccountInfoJsonConverter(),
+                new StakePendingChangeJsonConverter(),
+                new DelegationTargetJsonConverter(),
             }   
         };
     }

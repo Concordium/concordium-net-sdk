@@ -315,7 +315,7 @@ public static class ContractParametersSerializer
         return buffer.ToArray();
     }
 
-    //todo: find out where u32 and u64 is used and think how to inplement it
+    //todo: find out where u32 and u64 is used and think how to implement it
     private static byte[] SerializeLength(int length, SizeLength sizeLength)
     {
         switch (sizeLength)

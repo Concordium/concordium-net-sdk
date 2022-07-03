@@ -3,7 +3,6 @@ using ConcordiumNetSdk.Responses.TransactionStatusResponse;
 
 namespace ConcordiumNetSdk.Responses.BlockSummaryResponse;
 
-//todo: find out about documentation of each property and nested
 /// <summary>
 /// Represents the base class for block summary as response data of <see cref="ConcordiumNodeClient"/>.<see cref="ConcordiumNodeClient.GetBlockSummaryAsync"/>.
 /// </summary>

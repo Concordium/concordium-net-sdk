@@ -4,9 +4,16 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageVersion>1.0.1</PackageVersion>
+    <Description>Represents an API wirten on C# for interacting with the Concordium Node.</Description>
+    <PackageProjectUrl>https://www.concordium.com/</PackageProjectUrl>
+    <PackageIconUrl>https://avatars.githubusercontent.com/u/39614219?s=200&amp;v=4</PackageIconUrl>
+    <RepositoryUrl>https://github.com/Concordium/concordium-net-sdk</RepositoryUrl>
+    <PackageTags>concordium;  concordium-net-sdk;</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
+	<PackageReference Include="Macross.Json.Extensions" Version="3.0.0" />
 	<PackageReference Include="NBitcoin" Version="7.0.6" />
 	<PackageReference Include="NSec.Cryptography" Version="22.4.0" />
 	<PackageReference Include="System.Formats.Cbor" Version="7.0.0-preview.3.22175.4" />

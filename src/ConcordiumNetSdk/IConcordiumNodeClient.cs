@@ -45,28 +45,31 @@ public interface IConcordiumNodeClient
     /// <returns><see cref="UInt64"/> - the node uptime.</returns>
     Task<ulong> GetPeerUptimeAsync();
 
-    //todo: find more about documentation
     /// <summary>
     /// Retrieves an information about a node total send count.
     /// </summary>
     /// <returns><see cref="UInt64"/> - the node total send count.</returns>
     Task<ulong> GetPeerTotalSentAsync();
 
-    //todo: find more about documentation
     /// <summary>
     /// Retrieves an information about a node total received count.
     /// </summary>
     /// <returns><see cref="UInt64"/> - the node total received count.</returns>
     Task<ulong> GetPeerTotalReceivedAsync();
 
-    //todo: find more about documentation
     /// <summary>
     /// Retrieves an information about a node version.
     /// </summary>
     /// <returns><see cref="String"/> - the node version.</returns>
     Task<string> GetPeerVersionAsync();
 
-    //todo: find more about documentation
+    /// <summary>
+    /// Retrieves an information about a node stats response.
+    /// </summary>
+    /// <param name="includeBootstrappers">does include bootstrappers.</param>
+    /// <returns><see cref="PeerStatsResponse"/> - the node stats response.</returns>
+    Task<PeerStatsResponse> GetPeerStatsAsync(bool includeBootstrappers = false);
+
     /// <summary>
     /// Retrieves an information about a node list.
     /// </summary>
@@ -74,7 +77,6 @@ public interface IConcordiumNodeClient
     /// <returns><see cref="PeerListResponse"/> - the node list.</returns>
     Task<PeerListResponse> GetPeerListAsync(bool includeBootstrappers = false);
 
-    //todo: find more about documentation
     /// <summary>
     /// Ban a node. The node to ban can either be supplied via a node-id or via an IP and port, but not both.
     /// </summary>
@@ -89,7 +91,6 @@ public interface IConcordiumNodeClient
         PeerElement.Types.CatchupStatus catchupStatus,
         uint? port = null);
 
-    //todo: find more about documentation
     /// <summary>
     /// Unban a node. The node to unban can either be supplied via a node-id or via an IP.
     /// </summary>
@@ -104,7 +105,6 @@ public interface IConcordiumNodeClient
         PeerElement.Types.CatchupStatus catchupStatus,
         uint? port = null);
 
-    //todo: find more about documentation
     /// <summary>
     /// Join a network.
     /// </summary>
@@ -112,7 +112,6 @@ public interface IConcordiumNodeClient
     /// <returns><see cref="Boolean"/> - the result of joining a network.</returns>
     Task<bool> JoinNetworkAsync(int networkId);
 
-    //todo: find more about documentation
     /// <summary>
     /// Leave a network.
     /// </summary>
@@ -120,7 +119,6 @@ public interface IConcordiumNodeClient
     /// <returns><see cref="Boolean"/> - the result of leaving a network.</returns>
     Task<bool> LeaveNetworkAsync(int networkId);
 
-    //todo: find more about documentation
     /// <summary>
     /// Retrieves an information about a node.
     /// </summary>
@@ -158,7 +156,6 @@ public interface IConcordiumNodeClient
     /// <returns><see cref="BirkParameters"/> - information about a parameters used for baking.</returns>
     Task<BirkParameters?> GetBirkParametersAsync(BlockHash blockHash);
 
-    //todo: find out why List T is showing instead of real type
     /// <summary>
     /// Retrieves the list of smart contract modules.
     /// </summary>

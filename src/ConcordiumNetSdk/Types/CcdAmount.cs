@@ -2,7 +2,6 @@
 
 namespace ConcordiumNetSdk.Types;
 
-// todo: implement tests
 /// <summary>
 /// Represents an amount of microCCD.
 /// </summary>
