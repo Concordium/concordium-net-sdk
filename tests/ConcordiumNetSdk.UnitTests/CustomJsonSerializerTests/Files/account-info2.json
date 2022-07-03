@@ -1,0 +1,78 @@
+{
+  "accountAmount": "2000000000",
+  "accountNonce": 1,
+  "accountEncryptedAmount": {
+    "incomingAmounts": [],
+    "selfAmount": "c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "startIndex": 0
+  },
+  "accountEncryptionKey": "b14cbfe44a02c6b1f78711176d5f437295367aa4f2a8c2551ee10d25a03adc69d61a332a058971919dad7312e1fc94c5933f208337257b32c6c6e9caada86197196fc9f0cdb38c8e26a3e5bfee2aaaa8aa9bfd68c1d545626b9b6916bfe7fcaf",
+  "accountIndex": 190,
+  "accountReleaseSchedule": {
+    "schedule": [],
+    "total": "0"
+  },
+  "accountThreshold": 1,
+  "accountCredentials": {
+    "0": {
+      "value": {
+        "contents": {
+          "ipIdentity": 0,
+          "arData": {
+            "1": {
+              "encIdCredPubShare": "80a8d420d302811f3da8260e8aa25b50298b56125d841a4886a11929d3b9ae958543e98264d752fbe074121f11b13bbf8d17d59617c3ec389af9a8c9df588d703aaf953c105b888a2ee8d9c19d4d2c086b3d071b56adbd7e04ced783b9d360f6"
+            },
+            "2": {
+              "encIdCredPubShare": "b166dc4fc730a788959055f2531b9acd4bb1b758ef900d8dfa2d6e8fae7b8302b525f640af7c15982d84e67f4624b3bfa007a9f7c04f0a709f92e1384ba6249fe6fb9f64be04a2cd6b2473a620a701f387d6893e4ea8fe17be7714b243a6bc20"
+            },
+            "3": {
+              "encIdCredPubShare": "9626ce0d4301c3bd9e11f808671b9c565899cfe951f1ca7e370ade8d77e966492198f3665567533eded899b8dfcaade4aff3aa028c84f4cfdf494ba5a26328c047e6211c1e872972f4aa76ef4009e1c824781a35d5a414076c6a2417fd1af042"
+            }
+          },
+          "revocationThreshold": 2,
+          "credId": "933f208337257b32c6c6e9caada86197196fc9f0cdb38c8e26a3e5bfee2aaaa8aa9bfd68c1d545626b9b6916bfe7fcaf",
+          "policy": {
+            "revealedAttributes": {},
+            "createdAt": "202106",
+            "validTo": "202206"
+          },
+          "commitments": {
+            "cmmPrf": "a15195d2a398683a08dfe155bb4333eab3639492c810a16a1eaaf8de75a8ae6daa87e2de2832e5e45737cd0ffca5e70a",
+            "cmmCredCounter": "85e7752c75c4a482af328a755d14a8a65b58b7e3fc1b4db6caf52f6011b839b6f08f0133719001e4cf70b978cc453adb",
+            "cmmIdCredSecSharingCoeff": [
+              "ac09cdb39300a4741f5db758d1ae8976f5b08710c1d6f2826551d21a6664405ca24245205395eba13b7038118fd9fee8",
+              "8415e2001622983d94b86a4bdbd4efaacb569cfac43c43dd9fface098cdcbe39b659db7d7ba7b2bde2fe07c9f1c57036"
+            ],
+            "cmmAttributes": {
+              "idDocNo": "a9a52ad685c1d7765ca72be377e654074ef71d0e5846a999cd49bc6f1f8c0e932d800571202c11391c0411aa44633e78",
+              "nationality": "82d7c5bf930661fe905e2a2ddd8fe9a85da01dbc7d4a69ba5ee1ab4275f81c06e41cfd0505ca089d9ed0ac40cf79c7dd",
+              "nationalIdNo": "a8b213c2a8efccef8ddbf5670bce3359e1c49374e5223bcd894a99a1d0640412345feba32aa2a29bb3b50b7019b2f286",
+              "lastName": "859d6b1dd0d06b3cf03e9767edeb7a262a3d423ee5626f68d2f2626916bb69284ae2d3325194a493f94eeaf36c6b7fc0",
+              "countryOfResidence": "99794515d73adcd0c94a1c4b51aedad4dc6ddc4e00a9ecd56e7e71be6a9c3a45e3c61ffe0f5648b2245704932366915d",
+              "idDocIssuer": "8d36a1c2b121812cc4e22ac532315b6c6410cb0e16ee7f4743a879a755426e48220eecc72d194107b9172d334151faad",
+              "taxIdNo": "b438f3b82c49c51d99cf805dc484d4e90975ddfa2a40a48980d570e73770f8e35a30db8814acce308f98f0084e5abb6f",
+              "dob": "b353db7777387c9dee2ec6e665c80a59a999dc68415a050670defacc7087d4ae4cbbe5d313021b7440704c99bb86fa03",
+              "idDocIssuedAt": "a0883655e6e1b234b47d59682cd9316a2d3cb7ece5843a61ef29c7df741e61a4538ff6ac1e987320786478ffa57f9e24",
+              "firstName": "9027afd1d721db9adcc811208622e996ee706d8a4e51002a356e15f7b64df3102bc14430a2ed9ff8cca9d394b5428e12",
+              "idDocType": "982225765fe29abf9de2eba2b88f0df3f79628fe1c0a3455668a5ee722da64c822ee733cf323a90256b331069f36f71e",
+              "idDocExpiresAt": "b7f7b129c2f9b97ab01f885127bb8b1f21c2fa61950289c99a5dddcd9b594599e0af617fca8f6f95b9ca350016e67656",
+              "sex": "a1b8e4cbeb2d2c986a49d88139cf29f254ccbb8485741c5166011f1aeb8f71ca97f2a4ad94bcc3cbf5b26404e85064df"
+            },
+            "cmmMaxAccounts": "8448877f9c89e0008a0501998bb38d2bb4bbbc9d97cf828955572f61bc1f0bf2dbf7233e5addbeafbc464f6589252257"
+          },
+          "credentialPublicKeys": {
+            "keys": {
+              "0": {
+                "verifyKey": "d96e432fc48f3ac31fa279bb76ee13f3cc45fc8dd37bf55882e27f9a1bebf922",
+                "schemeId": "Ed25519"
+              }
+            },
+            "threshold": 1
+          }
+        },
+        "type": "normal"
+      },
+      "v": 0
+    }
+  }
+}

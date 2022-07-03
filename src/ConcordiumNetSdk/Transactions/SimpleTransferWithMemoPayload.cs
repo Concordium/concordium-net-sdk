@@ -9,13 +9,7 @@ namespace ConcordiumNetSdk.Transactions;
 /// </summary>
 public class SimpleTransferWithMemoPayload : IAccountTransactionPayload
 {
-    /// <summary>
-    /// Creates an instance of simple transfer with memo payload.
-    /// </summary>
-    /// <param name="amount">the amount of microCCD that will be sent.</param>
-    /// <param name="toAddress">the address of the account to which the transfer will be sent.</param>
-    /// <param name="memo">the memo.</param>
-    public SimpleTransferWithMemoPayload(CcdAmount amount, AccountAddress toAddress, Memo memo)
+    private SimpleTransferWithMemoPayload(CcdAmount amount, AccountAddress toAddress, Memo memo)
     {
         Amount = amount;
         ToAddress = toAddress ?? throw new ArgumentNullException(nameof(toAddress));
@@ -36,6 +30,17 @@ public class SimpleTransferWithMemoPayload : IAccountTransactionPayload
     /// Gets the memo that will be sent.
     /// </summary>
     public Memo Memo { get; }
+
+    /// <summary>
+    /// Creates an instance of simple transfer with memo payload.
+    /// </summary>
+    /// <param name="amount">the amount of microCCD that will be sent.</param>
+    /// <param name="toAddress">the address of the account to which the transfer will be sent.</param>
+    /// <param name="memo">the memo.</param>
+    public static SimpleTransferWithMemoPayload Create(CcdAmount amount, AccountAddress toAddress, Memo memo)
+    {
+        return new SimpleTransferWithMemoPayload(amount, toAddress, memo);
+    }
 
     public byte[] SerializeToBytes()
     {

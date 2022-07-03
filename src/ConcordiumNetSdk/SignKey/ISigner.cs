@@ -6,6 +6,6 @@ public interface ISigner
     /// Signs bytes using concrete implementation of sign key.
     /// </summary>
     /// <param name="bytes">the bytes to be signed.</param>
-    /// <returns><see cref="byte"/>[] - thw signed bytes.</returns>
+    /// <returns><see cref="T:byte[]"/> - thw signed bytes.</returns>
     byte[] Sign(byte[] bytes);
 }

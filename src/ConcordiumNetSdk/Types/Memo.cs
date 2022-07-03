@@ -2,7 +2,6 @@ using System.Formats.Cbor;
 
 namespace ConcordiumNetSdk.Types;
 
-// todo: find out more info to write documentation
 /// <summary>
 /// A Memo is stored on chain as just an array of bytes.
 /// Convention is to encode a text message as CBOR, but this is not enforced by nodes.  

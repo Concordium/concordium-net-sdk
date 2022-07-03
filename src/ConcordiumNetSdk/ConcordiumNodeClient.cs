@@ -36,12 +36,18 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
             {"authentication", connection.AuthenticationToken}
         };
 
-        // todo: add all props from here to connection class
         var options = new GrpcChannelOptions
         {
             Credentials = ChannelCredentials.Insecure
         };
 
+        _grpcChannel = GrpcChannel.ForAddress(connection.Address, options);
+        _client = new P2P.P2PClient(_grpcChannel);
+    }
+
+    public ConcordiumNodeClient(Connection connection, GrpcChannelOptions options, Metadata metadata)
+    {
+        _metadata = metadata;
         _grpcChannel = GrpcChannel.ForAddress(connection.Address, options);
         _client = new P2P.P2PClient(_grpcChannel);
     }
@@ -92,7 +98,6 @@ public class ConcordiumNodeClient : IConcordiumNodeClient, IDisposable
         return response.Value;
     }
 
-    //todo: add in interface
     public async Task<PeerStatsResponse> GetPeerStatsAsync(bool includeBootstrappers = false)
     {
         PeersRequest request = new PeersRequest

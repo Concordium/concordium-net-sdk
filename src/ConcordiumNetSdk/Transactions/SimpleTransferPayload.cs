@@ -2,7 +2,6 @@
 
 namespace ConcordiumNetSdk.Transactions;
 
-// todo: implement tests
 /// <summary>
 /// Represents a contents of the simple transfer payload that is one of union type of the specific transaction.
 /// </summary>
