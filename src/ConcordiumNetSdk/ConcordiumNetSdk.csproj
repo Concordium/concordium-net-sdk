@@ -10,7 +10,22 @@
     <PackageIconUrl>https://avatars.githubusercontent.com/u/39614219?s=200&amp;v=4</PackageIconUrl>
     <RepositoryUrl>https://github.com/Concordium/concordium-net-sdk</RepositoryUrl>
     <PackageTags>concordium;  concordium-net-sdk;</PackageTags>
+    <Company>Concordium</Company>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Version>1.0.1</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\nuget\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\nuget\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
 	<PackageReference Include="Macross.Json.Extensions" Version="3.0.0" />
