@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackageVersion>1.0.1</PackageVersion>
+    <PackageVersion>1.0.2</PackageVersion>
     <Description>Represents an API wirten on C# for interacting with the Concordium Node.</Description>
     <PackageProjectUrl>https://www.concordium.com/</PackageProjectUrl>
     <PackageIconUrl>https://avatars.githubusercontent.com/u/39614219?s=200&amp;v=4</PackageIconUrl>
@@ -13,7 +13,7 @@
     <Company>Concordium</Company>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
