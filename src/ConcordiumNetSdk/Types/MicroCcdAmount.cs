@@ -30,7 +30,7 @@ public readonly struct MicroCCDAmount : IEquatable<MicroCCDAmount>
     }
 
     /// <summary>
-    /// Gets µCCD amount.
+    /// Get µCCD amount.
     /// </summary>
     public UInt64 GetMicroCcdValue()
     {
@@ -38,7 +38,7 @@ public readonly struct MicroCCDAmount : IEquatable<MicroCCDAmount>
     }
 
     /// <summary>
-    /// Gets a formatted string representing the amount in µCCD.
+    /// Get a formatted string representing the amount in µCCD.
     /// </summary>
     public string GetFormattedMicroCcd()
     {
@@ -46,7 +46,7 @@ public readonly struct MicroCCDAmount : IEquatable<MicroCCDAmount>
     }
 
     /// <summary>
-    /// Gets a formatted string representing the amount in CCD.
+    /// Get a formatted string representing the amount in CCD.
     /// </summary>
     public string GetFormattedCcd()
     {

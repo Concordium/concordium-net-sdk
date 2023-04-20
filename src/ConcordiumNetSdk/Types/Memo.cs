@@ -76,7 +76,7 @@ public class Memo
     }
 
     /// <summary>
-    /// Gets the memo as a byte array with the length of the array prepended as a 16-bit unsigned integer in big-endian format.
+    /// Get the memo as a byte array with the length of the array prepended as a 16-bit unsigned integer in big-endian format.
     /// </summary>
     public byte[] GetBytes()
     {
@@ -87,7 +87,7 @@ public class Memo
     }
 
     /// <summary>
-    /// Gets the memo as a hex-encoded string.
+    /// Get the memo as a hex-encoded string.
     /// </summary>
     public string GetHexString()
     {

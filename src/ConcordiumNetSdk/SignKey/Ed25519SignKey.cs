@@ -41,7 +41,7 @@ public record Ed25519SignKey : ISigner
     }
 
     /// <summary>
-    /// Gets the ed25519 sign key as a length-32 hex encoded string.
+    /// Get the ed25519 sign key as a length-32 hex encoded string.
     /// </summary>
     public string GetString()
     {
@@ -49,7 +49,7 @@ public record Ed25519SignKey : ISigner
     }
 
     /// <summary>
-    /// Gets the ed25519 sign key as a length-64 byte array.
+    /// Get the ed25519 sign key as a length-64 byte array.
     /// </summary>
     public byte[] GetBytes()
     {

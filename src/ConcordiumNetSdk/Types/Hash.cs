@@ -47,7 +47,7 @@ public abstract class Hash
     }
 
     /// <summary>
-    /// Gets the hash as a length-32 byte array.
+    /// Get the hash as a length-32 byte array.
     /// </summary>
     public byte[] GetBytes()
     {
@@ -55,7 +55,7 @@ public abstract class Hash
     }
 
     /// <summary>
-    /// Gets the hash as a length-64 hex encoded string.
+    /// Get the hash as a length-64 hex encoded string.
     /// </summary>
     public override string ToString()
     {

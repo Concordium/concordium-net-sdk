@@ -11,14 +11,14 @@ namespace ConcordiumNetSdk.Transactions;
 public interface ITransactionSigner
 {
     /// <summary>
-    /// Gets the signer entries represented as a map from credential indices to another map from key indices to signers.
+    /// Get the signer entries represented as a map from credential indices to another map from key indices to signers.
     /// For a given credential and key index, its corresponding signer can be used to sign data whose resulting signature
     /// can then be verified using its corresponding verification key.
     /// </summary>
     ImmutableDictionary<byte, ImmutableDictionary<byte, ISigner>> GetSignerEntries();
 
     /// <summary>
-    /// Gets the number of signatures that will be produced when signing a transaction using this signer.
+    /// Get the number of signatures that will be produced when signing a transaction using this signer.
     /// This number is based on the signer count.
     /// </summary>
     byte GetSignatureCount();

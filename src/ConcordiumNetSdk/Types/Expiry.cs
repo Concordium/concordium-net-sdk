@@ -88,7 +88,7 @@ namespace ConcordiumNetSdk.Types
         }
 
         /// <summary>
-        /// Gets the expiration time represented by the elapsed number of seconds since
+        /// Get the expiration time represented by the elapsed number of seconds since
         /// the UNIX epoch.
         /// </summary>
         public UInt64 GetValue()
@@ -97,7 +97,7 @@ namespace ConcordiumNetSdk.Types
         }
 
         /// <summary>
-        /// Gets the expiration time represented by the elapsed number of seconds since
+        /// Get the expiration time represented by the elapsed number of seconds since
         /// the UNIX epoch written as a 64-bit integer in big-endian format.
         /// </summary>
         public byte[] GetBytes()
@@ -106,7 +106,7 @@ namespace ConcordiumNetSdk.Types
         }
 
         /// <summary>
-        /// Gets a string representation of the date and time in the calendar used by the current culture.
+        /// Get a string representation of the date and time in the calendar used by the current culture.
         /// </summary>
         public override string ToString()
         {

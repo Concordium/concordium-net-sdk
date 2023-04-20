@@ -75,7 +75,7 @@ public class AccountTransactionHeader
     }
 
     /// <summary>
-    /// Gets the account transaction serialized to the binary format expected by the node.
+    /// Get the account transaction serialized to the binary format expected by the node.
     /// This is used when signing transactions.
     /// </summary>
     /// <param name="sender">Address of the sender of the transaction.</param>

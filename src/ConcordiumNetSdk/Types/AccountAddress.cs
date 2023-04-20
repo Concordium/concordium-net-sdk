@@ -45,7 +45,7 @@ public class AccountAddress : IEquatable<AccountAddress>
     }
 
     /// <summary>
-    /// Gets the address represented as a base58 encoded string.
+    /// Get the address represented as a base58 encoded string.
     /// </summary>
     public string GetString()
     {
@@ -53,7 +53,7 @@ public class AccountAddress : IEquatable<AccountAddress>
     }
 
     /// <summary>
-    /// Gets the address as a length-32 byte array without the version byte prepended.
+    /// Get the address as a length-32 byte array without the version byte prepended.
     /// </summary>
     public byte[] GetBytes()
     {

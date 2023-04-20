@@ -31,7 +31,7 @@ public class Transfer : AccountTransactionPayload<Transfer>
     private byte[] _serializedPayload;
 
     /// <summary>
-    /// Gets the amount to send.
+    /// Get the amount to send.
     /// </summary>
     public MicroCCDAmount GetAmount()
     {
@@ -39,7 +39,7 @@ public class Transfer : AccountTransactionPayload<Transfer>
     }
 
     /// <summary>
-    /// Gets the address of the receiver account to which the amount will be sent.
+    /// Get the address of the receiver account to which the amount will be sent.
     /// </summary>
     public AccountAddress GetReceiver()
     {
@@ -72,7 +72,7 @@ public class Transfer : AccountTransactionPayload<Transfer>
     }
 
     /// <summary>
-    /// Gets the transfer account transaction serialized to the binary format expected by the node.
+    /// Get the transfer account transaction serialized to the binary format expected by the node.
     /// </summary>
     /// <param name="amount">Amount to send.</param>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>

@@ -63,7 +63,7 @@ namespace ConcordiumNetSdk.Types
         }
 
         /// <summary>
-        /// Gets the data as a byte array with the length of the array prepended as a 16-bit unsigned integer in big-endian format.
+        /// Get the data as a byte array with the length of the array prepended as a 16-bit unsigned integer in big-endian format.
         /// </summary>
         public byte[] GetBytes()
         {

@@ -29,7 +29,7 @@ public class ContractAddress
     }
 
     /// <summary>
-    /// Gets the index part of the address of a contract.
+    /// Get the index part of the address of a contract.
     /// </summary>
     public UInt64 GetIndex()
     {
@@ -37,7 +37,7 @@ public class ContractAddress
     }
 
     /// <summary>
-    /// Gets the sub-index part of the address of a contract.
+    /// Get the sub-index part of the address of a contract.
     /// </summary>
     public UInt64 GetSubIndex()
     {

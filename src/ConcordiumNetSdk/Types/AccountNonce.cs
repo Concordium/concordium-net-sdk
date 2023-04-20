@@ -23,7 +23,7 @@ public class AccountNonce : IEquatable<AccountNonce>
     }
 
     /// <summary>
-    /// Gets the nonce.
+    /// Get the nonce.
     /// </summary>
     public ulong GetValue()
     {
@@ -48,7 +48,7 @@ public class AccountNonce : IEquatable<AccountNonce>
     }
 
     /// <summary>
-    /// Gets the address as a length-32 byte array without the version byte prepended.
+    /// Get the address as a length-32 byte array without the version byte prepended.
     /// </summary>
     public byte[] GetBytes()
     {

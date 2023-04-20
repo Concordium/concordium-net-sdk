@@ -24,12 +24,12 @@ public abstract class AccountTransactionPayload<T>
     }
 
     /// <summary>
-    /// Gets the base cost for submitting the transaction payload.
+    /// Get the base cost for submitting the transaction payload.
     /// </summary>
     public abstract ulong GetBaseEnergyCost();
 
     /// <summary>
-    /// Gets the transaction payload in the binary format expected by the node.
+    /// Get the transaction payload in the binary format expected by the node.
     /// </summary>
     public abstract byte[] GetBytes();
 

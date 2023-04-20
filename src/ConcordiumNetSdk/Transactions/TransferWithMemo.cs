@@ -31,7 +31,7 @@ public class TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
     private Memo _memo { get; }
 
     /// <summary>
-    /// Gets the amount to send.
+    /// Get the amount to send.
     /// </summary>
     public MicroCCDAmount GetAmount()
     {
@@ -39,7 +39,7 @@ public class TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
     }
 
     /// <summary>
-    /// Gets the address of the receiver account to which the amount will be sent.
+    /// Get the address of the receiver account to which the amount will be sent.
     /// </summary>
     public AccountAddress GetReceiver()
     {
@@ -47,7 +47,7 @@ public class TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
     }
 
     /// <summary>
-    /// Gets the address of the receiver account to which the amount will be sent.
+    /// Get the address of the receiver account to which the amount will be sent.
     /// </summary>
     public Memo GetMemo()
     {
@@ -89,7 +89,7 @@ public class TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
     }
 
     /// <summary>
-    /// Gets the transfer with memo account transaction serialized to the binary format expected by the node.
+    /// Get the transfer with memo account transaction serialized to the binary format expected by the node.
     /// </summary>
     /// <param name="amount">Amount to send.</param>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
