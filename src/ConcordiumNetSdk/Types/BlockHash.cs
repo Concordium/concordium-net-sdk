@@ -37,6 +37,9 @@ public class BlockHash : Hash
         return new BlockHash(blockHashAsBytes);
     }
 
+    /// <summary>
+    /// Converts the block hash to its corresponding protocol buffer message instance.
+    /// </summary>
     public Concordium.V2.BlockHash ToProto()
     {
         return new Concordium.V2.BlockHash()

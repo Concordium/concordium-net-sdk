@@ -1,4 +1,4 @@
-﻿using System.Buffers.Binary;
+﻿using ConcordiumNetSdk.Helpers;
 
 namespace ConcordiumNetSdk.Types;
 
@@ -48,14 +48,19 @@ public class AccountNonce : IEquatable<AccountNonce>
     }
 
     /// <summary>
-    /// Serializes nonce to byte format.
+    /// Gets the address as a length-32 byte array without the version byte prepended.
     /// </summary>
-    /// <returns><see cref="T:byte[]"/> - serialized nonce in byte format.</returns>
     public byte[] GetBytes()
     {
-        var bytes = new byte[sizeof(UInt64)];
-        BinaryPrimitives.WriteUInt64BigEndian(new Span<byte>(bytes), _value);
-        return bytes;
+        return Serialization.GetBytes((UInt64)_value);
+    }
+
+    /// <summary>
+    /// Converts the account nonce to its corresponding protocol buffer message instance.
+    /// </summary>
+    public Concordium.V2.SequenceNumber ToProto()
+    {
+        return new Concordium.V2.SequenceNumber() { Value = _value };
     }
 
     public bool Equals(AccountNonce? other)
@@ -71,10 +76,5 @@ public class AccountNonce : IEquatable<AccountNonce>
     public override int GetHashCode()
     {
         return _value.GetHashCode();
-    }
-
-    public Concordium.V2.SequenceNumber ToProto()
-    {
-        return new Concordium.V2.SequenceNumber() { Value = _value };
     }
 }

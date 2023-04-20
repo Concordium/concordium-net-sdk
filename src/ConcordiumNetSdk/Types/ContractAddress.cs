@@ -54,6 +54,9 @@ public class ContractAddress
         return new ContractAddress(index, subIndex);
     }
 
+    /// <summary>
+    /// Converts the contract address to its corresponding protocol buffer message instance.
+    /// </summary>
     public Concordium.V2.ContractAddress ToProto()
     {
         return new Concordium.V2.ContractAddress() { Index = _index, Subindex = _subIndex };

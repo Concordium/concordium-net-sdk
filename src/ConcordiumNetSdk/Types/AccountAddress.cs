@@ -101,6 +101,17 @@ public class AccountAddress : IEquatable<AccountAddress>
         }
     }
 
+    /// <summary>
+    /// Converts the account address to its corresponding protocol buffer message instance.
+    /// </summary>
+    public Concordium.V2.AccountAddress ToProto()
+    {
+        return new Concordium.V2.AccountAddress()
+        {
+            Value = Google.Protobuf.ByteString.CopyFrom(this._value)
+        };
+    }
+
     public override bool Equals(object? obj)
     {
         if (ReferenceEquals(null, obj))
@@ -120,13 +131,5 @@ public class AccountAddress : IEquatable<AccountAddress>
     public override int GetHashCode()
     {
         return GetString().GetHashCode();
-    }
-
-    public Concordium.V2.AccountAddress ToProto()
-    {
-        return new Concordium.V2.AccountAddress()
-        {
-            Value = Google.Protobuf.ByteString.CopyFrom(this._value)
-        };
     }
 }

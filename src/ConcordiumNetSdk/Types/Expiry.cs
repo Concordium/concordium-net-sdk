@@ -113,6 +113,9 @@ namespace ConcordiumNetSdk.Types
             return _timestamp.ToString();
         }
 
+        /// <summary>
+        /// Converts the expiration time to its corresponding protocol buffer message instance.
+        /// </summary>
         public Concordium.V2.TransactionTime ToProto()
         {
             return new Concordium.V2.TransactionTime()

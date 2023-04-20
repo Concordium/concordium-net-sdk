@@ -1,6 +1,6 @@
 using AccountAddress = ConcordiumNetSdk.Types.AccountAddress;
 using ConcordiumNetSdk.Types;
-using Concordium.V2;
+using ConcordiumNetSdk.Helpers;
 using System.Buffers.Binary;
 
 namespace ConcordiumNetSdk.Transactions;
@@ -94,12 +94,8 @@ public class AccountTransactionHeader
         using MemoryStream memoryStream = new MemoryStream();
         memoryStream.Write(sender.GetBytes());
         memoryStream.Write(nonce.GetBytes());
-        var maxEnergyCostBytes = new byte[sizeof(UInt64)];
-        BinaryPrimitives.WriteUInt64BigEndian(new Span<byte>(maxEnergyCostBytes), maxEnergyCost);
-        memoryStream.Write(maxEnergyCostBytes);
-        var payloadSizeBytes = new byte[sizeof(UInt32)];
-        BinaryPrimitives.WriteUInt32BigEndian(new Span<byte>(payloadSizeBytes), payloadSize);
-        memoryStream.Write(payloadSizeBytes);
+        memoryStream.Write(Serialization.GetBytes((UInt64)maxEnergyCost));
+        memoryStream.Write(Serialization.GetBytes((UInt32)payloadSize));
         memoryStream.Write(expiry.GetBytes());
         return memoryStream.ToArray();
     }
