@@ -518,11 +518,17 @@ public class Client : IDisposable
             .ResponseStream.ReadAllAsync();
     }
 
+    /// <summary>
+    /// Get next available sequence numbers for updating chain parameters after a given block.
+    /// </summary>
     public NextUpdateSequenceNumbers GetNextUpdateSequenceNumbers(BlockHashInput input)
     {
         return _client.GetNextUpdateSequenceNumbers(input, CreateCallOptions());
     }
 
+    /// <summary>
+    /// Spawn a task that returns the next available sequence numbers for updating chain parameters after a given block.
+    /// </summary>
     public Task<NextUpdateSequenceNumbers> GetNextUpdateSequenceNumbersAsync(BlockHashInput input)
     {
         return _client.GetNextUpdateSequenceNumbersAsync(input, CreateCallOptions()).ResponseAsync;
