@@ -1,62 +1,61 @@
-using System.Buffers.Binary;
-
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Represents the information about a contract address.
+/// A contract address.
 /// </summary>
 public class ContractAddress
 {
-    /// <summary>
-    /// Gets the serialized bytes length.
-    /// </summary>
     public const int BytesLength = 16;
 
-    private ContractAddress(ulong index, ulong subIndex)
-    {
-        Index = index;
-        SubIndex = subIndex;
-    }
-    
     /// <summary>
-    /// Gets or initiates the index.
+    /// The index part of the address of a contract.
     /// </summary>
-    public ulong Index { get; }
+    private UInt64 _index;
 
     /// <summary>
-    /// Gets or initiates the sub index.
+    /// The sub-index part of the address of a contract.
     /// </summary>
-    public ulong SubIndex { get; }
+    public UInt64 _subIndex;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ContractAddress"/> class.
+    /// </summary>
+    /// <param name="index">The contract index.</param>
+    /// <param name="subIndex">The contract sub index.</param>
+    private ContractAddress(UInt64 index, UInt64 subIndex)
+    {
+        _index = index;
+        _subIndex = subIndex;
+    }
+
+    /// <summary>
+    /// Gets the index part of the address of a contract.
+    /// </summary>
+    public UInt64 GetIndex()
+    {
+        return _index;
+    }
+
+    /// <summary>
+    /// Gets the sub-index part of the address of a contract.
+    /// </summary>
+    public UInt64 GetSubIndex()
+    {
+        return _subIndex;
+    }
 
     /// <summary>
     /// Creates an instance of contract address.
     /// </summary>
     /// <param name="index">the index value.</param>
     /// <param name="subIndex">the sub index value.</param>
-    public static ContractAddress Create(ulong index, ulong subIndex)
+    public static ContractAddress Create(UInt64 index, UInt64 subIndex)
     {
         return new ContractAddress(index, subIndex);
     }
-    
-    /// <summary>
-    /// Serializes contract address to byte format.
-    /// </summary>
-    /// <returns><see cref="T:byte[]"/> - serialized contract address in byte format.</returns>
-    public byte[] SerializeToBytes(bool useLittleEndian = false)
-    {
-        byte[] bytes = new byte[BytesLength];
-        Span<byte> buffer = bytes;
-        if (useLittleEndian)
-        {
-            BinaryPrimitives.WriteUInt64LittleEndian(buffer.Slice(0, 8), Convert.ToUInt64(Index));
-            BinaryPrimitives.WriteUInt64LittleEndian(buffer.Slice(8, 8), Convert.ToUInt64(SubIndex));
-        }
-        else
-        {
-            BinaryPrimitives.WriteUInt64BigEndian(buffer.Slice(0, 8), Convert.ToUInt64(Index));
-            BinaryPrimitives.WriteUInt64BigEndian(buffer.Slice(8, 8), Convert.ToUInt64(SubIndex));
-        }
 
-        return bytes;
+    public Concordium.V2.ContractAddress ToProto()
+    {
+        return new Concordium.V2.ContractAddress() { Index = _index, Subindex = _subIndex };
     }
 }

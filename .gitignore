@@ -10,6 +10,9 @@
 *.userosscache
 *.sln.docstates
 
+# Other IDE and tool configuration files
+.config/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -150,6 +153,9 @@ coverage*.info
 # Visual Studio code coverage results
 *.coverage
 *.coveragexml
+
+# Visual studio code folder
+.vscode/
 
 # NCrunch
 _NCrunch_*

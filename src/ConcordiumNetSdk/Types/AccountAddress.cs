@@ -3,23 +3,27 @@ using NBitcoin.DataEncoders;
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Represents a base58 check with version byte 1 encoded account address (with Bitcoin mapping table).
+/// An account address.
 /// </summary>
-public class AccountAddress
+public class AccountAddress : IEquatable<AccountAddress>
 {
     private static readonly Base58CheckEncoder EncoderInstance = new();
-    private const int BytesLength = 32;
+    public const UInt32 BytesLength = 32;
 
+    /// <summary>
+    /// Representation of the account address as a base58 encoded string.
+    /// </summary>
     private readonly string _formatted;
+
+    /// <summary>
+    /// Representation of the account address as a byte array (without the version byte prepended).
+    /// </summary>
     private readonly byte[] _value;
 
-    private AccountAddress(string addressAsBase58String)
-    {
-        _formatted = addressAsBase58String;
-        var decodedBytes = EncoderInstance.DecodeData(addressAsBase58String);
-        _value = decodedBytes.Skip(1).ToArray(); // Removes version byte
-    }
-
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AccountAddress"/> class.
+    /// </summary>
+    /// <param name="addressAsBytes">The address as a sequence of bytes without a version byte prepended.</param>
     private AccountAddress(byte[] addressAsBytes)
     {
         _value = addressAsBytes;
@@ -30,43 +34,61 @@ public class AccountAddress
     }
 
     /// <summary>
-    /// Gets the address as a base58 check encoded string.
+    /// Initializes a new instance of the <see cref="AccountAddress"/> class.
     /// </summary>
-    public string AsString => _formatted;
+    /// <param name="addressAsBase58String">The address as a base58 encoded string.</param>
+    private AccountAddress(string addressAsBase58String)
+    {
+        _formatted = addressAsBase58String;
+        var decodedBytes = EncoderInstance.DecodeData(addressAsBase58String);
+        _value = decodedBytes.Skip(1).ToArray(); // Remove version byte.
+    }
 
     /// <summary>
-    /// Gets the address as a 32 byte array (without leading version byte).
+    /// Gets the address represented as a base58 encoded string.
     /// </summary>
-    public byte[] AsBytes => _value;
+    public string GetString()
+    {
+        return (string)_formatted.Clone();
+    }
 
     /// <summary>
-    /// Creates an instance from a base58 check encoded string representing account address.
+    /// Gets the address as a length-32 byte array without the version byte prepended.
     /// </summary>
-    /// <param name="addressAsBase58String">the account address as base58 check encoded string.</param>
+    public byte[] GetBytes()
+    {
+        return (byte[])_value.Clone();
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AccountAddress"/> class.
+    /// </summary>
+    /// <param name="addressAsBase58String">The address represented as a base58 encoded string.</param>
     public static AccountAddress From(string addressAsBase58String)
     {
         return new AccountAddress(addressAsBase58String);
     }
 
     /// <summary>
-    /// Creates an instance from a 32 bytes representing address (ie. excluding the version byte).
+    /// Creates an instance from a length-32 byte array representing the address (without the version byte prepended).
     /// </summary>
-    /// <param name="addressAsBytes">the account address as 32 bytes.</param>
+    /// <param name="addressAsBytes">The address as a length-32 byte array without the version byte prepended.</param>
     public static AccountAddress From(byte[] addressAsBytes)
     {
-        if (addressAsBytes.Length != BytesLength) throw new ArgumentException($"The account address bytes length must be {BytesLength}.");
+        if (addressAsBytes.Length != BytesLength)
+            throw new ArgumentException($"The account address bytes length must be {BytesLength}.");
         return new AccountAddress(addressAsBytes);
     }
 
     /// <summary>
-    /// Checks if passed string is base58 check encoded address with Bitcoin mapping table.
+    /// Checks if passed string is a base58 encoded address.
     /// </summary>
     /// <param name="addressAsBase58String">the account address as base58 check encoded string.</param>
-    /// <returns><see cref="bool"/> - true or false base on validation result.</returns>
+    /// <returns><c>true<c/> if the input could be decoded as a base58 encoded address and <c>false</c> otherwise.</returns>
     public static bool IsValid(string? addressAsBase58String)
     {
-        if (addressAsBase58String == null) return false;
-
+        if (addressAsBase58String == null)
+            return false;
         try
         {
             EncoderInstance.DecodeData(addressAsBase58String);
@@ -79,31 +101,32 @@ public class AccountAddress
         }
     }
 
-    public override string ToString()
-    {
-        return _formatted;
-    }
-
     public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != GetType()) return false;
-        return AsString == ((AccountAddress) obj).AsString;
+        if (ReferenceEquals(null, obj))
+            return false;
+        if (ReferenceEquals(this, obj))
+            return true;
+        if (obj.GetType() != GetType())
+            return false;
+        return GetString() == ((AccountAddress)obj).GetString();
+    }
+
+    public bool Equals(AccountAddress? accountAddress)
+    {
+        return this.Equals((Object?)accountAddress);
     }
 
     public override int GetHashCode()
     {
-        return AsString.GetHashCode();
+        return GetString().GetHashCode();
     }
 
-    public static bool operator ==(AccountAddress? left, AccountAddress? right)
+    public Concordium.V2.AccountAddress ToProto()
     {
-        return Equals(left, right);
-    }
-
-    public static bool operator !=(AccountAddress? left, AccountAddress? right)
-    {
-        return !Equals(left, right);
+        return new Concordium.V2.AccountAddress()
+        {
+            Value = Google.Protobuf.ByteString.CopyFrom(this._value)
+        };
     }
 }

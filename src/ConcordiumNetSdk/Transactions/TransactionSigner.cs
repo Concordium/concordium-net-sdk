@@ -1,31 +1,50 @@
-﻿using ConcordiumNetSdk.SignKey;
-using Index = ConcordiumNetSdk.Types.Index;
+﻿using System.Collections.Immutable;
+using ConcordiumNetSdk.SignKey;
 
 namespace ConcordiumNetSdk.Transactions;
 
-// todo: implement tests
+/// <summary>
+/// Dictionary based implementation of <see cref="ITransactionSigner"/>.
+/// </summary>
 public class TransactionSigner : ITransactionSigner
 {
-    private const int MaxCredentialIndexes = 255;
-    private const int MaxKeyIndexes = 255;
-    
-    private readonly Dictionary<Index, Dictionary<Index, ISigner>> _signers = new();
+    /// <summary>
+    /// Internal representation of the mapping of <see cref="ITransactionSigner"/>.
+    /// </summary>
+    private readonly Dictionary<byte, Dictionary<byte, ISigner>> _signers = new();
 
-    public Dictionary<Index, Dictionary<Index, ISigner>> SignerEntries => _signers;
-
-    public uint SignatureCount => (uint) _signers.Values.SelectMany(x => x.Values).Count();
-
-    public void AddSignerEntry(Index credentialIndex, Index keyIndex, ISigner signer)
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TransactionSigner"/> class.
+    /// </summary>
+    public TransactionSigner()
     {
-        if (_signers.Count > MaxCredentialIndexes) throw new InvalidOperationException($"The maximum length of the credential indexes is {MaxCredentialIndexes}.");
+        _signers = new Dictionary<byte, Dictionary<byte, ISigner>>();
+    }
 
-        if (!_signers.ContainsKey(credentialIndex)) 
+    public byte GetSignatureCount()
+    {
+        return (byte)_signers.Values.SelectMany(x => x.Values).Count();
+    }
+
+    public ImmutableDictionary<byte, ImmutableDictionary<byte, ISigner>> GetSignerEntries()
+    {
+        return _signers
+            .Select(
+                x =>
+                    new KeyValuePair<byte, ImmutableDictionary<byte, ISigner>>(
+                        x.Key,
+                        x.Value.ToImmutableDictionary()
+                    )
+            )
+            .ToImmutableDictionary();
+    }
+
+    public void AddSignerEntry(byte credentialIndex, byte keyIndex, ISigner signer)
+    {
+        if (!_signers.ContainsKey(credentialIndex))
         {
-            _signers.Add(credentialIndex, new Dictionary<Index, ISigner>());
+            _signers.Add(credentialIndex, new Dictionary<byte, ISigner>());
         }
-
-        if (_signers[credentialIndex].Count > MaxKeyIndexes) throw new InvalidOperationException($"The maximum length of the key indexes is {MaxKeyIndexes}.");
-
         _signers[credentialIndex].Add(keyIndex, signer);
     }
 }

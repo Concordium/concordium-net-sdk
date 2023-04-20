@@ -1,58 +1,70 @@
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Represents a base16 encoded hash.
+/// Represents a hash.
 /// </summary>
 public abstract class Hash
 {
     private const int StringLength = 64;
     public const int BytesLength = 32;
 
+    /// <summary>
+    /// A lowercase length-64 hex encoded string representing the hash.
+    /// </summary>
     private readonly string _formatted;
+
+    /// <summary>
+    /// A length-32 byte array representing a hash.
+    /// </summary>
     private readonly byte[] _value;
 
     /// <summary>
-    /// Creates an instance from a base16 encoded string representing hash (64 characters).
+    /// Initializes a new instance of the <see cref="Hash"/> class.
     /// </summary>
-    /// <param name="hashAsBase16String">the hash as base16 encoded string.</param>
+    /// <param name="hashAsBase16String">A hash represented as a length-64 hex encoded string.</param>
     protected Hash(string hashAsBase16String)
     {
-        if (hashAsBase16String.Length != StringLength) throw new ArgumentException($"The hash base16 encoded string length must be {StringLength}.");
+        if (hashAsBase16String.Length != StringLength)
+            throw new ArgumentException(
+                $"The provided hex string must be {StringLength} characters long."
+            );
         _value = Convert.FromHexString(hashAsBase16String);
         _formatted = hashAsBase16String.ToLowerInvariant();
     }
 
     /// <summary>
-    /// Creates an instance from a 32 bytes representing hash.
+    /// Initializes a new instance of the <see cref="Hash"/> class.
     /// </summary>
-    /// <param name="hashAsBytes">the hash as 32 bytes.</param>
+    /// <param name="hashAsBytes">A hash represented as a length-32 byte array.</param>
     protected Hash(byte[] hashAsBytes)
     {
-        if (hashAsBytes.Length != BytesLength) throw new ArgumentException($"The hash bytes length must be {BytesLength}.");
+        if (hashAsBytes.Length != BytesLength)
+            throw new ArgumentException(
+                $"The provided byte array must be {BytesLength} bytes long."
+            );
         _value = hashAsBytes;
         _formatted = Convert.ToHexString(hashAsBytes).ToLowerInvariant();
     }
 
     /// <summary>
-    /// Gets the hash as a base16 encoded string.
+    /// Gets the hash as a length-32 byte array.
     /// </summary>
-    public string AsString => _formatted;
+    public byte[] GetBytes()
+    {
+        return (byte[])_value.Clone();
+    }
 
     /// <summary>
-    /// Gets the hash as a 32 byte array.
+    /// Gets the hash as a length-64 hex encoded string.
     /// </summary>
-    public byte[] AsBytes => _value;
-
     public override string ToString()
     {
-        return _formatted;
+        return (string)_formatted.Clone();
     }
 
     public override bool Equals(object? obj)
     {
-        return obj is Hash other
-               && GetType() == obj.GetType()
-               && _formatted == other._formatted;
+        return obj is Hash other && GetType() == obj.GetType() && _formatted == other._formatted;
     }
 
     public override int GetHashCode()

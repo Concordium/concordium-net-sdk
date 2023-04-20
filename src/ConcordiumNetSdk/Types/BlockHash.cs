@@ -1,33 +1,47 @@
 ﻿namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Represents a base16 encoded hash of a block.
+/// A block hash.
 /// </summary>
 public class BlockHash : Hash
 {
-    private BlockHash(string blockHashAsBase16String) : base(blockHashAsBase16String)
-    {
-    }
-
-    private BlockHash(byte[] blockHashAsBytes) : base(blockHashAsBytes)
-    {
-    }
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BlockHash"/> class.
+    /// </summary>
+    /// <param name="blockHashAsBase16String">A block hash represented as a length-64 hex encoded string.</param>
+    private BlockHash(string blockHashAsBase16String)
+        : base(blockHashAsBase16String) { }
 
     /// <summary>
-    /// Creates an instance from a base16 encoded string representing block hash (64 characters).
+    /// Initializes a new instance of the <see cref="BlockHash"/> class.
     /// </summary>
-    /// <param name="blockHashAsBase16String">the block hash as base16 encoded string.</param>  
+    /// <param name="blockHashAsBytes">A block hash represented as a length-32 byte array.</param>
+    private BlockHash(byte[] blockHashAsBytes)
+        : base(blockHashAsBytes) { }
+
+    /// <summary>
+    /// Creates an instance from a block hash represented by a length-64 hex encoded string.
+    /// </summary>
+    /// <param name="blockHashAsBase16String">A block hash represented as a length-64 hex encoded string.</param>
     public static BlockHash From(string blockHashAsBase16String)
     {
         return new BlockHash(blockHashAsBase16String);
     }
 
     /// <summary>
-    /// Creates an instance from a 32 bytes representing block hash.
+    /// Creates an instance from a block hash represented represented by a length-32 byte array.
     /// </summary>
-    /// <param name="blockHashAsBytes">the block hash as 32 bytes.</param>
+    /// <param name="blockHashAsBytes">A block hash represented as a length-32 byte array.</param>
     public static BlockHash From(byte[] blockHashAsBytes)
     {
         return new BlockHash(blockHashAsBytes);
+    }
+
+    public Concordium.V2.BlockHash ToProto()
+    {
+        return new Concordium.V2.BlockHash()
+        {
+            Value = Google.Protobuf.ByteString.CopyFrom(this.GetBytes())
+        };
     }
 }

@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Grpc.Net.Client" Version="2.45.0" />
+    <ProjectReference Include="..\ConcordiumNetSdk\ConcordiumNetSdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConcordiumNetSdk\ConcordiumNetSdk.csproj" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.52.0" />
   </ItemGroup>
 
 </Project>

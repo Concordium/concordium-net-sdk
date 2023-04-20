@@ -1,9 +1,7 @@
 ﻿namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// The specific numeric values are the values used for binary serialization when sending transactions.
-/// Reference: At the time of writing this they are defined in "Payload"
-/// (https://github.com/Concordium/concordium-base/blob/a50612e023da79cb625cd36c52703af6ed483738/haskell-src/Concordium/Types/Execution.hs#L273)
+/// Values used for binary serialization of transactions.
 /// </summary>
 public enum AccountTransactionType : byte
 {
