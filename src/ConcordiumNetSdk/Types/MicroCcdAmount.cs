@@ -1,6 +1,4 @@
-﻿using System.Buffers.Binary;
-
-namespace ConcordiumNetSdk.Types;
+﻿namespace ConcordiumNetSdk.Types;
 
 /// <summary>
 /// Represents an amount in µCCD.
@@ -13,7 +11,7 @@ public readonly struct MicroCCDAmount : IEquatable<MicroCCDAmount>
     /// <summary>
     /// Conversion factor, 1_000_000 µCCD = 1 CCD.
     /// </summary>
-    private const UInt64 _oneMillion = 1_000_000;
+    private const UInt64 ONE_MILLION = 1_000_000;
 
     /// <summary>
     /// The amount in µCCD.
@@ -50,7 +48,7 @@ public readonly struct MicroCCDAmount : IEquatable<MicroCCDAmount>
     /// </summary>
     public string GetFormattedCcd()
     {
-        return $"{_microCcd / (decimal)_oneMillion}";
+        return $"{_microCcd / (decimal)ONE_MILLION}";
     }
 
     /// <summary>
@@ -66,9 +64,65 @@ public readonly struct MicroCCDAmount : IEquatable<MicroCCDAmount>
     /// Creates an instance from a CCD value.
     /// </summary>
     /// <param name="ccd">the CCD value.</param>
+    /// <exception cref="ArgumentException">If the result does not fit in <see cref="UInt64"/></exception>
     public static MicroCCDAmount FromCcd(UInt64 ccd)
     {
-        return new MicroCCDAmount(ccd * _oneMillion);
+        try
+        {
+            return new MicroCCDAmount(checked(ccd * ONE_MILLION));
+        }
+        catch (OverflowException)
+        {
+            throw new ArgumentException(
+                $"The result of {ccd} CCD * {ONE_MILLION} does not fit in UInt64."
+            );
+        }
+    }
+
+    /// <summary>
+    /// Creates an instance with the zero amount.
+    /// </summary>
+    public static MicroCCDAmount Zero()
+    {
+        return new MicroCCDAmount(0);
+    }
+
+    /// <summary>
+    /// Add µCCD amounts.
+    /// </summary>
+    /// <exception cref="ArgumentException">If the result odoes not fit in <see cref="UInt64"/></exception>
+    public static MicroCCDAmount operator +(MicroCCDAmount a, MicroCCDAmount b)
+    {
+        try
+        {
+            UInt64 newAmount = checked(a.GetMicroCcdValue() + b.GetMicroCcdValue());
+            return MicroCCDAmount.FromCcd(newAmount);
+        }
+        catch (OverflowException)
+        {
+            throw new ArgumentException(
+                $"The result of {a.GetMicroCcdValue()} + {b.GetMicroCcdValue()} does not fit in UInt64."
+            );
+        }
+    }
+
+    /// <summary>
+    /// Subtract µCCD amounts.
+    /// </summary>
+    /// <exception cref="ArgumentException">If the result does not fit in <see cref="UInt64"/></exception>
+    public static MicroCCDAmount operator -(MicroCCDAmount a, MicroCCDAmount b)
+    {
+        try
+        {
+            UInt64 newAmount = checked(a.GetMicroCcdValue() - b.GetMicroCcdValue());
+            return MicroCCDAmount.FromCcd(newAmount);
+        }
+        catch (OverflowException)
+        {
+            throw new ArgumentException(
+                $"The result of {a.GetMicroCcdValue()} + {b.GetMicroCcdValue()} does not fit in UInt64."
+            );
+        }
     }
 
     public bool Equals(MicroCCDAmount other)
