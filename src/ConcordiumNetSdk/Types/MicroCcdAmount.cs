@@ -52,18 +52,18 @@ public readonly struct MicroCCDAmount : IEquatable<MicroCCDAmount>
     }
 
     /// <summary>
-    /// Creates an instance from a µCCD amount.
+    /// Creates an instance from a µCCD amount represented by an integer.
     /// </summary>
-    /// <param name="microCcd">The amount in µCCD.</param>
+    /// <param name="microCcd">µCCD amount represented by an integer.</param>
     public static MicroCCDAmount FromMicroCcd(UInt64 microCcd)
     {
         return new MicroCCDAmount(microCcd);
     }
 
     /// <summary>
-    /// Creates an instance from a CCD value.
+    /// Creates an instance from a CCD amount represented by an integer.
     /// </summary>
-    /// <param name="ccd">the CCD value.</param>
+    /// <param name="ccd">CCD amount represented by an integer.</param>
     /// <exception cref="ArgumentException">If the result does not fit in <see cref="UInt64"/></exception>
     public static MicroCCDAmount FromCcd(UInt64 ccd)
     {
