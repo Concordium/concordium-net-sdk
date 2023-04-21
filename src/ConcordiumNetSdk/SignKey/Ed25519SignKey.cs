@@ -43,7 +43,7 @@ public record Ed25519SignKey : ISigner
     /// <summary>
     /// Get the ed25519 sign key as a length-32 hex encoded string.
     /// </summary>
-    public string GetString()
+    public override string ToString()
     {
         return (string)_formatted.Clone();
     }

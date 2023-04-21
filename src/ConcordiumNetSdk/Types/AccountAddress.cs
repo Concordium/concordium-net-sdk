@@ -47,7 +47,7 @@ public class AccountAddress : IEquatable<AccountAddress>
     /// <summary>
     /// Get the address represented as a base58 encoded string.
     /// </summary>
-    public string GetString()
+    public override string ToString()
     {
         return (string)_formatted.Clone();
     }
@@ -120,7 +120,7 @@ public class AccountAddress : IEquatable<AccountAddress>
             return true;
         if (obj.GetType() != GetType())
             return false;
-        return GetString() == ((AccountAddress)obj).GetString();
+        return ToString() == ((AccountAddress)obj).ToString();
     }
 
     public bool Equals(AccountAddress? accountAddress)
@@ -130,6 +130,6 @@ public class AccountAddress : IEquatable<AccountAddress>
 
     public override int GetHashCode()
     {
-        return GetString().GetHashCode();
+        return ToString().GetHashCode();
     }
 }
