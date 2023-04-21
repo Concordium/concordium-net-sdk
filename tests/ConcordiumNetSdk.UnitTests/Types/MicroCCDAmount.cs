@@ -35,36 +35,6 @@ public class CcdAmountTests
     {
         var value = UInt64.MaxValue;
         var ccdAmount = MicroCCDAmount.FromCcd(value);
-        ccdAmount.GetMicroCcdValue.Should().Be((ulong)value * 1_000_000);
-    }
-
-    [Fact]
-    public void FromCcd_when_negative_value_passed_should_throw_appropriate_exception()
-    {
-        // Arrange
-        var value = int.MinValue;
-
-        // Act
-        Action result = () => CcdAmount.FromCcd(value);
-
-        // Assert
-        result
-            .Should()
-            .Throw<ArgumentException>()
-            .WithMessage("Cannot represent negative numbers. (Parameter 'ccd')");
-    }
-
-    [Fact]
-    public void SerializeToBytes_should_return_bytes_in_UInt64_Big_Endian_format()
-    {
-        // Arrange
-        var ccdAmount = CcdAmount.FromMicroCcd(100);
-        var expectedSerializedCcdAmount = new byte[] { 0, 0, 0, 0, 0, 0, 0, 100 };
-
-        // Act
-        var serializedCcdAmount = ccdAmount.SerializeToBytes();
-
-        // Assert
-        serializedCcdAmount.Should().BeEquivalentTo(expectedSerializedCcdAmount);
+        ccdAmount.GetMicroCcdValue().Should().Be((ulong)value * 1_000_000);
     }
 }

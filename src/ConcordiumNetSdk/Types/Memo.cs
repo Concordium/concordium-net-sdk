@@ -1,4 +1,3 @@
-using System.Buffers.Binary;
 using System.Formats.Cbor;
 
 using ConcordiumNetSdk.Helpers;
@@ -7,7 +6,7 @@ namespace ConcordiumNetSdk.Types;
 
 /// <summary>
 /// Memo to be registered on-chain with the <see cref="TransferWithMemo"/> account transaction.
-/// Convention is to encode a text message as CBOR, but this is not enforced.
+/// The memo can be any data which is at most <see cref="MaxLength"/> bytes, but convention is to encode a text message as CBOR.
 /// </summary>
 public class Memo
 {
@@ -21,18 +20,26 @@ public class Memo
     /// <summary>
     /// Initializes a new instance of the <see cref="Memo"/> class.
     /// </summary>
-    /// <param name="bytes">A hash represented as a length-64 hex encoded string.</param>
+    /// <param name="bytes">A memo represented by at most <see cref="MaxLength"/> bytes.</param>
     private Memo(byte[] bytes)
     {
         _value = bytes;
     }
 
+    /// <summary>
+    /// Creates an instance from hex encoded string.
+    /// </summary>
+    /// <param name="hexString">The memo to be registered on-chain represented as a hex encoded string.</param>
     public static Memo FromHex(string hexString)
     {
         var value = Convert.FromHexString(hexString);
         return From(value);
     }
 
+    /// <summary>
+    /// Creates an instance from a <see cref="string"/> whose CBOR encoding will be used for the memo data.
+    /// </summary>
+    /// <param name="text">The memo represented as a <see cref="string"/> whose CBOR encoding will be used for the memo data.</param>
     public static Memo FromText(string text)
     {
         var encoder = new CborWriter();
@@ -58,7 +65,7 @@ public class Memo
     /// <summary>
     /// Try to decode the memo as a single CBOR encoded string.
     /// </summary>
-    /// <returns>A <see cref="string"> corresponding to the decoded memo if it contained a single CBOR encoded string, and <c>null</c>  otherwise.</returns>
+    /// <returns>A <see cref="string"> corresponding to the decoded memo if it contained a single CBOR encoded string, and <c>null</c> otherwise.</returns>
     public string? TryCborDecodeToText()
     {
         var encoder = new CborReader(_value);

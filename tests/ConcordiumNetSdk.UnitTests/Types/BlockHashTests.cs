@@ -126,7 +126,7 @@ public class BlockHashTests
         var expectedBlockHashAsBytes = Convert.FromHexString(blockHashAsBase16String);
 
         // Act
-        var blockHashAsBytes = blockHash.AsBytes;
+        var blockHashAsBytes = blockHash.GetBytes();
 
         // Assert
         blockHashAsBytes.Should().BeEquivalentTo(expectedBlockHashAsBytes);
