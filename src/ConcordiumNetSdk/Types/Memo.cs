@@ -63,7 +63,7 @@ public readonly struct Memo : IEquatable<Memo>
             throw new ArgumentException(
                 $"Size of a memo is not allowed to exceed {MaxLength} bytes."
             );
-        return new Memo(memoAsBytes);
+        return new Memo((byte[])memoAsBytes.Clone());
     }
 
     /// <summary>

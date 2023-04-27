@@ -55,8 +55,7 @@ public readonly struct Data
         {
             throw new ArgumentException($"Size of data cannot exceed {MaxLength} bytes");
         }
-
-        return new Data(data);
+        return new Data((byte[])data.Clone());
     }
 
     /// <summary>

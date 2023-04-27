@@ -65,7 +65,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     {
         if (addressAsBytes.Length != BytesLength)
             throw new ArgumentException($"The account address bytes length must be {BytesLength}.");
-        return new AccountAddress(addressAsBytes);
+        return new AccountAddress((byte[])addressAsBytes.Clone());
     }
 
     /// <summary>

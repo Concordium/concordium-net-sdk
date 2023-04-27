@@ -26,7 +26,7 @@ public class AccountTransactionSignature
     /// <summary>
     /// Internal representation of the signature. This is a map from account credential indices to account signature maps.
     /// </summary>
-    public readonly ImmutableDictionary<AccountCredentialIndex, AccountSignatureMap> signature;
+    public readonly ImmutableDictionary<AccountCredentialIndex, AccountSignatureMap> signatureMap;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountTransactionSignature"/> class.
@@ -49,7 +49,7 @@ public class AccountTransactionSignature
             }
             accountTransactionSignature.Add(m.Key, new AccountSignatureMap(accountSignatureMap));
         }
-        this.signature = accountTransactionSignature.ToImmutableDictionary();
+        this.signatureMap = accountTransactionSignature.ToImmutableDictionary();
     }
 
     /// <summary>
@@ -58,7 +58,7 @@ public class AccountTransactionSignature
     public Concordium.V2.AccountTransactionSignature ToProto()
     {
         var accountTransactionSignature = new Concordium.V2.AccountTransactionSignature();
-        signature
+        signatureMap
             .ToList()
             .ForEach(x => accountTransactionSignature.Signatures.Add(x.Key, x.Value.ToProto()));
         return accountTransactionSignature;

@@ -21,17 +21,17 @@ public record SignedAccountTransaction<T>
     /// <summary>
     /// Header of the signed account transaction.
     /// </summary>
-    private readonly AccountTransactionHeader _header;
+    public readonly AccountTransactionHeader Header;
 
     /// <summary>
     /// Payload of the signed account transaction.
     /// </summary>
-    private readonly AccountTransactionPayload<T> _payload;
+    public readonly AccountTransactionPayload<T> Payload;
 
     /// <summary>
     /// Signature of the signed account transaction.
     /// </summary>
-    private readonly AccountTransactionSignature _signature;
+    public readonly AccountTransactionSignature Signature;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SignedAccountTransaction"/> class.
@@ -45,9 +45,9 @@ public record SignedAccountTransaction<T>
         AccountTransactionSignature signature
     )
     {
-        this._header = header;
-        this._payload = payload;
-        this._signature = signature;
+        Header = header;
+        Payload = payload;
+        Signature = signature;
     }
 
     /// <summary>
@@ -105,7 +105,7 @@ public record SignedAccountTransaction<T>
     /// <param name="txSpecificCost">The transaction specific cost.</param>
     /// <param name="headerSize">The size of the header in bytes.</param>
     /// <param name="payloadSize">The size of the payload in bytes.</param>
-    private static ulong CalculateEnergyCost(
+    public static ulong CalculateEnergyCost(
         UInt32 signatureCount,
         UInt64 txSpecificCost,
         UInt32 headerSize,
@@ -127,9 +127,9 @@ public record SignedAccountTransaction<T>
     {
         return new AccountTransaction()
         {
-            Header = _header.ToProto(),
-            Payload = _payload.ToProto(),
-            Signature = _signature.ToProto(),
+            Header = Header.ToProto(),
+            Payload = Payload.ToProto(),
+            Signature = Signature.ToProto(),
         };
     }
 

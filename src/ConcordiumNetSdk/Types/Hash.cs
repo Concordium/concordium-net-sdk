@@ -35,7 +35,7 @@ public abstract record Hash : IEquatable<Hash>
             throw new ArgumentException(
                 $"The provided byte array must be {BytesLength} bytes long."
             );
-        _value = hashAsBytes;
+        _value = (byte[])hashAsBytes.Clone();
     }
 
     /// <summary>

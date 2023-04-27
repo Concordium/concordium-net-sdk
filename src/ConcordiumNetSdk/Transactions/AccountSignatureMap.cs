@@ -17,7 +17,7 @@ public class AccountSignatureMap
     /// <summary>
     /// Internal representation of the map.
     /// </summary>
-    private ImmutableDictionary<AccountKeyIndex, byte[]> _signatures;
+    public readonly ImmutableDictionary<AccountKeyIndex, byte[]> Signatures;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountSignatureMap"/> class.
@@ -37,7 +37,7 @@ public class AccountSignatureMap
                 $"Signature should be {Ed25519SignKey.SignatureBytesLength} bytes."
             );
         }
-        this._signatures = signatures.ToImmutableDictionary();
+        this.Signatures = signatures.ToImmutableDictionary();
     }
 
     /// <summary>
@@ -46,7 +46,7 @@ public class AccountSignatureMap
     public Concordium.V2.AccountSignatureMap ToProto()
     {
         var accountSignatureMap = new Concordium.V2.AccountSignatureMap();
-        foreach (var s in this._signatures)
+        foreach (var s in this.Signatures)
         {
             accountSignatureMap.Signatures.Add(
                 s.Key,
