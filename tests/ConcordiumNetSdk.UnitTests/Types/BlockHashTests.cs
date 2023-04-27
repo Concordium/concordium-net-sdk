@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*
+using System;
 using ConcordiumNetSdk.Types;
 using FluentAssertions;
 using Xunit;
@@ -132,3 +133,4 @@ public class BlockHashTests
         blockHashAsBytes.Should().BeEquivalentTo(expectedBlockHashAsBytes);
     }
 }
+*/

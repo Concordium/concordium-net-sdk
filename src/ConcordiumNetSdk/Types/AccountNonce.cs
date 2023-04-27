@@ -5,8 +5,8 @@ namespace ConcordiumNetSdk.Types;
 /// <summary>
 /// Represents an account sequence number.
 ///
-/// The account sequence number is a 64-bit integer specific to an account and used
-/// when submitting account transactions for that account to the node. The account
+/// The account sequence number is a 64-bit unsigned integer specific to an account
+/// and used when submitting account transactions for that account to the node. The account
 /// sequence number is maintained as on-chain state and is incremented with each finalized
 /// transaction. The next sequence number to be used in a transaction can be queried
 /// with <see cref="Client.GetNextAccountSequenceNumber"> or

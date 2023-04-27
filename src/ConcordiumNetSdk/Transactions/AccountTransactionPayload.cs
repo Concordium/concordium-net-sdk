@@ -3,7 +3,7 @@ using ConcordiumNetSdk.Types;
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// Models the payload of account transaction.
+/// Represents the payload of account transaction.
 ///
 /// Inheriting records should implement data specific to the transaction they
 /// model as well as helpers for constructing serialized transaction payloads

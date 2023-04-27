@@ -10,99 +10,134 @@ namespace ConcordiumNetSdk.UnitTests.Types;
 public class AccountAddressTests
 {
     [Fact]
-    public void From_when_valid_string_value_passed_should_create_correct_instance()
+    public void Same_Addresses_AreEqual()
     {
-        // Arrange
         var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
+        var accountAddressA = AccountAddress.From(addressAsBase58String);
+        var accountAddressB = AccountAddress.From(addressAsBase58String);
+        Assert.Equal(accountAddressA, accountAddressB);
+    }
 
-        // Act
+    [Fact]
+    public void Different_Addresses_AreNotEqual()
+    {
+        var addressAsBase58StringA = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
+        var addressAsBase58StringB = "3QuZ47NkUk5icdDSvnfX8HiJzCnSRjzi6KwGEmqgQ7hCXNBTWN";
+        var accountAddressA = AccountAddress.From(addressAsBase58StringA);
+        var accountAddressB = AccountAddress.From(addressAsBase58StringB);
+        Assert.NotEqual(accountAddressA, accountAddressB);
+    }
+
+    [Fact]
+    public void From_ValidString_ToString_AreEqual()
+    {
+        var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
         var accountAddress = AccountAddress.From(addressAsBase58String);
-
-        // Assert
-        accountAddress.AsString.Should().Be(addressAsBase58String);
+        accountAddress.ToString().Should().Be(addressAsBase58String);
     }
 
     [Theory]
     [InlineData("3XSLuJcX")]
     [InlineData("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")]
     [InlineData("3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9Ppp")]
-    public void From_when_invalid_string_value_passed_should_throw_appropriate_exception(string invalidAddressAsBase58String)
+    [InlineData("æøå")]
+    public void From_InvalidString_ThrowsException(string invalidAddressAsBase58String)
     {
-        // Arrange
-
-        // Act
         Action result = () => AccountAddress.From(invalidAddressAsBase58String);
-
-        // Assert
-        result.Should().Throw<FormatException>().WithMessage("Invalid hash of the base 58 string");
+        result.Should().Throw<FormatException>();
     }
 
     [Fact]
-    public void From_when_valid_bytes_value_passed_should_create_correct_instance()
+    public void From_ValidBytes_ToString_ReturnsCorrectValue()
     {
-        // Arrange
         var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
-        var addressAsBytes = new Base58CheckEncoder().DecodeData(addressAsBase58String).Skip(1).ToArray(); // skip version byte
-
-        // Act
+        var addressAsBytes = new Base58CheckEncoder()
+            .DecodeData(addressAsBase58String)
+            .Skip(1) // Remove version byte.
+            .ToArray();
         var accountAddress = AccountAddress.From(addressAsBytes);
-
-        // Assert
-        accountAddress.AsString.Should().Be(addressAsBase58String);
+        accountAddress.ToString().Should().Be(addressAsBase58String);
     }
 
     [Fact]
-    public void From_when_bytes_value_length_is_too_short_should_throw_appropriate_exception()
+    public void From_InvalidBytes_TooShort_ThrowsException()
     {
-        // Arrange
         var invalidAddressAsBytes = new byte[31];
-
-        // Act
         Action result = () => AccountAddress.From(invalidAddressAsBytes);
-
-        // Assert
-        result.Should().Throw<ArgumentException>().WithMessage("The account address bytes length must be 32.");
+        result.Should().Throw<ArgumentException>();
     }
 
     [Fact]
-    public void From_when_bytes_value_length_is_too_long_should_throw_appropriate_exception()
+    public void From_InvalidBytes_TooLong_ThrowsException()
     {
-        // Arrange
         var invalidAddressAsBytes = new byte[33];
-
-        // Act
         Action result = () => AccountAddress.From(invalidAddressAsBytes);
-
-        // Assert
-        result.Should().Throw<ArgumentException>().WithMessage("The account address bytes length must be 32.");
+        result.Should().Throw<ArgumentException>();
     }
 
     [Fact]
-    public void AsString_should_return_correct_data()
+    public void GetBytes_ReturnsCorrectValue()
     {
-        // Arrange
-        var expectedAddressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
-        var address = AccountAddress.From(expectedAddressAsBase58String);
-
-        // Act
-        var addressAsBase58String = address.AsString;
-
-        // Assert
-        addressAsBase58String.Should().BeEquivalentTo(expectedAddressAsBase58String);
-    }
-
-    [Fact]
-    public void AsBytes_should_return_correct_data()
-    {
-        // Arrange
         var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
         var address = AccountAddress.From(addressAsBase58String);
-        var expectedAddressAsBytes = new Base58CheckEncoder().DecodeData(addressAsBase58String).Skip(1).ToArray();
+        var expectedAddressAsBytes = new Base58CheckEncoder()
+            .DecodeData(addressAsBase58String)
+            .Skip(1) // Remove version byte.
+            .ToArray();
+        var addressAsBytes = address.GetBytes();
+        addressAsBytes.Should().Equal(expectedAddressAsBytes);
+    }
 
-        // Act
-        var addressAsBytes = address.AsBytes;
+    [Theory]
+    [InlineData(0, new Byte[] { 0, 0, 0 })]
+    [InlineData(1, new Byte[] { 0, 0, 1 })]
+    [InlineData(16777215, new Byte[] { 255, 255, 255 })]
+    public void GetNthAlias_ValidAlias_ReturnsCorrectValue(UInt32 alias, byte[] aliasByteValue)
+    {
+        var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
+        var address = AccountAddress.From(addressAsBase58String);
+        var firstAliasBytes = address.GetBytes().Take(29).Concat(aliasByteValue).ToArray();
+        address.GetNthAlias(alias).GetBytes().Should().Equal(firstAliasBytes);
+    }
 
-        // Assert
-        addressAsBytes.Should().BeEquivalentTo(expectedAddressAsBytes);
+    [Theory]
+    [InlineData(16777216)]
+    [InlineData(19777215)]
+    public void GetNthAlias_OutOfRangeAlias_ThrowsException(UInt32 alias)
+    {
+        var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
+        var address = AccountAddress.From(addressAsBase58String);
+        Action result = () => address.GetNthAlias(alias);
+        result.Should().Throw<ArgumentOutOfRangeException>();
+    }
+
+    [Fact]
+    public void IsAliasOf_DifferentAddresses_SameAliasValue_ReturnsFalse()
+    {
+        var addressAsBase58StringA = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
+        var addressAsBase58StringB = "3QuZ47NkUk5icdDSvnfX8HiJzCnSRjzi6KwGEmqgQ7hCXNBTWN";
+        var aliasA = AccountAddress.From(addressAsBase58StringA).GetNthAlias(0);
+        var aliasB = AccountAddress.From(addressAsBase58StringB).GetNthAlias(0);
+        Assert.False(aliasA.IsAliasOf(aliasB));
+    }
+
+    [Fact]
+    public void IsAliasOf_SameAddress_DifferentAliasValue_ReturnsTrue()
+    {
+        var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
+        var address = AccountAddress.From(addressAsBase58String);
+        var aliasA = address.GetNthAlias(0);
+        var aliasB = address.GetNthAlias(1);
+        Assert.True(aliasA.IsAliasOf(aliasB));
+    }
+
+    [Fact]
+    public void IsAliasOf_SameAddress_SameAliasValue_ReturnsTrue()
+    {
+        var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
+        var address = AccountAddress.From(addressAsBase58String);
+        var aliasA = address.GetNthAlias(0);
+        var aliasB = address.GetNthAlias(0);
+        Assert.True(aliasA.IsAliasOf(aliasB));
     }
 }

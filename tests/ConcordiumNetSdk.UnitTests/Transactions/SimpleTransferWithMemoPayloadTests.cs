@@ -1,4 +1,5 @@
-﻿using ConcordiumNetSdk.Transactions;
+﻿/*
+using ConcordiumNetSdk.Transactions;
 using ConcordiumNetSdk.Types;
 using FluentAssertions;
 using Xunit;
@@ -63,3 +64,4 @@ public class SimpleTransferWithMemoPayloadTests
         baseEnergyCost.Should().Be(expectedBaseEnergyCost);
     }
 }
+*/

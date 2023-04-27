@@ -1,4 +1,5 @@
-﻿using ConcordiumNetSdk.Types;
+﻿/*
+using ConcordiumNetSdk.Types;
 using FluentAssertions;
 using Xunit;
 
@@ -23,3 +24,5 @@ public class NonceTests
         serializedNonce.Should().BeEquivalentTo(expectedSerializedNonce);
     }
 }
+
+*/

@@ -11,6 +11,9 @@ namespace ConcordiumNetSdk.Types;
 public readonly struct AccountAddress : IEquatable<AccountAddress>
 {
     public const UInt32 BytesLength = 32;
+
+    private const byte VersionByte = 1;
+
     private static readonly Base58CheckEncoder EncoderInstance = new();
 
     /// <summary>
@@ -32,7 +35,8 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     /// </summary>
     public override string ToString()
     {
-        return EncoderInstance.EncodeData(_value);
+        // Prepend version byte.
+        return EncoderInstance.EncodeData((new byte[] { VersionByte }).Concat(_value).ToArray());
     }
 
     /// <summary>
