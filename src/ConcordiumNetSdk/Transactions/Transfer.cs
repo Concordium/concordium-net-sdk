@@ -19,61 +19,26 @@ public record Transfer : AccountTransactionPayload<Transfer>
     /// <summary>
     /// Amount to send.
     /// </summary>
-    private CcdAmount _amount;
+    public readonly CcdAmount Amount;
 
     /// <summary>
     /// Address of the receiver account to which the amount will be sent.
     /// </summary>
-    private AccountAddress _receiver;
-
-    /// <summary>
-    /// Transaction serialized to the binary format expected by the node.
-    /// </summary>
-    private byte[] _serializedPayload;
-
-    /// <summary>
-    /// Get the amount to send.
-    /// </summary>
-    public CcdAmount GetAmount()
-    {
-        return CcdAmount.FromMicroCcd(_amount.GetMicroCcdValue());
-    }
-
-    /// <summary>
-    /// Get the address of the receiver account to which the amount will be sent.
-    /// </summary>
-    public AccountAddress GetReceiver()
-    {
-        return AccountAddress.From(_receiver.GetBytes());
-    }
+    public readonly AccountAddress Receiver;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Transfer"/> class.
     /// </summary>
     /// <param name="amount">Amount to send.</param>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
-    private Transfer(CcdAmount amount, AccountAddress receiver)
+    public Transfer(CcdAmount amount, AccountAddress receiver)
     {
-        _amount = amount;
-        _receiver = receiver;
-        _serializedPayload = Serialize(amount, receiver);
+        Amount = amount;
+        Receiver = receiver;
     }
 
     /// <summary>
-    /// Creates an instance of transfer account transction.
-    /// </summary>
-    /// <param name="amount">Amount to send.</param>
-    /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
-    public static AccountTransactionPayload<Transfer> Create(
-        CcdAmount amount,
-        AccountAddress receiver
-    )
-    {
-        return new Transfer(amount, receiver);
-    }
-
-    /// <summary>
-    /// Get the transfer account transaction serialized to the binary format expected by the node.
+    /// Get the "transfer" account transaction serialized to the binary format expected by the node.
     /// </summary>
     /// <param name="amount">Amount to send.</param>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
@@ -90,6 +55,6 @@ public record Transfer : AccountTransactionPayload<Transfer>
 
     public override byte[] GetBytes()
     {
-        return (byte[])_serializedPayload.Clone();
+        return Serialize(Amount, Receiver);
     }
 }

@@ -12,10 +12,12 @@ public class SimpleTransferPayloadTests
     {
         // Arrange
         var ccdAmount = CcdAmount.FromCcd(100);
-        var toAccountAddress = AccountAddress.From("3V3QhN4USoMB8FMnPFHx8zoLoJexv8f5ka1a1uS8sERoSrahbw");
+        var toAccountAddress = AccountAddress.From(
+            "3V3QhN4USoMB8FMnPFHx8zoLoJexv8f5ka1a1uS8sERoSrahbw"
+        );
 
         // Act
-        var simpleTransferPayload = SimpleTransferPayload.Create(ccdAmount, toAccountAddress);
+        var simpleTransferPayload = Transfer.Create(ccdAmount, toAccountAddress);
 
         // Assert
         simpleTransferPayload.Amount.Should().Be(ccdAmount);
@@ -27,12 +29,53 @@ public class SimpleTransferPayloadTests
     {
         // Arrange
         var ccdAmount = CcdAmount.FromCcd(100);
-        var toAccountAddress = AccountAddress.From("3V3QhN4USoMB8FMnPFHx8zoLoJexv8f5ka1a1uS8sERoSrahbw");
+        var toAccountAddress = AccountAddress.From(
+            "3V3QhN4USoMB8FMnPFHx8zoLoJexv8f5ka1a1uS8sERoSrahbw"
+        );
         var simpleTransferPayload = SimpleTransferPayload.Create(ccdAmount, toAccountAddress);
         var expectedSerializedBytes = new byte[]
         {
-            3, 71, 16, 92, 61, 132, 191, 45, 174, 170, 208, 206, 153, 215, 123, 117, 254, 225, 53, 137,
-            184, 94, 41, 112, 215, 225, 165, 254, 29, 145, 253, 190, 160, 0, 0, 0, 0, 5, 245, 225, 0
+            3,
+            71,
+            16,
+            92,
+            61,
+            132,
+            191,
+            45,
+            174,
+            170,
+            208,
+            206,
+            153,
+            215,
+            123,
+            117,
+            254,
+            225,
+            53,
+            137,
+            184,
+            94,
+            41,
+            112,
+            215,
+            225,
+            165,
+            254,
+            29,
+            145,
+            253,
+            190,
+            160,
+            0,
+            0,
+            0,
+            0,
+            5,
+            245,
+            225,
+            0
         };
 
         // Act
@@ -47,7 +90,9 @@ public class SimpleTransferPayloadTests
     {
         // Arrange
         var ccdAmount = CcdAmount.FromCcd(100);
-        var toAccountAddress = AccountAddress.From("3V3QhN4USoMB8FMnPFHx8zoLoJexv8f5ka1a1uS8sERoSrahbw");
+        var toAccountAddress = AccountAddress.From(
+            "3V3QhN4USoMB8FMnPFHx8zoLoJexv8f5ka1a1uS8sERoSrahbw"
+        );
         var simpleTransferPayload = SimpleTransferPayload.Create(ccdAmount, toAccountAddress);
         var expectedBaseEnergyCost = 300ul;
 

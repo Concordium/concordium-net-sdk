@@ -3,7 +3,7 @@ using ConcordiumNetSdk.Types;
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// Models a "register data" transaction.
+/// Represents a "register data" transaction.
 ///
 /// Used for registering data on-chain.
 /// </summary>
@@ -17,7 +17,7 @@ public record RegisterData : AccountTransactionPayload<RegisterData>
     /// <summary>
     /// The data to be registered on-chain.
     /// </summary>
-    private Data _data;
+    public readonly Data Data;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="RegisterData"/> class.
@@ -25,25 +25,25 @@ public record RegisterData : AccountTransactionPayload<RegisterData>
     /// <param name="data">The data to be registered on-chain.</param>
     private RegisterData(Data data)
     {
-        _data = data;
-    }
-
-    /// <summary>
-    /// Creates a new instance of the register data payload.
-    /// </summary>
-    /// <param name="data">The data to be registered on-chain.</param>
-    public static AccountTransactionPayload<RegisterData> Create(Data data)
-    {
-        return new RegisterData(data);
+        Data = data;
     }
 
     public override ulong GetBaseEnergyCost() => 300;
 
-    public override byte[] GetBytes()
+    /// <summary>
+    /// Get the "register data" account transaction serialized to the binary format expected by the node.
+    /// </summary>
+    /// <param name="data">The data to be registered on-chain.</param>
+    private static byte[] Serialize(Data data)
     {
         using MemoryStream memoryStream = new MemoryStream();
         memoryStream.WriteByte(TRANSACTION_TYPE);
-        memoryStream.Write(_data.GetBytes());
+        memoryStream.Write(data.GetBytes());
         return memoryStream.ToArray();
+    }
+
+    public override byte[] GetBytes()
+    {
+        return Serialize(Data);
     }
 }

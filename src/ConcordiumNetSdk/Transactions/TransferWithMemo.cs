@@ -19,46 +19,17 @@ public record TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
     /// <summary>
     /// Amount to send.
     /// </summary>
-    private CcdAmount _amount { get; }
+    public readonly CcdAmount Amount;
 
     /// <summary>
     /// Address of the receiver account to which the amount will be sent.
     /// </summary>
-    private AccountAddress _receiver { get; }
+    public readonly AccountAddress Receiver;
 
     /// <summary>
     /// Memo to include in the transaction.
     /// </summary>
-    private Memo _memo { get; }
-
-    /// <summary>
-    /// Get the amount to send.
-    /// </summary>
-    public CcdAmount GetAmount()
-    {
-        return CcdAmount.FromMicroCcd(_amount.GetMicroCcdValue());
-    }
-
-    /// <summary>
-    /// Get the address of the receiver account to which the amount will be sent.
-    /// </summary>
-    public AccountAddress GetReceiver()
-    {
-        return AccountAddress.From(_receiver.GetBytes());
-    }
-
-    /// <summary>
-    /// Get the address of the receiver account to which the amount will be sent.
-    /// </summary>
-    public Memo GetMemo()
-    {
-        return Memo.From(_memo.GetBytes());
-    }
-
-    /// <summary>
-    /// Transaction serialized to the binary format expected by the node.
-    /// </summary>
-    private byte[] _serializedPayload;
+    public readonly Memo Memo;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TransferWithMemo"/> class.
@@ -66,31 +37,15 @@ public record TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
     /// <param name="amount">Amount to send.</param>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
     /// <param name="memo">Memo to include in the transaction.</param>
-    private TransferWithMemo(CcdAmount amount, AccountAddress receiver, Memo memo)
+    public TransferWithMemo(CcdAmount amount, AccountAddress receiver, Memo memo)
     {
-        _amount = amount;
-        _receiver = receiver;
-        _memo = memo;
-        _serializedPayload = Serialize(amount, receiver, memo);
+        Amount = amount;
+        Receiver = receiver;
+        Memo = memo;
     }
 
     /// <summary>
-    /// Creates an instance of a transfer with memo account transaction.
-    /// </summary>
-    /// <param name="amount">Amount to send.</param>
-    /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
-    /// <param name="memo">Memo to include in the transaction.</param>
-    public static AccountTransactionPayload<TransferWithMemo> Create(
-        CcdAmount amount,
-        AccountAddress receiver,
-        Memo memo
-    )
-    {
-        return new TransferWithMemo(amount, receiver, memo);
-    }
-
-    /// <summary>
-    /// Get the transfer with memo account transaction serialized to the binary format expected by the node.
+    /// Get the "transfer with memo" account transaction serialized to the binary format expected by the node.
     /// </summary>
     /// <param name="amount">Amount to send.</param>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
@@ -109,6 +64,6 @@ public record TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
 
     public override byte[] GetBytes()
     {
-        return (byte[])_serializedPayload.Clone();
+        return Serialize(Amount, Receiver, Memo);
     }
 }
