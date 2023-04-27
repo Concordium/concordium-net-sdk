@@ -12,7 +12,7 @@ namespace ConcordiumNetSdk.Types;
 /// </summary>
 public readonly struct Memo : IEquatable<Memo>
 {
-    private const int MaxLength = 256;
+    public const int MaxLength = 256;
 
     /// <summary>
     /// Byte array representing the memo.
@@ -34,15 +34,22 @@ public readonly struct Memo : IEquatable<Memo>
     /// <param name="hexString">The memo to be registered on-chain represented as a hex encoded string.</param>
     public static Memo FromHex(string hexString)
     {
-        var value = Convert.FromHexString(hexString);
-        return From(value);
+        try
+        {
+            byte[] value = Convert.FromHexString(hexString);
+            return Memo.From(value);
+        }
+        catch (Exception e)
+        {
+            throw new ArgumentException("The provided string is not hex encoded: ", e);
+        }
     }
 
     /// <summary>
     /// Creates an instance from a <see cref="string"/> whose CBOR encoding will be used for the memo data.
     /// </summary>
-    /// <param name="text">The memo represented as a <see cref="string"/>
-    /// whose CBOR encoding will be used for the memo data.
+    /// <param name="text">
+    /// The memo represented as a <see cref="string"/> whose CBOR encoding will be used for the memo data.
     /// </param>
     public static Memo FromText(string text)
     {
@@ -73,7 +80,7 @@ public readonly struct Memo : IEquatable<Memo>
     /// A <see cref="string"> corresponding to the decoded memo if it contained
     /// a single CBOR encoded string, and <c>null</c> otherwise.
     /// </returns>
-    public string? TryCborDecodeToText()
+    public string? TryCborDecodeToString()
     {
         var encoder = new CborReader(_value);
         try
@@ -90,7 +97,9 @@ public readonly struct Memo : IEquatable<Memo>
     }
 
     /// <summary>
-    /// Get the memo as a byte array with the length of the array
+    /// Get the energy amount in the binary format expected by the node.
+    ///
+    /// That is represented as a byte array with the length of the array
     /// prepended as a 16-bit unsigned integer in big-endian format.
     /// </summary>
     public byte[] GetBytes()

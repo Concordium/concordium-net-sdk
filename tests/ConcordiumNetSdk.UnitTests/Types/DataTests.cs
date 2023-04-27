@@ -37,7 +37,7 @@ public class DataTests
     [InlineData(0)]
     [InlineData(10)]
     [InlineData(Data.MaxLength)]
-    public void From_OnValidData_ReturnsCorrectValue(Int16 length)
+    public void From_OnValidBytes_ReturnsCorrectValue(Int16 length)
     {
         byte[] header = new Byte[2];
         BinaryPrimitives.WriteUInt16BigEndian(header, (UInt16)length);
@@ -47,11 +47,21 @@ public class DataTests
     }
 
     [Theory]
-    [InlineData(Data.MaxLength + 1)]
-    [InlineData(Data.MaxLength + 100)]
-    public void From_OnTooLongData_ThrowsException(Int16 length)
+    [InlineData((Data.MaxLength + 1) * 2)]
+    [InlineData((Data.MaxLength + 50) * 2)]
+    public void From_OnTooLongBytes_ThrowsException(Int16 length)
     {
         byte[] data = Enumerable.Repeat((byte)128, length).ToArray();
+        Action result = () => Data.From(data);
+        result.Should().Throw<ArgumentException>();
+    }
+
+    [Theory]
+    [InlineData(Data.MaxLength * 2 + 1)]
+    [InlineData(Data.MaxLength * 2 + 100)]
+    public void From_OnTooLongString_ThrowsException(Int16 length)
+    {
+        var data = string.Concat(Enumerable.Repeat("a", length));
         Action result = () => Data.From(data);
         result.Should().Throw<ArgumentException>();
     }

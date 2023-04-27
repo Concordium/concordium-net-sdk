@@ -3,7 +3,7 @@ using ConcordiumNetSdk.Helpers;
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Represents expiration time for a transaction.
+/// Represents an expiration time for a transaction.
 ///
 /// A transaction can not be included in a block if its expiration time is before the block (slot) time.
 /// </summary>
