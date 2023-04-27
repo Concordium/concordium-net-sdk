@@ -17,7 +17,7 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     /// <summary>
     /// The amount in µCCD.
     /// </summary>
-    public readonly UInt64 MicroCcd;
+    public readonly UInt64 Value;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CcdAmount"/> class.
@@ -25,7 +25,7 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     /// <param name="microCcd">The amount in µCCD.</param>
     private CcdAmount(UInt64 microCcd)
     {
-        MicroCcd = microCcd;
+        Value = microCcd;
     }
 
     /// <summary>
@@ -33,7 +33,7 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     /// </summary>
     public string GetFormattedMicroCcd()
     {
-        return $"{MicroCcd}";
+        return $"{Value}";
     }
 
     /// <summary>
@@ -41,7 +41,7 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     /// </summary>
     public string GetFormattedCcd()
     {
-        return $"{MicroCcd / (decimal)MicroCcdPerCcd}";
+        return $"{Value / (decimal)MicroCcdPerCcd}";
     }
 
     /// <summary>
@@ -80,13 +80,13 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     {
         try
         {
-            UInt64 newAmount = checked(a.MicroCcd + b.MicroCcd);
+            UInt64 newAmount = checked(a.Value + b.Value);
             return CcdAmount.FromMicroCcd(newAmount);
         }
         catch (OverflowException)
         {
             throw new ArgumentException(
-                $"The result of {a.MicroCcd} + {b.MicroCcd} does not fit in UInt64."
+                $"The result of {a.Value} + {b.Value} does not fit in UInt64."
             );
         }
     }
@@ -99,20 +99,20 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     {
         try
         {
-            UInt64 newAmount = checked(a.MicroCcd - b.MicroCcd);
+            UInt64 newAmount = checked(a.Value - b.Value);
             return CcdAmount.FromMicroCcd(newAmount);
         }
         catch (OverflowException)
         {
             throw new ArgumentException(
-                $"The result of {a.MicroCcd} + {b.MicroCcd} does not fit in UInt64."
+                $"The result of {a.Value} - {b.Value} does not fit in UInt64."
             );
         }
     }
 
     public bool Equals(CcdAmount other)
     {
-        return MicroCcd == other.MicroCcd;
+        return Value == other.Value;
     }
 
     public override bool Equals(Object? obj)
@@ -122,6 +122,6 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
 
     public override int GetHashCode()
     {
-        return MicroCcd.GetHashCode();
+        return Value.GetHashCode();
     }
 }

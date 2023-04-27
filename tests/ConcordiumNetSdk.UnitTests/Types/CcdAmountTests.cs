@@ -14,7 +14,7 @@ public class CcdAmountTests
     public void FromCcd_OnValidCcdAmount_ThenGetMicroCcd_ReturnsCorrectValue(UInt64 amount)
     {
         var ccdAmount = CcdAmount.FromCcd(amount);
-        ccdAmount.MicroCcd.Should().Be(CcdAmount.MicroCcdPerCcd * amount);
+        ccdAmount.Value.Should().Be(CcdAmount.MicroCcdPerCcd * amount);
     }
 
     [Theory]
@@ -26,7 +26,7 @@ public class CcdAmountTests
     )
     {
         var ccdAmount = CcdAmount.FromMicroCcd(amount);
-        ccdAmount.MicroCcd.Should().Be(amount);
+        ccdAmount.Value.Should().Be(amount);
     }
 
     [Theory]
@@ -47,7 +47,7 @@ public class CcdAmountTests
     {
         var ccdAmountA = CcdAmount.FromMicroCcd(amountA);
         var ccdAmountB = CcdAmount.FromMicroCcd(amountB);
-        (ccdAmountA + ccdAmountB).MicroCcd.Should().Be(amountA + amountB);
+        (ccdAmountA + ccdAmountB).Value.Should().Be(amountA + amountB);
     }
 
     [Theory]
@@ -76,7 +76,7 @@ public class CcdAmountTests
     {
         var ccdAmountA = CcdAmount.FromMicroCcd(amountA);
         var ccdAmountB = CcdAmount.FromMicroCcd(amountB);
-        (ccdAmountA - ccdAmountB).MicroCcd.Should().Be(amountA - amountB);
+        (ccdAmountA - ccdAmountB).Value.Should().Be(amountA - amountB);
     }
 
     [Theory]

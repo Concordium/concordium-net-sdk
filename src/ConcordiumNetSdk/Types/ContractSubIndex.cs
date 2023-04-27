@@ -11,7 +11,7 @@ namespace ConcordiumNetSdk.Types;
 public readonly struct ContractSubIndex
 {
     public const UInt32 BytesLength = sizeof(UInt64);
-    private readonly UInt64 Value { get; init; }
+    public readonly UInt64 Value { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ContractSubIndex"/> class.

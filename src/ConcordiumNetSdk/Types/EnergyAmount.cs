@@ -8,7 +8,7 @@ namespace ConcordiumNetSdk.Types;
 public readonly struct EnergyAmount
 {
     public const UInt32 BytesLength = sizeof(UInt64);
-    private readonly UInt64 Value { get; init; }
+    public readonly UInt64 Value { get; init; }
 
     public EnergyAmount(UInt64 value)
     {
