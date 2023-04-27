@@ -1,17 +1,11 @@
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Represents a hash.
+/// Represents a 256-bit hash.
 /// </summary>
-public abstract class Hash
+public abstract record Hash : IEquatable<Hash>
 {
-    private const int StringLength = 64;
     public const int BytesLength = 32;
-
-    /// <summary>
-    /// A lowercase length-64 hex encoded string representing the hash.
-    /// </summary>
-    private readonly string _formatted;
 
     /// <summary>
     /// A length-32 byte array representing a hash.
@@ -24,12 +18,11 @@ public abstract class Hash
     /// <param name="hashAsBase16String">A hash represented as a length-64 hex encoded string.</param>
     protected Hash(string hashAsBase16String)
     {
-        if (hashAsBase16String.Length != StringLength)
+        if (hashAsBase16String.Length != BytesLength * 2)
             throw new ArgumentException(
-                $"The provided hex string must be {StringLength} characters long."
+                $"The provided hex string must be {BytesLength * 2} characters long."
             );
         _value = Convert.FromHexString(hashAsBase16String);
-        _formatted = hashAsBase16String.ToLowerInvariant();
     }
 
     /// <summary>
@@ -43,7 +36,6 @@ public abstract class Hash
                 $"The provided byte array must be {BytesLength} bytes long."
             );
         _value = hashAsBytes;
-        _formatted = Convert.ToHexString(hashAsBytes).ToLowerInvariant();
     }
 
     /// <summary>
@@ -59,26 +51,24 @@ public abstract class Hash
     /// </summary>
     public override string ToString()
     {
-        return (string)_formatted.Clone();
+        return Convert.ToHexString(_value).ToLowerInvariant();
     }
 
-    public override bool Equals(object? obj)
+    public virtual bool Equals(Hash? obj)
     {
-        return obj is Hash other && GetType() == obj.GetType() && _formatted == other._formatted;
+        if (ReferenceEquals(null, obj))
+            return false;
+        if (ReferenceEquals(this, obj))
+            return true;
+        if (obj.GetType() != GetType())
+            return false;
+
+        var other = (Hash)obj;
+        return _value.SequenceEqual(other._value);
     }
 
     public override int GetHashCode()
     {
-        return _formatted.GetHashCode();
-    }
-
-    public static bool operator ==(Hash? left, Hash? right)
-    {
-        return Equals(left, right);
-    }
-
-    public static bool operator !=(Hash? left, Hash? right)
-    {
-        return !Equals(left, right);
+        return _value.GetHashCode();
     }
 }

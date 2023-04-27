@@ -10,7 +10,7 @@ public class CcdAmountTests
     [Fact]
     public void Zero_should_create_correct_instance()
     {
-        var ccdAmount = MicroCCDAmount.Zero();
+        var ccdAmount = CcdAmount.Zero();
         ccdAmount.GetMicroCcdValue().Should().Be(0);
     }
 
@@ -18,7 +18,7 @@ public class CcdAmountTests
     public void FromMicroCcd_when_valid_ulong_value_passed_should_create_correct_instance()
     {
         var value = UInt64.MaxValue;
-        var ccdAmount = MicroCCDAmount.FromMicroCcd(value);
+        var ccdAmount = CcdAmount.FromMicroCcd(value);
         ccdAmount.GetMicroCcdValue().Should().Be(value);
     }
 
@@ -26,7 +26,7 @@ public class CcdAmountTests
     public void FromMicroCcd_when_valid_int_value_passed_should_create_correct_instance()
     {
         var value = UInt64.MaxValue;
-        var ccdAmount = MicroCCDAmount.FromMicroCcd(value);
+        var ccdAmount = CcdAmount.FromMicroCcd(value);
         ccdAmount.GetMicroCcdValue().Should().Be(value);
     }
 
@@ -34,7 +34,7 @@ public class CcdAmountTests
     public void FromCcd_when_valid_value_passed_should_create_correct_instance()
     {
         var value = UInt64.MaxValue;
-        var ccdAmount = MicroCCDAmount.FromCcd(value);
+        var ccdAmount = CcdAmount.FromCcd(value);
         ccdAmount.GetMicroCcdValue().Should().Be((ulong)value * 1_000_000);
     }
 }

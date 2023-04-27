@@ -7,13 +7,8 @@ namespace ConcordiumNetSdk.SignKey;
 /// </summary>
 public record Ed25519SignKey : ISigner
 {
-    private const int StringLength = 64;
-    private const int BytesLength = 32;
-
-    /// <summary>
-    /// Representation of the ed25519 sign key as a length-32 hex string.
-    /// </summary>
-    private readonly string _formatted;
+    public const int SignKeyBytesLength = 32;
+    public const int SignatureBytesLength = 64;
 
     /// <summary>
     /// Representation of the ed25519 sign key as a length-64 byte array.
@@ -23,33 +18,22 @@ public record Ed25519SignKey : ISigner
     /// <summary>
     /// Initializes a new instance of the <see cref="Ed25519SignKey"/> class.
     /// </summary>
-    /// <param name="signKeyAsHexString">A hex encoded string representing the sign key.</param>
-    private Ed25519SignKey(string signKeyAsHexString)
-    {
-        _value = Convert.FromHexString(signKeyAsHexString);
-        _formatted = signKeyAsHexString;
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Ed25519SignKey"/> class.
-    /// </summary>
     /// <param name="signKeyAsBytes">A byte array representing the sign key.</param>
     private Ed25519SignKey(byte[] signKeyAsBytes)
     {
-        _formatted = Convert.ToHexString(signKeyAsBytes).ToLowerInvariant();
         _value = signKeyAsBytes;
     }
 
     /// <summary>
-    /// Get the ed25519 sign key as a length-32 hex encoded string.
+    /// Get the ed25519 sign key as a length-64 hex encoded string.
     /// </summary>
     public override string ToString()
     {
-        return (string)_formatted.Clone();
+        return Convert.ToHexString(_value).ToLowerInvariant();
     }
 
     /// <summary>
-    /// Get the ed25519 sign key as a length-64 byte array.
+    /// Get the ed25519 sign key as a length-32 byte array.
     /// </summary>
     public byte[] GetBytes()
     {
@@ -62,11 +46,12 @@ public record Ed25519SignKey : ISigner
     /// <param name="signKeyAsHexString">A hex encoded string representing the sign key.</param>
     public static Ed25519SignKey From(string signKeyAsHexString)
     {
-        if (signKeyAsHexString.Length != StringLength)
+        byte[] bytes = Convert.FromHexString(signKeyAsHexString);
+        if (signKeyAsHexString.Length != SignKeyBytesLength * 2)
             throw new ArgumentException(
-                $"The sign key hex encoded string length must be {StringLength}."
+                $"The sign key hex encoded string must be {SignKeyBytesLength * 2} characters."
             );
-        return new Ed25519SignKey(signKeyAsHexString);
+        return new Ed25519SignKey(bytes);
     }
 
     /// <summary>
@@ -75,15 +60,21 @@ public record Ed25519SignKey : ISigner
     /// <param name="signKeyAsBytes">A byte array representing the sign key.</param>
     public static Ed25519SignKey From(byte[] signKeyAsBytes)
     {
-        if (signKeyAsBytes.Length != BytesLength)
-            throw new ArgumentException($"The sign key bytes length must be {BytesLength}.");
+        if (signKeyAsBytes.Length != SignKeyBytesLength)
+            throw new ArgumentException($"The sign key array must be {SignKeyBytesLength} bytes.");
         return new Ed25519SignKey(signKeyAsBytes);
+    }
+
+    public UInt32 GetSignatureLength()
+    {
+        return SignatureBytesLength;
     }
 
     /// <summary>
     /// Signs the provided data using the ed25519 sign key.
     /// </summary>
-    /// <param name="bytes">A byte array containing the data to sign.</param>
+    /// <param name="bytes">A byte array representing the data to sign.</param>
+    /// <return>A byte array representing the signature.</param>
     public byte[] Sign(byte[] bytes)
     {
         Ed25519 algorithm = SignatureAlgorithm.Ed25519;

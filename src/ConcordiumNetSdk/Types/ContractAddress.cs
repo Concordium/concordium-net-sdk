@@ -1,21 +1,29 @@
+using ConcordiumNetSdk.Helpers;
+
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// A contract address.
+/// Models a contract address.
+///
+/// A contract is identified by its unique contract address, which
+/// consists of a contract index (modeled by <see cref="ContractIndex"/>)
+/// value and a contract subindex (modeled by <see cref="ContractSubIndex"/>).
+///
+/// Both indices are 64-bit integer.
 /// </summary>
-public class ContractAddress
+public readonly struct ContractAddress : IEquatable<ContractAddress>
 {
-    public const int BytesLength = 16;
+    public const UInt32 BytesLength = ContractIndex.BytesLength + ContractSubIndex.BytesLength;
 
     /// <summary>
     /// The index part of the address of a contract.
     /// </summary>
-    private UInt64 _index;
+    public readonly ContractIndex _index { get; init; }
 
     /// <summary>
     /// The sub-index part of the address of a contract.
     /// </summary>
-    public UInt64 _subIndex;
+    public readonly ContractSubIndex _subIndex { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ContractAddress"/> class.
@@ -26,22 +34,6 @@ public class ContractAddress
     {
         _index = index;
         _subIndex = subIndex;
-    }
-
-    /// <summary>
-    /// Get the index part of the address of a contract.
-    /// </summary>
-    public UInt64 GetIndex()
-    {
-        return _index;
-    }
-
-    /// <summary>
-    /// Get the sub-index part of the address of a contract.
-    /// </summary>
-    public UInt64 GetSubIndex()
-    {
-        return _subIndex;
     }
 
     /// <summary>
@@ -60,5 +52,38 @@ public class ContractAddress
     public Concordium.V2.ContractAddress ToProto()
     {
         return new Concordium.V2.ContractAddress() { Index = _index, Subindex = _subIndex };
+    }
+
+    public bool Equals(ContractAddress contractAddress)
+    {
+        return _index == contractAddress._index && _subIndex == contractAddress._subIndex;
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (ReferenceEquals(null, obj))
+            return false;
+        if (obj.GetType() != GetType())
+            return false;
+
+        var other = (Memo)obj;
+        return Equals(other);
+    }
+
+    public override int GetHashCode()
+    {
+        byte[] indexBytes = Serialization.GetBytes(_index);
+        byte[] subIndexBytes = Serialization.GetBytes(_index);
+        return indexBytes.Concat(subIndexBytes).GetHashCode();
+    }
+
+    public static bool operator ==(ContractAddress? left, ContractAddress? right)
+    {
+        return Equals(left, right);
+    }
+
+    public static bool operator !=(ContractAddress? left, ContractAddress? right)
+    {
+        return !Equals(left, right);
     }
 }

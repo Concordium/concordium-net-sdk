@@ -3,7 +3,11 @@ using ConcordiumNetSdk.Types;
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// Account transaction payload.
+/// Models the payload of account transaction.
+///
+/// Inheriting classes should implement data specific to the transaction they
+/// model as well as helpers for constructing serialized transaction payloads
+/// to be sent to the Concordium node.
 /// </summary>
 public abstract class AccountTransactionPayload<T>
     where T : AccountTransactionPayload<T>
@@ -20,7 +24,7 @@ public abstract class AccountTransactionPayload<T>
         Expiry expiry
     )
     {
-        return PreparedAccountTransaction<T>.Create(sender, nonce, expiry, this);
+        return new PreparedAccountTransaction<T>(sender, nonce, expiry, this);
     }
 
     /// <summary>
@@ -36,5 +40,11 @@ public abstract class AccountTransactionPayload<T>
     /// <summary>
     /// Converts the transaction to its corresponding protocol buffer message instance.
     /// </summary>
-    public abstract Concordium.V2.AccountTransactionPayload ToProto();
+    public Concordium.V2.AccountTransactionPayload ToProto()
+    {
+        return new Concordium.V2.AccountTransactionPayload()
+        {
+            RawPayload = Google.Protobuf.ByteString.CopyFrom(GetBytes())
+        };
+    }
 }

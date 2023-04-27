@@ -1,33 +1,35 @@
-﻿using System.Collections.Immutable;
-using ConcordiumNetSdk.SignKey;
+﻿using ConcordiumNetSdk.Types;
 
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// A transaction signer is a map from indices of credentials to maps from key indices to signers.
-/// A credential index is relative to the account address and a key index is relative to the credential.
-/// The number of credentials and keys per credential should be at least 1 and at most 255.
+/// Implementers of <see cref="ITransactionSigner"/> provide functionality for
+/// signing data using account keys.
+///
+/// An account has one or more credentials with each such credential having up to
+/// 255 sign keys (and accompanying verification keys). Each credential is identified
+/// by its unique <see cref="AccountCredentialIndex"/> and each key by a unique pair
+/// of a <see cref="AccountCredentialIndex"/> corresponding to the credential to which
+/// it belongs, and a unique <see cref="AccountKeyIndex"/> relative to that credential
+/// index of the account. For each key, it is thus represented by some pair of a credential
+/// index and a key index.
+///
+/// The resulting <see cref="AccountTransactionSignature"/> from calling <see cref="Sign"/>
+/// should reflect this structure and correspond to a mapping from credential and key indices
+/// to the signatures produced by signing a transaction hash with the corresponding key.
 /// </summary>
 public interface ITransactionSigner
 {
     /// <summary>
-    /// Get the signer entries represented as a map from credential indices to another map from key indices to signers.
-    /// For a given credential and key index, its corresponding signer can be used to sign data whose resulting signature
-    /// can then be verified using its corresponding verification key.
-    /// </summary>
-    ImmutableDictionary<byte, ImmutableDictionary<byte, ISigner>> GetSignerEntries();
-
-    /// <summary>
-    /// Get the number of signatures that will be produced when signing a transaction using this signer.
+    /// Gets the number of signatures that will be produced when signing a transaction using this signer.
     /// This number is based on the signer count.
     /// </summary>
-    byte GetSignatureCount();
+    public byte GetSignatureCount();
 
     /// <summary>
-    /// Adds the specified signer entry to the signer. A signer entry consists of an index of the credential, a key index and a signer.
+    /// Sign a transaction hash.
     /// </summary>
-    /// <param name="credentialIndex">The credential index.</param>
-    /// <param name="keyIndex">The key index to the signer for the corresponding key and index.</param>
-    /// <param name="signer">The signer.</param>
-    void AddSignerEntry(byte credentialIndex, byte keyIndex, ISigner signer);
+    /// <param name="bytes">A byte array representing the transaction hash to sign.</param>
+    /// <returns>A <see cref="AccountTransactionSignature"/> representing the transaction signature.</returns>
+    public AccountTransactionSignature Sign(byte[] data);
 }

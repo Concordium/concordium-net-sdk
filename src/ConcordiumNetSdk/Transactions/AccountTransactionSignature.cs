@@ -1,30 +1,48 @@
+using ConcordiumNetSdk.Types;
 using System.Collections.Immutable;
 
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// Signature of an account transaction.
-/// An account transaction signature is a map from indices of credentials to maps from key indices to signatures.
-/// A credential index is relative to the account address and a key index is relative to the credential.
-/// The number of credentials and keys per credential should be at least 1 and at most 255.
+/// Models the signature of a signed account transaction.
+///
+/// An account has one or more credentials with each such credential having up to
+/// 255 sign keys (and accompanying verification keys). Each credential is identified
+/// by its unique <see cref="AccountCredentialIndex"/> and each key by a unique pair
+/// of a <see cref="AccountCredentialIndex"/> corresponding to the credential to which
+/// it belongs, and a unique <see cref="AccountKeyIndex"/> relative to that credential
+/// index of the account. For each key, it is thus represented by some pair of a credential
+/// index and a key index.
+///
+/// An <see cref="AccountTransactionSignature"> corresponds to a mapping from credential
+/// and key indices to signatures produced by signing the transaction hash with the
+/// keys corresponding to the indices.
+///
+/// Producers of <see cref="AccountTransactionSignature"/>s should implement
+/// <see cref="ITransactionSigner"/>.
 /// </summary>
 public class AccountTransactionSignature
 {
     /// <summary>
     /// Internal representation of the signature. This is a map from account credential indices to account signature maps.
     /// </summary>
-    public readonly ImmutableDictionary<byte, AccountSignatureMap> signature;
+    public readonly ImmutableDictionary<AccountCredentialIndex, AccountSignatureMap> signature;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountTransactionSignature"/> class.
     /// </summary>
     /// <param name="signatureMaps"><see cref="Dictionary"> corresponding to the map.</param>
-    private AccountTransactionSignature(Dictionary<byte, Dictionary<byte, byte[]>> signatureMaps)
+    public AccountTransactionSignature(
+        Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, byte[]>> signatureMaps
+    )
     {
-        var accountTransactionSignature = new Dictionary<byte, AccountSignatureMap>();
+        // Outer dictionary for the credential indices.
+        var accountTransactionSignature =
+            new Dictionary<AccountCredentialIndex, AccountSignatureMap>();
         foreach (var m in signatureMaps)
         {
-            var accountSignatureMap = new Dictionary<byte, byte[]>();
+            // Outer inner dictionary for the key indices.
+            var accountSignatureMap = new Dictionary<AccountKeyIndex, byte[]>();
             foreach (var k in m.Value)
             {
                 accountSignatureMap.Add(k.Key, k.Value);
@@ -32,37 +50,6 @@ public class AccountTransactionSignature
             accountTransactionSignature.Add(m.Key, new AccountSignatureMap(accountSignatureMap));
         }
         this.signature = accountTransactionSignature.ToImmutableDictionary();
-    }
-
-    /// <summary>
-    /// Creates an account transaction signature by signing the provided data with the specified transaction signer.
-    /// </summary>
-    /// <param name="data">The data to sign.</param>
-    /// <param name="signatureMaps">The <see cref="ITransactionSigner"> instance to use for signing the data.</param>
-    public static AccountTransactionSignature Create(
-        ITransactionSigner transactionSigner,
-        byte[] data
-    )
-    {
-        if (transactionSigner.GetSignatureCount() == 0)
-        {
-            throw new ArgumentException("The provided signer will not produce any signatures.");
-        }
-
-        var signature = new Dictionary<byte, Dictionary<byte, byte[]>>();
-        foreach (var signerEntry in transactionSigner.GetSignerEntries())
-        {
-            var accountSignatureMap = new Dictionary<byte, byte[]>();
-            foreach (var k in signerEntry.Value)
-            {
-                var index = k.Key;
-                var signer = k.Value;
-                accountSignatureMap.Add(k.Key, signer.Sign(data));
-            }
-            signature.Add(signerEntry.Key, accountSignatureMap);
-        }
-
-        return new AccountTransactionSignature(signature);
     }
 
     /// <summary>

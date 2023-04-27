@@ -35,7 +35,7 @@ public class PreparedAccountTransaction<T>
     /// <param name="nonce">Account nonce to use for the transaction.</param>
     /// <param name="expiry">Expiration time of the transaction.</param>
     /// <param name="payload">Payload to send to the node.</param>
-    private PreparedAccountTransaction(
+    public PreparedAccountTransaction(
         AccountAddress sender,
         AccountNonce nonce,
         Expiry expiry,
@@ -46,23 +46,6 @@ public class PreparedAccountTransaction<T>
         this._nonce = nonce;
         this._expiry = expiry;
         this._payload = payload;
-    }
-
-    /// <summary>
-    /// Creates a new instance of the prepared transaction.
-    /// </summary>
-    /// <param name="sender">Address of the sender of the transaction.</param>
-    /// <param name="nonce">Account nonce to use for the transaction.</param>
-    /// <param name="expiry">Expiration time of the transaction.</param>
-    /// <param name="payload">Payload to send to the node.</param>
-    public static PreparedAccountTransaction<T> Create(
-        AccountAddress sender,
-        AccountNonce nonce,
-        Expiry expiry,
-        AccountTransactionPayload<T> payload
-    )
-    {
-        return new PreparedAccountTransaction<T>(sender, nonce, expiry, payload);
     }
 
     /// <summary>

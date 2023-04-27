@@ -5,8 +5,9 @@ namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
 /// Payload for a transfer with memo account transaction.
+///
 /// Used for transferring CCD from one account to another. Like <see cref="Transfer"/>,
-/// but additionally stores an on-chain <see cref="Memo"/> with the transfer
+/// but additionally stores an on-chain <see cref="Memo"/> with the transfer.
 /// </summary>
 public class TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
 {
@@ -18,7 +19,7 @@ public class TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
     /// <summary>
     /// Amount to send.
     /// </summary>
-    private MicroCCDAmount _amount { get; }
+    private CcdAmount _amount { get; }
 
     /// <summary>
     /// Address of the receiver account to which the amount will be sent.
@@ -33,9 +34,9 @@ public class TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
     /// <summary>
     /// Get the amount to send.
     /// </summary>
-    public MicroCCDAmount GetAmount()
+    public CcdAmount GetAmount()
     {
-        return MicroCCDAmount.FromMicroCcd(_amount.GetMicroCcdValue());
+        return CcdAmount.FromMicroCcd(_amount.GetMicroCcdValue());
     }
 
     /// <summary>
@@ -65,7 +66,7 @@ public class TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
     /// <param name="amount">Amount to send.</param>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
     /// <param name="memo">Memo to include in the transaction.</param>
-    private TransferWithMemo(MicroCCDAmount amount, AccountAddress receiver, Memo memo)
+    private TransferWithMemo(CcdAmount amount, AccountAddress receiver, Memo memo)
     {
         _amount = amount;
         _receiver = receiver;
@@ -80,7 +81,7 @@ public class TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
     /// <param name="memo">Memo to include in the transaction.</param>
     public static AccountTransactionPayload<TransferWithMemo> Create(
-        MicroCCDAmount amount,
+        CcdAmount amount,
         AccountAddress receiver,
         Memo memo
     )
@@ -94,7 +95,7 @@ public class TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
     /// <param name="amount">Amount to send.</param>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
     /// <param name="memo">Memo to include in the transaction.</param>
-    private static byte[] Serialize(MicroCCDAmount amount, AccountAddress receiver, Memo memo)
+    private static byte[] Serialize(CcdAmount amount, AccountAddress receiver, Memo memo)
     {
         using MemoryStream memoryStream = new MemoryStream();
         memoryStream.WriteByte(TRANSACTION_TYPE);
@@ -109,13 +110,5 @@ public class TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
     public override byte[] GetBytes()
     {
         return (byte[])_serializedPayload.Clone();
-    }
-
-    public override Concordium.V2.AccountTransactionPayload ToProto()
-    {
-        return new Concordium.V2.AccountTransactionPayload()
-        {
-            RawPayload = Google.Protobuf.ByteString.CopyFrom(_serializedPayload)
-        };
     }
 }

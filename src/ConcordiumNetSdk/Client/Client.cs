@@ -1,21 +1,22 @@
 ﻿using Concordium.V2;
 using Grpc.Core;
 using Grpc.Net.Client;
+using System.Net;
 
 namespace ConcordiumNetSdk;
 
 /// <summary>
-/// A client for interacting with the GRPC V2 API exposed by Concordium nodes.
+/// A client for interacting with the Concordium GRPC API V2 exposed by nodes.
 /// </summary>
 public class Client : IDisposable
 {
     /// <summary>
-    /// The "internal" client instance generated from the V2 API protocol buffer definition.
+    /// The "internal" client instance generated from the Concordium GRPC API V2 protocol buffer definition.
     /// </summary>
-    private readonly Queries.QueriesClient _client;
+    public readonly Queries.QueriesClient InternalClient;
 
     /// <summary>
-    /// The channel on which the client communicates with the Concodium node.
+    /// The channel on which the client communicates with the Concordium node.
     /// </summary>
     private readonly GrpcChannel _grpcChannel;
 
@@ -26,30 +27,19 @@ public class Client : IDisposable
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Client"/> class.
-    /// Uses the <see cref="ClientConfiguration.DefaultConfiguration"/> for the client settings.
     /// </summary>
-    /// <param name="url">URL of a resource where the V2 API is served.</param>
-    /// <param name="port">Port of the resource where the V2 API is served.</param>
-    public Client(string url, UInt16 port)
-        : this(url, port, ClientConfiguration.DefaultConfiguration) { }
+    /// <param name="endpoint">Endpoint of a resource where the V2 API is served.</param>
+    /// <param name="timeout">The request timeout in seconds (default: <c>30</c>).</param>
+    /// <param name="secure">Flag indicating whether the client must use a secure connection (default: <c>true</c>).</param>
+    public Client(IPEndPoint endpoint, ulong timeout = 30, bool secure = true)
+        : this(endpoint, new ClientConfiguration(timeout, secure)) { }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Client"/> class.
     /// </summary>
-    /// <param name="url">URL of a resource where the V2 API is served.</param>
-    /// <param name="port">Port of the resource where the V2 API is served.</param>
-    /// <param name="timeout">The request timeout in seconds.</param>
-    /// <param name="secure">Flag indicating whether the client must use a secure connection.</param>
-    public Client(string url, UInt16 port, ulong timeout, bool secure)
-        : this(url, port, new ClientConfiguration(timeout, secure)) { }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Client"/> class.
-    /// </summary>
-    /// <param name="url">URL of a resource where the V2 API is served.</param>
-    /// <param name="port">Port of the resource where the V2 API is served.</param>
+    /// <param name="endpoint">Endpoint of a resource where the V2 API is served.</param>
     /// <param name="configuration">The configuration to use with this client.</param>
-    public Client(string url, UInt16 port, ClientConfiguration configuration)
+    public Client(IPEndPoint endpoint, ClientConfiguration configuration)
     {
         GrpcChannelOptions options = new GrpcChannelOptions
         {
@@ -57,8 +47,11 @@ public class Client : IDisposable
                 ? ChannelCredentials.SecureSsl
                 : ChannelCredentials.Insecure
         };
-        _grpcChannel = GrpcChannel.ForAddress(url + ":" + port.ToString(), options);
-        _client = new Queries.QueriesClient(_grpcChannel);
+        _grpcChannel = GrpcChannel.ForAddress(
+            (configuration.Secure ? "https://" : "http://") + endpoint.ToString(),
+            options
+        );
+        InternalClient = new Queries.QueriesClient(_grpcChannel);
         _config = configuration;
     }
 
@@ -68,7 +61,9 @@ public class Client : IDisposable
     /// </summary>
     public IAsyncEnumerable<ArrivedBlockInfo> GetBlocks()
     {
-        return _client.GetBlocks(new Empty(), CreateCallOptions()).ResponseStream.ReadAllAsync();
+        return InternalClient
+            .GetBlocks(new Empty(), CreateCallOptions())
+            .ResponseStream.ReadAllAsync();
     }
 
     /// <summary>
@@ -77,7 +72,7 @@ public class Client : IDisposable
     /// </summary>
     public IAsyncEnumerable<FinalizedBlockInfo> GetFinalizedBlocks()
     {
-        return _client
+        return InternalClient
             .GetFinalizedBlocks(new Empty(), CreateCallOptions())
             .ResponseStream.ReadAllAsync();
     }
@@ -87,7 +82,7 @@ public class Client : IDisposable
     /// </summary>
     public AccountInfo GetAccountInfo(AccountInfoRequest input)
     {
-        return _client.GetAccountInfo(input, CreateCallOptions());
+        return InternalClient.GetAccountInfo(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -95,7 +90,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<AccountInfo> GetAccountInfoAsync(AccountInfoRequest input)
     {
-        return _client.GetAccountInfoAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient.GetAccountInfoAsync(input, CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -103,7 +98,9 @@ public class Client : IDisposable
     /// </summary>
     public IAsyncEnumerable<AccountAddress> GetAccountList(BlockHashInput input)
     {
-        return _client.GetAccountList(input, CreateCallOptions()).ResponseStream.ReadAllAsync();
+        return InternalClient
+            .GetAccountList(input, CreateCallOptions())
+            .ResponseStream.ReadAllAsync();
     }
 
     /// <summary>
@@ -111,7 +108,9 @@ public class Client : IDisposable
     /// </summary>
     public IAsyncEnumerable<ModuleRef> GetModuleList(BlockHashInput input)
     {
-        return _client.GetModuleList(input, CreateCallOptions()).ResponseStream.ReadAllAsync();
+        return InternalClient
+            .GetModuleList(input, CreateCallOptions())
+            .ResponseStream.ReadAllAsync();
     }
 
     /// <summary>
@@ -123,7 +122,9 @@ public class Client : IDisposable
     /// </summary>
     public IAsyncEnumerable<BlockHash> GetAncestors(AncestorsRequest input)
     {
-        return _client.GetAncestors(input, CreateCallOptions()).ResponseStream.ReadAllAsync();
+        return InternalClient
+            .GetAncestors(input, CreateCallOptions())
+            .ResponseStream.ReadAllAsync();
     }
 
     /// <summary>
@@ -131,7 +132,7 @@ public class Client : IDisposable
     /// </summary>
     public VersionedModuleSource GetModuleSource(ModuleSourceRequest input)
     {
-        return _client.GetModuleSource(input, CreateCallOptions());
+        return InternalClient.GetModuleSource(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -139,7 +140,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<VersionedModuleSource> GetModuleSourceAsync(ModuleSourceRequest input)
     {
-        return _client.GetModuleSourceAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient.GetModuleSourceAsync(input, CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -147,7 +148,9 @@ public class Client : IDisposable
     /// </summary>
     public IAsyncEnumerable<ContractAddress> GetInstanceList(BlockHashInput input)
     {
-        return _client.GetInstanceList(input, CreateCallOptions()).ResponseStream.ReadAllAsync();
+        return InternalClient
+            .GetInstanceList(input, CreateCallOptions())
+            .ResponseStream.ReadAllAsync();
     }
 
     /// <summary>
@@ -156,7 +159,7 @@ public class Client : IDisposable
     /// </summary>
     public InstanceInfo GetInstanceInfo(InstanceInfoRequest input)
     {
-        return _client.GetInstanceInfo(input, CreateCallOptions());
+        return InternalClient.GetInstanceInfo(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -165,7 +168,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<InstanceInfo> GetInstanceInfoAsync(InstanceInfoRequest input)
     {
-        return _client.GetInstanceInfoAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient.GetInstanceInfoAsync(input, CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -174,7 +177,9 @@ public class Client : IDisposable
     /// </summary>
     public IAsyncEnumerable<InstanceStateKVPair> GetInstanceState(InstanceInfoRequest input)
     {
-        return _client.GetInstanceState(input, CreateCallOptions()).ResponseStream.ReadAllAsync();
+        return InternalClient
+            .GetInstanceState(input, CreateCallOptions())
+            .ResponseStream.ReadAllAsync();
     }
 
     /// <summary>
@@ -184,7 +189,7 @@ public class Client : IDisposable
     /// </summary>
     public InstanceStateValueAtKey InstanceStateLookup(InstanceStateLookupRequest input)
     {
-        return _client.InstanceStateLookup(input, CreateCallOptions());
+        return InternalClient.InstanceStateLookup(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -194,7 +199,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<InstanceStateValueAtKey> InstanceStateLookupAsync(InstanceStateLookupRequest input)
     {
-        return _client.InstanceStateLookupAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient.InstanceStateLookupAsync(input, CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -206,7 +211,7 @@ public class Client : IDisposable
     /// </summary>
     public NextAccountSequenceNumber GetNextAccountSequenceNumber(AccountAddress input)
     {
-        return _client.GetNextAccountSequenceNumber(input, CreateCallOptions());
+        return InternalClient.GetNextAccountSequenceNumber(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -218,7 +223,9 @@ public class Client : IDisposable
     /// </summary>
     public Task<NextAccountSequenceNumber> GetNextAccountSequenceNumberAsync(AccountAddress input)
     {
-        return _client.GetNextAccountSequenceNumberAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient
+            .GetNextAccountSequenceNumberAsync(input, CreateCallOptions())
+            .ResponseAsync;
     }
 
     /// <summary>
@@ -226,7 +233,7 @@ public class Client : IDisposable
     /// </summary>
     public ConsensusInfo GetConsensusInfo()
     {
-        return _client.GetConsensusInfo(new Empty(), CreateCallOptions());
+        return InternalClient.GetConsensusInfo(new Empty(), CreateCallOptions());
     }
 
     /// <summary>
@@ -234,7 +241,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<ConsensusInfo> GetConsensusInfoAsync()
     {
-        return _client.GetConsensusInfoAsync(new Empty(), CreateCallOptions()).ResponseAsync;
+        return InternalClient.GetConsensusInfoAsync(new Empty(), CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -242,7 +249,7 @@ public class Client : IDisposable
     /// </summary>
     public BlockItemStatus GetBlockItemStatus(TransactionHash input)
     {
-        return _client.GetBlockItemStatus(input, CreateCallOptions());
+        return InternalClient.GetBlockItemStatus(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -250,7 +257,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<BlockItemStatus> GetBlockItemStatusAsync(TransactionHash input)
     {
-        return _client.GetBlockItemStatusAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient.GetBlockItemStatusAsync(input, CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -258,7 +265,7 @@ public class Client : IDisposable
     /// </summary>
     public CryptographicParameters GetCryptographicParameters(BlockHashInput input)
     {
-        return _client.GetCryptographicParameters(input, CreateCallOptions());
+        return InternalClient.GetCryptographicParameters(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -266,7 +273,9 @@ public class Client : IDisposable
     /// </summary>
     public Task<CryptographicParameters> GetCryptographicParametersAsync(BlockHashInput input)
     {
-        return _client.GetCryptographicParametersAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient
+            .GetCryptographicParametersAsync(input, CreateCallOptions())
+            .ResponseAsync;
     }
 
     /// <summary>
@@ -274,7 +283,7 @@ public class Client : IDisposable
     /// </summary>
     public BlockInfo GetBlockInfo(BlockHashInput input)
     {
-        return _client.GetBlockInfo(input, CreateCallOptions());
+        return InternalClient.GetBlockInfo(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -282,7 +291,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<BlockInfo> GetBlockInfoAsync(BlockHashInput input)
     {
-        return _client.GetBlockInfoAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient.GetBlockInfoAsync(input, CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -290,7 +299,9 @@ public class Client : IDisposable
     /// </summary>
     public IAsyncEnumerable<BakerId> GetBakerList(BlockHashInput input)
     {
-        return _client.GetBakerList(input, CreateCallOptions()).ResponseStream.ReadAllAsync();
+        return InternalClient
+            .GetBakerList(input, CreateCallOptions())
+            .ResponseStream.ReadAllAsync();
     }
 
     /// <summary>
@@ -298,7 +309,7 @@ public class Client : IDisposable
     /// </summary>
     public PoolInfoResponse GetPoolInfo(PoolInfoRequest input)
     {
-        return _client.GetPoolInfo(input, CreateCallOptions());
+        return InternalClient.GetPoolInfo(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -306,7 +317,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<PoolInfoResponse> GetPoolInfoAsync(PoolInfoRequest input)
     {
-        return _client.GetPoolInfoAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient.GetPoolInfoAsync(input, CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -314,7 +325,7 @@ public class Client : IDisposable
     /// </summary>
     public PassiveDelegationInfo GetPassiveDelegationInfo(BlockHashInput input)
     {
-        return _client.GetPassiveDelegationInfo(input, CreateCallOptions());
+        return InternalClient.GetPassiveDelegationInfo(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -322,7 +333,9 @@ public class Client : IDisposable
     /// </summary>
     public Task<PassiveDelegationInfo> GetPassiveDelegationInfoAsync(BlockHashInput input)
     {
-        return _client.GetPassiveDelegationInfoAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient
+            .GetPassiveDelegationInfoAsync(input, CreateCallOptions())
+            .ResponseAsync;
     }
 
     /// <summary>
@@ -330,7 +343,7 @@ public class Client : IDisposable
     /// </summary>
     public BlocksAtHeightResponse GetBlocksAtHeight(BlocksAtHeightRequest input)
     {
-        return _client.GetBlocksAtHeight(input, CreateCallOptions());
+        return InternalClient.GetBlocksAtHeight(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -338,7 +351,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<BlocksAtHeightResponse> GetBlocksAtHeightAsync(BlocksAtHeightRequest input)
     {
-        return _client.GetBlocksAtHeightAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient.GetBlocksAtHeightAsync(input, CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -346,7 +359,7 @@ public class Client : IDisposable
     /// </summary>
     public TokenomicsInfo GetTokenomicsInfo(BlockHashInput input)
     {
-        return _client.GetTokenomicsInfo(input, CreateCallOptions());
+        return InternalClient.GetTokenomicsInfo(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -354,7 +367,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<TokenomicsInfo> GetTokenomicsInfoAsync(BlockHashInput input)
     {
-        return _client.GetTokenomicsInfoAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient.GetTokenomicsInfoAsync(input, CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -363,7 +376,7 @@ public class Client : IDisposable
     /// </summary>
     public InvokeInstanceResponse InvokeInstance(InvokeInstanceRequest input)
     {
-        return _client.InvokeInstance(input, CreateCallOptions());
+        return InternalClient.InvokeInstance(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -372,7 +385,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<InvokeInstanceResponse> InvokeInstanceAsync(InvokeInstanceRequest input)
     {
-        return _client.InvokeInstanceAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient.InvokeInstanceAsync(input, CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -380,7 +393,9 @@ public class Client : IDisposable
     /// </summary>
     public IAsyncEnumerable<DelegatorInfo> GetPoolDelegators(GetPoolDelegatorsRequest input)
     {
-        return _client.GetPoolDelegators(input, CreateCallOptions()).ResponseStream.ReadAllAsync();
+        return InternalClient
+            .GetPoolDelegators(input, CreateCallOptions())
+            .ResponseStream.ReadAllAsync();
     }
 
     /// <summary>
@@ -393,7 +408,7 @@ public class Client : IDisposable
         GetPoolDelegatorsRequest input
     )
     {
-        return _client
+        return InternalClient
             .GetPoolDelegatorsRewardPeriod(input, CreateCallOptions())
             .ResponseStream.ReadAllAsync();
     }
@@ -403,7 +418,7 @@ public class Client : IDisposable
     /// </summary>
     public IAsyncEnumerable<DelegatorInfo> GetPassiveDelegators(BlockHashInput input)
     {
-        return _client
+        return InternalClient
             .GetPassiveDelegators(input, CreateCallOptions())
             .ResponseStream.ReadAllAsync();
     }
@@ -418,7 +433,7 @@ public class Client : IDisposable
         BlockHashInput input
     )
     {
-        return _client
+        return InternalClient
             .GetPassiveDelegatorsRewardPeriod(input, CreateCallOptions())
             .ResponseStream.ReadAllAsync();
     }
@@ -428,7 +443,7 @@ public class Client : IDisposable
     /// </summary>
     public Branch GetBranches()
     {
-        return _client.GetBranches(new Empty(), CreateCallOptions());
+        return InternalClient.GetBranches(new Empty(), CreateCallOptions());
     }
 
     /// <summary>
@@ -436,7 +451,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<Branch> GetBranchesAsync()
     {
-        return _client.GetBranchesAsync(new Empty(), CreateCallOptions()).ResponseAsync;
+        return InternalClient.GetBranchesAsync(new Empty(), CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -444,7 +459,7 @@ public class Client : IDisposable
     /// </summary>
     public ElectionInfo GetElectionInfo(BlockHashInput input)
     {
-        return _client.GetElectionInfo(input, CreateCallOptions());
+        return InternalClient.GetElectionInfo(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -452,7 +467,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<ElectionInfo> GetElectionInfoAsync(BlockHashInput input)
     {
-        return _client.GetElectionInfoAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient.GetElectionInfoAsync(input, CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -460,7 +475,7 @@ public class Client : IDisposable
     /// </summary>
     public IAsyncEnumerable<IpInfo> GetIdentityProviders(BlockHashInput input)
     {
-        return _client
+        return InternalClient
             .GetIdentityProviders(input, CreateCallOptions())
             .ResponseStream.ReadAllAsync();
     }
@@ -470,7 +485,7 @@ public class Client : IDisposable
     /// </summary>
     public IAsyncEnumerable<ArInfo> GetAnonymityRevokers(BlockHashInput input)
     {
-        return _client
+        return InternalClient
             .GetAnonymityRevokers(input, CreateCallOptions())
             .ResponseStream.ReadAllAsync();
     }
@@ -482,7 +497,7 @@ public class Client : IDisposable
         AccountAddress input
     )
     {
-        return _client
+        return InternalClient
             .GetAccountNonFinalizedTransactions(input, CreateCallOptions())
             .ResponseStream.ReadAllAsync();
     }
@@ -492,7 +507,7 @@ public class Client : IDisposable
     /// </summary>
     public IAsyncEnumerable<BlockItemSummary> GetBlockTransactionEvents(BlockHashInput input)
     {
-        return _client
+        return InternalClient
             .GetBlockTransactionEvents(input, CreateCallOptions())
             .ResponseStream.ReadAllAsync();
     }
@@ -503,7 +518,7 @@ public class Client : IDisposable
     /// </summary>
     public IAsyncEnumerable<BlockSpecialEvent> GetBlockSpecialEvents(BlockHashInput input)
     {
-        return _client
+        return InternalClient
             .GetBlockSpecialEvents(input, CreateCallOptions())
             .ResponseStream.ReadAllAsync();
     }
@@ -513,7 +528,7 @@ public class Client : IDisposable
     /// </summary>
     public IAsyncEnumerable<PendingUpdate> GetBlockPendingUpdates(BlockHashInput input)
     {
-        return _client
+        return InternalClient
             .GetBlockPendingUpdates(input, CreateCallOptions())
             .ResponseStream.ReadAllAsync();
     }
@@ -523,7 +538,7 @@ public class Client : IDisposable
     /// </summary>
     public NextUpdateSequenceNumbers GetNextUpdateSequenceNumbers(BlockHashInput input)
     {
-        return _client.GetNextUpdateSequenceNumbers(input, CreateCallOptions());
+        return InternalClient.GetNextUpdateSequenceNumbers(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -531,7 +546,9 @@ public class Client : IDisposable
     /// </summary>
     public Task<NextUpdateSequenceNumbers> GetNextUpdateSequenceNumbersAsync(BlockHashInput input)
     {
-        return _client.GetNextUpdateSequenceNumbersAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient
+            .GetNextUpdateSequenceNumbersAsync(input, CreateCallOptions())
+            .ResponseAsync;
     }
 
     /// <summary>
@@ -539,7 +556,7 @@ public class Client : IDisposable
     /// </summary>
     public Empty Shutdown()
     {
-        return _client.Shutdown(new Empty(), CreateCallOptions());
+        return InternalClient.Shutdown(new Empty(), CreateCallOptions());
     }
 
     /// <summary>
@@ -547,7 +564,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<Empty> ShutdownAsync()
     {
-        return _client.ShutdownAsync(new Empty(), CreateCallOptions()).ResponseAsync;
+        return InternalClient.ShutdownAsync(new Empty(), CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -558,7 +575,7 @@ public class Client : IDisposable
     /// </summary>
     public Empty PeerConnect(IpSocketAddress input)
     {
-        return _client.PeerConnect(input, CreateCallOptions());
+        return InternalClient.PeerConnect(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -570,7 +587,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<Empty> PeerConnectAsync(IpSocketAddress input)
     {
-        return _client.PeerConnectAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient.PeerConnectAsync(input, CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -580,7 +597,7 @@ public class Client : IDisposable
     /// </summary>
     public Empty PeerDisconnect(IpSocketAddress input)
     {
-        return _client.PeerDisconnect(input, CreateCallOptions());
+        return InternalClient.PeerDisconnect(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -590,7 +607,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<Empty> PeerDisconnectAsync(IpSocketAddress input)
     {
-        return _client.PeerDisconnectAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient.PeerDisconnectAsync(input, CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -598,7 +615,7 @@ public class Client : IDisposable
     /// </summary>
     public BannedPeers GetBannedPeers()
     {
-        return _client.GetBannedPeers(new Empty(), CreateCallOptions());
+        return InternalClient.GetBannedPeers(new Empty(), CreateCallOptions());
     }
 
     /// <summary>
@@ -606,7 +623,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<BannedPeers> GetBannedPeersAsync()
     {
-        return _client.GetBannedPeersAsync(new Empty(), CreateCallOptions()).ResponseAsync;
+        return InternalClient.GetBannedPeersAsync(new Empty(), CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -614,7 +631,7 @@ public class Client : IDisposable
     /// </summary>
     public Empty BanPeer(PeerToBan input)
     {
-        return _client.BanPeer(input, CreateCallOptions());
+        return InternalClient.BanPeer(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -622,7 +639,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<Empty> BanPeerAsync(PeerToBan input)
     {
-        return _client.BanPeerAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient.BanPeerAsync(input, CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -630,7 +647,7 @@ public class Client : IDisposable
     /// </summary>
     public Empty UnbanPeer(BannedPeer input)
     {
-        return _client.UnbanPeer(input, CreateCallOptions());
+        return InternalClient.UnbanPeer(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -638,7 +655,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<Empty> UnbanPeerAsync(BannedPeer input)
     {
-        return _client.UnbanPeerAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient.UnbanPeerAsync(input, CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -648,7 +665,7 @@ public class Client : IDisposable
     /// </summary>
     public Empty DumpStart(DumpRequest input)
     {
-        return _client.DumpStart(input, CreateCallOptions());
+        return InternalClient.DumpStart(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -658,7 +675,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<Empty> DumpStartAsync(DumpRequest input)
     {
-        return _client.DumpStartAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient.DumpStartAsync(input, CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -668,7 +685,7 @@ public class Client : IDisposable
     /// </summary>
     public Empty DumpStop()
     {
-        return _client.DumpStop(new Empty(), CreateCallOptions());
+        return InternalClient.DumpStop(new Empty(), CreateCallOptions());
     }
 
     /// <summary>
@@ -678,7 +695,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<Empty> DumpStopAsync()
     {
-        return _client.DumpStopAsync(new Empty(), CreateCallOptions()).ResponseAsync;
+        return InternalClient.DumpStopAsync(new Empty(), CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -686,7 +703,7 @@ public class Client : IDisposable
     /// </summary>
     public PeersInfo GetPeersInfo()
     {
-        return _client.GetPeersInfo(new Empty(), CreateCallOptions());
+        return InternalClient.GetPeersInfo(new Empty(), CreateCallOptions());
     }
 
     /// <summary>
@@ -694,7 +711,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<PeersInfo> GetPeersInfoAsync()
     {
-        return _client.GetPeersInfoAsync(new Empty(), CreateCallOptions()).ResponseAsync;
+        return InternalClient.GetPeersInfoAsync(new Empty(), CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -702,7 +719,7 @@ public class Client : IDisposable
     /// </summary>
     public NodeInfo GetNodeInfo()
     {
-        return _client.GetNodeInfo(new Empty(), CreateCallOptions());
+        return InternalClient.GetNodeInfo(new Empty(), CreateCallOptions());
     }
 
     /// <summary>
@@ -710,7 +727,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<NodeInfo> GetNodeInfoAsync()
     {
-        return _client.GetNodeInfoAsync(new Empty(), CreateCallOptions()).ResponseAsync;
+        return InternalClient.GetNodeInfoAsync(new Empty(), CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -725,7 +742,7 @@ public class Client : IDisposable
     /// </summary>
     public TransactionHash SendBlockItem(SendBlockItemRequest input)
     {
-        return _client.SendBlockItem(input, CreateCallOptions());
+        return InternalClient.SendBlockItem(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -740,7 +757,7 @@ public class Client : IDisposable
     /// </summary>
     public Task<TransactionHash> SendBlockItemAsync(SendBlockItemRequest input)
     {
-        return _client.SendBlockItemAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient.SendBlockItemAsync(input, CreateCallOptions()).ResponseAsync;
     }
 
     /// <summary>
@@ -748,7 +765,7 @@ public class Client : IDisposable
     /// </summary>
     public ChainParameters GetBlockChainParameters(BlockHashInput input)
     {
-        return _client.GetBlockChainParameters(input, CreateCallOptions());
+        return InternalClient.GetBlockChainParameters(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -756,7 +773,9 @@ public class Client : IDisposable
     /// </summary>
     public Task<ChainParameters> GetBlockChainParametersAsync(BlockHashInput input)
     {
-        return _client.GetBlockChainParametersAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient
+            .GetBlockChainParametersAsync(input, CreateCallOptions())
+            .ResponseAsync;
     }
 
     /// <summary>
@@ -764,7 +783,7 @@ public class Client : IDisposable
     /// </summary>
     public BlockFinalizationSummary GetBlockFinalizationSummary(BlockHashInput input)
     {
-        return _client.GetBlockFinalizationSummary(input, CreateCallOptions());
+        return InternalClient.GetBlockFinalizationSummary(input, CreateCallOptions());
     }
 
     /// <summary>
@@ -772,7 +791,9 @@ public class Client : IDisposable
     /// </summary>
     public Task<BlockFinalizationSummary> GetBlockFinalizationSummaryAsync(BlockHashInput input)
     {
-        return _client.GetBlockFinalizationSummaryAsync(input, CreateCallOptions()).ResponseAsync;
+        return InternalClient
+            .GetBlockFinalizationSummaryAsync(input, CreateCallOptions())
+            .ResponseAsync;
     }
 
     /// <summary>
@@ -780,11 +801,13 @@ public class Client : IDisposable
     /// </summary>
     public IAsyncEnumerable<BlockItem> GetBlockItems(BlockHashInput input)
     {
-        return _client.GetBlockItems(input, CreateCallOptions()).ResponseStream.ReadAllAsync();
+        return InternalClient
+            .GetBlockItems(input, CreateCallOptions())
+            .ResponseStream.ReadAllAsync();
     }
 
     /// <summary>
-    /// Create the call options for invoking the <see cref="_client">.
+    /// Create the call options for invoking the <see cref="InternalClient">.
     /// </summary>
     private CallOptions CreateCallOptions()
     {

@@ -1,19 +1,17 @@
+using ConcordiumNetSdk.Helpers;
 using NBitcoin.DataEncoders;
 
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// An account address.
+/// Models an account address.
+///
+/// The address of an account is a 256-bit value which uniquely identifies the account.
 /// </summary>
-public class AccountAddress : IEquatable<AccountAddress>
+public readonly struct AccountAddress : IEquatable<AccountAddress>
 {
-    private static readonly Base58CheckEncoder EncoderInstance = new();
     public const UInt32 BytesLength = 32;
-
-    /// <summary>
-    /// Representation of the account address as a base58 encoded string.
-    /// </summary>
-    private readonly string _formatted;
+    private static readonly Base58CheckEncoder EncoderInstance = new();
 
     /// <summary>
     /// Representation of the account address as a byte array (without the version byte prepended).
@@ -27,21 +25,6 @@ public class AccountAddress : IEquatable<AccountAddress>
     private AccountAddress(byte[] addressAsBytes)
     {
         _value = addressAsBytes;
-        var bytesToEncode = new byte[33];
-        bytesToEncode[0] = 1;
-        addressAsBytes.CopyTo(bytesToEncode, 1);
-        _formatted = EncoderInstance.EncodeData(bytesToEncode);
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="AccountAddress"/> class.
-    /// </summary>
-    /// <param name="addressAsBase58String">The address as a base58 encoded string.</param>
-    private AccountAddress(string addressAsBase58String)
-    {
-        _formatted = addressAsBase58String;
-        var decodedBytes = EncoderInstance.DecodeData(addressAsBase58String);
-        _value = decodedBytes.Skip(1).ToArray(); // Remove version byte.
     }
 
     /// <summary>
@@ -49,7 +32,7 @@ public class AccountAddress : IEquatable<AccountAddress>
     /// </summary>
     public override string ToString()
     {
-        return (string)_formatted.Clone();
+        return EncoderInstance.EncodeData(_value);
     }
 
     /// <summary>
@@ -66,7 +49,8 @@ public class AccountAddress : IEquatable<AccountAddress>
     /// <param name="addressAsBase58String">The address represented as a base58 encoded string.</param>
     public static AccountAddress From(string addressAsBase58String)
     {
-        return new AccountAddress(addressAsBase58String);
+        var decodedBytes = EncoderInstance.DecodeData(addressAsBase58String).Skip(1).ToArray(); // Remove version byte.
+        return new AccountAddress(decodedBytes);
     }
 
     /// <summary>
@@ -83,7 +67,7 @@ public class AccountAddress : IEquatable<AccountAddress>
     /// <summary>
     /// Checks if passed string is a base58 encoded address.
     /// </summary>
-    /// <param name="addressAsBase58String">the account address as base58 check encoded string.</param>
+    /// <param name="addressAsBase58String">The account address as base58 encoded string.</param>
     /// <returns><c>true<c/> if the input could be decoded as a base58 encoded address and <c>false</c> otherwise.</returns>
     public static bool IsValid(string? addressAsBase58String)
     {
@@ -96,9 +80,43 @@ public class AccountAddress : IEquatable<AccountAddress>
         }
         catch (FormatException)
         {
-            // Decode throws FormatException if decode is not successful
+            // Decode throws <c>FormatException</c> if decode is not successful
             return false;
         }
+    }
+
+    /// <summary>
+    /// Check whether the account address is an alias of another.
+    ///
+    /// Two addresses are aliases if they identify the same account. This is
+    /// defined to be when the addresses agree on the first 29 bytes.
+    /// </summary>
+    /// <param name="other">the account address as base58 encoded string.</param>
+    public bool IsAliasOf(AccountAddress other)
+    {
+        return _value.Take(29).SequenceEqual(other._value.Take(29));
+    }
+
+    /// <summary>
+    /// Gets the <c>n</c>th alias.
+    ///
+    /// The first 29 bytes of an address are unique to the account. The integer
+    /// 3 bytes represent an unsigned integer in big endian format whose value
+    /// lies between <c>0</c> and <c>2^24-1</c>. The address
+    /// </summary>
+    /// <param name="n">the account address as base58 encoded string.</param>
+    /// <exception cref="ArgumentOutOfRangeException">If <>n</c> is larger than <c>2^24-1</c>.</exception>
+    public AccountAddress GetNthAlias(UInt32 n)
+    {
+        if (n > 16777215)
+        {
+            throw new ArgumentOutOfRangeException($"Alias can at most be 16777215, got {n}.");
+        }
+        // Serialize n to its corresponding alias bytes. Since we output it
+        // in big endian format, we truncate the first and most significant byte.
+        byte[] aliasBytes = Serialization.GetBytes((UInt32)n).Skip(1).ToArray();
+        byte[] address = _value.Take(29).ToArray().Concat(aliasBytes).ToArray();
+        return AccountAddress.From(address);
     }
 
     /// <summary>
@@ -112,20 +130,14 @@ public class AccountAddress : IEquatable<AccountAddress>
         };
     }
 
-    public override bool Equals(object? obj)
+    public bool Equals(AccountAddress other)
     {
-        if (ReferenceEquals(null, obj))
-            return false;
-        if (ReferenceEquals(this, obj))
-            return true;
-        if (obj.GetType() != GetType())
-            return false;
-        return ToString() == ((AccountAddress)obj).ToString();
+        return _value.SequenceEqual(other._value);
     }
 
-    public bool Equals(AccountAddress? accountAddress)
+    public override bool Equals(object? obj)
     {
-        return this.Equals((Object?)accountAddress);
+        return obj is not null && obj is AccountAddress other && Equals(other);
     }
 
     public override int GetHashCode()

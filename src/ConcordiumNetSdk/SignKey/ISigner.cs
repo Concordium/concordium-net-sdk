@@ -3,9 +3,14 @@ namespace ConcordiumNetSdk.SignKey;
 public interface ISigner
 {
     /// <summary>
-    /// Signs bytes using concrete implementation of sign key.
+    /// Gets the length of the signature produced by this signer.
     /// </summary>
-    /// <param name="bytes">The bytes to be signed.</param>
-    /// <returns>The signed bytes.</returns>
+    public UInt32 GetSignatureLength();
+
+    /// <summary>
+    /// Signs bytes using concrete implementation of a sign key.
+    /// </summary>
+    /// <param name="bytes">A byte array representing the data to sign.</param>
+    /// <returns>A byte array representing the data to sign.</returns>
     byte[] Sign(byte[] bytes);
 }

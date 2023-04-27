@@ -6,6 +6,7 @@ namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
 /// A transfer account transaction.
+///
 /// Used for transferring CCD from one account to another.
 /// </summary>
 public class Transfer : AccountTransactionPayload<Transfer>
@@ -18,7 +19,7 @@ public class Transfer : AccountTransactionPayload<Transfer>
     /// <summary>
     /// Amount to send.
     /// </summary>
-    private MicroCCDAmount _amount;
+    private CcdAmount _amount;
 
     /// <summary>
     /// Address of the receiver account to which the amount will be sent.
@@ -33,9 +34,9 @@ public class Transfer : AccountTransactionPayload<Transfer>
     /// <summary>
     /// Get the amount to send.
     /// </summary>
-    public MicroCCDAmount GetAmount()
+    public CcdAmount GetAmount()
     {
-        return MicroCCDAmount.FromMicroCcd(_amount.GetMicroCcdValue());
+        return CcdAmount.FromMicroCcd(_amount.GetMicroCcdValue());
     }
 
     /// <summary>
@@ -51,7 +52,7 @@ public class Transfer : AccountTransactionPayload<Transfer>
     /// </summary>
     /// <param name="amount">Amount to send.</param>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
-    private Transfer(MicroCCDAmount amount, AccountAddress receiver)
+    private Transfer(CcdAmount amount, AccountAddress receiver)
     {
         _amount = amount;
         _receiver = receiver;
@@ -64,7 +65,7 @@ public class Transfer : AccountTransactionPayload<Transfer>
     /// <param name="amount">Amount to send.</param>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
     public static AccountTransactionPayload<Transfer> Create(
-        MicroCCDAmount amount,
+        CcdAmount amount,
         AccountAddress receiver
     )
     {
@@ -76,7 +77,7 @@ public class Transfer : AccountTransactionPayload<Transfer>
     /// </summary>
     /// <param name="amount">Amount to send.</param>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
-    private static byte[] Serialize(MicroCCDAmount amount, AccountAddress receiver)
+    private static byte[] Serialize(CcdAmount amount, AccountAddress receiver)
     {
         using MemoryStream memoryStream = new MemoryStream();
         memoryStream.WriteByte(TRANSACTION_TYPE);
@@ -90,13 +91,5 @@ public class Transfer : AccountTransactionPayload<Transfer>
     public override byte[] GetBytes()
     {
         return (byte[])_serializedPayload.Clone();
-    }
-
-    public override Concordium.V2.AccountTransactionPayload ToProto()
-    {
-        return new Concordium.V2.AccountTransactionPayload()
-        {
-            RawPayload = Google.Protobuf.ByteString.CopyFrom(_serializedPayload)
-        };
     }
 }

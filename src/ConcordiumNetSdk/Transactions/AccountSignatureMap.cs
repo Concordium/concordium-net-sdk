@@ -1,24 +1,39 @@
 using ConcordiumNetSdk.Types;
+using ConcordiumNetSdk.SignKey;
 using System.Collections.Immutable;
 
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// Map from key indices to signatures resulting from signing the account transaction with the corresponding key.
+/// Models a map from <see cref="AccountKeyIndex"/> to signatures produced by signing the
+/// account transaction hashes with the key corresponding to an index. This key index is
+/// always relative to a <see cref="AccountCredentialIndex"/>.
 /// </summary>
 public class AccountSignatureMap
 {
     /// <summary>
     /// Internal representation of the map, from key indices to signatures.
     /// </summary>
-    private ImmutableDictionary<byte, byte[]> _signatures;
+    private ImmutableDictionary<AccountKeyIndex, byte[]> _signatures;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountSignatureMap"/> class.
     /// </summary>
     /// <param name="signatures">A map from key indices to signatures.</param>
-    public AccountSignatureMap(Dictionary<byte, byte[]> signatures)
+    /// <exception cref="ArgumentException">If some signature is not 64 bytes.</exception>
+    public AccountSignatureMap(Dictionary<AccountKeyIndex, byte[]> signatures)
     {
+        // Signature lengths are fixed. This is a bit hacky, but check it here.
+        if (
+            signatures.Values.Any(
+                signature => signature.Length != Ed25519SignKey.SignatureBytesLength
+            )
+        )
+        {
+            throw new ArgumentException(
+                $"Signature should be {Ed25519SignKey.SignatureBytesLength} bytes."
+            );
+        }
         this._signatures = signatures.ToImmutableDictionary();
     }
 

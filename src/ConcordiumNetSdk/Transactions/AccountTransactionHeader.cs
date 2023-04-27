@@ -1,12 +1,20 @@
 using AccountAddress = ConcordiumNetSdk.Types.AccountAddress;
 using ConcordiumNetSdk.Types;
 using ConcordiumNetSdk.Helpers;
-using System.Buffers.Binary;
 
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// Header of an account transaction payload.
+/// Models the header of an account transaction.
+///
+/// Transactions sent to the node includes an account transaction header containing
+/// information about:
+///
+/// The <see cref="AccountAddress"/> of the sender,
+/// the <see cref="AccountNonce"/> to use,
+/// the <see cref="Expiry"/> time of the transaction,
+/// the maximum <see cref="EnergyAmount"/> to spend on the transaction as well as
+/// the <see cref="PayloadSize"/>.
 /// </summary>
 public class AccountTransactionHeader
 {
@@ -16,39 +24,34 @@ public class AccountTransactionHeader
     public const UInt32 BytesLength =
         AccountAddress.BytesLength
         + AccountNonce.BytesLength
-        + sizeof(UInt64)
-        + sizeof(UInt32)
+        + EnergyAmount.BytesLength
+        + PayloadSize.BytesLength
         + Expiry.BytesLength;
 
     /// <summary>
     /// Address of the sender of the transaction.
     /// </summary>
-    private readonly AccountAddress _sender;
+    public readonly AccountAddress _sender;
 
     /// <summary>
     /// Account nonce to use for the transaction.
     /// </summary>
-    private readonly AccountNonce _nonce;
+    public readonly AccountNonce _nonce;
 
     /// <summary>
     /// Expiration time of the transaction.
     /// </summary>
-    private readonly Expiry _expiry;
+    public readonly Expiry _expiry;
 
     /// <summary>
     /// Maximum amount of energy to spend on this transaction.
     /// </summary>
-    private readonly UInt64 _maxEnergyCost;
+    public readonly EnergyAmount _maxEnergyCost;
 
     /// <summary>
     /// Size of the transaction payload.
     /// </summary>
-    private readonly UInt32 _payloadSize;
-
-    /// <summary>
-    /// The serialized header.
-    /// </summary>
-    private readonly byte[] _serializedHeader;
+    public readonly PayloadSize _payloadSize;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountTransactionHeader"/> class.
@@ -71,7 +74,6 @@ public class AccountTransactionHeader
         _expiry = expiry;
         _maxEnergyCost = maxEnergyCost;
         _payloadSize = payloadSize;
-        _serializedHeader = Serialize(sender, nonce, expiry, maxEnergyCost, payloadSize);
     }
 
     /// <summary>
@@ -87,22 +89,25 @@ public class AccountTransactionHeader
         AccountAddress sender,
         AccountNonce nonce,
         Expiry expiry,
-        UInt64 maxEnergyCost,
-        UInt32 payloadSize
+        EnergyAmount maxEnergyCost,
+        PayloadSize payloadSize
     )
     {
         using MemoryStream memoryStream = new MemoryStream();
         memoryStream.Write(sender.GetBytes());
         memoryStream.Write(nonce.GetBytes());
-        memoryStream.Write(Serialization.GetBytes((UInt64)maxEnergyCost));
-        memoryStream.Write(Serialization.GetBytes((UInt32)payloadSize));
+        memoryStream.Write(maxEnergyCost.GetBytes());
+        memoryStream.Write(payloadSize.GetBytes());
         memoryStream.Write(expiry.GetBytes());
         return memoryStream.ToArray();
     }
 
+    /// <summary>
+    /// Get the transaction header in the binary format expected by the node.
+    /// </summary>
     public byte[] GetBytes()
     {
-        return (byte[])_serializedHeader.Clone();
+        return (byte[])Serialize(_sender, _nonce, _expiry, _maxEnergyCost, _payloadSize);
     }
 
     /// <summary>

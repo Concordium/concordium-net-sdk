@@ -8,9 +8,9 @@ namespace ConcordiumNetSdk.Types;
 /// Memo to be registered on-chain with the <see cref="TransferWithMemo"/> account transaction.
 /// The memo can be any data which is at most <see cref="MaxLength"/> bytes, but convention is to encode a text message as CBOR.
 /// </summary>
-public class Memo
+public readonly struct Memo : IEquatable<Memo>
 {
-    private const int MaxLength = 255;
+    private const int MaxLength = 256;
 
     /// <summary>
     /// Byte array representing the memo.
@@ -101,17 +101,20 @@ public class Memo
         return Convert.ToHexString(_value).ToLowerInvariant();
     }
 
+    public bool Equals(Memo memo)
+    {
+        return _value.SequenceEqual(memo._value);
+    }
+
     public override bool Equals(object? obj)
     {
         if (ReferenceEquals(null, obj))
             return false;
-        if (ReferenceEquals(this, obj))
-            return true;
         if (obj.GetType() != GetType())
             return false;
 
         var other = (Memo)obj;
-        return _value.SequenceEqual(other._value);
+        return Equals(other);
     }
 
     public override int GetHashCode()

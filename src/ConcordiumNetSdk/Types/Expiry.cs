@@ -1,127 +1,181 @@
 using ConcordiumNetSdk.Helpers;
 
-namespace ConcordiumNetSdk.Types
+namespace ConcordiumNetSdk.Types;
+
+/// <summary>
+/// Expiration time for a transaction.
+///
+/// If a transaction is still pending at the expiration time, it is rejected.
+/// </summary>
+public readonly struct Expiry : IEquatable<Expiry>
 {
+    public const int BytesLength = sizeof(UInt64);
+
     /// <summary>
-    /// Expiration time for a transaction.
+    /// Time at which the transaction expires.
     /// </summary>
-    public class Expiry
+    private readonly DateTimeOffset _timestamp;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Expiry"/> class.
+    /// </summary>
+    /// <param name="timestamp">Time at which the transaction expires.</param>
+    private Expiry(DateTimeOffset timestamp)
     {
-        public const int BytesLength = sizeof(UInt64);
+        _timestamp = timestamp;
+    }
 
-        /// <summary>
-        /// Time at which the transaction expires.
-        /// </summary>
-        private readonly DateTimeOffset _timestamp;
+    /// <summary>
+    /// Creates a new expiration time that is <c>minutes</c> fro, of the current system time.
+    /// </summary>
+    /// <param name="minutes">An expiration time specified by the number of minutes from the current system time.</param>
+    public static Expiry AtMinutesFromNow(UInt64 minutes)
+    {
+        return Expiry.From(Now().AddMinutes(minutes));
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Expiry"/> class.
-        /// </summary>
-        /// <param name="timestamp">Time at which the transaction expires.</param>
-        private Expiry(DateTimeOffset timestamp)
+    /// <summary>
+    /// Creates a new expiration time that is <c>seconds</c> fro, of the current system time.
+    /// </summary>
+    /// <param name="seconds">An expiration time specified by the number of seconds from the current system time.</param>
+    public static Expiry AtSecondsFromNow(UInt64 seconds)
+    {
+        return Expiry.From(Now().AddSeconds(seconds));
+    }
+
+    /// <summary>
+    /// Creates an instance from a expiration time represented by the elapsed number of seconds since the UNIX epoch.
+    /// </summary>
+    /// <param name="secondsSinceEpoch">Expiration time represented by the elapsed seconds since the UNIX epoch.</param>
+    public static Expiry From(UInt64 secondsSinceEpoch)
+    {
+        // We check due to the type of FromUnixTimeSeconds.
+        if (secondsSinceEpoch > Int64.MaxValue)
         {
-            _timestamp = timestamp;
+            throw new ArgumentOutOfRangeException(
+                "UInt64 timestamp value exceeds maximum value of Int64."
+            );
         }
+        return new Expiry(DateTimeOffset.FromUnixTimeSeconds((Int64)secondsSinceEpoch));
+    }
 
-        /// <summary>
-        /// Returns a new expiration time that is <c>minutes</c> ahead of the receiver object.
-        /// </summary>
-        /// <param name="minutes">Number of minutes later the resulting expiration times should be, relative to <c>this</c>.</param>
-        public Expiry AddMinutes(UInt64 minutes)
+    /// <summary>
+    /// Creates an instance whose expiration time is the current system time.
+    /// </summary>
+    public static DateTimeOffset Now()
+    {
+        var now = DateTimeOffset.UtcNow;
+        // UInt64 is used to represent the number of seconds since the UNIX epoch in API.
+        if (now.ToUnixTimeSeconds() < 0)
         {
-            return Expiry.From(_timestamp.AddMinutes(minutes));
+            throw new ArgumentOutOfRangeException(
+                "System time as number of seconds since UNIX epoch must be larger than 0."
+            );
         }
+        return now;
+    }
 
-        /// <summary>
-        /// Returns a new expiration time that is <c>seconds</c> ahead of the receiver object.
-        /// </summary>
-        /// <param name="minutes">Number of seconds later the resulting expiration times should be, relative to <c>this</c>.</param>
-        public Expiry AddSeconds(UInt64 seconds)
-        {
-            return Expiry.From(_timestamp.AddSeconds(seconds));
-        }
+    /// <summary>
+    /// Creates an instance from a <see cref="DateTime"/>.
+    /// </summary>
+    public static Expiry From(DateTime date)
+    {
+        return new Expiry(new DateTimeOffset(date));
+    }
 
-        /// <summary>
-        /// Creates an instance from a expiration time represented by the elapsed number of seconds since the UNIX epoch.
-        /// </summary>
-        /// <param name="secondsSinceEpoch">Expiration time represented by the elapsed seconds since the UNIX epoch.</param>
-        public static Expiry From(UInt64 secondsSinceEpoch)
-        {
-            // We check due to the type of FromUnixTimeSeconds.
-            if (secondsSinceEpoch > Int64.MaxValue)
-            {
-                throw new ArgumentOutOfRangeException(
-                    "UInt64 timestamp value exceeds maximum value of Int64."
-                );
-            }
-            return new Expiry(DateTimeOffset.FromUnixTimeSeconds((Int64)secondsSinceEpoch));
-        }
+    /// <summary>
+    /// Creates an instance from a <see cref="DateTimeOffset"/>.
+    /// </summary>
+    public static Expiry From(DateTimeOffset timestamp)
+    {
+        return new Expiry(timestamp);
+    }
 
-        /// <summary>
-        /// Creates an instance whose expiration time is the current system time.
-        /// </summary>
-        public static Expiry Now()
-        {
-            var now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-            // UInt64 is used to represent the number of seconds since the UNIX epoch in API.
-            if (now < 0)
-            {
-                throw new ArgumentOutOfRangeException("Timestamp must be larger than 0.");
-            }
-            return Expiry.From((UInt64)now);
-        }
+    /// <summary>
+    /// Get the expiration time represented by the elapsed number of seconds since
+    /// the UNIX epoch.
+    /// </summary>
+    public UInt64 GetValue()
+    {
+        return (UInt64)_timestamp.ToUnixTimeSeconds();
+    }
 
-        /// <summary>
-        /// Creates an instance from a <see cref="DateTime"/>.
-        /// </summary>
-        public static Expiry From(DateTime date)
-        {
-            return new Expiry(new DateTimeOffset(date));
-        }
+    /// <summary>
+    /// Get the expiration time represented by the elapsed number of seconds since
+    /// the UNIX epoch written as a 64-bit integer in big-endian format.
+    /// </summary>
+    public byte[] GetBytes()
+    {
+        return Serialization.GetBytes(this.GetValue());
+    }
 
-        /// <summary>
-        /// Creates an instance from a <see cref="DateTimeOffset"/>.
-        /// </summary>
-        public static Expiry From(DateTimeOffset timestamp)
-        {
-            return new Expiry(timestamp);
-        }
+    /// <summary>
+    /// Get a string representation of the date and time in the calendar used by the current culture.
+    /// </summary>
+    public override string ToString()
+    {
+        return _timestamp.ToString();
+    }
 
-        /// <summary>
-        /// Get the expiration time represented by the elapsed number of seconds since
-        /// the UNIX epoch.
-        /// </summary>
-        public UInt64 GetValue()
+    /// <summary>
+    /// Converts the expiration time to its corresponding protocol buffer message instance.
+    /// </summary>
+    public Concordium.V2.TransactionTime ToProto()
+    {
+        return new Concordium.V2.TransactionTime()
         {
-            return (UInt64)_timestamp.ToUnixTimeSeconds();
-        }
+            Value = (UInt64)_timestamp.ToUnixTimeSeconds()
+        };
+    }
 
-        /// <summary>
-        /// Get the expiration time represented by the elapsed number of seconds since
-        /// the UNIX epoch written as a 64-bit integer in big-endian format.
-        /// </summary>
-        public byte[] GetBytes()
-        {
-            return Serialization.GetBytes(this.GetValue());
-        }
+    public bool Equals(Expiry expiry)
+    {
+        return _timestamp.EqualsExact(expiry._timestamp);
+    }
 
-        /// <summary>
-        /// Get a string representation of the date and time in the calendar used by the current culture.
-        /// </summary>
-        public override string ToString()
-        {
-            return _timestamp.ToString();
-        }
+    public override bool Equals(object? obj)
+    {
+        if (ReferenceEquals(null, obj))
+            return false;
+        if (obj.GetType() != GetType())
+            return false;
 
-        /// <summary>
-        /// Converts the expiration time to its corresponding protocol buffer message instance.
-        /// </summary>
-        public Concordium.V2.TransactionTime ToProto()
-        {
-            return new Concordium.V2.TransactionTime()
-            {
-                Value = (UInt64)_timestamp.ToUnixTimeSeconds()
-            };
-        }
+        var other = (Memo)obj;
+        return Equals(other);
+    }
+
+    public override int GetHashCode()
+    {
+        return _timestamp.GetHashCode();
+    }
+
+    public static bool operator ==(Expiry? left, Expiry? right)
+    {
+        return Equals(left, right);
+    }
+
+    public static bool operator !=(Expiry? left, Expiry? right)
+    {
+        return !Equals(left, right);
+    }
+
+    public static bool operator <(Expiry left, Expiry right)
+    {
+        return left._timestamp < right._timestamp;
+    }
+
+    public static bool operator >(Expiry left, Expiry right)
+    {
+        return left._timestamp > right._timestamp;
+    }
+
+    public static bool operator <=(Expiry left, Expiry right)
+    {
+        return left._timestamp <= right._timestamp;
+    }
+
+    public static bool operator >=(Expiry left, Expiry right)
+    {
+        return left._timestamp >= right._timestamp;
     }
 }

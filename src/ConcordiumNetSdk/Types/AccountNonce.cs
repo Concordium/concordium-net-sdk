@@ -3,40 +3,31 @@
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// An account nonce.
+/// Models an account sequence number.
+///
+/// The account sequence number is a 64-bit integer specific to an account and used
+/// when submitting account transactions for that account to the node. The account
+/// sequence number is maintained as on-chain state and is incremented with each finalized
+/// transaction. The next sequence number to be used in a transaction can be queried
+/// with <see cref="Client.GetNextAccountSequenceNumber"> or
+/// <see cref="Client.GetAccountInfo"/>.
 /// </summary>
-public class AccountNonce : IEquatable<AccountNonce>
+public readonly struct AccountNonce : IEquatable<AccountNonce>
 {
+    public const UInt32 BytesLength = sizeof(UInt64);
+
     /// <summary>
     /// The value of the nonce.
     /// </summary>
-    private readonly UInt64 _value;
-    public const int BytesLength = 8;
+    public readonly UInt64 Value { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountNonce"/> class.
     /// </summary>
     /// <param name="nonce">The nonce.</param>
-    private AccountNonce(UInt64 nonce)
+    public AccountNonce(UInt64 nonce)
     {
-        _value = nonce;
-    }
-
-    /// <summary>
-    /// Get the nonce.
-    /// </summary>
-    public ulong GetValue()
-    {
-        return _value;
-    }
-
-    /// <summary>
-    /// Creates a nonce instance.
-    /// </summary>
-    /// <param name="nonce">The nonce.</param>
-    public static AccountNonce Create(UInt64 nonce)
-    {
-        return new AccountNonce(nonce);
+        Value = nonce;
     }
 
     /// <summary>
@@ -44,15 +35,15 @@ public class AccountNonce : IEquatable<AccountNonce>
     /// </summary>
     public AccountNonce GetIncrementedNonce()
     {
-        return new AccountNonce(_value + 1);
+        return new AccountNonce(Value + 1);
     }
 
     /// <summary>
-    /// Get the address as a length-32 byte array without the version byte prepended.
+    /// Get the account nonce in the binary format expected by the node.
     /// </summary>
     public byte[] GetBytes()
     {
-        return Serialization.GetBytes((UInt64)_value);
+        return Serialization.GetBytes((UInt64)Value);
     }
 
     /// <summary>
@@ -60,12 +51,22 @@ public class AccountNonce : IEquatable<AccountNonce>
     /// </summary>
     public Concordium.V2.SequenceNumber ToProto()
     {
-        return new Concordium.V2.SequenceNumber() { Value = _value };
+        return new Concordium.V2.SequenceNumber() { Value = Value };
     }
 
-    public bool Equals(AccountNonce? other)
+    public static implicit operator AccountNonce(UInt64 value)
     {
-        return other is not null && _value == other._value;
+        return new AccountNonce(value);
+    }
+
+    public static implicit operator UInt64(AccountNonce byteIndex)
+    {
+        return byteIndex.Value;
+    }
+
+    public bool Equals(AccountNonce other)
+    {
+        return Value == other.Value;
     }
 
     public override bool Equals(object? obj)
@@ -75,6 +76,6 @@ public class AccountNonce : IEquatable<AccountNonce>
 
     public override int GetHashCode()
     {
-        return _value.GetHashCode();
+        return Value.GetHashCode();
     }
 }

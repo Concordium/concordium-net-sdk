@@ -7,6 +7,8 @@ namespace ConcordiumNetSdk.Transactions
 {
     /// <summary>
     /// An account transaction which signed and ready to be sent to the block chain.
+    ///
+    /// Transactions should be signed using implementers of <see cref="ITransactionSigner"/>.
     /// </summary>
     public class SignedAccountTransaction<T>
         where T : AccountTransactionPayload<T>
@@ -89,10 +91,7 @@ namespace ConcordiumNetSdk.Transactions
             byte[] signDigest = SHA256.Create().ComputeHash(serializedHeaderAndTxPayload);
 
             // Sign it.
-            AccountTransactionSignature signature = AccountTransactionSignature.Create(
-                transactionSigner,
-                signDigest
-            );
+            AccountTransactionSignature signature = transactionSigner.Sign(signDigest);
 
             return new SignedAccountTransaction<T>(header, payload, signature);
         }

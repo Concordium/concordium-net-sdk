@@ -3,7 +3,7 @@
 /// <summary>
 /// A transaction hash.
 /// </summary>
-public class TransactionHash : Hash
+public record TransactionHash : Hash
 {
     private TransactionHash(string transactionHashAsBase16String)
         : base(transactionHashAsBase16String) { }
