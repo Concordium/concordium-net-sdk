@@ -4,12 +4,12 @@ using ConcordiumNetSdk.Types;
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// Payload for a transfer with memo account transaction.
+/// Models a "transfer with memo" account transaction.
 ///
 /// Used for transferring CCD from one account to another. Like <see cref="Transfer"/>,
 /// but additionally stores an on-chain <see cref="Memo"/> with the transfer.
 /// </summary>
-public class TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
+public record TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
 {
     /// <summary>
     /// The account transaction type to be used in the serialized payload.

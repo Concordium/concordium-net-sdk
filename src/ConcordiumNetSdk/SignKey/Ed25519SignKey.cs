@@ -7,7 +7,14 @@ namespace ConcordiumNetSdk.SignKey;
 /// </summary>
 public record Ed25519SignKey : ISigner
 {
+    /// <summary>
+    /// The length of an ed25519 sign key in bytes.
+    /// </summary>
     public const int SignKeyBytesLength = 32;
+
+    /// <summary>
+    /// The length of an ed25519 signature in bytes.
+    /// </summary>
     public const int SignatureBytesLength = 64;
 
     /// <summary>
@@ -57,7 +64,7 @@ public record Ed25519SignKey : ISigner
     /// <summary>
     /// Initializes a new instance of the <see cref="Ed25519SignKey"/> class.
     /// </summary>
-    /// <param name="signKeyAsBytes">A byte array representing the sign key.</param>
+    /// <param name="signKeyAsBytes">A length-32 byte array representing the sign key.</param>
     public static Ed25519SignKey From(byte[] signKeyAsBytes)
     {
         if (signKeyAsBytes.Length != SignKeyBytesLength)
@@ -74,7 +81,7 @@ public record Ed25519SignKey : ISigner
     /// Signs the provided data using the ed25519 sign key.
     /// </summary>
     /// <param name="bytes">A byte array representing the data to sign.</param>
-    /// <return>A byte array representing the signature.</param>
+    /// <return>A length-64 byte array representing the signature.</param>
     public byte[] Sign(byte[] bytes)
     {
         Ed25519 algorithm = SignatureAlgorithm.Ed25519;

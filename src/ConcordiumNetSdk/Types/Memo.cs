@@ -1,6 +1,7 @@
 using System.Formats.Cbor;
 
 using ConcordiumNetSdk.Helpers;
+using ConcordiumNetSdk.Transactions;
 
 namespace ConcordiumNetSdk.Types;
 

@@ -16,7 +16,7 @@ namespace ConcordiumNetSdk.Transactions;
 ///
 /// The resulting <see cref="AccountTransactionSignature"/> from calling <see cref="Sign"/>
 /// should reflect this structure and correspond to a mapping from credential and key indices
-/// to the signatures produced by signing a transaction hash with the corresponding key.
+/// to the signatures produced by signing a transaction hash with the corresponding keys.
 /// </summary>
 public interface ITransactionSigner
 {

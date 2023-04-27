@@ -5,11 +5,11 @@ namespace ConcordiumNetSdk.Transactions;
 /// <summary>
 /// Models the payload of account transaction.
 ///
-/// Inheriting classes should implement data specific to the transaction they
+/// Inheriting records should implement data specific to the transaction they
 /// model as well as helpers for constructing serialized transaction payloads
 /// to be sent to the Concordium node.
 /// </summary>
-public abstract class AccountTransactionPayload<T>
+public abstract record AccountTransactionPayload<T>
     where T : AccountTransactionPayload<T>
 {
     /// <summary>

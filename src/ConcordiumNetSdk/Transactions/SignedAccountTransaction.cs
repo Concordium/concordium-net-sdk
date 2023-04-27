@@ -6,9 +6,14 @@ using AccountAddress = ConcordiumNetSdk.Types.AccountAddress;
 namespace ConcordiumNetSdk.Transactions
 {
     /// <summary>
-    /// An account transaction which signed and ready to be sent to the block chain.
+    /// Models a signed account transaction which is ready to be sent to the node.
     ///
-    /// Transactions should be signed using implementers of <see cref="ITransactionSigner"/>.
+    /// A signed account transaction constitutes an <see cref="AccountTransactionHeader"/>, an
+    /// <see cref="AccountTransactionPayload{T}"/> as well as an <see cref="AccountTransactionSignature"/>.
+    ///
+    /// A <see cref="SignedAccountTransaction<T>"/> can be created with the
+    /// <see cref="PreparedAccountTransaction{T}.Sign"/> method with an implementer of
+    /// <see cref="ITransactionSigner"/>.
     /// </summary>
     public class SignedAccountTransaction<T>
         where T : AccountTransactionPayload<T>

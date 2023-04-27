@@ -7,7 +7,9 @@ namespace ConcordiumNetSdk.Transactions;
 /// <summary>
 /// Dictionary based implementation of <see cref="ITransactionSigner"/>.
 ///
-/// Maintains a dictionary mapping pairs of <see cref="AccountCredentialIndex"/> and <see cref="AccountKeyIndex"/> to <see cref="ISigner"/>s.
+/// Maintains a dictionary mapping pairs of <see cref="AccountCredentialIndex"/>
+/// and <see cref="AccountKeyIndex"/> to <see cref="ISigner"/>s corresponding
+/// to the sign keys of an account.
 /// </summary>
 public class TransactionSigner : ITransactionSigner
 {

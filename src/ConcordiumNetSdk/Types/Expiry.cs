@@ -4,8 +4,6 @@ namespace ConcordiumNetSdk.Types;
 
 /// <summary>
 /// Expiration time for a transaction.
-///
-/// If a transaction is still pending at the expiration time, it is rejected.
 /// </summary>
 public readonly struct Expiry : IEquatable<Expiry>
 {
@@ -26,7 +24,7 @@ public readonly struct Expiry : IEquatable<Expiry>
     }
 
     /// <summary>
-    /// Creates a new expiration time that is <c>minutes</c> fro, of the current system time.
+    /// Creates a new expiration time that is <c>minutes</c> from the current system time.
     /// </summary>
     /// <param name="minutes">An expiration time specified by the number of minutes from the current system time.</param>
     public static Expiry AtMinutesFromNow(UInt64 minutes)
@@ -35,7 +33,7 @@ public readonly struct Expiry : IEquatable<Expiry>
     }
 
     /// <summary>
-    /// Creates a new expiration time that is <c>seconds</c> fro, of the current system time.
+    /// Creates a new expiration time that is <c>seconds</c> from the current system time.
     /// </summary>
     /// <param name="seconds">An expiration time specified by the number of seconds from the current system time.</param>
     public static Expiry AtSecondsFromNow(UInt64 seconds)

@@ -5,21 +5,24 @@ using System.Collections.Immutable;
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// Models a map from <see cref="AccountKeyIndex"/> to signatures produced by signing the
-/// account transaction hashes with the key corresponding to an index. This key index is
-/// always relative to a <see cref="AccountCredentialIndex"/>.
+/// Models a map from <see cref="AccountKeyIndex"/> values to signatures.
+///
+/// An <see cref="AccountSignatureMap"> corresponds to a mapping from key indices
+/// to signatures produced by signing a transaction hash with the account keys
+/// corresponding to the indices. A key index is always relative to an
+/// <see cref="AccountCredentialIndex"/>.
 /// </summary>
 public class AccountSignatureMap
 {
     /// <summary>
-    /// Internal representation of the map, from key indices to signatures.
+    /// Internal representation of the map.
     /// </summary>
     private ImmutableDictionary<AccountKeyIndex, byte[]> _signatures;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountSignatureMap"/> class.
     /// </summary>
-    /// <param name="signatures">A map from key indices to signatures.</param>
+    /// <param name="signatures">A map from account key indices to signatures.</param>
     /// <exception cref="ArgumentException">If some signature is not 64 bytes.</exception>
     public AccountSignatureMap(Dictionary<AccountKeyIndex, byte[]> signatures)
     {

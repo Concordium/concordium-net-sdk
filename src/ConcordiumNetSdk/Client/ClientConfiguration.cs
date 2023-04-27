@@ -12,7 +12,6 @@ public class ClientConfiguration
 
     /// <summary>
     /// Flag indicating whether the client must use a secure connection.
-    /// Note that the URL must specify <c>https://</c> accordingly.
     /// </summary>
     public bool Secure { get; private set; }
 

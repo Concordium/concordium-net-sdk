@@ -3,11 +3,10 @@ namespace ConcordiumNetSdk.Types;
 /// <summary>
 /// Models a contract index.
 ///
-/// A contract is identified by its unique contract address (modeled
-/// by <see cref="ConcordiumNetSdk.Types.ContractAddress"/> in the SDK).
-/// A contract address consists of a contract index which is a 64-bit
-/// value and a contract subindex (modeled <see cref="ContractSubIndex"/>
-/// in the SDK).
+/// A contract is identified by its unique <see cref="ContractAddress"/>.
+/// A contract address consists of a <see cref="ContractIndex"/> and a
+/// <see cref="ContractSubIndex"/> both represented as 64-bit unsigned
+/// integers.
 /// </summary>
 public readonly struct ContractIndex
 {

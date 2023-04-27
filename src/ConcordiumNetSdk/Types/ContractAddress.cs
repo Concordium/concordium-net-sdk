@@ -5,11 +5,10 @@ namespace ConcordiumNetSdk.Types;
 /// <summary>
 /// Models a contract address.
 ///
-/// A contract is identified by its unique contract address, which
-/// consists of a contract index (modeled by <see cref="ContractIndex"/>)
-/// value and a contract subindex (modeled by <see cref="ContractSubIndex"/>).
-///
-/// Both indices are 64-bit integer.
+/// A contract is identified by its unique <see cref="ContractAddress"/>.
+/// A contract address consists of a <see cref="ContractIndex"/> and a
+/// <see cref="ContractSubIndex"/> both represented as 64-bit unsigned
+/// integers.
 /// </summary>
 public readonly struct ContractAddress : IEquatable<ContractAddress>
 {

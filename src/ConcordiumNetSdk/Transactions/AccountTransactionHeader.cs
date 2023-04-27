@@ -7,8 +7,8 @@ namespace ConcordiumNetSdk.Transactions;
 /// <summary>
 /// Models the header of an account transaction.
 ///
-/// Transactions sent to the node includes an account transaction header containing
-/// information about:
+/// Transactions sent to the node include an account transaction header with
+/// the following information that is used when processing the transaction:
 ///
 /// The <see cref="AccountAddress"/> of the sender,
 /// the <see cref="AccountNonce"/> to use,
@@ -19,7 +19,7 @@ namespace ConcordiumNetSdk.Transactions;
 public class AccountTransactionHeader
 {
     /// <summary>
-    /// The length of the serialized account transaction header.
+    /// The length of the serialized account transaction header in bytes.
     /// </summary>
     public const UInt32 BytesLength =
         AccountAddress.BytesLength

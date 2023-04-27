@@ -3,11 +3,11 @@ using ConcordiumNetSdk.Types;
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// A register data payload.
+/// Models a "register data" transaction.
 ///
 /// Used for registering data on-chain.
 /// </summary>
-public class RegisterData : AccountTransactionPayload<RegisterData>
+public record RegisterData : AccountTransactionPayload<RegisterData>
 {
     /// <summary>
     /// The account transaction type to be used in the serialized payload.

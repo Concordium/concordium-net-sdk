@@ -15,7 +15,7 @@ namespace ConcordiumNetSdk.Transactions;
 /// index and a key index.
 ///
 /// An <see cref="AccountTransactionSignature"> corresponds to a mapping from credential
-/// and key indices to signatures produced by signing the transaction hash with the
+/// and key indices to signatures produced by signing the transaction hash with the account
 /// keys corresponding to the indices.
 ///
 /// Producers of <see cref="AccountTransactionSignature"/>s should implement

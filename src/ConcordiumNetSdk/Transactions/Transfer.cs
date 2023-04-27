@@ -5,11 +5,11 @@ using ConcordiumNetSdk.Types;
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// A transfer account transaction.
+/// Models a "transfer" account transaction.
 ///
 /// Used for transferring CCD from one account to another.
 /// </summary>
-public class Transfer : AccountTransactionPayload<Transfer>
+public record Transfer : AccountTransactionPayload<Transfer>
 {
     /// <summary>
     /// The account transaction type to be used in the serialized payload.
