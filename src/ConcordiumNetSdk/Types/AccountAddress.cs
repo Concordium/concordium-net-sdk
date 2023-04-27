@@ -115,7 +115,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     /// <exception cref="ArgumentOutOfRangeException">If <c>n</c> is larger than <c>2^24-1</c>.</exception>
     public AccountAddress GetNthAlias(UInt32 n)
     {
-        if (n > 16777215)
+        if (n > ((1 << 24) - 1))
         {
             throw new ArgumentOutOfRangeException($"Alias can at most be 16777215, got {n}.");
         }

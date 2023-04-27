@@ -1,28 +1,50 @@
-﻿/*
-using ConcordiumNetSdk.Types;
+﻿using ConcordiumNetSdk.Types;
 using FluentAssertions;
+using System;
 using Xunit;
 
 namespace ConcordiumNetSdk.UnitTests.Types;
 
-public class NonceTests
+public class AccountNonceTests
 {
     [Fact]
-    public void Create_when_valid_ulong_value_passed_should_create_correct_instance()
+    public void Same_AccountNonces_AreEqual()
     {
-        var value = ulong.MaxValue;
-        var nonce = AccountNonce.Create(value);
-        nonce.GetValue().Should().Be(value);
+        var nonceA = new AccountNonce(0);
+        var nonceB = new AccountNonce(0);
+        Assert.Equal(nonceA, nonceB);
     }
 
     [Fact]
-    public void SerializeToBytes_should_return_bytes_in_UInt64_Big_Endian_format()
+    public void Different_AccountNonces_AreNotEqual()
     {
-        var nonce = AccountNonce.Create(100);
+        var nonceA = new AccountNonce(0);
+        var nonceB = new AccountNonce(1);
+        Assert.NotEqual(nonceA, nonceB);
+    }
+
+    [Fact]
+    public void GetIncrementedNonce_OnAccountNonce_ReturnsIncrementedNonce()
+    {
+        var nonceA = new AccountNonce(0).GetIncrementedNonce();
+        var nonceB = new AccountNonce(1);
+        Assert.Equal(nonceA, nonceB);
+    }
+
+    [Fact]
+    public void GetIncrementedNonce_OnMaxValuedAccountNonce_ThrowsException()
+    {
+        var nonce = new AccountNonce(UInt64.MaxValue);
+        Action result = () => nonce.GetIncrementedNonce();
+        result.Should().Throw<OverflowException>();
+    }
+
+    [Fact]
+    public void GetBytes_ReturnsCorrectValue()
+    {
+        var nonce = new AccountNonce(100);
         var expectedSerializedNonce = new byte[] { 0, 0, 0, 0, 0, 0, 0, 100 };
         var serializedNonce = nonce.GetBytes();
         serializedNonce.Should().BeEquivalentTo(expectedSerializedNonce);
     }
 }
-
-*/

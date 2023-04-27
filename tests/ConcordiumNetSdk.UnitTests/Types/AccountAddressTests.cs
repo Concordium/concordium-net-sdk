@@ -29,7 +29,7 @@ public class AccountAddressTests
     }
 
     [Fact]
-    public void From_ValidString_ToString_AreEqual()
+    public void From_OnValidString_ToString_AreEqual()
     {
         var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
         var accountAddress = AccountAddress.From(addressAsBase58String);
@@ -37,18 +37,18 @@ public class AccountAddressTests
     }
 
     [Theory]
+    [InlineData("")]
     [InlineData("3XSLuJcX")]
-    [InlineData("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")]
-    [InlineData("3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9Ppp")]
+    [InlineData("3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9Pppppppp")]
     [InlineData("æøå")]
-    public void From_InvalidString_ThrowsException(string invalidAddressAsBase58String)
+    public void From_OnInvalidString_ThrowsException(string invalidAddressAsBase58String)
     {
         Action result = () => AccountAddress.From(invalidAddressAsBase58String);
         result.Should().Throw<FormatException>();
     }
 
     [Fact]
-    public void From_ValidBytes_ToString_ReturnsCorrectValue()
+    public void From_OnValidBytes_ToString_ReturnsCorrectValue()
     {
         var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
         var addressAsBytes = new Base58CheckEncoder()
@@ -60,7 +60,7 @@ public class AccountAddressTests
     }
 
     [Fact]
-    public void From_InvalidBytes_TooShort_ThrowsException()
+    public void From_OnInvalidBytes_TooShort_ThrowsException()
     {
         var invalidAddressAsBytes = new byte[31];
         Action result = () => AccountAddress.From(invalidAddressAsBytes);
@@ -68,7 +68,7 @@ public class AccountAddressTests
     }
 
     [Fact]
-    public void From_InvalidBytes_TooLong_ThrowsException()
+    public void From_OnInvalidBytes_TooLong_ThrowsException()
     {
         var invalidAddressAsBytes = new byte[33];
         Action result = () => AccountAddress.From(invalidAddressAsBytes);
@@ -91,8 +91,8 @@ public class AccountAddressTests
     [Theory]
     [InlineData(0, new Byte[] { 0, 0, 0 })]
     [InlineData(1, new Byte[] { 0, 0, 1 })]
-    [InlineData(16777215, new Byte[] { 255, 255, 255 })]
-    public void GetNthAlias_ValidAlias_ReturnsCorrectValue(UInt32 alias, byte[] aliasByteValue)
+    [InlineData((1 << 24) - 1, new Byte[] { 255, 255, 255 })]
+    public void GetNthAlias_OnValidAlias_ReturnsCorrectValue(UInt32 alias, byte[] aliasByteValue)
     {
         var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
         var address = AccountAddress.From(addressAsBase58String);
@@ -101,9 +101,9 @@ public class AccountAddressTests
     }
 
     [Theory]
-    [InlineData(16777216)]
-    [InlineData(19777215)]
-    public void GetNthAlias_OutOfRangeAlias_ThrowsException(UInt32 alias)
+    [InlineData(1 << 24)]
+    [InlineData(1 << 24 + 1024)]
+    public void GetNthAlias_OnOutOfRangeAlias_ThrowsException(UInt32 alias)
     {
         var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
         var address = AccountAddress.From(addressAsBase58String);
@@ -112,7 +112,7 @@ public class AccountAddressTests
     }
 
     [Fact]
-    public void IsAliasOf_DifferentAddresses_SameAliasValue_ReturnsFalse()
+    public void IsAliasOf_OnDifferentAddresses_WithSameAliasValue_ReturnsFalse()
     {
         var addressAsBase58StringA = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
         var addressAsBase58StringB = "3QuZ47NkUk5icdDSvnfX8HiJzCnSRjzi6KwGEmqgQ7hCXNBTWN";
@@ -122,7 +122,7 @@ public class AccountAddressTests
     }
 
     [Fact]
-    public void IsAliasOf_SameAddress_DifferentAliasValue_ReturnsTrue()
+    public void IsAliasOf_OnSameAddress_WithDifferentAliasValue_ReturnsTrue()
     {
         var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
         var address = AccountAddress.From(addressAsBase58String);
@@ -132,7 +132,7 @@ public class AccountAddressTests
     }
 
     [Fact]
-    public void IsAliasOf_SameAddress_SameAliasValue_ReturnsTrue()
+    public void IsAliasOf_OnSameAddress_WithSameAliasValue_ReturnsTrue()
     {
         var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
         var address = AccountAddress.From(addressAsBase58String);

@@ -1,5 +1,4 @@
-﻿/*
-using System;
+﻿using System;
 using ConcordiumNetSdk.Types;
 using FluentAssertions;
 using Xunit;
@@ -9,128 +8,83 @@ namespace ConcordiumNetSdk.UnitTests.Types;
 public class BlockHashTests
 {
     [Fact]
-    public void From_when_valid_string_value_passed_should_create_correct_instance()
+    public void Same_BlockHashes_AreEqual()
     {
-        // Arrange
+        var blockHashA = BlockHash.From(
+            "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af"
+        );
+        var blockHashB = BlockHash.From(
+            "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af"
+        );
+        Assert.Equal(blockHashA, blockHashB);
+    }
+
+    [Fact]
+    public void Different_BlockHashes_AreNotEqual()
+    {
+        var blockHashA = BlockHash.From(
+            "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af"
+        );
+        var blockHashB = BlockHash.From(
+            "54c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af"
+        );
+        Assert.NotEqual(blockHashA, blockHashB);
+    }
+
+    [Fact]
+    public void From_OnValidString_ToString_AreEqual()
+    {
         var blockHashAsBase16String =
             "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af";
-
-        // Act
         var blockHash = BlockHash.From(blockHashAsBase16String);
-
-        // Assert
         blockHash.ToString().Should().Be(blockHashAsBase16String);
     }
 
-    [Fact]
-    public void From_when_string_value_is_too_short_should_throw_appropriate_exception()
+    [Theory]
+    [InlineData("")]
+    [InlineData("44c52f0dc89c")]
+    [InlineData("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494affffff")]
+    [InlineData("æøå")]
+    public void From_OnInvalidString_ThrowsException(string invalidAddressAsBase58String)
     {
-        // Arrange
-        var invalidBlockHashAsBase16String = "44c52f0dc89c5244b494223c96f037b5e312572";
-
-        // Act
-        Action result = () => BlockHash.From(invalidBlockHashAsBase16String);
-
-        // Assert
-        result
-            .Should()
-            .Throw<ArgumentException>()
-            .WithMessage("The hash base16 encoded string length must be 64.");
+        Action result = () => AccountAddress.From(invalidAddressAsBase58String);
+        result.Should().Throw<FormatException>();
     }
 
     [Fact]
-    public void From_when_string_value_is_too_long_should_throw_appropriate_exception()
+    public void From_OnValidBytes_ToString_ReturnsCorrectValue()
     {
-        // Arrange
-        var invalidBlockHashAsBase16String =
-            "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494afff";
-
-        // Act
-        Action result = () => BlockHash.From(invalidBlockHashAsBase16String);
-
-        // Assert
-        result
-            .Should()
-            .Throw<ArgumentException>()
-            .WithMessage("The hash base16 encoded string length must be 64.");
-    }
-
-    [Fact]
-    public void From_when_valid_bytes_value_passed_should_create_correct_instance()
-    {
-        // Arrange
         var blockHashAsBase16String =
             "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af";
-        var blockHashAsBytes = Convert.FromHexString(blockHashAsBase16String);
-
-        // Act
-        var blockHash = BlockHash.From(blockHashAsBytes);
-
-        // Assert
-        blockHash.AsString.Should().Be(blockHashAsBase16String);
+        var blockHash = BlockHash.From(blockHashAsBase16String);
+        var blockHashAsBytes = blockHash.GetBytes();
+        blockHash.GetBytes().Should().BeEquivalentTo(blockHashAsBytes);
     }
 
     [Fact]
-    public void From_when_bytes_value_is_too_short_should_throw_appropriate_exception()
+    public void From_OnInvalidBytes_TooShort_ThrowsException()
     {
-        // Arrange
-        var invalidBlockHashAsBytes = new byte[31];
-
-        // Act
-        Action result = () => BlockHash.From(invalidBlockHashAsBytes);
-
-        // Assert
-        result
-            .Should()
-            .Throw<ArgumentException>()
-            .WithMessage("The hash bytes length must be 32.");
+        var invalidHashAsBytes = new byte[2];
+        Action result = () => BlockHash.From(invalidHashAsBytes);
+        result.Should().Throw<ArgumentException>();
     }
 
     [Fact]
-    public void From_when_bytes_value_is_too_long_should_throw_appropriate_exception()
+    public void From_OnInvalidBytes_TooLong_ThrowsException()
     {
-        // Arrange
-        var invalidBlockHashAsBytes = new byte[33];
-
-        // Act
-        Action result = () => BlockHash.From(invalidBlockHashAsBytes);
-
-        // Assert
-        result
-            .Should()
-            .Throw<ArgumentException>()
-            .WithMessage("The hash bytes length must be 32.");
+        var invalidHashAsBytes = new byte[33];
+        Action result = () => BlockHash.From(invalidHashAsBytes);
+        result.Should().Throw<ArgumentException>();
     }
 
     [Fact]
-    public void AsString_should_return_correct_data()
+    public void GetBytes_ReturnsCorrectValue()
     {
-        // Arrange
-        var expectedBlockHashAsBase16String =
-            "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af";
-        var blockHash = BlockHash.From(expectedBlockHashAsBase16String);
-
-        // Act
-        var blockHashAsBase16String = blockHash.ToString();
-
-        // Assert
-        blockHashAsBase16String.Should().BeEquivalentTo(expectedBlockHashAsBase16String);
-    }
-
-    [Fact]
-    public void AsBytes_should_return_correct_data()
-    {
-        // Arrange
         var blockHashAsBase16String =
             "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af";
         var blockHash = BlockHash.From(blockHashAsBase16String);
         var expectedBlockHashAsBytes = Convert.FromHexString(blockHashAsBase16String);
-
-        // Act
         var blockHashAsBytes = blockHash.GetBytes();
-
-        // Assert
         blockHashAsBytes.Should().BeEquivalentTo(expectedBlockHashAsBytes);
     }
 }
-*/

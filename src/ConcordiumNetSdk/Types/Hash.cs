@@ -49,7 +49,7 @@ public abstract record Hash : IEquatable<Hash>
     /// <summary>
     /// Get the hash as a length-64 hex encoded string.
     /// </summary>
-    public override string ToString()
+    public sealed override string ToString()
     {
         return Convert.ToHexString(_value).ToLowerInvariant();
     }

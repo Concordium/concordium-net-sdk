@@ -33,8 +33,15 @@ public readonly struct AccountNonce : IEquatable<AccountNonce>
     /// <summary>
     /// Returns a new nonce whose value is increased by 1 relative to the current nonce.
     /// </summary>
+    /// <exception cref="OverflowException">If the value of the incremented nonce does not fit in a 64-bit unsigned integer.</exception>
     public AccountNonce GetIncrementedNonce()
     {
+        if (Value == UInt64.MaxValue)
+        {
+            throw new OverflowException(
+                "Value of the incremented nonce does not fit in a 64-bit unsigned integer."
+            );
+        }
         return new AccountNonce(Value + 1);
     }
 
