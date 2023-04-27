@@ -16,7 +16,7 @@ namespace ConcordiumNetSdk.Transactions;
 /// the maximum <see cref="EnergyAmount"/> to spend on the transaction as well as
 /// the <see cref="PayloadSize"/>.
 /// </summary>
-public class AccountTransactionHeader
+public struct AccountTransactionHeader
 {
     /// <summary>
     /// The length of the serialized account transaction header in bytes.
@@ -107,7 +107,7 @@ public class AccountTransactionHeader
     /// </summary>
     public byte[] GetBytes()
     {
-        return (byte[])Serialize(_sender, _nonce, _expiry, _maxEnergyCost, _payloadSize);
+        return Serialize(_sender, _nonce, _expiry, _maxEnergyCost, _payloadSize);
     }
 
     /// <summary>

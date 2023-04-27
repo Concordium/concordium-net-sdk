@@ -7,28 +7,28 @@ namespace ConcordiumNetSdk.Transactions;
 ///
 /// A prepared account transaction is <see cref="T"/>
 /// </summary>
-public class PreparedAccountTransaction<T>
+public record PreparedAccountTransaction<T>
     where T : AccountTransactionPayload<T>
 {
     /// <summary>
     /// Address of the sender of the transaction.
     /// </summary>
-    private AccountAddress _sender;
+    public readonly AccountAddress Sender;
 
     /// <summary>
     /// Account nonce to use for the transaction.
     /// </summary>
-    private AccountNonce _nonce;
+    public readonly AccountNonce Nonce;
 
     /// <summary>
     /// Expiration time of the transaction.
     /// </summary>
-    private Expiry _expiry;
+    public readonly Expiry Expiry;
 
     /// <summary>
     /// Payload to send to the node.
     /// </summary>
-    private AccountTransactionPayload<T> _payload;
+    public readonly AccountTransactionPayload<T> Payload;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PreparedAccountTransaction"/> class.
@@ -44,10 +44,10 @@ public class PreparedAccountTransaction<T>
         AccountTransactionPayload<T> payload
     )
     {
-        this._sender = sender;
-        this._nonce = nonce;
-        this._expiry = expiry;
-        this._payload = payload;
+        Sender = sender;
+        Nonce = nonce;
+        Expiry = expiry;
+        Payload = payload;
     }
 
     /// <summary>
@@ -56,6 +56,6 @@ public class PreparedAccountTransaction<T>
     /// <param name="signer">The signer to use for signing the transaction.</param>
     public SignedAccountTransaction<T> Sign(ITransactionSigner signer)
     {
-        return SignedAccountTransaction<T>.Create(_sender, _nonce, _expiry, _payload, signer);
+        return SignedAccountTransaction<T>.Create(Sender, Nonce, Expiry, Payload, signer);
     }
 }
