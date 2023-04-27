@@ -12,12 +12,12 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     /// <summary>
     /// Conversion factor, 1_000_000 µCCD = 1 CCD.
     /// </summary>
-    private const UInt64 OneMillion = 1_000_000;
+    public const UInt64 MicroCcdPerCcd = 1_000_000;
 
     /// <summary>
     /// The amount in µCCD.
     /// </summary>
-    private readonly UInt64 _microCcd;
+    public readonly UInt64 MicroCcd;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CcdAmount"/> class.
@@ -25,15 +25,7 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     /// <param name="microCcd">The amount in µCCD.</param>
     private CcdAmount(UInt64 microCcd)
     {
-        _microCcd = microCcd;
-    }
-
-    /// <summary>
-    /// Get µCCD amount.
-    /// </summary>
-    public UInt64 GetMicroCcdValue()
-    {
-        return _microCcd;
+        MicroCcd = microCcd;
     }
 
     /// <summary>
@@ -41,7 +33,7 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     /// </summary>
     public string GetFormattedMicroCcd()
     {
-        return $"{_microCcd}";
+        return $"{MicroCcd}";
     }
 
     /// <summary>
@@ -49,7 +41,7 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     /// </summary>
     public string GetFormattedCcd()
     {
-        return $"{_microCcd / (decimal)OneMillion}";
+        return $"{MicroCcd / (decimal)MicroCcdPerCcd}";
     }
 
     /// <summary>
@@ -70,22 +62,14 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     {
         try
         {
-            return new CcdAmount(checked(ccd * OneMillion));
+            return new CcdAmount(checked(ccd * MicroCcdPerCcd));
         }
         catch (OverflowException)
         {
             throw new ArgumentException(
-                $"The result of {ccd} CCD * {OneMillion} µCCD/CCD does not fit in UInt64."
+                $"The result of {ccd} CCD * {MicroCcdPerCcd} µCCD/CCD does not fit in UInt64."
             );
         }
-    }
-
-    /// <summary>
-    /// Creates an instance with the zero amount.
-    /// </summary>
-    public static CcdAmount Zero()
-    {
-        return new CcdAmount(0);
     }
 
     /// <summary>
@@ -96,13 +80,13 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     {
         try
         {
-            UInt64 newAmount = checked(a.GetMicroCcdValue() + b.GetMicroCcdValue());
-            return CcdAmount.FromCcd(newAmount);
+            UInt64 newAmount = checked(a.MicroCcd + b.MicroCcd);
+            return CcdAmount.FromMicroCcd(newAmount);
         }
         catch (OverflowException)
         {
             throw new ArgumentException(
-                $"The result of {a.GetMicroCcdValue()} + {b.GetMicroCcdValue()} does not fit in UInt64."
+                $"The result of {a.MicroCcd} + {b.MicroCcd} does not fit in UInt64."
             );
         }
     }
@@ -115,20 +99,20 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     {
         try
         {
-            UInt64 newAmount = checked(a.GetMicroCcdValue() - b.GetMicroCcdValue());
-            return CcdAmount.FromCcd(newAmount);
+            UInt64 newAmount = checked(a.MicroCcd - b.MicroCcd);
+            return CcdAmount.FromMicroCcd(newAmount);
         }
         catch (OverflowException)
         {
             throw new ArgumentException(
-                $"The result of {a.GetMicroCcdValue()} + {b.GetMicroCcdValue()} does not fit in UInt64."
+                $"The result of {a.MicroCcd} + {b.MicroCcd} does not fit in UInt64."
             );
         }
     }
 
     public bool Equals(CcdAmount other)
     {
-        return _microCcd == other._microCcd;
+        return MicroCcd == other.MicroCcd;
     }
 
     public override bool Equals(Object? obj)
@@ -138,6 +122,6 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
 
     public override int GetHashCode()
     {
-        return _microCcd.GetHashCode();
+        return MicroCcd.GetHashCode();
     }
 }
