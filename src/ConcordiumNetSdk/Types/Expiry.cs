@@ -3,7 +3,7 @@ using ConcordiumNetSdk.Helpers;
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Expiration time for a transaction.
+/// Represents expiration time for a transaction.
 /// </summary>
 public readonly struct Expiry : IEquatable<Expiry>
 {

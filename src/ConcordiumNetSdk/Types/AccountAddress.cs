@@ -4,7 +4,7 @@ using NBitcoin.DataEncoders;
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Models an account address.
+/// Represents an account address.
 ///
 /// The address of an account is a 256-bit value which uniquely identifies the account.
 /// </summary>

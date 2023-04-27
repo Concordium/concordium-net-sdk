@@ -3,7 +3,7 @@
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Models an account sequence number.
+/// Represents an account sequence number.
 ///
 /// The account sequence number is a 64-bit integer specific to an account and used
 /// when submitting account transactions for that account to the node. The account

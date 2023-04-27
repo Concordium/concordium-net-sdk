@@ -1,7 +1,7 @@
 ﻿namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Models a block hash.
+/// Represents a block hash.
 ///
 /// A block hash is a 256-bit hash of a block and serves as
 /// the canonical way of identifying it.

@@ -3,7 +3,7 @@ using ConcordiumNetSdk.Helpers;
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Models a contract address.
+/// Represents a contract address.
 ///
 /// A contract is identified by its unique <see cref="ContractAddress"/>.
 /// A contract address consists of a <see cref="ContractIndex"/> and a

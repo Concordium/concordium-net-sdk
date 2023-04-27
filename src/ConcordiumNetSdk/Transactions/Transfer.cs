@@ -5,7 +5,7 @@ using ConcordiumNetSdk.Types;
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// Models a "transfer" account transaction.
+/// Represents a "transfer" account transaction.
 ///
 /// Used for transferring CCD from one account to another.
 /// </summary>

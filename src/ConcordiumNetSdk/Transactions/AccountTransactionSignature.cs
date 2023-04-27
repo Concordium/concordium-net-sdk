@@ -4,7 +4,7 @@ using System.Collections.Immutable;
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// Models the signature of a signed account transaction.
+/// Represents the signature of a signed account transaction.
 ///
 /// An account has one or more credentials with each such credential having up to
 /// 255 sign keys (and accompanying verification keys). Each credential is identified

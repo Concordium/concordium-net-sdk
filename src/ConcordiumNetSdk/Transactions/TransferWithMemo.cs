@@ -4,7 +4,7 @@ using ConcordiumNetSdk.Types;
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// Models a "transfer with memo" account transaction.
+/// Represents a "transfer with memo" account transaction.
 ///
 /// Used for transferring CCD from one account to another. Like <see cref="Transfer"/>,
 /// but additionally stores an on-chain <see cref="Memo"/> with the transfer.

@@ -3,7 +3,7 @@ using ConcordiumNetSdk.Helpers;
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Models an energy amount.
+/// Represents an energy amount.
 /// </summary>
 public readonly struct EnergyAmount
 {

@@ -6,7 +6,7 @@ using AccountAddress = ConcordiumNetSdk.Types.AccountAddress;
 namespace ConcordiumNetSdk.Transactions
 {
     /// <summary>
-    /// Models a signed account transaction which is ready to be sent to the node.
+    /// Represents a signed account transaction which is ready to be sent to the node.
     ///
     /// A signed account transaction constitutes an <see cref="AccountTransactionHeader"/>, an
     /// <see cref="AccountTransactionPayload{T}"/> as well as an <see cref="AccountTransactionSignature"/>.

@@ -1,7 +1,7 @@
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Models an account credential index.
+/// Represents an account credential index.
 ///
 /// An account has one or more credentials, each identified by a unique
 /// byte-value referred to as its credential index.

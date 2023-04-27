@@ -1,7 +1,7 @@
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Models a contract sub-index.
+/// Represents a contract sub-index.
 ///
 /// A contract is identified by its unique <see cref="ContractAddress"/>.
 /// A contract address consists of a <see cref="ContractIndex"/> and a

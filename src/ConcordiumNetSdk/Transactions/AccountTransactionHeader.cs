@@ -5,7 +5,7 @@ using ConcordiumNetSdk.Helpers;
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// Models the header of an account transaction.
+/// Represents the header of an account transaction.
 ///
 /// Transactions sent to the node include an account transaction header with
 /// the following information that is used when processing the transaction:

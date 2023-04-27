@@ -3,7 +3,7 @@ using ConcordiumNetSdk.Types;
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// Models an account transaction which is ready to be signed.
+/// Represents an account transaction which is ready to be signed.
 ///
 /// A prepared account transaction is <see cref="T"/>
 /// </summary>

@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// Models a map from <see cref="AccountKeyIndex"/> values to signatures.
+/// Represents a map from <see cref="AccountKeyIndex"/> values to signatures.
 ///
 /// An <see cref="AccountSignatureMap"> corresponds to a mapping from key indices
 /// to signatures produced by signing a transaction hash with the account keys

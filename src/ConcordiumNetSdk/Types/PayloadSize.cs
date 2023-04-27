@@ -3,7 +3,7 @@ using ConcordiumNetSdk.Helpers;
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// Models a payload size.
+/// Represents a payload size.
 /// </summary>
 public struct PayloadSize
 {
