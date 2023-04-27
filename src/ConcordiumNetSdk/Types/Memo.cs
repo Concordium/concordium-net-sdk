@@ -40,7 +40,9 @@ public readonly struct Memo : IEquatable<Memo>
     /// <summary>
     /// Creates an instance from a <see cref="string"/> whose CBOR encoding will be used for the memo data.
     /// </summary>
-    /// <param name="text">The memo represented as a <see cref="string"/> whose CBOR encoding will be used for the memo data.</param>
+    /// <param name="text">The memo represented as a <see cref="string"/>
+    /// whose CBOR encoding will be used for the memo data.
+    /// </param>
     public static Memo FromText(string text)
     {
         var encoder = new CborWriter();
@@ -66,7 +68,10 @@ public readonly struct Memo : IEquatable<Memo>
     /// <summary>
     /// Try to decode the memo as a single CBOR encoded string.
     /// </summary>
-    /// <returns>A <see cref="string"> corresponding to the decoded memo if it contained a single CBOR encoded string, and <c>null</c> otherwise.</returns>
+    /// <returns>
+    /// A <see cref="string"> corresponding to the decoded memo if it contained
+    /// a single CBOR encoded string, and <c>null</c> otherwise.
+    /// </returns>
     public string? TryCborDecodeToText()
     {
         var encoder = new CborReader(_value);
@@ -84,7 +89,8 @@ public readonly struct Memo : IEquatable<Memo>
     }
 
     /// <summary>
-    /// Get the memo as a byte array with the length of the array prepended as a 16-bit unsigned integer in big-endian format.
+    /// Get the memo as a byte array with the length of the array
+    /// prepended as a 16-bit unsigned integer in big-endian format.
     /// </summary>
     public byte[] GetBytes()
     {
