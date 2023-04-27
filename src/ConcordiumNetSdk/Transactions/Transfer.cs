@@ -1,5 +1,3 @@
-using System.Buffers.Binary;
-using ConcordiumNetSdk.Helpers;
 using ConcordiumNetSdk.Types;
 
 namespace ConcordiumNetSdk.Transactions;
@@ -47,7 +45,7 @@ public record Transfer : AccountTransactionPayload<Transfer>
         using MemoryStream memoryStream = new MemoryStream();
         memoryStream.WriteByte(TRANSACTION_TYPE);
         memoryStream.Write(receiver.GetBytes());
-        memoryStream.Write(Serialization.GetBytes(amount.Value));
+        memoryStream.Write(amount.GetBytes());
         return memoryStream.ToArray();
     }
 

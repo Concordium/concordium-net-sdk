@@ -1,4 +1,6 @@
-﻿namespace ConcordiumNetSdk.Types;
+﻿using ConcordiumNetSdk.Helpers;
+
+namespace ConcordiumNetSdk.Types;
 
 /// <summary>
 /// Represents a CCD amount.
@@ -108,6 +110,14 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
                 $"The result of {a.Value} - {b.Value} does not fit in UInt64."
             );
         }
+    }
+
+    /// <summary>
+    /// Get the CCD amount in the binary format expected by the node.
+    /// </summary>
+    public byte[] GetBytes()
+    {
+        return Serialization.GetBytes(this.Value);
     }
 
     public bool Equals(CcdAmount other)
