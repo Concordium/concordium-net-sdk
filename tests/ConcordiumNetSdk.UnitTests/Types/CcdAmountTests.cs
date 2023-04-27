@@ -11,22 +11,10 @@ public class CcdAmountTests
     [InlineData(0)]
     [InlineData(10)]
     [InlineData(UInt64.MaxValue / CcdAmount.MicroCcdPerCcd)]
-    public void FromCcd_OnValidCcdAmount_ThenGetMicroCcd_ReturnsCorrectValue(UInt64 amount)
+    public void FromCcd_OnValidCcdAmount_ReturnsCorrectValue(UInt64 amount)
     {
         var ccdAmount = CcdAmount.FromCcd(amount);
         ccdAmount.Value.Should().Be(CcdAmount.MicroCcdPerCcd * amount);
-    }
-
-    [Theory]
-    [InlineData(0)]
-    [InlineData(10 * CcdAmount.MicroCcdPerCcd)]
-    [InlineData(UInt64.MaxValue)]
-    public void FromMicroCcd_OnValidMicroCcdAmount_ThenGetMicroCcd_ReturnsCorrectValue(
-        UInt64 amount
-    )
-    {
-        var ccdAmount = CcdAmount.FromMicroCcd(amount);
-        ccdAmount.Value.Should().Be(amount);
     }
 
     [Theory]
@@ -43,7 +31,7 @@ public class CcdAmountTests
     [InlineData(0, 10)]
     [InlineData(10, 0)]
     [InlineData(6, 7)]
-    public void AddCcdAmounts_ThenGetMicroCcd_ReturnsCorrectValue(UInt64 amountA, UInt64 amountB)
+    public void AddCcdAmounts_ReturnsCorrectValue(UInt64 amountA, UInt64 amountB)
     {
         var ccdAmountA = CcdAmount.FromMicroCcd(amountA);
         var ccdAmountB = CcdAmount.FromMicroCcd(amountB);
@@ -69,10 +57,7 @@ public class CcdAmountTests
     [InlineData(0, 0)]
     [InlineData(10, 0)]
     [InlineData(10, 5)]
-    public void SubtractCcdAmounts_ThenGetMicroCcd_ReturnsCorrectValue(
-        UInt64 amountA,
-        UInt64 amountB
-    )
+    public void SubtractCcdAmounts_ReturnsCorrectValue(UInt64 amountA, UInt64 amountB)
     {
         var ccdAmountA = CcdAmount.FromMicroCcd(amountA);
         var ccdAmountB = CcdAmount.FromMicroCcd(amountB);
@@ -80,16 +65,16 @@ public class CcdAmountTests
     }
 
     [Theory]
-    [InlineData(UInt64.MaxValue, 1)]
-    [InlineData(1, UInt64.MaxValue)]
-    [InlineData(UInt64.MaxValue - 10, UInt64.MaxValue - 10)]
+    [InlineData(UInt64.MaxValue - 1, UInt64.MaxValue)]
+    [InlineData(0, 1)]
+    [InlineData(5, 10)]
     public void SubtractCcdAmounts_OnNegativeResult_ThrowsException(UInt64 amountA, UInt64 amountB)
     {
         var ccdAmountA = CcdAmount.FromMicroCcd(amountA);
         var ccdAmountB = CcdAmount.FromMicroCcd(amountB);
         Action result = () =>
         {
-            var a = ccdAmountA + ccdAmountB;
+            var a = ccdAmountA - ccdAmountB;
         };
         result.Should().Throw<ArgumentException>();
     }

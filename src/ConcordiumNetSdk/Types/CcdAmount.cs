@@ -120,6 +120,16 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
         return obj is CcdAmount other && Equals(other);
     }
 
+    public static bool operator ==(CcdAmount? left, CcdAmount? right)
+    {
+        return Equals(left, right);
+    }
+
+    public static bool operator !=(CcdAmount? left, CcdAmount? right)
+    {
+        return !Equals(left, right);
+    }
+
     public override int GetHashCode()
     {
         return Value.GetHashCode();

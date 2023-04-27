@@ -35,7 +35,8 @@ public readonly struct Data
     {
         try
         {
-            return Data.From(Convert.FromHexString(hexString));
+            byte[] dataAsBytes = Convert.FromHexString(hexString);
+            return Data.From(dataAsBytes);
         }
         catch (Exception e)
         {
@@ -47,17 +48,12 @@ public readonly struct Data
     /// Creates an instance from byte array.
     /// </summary>
     /// <param name="data">The data to be registered on-chain represented as a byte array.</param>
-    /// <exception cref="ArgumentException">When the data is <c>null</c> or the length exceeds <see cref="MaxLength"/>.</exception>
+    /// <exception cref="ArgumentException">If the length of the input exceeds <see cref="MaxLength"/> bytes.</exception>
     public static Data From(byte[] data)
     {
-        if (data == null)
-        {
-            throw new ArgumentException("Data cannot be null");
-        }
-
         if (data.Length > MaxLength)
         {
-            throw new ArgumentException($"Size of Data cannot exceed {MaxLength} bytes");
+            throw new ArgumentException($"Size of data cannot exceed {MaxLength} bytes");
         }
 
         return new Data(data);
