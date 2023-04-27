@@ -1,7 +1,7 @@
 ﻿namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// A transaction hash.
+/// Represents a transaction hash.
 /// </summary>
 public record TransactionHash : Hash
 {

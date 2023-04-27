@@ -6,7 +6,8 @@ using ConcordiumNetSdk.Transactions;
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Memo to be registered on-chain with the <see cref="TransferWithMemo"/> account transaction.
+/// Represents a memo to be registered on-chain with the <see cref="TransferWithMemo"/> account transaction.
+///
 /// The memo can be any data which is at most <see cref="MaxLength"/> bytes, but convention is to encode a text message as CBOR.
 /// </summary>
 public readonly struct Memo : IEquatable<Memo>

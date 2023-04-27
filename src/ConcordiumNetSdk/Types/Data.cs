@@ -1,9 +1,10 @@
 using ConcordiumNetSdk.Helpers;
+using ConcordiumNetSdk.Transactions;
 
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Data to be registered on-chain with a <see cref="RegisterData"/> account transaction.
+/// Represents data to be registered on-chain with a <see cref="RegisterData"/> account transaction.
 /// </summary>
 public readonly struct Data
 {
