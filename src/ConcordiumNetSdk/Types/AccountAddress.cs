@@ -98,14 +98,17 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     }
 
     /// <summary>
-    /// Gets the <c>n</c>th alias.
+    /// Gets the <c>n</c>th alias of this account address.
     ///
-    /// The first 29 bytes of an address are unique to the account. The integer
-    /// 3 bytes represent an unsigned integer in big endian format whose value
-    /// lies between <c>0</c> and <c>2^24-1</c>. The address
+    /// The first 29 bytes of an address identifies a unique account with the
+    /// remaining 3 bytes representing aliases of that account. An alias can thus
+    /// be thought of as an unsigned integer whose value is between <c>0</c> and
+    /// <c>2^24-1</c>. We refer to the address where the last three bytes corresponds
+    /// to the value <c>n</c> in big endian format as the <c>n</c>th alias of the account.
     /// </summary>
-    /// <param name="n">the account address as base58 encoded string.</param>
-    /// <exception cref="ArgumentOutOfRangeException">If <>n</c> is larger than <c>2^24-1</c>.</exception>
+    /// <param name="n">An unsigned integer representing the <c>n</c>th alias.</param>
+    /// <returns name="n">A new account address which is the <c>n</c>th alias of the account.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">If <c>n</c> is larger than <c>2^24-1</c>.</exception>
     public AccountAddress GetNthAlias(UInt32 n)
     {
         if (n > 16777215)
