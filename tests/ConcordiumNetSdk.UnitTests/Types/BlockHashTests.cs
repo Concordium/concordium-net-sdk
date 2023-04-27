@@ -45,10 +45,10 @@ public class BlockHashTests
     [InlineData("44c52f0dc89c")]
     [InlineData("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494affffff")]
     [InlineData("æøå")]
-    public void From_OnInvalidString_ThrowsException(string invalidAddressAsBase58String)
+    public void From_OnInvalidString_ThrowsException(string invalidHashAsBase58String)
     {
-        Action result = () => AccountAddress.From(invalidAddressAsBase58String);
-        result.Should().Throw<FormatException>();
+        Action result = () => BlockHash.From(invalidHashAsBase58String);
+        result.Should().Throw<ArgumentException>();
     }
 
     [Fact]

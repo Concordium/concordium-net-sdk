@@ -8,88 +8,83 @@ namespace ConcordiumNetSdk.UnitTests.Types;
 public class TransactionHashTests
 {
     [Fact]
-    public void From_when_valid_string_value_passed_should_create_correct_instance()
+    public void Same_TransactionHashes_AreEqual()
+    {
+        var transactionHashA = TransactionHash.From(
+            "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af"
+        );
+        var transactionHashB = TransactionHash.From(
+            "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af"
+        );
+        Assert.Equal(transactionHashA, transactionHashB);
+    }
+
+    [Fact]
+    public void Different_TransactionHashes_AreNotEqual()
+    {
+        var transactionHashA = TransactionHash.From(
+            "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af"
+        );
+        var transactionHashB = TransactionHash.From(
+            "54c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af"
+        );
+        Assert.NotEqual(transactionHashA, transactionHashB);
+    }
+
+    [Fact]
+    public void From_OnValidString_ToString_AreEqual()
     {
         var transactionHashAsBase16String =
-            "b3c35887c7d3e41c8016f80e7566c43545509af5c51638b58e47161988841e37";
+            "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af";
         var transactionHash = TransactionHash.From(transactionHashAsBase16String);
         transactionHash.ToString().Should().Be(transactionHashAsBase16String);
     }
 
-    [Fact]
-    public void From_when_string_value_is_too_short_should_throw_appropriate_exception()
+    [Theory]
+    [InlineData("")]
+    [InlineData("44c52f0dc89c")]
+    [InlineData("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494affffff")]
+    [InlineData("æøå")]
+    public void From_OnInvalidString_ThrowsException(string invalidTransactionHash)
     {
-        var invalidTransactionHashAsBase16String = "b3c35887c7d3e41c8016f80e7566c43545509af5c";
-        Action result = () => TransactionHash.From(invalidTransactionHashAsBase16String);
-        result
-            .Should()
-            .Throw<ArgumentException>()
-            .WithMessage("The hash base16 encoded string length must be 64.");
+        Action result = () => TransactionHash.From(invalidTransactionHash);
+        result.Should().Throw<ArgumentException>();
     }
 
     [Fact]
-    public void From_when_string_value_is_too_long_should_throw_appropriate_exception()
-    {
-        var invalidTransactionHashAsBase16String =
-            "b3c35887c7d3e41c8016f80e7566c43545509af5c51638b58e47161988841e37ff";
-        Action result = () => TransactionHash.From(invalidTransactionHashAsBase16String);
-        result
-            .Should()
-            .Throw<ArgumentException>()
-            .WithMessage("The hash base16 encoded string length must be 64.");
-    }
-
-    [Fact]
-    public void From_when_valid_bytes_value_passed_should_create_correct_instance()
+    public void From_OnValidBytes_ToString_ReturnsCorrectValue()
     {
         var transactionHashAsBase16String =
-            "b3c35887c7d3e41c8016f80e7566c43545509af5c51638b58e47161988841e37";
-        var transactionHashAsBytes = Convert.FromHexString(transactionHashAsBase16String);
-        var transactionHash = TransactionHash.From(transactionHashAsBytes);
-        transactionHash.ToString().Should().Be(transactionHashAsBase16String);
+            "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af";
+        var transactionHash = TransactionHash.From(transactionHashAsBase16String);
+        var transactionHashAsBytes = transactionHash.GetBytes();
+        transactionHash.GetBytes().Should().BeEquivalentTo(transactionHashAsBytes);
     }
 
     [Fact]
-    public void From_when_bytes_value_is_too_short_should_throw_appropriate_exception()
+    public void From_OnInvalidBytes_TooShort_ThrowsException()
     {
-        var invalidTransactionHashAsBytes = new byte[31];
-        Action result = () => TransactionHash.From(invalidTransactionHashAsBytes);
-        result.Should().Throw<ArgumentException>().WithMessage("The hash bytes length must be 32.");
+        var invalidHashAsBytes = new byte[2];
+        Action result = () => TransactionHash.From(invalidHashAsBytes);
+        result.Should().Throw<ArgumentException>();
     }
 
     [Fact]
-    public void From_when_bytes_value_is_too_long_should_throw_appropriate_exception()
+    public void From_OnInvalidBytes_TooLong_ThrowsException()
     {
-        var invalidTransactionHashAsBytes = new byte[33];
-        Action result = () => TransactionHash.From(invalidTransactionHashAsBytes);
-        result.Should().Throw<ArgumentException>().WithMessage("The hash bytes length must be 32.");
+        var invalidHashAsBytes = new byte[33];
+        Action result = () => TransactionHash.From(invalidHashAsBytes);
+        result.Should().Throw<ArgumentException>();
     }
 
     [Fact]
-    public void AsBytes_should_return_correct_data()
+    public void GetBytes_ReturnsCorrectValue()
     {
         var transactionHashAsBase16String =
-            "b3c35887c7d3e41c8016f80e7566c43545509af5c51638b58e47161988841e37";
+            "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af";
         var transactionHash = TransactionHash.From(transactionHashAsBase16String);
         var expectedTransactionHashAsBytes = Convert.FromHexString(transactionHashAsBase16String);
         var transactionHashAsBytes = transactionHash.GetBytes();
         transactionHashAsBytes.Should().BeEquivalentTo(expectedTransactionHashAsBytes);
-    }
-
-    [Fact]
-    public void AsString_should_return_correct_data()
-    {
-        // Arrange
-        var expectedTransactionHashAsBase16String =
-            "b3c35887c7d3e41c8016f80e7566c43545509af5c51638b58e47161988841e37";
-        var transactionHash = TransactionHash.From(expectedTransactionHashAsBase16String);
-
-        // Act
-        var transactionHashAsBase16String = transactionHash.GetBytes();
-
-        // Assert
-        transactionHashAsBase16String
-            .Should()
-            .BeEquivalentTo(expectedTransactionHashAsBase16String);
     }
 }

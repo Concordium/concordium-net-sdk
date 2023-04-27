@@ -60,6 +60,14 @@ public readonly struct Data
     }
 
     /// <summary>
+    /// Get the data as a hex encoded string.
+    /// </summary>
+    public override string ToString()
+    {
+        return Convert.ToHexString(_value).ToLowerInvariant();
+    }
+
+    /// <summary>
     /// Get the data in the binary format expected by the node.
     ///
     /// Specifically this is as a byte array with the length of the array
@@ -71,5 +79,30 @@ public readonly struct Data
         memoryStream.Write(Serialization.GetBytes((UInt16)_value.Length));
         memoryStream.Write(_value);
         return memoryStream.ToArray();
+    }
+
+    public bool Equals(Data other)
+    {
+        return _value.SequenceEqual(other._value);
+    }
+
+    public override bool Equals(Object? obj)
+    {
+        return obj is Data other && Equals(other);
+    }
+
+    public static bool operator ==(Data? left, Data? right)
+    {
+        return Equals(left, right);
+    }
+
+    public static bool operator !=(Data? left, Data? right)
+    {
+        return !Equals(left, right);
+    }
+
+    public override int GetHashCode()
+    {
+        return _value.GetHashCode();
     }
 }

@@ -9,6 +9,30 @@ namespace ConcordiumNetSdk.UnitTests.Types;
 
 public class DataTests
 {
+    [Fact]
+    public void Same_Datas_AreEqual()
+    {
+        var dataA = Data.From("feedbeef");
+        var dataB = Data.From("feedbeef");
+        Assert.Equal(dataA, dataB);
+    }
+
+    [Fact]
+    public void Different_Datas_AreNotEqual()
+    {
+        var dataA = Data.From("feedbeef");
+        var dataB = Data.From("feedbeed");
+        Assert.NotEqual(dataA, dataB);
+    }
+
+    [Fact]
+    public void From_OnValidString_ToString_AreEqual()
+    {
+        var dataAsHexString = "feedbeef";
+        var data = Data.From(dataAsHexString);
+        data.ToString().Should().BeEquivalentTo(dataAsHexString);
+    }
+
     [Theory]
     [InlineData(0)]
     [InlineData(10)]
