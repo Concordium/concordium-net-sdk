@@ -47,7 +47,7 @@ public record Transfer : AccountTransactionPayload<Transfer>
         using MemoryStream memoryStream = new MemoryStream();
         memoryStream.WriteByte(TRANSACTION_TYPE);
         memoryStream.Write(receiver.GetBytes());
-        memoryStream.Write(Serialization.GetBytes(amount.GetMicroCcdValue()));
+        memoryStream.Write(Serialization.GetBytes(amount.Value));
         return memoryStream.ToArray();
     }
 
