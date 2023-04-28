@@ -1,7 +1,6 @@
 ﻿using Concordium.V2;
 using Grpc.Core;
 using Grpc.Net.Client;
-using System.Net;
 
 namespace ConcordiumNetSdk;
 
@@ -28,18 +27,35 @@ public class Client : IDisposable
     /// <summary>
     /// Initializes a new instance of the <see cref="Client"/> class.
     /// </summary>
-    /// <param name="endpoint">Endpoint of a resource where the V2 API is served.</param>
+    /// <param name="endpoint">
+    /// Endpoint of a resource where the V2 API is served. Any protocol scheme, port or query
+    /// parameters are ignored and the protocol defaults to either <c>http</c> or <c>https</c>
+    /// depending on whether a secure connection was specified in <paramref name="secure"/>.
+    /// </param>
+    /// <param name="port">
+    /// Port of the resource where the V2 API is served. This will override any port
+    /// specified in <paramref name="endpoint"/>.
+    /// </param>
     /// <param name="timeout">The request timeout in seconds (default: <c>30</c>).</param>
     /// <param name="secure">Flag indicating whether the client must use a secure connection (default: <c>true</c>).</param>
-    public Client(IPEndPoint endpoint, ulong timeout = 30, bool secure = true)
-        : this(endpoint, new ClientConfiguration(timeout, secure)) { }
+    public Client(Uri endpoint, UInt16 port, ulong timeout = 30, bool secure = true)
+        : this(endpoint, port, new ClientConfiguration(timeout, secure)) { }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Client"/> class.
     /// </summary>
-    /// <param name="endpoint">Endpoint of a resource where the V2 API is served.</param>
+
+    /// <param name="endpoint">
+    /// Endpoint of a resource where the V2 API is served. Any protocol scheme, port or query
+    /// parameters are ignored and the protocol defaults to either <c>http</c> or <c>https</c>
+    /// depending on whether a secure connection was specified in <paramref name="configuration"/>.
+    /// </param>
+    /// <param name="port">
+    /// Port of the resource where the V2 API is served. This will override any port
+    /// specified in <paramref name="endpoint"/>.
+    /// </param>
     /// <param name="configuration">The configuration to use with this client.</param>
-    public Client(IPEndPoint endpoint, ClientConfiguration configuration)
+    public Client(Uri endpoint, UInt16 port, ClientConfiguration configuration)
     {
         GrpcChannelOptions options = new GrpcChannelOptions
         {
@@ -48,7 +64,12 @@ public class Client : IDisposable
                 : ChannelCredentials.Insecure
         };
         _grpcChannel = GrpcChannel.ForAddress(
-            (configuration.Secure ? "https://" : "http://") + endpoint.ToString(),
+            // The GRPC library expects a url with protocol and port.
+            (configuration.Secure ? "https://" : "http://")
+                + endpoint.Host
+                + ":"
+                + port.ToString()
+                + endpoint.AbsolutePath,
             options
         );
         InternalClient = new Queries.QueriesClient(_grpcChannel);
