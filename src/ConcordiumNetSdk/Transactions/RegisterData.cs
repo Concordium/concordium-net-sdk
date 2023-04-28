@@ -23,7 +23,7 @@ public record RegisterData : AccountTransactionPayload<RegisterData>
     /// Initializes a new instance of the <see cref="RegisterData"/> class.
     /// </summary>
     /// <param name="data">The data to be registered on-chain.</param>
-    private RegisterData(Data data)
+    public RegisterData(Data data)
     {
         Data = data;
     }
