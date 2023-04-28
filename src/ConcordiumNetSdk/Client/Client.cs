@@ -64,7 +64,8 @@ public class Client : IDisposable
                 : ChannelCredentials.Insecure
         };
         _grpcChannel = GrpcChannel.ForAddress(
-            // The GRPC library expects a url with protocol and port.
+            // The GRPC library expects a url with protocol that
+            // matches the intention of the <c>Secure</c> flag.
             (configuration.Secure ? "https://" : "http://")
                 + endpoint.Host
                 + ":"
