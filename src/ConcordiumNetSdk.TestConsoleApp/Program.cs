@@ -4,7 +4,7 @@ using ConcordiumNetSdk;
 using AccountAddress = ConcordiumNetSdk.Types.AccountAddress;
 
 // Create the client.
-var url = "https://service.internal.stagenet.concordium.com";
+Uri url = new Uri("https://service.internal.stagenet.concordium.com");
 UInt16 port = 20000;
 Client concordiumNodeClient = new Client(url, port);
 
