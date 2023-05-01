@@ -7,7 +7,7 @@ namespace ConcordiumNetSdk.Transactions;
 /// Represents a "transfer with memo" account transaction.
 ///
 /// Used for transferring CCD from one account to another. Like <see cref="Transfer"/>,
-/// but additionally stores an on-chain <see cref="Memo"/> with the transfer.
+/// but additionally stores a memo associated with the transfer on-chain.
 /// </summary>
 public record TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
 {
@@ -27,17 +27,17 @@ public record TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
     public readonly AccountAddress Receiver;
 
     /// <summary>
-    /// Memo to include in the transaction.
+    /// Memo to include with the transaction.
     /// </summary>
-    public readonly Memo Memo;
+    public readonly OnChainData Memo;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TransferWithMemo"/> class.
     /// </summary>
     /// <param name="amount">Amount to send.</param>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
-    /// <param name="memo">Memo to include in the transaction.</param>
-    public TransferWithMemo(CcdAmount amount, AccountAddress receiver, Memo memo)
+    /// <param name="memo">Memo to include with the transaction.</param>
+    public TransferWithMemo(CcdAmount amount, AccountAddress receiver, OnChainData memo)
     {
         Amount = amount;
         Receiver = receiver;
@@ -49,8 +49,8 @@ public record TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
     /// </summary>
     /// <param name="amount">Amount to send.</param>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
-    /// <param name="memo">Memo to include in the transaction.</param>
-    private static byte[] Serialize(CcdAmount amount, AccountAddress receiver, Memo memo)
+    /// <param name="memo">Memo to include with the transaction.</param>
+    private static byte[] Serialize(CcdAmount amount, AccountAddress receiver, OnChainData memo)
     {
         using MemoryStream memoryStream = new MemoryStream();
         memoryStream.WriteByte(TRANSACTION_TYPE);
@@ -60,7 +60,7 @@ public record TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
         return memoryStream.ToArray();
     }
 
-    public override ulong GetBaseEnergyCost() => 300;
+    public override ulong GetTransactionSpecificCost() => 300;
 
     public override byte[] GetBytes()
     {

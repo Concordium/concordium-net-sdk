@@ -19,7 +19,7 @@ public class TransactionSigner : ITransactionSigner
     private readonly Dictionary<
         AccountCredentialIndex,
         Dictionary<AccountKeyIndex, ISigner>
-    > _signers = new();
+    > _signers;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TransactionSigner"/> class.
@@ -79,7 +79,7 @@ public class TransactionSigner : ITransactionSigner
     /// Sign the provided transaction hash using all added sign key implementations.
     /// </summary>
     /// <param name="data">The transaction hash to sign.</param>
-    /// <exception cref="ArgumentException">If no signatures were produced.</exception>
+    /// <exception cref="ArgumentException">No signatures were produced.</exception>
     public AccountTransactionSignature Sign(byte[] data)
     {
         if (GetSignatureCount() == 0)

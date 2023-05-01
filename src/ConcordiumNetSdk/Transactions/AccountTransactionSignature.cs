@@ -7,7 +7,7 @@ namespace ConcordiumNetSdk.Transactions;
 /// Represents the signature of a signed account transaction.
 ///
 /// An account has one or more credentials with each such credential having up to
-/// 255 sign keys (and accompanying verification keys). Each credential is identified
+/// 256 sign keys (and accompanying verification keys). Each credential is identified
 /// by its unique <see cref="AccountCredentialIndex"/> and each key by a unique pair
 /// of a <see cref="AccountCredentialIndex"/> corresponding to the credential to which
 /// it belongs, and a unique <see cref="AccountKeyIndex"/> relative to that credential

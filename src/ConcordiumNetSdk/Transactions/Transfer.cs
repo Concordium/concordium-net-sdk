@@ -49,7 +49,7 @@ public record Transfer : AccountTransactionPayload<Transfer>
         return memoryStream.ToArray();
     }
 
-    public override ulong GetBaseEnergyCost() => 300;
+    public override ulong GetTransactionSpecificCost() => 300;
 
     public override byte[] GetBytes()
     {

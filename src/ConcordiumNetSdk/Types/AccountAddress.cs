@@ -149,6 +149,6 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
 
     public override int GetHashCode()
     {
-        return ToString().GetHashCode();
+        return GetBytes().GetHashCode();
     }
 }

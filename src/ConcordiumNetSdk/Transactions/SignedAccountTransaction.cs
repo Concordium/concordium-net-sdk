@@ -60,7 +60,7 @@ public record SignedAccountTransaction<T>
     /// <param name="signer">The signer to use for signing the transaction.</param>
     public static SignedAccountTransaction<T> Create(
         AccountAddress sender,
-        AccountNonce nonce,
+        AccountSequenceNumber nonce,
         Expiry expiry,
         AccountTransactionPayload<T> payload,
         ITransactionSigner transactionSigner
@@ -71,7 +71,7 @@ public record SignedAccountTransaction<T>
         UInt32 serializedPayloadSize = (UInt32)serializedPayload.Length;
 
         // Compute the energy cost.
-        UInt64 txSpecificCost = payload.GetBaseEnergyCost();
+        UInt64 txSpecificCost = payload.GetTransactionSpecificCost();
         UInt64 energyCost = CalculateEnergyCost(
             transactionSigner.GetSignatureCount(),
             txSpecificCost,

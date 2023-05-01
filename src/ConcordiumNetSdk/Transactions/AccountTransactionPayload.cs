@@ -20,7 +20,7 @@ public abstract record AccountTransactionPayload<T>
     /// <param name="expiry">Expiration time of the transaction.</param>
     public PreparedAccountTransaction<T> Prepare(
         AccountAddress sender,
-        AccountNonce nonce,
+        AccountSequenceNumber nonce,
         Expiry expiry
     )
     {
@@ -28,9 +28,18 @@ public abstract record AccountTransactionPayload<T>
     }
 
     /// <summary>
-    /// Get the base cost for submitting the transaction payload.
+    /// Gets the transaction specific cost for submitting this type of
+    /// transaction to the chain.
+    ///
+    /// This should reflect the transaction-specific costs defined here:
+    /// https://github.com/Concordium/concordium-base/blob/78f557b8b8c94773a25e4f86a1a92bc323ea2e3d/haskell-src/Concordium/Cost.hs
+    ///
+    /// Note that this is only part of the cost of a transaction, and
+    /// does not include costs associated with verification of signatures
+    /// as well as costs that are incurred at execution time, for instance
+    /// when initializing or updating a smart contract.
     /// </summary>
-    public abstract ulong GetBaseEnergyCost();
+    public abstract ulong GetTransactionSpecificCost();
 
     /// <summary>
     /// Get the transaction payload in the binary format expected by the node.

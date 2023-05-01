@@ -6,7 +6,7 @@ namespace ConcordiumNetSdk.Types;
 /// <summary>
 /// Represents data to be registered on-chain with a <see cref="RegisterData"/> account transaction.
 /// </summary>
-public readonly struct Data
+public readonly struct DataToRegister
 {
     /// <summary>
     /// Maximum length of the data in bytes.
@@ -19,10 +19,10 @@ public readonly struct Data
     private readonly byte[] _value;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Data"/> class.
+    /// Initializes a new instance of the <see cref="DataToRegister"/> class.
     /// </summary>
     /// <param name="data">Data to be registered on-chain.</param>
-    private Data(byte[] data)
+    private DataToRegister(byte[] data)
     {
         _value = data;
     }
@@ -31,12 +31,12 @@ public readonly struct Data
     /// Creates an instance from data represented by a hex encoded string.
     /// </summary>
     /// <param name="hexString">The data to be registered on-chain represented by a hex encoded string.</param>
-    public static Data From(string hexString)
+    public static DataToRegister From(string hexString)
     {
         try
         {
             byte[] dataAsBytes = Convert.FromHexString(hexString);
-            return Data.From(dataAsBytes);
+            return DataToRegister.From(dataAsBytes);
         }
         catch (Exception e)
         {
@@ -48,14 +48,14 @@ public readonly struct Data
     /// Creates an instance from byte array.
     /// </summary>
     /// <param name="data">The data to be registered on-chain represented as a byte array.</param>
-    /// <exception cref="ArgumentException">If the length of the input exceeds <see cref="MaxLength"/> bytes.</exception>
-    public static Data From(byte[] data)
+    /// <exception cref="ArgumentException">The length of the input exceeds <see cref="MaxLength"/> bytes.</exception>
+    public static DataToRegister From(byte[] data)
     {
         if (data.Length > MaxLength)
         {
             throw new ArgumentException($"Size of data cannot exceed {MaxLength} bytes");
         }
-        return new Data((byte[])data.Clone());
+        return new DataToRegister((byte[])data.Clone());
     }
 
     /// <summary>
@@ -80,22 +80,22 @@ public readonly struct Data
         return memoryStream.ToArray();
     }
 
-    public bool Equals(Data other)
+    public bool Equals(DataToRegister other)
     {
         return _value.SequenceEqual(other._value);
     }
 
     public override bool Equals(Object? obj)
     {
-        return obj is Data other && Equals(other);
+        return obj is DataToRegister other && Equals(other);
     }
 
-    public static bool operator ==(Data? left, Data? right)
+    public static bool operator ==(DataToRegister? left, DataToRegister? right)
     {
         return Equals(left, right);
     }
 
-    public static bool operator !=(Data? left, Data? right)
+    public static bool operator !=(DataToRegister? left, DataToRegister? right)
     {
         return !Equals(left, right);
     }

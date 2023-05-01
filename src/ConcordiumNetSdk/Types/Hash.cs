@@ -1,7 +1,7 @@
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Represents a 256-bit hash.
+/// Represents a 32-byte hash.
 /// </summary>
 public abstract record Hash : IEquatable<Hash>
 {

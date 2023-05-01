@@ -59,7 +59,7 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     /// Creates an instance from a CCD amount represented by an integer.
     /// </summary>
     /// <param name="ccd">CCD amount represented by an integer.</param>
-    /// <exception cref="ArgumentException">If the CCD amount in µCCD does not fit in <see cref="UInt64"/></exception>
+    /// <exception cref="ArgumentException">The CCD amount in µCCD does not fit in <see cref="UInt64"/></exception>
     public static CcdAmount FromCcd(UInt64 ccd)
     {
         try
@@ -77,7 +77,7 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     /// <summary>
     /// Add CCD amounts.
     /// </summary>
-    /// <exception cref="ArgumentException">If the result odoes not fit in <see cref="UInt64"/></exception>
+    /// <exception cref="ArgumentException">The result odoes not fit in <see cref="UInt64"/></exception>
     public static CcdAmount operator +(CcdAmount a, CcdAmount b)
     {
         try
@@ -96,7 +96,7 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     /// <summary>
     /// Subtract CCD amounts.
     /// </summary>
-    /// <exception cref="ArgumentException">If the result does not fit in <see cref="UInt64"/></exception>
+    /// <exception cref="ArgumentException">The result does not fit in <see cref="UInt64"/></exception>
     public static CcdAmount operator -(CcdAmount a, CcdAmount b)
     {
         try

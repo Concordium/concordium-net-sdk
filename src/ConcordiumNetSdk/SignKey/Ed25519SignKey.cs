@@ -3,36 +3,33 @@ using NSec.Cryptography;
 namespace ConcordiumNetSdk.SignKey;
 
 /// <summary>
-/// An ed25519 sign key.
+/// The (secret) sign key of an ed25519 keypair.
+///
+/// Used for signing transactions.
 /// </summary>
 public record Ed25519SignKey : ISigner
 {
     /// <summary>
-    /// The length of an ed25519 sign key in bytes.
+    /// The length of an ed25519 (secret) sign key in bytes.
     /// </summary>
     public const int SignKeyBytesLength = 32;
 
     /// <summary>
-    /// The length of an ed25519 signature in bytes.
-    /// </summary>
-    public const int SignatureBytesLength = 64;
-
-    /// <summary>
-    /// Representation of the ed25519 sign key as a length-64 byte array.
+    /// Representation of the ed25519 (secret) sign key as a length-32 byte array.
     /// </summary>
     private readonly byte[] _value;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Ed25519SignKey"/> class.
     /// </summary>
-    /// <param name="signKeyAsBytes">A byte array representing the sign key.</param>
+    /// <param name="signKeyAsBytes">A byte array representing the ed25519 (secret) sign key.</param>
     private Ed25519SignKey(byte[] signKeyAsBytes)
     {
         _value = signKeyAsBytes;
     }
 
     /// <summary>
-    /// Get the ed25519 sign key as a length-64 hex encoded string.
+    /// Gets the ed25519 (secret) sign key represented as a length-64 hex encoded string.
     /// </summary>
     public override string ToString()
     {
@@ -40,7 +37,7 @@ public record Ed25519SignKey : ISigner
     }
 
     /// <summary>
-    /// Get the ed25519 sign key as a length-32 byte array.
+    /// Gets the ed25519 (secret) sign key represented as a length-32 byte array.
     /// </summary>
     public byte[] GetBytes()
     {
@@ -54,31 +51,22 @@ public record Ed25519SignKey : ISigner
     public static Ed25519SignKey From(string signKeyAsHexString)
     {
         byte[] bytes = Convert.FromHexString(signKeyAsHexString);
-        if (signKeyAsHexString.Length != SignKeyBytesLength * 2)
-            throw new ArgumentException(
-                $"The sign key hex encoded string must be {SignKeyBytesLength * 2} characters."
-            );
-        return new Ed25519SignKey(bytes);
+        return Ed25519SignKey.From(bytes);
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Ed25519SignKey"/> class.
     /// </summary>
-    /// <param name="signKeyAsBytes">A length-32 byte array representing the sign key.</param>
+    /// <param name="signKeyAsBytes">A length-32 byte array representing the ed25519 (secret) sign key.</param>
     public static Ed25519SignKey From(byte[] signKeyAsBytes)
     {
         if (signKeyAsBytes.Length != SignKeyBytesLength)
-            throw new ArgumentException($"The sign key array must be {SignKeyBytesLength} bytes.");
+            throw new ArgumentException($"The sign key must be {SignKeyBytesLength} bytes.");
         return new Ed25519SignKey(signKeyAsBytes);
     }
 
-    public UInt32 GetSignatureLength()
-    {
-        return SignatureBytesLength;
-    }
-
     /// <summary>
-    /// Signs the provided data using the ed25519 sign key.
+    /// Signs the provided data using the ed25519 (secret) sign key.
     /// </summary>
     /// <param name="bytes">A byte array representing the data to sign.</param>
     /// <return>A length-64 byte array representing the signature.</param>

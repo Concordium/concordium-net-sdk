@@ -17,24 +17,24 @@ public record RegisterData : AccountTransactionPayload<RegisterData>
     /// <summary>
     /// The data to be registered on-chain.
     /// </summary>
-    public readonly Data Data;
+    public readonly DataToRegister Data;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="RegisterData"/> class.
     /// </summary>
     /// <param name="data">The data to be registered on-chain.</param>
-    public RegisterData(Data data)
+    public RegisterData(DataToRegister data)
     {
         Data = data;
     }
 
-    public override ulong GetBaseEnergyCost() => 300;
+    public override ulong GetTransactionSpecificCost() => 300;
 
     /// <summary>
     /// Get the "register data" account transaction serialized to the binary format expected by the node.
     /// </summary>
     /// <param name="data">The data to be registered on-chain.</param>
-    private static byte[] Serialize(Data data)
+    private static byte[] Serialize(DataToRegister data)
     {
         using MemoryStream memoryStream = new MemoryStream();
         memoryStream.WriteByte(TRANSACTION_TYPE);
