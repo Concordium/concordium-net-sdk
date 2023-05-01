@@ -78,7 +78,7 @@ public class SimpleTransferWithMemoPayloadTests
     }
 
     [Fact]
-    public void Prepare_ThenSign_HasCorrectSignatures()
+    public void Prepare_ThenSign_ProducesCorrectSignatures()
     {
         // Create the transfer.
         TransferWithMemo transfer = CreateTransferWithMemo();
@@ -102,30 +102,10 @@ public class SimpleTransferWithMemoPayloadTests
             "ab0b927572244f85e45cef55757dc27810f2aa041b0298e3acad26df5eabf09192b9c2fcfb0f5dbfcee4b5a376de5a5b1f86209ead70917fa66e3bd84c9a5a07"
         );
 
-        AccountTransactionSignature expectedSignature = new AccountTransactionSignature(
-            new Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, byte[]>>()
-            {
-                // Credential index 0.
-                {
-                    0,
-                    new Dictionary<AccountKeyIndex, byte[]>()
-                    {
-                        // Key index 0.
-                        { 0, expectedSignature00 },
-                        // Key index 1.
-                        { 1, expectedSignature01 }
-                    }
-                },
-                // Credential index 1.
-                {
-                    1,
-                    new Dictionary<AccountKeyIndex, byte[]>()
-                    {
-                        // Key index 1.
-                        { 1, expectedSignature11 }
-                    }
-                },
-            }
+        var expectedSignature = TransactionTestHelpers<RegisterData>.FromExpectedSignatures(
+            expectedSignature00,
+            expectedSignature01,
+            expectedSignature11
         );
 
         signedTransfer.Signature.signatureMap

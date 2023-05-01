@@ -67,7 +67,7 @@ public class TransferTests
     }
 
     [Fact]
-    public void Prepare_ThenSign_HasCorrectSignatures()
+    public void Prepare_ThenSign_ProducesCorrectSignatures()
     {
         // Create the transfer.
         Transfer transfer = CreateTransfer();
@@ -91,30 +91,10 @@ public class TransferTests
             "535c8c43e355c7f83c4e2905f2f489c38ef0d9f92dcd164ee92d08439af9dcb8f7cfae3103b24016db40437dcdfe964e3fe23ea786c863ccb3da30fe6a3dd50c"
         );
 
-        AccountTransactionSignature expectedSignature = new AccountTransactionSignature(
-            new Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, byte[]>>()
-            {
-                // Credential index 0.
-                {
-                    0,
-                    new Dictionary<AccountKeyIndex, byte[]>()
-                    {
-                        // Key index 0.
-                        { 0, expectedSignature00 },
-                        // Key index 1.
-                        { 1, expectedSignature01 }
-                    }
-                },
-                // Credential index 1.
-                {
-                    1,
-                    new Dictionary<AccountKeyIndex, byte[]>()
-                    {
-                        // Key index 1.
-                        { 1, expectedSignature11 }
-                    }
-                },
-            }
+        var expectedSignature = TransactionTestHelpers<RegisterData>.FromExpectedSignatures(
+            expectedSignature00,
+            expectedSignature01,
+            expectedSignature11
         );
 
         signedTransfer.Signature.signatureMap

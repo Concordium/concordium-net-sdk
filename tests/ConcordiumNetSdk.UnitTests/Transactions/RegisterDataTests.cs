@@ -18,55 +18,12 @@ public class RegisterDataTests
     [Fact]
     public void GetBytes_ReturnsCorrectValue()
     {
-        var expectedBytes = new byte[]
-        {
-            3,
-            71,
-            16,
-            92,
-            61,
-            132,
-            191,
-            45,
-            174,
-            170,
-            208,
-            206,
-            153,
-            215,
-            123,
-            117,
-            254,
-            225,
-            53,
-            137,
-            184,
-            94,
-            41,
-            112,
-            215,
-            225,
-            165,
-            254,
-            29,
-            145,
-            253,
-            190,
-            160,
-            0,
-            0,
-            0,
-            0,
-            5,
-            245,
-            225,
-            0
-        };
+        var expectedBytes = new byte[] { 21, 0, 4, 254, 237, 190, 239 };
         CreateRegisterData().GetBytes().Should().BeEquivalentTo(expectedBytes);
     }
 
     [Fact]
-    public void Prepare_ThenSign_HasCorrectSignatures()
+    public void Prepare_ThenSign_ProducesCorrectSignatures()
     {
         // Create the transfer.
         RegisterData transfer = CreateRegisterData();
@@ -79,41 +36,26 @@ public class RegisterDataTests
         SignedAccountTransaction<RegisterData> signedTransfer =
             TransactionTestHelpers<RegisterData>.CreateSignedTransaction(preparedTransfer);
 
+        AccountSignatureMap? value;
+        var a = Convert.ToHexString(signedTransfer.Signature.signatureMap[0].Signatures[0]);
+        var b = Convert.ToHexString(signedTransfer.Signature.signatureMap[0].Signatures[1]);
+        var c = Convert.ToHexString(signedTransfer.Signature.signatureMap[1].Signatures[1]);
+
         // The expected signature.
         byte[] expectedSignature00 = Convert.FromHexString(
-            "339222503ba5c5a7365612d3bcb3e913fe99666182d6f46648ed22bc89e50178d77d9a858d320a1730b965db7a90c54dbddd801c857b3c21b9c67a73abcf8c09"
+            "4e611658eb4d70c35cf35a959b4cf6f4da8dc94da0f3cf900d39ced627253e5ac137af6a01ebae9d4c0131829c656fa5fcebab01282df4b464daae73c467a303"
         );
         byte[] expectedSignature01 = Convert.FromHexString(
-            "fea460f2e152b430203970690a463654f2d6e28664b01dec86580194ecb9f703d8c8664e3fa71b94c8612885d8ab166828c88c2c1e6dcbe036d12aae7e37bc0b"
+            "7cbdc17785ff3dca2e5d165970e7276603cc3d00ea53a2dc507b14552fea68d645dc399fe70264f65d3f242ff8a6ed4ea862e7b24f55036592456b079cf27b07"
         );
         byte[] expectedSignature11 = Convert.FromHexString(
-            "535c8c43e355c7f83c4e2905f2f489c38ef0d9f92dcd164ee92d08439af9dcb8f7cfae3103b24016db40437dcdfe964e3fe23ea786c863ccb3da30fe6a3dd50c"
+            "c7274b080e606d19656c2c18308463bffda70d16df927c05ae2ed2d8679f39dbe1d77bb0bd21cf29b06d62f7485a740e4d2d46baa9e7a494a96da115144d0604"
         );
 
-        AccountTransactionSignature expectedSignature = new AccountTransactionSignature(
-            new Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, byte[]>>()
-            {
-                // Credential index 0.
-                {
-                    0,
-                    new Dictionary<AccountKeyIndex, byte[]>()
-                    {
-                        // Key index 0.
-                        { 0, expectedSignature00 },
-                        // Key index 1.
-                        { 1, expectedSignature01 }
-                    }
-                },
-                // Credential index 1.
-                {
-                    1,
-                    new Dictionary<AccountKeyIndex, byte[]>()
-                    {
-                        // Key index 1.
-                        { 1, expectedSignature11 }
-                    }
-                },
-            }
+        var expectedSignature = TransactionTestHelpers<RegisterData>.FromExpectedSignatures(
+            expectedSignature00,
+            expectedSignature01,
+            expectedSignature11
         );
 
         signedTransfer.Signature.signatureMap

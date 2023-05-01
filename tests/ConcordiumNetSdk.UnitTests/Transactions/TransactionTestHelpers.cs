@@ -1,6 +1,7 @@
 using ConcordiumNetSdk.Transactions;
 using ConcordiumNetSdk.Types;
 using ConcordiumNetSdk.SignKey;
+using System.Collections.Generic;
 
 namespace ConcordiumNetSdk.UnitTests.Transactions;
 
@@ -38,5 +39,41 @@ public class TransactionTestHelpers<T>
 
         // Sign the transfer using the signer.
         return preparedTransaction.Sign(signer);
+    }
+
+    public static AccountTransactionSignature FromExpectedSignatures(
+        byte[] expectedSignature00,
+        byte[] expectedSignature01,
+        byte[] expectedSignature11
+    )
+    {
+        var signatureDictionary = new Dictionary<
+            AccountCredentialIndex,
+            Dictionary<AccountKeyIndex, byte[]>
+        >()
+        {
+            // Credential index 0.
+            {
+                0,
+                new Dictionary<AccountKeyIndex, byte[]>()
+                {
+                    // Key index 0.
+                    { 0, expectedSignature00 },
+                    // Key index 1.
+                    { 1, expectedSignature01 }
+                }
+            },
+            // Credential index 1.
+            {
+                1,
+                new Dictionary<AccountKeyIndex, byte[]>()
+                {
+                    // Key index 1.
+                    { 1, expectedSignature11 }
+                }
+            },
+        };
+
+        return new AccountTransactionSignature(signatureDictionary);
     }
 }
