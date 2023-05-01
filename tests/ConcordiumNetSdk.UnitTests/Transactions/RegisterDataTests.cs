@@ -9,6 +9,11 @@ namespace ConcordiumNetSdk.UnitTests.Transactions;
 
 public class RegisterDataTests
 {
+    /// <summary>
+    /// Creates a new instance of the <see cref="RegisterData"/>
+    /// transaction with the hex encoded string "feedbeef" as its
+    /// value.
+    /// </summary>
     public static RegisterData CreateRegisterData()
     {
         var data = Data.From("feedbeef");
@@ -36,7 +41,7 @@ public class RegisterDataTests
         SignedAccountTransaction<RegisterData> signedTransfer =
             TransactionTestHelpers<RegisterData>.CreateSignedTransaction(preparedTransfer);
 
-        // The expected signature.
+        // Create the expected signature.
         byte[] expectedSignature00 = Convert.FromHexString(
             "4e611658eb4d70c35cf35a959b4cf6f4da8dc94da0f3cf900d39ced627253e5ac137af6a01ebae9d4c0131829c656fa5fcebab01282df4b464daae73c467a303"
         );

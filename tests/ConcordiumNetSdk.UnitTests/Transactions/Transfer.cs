@@ -9,6 +9,12 @@ namespace ConcordiumNetSdk.UnitTests.Transactions;
 
 public class TransferTests
 {
+    /// <summary>
+    /// Creates a new instance of the <see cref="Transfer"/>
+    /// transaction of <c>100</c> CCD and with
+    /// <c>3V3QhN4USoMB8FMnPFHx8zoLoJexv8f5ka1a1uS8sERoSrahbw</c>
+    /// as the receiver address.
+    /// </summary>
     public static Transfer CreateTransfer()
     {
         var amount = CcdAmount.FromCcd(100);
@@ -80,7 +86,7 @@ public class TransferTests
         SignedAccountTransaction<Transfer> signedTransfer =
             TransactionTestHelpers<Transfer>.CreateSignedTransaction(preparedTransfer);
 
-        // The expected signature.
+        // Create the expected signature.
         byte[] expectedSignature00 = Convert.FromHexString(
             "339222503ba5c5a7365612d3bcb3e913fe99666182d6f46648ed22bc89e50178d77d9a858d320a1730b965db7a90c54dbddd801c857b3c21b9c67a73abcf8c09"
         );

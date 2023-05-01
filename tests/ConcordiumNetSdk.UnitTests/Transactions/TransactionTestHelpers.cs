@@ -31,13 +31,16 @@ public class TransactionTestHelpers<T>
     /// Uses an <see cref="ITransactionSigner"/> with the following secret keys:
     ///
     /// <c>"1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbbf23aad218e888bb26fda"</c>
-    /// at <see cref="CredentialIndex"/> <c>0</c> and <see cref="AccountIndex"/> <c>0</c>,
+    /// at <see cref="AccountCredentialIndex"/> <c>0</c> and <see cref="AccountKeyIndex"/>
+    /// <c>0</c>,
     ///
     /// <c>"68d7d0f3ae0581fd9b2b1c47daf1c9c7b5b8eddf3e48e4984ee16ca3c7efea32"</c>
-    /// at <see cref="CredentialIndex"/> <c>0</c> and <see cref="AccountIndex"/> <c>1</c> and
+    /// at <see cref="AccountCredentialIndex"/> <c>0</c> and <see cref="AccountKeyIndex"/>
+    /// <c>1</c> and
     ///
     /// <c>"1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbbf23aad218e888bb26fda"</c>
-    /// at <see cref="CredentialIndex"/> <c>1</c> and <see cref="AccountIndex"/> <c>1</c>.
+    /// at <see cref="AccountCredentialIndex"/> <c>1</c> and <see cref="AccountKeyIndex"/>
+    /// <c>1</c>.
     /// </summary>
     /// <param name="preparedTransaction">The prepared transaction to sign.</param>
     public static SignedAccountTransaction<T> CreateSignedTransaction(
@@ -69,16 +72,16 @@ public class TransactionTestHelpers<T>
     ///
     /// </summary>
     /// <param name="expectedSignature00">
-    /// The expected signature produced by the key with <see cref="CredentialIndex"/>
-    /// <c>0</c> and <see cref="AccountIndex"/> <c>0</c>.
+    /// The expected signature produced by the key with <see cref="AccountCredentialIndex"/>
+    /// <c>0</c> and <see cref="AccountKeyIndex"/> <c>0</c>.
     /// </param>
     /// <param name="expectedSignature01">
-    /// The expected signature produced by the key with <see cref="CredentialIndex"/>
-    /// <c>0</c> and <see cref="AccountIndex"/> <c>1</c>.
+    /// The expected signature produced by the key with <see cref="AccountCredentialIndex"/>
+    /// <c>0</c> and <see cref="AccountKeyIndex"/> <c>1</c>.
     /// </param>
     /// <param name="expectedSignature11">
-    /// The expected signature produced by the key with <see cref="CredentialIndex"/>
-    /// <c>1</c> and <see cref="AccountIndex"/> <c>1</c>.
+    /// The expected signature produced by the key with <see cref="AccountCredentialIndex"/>
+    /// <c>1</c> and <see cref="AccountKeyIndex"/> <c>1</c>.
     /// </param>
     public static AccountTransactionSignature FromExpectedSignatures(
         byte[] expectedSignature00,

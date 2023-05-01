@@ -1,7 +1,6 @@
 ﻿using ConcordiumNetSdk.Transactions;
 using ConcordiumNetSdk.Types;
 using System;
-using System.Collections.Generic;
 using FluentAssertions;
 using Xunit;
 
@@ -9,6 +8,13 @@ namespace ConcordiumNetSdk.UnitTests.Transactions;
 
 public class SimpleTransferWithMemoPayloadTests
 {
+    /// <summary>
+    /// Creates a new instance of the <see cref="TransferWithMemo"/>
+    /// transaction of <c>100</c> CCD and with
+    /// <c>"3V3QhN4USoMB8FMnPFHx8zoLoJexv8f5ka1a1uS8sERoSrahbw"</c>
+    /// as the receiver address and <c>"message"</c> encoded as CBOR
+    /// as the memo.
+    /// </summary>
     public static TransferWithMemo CreateTransferWithMemo()
     {
         var amount = CcdAmount.FromCcd(100);
@@ -91,7 +97,7 @@ public class SimpleTransferWithMemoPayloadTests
         SignedAccountTransaction<TransferWithMemo> signedTransfer =
             TransactionTestHelpers<TransferWithMemo>.CreateSignedTransaction(preparedTransfer);
 
-        // The expected signature.
+        // Create the expected signature.
         byte[] expectedSignature00 = Convert.FromHexString(
             "29aa3584ede6335ab34fac2b0fc2f788087d01043f636eab9be5e682448bdaf0cabdcef2d1978c15116dd7e363eb383aa3176fb4881890fcc1e0d72782a01e03"
         );
