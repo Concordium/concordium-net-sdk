@@ -6,23 +6,20 @@ namespace ConcordiumNetSdk.Types;
 /// Represents a contract address.
 ///
 /// A contract is identified by its unique <see cref="ContractAddress"/>.
-/// A contract address consists of a <see cref="ContractIndex"/> and a
-/// <see cref="ContractSubIndex"/> both represented as 64-bit unsigned
-/// integers.
+/// A contract address consists of a contract index and a contact sub-index
+/// both represented as 64-bit unsigned integers.
 /// </summary>
 public readonly struct ContractAddress : IEquatable<ContractAddress>
 {
-    public const UInt32 BytesLength = ContractIndex.BytesLength + ContractSubIndex.BytesLength;
-
     /// <summary>
     /// The index part of the address of a contract.
     /// </summary>
-    public readonly ContractIndex _index { get; init; }
+    public readonly UInt64 Index { get; init; }
 
     /// <summary>
     /// The sub-index part of the address of a contract.
     /// </summary>
-    public readonly ContractSubIndex _subIndex { get; init; }
+    public readonly UInt64 SubIndex { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ContractAddress"/> class.
@@ -31,8 +28,8 @@ public readonly struct ContractAddress : IEquatable<ContractAddress>
     /// <param name="subIndex">The contract sub index.</param>
     private ContractAddress(UInt64 index, UInt64 subIndex)
     {
-        _index = index;
-        _subIndex = subIndex;
+        Index = index;
+        SubIndex = subIndex;
     }
 
     /// <summary>
@@ -50,12 +47,12 @@ public readonly struct ContractAddress : IEquatable<ContractAddress>
     /// </summary>
     public Concordium.V2.ContractAddress ToProto()
     {
-        return new Concordium.V2.ContractAddress() { Index = _index, Subindex = _subIndex };
+        return new Concordium.V2.ContractAddress() { Index = Index, Subindex = SubIndex };
     }
 
     public bool Equals(ContractAddress contractAddress)
     {
-        return _index == contractAddress._index && _subIndex == contractAddress._subIndex;
+        return Index == contractAddress.Index && SubIndex == contractAddress.SubIndex;
     }
 
     public override bool Equals(object? obj)
@@ -65,14 +62,14 @@ public readonly struct ContractAddress : IEquatable<ContractAddress>
         if (obj.GetType() != GetType())
             return false;
 
-        var other = (Memo)obj;
+        var other = (ContractAddress)obj;
         return Equals(other);
     }
 
     public override int GetHashCode()
     {
-        byte[] indexBytes = Serialization.GetBytes(_index);
-        byte[] subIndexBytes = Serialization.GetBytes(_index);
+        byte[] indexBytes = Serialization.GetBytes(Index);
+        byte[] subIndexBytes = Serialization.GetBytes(SubIndex);
         return indexBytes.Concat(subIndexBytes).GetHashCode();
     }
 

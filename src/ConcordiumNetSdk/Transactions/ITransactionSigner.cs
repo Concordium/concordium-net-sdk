@@ -3,11 +3,11 @@
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// Implementers of <see cref="ITransactionSigner"/> provide functionality for
-/// signing data using account keys.
+/// Implementers of <see cref="ITransactionSigner"/> provide functionality for signing
+/// data using account keys.
 ///
 /// An account has one or more credentials with each such credential having up to
-/// 255 sign keys (and accompanying verification keys). Each credential is identified
+/// 256 sign keys (and accompanying verification keys). Each credential is identified
 /// by its unique <see cref="AccountCredentialIndex"/> and each key by a unique pair
 /// of a <see cref="AccountCredentialIndex"/> corresponding to the credential to which
 /// it belongs, and a unique <see cref="AccountKeyIndex"/> relative to that credential

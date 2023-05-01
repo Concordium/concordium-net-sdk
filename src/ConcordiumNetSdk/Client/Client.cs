@@ -2,12 +2,12 @@
 using Grpc.Core;
 using Grpc.Net.Client;
 
-namespace ConcordiumNetSdk;
+namespace ConcordiumNetSdk.Client;
 
 /// <summary>
 /// A client for interacting with the Concordium GRPC API V2 exposed by nodes.
 /// </summary>
-public class Client : IDisposable
+public class ConcordiumClient : IDisposable
 {
     /// <summary>
     /// The "internal" client instance generated from the Concordium GRPC API V2 protocol buffer definition.
@@ -38,7 +38,7 @@ public class Client : IDisposable
     /// </param>
     /// <param name="timeout">The request timeout in seconds (default: <c>30</c>).</param>
     /// <param name="secure">Flag indicating whether the client must use a secure connection (default: <c>true</c>).</param>
-    public Client(Uri endpoint, UInt16 port, ulong timeout = 30, bool secure = true)
+    public ConcordiumClient(Uri endpoint, UInt16 port, ulong timeout = 30, bool secure = true)
         : this(endpoint, port, new ClientConfiguration(timeout, secure)) { }
 
     /// <summary>
@@ -55,7 +55,7 @@ public class Client : IDisposable
     /// specified in <paramref name="endpoint"/>.
     /// </param>
     /// <param name="configuration">The configuration to use with this client.</param>
-    public Client(Uri endpoint, UInt16 port, ClientConfiguration configuration)
+    public ConcordiumClient(Uri endpoint, UInt16 port, ClientConfiguration configuration)
     {
         GrpcChannelOptions options = new GrpcChannelOptions
         {
@@ -79,7 +79,8 @@ public class Client : IDisposable
 
     /// <summary>
     /// Process a stream of blocks that arrive from the time the query is made onward.
-    /// This can be used to listen for incoming blocks. Note that this is non-terminating.
+    /// This can be used to listen for incoming blocks. Note that this is non-terminating,
+    /// and that blocks may be skipped if the client is unable to keep up with the stream.
     /// </summary>
     public IAsyncEnumerable<ArrivedBlockInfo> GetBlocks()
     {
@@ -90,7 +91,9 @@ public class Client : IDisposable
 
     /// <summary>
     /// Process a stream of blocks that are finalized from the time the query is made onward.
-    /// This can be used to listen for newly finalized blocks. Note that this is non-terminating.
+    /// This can be used to listen for newly finalized blocks. Note that this is non-terminating,
+    /// and that blocks may be skipped if the client is unable to keep up with the stream,
+    /// however blocks are guaranteed to arrive in order of increasing block height.
     /// </summary>
     public IAsyncEnumerable<FinalizedBlockInfo> GetFinalizedBlocks()
     {

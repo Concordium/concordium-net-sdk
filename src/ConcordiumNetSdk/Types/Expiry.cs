@@ -26,7 +26,7 @@ public readonly struct Expiry : IEquatable<Expiry>
     }
 
     /// <summary>
-    /// Creates a new expiration time that is <c>minutes</c> from the current system time.
+    /// Creates a new expiration time that is <paramref name="minutes"/> ahead of the current system time.
     /// </summary>
     /// <param name="minutes">An expiration time specified by the number of minutes from the current system time.</param>
     public static Expiry AtMinutesFromNow(UInt64 minutes)
@@ -35,7 +35,7 @@ public readonly struct Expiry : IEquatable<Expiry>
     }
 
     /// <summary>
-    /// Creates a new expiration time that is <c>seconds</c> from the current system time.
+    /// Creates a new expiration time that is <paramref name="seconds"/> from the current system time.
     /// </summary>
     /// <param name="seconds">An expiration time specified by the number of seconds from the current system time.</param>
     public static Expiry AtSecondsFromNow(UInt64 seconds)
@@ -140,7 +140,7 @@ public readonly struct Expiry : IEquatable<Expiry>
         if (obj.GetType() != GetType())
             return false;
 
-        var other = (Memo)obj;
+        var other = (Expiry)obj;
         return Equals(other);
     }
 

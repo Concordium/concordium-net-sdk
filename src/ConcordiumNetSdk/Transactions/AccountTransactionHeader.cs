@@ -1,6 +1,5 @@
 using AccountAddress = ConcordiumNetSdk.Types.AccountAddress;
 using ConcordiumNetSdk.Types;
-using ConcordiumNetSdk.Helpers;
 
 namespace ConcordiumNetSdk.Transactions;
 
@@ -11,7 +10,7 @@ namespace ConcordiumNetSdk.Transactions;
 /// the following information that is used when processing the transaction:
 ///
 /// The <see cref="AccountAddress"/> of the sender,
-/// the <see cref="AccountNonce"/> to use,
+/// the <see cref="AccountSequenceNumber"/> to use,
 /// the <see cref="Expiry"/> time of the transaction,
 /// the maximum <see cref="EnergyAmount"/> to spend on the transaction as well as
 /// the <see cref="PayloadSize"/>.
@@ -23,7 +22,7 @@ public struct AccountTransactionHeader
     /// </summary>
     public const UInt32 BytesLength =
         AccountAddress.BytesLength
-        + AccountNonce.BytesLength
+        + AccountSequenceNumber.BytesLength
         + EnergyAmount.BytesLength
         + PayloadSize.BytesLength
         + Expiry.BytesLength;
@@ -34,9 +33,9 @@ public struct AccountTransactionHeader
     public readonly AccountAddress _sender;
 
     /// <summary>
-    /// Account nonce to use for the transaction.
+    /// Account sequence number to use for the transaction.
     /// </summary>
-    public readonly AccountNonce _nonce;
+    public readonly AccountSequenceNumber _nonce;
 
     /// <summary>
     /// Expiration time of the transaction.
@@ -63,7 +62,7 @@ public struct AccountTransactionHeader
     /// <param name="payloadSize">Size of the transaction payload.</param>
     public AccountTransactionHeader(
         AccountAddress sender,
-        AccountNonce nonce,
+        AccountSequenceNumber nonce,
         Expiry expiry,
         UInt64 maxEnergyCost,
         UInt32 payloadSize
@@ -87,7 +86,7 @@ public struct AccountTransactionHeader
     /// <param name="payloadSize">Size of the transaction payload.</param>
     private static byte[] Serialize(
         AccountAddress sender,
-        AccountNonce nonce,
+        AccountSequenceNumber nonce,
         Expiry expiry,
         EnergyAmount maxEnergyCost,
         PayloadSize payloadSize

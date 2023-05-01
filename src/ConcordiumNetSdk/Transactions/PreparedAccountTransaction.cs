@@ -3,9 +3,11 @@ using ConcordiumNetSdk.Types;
 namespace ConcordiumNetSdk.Transactions;
 
 /// <summary>
-/// Represents an account transaction which is ready to be signed.
+/// Represents an account transaction which is prepared for signing.
 ///
-/// A prepared account transaction is <see cref="T"/>
+/// The transasction is prepared in the sense that it contains information about the
+/// <see cref="AccountAddress"/> of the sender, the <see cref="AccountSequenceNumber"/> to use
+/// when submitting the transaction as well as its <see cref="Expiry"/>.
 /// </summary>
 public record PreparedAccountTransaction<T>
     where T : AccountTransactionPayload<T>
@@ -18,7 +20,7 @@ public record PreparedAccountTransaction<T>
     /// <summary>
     /// Account nonce to use for the transaction.
     /// </summary>
-    public readonly AccountNonce Nonce;
+    public readonly AccountSequenceNumber Nonce;
 
     /// <summary>
     /// Expiration time of the transaction.
@@ -39,7 +41,7 @@ public record PreparedAccountTransaction<T>
     /// <param name="payload">Payload to send to the node.</param>
     public PreparedAccountTransaction(
         AccountAddress sender,
-        AccountNonce nonce,
+        AccountSequenceNumber nonce,
         Expiry expiry,
         AccountTransactionPayload<T> payload
     )
