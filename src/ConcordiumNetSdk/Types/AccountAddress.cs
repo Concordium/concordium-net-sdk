@@ -112,7 +112,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     /// </summary>
     /// <param name="n">An unsigned integer representing the <c>n</c>th alias.</param>
     /// <returns name="n">A new account address which is the <c>n</c>th alias of the account.</returns>
-    /// <exception cref="ArgumentOutOfRangeException">If <c>n</c> is larger than <c>2^24-1</c>.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><c>n</c> is larger than <c>2^24-1</c>.</exception>
     public AccountAddress GetNthAlias(UInt32 n)
     {
         if (n > ((1 << 24) - 1))

@@ -7,9 +7,7 @@ namespace ConcordiumNetSdk.Types;
 /// <summary>
 /// Represents data to be stored or that was stored on-chain as part of a transaction.
 ///
-/// This can be any data which is at most <see cref="MaxLength"/>
-/// bytes, but the convention is to store a single string encoded
-/// as CBOR.
+/// This can be any data which is at most <see cref="MaxLength"/> bytes, but the convention is to store a single string encoded as CBOR.
 /// </summary>
 public record OnChainData : IEquatable<OnChainData>
 {
@@ -54,12 +52,18 @@ public record OnChainData : IEquatable<OnChainData>
     /// <param name="data">
     /// Text to store on-chain represented as a <see cref="string"/> whose CBOR encoding will be used for the data to registered on-chain.
     /// </param>
+    /// <param name="conformanceMode">
+    /// The conformance mode to use for encoding and decoding CBOR data.
+    /// </param>
     /// <exception cref="ArgumentException">The resulting CBOR encoded string exceeds <see cref="MaxLength"/> bytes.</exception>
     /// <exception cref="ArgumentException">The supplied string is not a valid UTF-8 encoding and this is not permitted under the current conformance mode.</exception>
-    /// <exception cref="InvalidOperationException">The written data is not accepted under the current conformance mode.</exception>
-    public static OnChainData FromTextStoreAsCBOR(string data)
+    /// <exception cref="InvalidOperationException">The written CBOR data is not accepted under the current conformance mode.</exception>
+    public static OnChainData FromTextStoreAsCBOR(
+        string data,
+        CborConformanceMode conformanceMode = CborConformanceMode.Strict
+    )
     {
-        var encoder = new CborWriter();
+        var encoder = new CborWriter(conformanceMode);
         encoder.WriteTextString(data);
         var encodedBytes = encoder.Encode();
         return From(encodedBytes);
@@ -119,7 +123,7 @@ public record OnChainData : IEquatable<OnChainData>
     /// <summary>
     /// Get the data to register on-chain as a hex-encoded string.
     /// </summary>
-    public string GetHexString()
+    public override string ToString()
     {
         return Convert.ToHexString(_value).ToLowerInvariant();
     }

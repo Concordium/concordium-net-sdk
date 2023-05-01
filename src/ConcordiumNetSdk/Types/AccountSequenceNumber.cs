@@ -36,7 +36,7 @@ public readonly struct AccountSequenceNumber : IEquatable<AccountSequenceNumber>
     /// </summary>
     /// <param name="nonce">The account sequence number represented as an integer.</param>
     /// <exception cref="ArgumentException">The supplied account sequence number is 0.</exception>
-    public AccountSequenceNumber From(UInt64 sequenceNumber)
+    public static AccountSequenceNumber From(UInt64 sequenceNumber)
     {
         if (sequenceNumber == 0)
         {

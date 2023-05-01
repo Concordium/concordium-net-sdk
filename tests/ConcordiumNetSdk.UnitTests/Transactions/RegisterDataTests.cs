@@ -16,7 +16,7 @@ public class RegisterDataTests
     /// </summary>
     public static RegisterData CreateRegisterData()
     {
-        var data = Data.From("feedbeef");
+        var data = OnChainData.FromHex("feedbeef");
         return new RegisterData(data);
     }
 

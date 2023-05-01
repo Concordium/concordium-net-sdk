@@ -20,7 +20,7 @@ public class TransactionTestHelpers<T>
         AccountAddress sender = AccountAddress.From(
             "3QuZ47NkUk5icdDSvnfX8HiJzCnSRjzi6KwGEmqgQ7hCXNBTWN"
         );
-        AccountNonce nonce = new AccountNonce(123);
+        AccountSequenceNumber nonce = AccountSequenceNumber.From(123);
         Expiry expiry = Expiry.From(65537);
         return transaction.Prepare(sender, nonce, expiry);
     }

@@ -13,13 +13,13 @@ public class SimpleTransferWithMemoPayloadTests
     /// transaction of <c>100</c> CCD and with
     /// <c>"3V3QhN4USoMB8FMnPFHx8zoLoJexv8f5ka1a1uS8sERoSrahbw"</c>
     /// as the receiver address and <c>"message"</c> encoded as CBOR
-    /// as the memo.
+    /// using the strict conformance mode as the memo.
     /// </summary>
     public static TransferWithMemo CreateTransferWithMemo()
     {
         var amount = CcdAmount.FromCcd(100);
         var receiver = AccountAddress.From("3V3QhN4USoMB8FMnPFHx8zoLoJexv8f5ka1a1uS8sERoSrahbw");
-        var memo = Memo.FromText("message");
+        var memo = OnChainData.FromTextStoreAsCBOR("message");
         return new TransferWithMemo(amount, receiver, memo);
     }
 
