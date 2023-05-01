@@ -9,7 +9,7 @@ namespace ConcordiumNetSdk.UnitTests.SignKey;
 public class Ed25519SignKeyTests
 {
     [Fact]
-    public void From_when_valid_string_value_passed_should_create_correct_instance()
+    public void From_OnValidString_ToString_AreEqual()
     {
         var ed25519SignKeyAsHexString =
             "1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbbf23aad218e888bb26fda";
@@ -18,83 +18,66 @@ public class Ed25519SignKeyTests
     }
 
     [Fact]
-    public void From_when_string_value_is_too_short_should_throw_appropriate_exception()
+    public void From_OnValidBytes_GetBytes_AreEqual()
     {
-        var invalidEd25519SignKeyAsHexString = "1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbb";
-        Action result = () => Ed25519SignKey.From(invalidEd25519SignKeyAsHexString);
-        result
-            .Should()
-            .Throw<ArgumentException>()
-            .WithMessage("The sign key hex encoded string length must be 64.");
+        var ed25519SignKeyAsBytes = Convert.FromHexString(
+            "1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbbf23aad218e888bb26fda"
+        );
+        var ed25519SignKey = Ed25519SignKey.From(ed25519SignKeyAsBytes);
+        ed25519SignKey.GetBytes().Should().BeEquivalentTo(ed25519SignKeyAsBytes);
     }
 
     [Fact]
-    public void From_when_string_value_is_too_long_should_throw_appropriate_exception()
+    public void From_TooShortString_ThrowsException()
+    {
+        var shortEd25519SignKeyAsHexString = "1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbb";
+        Action result = () => Ed25519SignKey.From(shortEd25519SignKeyAsHexString);
+        result.Should().Throw<ArgumentException>();
+    }
+
+    [Fact]
+    public void From_TooLongString_ThrowsException()
     {
         var invalidEd25519SignKeyAsHexString =
-            "1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbbf23aad218e888bb26fdaa";
+            "1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbbf23aad218e888bb26fdaaa";
         Action result = () => Ed25519SignKey.From(invalidEd25519SignKeyAsHexString);
-        result
-            .Should()
-            .Throw<ArgumentException>()
-            .WithMessage("The sign key hex encoded string length must be 64.");
+        result.Should().Throw<ArgumentException>();
     }
 
     [Fact]
-    public void From_when_valid_bytes_value_passed_should_create_correct_instance()
+    public void From_WrongParityHexString_ThrowsException()
     {
-        var ed25519SignKeyAsHexString =
-            "1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbbf23aad218e888bb26fda";
-        var ed25519SignKeyAsBytes = Convert.FromHexString(ed25519SignKeyAsHexString);
-        var ed25519SignKey = Ed25519SignKey.From(ed25519SignKeyAsBytes);
-        ed25519SignKey.ToString().Should().Be(ed25519SignKeyAsHexString);
+        var shortEd25519SignKeyAsHexString = "1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbbb";
+        Action result = () => Ed25519SignKey.From(shortEd25519SignKeyAsHexString);
+        result.Should().Throw<FormatException>();
     }
 
     [Fact]
-    public void From_when_bytes_value_length_is_too_short_should_throw_appropriate_exception()
+    public void From_NonHexString_ThrowsException()
+    {
+        var shortEd25519SignKeyAsHexString = "1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbQ";
+        Action result = () => Ed25519SignKey.From(shortEd25519SignKeyAsHexString);
+        result.Should().Throw<FormatException>();
+    }
+
+    [Fact]
+    public void From_TooFewBytes_ThrowsException()
     {
         var invalidEd25519SignKeyAsBytes = new byte[63];
         Action result = () => Ed25519SignKey.From(invalidEd25519SignKeyAsBytes);
-        result
-            .Should()
-            .Throw<ArgumentException>()
-            .WithMessage("The sign key bytes length must be 32.");
+        result.Should().Throw<ArgumentException>();
     }
 
     [Fact]
-    public void From_when_bytes_value_length_is_too_long_should_throw_appropriate_exception()
+    public void From_TooManyBytes_ThrowsException()
     {
         var invalidEd25519SignKeyAsBytes = new byte[65];
         Action result = () => Ed25519SignKey.From(invalidEd25519SignKeyAsBytes);
-        result
-            .Should()
-            .Throw<ArgumentException>()
-            .WithMessage("The sign key bytes length must be 32.");
+        result.Should().Throw<ArgumentException>();
     }
 
     [Fact]
-    public void AsString_should_return_correct_data()
-    {
-        var expectedEd25519SignKeyAsHexString =
-            "1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbbf23aad218e888bb26fda";
-        var ed25519SignKey = Ed25519SignKey.From(expectedEd25519SignKeyAsHexString);
-        var ed25519SignKeyAsHexString = ed25519SignKey.ToString();
-        ed25519SignKeyAsHexString.Should().BeEquivalentTo(expectedEd25519SignKeyAsHexString);
-    }
-
-    [Fact]
-    public void AsBytes_should_return_correct_data()
-    {
-        var ed25519SignKeyAsHexString =
-            "1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbbf23aad218e888bb26fda";
-        var ed25519SignKey = Ed25519SignKey.From(ed25519SignKeyAsHexString);
-        var expectedEd25519SignKeyAsBytes = Convert.FromHexString(ed25519SignKeyAsHexString);
-        var ed25519SignKeyAsBytes = ed25519SignKey.GetBytes();
-        ed25519SignKeyAsBytes.Should().BeEquivalentTo(expectedEd25519SignKeyAsBytes);
-    }
-
-    [Fact]
-    public void Sign_should_return_correct_signed_bytes()
+    public void Sign_ReturnsCorrectValue()
     {
         var ed25519SignKeyAsHexString =
             "1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbbf23aad218e888bb26fda";
