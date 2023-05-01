@@ -3,7 +3,7 @@ using ConcordiumNetSdk.Helpers;
 namespace ConcordiumNetSdk.Types;
 
 /// <summary>
-/// Represents an energy amount.
+/// Represents an amount of energy.
 /// </summary>
 public readonly struct EnergyAmount
 {
@@ -20,9 +20,9 @@ public readonly struct EnergyAmount
         return new EnergyAmount(value);
     }
 
-    public static implicit operator UInt64(EnergyAmount byteIndex)
+    public static implicit operator UInt64(EnergyAmount value)
     {
-        return byteIndex.Value;
+        return value.Value;
     }
 
     /// <summary>

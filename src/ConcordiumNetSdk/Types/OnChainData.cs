@@ -74,7 +74,7 @@ public record OnChainData : IEquatable<OnChainData>
     {
         if (dataAsBytes.Length > MaxLength)
             throw new ArgumentException(
-                $"Size of a memo is not allowed to exceed {MaxLength} bytes."
+                $"Size of a data is not allowed to exceed {MaxLength} bytes."
             );
         return new OnChainData((byte[])dataAsBytes.Clone());
     }
@@ -103,9 +103,9 @@ public record OnChainData : IEquatable<OnChainData>
     }
 
     /// <summary>
-    /// Get the memo represented
+    /// Get the on-chain data in the binary format expected by the node.
     ///
-    /// That is represented as a byte array with the length of the array
+    /// That is, represented as a byte array with the length of the array
     /// prepended as a 16-bit unsigned integer in big-endian format.
     /// </summary>
     public byte[] GetBytes()

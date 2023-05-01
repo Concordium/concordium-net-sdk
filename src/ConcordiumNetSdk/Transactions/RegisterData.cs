@@ -17,13 +17,13 @@ public record RegisterData : AccountTransactionPayload<RegisterData>
     /// <summary>
     /// The data to be registered on-chain.
     /// </summary>
-    public readonly DataToRegister Data;
+    public readonly OnChainData Data;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="RegisterData"/> class.
     /// </summary>
     /// <param name="data">The data to be registered on-chain.</param>
-    public RegisterData(DataToRegister data)
+    public RegisterData(OnChainData data)
     {
         Data = data;
     }
@@ -34,7 +34,7 @@ public record RegisterData : AccountTransactionPayload<RegisterData>
     /// Get the "register data" account transaction serialized to the binary format expected by the node.
     /// </summary>
     /// <param name="data">The data to be registered on-chain.</param>
-    private static byte[] Serialize(DataToRegister data)
+    private static byte[] Serialize(OnChainData data)
     {
         using MemoryStream memoryStream = new MemoryStream();
         memoryStream.WriteByte(TRANSACTION_TYPE);
