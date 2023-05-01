@@ -19,7 +19,7 @@ public class SimpleTransferWithMemoPayloadTests
     {
         var amount = CcdAmount.FromCcd(100);
         var receiver = AccountAddress.From("3V3QhN4USoMB8FMnPFHx8zoLoJexv8f5ka1a1uS8sERoSrahbw");
-        var memo = OnChainData.FromTextStoreAsCBOR("message");
+        var memo = OnChainData.FromTextEncodeAsCBOR("message");
         return new TransferWithMemo(amount, receiver, memo);
     }
 

@@ -58,7 +58,7 @@ public record OnChainData : IEquatable<OnChainData>
     /// <exception cref="ArgumentException">The resulting CBOR encoded string exceeds <see cref="MaxLength"/> bytes.</exception>
     /// <exception cref="ArgumentException">The supplied string is not a valid UTF-8 encoding and this is not permitted under the current conformance mode.</exception>
     /// <exception cref="InvalidOperationException">The written CBOR data is not accepted under the current conformance mode.</exception>
-    public static OnChainData FromTextStoreAsCBOR(
+    public static OnChainData FromTextEncodeAsCBOR(
         string data,
         CborConformanceMode conformanceMode = CborConformanceMode.Strict
     )

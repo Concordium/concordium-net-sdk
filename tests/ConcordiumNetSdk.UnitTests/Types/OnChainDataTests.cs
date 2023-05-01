@@ -76,4 +76,29 @@ public class OnChainDataTests
         Action result = () => OnChainData.FromHex(data);
         result.Should().Throw<ArgumentException>();
     }
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(1)]
+    [InlineData(10)]
+    [InlineData(OnChainData.MaxLength - 2)]
+    public void FromTextEncodeAsCBOR_ValidText_TryToCBOR_ReturnsCorrectValue(Int16 length)
+    {
+        var data = string.Concat(Enumerable.Repeat("a", length));
+        OnChainData
+            .FromTextEncodeAsCBOR(data)
+            .TryCborDecodeToString()
+            .Should()
+            .BeEquivalentTo(data);
+    }
+
+    [Theory]
+    [InlineData(OnChainData.MaxLength - 1)]
+    [InlineData(OnChainData.MaxLength + 100)]
+    public void FromTextEncodeAsCBOR_TooLongText_ThrowsException(Int16 length)
+    {
+        var data = string.Concat(Enumerable.Repeat("a", length));
+        Action result = () => OnChainData.FromTextEncodeAsCBOR(data);
+        result.Should().Throw<ArgumentException>();
+    }
 }
