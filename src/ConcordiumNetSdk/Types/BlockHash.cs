@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a block hash.
 ///
-/// A block hash is a 256-bit hash of a block and serves as
+/// A block hash is a 32-byte hash of a block and serves as
 /// the canonical way of identifying it.
 ///
 /// The address is usually provided as a hex encoded string.

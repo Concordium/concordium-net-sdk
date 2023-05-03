@@ -6,12 +6,15 @@ namespace ConcordiumNetSdk.Types;
 /// <summary>
 /// Represents an account address.
 ///
-/// The address of an account is a 256-bit value which uniquely identifies the account.
+/// The address of an account is a 32-byte value which uniquely identifies the account.
 /// </summary>
 public readonly struct AccountAddress : IEquatable<AccountAddress>
 {
     public const UInt32 BytesLength = 32;
 
+    /// <summary>
+    /// A version byte that is prepended to addresses represended as base58 strings.
+    /// </summary>
     private const byte VersionByte = 1;
 
     private static readonly Base58CheckEncoder EncoderInstance = new();

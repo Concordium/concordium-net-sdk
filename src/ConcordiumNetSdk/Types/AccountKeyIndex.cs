@@ -26,16 +26,10 @@ public readonly struct AccountKeyIndex
         Value = value;
     }
 
-    public static implicit operator AccountKeyIndex(byte value)
-    {
-        return new AccountKeyIndex(value);
-    }
-
-    public static implicit operator byte(AccountKeyIndex accountKeyIndex)
-    {
-        return accountKeyIndex.Value;
-    }
-
+    /// <summary>
+    /// Create an instance of from a string representing a <see cref="byte"/> value.
+    /// </summary>
+    /// <param name="index">An index represented as a string representing to be parsed as a <see cref="byte"/> value.</param>
     public static AccountKeyIndex From(string index)
     {
         byte result;
@@ -44,5 +38,15 @@ public readonly struct AccountKeyIndex
             return new AccountKeyIndex(result);
         }
         throw new ArgumentException("Could not parse the account key index.");
+    }
+
+    public static implicit operator AccountKeyIndex(byte value)
+    {
+        return new AccountKeyIndex(value);
+    }
+
+    public static implicit operator byte(AccountKeyIndex accountKeyIndex)
+    {
+        return accountKeyIndex.Value;
     }
 }

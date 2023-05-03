@@ -14,14 +14,49 @@ public class BrowserWalletExportFormat : IWalletDataSource
 {
     public Value? value { get; set; }
 
-    public AccountAddress TryGetAddress()
+    public AccountAddress TryGetAccountAddress()
     {
-        AccountAddress accountAddress = AccountAddress.From(value.address);
-        return accountAddress;
+        try
+        {
+            if (value is null)
+            {
+                throw new ArgumentNullException("Required field 'value' is null.");
+            }
+            if (value.address is null)
+            {
+                throw new ArgumentNullException("Required field 'address' is null.");
+            }
+            return AccountAddress.From(value.address);
+        }
+        catch (Exception e)
+        {
+            throw new WalletDataSourceException(
+                "Could not parse the account address from the supplied genesis wallet key export format data.",
+                e
+            );
+        }
     }
 
     public Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, ISigner>> TryGetSignKeys()
     {
-        return value.accountKeys.TryGetSignKeys();
+        try
+        {
+            if (value is null)
+            {
+                throw new ArgumentNullException("Required field 'value' is null.");
+            }
+            if (value.accountKeys is null)
+            {
+                throw new ArgumentNullException("Required field 'accountKeys' is null.");
+            }
+            return value.accountKeys.TryGetSignKeys();
+        }
+        catch (Exception e)
+        {
+            throw new WalletDataSourceException(
+                "Could not parse the sign keys from the supplied browser wallet key export format data.",
+                e
+            );
+        }
     }
 }

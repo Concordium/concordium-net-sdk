@@ -9,9 +9,11 @@ using ConcordiumNetSdk.Transactions;
 namespace ConcordiumNetSdk.Wallets;
 
 /// <summary>
-/// Represents account imported from one of the supported wallet export formats. In particular
-/// it supports the browser and genesis wallet key export formats. This class implements
-/// <see cref="ITransactionSigner"/> so it may be used for signing transactions.
+/// Represents an account imported from one of the supported wallet export formats.
+///
+/// In particular it supports import of the browser and genesis wallet key export
+/// formats. The class implements <see cref="ITransactionSigner"/> so it may be used
+/// for signing transactions.
 ///
 /// This structure does not have the encryption key for sending encrypted transfers, it only
 /// contains keys for signing transactions.
@@ -59,7 +61,10 @@ public class WalletAccount : ITransactionSigner
     /// <param name="json">JSON string in the genesis wallet key export format.</param>
     public static WalletAccount From(IWalletDataSource importedWallet)
     {
-        return new WalletAccount(importedWallet.TryGetAddress(), importedWallet.TryGetSignKeys());
+        return new WalletAccount(
+            importedWallet.TryGetAccountAddress(),
+            importedWallet.TryGetSignKeys()
+        );
     }
 
     /// <summary>

@@ -19,16 +19,10 @@ public readonly struct AccountCredentialIndex
         Value = value;
     }
 
-    public static implicit operator AccountCredentialIndex(byte value)
-    {
-        return new AccountCredentialIndex(value);
-    }
-
-    public static implicit operator byte(AccountCredentialIndex accountCredentialIndex)
-    {
-        return accountCredentialIndex.Value;
-    }
-
+    /// <summary>
+    /// Create an instance of from a string representing a <see cref="byte"/> value.
+    /// </summary>
+    /// <param name="index">An index represented as a string representing to be parsed as a <see cref="byte"/> value.</param>
     public static AccountCredentialIndex From(string index)
     {
         byte result;
@@ -37,5 +31,15 @@ public readonly struct AccountCredentialIndex
             return new AccountCredentialIndex(result);
         }
         throw new ArgumentException("Could not parse the account credential index.");
+    }
+
+    public static implicit operator AccountCredentialIndex(byte value)
+    {
+        return new AccountCredentialIndex(value);
+    }
+
+    public static implicit operator byte(AccountCredentialIndex accountCredentialIndex)
+    {
+        return accountCredentialIndex.Value;
     }
 }

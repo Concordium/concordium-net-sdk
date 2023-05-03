@@ -15,6 +15,9 @@ public interface IWalletDataSource
     /// <summary>
     /// Try to retrieve the sign keys from the wallet data source.
     /// </summary>
+    /// <exception cref="WalletDataSourceException">
+    /// Error condition occurred while trying to get the signs keys.
+    /// </exception>
     public Dictionary<
         AccountCredentialIndex,
         Dictionary<AccountKeyIndex, ISigner>
@@ -23,5 +26,8 @@ public interface IWalletDataSource
     /// <summary>
     /// Try to retrieve the wallet address from the wallet data source.
     /// </summary>
-    public AccountAddress TryGetAddress();
+    /// <exception cref="WalletDataSourceException">
+    /// Error condition occurred while trying to get the account address.
+    /// </exception>
+    public AccountAddress TryGetAccountAddress();
 }

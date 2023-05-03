@@ -1,3 +1,6 @@
+using ConcordiumNetSdk.Types;
+using ConcordiumNetSdk.Crypto;
+
 namespace ConcordiumNetSdk.Wallets.Json;
 
 /// <summary>
