@@ -53,24 +53,6 @@ public class WalletAccount : ITransactionSigner
             });
     }
 
-    public ImmutableDictionary<
-        AccountCredentialIndex,
-        ImmutableDictionary<AccountKeyIndex, ISigner>
-    > AccountKeys()
-    {
-        return _signer.GetSignerEntries();
-    }
-
-    public byte GetSignatureCount()
-    {
-        return _signer.GetSignatureCount();
-    }
-
-    public AccountTransactionSignature Sign(byte[] data)
-    {
-        return _signer.Sign(data);
-    }
-
     /// <summary>
     /// Try to create a new instance from a wallet data source.
     /// </summary>
@@ -100,5 +82,23 @@ public class WalletAccount : ITransactionSigner
         Json.BrowserWalletExportFormat genesisWallet =
             JsonConvert.DeserializeObject<Json.BrowserWalletExportFormat>(json);
         return From(genesisWallet);
+    }
+
+    public ImmutableDictionary<
+        AccountCredentialIndex,
+        ImmutableDictionary<AccountKeyIndex, ISigner>
+    > AccountKeys()
+    {
+        return _signer.GetSignerEntries();
+    }
+
+    public byte GetSignatureCount()
+    {
+        return _signer.GetSignatureCount();
+    }
+
+    public AccountTransactionSignature Sign(byte[] data)
+    {
+        return _signer.Sign(data);
     }
 }
