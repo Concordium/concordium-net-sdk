@@ -1,4 +1,6 @@
 ﻿using ConcordiumNetSdk.Types;
+using ConcordiumNetSdk.Crypto;
+using System.Collections.Immutable;
 
 namespace ConcordiumNetSdk.Transactions;
 
@@ -32,4 +34,16 @@ public interface ITransactionSigner
     /// <param name="bytes">A byte array representing the transaction hash to sign.</param>
     /// <returns>A <see cref="AccountTransactionSignature"/> representing the transaction signature.</returns>
     public AccountTransactionSignature Sign(byte[] data);
+
+    /// <summary>
+    /// Gets a dictionary mapping pairs of credential and key indices to
+    /// their corresponding sign key implementations.
+    /// </summary>
+    /// <returns>
+    /// A dictionary mapping pairs of credential and key indices to the sign key implementation.
+    /// </returns>
+    public ImmutableDictionary<
+        AccountCredentialIndex,
+        ImmutableDictionary<AccountKeyIndex, ISigner>
+    > GetSignerEntries();
 }

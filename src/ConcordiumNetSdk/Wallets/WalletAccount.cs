@@ -71,6 +71,8 @@ public class WalletAccount : ITransactionSigner
     /// Try to create a new instance from a JSON string in the genesis wallet key export format.
     /// </summary>
     /// <param name="json">JSON string in the genesis wallet key export format.</param>
+    /// <exception cref="JsonException">The specified input does not contain valid JSON.</exception>
+    /// <exception cref="WalletDataSourceException">Either a field is missing or an index or sign key could not be parsed.</exception>
     public static WalletAccount FromGenesisWalletExportFormat(string json)
     {
         Json.GenesisWalletExportFormat genesisWallet =
@@ -82,6 +84,8 @@ public class WalletAccount : ITransactionSigner
     /// Try to create a new instance from a JSON string in the browser wallet key export format.
     /// </summary>
     /// <param name="json">JSON string in the browser wallet key export format.</param>
+    /// <exception cref="JsonException">The specified input does not contain valid JSON.</exception>
+    /// <exception cref="WalletDataSourceException">Either a field is missing or an index or sign key could not be parsed.</exception>
     public static WalletAccount FromBrowserWalletExportFormat(string json)
     {
         Json.BrowserWalletExportFormat genesisWallet =
@@ -92,7 +96,7 @@ public class WalletAccount : ITransactionSigner
     public ImmutableDictionary<
         AccountCredentialIndex,
         ImmutableDictionary<AccountKeyIndex, ISigner>
-    > AccountKeys()
+    > GetSignerEntries()
     {
         return _signer.GetSignerEntries();
     }

@@ -26,6 +26,7 @@ public class AccountKeys
     /// to <see cref="Ed25519SignKey"/>s representing the corresponding keys of
     /// the JSON object.
     /// </summary>
+    /// <exception cref=""></exception>
     public Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, ISigner>> TryGetSignKeys()
     {
         if (keys is null)

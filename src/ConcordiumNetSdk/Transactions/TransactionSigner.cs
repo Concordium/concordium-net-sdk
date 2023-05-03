@@ -34,12 +34,6 @@ public class TransactionSigner : ITransactionSigner
         return (byte)_signers.Values.SelectMany(x => x.Values).Count();
     }
 
-    /// <summary>
-    /// Gets a dictionary mapping pairs of credential and key indices to the sign key implementation.
-    /// </summary>
-    /// <returns>
-    /// A dictionary mapping pairs of credential and key indices to the sign key implementation.
-    /// </returns>
     public ImmutableDictionary<
         AccountCredentialIndex,
         ImmutableDictionary<AccountKeyIndex, ISigner>

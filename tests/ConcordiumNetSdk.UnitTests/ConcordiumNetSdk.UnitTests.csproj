@@ -27,4 +27,10 @@
     <ProjectReference Include="..\..\src\ConcordiumNetSdk\ConcordiumNetSdk.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="Wallets\Data\*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+</ItemGroup>
+
 </Project>
