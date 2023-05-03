@@ -5,7 +5,7 @@ namespace ConcordiumNetSdk.Wallets.Json;
 
 /// <summary>
 /// Represents (a subset of) a JSON object which is in the
-/// browser wallet export JSON format.
+/// browser wallet key export format.
 ///
 /// Such can be parsed into an instance of this class using
 /// <see cref="Newtonsoft.Json.JsonConvert"/>.

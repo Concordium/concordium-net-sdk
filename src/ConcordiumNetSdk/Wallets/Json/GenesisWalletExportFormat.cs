@@ -5,7 +5,7 @@ namespace ConcordiumNetSdk.Wallets.Json;
 
 /// <summary>
 /// Represents (a subset of) a JSON object which is in the
-/// genesis wallet export JSON format.
+/// genesis wallet key export format.
 ///
 /// Such can be parsed into an instance of this class using
 /// <see cref="Newtonsoft.Json.JsonConvert"/>.
