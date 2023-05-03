@@ -21,7 +21,7 @@ public class GenesisWalletExportFormat : IWalletDataSource
         {
             if (address is null)
             {
-                throw new ArgumentNullException("Field 'value' is null.");
+                throw new ArgumentNullException("Required field 'address' is null.");
             }
             AccountAddress accountAddress = AccountAddress.From(address);
             return accountAddress;
