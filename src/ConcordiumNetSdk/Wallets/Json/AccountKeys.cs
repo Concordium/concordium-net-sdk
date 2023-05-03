@@ -23,10 +23,11 @@ public class AccountKeys
     /// <summary>
     /// Try to parse the sign keys into a map from pairs of
     /// <see cref="AccountCredentialIndex"/> and <see cref="AccountKeyIndex"/>es
-    /// to <see cref="Ed25519SignKey"/>s representing the corresponding keys of
-    /// the JSON object.
+    /// to <see cref="Ed25519SignKey"/>s representing the corresponding keys in
+    /// the 'accountKeys' JSON object.
     /// </summary>
-    /// <exception cref=""></exception>
+    /// <exception cref="ArgumentNullException">A field is missing.</exception>
+    /// <exception cref="ArgumentNullException">An index or sign key could not be parsed.</exception>
     public Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, ISigner>> TryGetSignKeys()
     {
         if (keys is null)

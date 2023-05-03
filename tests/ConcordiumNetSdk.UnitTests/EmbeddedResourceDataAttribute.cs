@@ -4,6 +4,10 @@ using System.IO;
 using System.Reflection;
 using Xunit.Sdk;
 
+/// <summary>
+/// Data attribute which allows to capture data of resources embedded
+/// in the manifest for use in tests.
+/// </summary>
 namespace ConcordiumNetSdk.UnitTests
 {
     public sealed class EmbeddedResourceDataAttribute : DataAttribute

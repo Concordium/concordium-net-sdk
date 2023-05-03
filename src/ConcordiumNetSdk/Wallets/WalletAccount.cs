@@ -58,12 +58,13 @@ public class WalletAccount : ITransactionSigner
     /// <summary>
     /// Try to create a new instance from a wallet data source.
     /// </summary>
-    /// <param name="json">JSON string in the genesis wallet key export format.</param>
-    public static WalletAccount From(IWalletDataSource importedWallet)
+    /// <param name="walletDataSource">Data source from which to import the wallet.</param>
+    /// <exception cref="WalletDataSourceException"/>
+    public static WalletAccount From(IWalletDataSource walletDataSource)
     {
         return new WalletAccount(
-            importedWallet.TryGetAccountAddress(),
-            importedWallet.TryGetSignKeys()
+            walletDataSource.TryGetAccountAddress(),
+            walletDataSource.TryGetSignKeys()
         );
     }
 
@@ -71,7 +72,7 @@ public class WalletAccount : ITransactionSigner
     /// Try to create a new instance from a JSON string in the genesis wallet key export format.
     /// </summary>
     /// <param name="json">JSON string in the genesis wallet key export format.</param>
-    /// <exception cref="JsonException">The specified input does not contain valid JSON.</exception>
+    /// <exception cref="JsonException">The specified input is not valid JSON.</exception>
     /// <exception cref="WalletDataSourceException">Either a field is missing or an index or sign key could not be parsed.</exception>
     public static WalletAccount FromGenesisWalletExportFormat(string json)
     {
@@ -84,7 +85,7 @@ public class WalletAccount : ITransactionSigner
     /// Try to create a new instance from a JSON string in the browser wallet key export format.
     /// </summary>
     /// <param name="json">JSON string in the browser wallet key export format.</param>
-    /// <exception cref="JsonException">The specified input does not contain valid JSON.</exception>
+    /// <exception cref="JsonException">The specified input is not valid JSON.</exception>
     /// <exception cref="WalletDataSourceException">Either a field is missing or an index or sign key could not be parsed.</exception>
     public static WalletAccount FromBrowserWalletExportFormat(string json)
     {

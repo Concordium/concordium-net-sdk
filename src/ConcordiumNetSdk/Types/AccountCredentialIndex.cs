@@ -20,7 +20,7 @@ public readonly struct AccountCredentialIndex
     }
 
     /// <summary>
-    /// Create an instance of from a string representing a <see cref="byte"/> value.
+    /// Creates an instance from a string representing a <see cref="byte"/> value.
     /// </summary>
     /// <param name="index">An index represented as a string representing to be parsed as a <see cref="byte"/> value.</param>
     public static AccountCredentialIndex From(string index)

@@ -5,8 +5,8 @@ namespace ConcordiumNetSdk.Wallets;
 /// of <see cref="IWalletDataSource.TryGetSignKeys"/> or
 /// <see cref="IWalletDataSource.TryGetAddress"/>.
 ///
-/// This could for instance be a parsing or IO error
-/// depending on the implementation.
+/// This could for instance be due to a parsing or IO error
+/// depending on the underlying implementation.
 /// </summary>
 public class WalletDataSourceException : Exception
 {

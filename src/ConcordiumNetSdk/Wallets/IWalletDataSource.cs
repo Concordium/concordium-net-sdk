@@ -8,7 +8,7 @@ namespace ConcordiumNetSdk.Wallets;
 /// from which a <see cref="WalletAccount"/> can be constructed.
 ///
 /// Specifically this allows for retrieving sign key and wallet
-/// address data in a failing manner.
+/// address data in a manner which is subject to failure.
 /// </summary>
 public interface IWalletDataSource
 {
@@ -16,7 +16,7 @@ public interface IWalletDataSource
     /// Try to retrieve the sign keys from the wallet data source.
     /// </summary>
     /// <exception cref="WalletDataSourceException">
-    /// Error condition occurred while trying to get the signs keys.
+    /// An error condition occurred while trying to get the sign keys.
     /// </exception>
     public Dictionary<
         AccountCredentialIndex,
@@ -27,7 +27,7 @@ public interface IWalletDataSource
     /// Try to retrieve the wallet address from the wallet data source.
     /// </summary>
     /// <exception cref="WalletDataSourceException">
-    /// Error condition occurred while trying to get the account address.
+    /// An error condition occurred while trying to get the account address.
     /// </exception>
     public AccountAddress TryGetAccountAddress();
 }
