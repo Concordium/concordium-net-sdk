@@ -28,4 +28,14 @@ public readonly struct AccountCredentialIndex
     {
         return accountCredentialIndex.Value;
     }
+
+    public static AccountCredentialIndex From(string index)
+    {
+        byte result;
+        if (Byte.TryParse(index, out result))
+        {
+            return new AccountCredentialIndex(result);
+        }
+        throw new ArgumentException("Could not parse the account credential index.");
+    }
 }

@@ -1,6 +1,6 @@
 using NSec.Cryptography;
 
-namespace ConcordiumNetSdk.SignKey;
+namespace ConcordiumNetSdk.Crypto;
 
 /// <summary>
 /// The (secret) sign key of an ed25519 keypair.

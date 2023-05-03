@@ -35,4 +35,14 @@ public readonly struct AccountKeyIndex
     {
         return accountKeyIndex.Value;
     }
+
+    public static AccountKeyIndex From(string index)
+    {
+        byte result;
+        if (Byte.TryParse(index, out result))
+        {
+            return new AccountKeyIndex(result);
+        }
+        throw new ArgumentException("Could not parse the account key index.");
+    }
 }

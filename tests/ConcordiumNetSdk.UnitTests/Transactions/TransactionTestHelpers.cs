@@ -1,6 +1,6 @@
 using ConcordiumNetSdk.Transactions;
 using ConcordiumNetSdk.Types;
-using ConcordiumNetSdk.SignKey;
+using ConcordiumNetSdk.Crypto;
 using System.Collections.Generic;
 
 namespace ConcordiumNetSdk.UnitTests.Transactions;

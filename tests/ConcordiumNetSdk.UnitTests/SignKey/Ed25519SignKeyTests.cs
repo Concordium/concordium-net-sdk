@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text;
-using ConcordiumNetSdk.SignKey;
+using ConcordiumNetSdk.Crypto;
 using FluentAssertions;
 using Xunit;
 
