@@ -2,7 +2,7 @@ using CommandLine;
 
 namespace ConcordiumNetSdk.Examples;
 
-public abstract class TransferTransactionExampleOptions : TransactionExampleOptions
+public class TransferTransactionExampleOptions : TransactionExampleOptions
 {
     public const UInt64 DEFAULT_AMOUNT = 100;
 

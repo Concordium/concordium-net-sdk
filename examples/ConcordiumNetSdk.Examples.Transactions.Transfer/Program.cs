@@ -5,11 +5,14 @@ using ConcordiumNetSdk.Examples;
 using ConcordiumNetSdk.Client;
 
 /// <summary>
-/// Example showing how to submit a transfer transaction.
+/// Example demonstrating how to submit a transfer transaction.
 ///
 /// The example assumes you have your account key information stored
-/// in the format exported by the Concordium Browser Wallet, and a path
+/// in the Concordium browser wallet key export format, and that a path
 /// pointing to it is supplied to it from the command line.
+///
+/// Cfr. <see cref="TransferTransactionExampleOptions"/> for more info
+/// on how to run the program, or refer to the help message.
 /// </summary>
 class Program
 {

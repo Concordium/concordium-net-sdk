@@ -2,10 +2,28 @@
 
 namespace ConcordiumNetSdk.Examples;
 
+/// <summary>
+/// Command line options for the runnable SDK examples.
+///
+/// This class can be used to specify options for the
+/// <see cref="ConcordiumNetSdk.Client.ConcordiumClient"/>
+/// at the command-line.
+/// </summary>
 public abstract class ExampleOptions
 {
-    const string DEFAULT_URL = "https://localhost/";
+    /// <summary>
+    /// Default URL representing the endpoint where the GRPC V2 API is served.
+    /// </summary>
+    const string DEFAULT_URL = "localhost";
+
+    /// <summary>
+    /// Default port at the endpoint where the GRPC V2 API is served.
+    /// </summary>
     const UInt16 DEFAULT_PORT = 20000;
+
+    /// <summary>
+    /// Default flag representing whether a secure connection should be used.
+    /// </summary>
     const bool DEFAULT_SECURE_CONNECTION_FLAG = true;
 
     [Option(
