@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples", "examples\ConcordiumNetSdk.Examples\ConcordiumNetSdk.Examples.csproj", "{074082C5-1760-41E7-B0B9-395D61FE11B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Transactions.TransferWithMemo", "examples\ConcordiumNetSdk.Examples.Transactions.TransferWithMemo\ConcordiumNetSdk.Examples.Transactions.TransferWithMemo.csproj", "{9BDE575F-934F-4600-97E5-49B93EE2A80E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Transactions.RegisterData", "examples\ConcordiumNetSdk.Examples.Transactions.RegisterData\ConcordiumNetSdk.Examples.Transactions.RegisterData.csproj", "{B5D3C743-33A7-4C4C-8D42-35D4231379F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{074082C5-1760-41E7-B0B9-395D61FE11B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{074082C5-1760-41E7-B0B9-395D61FE11B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{074082C5-1760-41E7-B0B9-395D61FE11B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BDE575F-934F-4600-97E5-49B93EE2A80E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BDE575F-934F-4600-97E5-49B93EE2A80E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BDE575F-934F-4600-97E5-49B93EE2A80E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BDE575F-934F-4600-97E5-49B93EE2A80E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5D3C743-33A7-4C4C-8D42-35D4231379F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D3C743-33A7-4C4C-8D42-35D4231379F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5D3C743-33A7-4C4C-8D42-35D4231379F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5D3C743-33A7-4C4C-8D42-35D4231379F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
