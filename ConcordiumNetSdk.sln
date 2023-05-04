@@ -5,9 +5,13 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConcordiumNetSdk", "src\ConcordiumNetSdk\ConcordiumNetSdk.csproj", "{9B455DC8-B80A-4E11-A8B8-0DD4CD47E31B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConcordiumNetSdk.TestConsoleApp", "src\ConcordiumNetSdk.TestConsoleApp\ConcordiumNetSdk.TestConsoleApp.csproj", "{07DDF416-A5DE-45F7-AC69-2774089289E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.TestConsoleApp", "src\ConcordiumNetSdk.TestConsoleApp\ConcordiumNetSdk.TestConsoleApp.csproj", "{07DDF416-A5DE-45F7-AC69-2774089289E2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.UnitTests", "tests\ConcordiumNetSdk.UnitTests\ConcordiumNetSdk.UnitTests.csproj", "{E4EEF5B3-C756-43AC-B10B-8C3FBFD70ECE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Transactions.Transfer", "examples\ConcordiumNetSdk.Examples.Transactions.Transfer\ConcordiumNetSdk.Examples.Transactions.Transfer.csproj", "{C88F913A-6357-4A81-AC1A-DE0123F40878}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples", "examples\ConcordiumNetSdk.Examples\ConcordiumNetSdk.Examples.csproj", "{074082C5-1760-41E7-B0B9-395D61FE11B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,17 +31,17 @@ Global
 		{E4EEF5B3-C756-43AC-B10B-8C3FBFD70ECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4EEF5B3-C756-43AC-B10B-8C3FBFD70ECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4EEF5B3-C756-43AC-B10B-8C3FBFD70ECE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77AF8387-1594-4B85-83E5-BD7BCDC55908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77AF8387-1594-4B85-83E5-BD7BCDC55908}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77AF8387-1594-4B85-83E5-BD7BCDC55908}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77AF8387-1594-4B85-83E5-BD7BCDC55908}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C88F913A-6357-4A81-AC1A-DE0123F40878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C88F913A-6357-4A81-AC1A-DE0123F40878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C88F913A-6357-4A81-AC1A-DE0123F40878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C88F913A-6357-4A81-AC1A-DE0123F40878}.Release|Any CPU.Build.0 = Release|Any CPU
+		{074082C5-1760-41E7-B0B9-395D61FE11B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{074082C5-1760-41E7-B0B9-395D61FE11B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{074082C5-1760-41E7-B0B9-395D61FE11B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{074082C5-1760-41E7-B0B9-395D61FE11B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{E4EEF5B3-C756-43AC-B10B-8C3FBFD70ECE} = {1888DC31-3282-4B42-A858-5B981B09F615}
-		{77AF8387-1594-4B85-83E5-BD7BCDC55908} = {1888DC31-3282-4B42-A858-5B981B09F615}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D9EB56EA-568E-4763-9538-FA327D35D016}
