@@ -83,6 +83,8 @@ public class Ed25519SignKeyTests
             "1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbbf23aad218e888bb26fda";
         var ed25519SignKey = Ed25519SignKey.From(ed25519SignKeyAsHexString);
         var bytesToBeEncoded = Encoding.ASCII.GetBytes(ed25519SignKeyAsHexString);
+        // The expected signature was generated using the corresponding methods
+        // in the Concordium Rust SDK.
         var expectedSignedBytes = new byte[]
         {
             153,
