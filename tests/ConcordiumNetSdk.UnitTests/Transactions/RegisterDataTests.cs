@@ -23,6 +23,7 @@ public class RegisterDataTests
     [Fact]
     public void GetBytes_ReturnsCorrectValue()
     {
+        // The expected payload was generated using the Concordium Rust SDK.
         var expectedBytes = new byte[] { 21, 0, 4, 254, 237, 190, 239 };
         CreateRegisterData().GetBytes().Should().BeEquivalentTo(expectedBytes);
     }
@@ -41,7 +42,7 @@ public class RegisterDataTests
         SignedAccountTransaction<RegisterData> signedTransfer =
             TransactionTestHelpers<RegisterData>.CreateSignedTransaction(preparedTransfer);
 
-        // Create the expected signature.
+        // Create the expected signature. It was generated using the corresponding method in the Concordium Rust SDK.
         byte[] expectedSignature00 = Convert.FromHexString(
             "4e611658eb4d70c35cf35a959b4cf6f4da8dc94da0f3cf900d39ced627253e5ac137af6a01ebae9d4c0131829c656fa5fcebab01282df4b464daae73c467a303"
         );

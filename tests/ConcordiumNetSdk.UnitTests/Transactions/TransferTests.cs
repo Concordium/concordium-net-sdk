@@ -25,6 +25,7 @@ public class TransferTests
     [Fact]
     public void GetBytes_ReturnsCorrectValue()
     {
+        // The expected payload was generated using the Concordium Rust SDK.
         var expectedBytes = new byte[]
         {
             3,
@@ -86,7 +87,7 @@ public class TransferTests
         SignedAccountTransaction<Transfer> signedTransfer =
             TransactionTestHelpers<Transfer>.CreateSignedTransaction(preparedTransfer);
 
-        // Create the expected signature.
+        // Create the expected signature. It was generated using the corresponding method in the Concordium Rust SDK.
         byte[] expectedSignature00 = Convert.FromHexString(
             "339222503ba5c5a7365612d3bcb3e913fe99666182d6f46648ed22bc89e50178d77d9a858d320a1730b965db7a90c54dbddd801c857b3c21b9c67a73abcf8c09"
         );
