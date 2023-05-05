@@ -45,13 +45,5 @@ public static class Example
         Environment.Exit(1);
     }
 
-    private static void HandleParseError(IEnumerable<Error> errors)
-    {
-        Console.WriteLine("The following error(s) occurred while parsing command line arguments:");
-        foreach (Error error in errors)
-        {
-            Console.WriteLine(error.ToString());
-        }
-        Environment.Exit(1);
-    }
+    private static void HandleParseError(IEnumerable<Error> errors) { }
 }

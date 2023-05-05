@@ -1,4 +1,7 @@
-﻿namespace ConcordiumNetSdk.Types;
+﻿using ConcordiumNetSdk.Client;
+using Concordium.V2;
+
+namespace ConcordiumNetSdk.Types;
 
 /// <summary>
 /// Represents a block hash.
@@ -44,6 +47,8 @@ public record BlockHash : Hash
 
     /// <summary>
     /// Converts the block hash to its corresponding protocol buffer message instance.
+    ///
+    /// This can be used as input for class methods of <see cref="ConcordiumClient.RawClient/>.
     /// </summary>
     public Concordium.V2.BlockHash ToProto()
     {
@@ -51,5 +56,35 @@ public record BlockHash : Hash
         {
             Value = Google.Protobuf.ByteString.CopyFrom(this.GetBytes())
         };
+    }
+
+    /// <summary>
+    /// Converts the block hash to a corresponding <see cref="BlockHashInput"/>
+    ///
+    /// This can be used as the input for class methods of <see cref="ConcordiumClient.RawClient"/>.
+    /// </summary>
+    public BlockHashInput ToBlockHashInput()
+    {
+        return new BlockHashInput() { Given = ToProto() };
+    }
+
+    /// <summary>
+    /// Returns a <see cref="BlockHashInput"/> which specifies the best block.
+    ///
+    /// This can be used as the input for class methods of <see cref="ConcordiumClient.RawClient"/>.
+    /// </summary>
+    public static BlockHashInput BestBlockHashInput()
+    {
+        return new BlockHashInput() { Best = new Empty() };
+    }
+
+    /// <summary>
+    /// Returns a <see cref="BlockHashInput"/> which specifies the last finalized block.
+    ///
+    /// This can be used as the input for class methods of <see cref="ConcordiumClient.RawClient"/>.
+    /// </summary>
+    public static BlockHashInput LastFinalBlockHashInput()
+    {
+        return new BlockHashInput() { Best = new Empty() };
     }
 }

@@ -10,8 +10,7 @@ namespace ConcordiumNetSdk.Types;
 /// and used when submitting account transactions for that account to the node. The account
 /// sequence number is maintained as on-chain state and is incremented with each finalized
 /// transaction. The next sequence number to be used in a transaction can be queried
-/// with <see cref="ConcordiumClient.GetNextAccountSequenceNumber"> or
-/// <see cref="ConcordiumClient.GetAccountInfo"/>.
+/// with <see cref="ConcordiumClient.GetNextAccountSequenceNumber">.
 /// </summary>
 public readonly struct AccountSequenceNumber : IEquatable<AccountSequenceNumber>
 {
@@ -70,6 +69,8 @@ public readonly struct AccountSequenceNumber : IEquatable<AccountSequenceNumber>
 
     /// <summary>
     /// Converts the account nonce to its corresponding protocol buffer message instance.
+    ///
+    /// This can be used as the input for class methods of <see cref="ConcordiumClient.RawClient"/>.
     /// </summary>
     public Concordium.V2.SequenceNumber ToProto()
     {

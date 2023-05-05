@@ -4,6 +4,8 @@ using ConcordiumNetSdk.Wallets;
 using ConcordiumNetSdk.Examples;
 using ConcordiumNetSdk.Client;
 
+namespace ConcordiumNetSdk.Examples.Transactions;
+
 /// <summary>
 /// Example demonstrating how to submit a transfer transaction.
 ///
