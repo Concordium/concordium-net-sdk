@@ -4,10 +4,10 @@ using Concordium.V2;
 namespace ConcordiumNetSdk.Examples.Raw;
 
 /// <summary>
-/// Example demonstrating how invoke the "raw" <see cref="ConcordiumClient.RawClient.GetBlockTransactionEvents" /> GRPC API call.
+/// Example demonstrating the use of <see cref="ConcordiumClient.RawClient.GetBlockTransactionEvents"/>.
 ///
-/// <see cref="ConcordiumClient.RawClient"/> wraps methods of the Concordium Node GRPC API V2 that were generated from the protocol
-/// buffer schema by the <see cref="Grpc.Core"/> library.
+/// <see cref="ConcordiumClient.RawClient"/> wraps methods of the Concordium Node GRPC API V2 that were generated
+/// from the protocol buffer schema by the <see cref="Grpc.Core"/> library.
 /// </summary>
 class Program
 {
@@ -66,7 +66,7 @@ class Program
             var txHash = ConcordiumNetSdk.Types.TransactionHash.From(e.Hash.Value.ToByteArray());
             Console.WriteLine(
                 $@"
-                Block item summary at index {e.Index.Value.ToString()} and transaction hash {txHash.ToString()}:
+                Received event with index {e.Index.Value.ToString()} for transaction with hash {txHash.ToString()}:
                 {details}
             "
             );

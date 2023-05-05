@@ -4,11 +4,11 @@ using Concordium.V2;
 namespace ConcordiumNetSdk.Examples.Raw;
 
 /// <summary>
-/// Example demonstrating how invoke the "raw" <see cref="ConcordiumClient.RawClient.GetAccountInfo" /> GRPC API call.
+/// Example demonstrating the use of <see cref="ConcordiumClient.RawClient.GetAccountInfo"/>.
 ///
-/// <see cref="ConcordiumClient.RawClient"/> wraps methods of the Concordium Node GRPC API V2 that were generated from
-/// the protocol buffer schema by the <see cref="Grpc.Core"/> library. Creating an instance of the generated
-/// <see cref="AccountInfoRequest"/> used for the method input is given below.
+/// <see cref="ConcordiumClient.RawClient"/> wraps methods of the Concordium Node GRPC API V2 that were generated
+/// from the protocol buffer schema by the <see cref="Grpc.Core"/> library. Creating an instance of the generated
+/// <see cref="AccountInfoRequest"/> class used for the method input is given below.
 /// </summary>
 class Program
 {
