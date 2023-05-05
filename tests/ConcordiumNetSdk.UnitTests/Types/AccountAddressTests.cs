@@ -102,6 +102,7 @@ public class AccountAddressTests
 
     [Theory]
     [InlineData(1 << 24)]
+    [InlineData(1 << 24 + 1024)]
     public void GetNthAlias_OnOutOfRangeAlias_ThrowsException(UInt32 alias)
     {
         var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";

@@ -14,10 +14,13 @@ public static class Example
     /// to the supplied <typeparam name="T"/> and the callback is invoked with
     /// the resulting instance as its argument.
     /// </summary>
-    /// <typeparam name="T">The <see cref="ExampleOptions"/> instance into
-    /// which <paramref name="args"/> will be parsed.
+    /// <typeparam name="T">
+    /// The <see cref="ExampleOptions"/> instance into which <paramref name="args"/>
+    /// will be parsed.
     /// </typeparam>
-    /// <param name="args">The raw command line arguments.</param>
+    /// <param name="args">
+    /// The raw command line arguments.
+    /// </param>
     /// <param name="exampleCallback">
     /// The callback corresponding to the example program which will be
     /// invoked with the parsed <typeparam name="T"/> instance as its
