@@ -11,7 +11,7 @@ namespace ConcordiumNetSdk.Examples.Raw;
 /// </summary>
 class Program
 {
-    async static void GetAccountInfoExample(GetAccountInfoExampleOptions options)
+    async static void GetBlockTransactionEventsExample(GetAccountInfoExampleOptions options)
     {
         // Construct the client.
         ConcordiumClient client = new ConcordiumClient(
@@ -74,6 +74,6 @@ class Program
 
     static void Main(string[] args)
     {
-        Example.Run<GetAccountInfoExampleOptions>(args, GetAccountInfoExample);
+        Example.Run<GetAccountInfoExampleOptions>(args, GetBlockTransactionEventsExample);
     }
 }
