@@ -1,6 +1,8 @@
 using ConcordiumNetSdk.Crypto;
 using ConcordiumNetSdk.Types;
 
+using Newtonsoft.Json;
+
 namespace ConcordiumNetSdk.Wallets.Json;
 
 /// <summary>
@@ -10,22 +12,24 @@ namespace ConcordiumNetSdk.Wallets.Json;
 /// Such can be parsed into an instance of this class using
 /// <see cref="Newtonsoft.Json.JsonConvert"/>.
 /// </summary>
-public class BrowserWalletExportFormat : IWalletDataSource
+internal record BrowserWalletExportFormat : IWalletDataSource
 {
-    public Value? value { get; set; }
+    internal record Value(AccountKeys accountKeys, string address)
+    {
+        [JsonProperty(Required = Required.DisallowNull)]
+        internal AccountKeys accountKeys { get; init; } = accountKeys;
+
+        [JsonProperty(Required = Required.DisallowNull)]
+        internal string address { get; init; } = address;
+    }
+
+    [JsonProperty(Required = Required.DisallowNull)]
+    internal Value value { get; init; }
 
     public AccountAddress TryGetAccountAddress()
     {
         try
         {
-            if (value is null)
-            {
-                throw new ArgumentNullException("Required field 'value' is null.");
-            }
-            if (value.address is null)
-            {
-                throw new ArgumentNullException("Required field 'address' is null.");
-            }
             return AccountAddress.From(value.address);
         }
         catch (Exception e)
@@ -41,14 +45,6 @@ public class BrowserWalletExportFormat : IWalletDataSource
     {
         try
         {
-            if (value is null)
-            {
-                throw new ArgumentNullException("Required field 'value' is null.");
-            }
-            if (value.accountKeys is null)
-            {
-                throw new ArgumentNullException("Required field 'accountKeys' is null.");
-            }
             return value.accountKeys.TryGetSignKeys();
         }
         catch (Exception e)

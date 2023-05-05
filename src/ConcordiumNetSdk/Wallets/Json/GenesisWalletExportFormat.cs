@@ -1,6 +1,8 @@
 using ConcordiumNetSdk.Crypto;
 using ConcordiumNetSdk.Types;
 
+using Newtonsoft.Json;
+
 namespace ConcordiumNetSdk.Wallets.Json;
 
 /// <summary>
@@ -10,19 +12,18 @@ namespace ConcordiumNetSdk.Wallets.Json;
 /// Such can be parsed into an instance of this class using
 /// <see cref="Newtonsoft.Json.JsonConvert"/>.
 /// </summary>
-public class GenesisWalletExportFormat : IWalletDataSource
+internal record GenesisWalletExportFormat : IWalletDataSource
 {
-    public AccountKeys? accountKeys { get; set; }
-    public string? address { get; set; }
+    [JsonProperty(Required = Required.DisallowNull)]
+    internal AccountKeys accountKeys { get; init; }
+
+    [JsonProperty(Required = Required.DisallowNull)]
+    internal string address { get; init; }
 
     public AccountAddress TryGetAccountAddress()
     {
         try
         {
-            if (address is null)
-            {
-                throw new ArgumentNullException("Required field 'address' is null.");
-            }
             AccountAddress accountAddress = AccountAddress.From(address);
             return accountAddress;
         }
@@ -41,7 +42,7 @@ public class GenesisWalletExportFormat : IWalletDataSource
         {
             if (accountKeys is null)
             {
-                throw new ArgumentNullException("Required field 'accountKeys' is null.");
+                throw new ArgumentNullException("Required field 'accountKeys' is missing.");
             }
             return accountKeys.TryGetSignKeys();
         }

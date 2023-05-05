@@ -13,7 +13,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     public const UInt32 BytesLength = 32;
 
     /// <summary>
-    /// A version byte that is prepended to addresses represended as base58 strings.
+    /// A version byte that is prepended to addresses represented as base58 strings.
     /// </summary>
     private const byte VersionByte = 1;
 

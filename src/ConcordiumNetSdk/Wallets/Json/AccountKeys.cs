@@ -1,5 +1,6 @@
 using ConcordiumNetSdk.Types;
 using ConcordiumNetSdk.Crypto;
+using Newtonsoft.Json;
 
 namespace ConcordiumNetSdk.Wallets.Json;
 
@@ -16,9 +17,22 @@ namespace ConcordiumNetSdk.Wallets.Json;
 /// and <see cref="AccountKeyIndex"/>es to <see cref="Ed25519SignKey"/>s
 /// using <see cref="TryGetSignKeys"/>.
 /// </summary>
-public class AccountKeys
+internal record AccountKeys
 {
-    public Dictionary<string, KeyInfo>? keys { get; set; }
+    internal record KeyInfo
+    {
+        internal record Key
+        {
+            [JsonProperty(Required = Required.DisallowNull)]
+            internal string signKey { get; init; }
+        };
+
+        [JsonProperty(Required = Required.DisallowNull)]
+        internal Dictionary<string, Key> keys { get; init; }
+    }
+
+    [JsonProperty(Required = Required.DisallowNull)]
+    internal Dictionary<string, KeyInfo> keys { get; init; }
 
     /// <summary>
     /// Try to parse the sign keys into a map from pairs of
@@ -30,17 +44,8 @@ public class AccountKeys
     /// <exception cref="ArgumentNullException">An index or sign key could not be parsed.</exception>
     public Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, ISigner>> TryGetSignKeys()
     {
-        if (keys is null)
-        {
-            throw new ArgumentNullException("Required field 'keys' is null.");
-        }
         return keys.Select(cred =>
             {
-                if (cred.Value.keys is null)
-                {
-                    throw new ArgumentNullException("Required field 'keys' is null.");
-                }
-
                 // For each credential index, first parse it.
                 AccountCredentialIndex accountCredentialIndex = AccountCredentialIndex.From(
                     cred.Key
@@ -50,11 +55,6 @@ public class AccountKeys
                 Dictionary<AccountKeyIndex, ISigner> keysForCredential = cred.Value.keys
                     .Select(key =>
                     {
-                        if (key.Value.signKey is null)
-                        {
-                            throw new ArgumentNullException("Required field 'signKey' is null.");
-                        }
-
                         // For each key index, parse it.
                         AccountKeyIndex accountKeyIndex = AccountKeyIndex.From(key.Key);
 
