@@ -22,7 +22,7 @@ class Program
     {
         // Read the account keys from a file.
         string walletData = File.ReadAllText(options.WalletKeysFile);
-        WalletAccount account = WalletAccount.FromBrowserWalletExportFormat(walletData);
+        WalletAccount account = WalletAccount.FromWalletKeyExportFormat(walletData);
 
         // Construct the client.
         ConcordiumClient client = new ConcordiumClient(
@@ -53,7 +53,9 @@ class Program
         TransactionHash txHash = client.SendTransaction(signedTransfer);
 
         // Print the transaction hash.
-        Console.WriteLine($"Succesfully sumbitted with transaction hash: {txHash.ToString()}");
+        Console.WriteLine(
+            $"Successfully submitted transfer transaction with hash {txHash.ToString()}"
+        );
     }
 
     static void Main(string[] args)
