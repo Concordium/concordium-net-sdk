@@ -55,6 +55,8 @@ public class ConcordiumClient : IDisposable
     /// </summary>
     /// <param name="transaction">The transaction to send.</param>
     /// <returns>Hash of the transaction if it was accepted by the node.</returns>
+    /// <exception cref="RpcException">The call failed, e.g. due to the node not accepting the transaction.</exception>
+    /// <exception cref="FormatException">The returned transaction hash has an invalid number of bytes.</exception>
     public ConcordiumNetSdk.Types.TransactionHash SendTransaction<T>(
         SignedAccountTransaction<T> transaction
     )
@@ -69,9 +71,13 @@ public class ConcordiumClient : IDisposable
 
     /// <summary>
     /// Spawn a task which sends a transaction to the node.
+    ///
+    /// Note that the task may throw a <see cref="FormatException"/> if the transaction hash it returns
+    /// has an invalid number of bytes.
     /// </summary>
     /// <param name="transaction">The transaction to send.</param>
     /// <returns>Task which returns the hash of the transaction if it was accepted by the node.</returns>
+    /// <exception cref="RpcException">The call failed, e.g. due to the node not accepting the transaction.</exception>
     public Task<ConcordiumNetSdk.Types.TransactionHash> SendTransactionAsync<T>(
         SignedAccountTransaction<T> transaction
     )
@@ -100,6 +106,7 @@ public class ConcordiumClient : IDisposable
     /// </summary>
     /// <param name="accountAddress">An address of the account to get the next sequence number of.</param>
     /// <returns>The best guess of the next sequence number for the supplied account.</returns>
+    /// <exception cref="RpcException">The call failed.</exception>
     public ConcordiumNetSdk.Types.AccountSequenceNumber GetNextAccountSequenceNumber(
         ConcordiumNetSdk.Types.AccountAddress accountAddress
     )
@@ -124,6 +131,7 @@ public class ConcordiumClient : IDisposable
     /// </summary>
     /// <param name="accountAddress">An address of the account to get the next sequence number of.</param>
     /// <returns>A task which returns the best guess of the next sequence number for the supplied account.</returns>
+    /// <exception cref="RpcException">The call failed.</exception>
     public Task<ConcordiumNetSdk.Types.AccountSequenceNumber> GetNextAccountSequenceNumberAsync(
         ConcordiumNetSdk.Types.AccountAddress accountAddress
     )

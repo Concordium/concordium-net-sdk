@@ -3,6 +3,8 @@ using ConcordiumNetSdk.Transactions;
 using ConcordiumNetSdk.Wallets;
 using ConcordiumNetSdk.Client;
 
+using Grpc.Core;
+
 namespace ConcordiumNetSdk.Examples.Transactions;
 
 /// <summary>
@@ -48,8 +50,11 @@ class Program
         // Sign the transaction using the account keys.
         SignedAccountTransaction<RegisterData> signedTransfer = preparedTransfer.Sign(account);
 
-        // Submit the transaction.
+        // Try to submit the transaction.
         TransactionHash txHash = client.SendTransaction(signedTransfer);
+
+        // Print the transaction hash.
+        Console.WriteLine($"Succesfully sumbitted with transaction hash: {txHash.ToString()}");
     }
 
     static void Main(string[] args)

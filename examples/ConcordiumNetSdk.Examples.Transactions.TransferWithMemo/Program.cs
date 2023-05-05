@@ -51,6 +51,9 @@ class Program
 
         // Submit the transaction.
         TransactionHash txHash = client.SendTransaction(signedTransfer);
+
+        // Print the transaction hash.
+        Console.WriteLine($"Succesfully sumbitted with transaction hash: {txHash.ToString()}");
     }
 
     static void Main(string[] args)
