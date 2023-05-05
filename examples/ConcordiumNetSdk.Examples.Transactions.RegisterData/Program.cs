@@ -22,7 +22,8 @@ class Program
     static void SendRegisterDataExample(RegisterDataTransactionExampleOptions options)
     {
         // Read the account keys from a file.
-        WalletAccount account = WalletAccount.FromBrowserWalletExportFormat(options.WalletKeysFile);
+        string walletData = File.ReadAllText(options.WalletKeysFile);
+        WalletAccount account = WalletAccount.FromBrowserWalletExportFormat(walletData);
 
         // Construct the client.
         ConcordiumClient client = new ConcordiumClient(
