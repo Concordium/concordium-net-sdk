@@ -133,7 +133,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     /// <summary>
     /// Converts the account address to its corresponding protocol buffer message instance.
     ///
-    /// This can be used as the input for class methods of <see cref="ConcordiumClient.RawClient"/>.
+    /// This can be used as the input for class methods of <see cref="RawClient"/>.
     /// </summary>
     public Concordium.V2.AccountAddress ToProto()
     {
@@ -146,7 +146,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     /// <summary>
     /// Converts the block hash to a corresponding <see cref="Concordium.V2.AccountIdentifierInput"/>
     ///
-    /// This can be used as the input for class methods of <see cref="ConcordiumClient.RawClient"/>.
+    /// This can be used as the input for class methods of <see cref="RawClient"/>.
     /// </summary>
     public Concordium.V2.AccountIdentifierInput ToAccountIdentifierInput()
     {

@@ -4,9 +4,9 @@ using Concordium.V2;
 namespace ConcordiumNetSdk.Examples.Raw;
 
 /// <summary>
-/// Example demonstrating the use of <see cref="ConcordiumClient.RawClient.GetBlockTransactionEvents"/>.
+/// Example demonstrating the use of <see cref="RawClient.GetBlockTransactionEvents"/>.
 ///
-/// <see cref="ConcordiumClient.RawClient"/> wraps methods of the Concordium Node GRPC API V2 that were generated
+/// <see cref="RawClient"/> wraps methods of the Concordium Node GRPC API V2 that were generated
 /// from the protocol buffer schema by the <see cref="Grpc.Core"/> library.
 /// </summary>
 class Program

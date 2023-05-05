@@ -32,7 +32,7 @@ public record TransactionHash : Hash
     /// <summary>
     /// Converts the transaction hash to its corresponding protocol buffer message instance.
     ///
-    /// This can be used as the input for class methods of <see cref="ConcordiumNetSdk.Client.ConcordiumClient.RawClient"/>.
+    /// This can be used as the input for class methods of <see cref="ConcordiumNetSdk.Client.RawClient"/>.
     /// </summary>
     public Concordium.V2.TransactionHash ToProto()
     {

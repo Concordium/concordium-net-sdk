@@ -45,7 +45,7 @@ public readonly struct ContractAddress : IEquatable<ContractAddress>
     /// <summary>
     /// Converts the contract address to its corresponding protocol buffer message instance.
     ///
-    /// This can be used as the input for class methods of <see cref="ConcordiumNetSdk.Client.ConcordiumClient.RawClient"/>.
+    /// This can be used as the input for class methods of <see cref="ConcordiumNetSdk.Client.RawClient"/>.
     /// </summary>
     public Concordium.V2.ContractAddress ToProto()
     {

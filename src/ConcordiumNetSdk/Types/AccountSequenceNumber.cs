@@ -70,7 +70,7 @@ public readonly struct AccountSequenceNumber : IEquatable<AccountSequenceNumber>
     /// <summary>
     /// Converts the account nonce to its corresponding protocol buffer message instance.
     ///
-    /// This can be used as the input for class methods of <see cref="ConcordiumClient.RawClient"/>.
+    /// This can be used as the input for class methods of <see cref="RawClient"/>.
     /// </summary>
     public Concordium.V2.SequenceNumber ToProto()
     {
