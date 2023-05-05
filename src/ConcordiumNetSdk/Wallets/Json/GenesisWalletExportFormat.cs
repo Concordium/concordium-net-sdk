@@ -24,8 +24,7 @@ internal record GenesisWalletExportFormat : IWalletDataSource
     {
         try
         {
-            AccountAddress accountAddress = AccountAddress.From(address);
-            return accountAddress;
+            return AccountAddress.From(address);
         }
         catch (Exception e)
         {
@@ -40,10 +39,6 @@ internal record GenesisWalletExportFormat : IWalletDataSource
     {
         try
         {
-            if (accountKeys is null)
-            {
-                throw new ArgumentNullException("Required field 'accountKeys' is missing.");
-            }
             return accountKeys.TryGetSignKeys();
         }
         catch (Exception e)

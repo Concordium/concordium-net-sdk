@@ -35,7 +35,7 @@ internal record BrowserWalletExportFormat : IWalletDataSource
         catch (Exception e)
         {
             throw new WalletDataSourceException(
-                "Could not parse the account address from the supplied genesis wallet key export format data.",
+                "Could not parse the account address from the supplied browser wallet key export format data.",
                 e
             );
         }
