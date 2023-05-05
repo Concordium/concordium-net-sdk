@@ -19,26 +19,23 @@ public class ConcordiumClient : IDisposable
     /// Initializes a new instance of the <see cref="Client"/> class.
     /// </summary>
     /// <param name="endpoint">
-    /// Endpoint of a resource where the V2 API is served. Any protocol scheme, port or query
-    /// parameters are ignored and the protocol defaults to either <c>http</c> or <c>https</c>
-    /// depending on whether a secure connection was specified in <paramref name="secure"/>.
+    /// Endpoint of a resource where the V2 API is served. Any port specified in the URL is
+    /// ignored.
     /// </param>
     /// <param name="port">
     /// Port of the resource where the V2 API is served. This will override any port
     /// specified in <paramref name="endpoint"/>.
     /// </param>
     /// <param name="timeout">The request timeout in seconds (default: <c>30</c>).</param>
-    /// <param name="secure">Flag indicating whether the client must use a secure connection (default: <c>true</c>).</param>
-    public ConcordiumClient(Uri endpoint, UInt16 port, ulong timeout = 30, bool secure = true)
-        : this(endpoint, port, new ClientConfiguration(timeout, secure)) { }
+    public ConcordiumClient(Uri endpoint, UInt16 port, ulong timeout = 30)
+        : this(endpoint, port, new ClientConfiguration(timeout)) { }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Client"/> class.
     /// </summary>
     /// <param name="endpoint">
-    /// Endpoint of a resource where the V2 API is served. Any protocol scheme, port or query
-    /// parameters are ignored and the protocol defaults to either <c>http</c> or <c>https</c>
-    /// depending on whether a secure connection was specified in <paramref name="configuration"/>.
+    /// Endpoint of a resource where the V2 API is served. Any port specified in the URL is
+    /// ignored.
     /// </param>
     /// <param name="port">
     /// Port of the resource where the V2 API is served. This will override any port

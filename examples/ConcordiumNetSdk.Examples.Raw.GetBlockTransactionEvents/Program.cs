@@ -17,8 +17,7 @@ class Program
         ConcordiumClient client = new ConcordiumClient(
             new Uri(options.Endpoint), // Endpoint URL.
             options.Port, // Port.
-            60, // Use a timeout of 60 seconds.
-            options.Secure // Whether to use a secure connection.
+            60 // Use a timeout of 60 seconds.
         );
 
         BlockHashInput blockHashInput;
@@ -26,10 +25,10 @@ class Program
         switch (options.BlockHash.ToLower())
         {
             case "best":
-                blockHashInput = ConcordiumNetSdk.Types.BlockHash.BestBlockHashInput();
+                blockHashInput = new BlockHashInput() { Best = new Empty() };
                 break;
             case "lastfinal":
-                blockHashInput = ConcordiumNetSdk.Types.BlockHash.LastFinalBlockHashInput();
+                blockHashInput = new BlockHashInput() { LastFinal = new Empty() };
                 break;
             default:
                 blockHashInput = ConcordiumNetSdk.Types.BlockHash

@@ -44,7 +44,7 @@ public static class Example
 
     private static void HandleCallbackException(Exception e)
     {
-        Console.WriteLine($"An error occurred while running the example: {e.Message}.");
+        Console.WriteLine($"An error occurred while running the example: {e.Message}");
         Environment.Exit(1);
     }
 

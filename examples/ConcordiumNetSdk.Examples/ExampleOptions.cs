@@ -12,27 +12,22 @@ namespace ConcordiumNetSdk.Examples;
 public abstract class ExampleOptions
 {
     /// <summary>
-    /// Default URL representing the endpoint where the GRPC V2 API is served.
+    /// URL representing the endpoint where the GRPC V2 API is served.
     /// </summary>
-    const string DEFAULT_URL = "//localhost";
+    const string DEFAULT_ENDPOINT = "https://localhost/";
 
     /// <summary>
     /// Default port at the endpoint where the GRPC V2 API is served.
     /// </summary>
     const UInt16 DEFAULT_PORT = 20000;
 
-    /// <summary>
-    /// Default flag representing whether a secure connection should be used.
-    /// </summary>
-    const bool DEFAULT_SECURE_CONNECTION_FLAG = false;
-
     [Option(
         'e',
         "endpoint",
         HelpText = "URL representing the endpoint where the GRPC V2 API is served.",
-        Default = DEFAULT_URL
+        Default = DEFAULT_ENDPOINT
     )]
-    public string Endpoint { get; set; } = DEFAULT_URL;
+    public string Endpoint { get; set; } = DEFAULT_ENDPOINT;
 
     [Option(
         'p',
@@ -41,12 +36,4 @@ public abstract class ExampleOptions
         Default = DEFAULT_PORT
     )]
     public UInt16 Port { get; set; } = DEFAULT_PORT;
-
-    [Option(
-        's',
-        "secure",
-        HelpText = "Add to use SSL to encrypt the connection.",
-        Default = DEFAULT_SECURE_CONNECTION_FLAG
-    )]
-    public bool Secure { get; set; } = DEFAULT_SECURE_CONNECTION_FLAG;
 }

@@ -67,24 +67,4 @@ public record BlockHash : Hash
     {
         return new BlockHashInput() { Given = ToProto() };
     }
-
-    /// <summary>
-    /// Returns a <see cref="BlockHashInput"/> which specifies the best block.
-    ///
-    /// This can be used as the input for class methods of <see cref="ConcordiumClient.RawClient"/>.
-    /// </summary>
-    public static BlockHashInput BestBlockHashInput()
-    {
-        return new BlockHashInput() { Best = new Empty() };
-    }
-
-    /// <summary>
-    /// Returns a <see cref="BlockHashInput"/> which specifies the last finalized block.
-    ///
-    /// This can be used as the input for class methods of <see cref="ConcordiumClient.RawClient"/>.
-    /// </summary>
-    public static BlockHashInput LastFinalBlockHashInput()
-    {
-        return new BlockHashInput() { Best = new Empty() };
-    }
 }

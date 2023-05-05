@@ -27,26 +27,42 @@ public class RawClient : IDisposable
     /// </summary>
     private readonly GrpcChannel _grpcChannel;
 
-    public RawClient(Uri endpoint, UInt16 port, ClientConfiguration configuration)
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RawClient"/> class.
+    /// </summary>
+    /// <param name="endpoint">
+    /// Endpoint of a resource where the V2 API is served. Any port specified in the URL is
+    /// ignored.
+    /// </param>
+    /// <param name="port">
+    /// Port of the resource where the V2 API is served. This will override any port
+    /// specified in <paramref name="endpoint"/>.
+    /// </param>
+    /// <param name="configuration">The configuration to use with this client.</param>
+    internal RawClient(Uri endpoint, UInt16 port, ClientConfiguration configuration)
     {
-        // Store the configuration.
-        this.Config = configuration;
+        // Check the scheme provided in the URI.
+        if (!(endpoint.Scheme == Uri.UriSchemeHttp || endpoint.Scheme == Uri.UriSchemeHttps))
+        {
+            throw new ArgumentException(
+                $"Unsupported protocol scheme \"{endpoint.Scheme}\" in URL. Expected either \"http\" or \"https\"."
+            );
+        }
+
         GrpcChannelOptions options = new GrpcChannelOptions
         {
-            Credentials = configuration.Secure
-                ? ChannelCredentials.SecureSsl
-                : ChannelCredentials.Insecure
+            Credentials =
+                endpoint.Scheme == Uri.UriSchemeHttps
+                    ? ChannelCredentials.SecureSsl
+                    : ChannelCredentials.Insecure
         };
+
         GrpcChannel GrpcChannel = GrpcChannel.ForAddress(
-            // The GRPC library expects a url with protocol that
-            // matches the intention of the <c>Secure</c> flag.
-            (configuration.Secure ? "https://" : "http://")
-                + endpoint.Host
-                + ":"
-                + port.ToString()
-                + endpoint.AbsolutePath,
+            endpoint.Scheme + "://" + endpoint.Host + ":" + port.ToString() + endpoint.AbsolutePath,
             options
         );
+
+        this.Config = configuration;
         Queries.QueriesClient InternalClient = new Queries.QueriesClient(GrpcChannel);
         this.InternalClient = InternalClient;
         _grpcChannel = GrpcChannel;
