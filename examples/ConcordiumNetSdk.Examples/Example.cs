@@ -26,7 +26,7 @@ public static class Example
     /// invoked with the parsed <typeparam name="T"/> instance as its
     /// argument.
     /// </param>
-    public static void RunExample<T>(string[] args, Action<T> exampleCallback)
+    public static void Run<T>(string[] args, Action<T> exampleCallback)
         where T : ExampleOptions
     {
         try

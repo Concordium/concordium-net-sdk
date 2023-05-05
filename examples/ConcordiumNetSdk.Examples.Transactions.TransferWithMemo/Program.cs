@@ -60,9 +60,6 @@ class Program
 
     static void Main(string[] args)
     {
-        Example.RunExample<TransferWithMemoTransactionExampleOptions>(
-            args,
-            SendTransferWithMemoExample
-        );
+        Example.Run<TransferWithMemoTransactionExampleOptions>(args, SendTransferWithMemoExample);
     }
 }

@@ -60,6 +60,6 @@ class Program
 
     static void Main(string[] args)
     {
-        Example.RunExample<TransferTransactionExampleOptions>(args, SendTransferExample);
+        Example.Run<TransferTransactionExampleOptions>(args, SendTransferExample);
     }
 }

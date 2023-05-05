@@ -61,6 +61,6 @@ class Program
 
     static void Main(string[] args)
     {
-        Example.RunExample<RegisterDataTransactionExampleOptions>(args, SendRegisterDataExample);
+        Example.Run<RegisterDataTransactionExampleOptions>(args, SendRegisterDataExample);
     }
 }
