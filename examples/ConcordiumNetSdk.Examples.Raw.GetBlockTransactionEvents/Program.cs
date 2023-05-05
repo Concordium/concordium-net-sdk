@@ -18,7 +18,7 @@ class Program
             new Uri(options.Endpoint), // Endpoint URL.
             options.Port, // Port.
             60, // Use a timeout of 60 seconds.
-            false // Use a secure connection.
+            options.Secure // Whether to use a secure connection.
         );
 
         BlockHashInput blockHashInput;
@@ -66,7 +66,7 @@ class Program
             var txHash = ConcordiumNetSdk.Types.TransactionHash.From(e.Hash.Value.ToByteArray());
             Console.WriteLine(
                 $@"
-                Received event with index {e.Index.Value.ToString()} for transaction with hash {txHash.ToString()}:
+                Got event with index {e.Index.Value.ToString()} for transaction hash {txHash.ToString()}:
                 {details}
             "
             );

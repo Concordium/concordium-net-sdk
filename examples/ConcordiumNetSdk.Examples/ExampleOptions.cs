@@ -14,7 +14,7 @@ public abstract class ExampleOptions
     /// <summary>
     /// Default URL representing the endpoint where the GRPC V2 API is served.
     /// </summary>
-    const string DEFAULT_URL = "localhost";
+    const string DEFAULT_URL = "//localhost";
 
     /// <summary>
     /// Default port at the endpoint where the GRPC V2 API is served.
@@ -24,7 +24,7 @@ public abstract class ExampleOptions
     /// <summary>
     /// Default flag representing whether a secure connection should be used.
     /// </summary>
-    const bool DEFAULT_SECURE_CONNECTION_FLAG = true;
+    const bool DEFAULT_SECURE_CONNECTION_FLAG = false;
 
     [Option(
         'e',
@@ -45,7 +45,7 @@ public abstract class ExampleOptions
     [Option(
         's',
         "secure",
-        HelpText = "Flag representing whether a secure connection should be used.",
+        HelpText = "Add to use SSL to encrypt the connection.",
         Default = DEFAULT_SECURE_CONNECTION_FLAG
     )]
     public bool Secure { get; set; } = DEFAULT_SECURE_CONNECTION_FLAG;

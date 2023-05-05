@@ -19,7 +19,7 @@ class Program
             new Uri(options.Endpoint), // Endpoint URL.
             options.Port, // Port.
             60, // Use a timeout of 60 seconds.
-            true // Use a secure connection.
+            options.Secure // Whether to use a secure connection.
         );
 
         BlockHashInput blockHashInput;
