@@ -69,12 +69,37 @@ public class WalletAccount : ITransactionSigner
     }
 
     /// <summary>
+    /// Create a new instance from a string in the browser or genesis wallet key export format.
+    /// </summary>
+    /// <param name="json">JSON string in the browser or genesis wallet key export format.</param>
+    /// <exception cref="JsonException">The specified input is not valid JSON.</exception>
+    /// <exception cref="WalletDataSourceException">Either a field is missing or an index or sign key could not be parsed.</exception>
+    public static WalletAccount FromWalletKeyExportFormat(string json)
+    {
+        try
+        {
+            return FromGenesisWalletKeyExportFormat(json);
+        }
+        catch (Exception e)
+        {
+            try
+            {
+                return FromBrowserWalletKeyExportFormat(json);
+            }
+            catch (Exception)
+            {
+                throw e;
+            }
+        }
+    }
+
+    /// <summary>
     /// Try to create a new instance from a JSON string in the genesis wallet key export format.
     /// </summary>
     /// <param name="json">JSON string in the genesis wallet key export format.</param>
     /// <exception cref="JsonException">The specified input is not valid JSON.</exception>
     /// <exception cref="WalletDataSourceException">Either a field is missing or an index or sign key could not be parsed.</exception>
-    public static WalletAccount FromGenesisWalletExportFormat(string json)
+    private static WalletAccount FromGenesisWalletKeyExportFormat(string json)
     {
         Json.GenesisWalletExportFormat genesisWallet =
             JsonConvert.DeserializeObject<Json.GenesisWalletExportFormat>(json);
@@ -87,7 +112,7 @@ public class WalletAccount : ITransactionSigner
     /// <param name="json">JSON string in the browser wallet key export format.</param>
     /// <exception cref="JsonException">The specified input is not valid JSON.</exception>
     /// <exception cref="WalletDataSourceException">Either a field is missing or an index or sign key could not be parsed.</exception>
-    public static WalletAccount FromBrowserWalletExportFormat(string json)
+    private static WalletAccount FromBrowserWalletKeyExportFormat(string json)
     {
         Json.BrowserWalletExportFormat genesisWallet =
             JsonConvert.DeserializeObject<Json.BrowserWalletExportFormat>(json);
