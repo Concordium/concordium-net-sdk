@@ -71,6 +71,6 @@ class Program
 
     static void Main(string[] args)
     {
-        Example.RunExample<GetAccountInfoExampleOptions>(args, GetAccountInfoExample);
+        Example.Run<GetAccountInfoExampleOptions>(args, GetAccountInfoExample);
     }
 }
