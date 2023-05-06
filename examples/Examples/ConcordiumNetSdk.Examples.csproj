@@ -4,8 +4,13 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <RootNamespace>Concordium.Sdk.Examples</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' " />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <IntermediateOutputPath>obj\Release\net6.0</IntermediateOutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\ConcordiumNetSdk.csproj" />
   </ItemGroup>

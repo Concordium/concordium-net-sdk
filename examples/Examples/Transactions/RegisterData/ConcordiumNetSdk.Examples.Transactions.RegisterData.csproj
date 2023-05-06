@@ -5,10 +5,15 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <RootNamespace>Concordium.Sdk.Examples.Transactions</RootNamespace>
+    <Configurations>Release;Debug</Configurations>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <WarningLevel>6</WarningLevel>
+    <WarningLevel>6</WarningLevel>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Examples.csproj" />
-    <ProjectReference Include="..\..\..\..\src\ConcordiumNetSdk.csproj" />
   </ItemGroup>
 </Project>

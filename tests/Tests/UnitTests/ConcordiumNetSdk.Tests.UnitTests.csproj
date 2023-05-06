@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
+    <RootNamespace>Concordium.Sdk.Tests.UnitTests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
