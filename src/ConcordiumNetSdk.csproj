@@ -5,11 +5,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageVersion>2.0.0</PackageVersion>
-    <Description>C# SDK for interacting with Concordium Nodes.</Description>
+    <Description>C# SDK for interacting with Concordium block chain.</Description>
     <PackageProjectUrl>https://www.concordium.com/</PackageProjectUrl>
     <PackageIconUrl>https://avatars.githubusercontent.com/u/39614219?s=200&amp;v=4</PackageIconUrl>
     <RepositoryUrl>https://github.com/Concordium/concordium-net-sdk</RepositoryUrl>
-    <PackageTags>concordium;  concordium-net-sdk;</PackageTags>
+    <PackageTags>concordium; concordium-net-sdk;</PackageTags>
     <Company>Concordium</Company>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -28,17 +28,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="NBitcoin" Version="7.0.6" />
+    <PackageReference Include="NSec.Cryptography" Version="22.4.0" />
+    <PackageReference Include="System.Formats.Cbor" Version="7.0.0-preview.3.22175.4" />
     <PackageReference Include="Google.Protobuf" Version="3.22.1" />
     <PackageReference Include="Grpc.Net.Client" Version="2.52.0" />
     <PackageReference Include="Grpc.Tools" Version="2.53.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Json.Net" Version="1.0.33" />
-    <PackageReference Include="Macross.Json.Extensions" Version="3.0.0" />
-    <PackageReference Include="NBitcoin" Version="7.0.6" />
-    <PackageReference Include="NSec.Cryptography" Version="22.4.0" />
-    <PackageReference Include="System.Formats.Cbor" Version="7.0.0-preview.3.22175.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Protobuf Include="../../concordium-grpc-api/v2/concordium/types.proto" GrpcServices="Client">
       <Access>Public</Access>
       <ProtoCompile>True</ProtoCompile>

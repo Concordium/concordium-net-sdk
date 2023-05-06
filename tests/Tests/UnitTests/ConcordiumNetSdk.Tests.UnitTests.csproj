@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ConcordiumNetSdk\ConcordiumNetSdk.csproj" />
+    <ProjectReference Include="..\..\..\src\ConcordiumNetSdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>
