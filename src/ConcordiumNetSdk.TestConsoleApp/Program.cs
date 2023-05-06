@@ -1,32 +1,33 @@
 ﻿using Newtonsoft.Json;
-using ConcordiumNetSdk.Types;
-using ConcordiumNetSdk.Client;
 using Concordium.V2;
+using ConcordiumNetSdk.Client;
 using AccountAddress = ConcordiumNetSdk.Types.AccountAddress;
 
 // Create the client.
-Uri url = new Uri("http://service.internal.testnet.concordium.com/");
-UInt16 port = 20000;
-ConcordiumClient client = new ConcordiumClient(url, port, 1000);
+Uri url = new Uri("https://127.0.0.1/");
 
-async Task Callback(int a)
+//Uri url = new Uri("https://172.31.16.30/");
+UInt16 port = 8169;
+ConcordiumClient concordiumNodeClient = new ConcordiumClient(url, port, 30, false);
+
+var address = "3EqkGQ7NvakjpbUeocRiGzao62ZEEvB6A5rjGsezL8bQBKQGU8";
+var mySender = AccountAddress.From(address).ToProto();
+var best = new BlockHashInput() { Best = new Empty() };
+
+var myAccountInfoRequest = new AccountInfoRequest()
 {
-    var blocks = client.Raw.GetFinalizedBlocks();
-    Console.WriteLine($"{a} Incoming blocks:");
-    await foreach (var blockInfo in blocks)
-    {
-        var blockHash = client.Raw.GetBlockInfo(
-            new BlockHashInput()
-            {
-                Given = new Concordium.V2.BlockHash { Value = blockInfo.Hash.Value }
-            }
-        );
-        Console.WriteLine("Received a block:");
-        Console.WriteLine(blockHash.ToString());
-    }
+    BlockHash = best,
+    AccountIdentifier = new AccountIdentifierInput() { Address = mySender }
+};
+
+var moduleListRes = concordiumNodeClient.GetModuleList(best);
+var accountInfoRes = concordiumNodeClient.GetAccountInfo(myAccountInfoRequest);
+
+Console.WriteLine("Module list result:");
+await foreach (var module in moduleListRes)
+{
+    Console.WriteLine("Got a module entry in module list stream.");
 }
 
-Callback(1);
-Callback(2);
-
-Thread.Sleep(60 * 1000);
+Console.WriteLine("Account info result:");
+Console.WriteLine(JsonConvert.SerializeObject(accountInfoRes));
