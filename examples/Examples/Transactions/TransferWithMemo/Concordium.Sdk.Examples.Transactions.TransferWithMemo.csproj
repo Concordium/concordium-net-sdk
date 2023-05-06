@@ -5,12 +5,10 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>Concordium.Sdk.Examples.Transactions</RootNamespace>
-    <Configurations>Release;Debug</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ConcordiumNetSdk.Examples.csproj" />
-    <ProjectReference Include="..\..\..\..\src\ConcordiumNetSdk.csproj" />
+    <ProjectReference Include="..\..\Concordium.Sdk.Examples.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Concordium.Sdk.csproj" />
   </ItemGroup>
 </Project>

@@ -62,7 +62,7 @@ class GetAccountInfoExample
     {
         Console.WriteLine(
             $@"
-            Address:          {Concordium.Sdk.Types.AccountAddress .From(accountInfo.Address.Value.ToArray()) .ToString()}
+            Address:          {Concordium.Sdk.Types.AccountAddress.From(accountInfo.Address.Value.ToArray()).ToString()}
             Balance:          {accountInfo.Amount.Value.ToString()} CCD
             Sequence number:  {accountInfo.SequenceNumber.Value.ToString()}
         "

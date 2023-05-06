@@ -2,7 +2,6 @@
 using Concordium.Sdk.Transactions;
 
 using Grpc.Core;
-using Grpc.Net.Client;
 
 namespace Concordium.Sdk.Client;
 
