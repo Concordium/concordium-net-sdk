@@ -1,6 +1,6 @@
 using CommandLine;
 
-namespace Concordium.Sdk.Examples;
+namespace Concordium.Sdk.Examples.Common;
 
 /// <summary>
 /// Command line options for the runnable SDK examples.

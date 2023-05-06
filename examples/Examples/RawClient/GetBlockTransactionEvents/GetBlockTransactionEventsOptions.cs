@@ -1,5 +1,7 @@
 ﻿using CommandLine;
 
+using Concordium.Sdk.Examples.Common;
+
 namespace Concordium.Sdk.Examples.RawClient;
 
 public class GetBlockTransactionEventsOptions : ExampleOptions

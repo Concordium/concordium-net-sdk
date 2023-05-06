@@ -1,5 +1,7 @@
 using CommandLine;
 
+using Concordium.Sdk.Examples.Common;
+
 namespace Concordium.Sdk.Examples.Transactions;
 
 public class TransferTransactionExampleOptions : ExampleOptionsWithKeys

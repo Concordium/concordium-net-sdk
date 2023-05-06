@@ -1,5 +1,6 @@
 ﻿using Concordium.Sdk.Client;
 using Concordium.Grpc.V2;
+using Concordium.Sdk.Examples.Common;
 
 namespace Concordium.Sdk.Examples.RawClient;
 

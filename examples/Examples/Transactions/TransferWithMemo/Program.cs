@@ -2,6 +2,7 @@
 using Concordium.Sdk.Transactions;
 using Concordium.Sdk.Wallets;
 using Concordium.Sdk.Client;
+using Concordium.Sdk.Examples.Common;
 
 namespace Concordium.Sdk.Examples.Transactions;
 
