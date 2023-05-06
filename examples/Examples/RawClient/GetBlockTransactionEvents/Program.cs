@@ -5,14 +5,14 @@ using Concordium.Sdk.Examples.Common;
 namespace Concordium.Sdk.Examples.RawClient;
 
 /// <summary>
-/// Example demonstrating the use of <see cref="RawClient.GetBlockTransactionEvents"/>.
+/// Example demonstrating the use of <see cref="Client.RawClient.GetBlockTransactionEvents"/>.
 ///
 /// <see cref="RawClient"/> wraps methods of the Concordium Node GRPC API V2 that were generated
 /// from the protocol buffer schema by the <see cref="Grpc.Core"/> library.
 /// </summary>
 class Program
 {
-    async static void GetBlockTransactionEvents(GetBlockTransactionEventsOptions options)
+    async static void GetBlockTransactionEvents(GetBlockTransactionEventsExampleOptions options)
     {
         // Construct the client.
         ConcordiumClient client = new ConcordiumClient(
@@ -75,6 +75,6 @@ class Program
 
     static void Main(string[] args)
     {
-        Example.Run<GetBlockTransactionEventsOptions>(args, GetBlockTransactionEvents);
+        Example.Run<GetBlockTransactionEventsExampleOptions>(args, GetBlockTransactionEvents);
     }
 }

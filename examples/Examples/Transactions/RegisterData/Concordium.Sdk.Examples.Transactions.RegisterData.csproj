@@ -13,6 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="CommandLineParser" Version="2.9.1" AllowedVersions="[2.9.0, 2.10.0)" />
   </ItemGroup>
 </Project>

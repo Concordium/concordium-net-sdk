@@ -4,7 +4,7 @@ using Concordium.Sdk.Examples.Common;
 
 namespace Concordium.Sdk.Examples.RawClient;
 
-public class GetBlockTransactionEventsOptions : ExampleOptions
+public class GetBlockTransactionEventsExampleOptions : ExampleOptions
 {
     const string DEFAULT_BLOCK_HASH = "lastfinal";
 

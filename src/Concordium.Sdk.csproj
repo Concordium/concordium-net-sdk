@@ -28,12 +28,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NBitcoin" Version="7.0.6" />
-    <PackageReference Include="NSec.Cryptography" Version="22.4.0" />
-    <PackageReference Include="System.Formats.Cbor" Version="7.0.0-preview.3.22175.4" />
-    <PackageReference Include="Google.Protobuf" Version="3.22.1" />
-    <PackageReference Include="Grpc.Net.Client" Version="2.52.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.53.0">
+    <PackageReference Include="NBitcoin" Version="7.0.25" AllowedVersions="[7.0.0, 7.1.0)" />
+    <PackageReference Include="NSec.Cryptography" Version="22.4.0" AllowedVersions="[22.4.0, 22.5.0)" />
+    <PackageReference Include="System.Formats.Cbor" Version="7.0.0" AllowedVersions="[7.0.0, 7.1.0)" />
+    <PackageReference Include="Google.Protobuf" Version="3.22.4" AllowedVersions="[3.22.0, 3.23.0)" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.53.0" AllowedVersions="[2.52.0, 2.53.0)" />
+    <PackageReference Include="Grpc.Tools" Version="2.54.0" AllowedVersions="[2.53.0, 2.54.0)">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

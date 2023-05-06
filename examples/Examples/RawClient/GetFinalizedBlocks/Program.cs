@@ -5,7 +5,7 @@ using Concordium.Sdk.Examples.Common;
 namespace Concordium.Sdk.Examples.RawClient;
 
 /// <summary>
-/// Example demonstrating the use of <see cref="Concordium.RawClient.GetFinalizedBlocks"/>.
+/// Example demonstrating the use of <see cref="Client.RawClient.GetFinalizedBlocks"/>.
 ///
 /// <see cref="RawClient"/> wraps methods of the Concordium Node GRPC API V2 that were generated
 /// from the protocol buffer schema by the <see cref="Grpc.Core"/> library. Creating an instance
