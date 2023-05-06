@@ -1,5 +1,5 @@
-using ConcordiumNetSdk.Types;
-using ConcordiumNetSdk.Crypto;
+using Concordium.Sdk.Types;
+using Concordium.Sdk.Crypto;
 using System.Collections.Immutable;
 
 namespace Concordium.Sdk.Transactions;

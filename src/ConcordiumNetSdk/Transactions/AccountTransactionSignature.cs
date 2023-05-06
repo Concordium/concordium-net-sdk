@@ -1,4 +1,4 @@
-using ConcordiumNetSdk.Types;
+using Concordium.Sdk.Types;
 using System.Collections.Immutable;
 
 namespace Concordium.Sdk.Transactions;

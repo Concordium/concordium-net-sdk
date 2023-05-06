@@ -2,9 +2,9 @@ using System.Collections.Immutable;
 
 using Newtonsoft.Json;
 
-using ConcordiumNetSdk.Crypto;
-using ConcordiumNetSdk.Types;
-using ConcordiumNetSdk.Transactions;
+using Concordium.Sdk.Crypto;
+using Concordium.Sdk.Types;
+using Concordium.Sdk.Transactions;
 
 namespace Concordium.Sdk.Wallets;
 
