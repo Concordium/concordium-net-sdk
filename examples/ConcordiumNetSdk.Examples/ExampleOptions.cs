@@ -9,7 +9,7 @@ namespace ConcordiumNetSdk.Examples;
 /// <see cref="ConcordiumNetSdk.Client.ConcordiumClient"/>
 /// at the command-line.
 /// </summary>
-public abstract class ExampleOptions
+public class ExampleOptions
 {
     /// <summary>
     /// URL representing the endpoint where the GRPC V2 API is served.

@@ -12,7 +12,7 @@ namespace ConcordiumNetSdk.Examples.Raw;
 /// </summary>
 class Program
 {
-    static void GetAccountInfoExample(GetAccountInfoExampleOptions options)
+    static async Task GetAccountInfoExample(GetAccountInfoExampleOptions options)
     {
         // Construct the client.
         ConcordiumClient client = new ConcordiumClient(
