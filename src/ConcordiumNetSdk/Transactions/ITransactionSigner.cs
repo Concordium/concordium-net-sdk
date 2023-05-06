@@ -1,8 +1,8 @@
-﻿using ConcordiumNetSdk.Types;
-using ConcordiumNetSdk.Crypto;
+﻿using Concordium.Sdk.Types;
+using Concordium.Sdk.Crypto;
 using System.Collections.Immutable;
 
-namespace ConcordiumNetSdk.Transactions;
+namespace Concordium.Sdk.Transactions;
 
 /// <summary>
 /// Implementers of <see cref="ITransactionSigner"/> provide functionality for signing

@@ -1,6 +1,6 @@
 ﻿using ConcordiumNetSdk.Helpers;
 
-namespace ConcordiumNetSdk.Types;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Represents a CCD amount.

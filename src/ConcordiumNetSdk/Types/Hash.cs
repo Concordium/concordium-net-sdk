@@ -1,4 +1,4 @@
-namespace ConcordiumNetSdk.Types;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Represents a 32-byte hash.

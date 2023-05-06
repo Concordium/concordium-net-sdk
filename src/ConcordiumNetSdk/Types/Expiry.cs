@@ -1,6 +1,6 @@
-using ConcordiumNetSdk.Helpers;
+using Concordium.Sdk.Helpers;
 
-namespace ConcordiumNetSdk.Types;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Represents an expiration time for a transaction.
@@ -120,11 +120,11 @@ public readonly struct Expiry : IEquatable<Expiry>
     /// <summary>
     /// Converts the expiration time to its corresponding protocol buffer message instance.
     ///
-    /// This can be used as the input for class methods of <see cref="ConcordiumNetSdk.Client.RawClient"/>.
+    /// This can be used as the input for class methods of <see cref="Concordium.Sdk.Client.RawClient"/>.
     /// </summary>
-    public Concordium.V2.TransactionTime ToProto()
+    public Concordium.Grpc.V2.TransactionTime ToProto()
     {
-        return new Concordium.V2.TransactionTime()
+        return new Concordium.Grpc.V2.TransactionTime()
         {
             Value = (UInt64)_timestamp.ToUnixTimeSeconds()
         };

@@ -1,6 +1,6 @@
 using CommandLine;
 
-namespace ConcordiumNetSdk.Examples.Transactions;
+namespace Concordium.Sdk.Examples.Transactions;
 
 public class TransferTransactionExampleOptions : TransactionExampleOptions
 {

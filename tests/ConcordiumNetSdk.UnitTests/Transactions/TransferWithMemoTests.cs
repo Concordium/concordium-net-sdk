@@ -1,10 +1,10 @@
-﻿using ConcordiumNetSdk.Transactions;
-using ConcordiumNetSdk.Types;
+﻿using Concordium.Sdk.Transactions;
+using Concordium.Sdk.Types;
 using System;
 using FluentAssertions;
 using Xunit;
 
-namespace ConcordiumNetSdk.UnitTests.Transactions;
+namespace Concordium.Sdk.UnitTests.Transactions;
 
 public class SimpleTransferWithMemoPayloadTests
 {
@@ -98,7 +98,7 @@ public class SimpleTransferWithMemoPayloadTests
         SignedAccountTransaction<TransferWithMemo> signedTransfer =
             TransactionTestHelpers<TransferWithMemo>.CreateSignedTransaction(preparedTransfer);
 
-        // Create the expected signature. These were generated using the corresponding method in the Concordium Rust SDK.
+        // Create the expected signature. It was generated using the corresponding method in the Concordium Rust SDK.
         byte[] expectedSignature00 = Convert.FromHexString(
             "29aa3584ede6335ab34fac2b0fc2f788087d01043f636eab9be5e682448bdaf0cabdcef2d1978c15116dd7e363eb383aa3176fb4881890fcc1e0d72782a01e03"
         );

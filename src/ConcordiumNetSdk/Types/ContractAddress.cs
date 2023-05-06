@@ -1,6 +1,6 @@
-using ConcordiumNetSdk.Helpers;
+using Concordium.Sdk.Helpers;
 
-namespace ConcordiumNetSdk.Types;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Represents a contract address.
@@ -45,11 +45,11 @@ public readonly struct ContractAddress : IEquatable<ContractAddress>
     /// <summary>
     /// Converts the contract address to its corresponding protocol buffer message instance.
     ///
-    /// This can be used as the input for class methods of <see cref="ConcordiumNetSdk.Client.RawClient"/>.
+    /// This can be used as the input for class methods of <see cref="Concordium.Sdk.Client.RawClient"/>.
     /// </summary>
-    public Concordium.V2.ContractAddress ToProto()
+    public Concordium.Grpc.V2.ContractAddress ToProto()
     {
-        return new Concordium.V2.ContractAddress() { Index = Index, Subindex = SubIndex };
+        return new Concordium.Grpc.V2.ContractAddress() { Index = Index, Subindex = SubIndex };
     }
 
     public bool Equals(ContractAddress contractAddress)

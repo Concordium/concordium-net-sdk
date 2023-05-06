@@ -1,4 +1,4 @@
-namespace ConcordiumNetSdk.Crypto;
+namespace Concordium.Sdk.Crypto;
 
 public interface ISigner
 {

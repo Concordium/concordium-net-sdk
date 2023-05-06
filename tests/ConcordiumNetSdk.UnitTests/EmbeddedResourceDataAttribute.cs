@@ -4,7 +4,7 @@ using System.IO;
 using System.Reflection;
 using Xunit.Sdk;
 
-namespace ConcordiumNetSdk.UnitTests;
+namespace Concordium.Sdk.UnitTests;
 
 /// <summary>
 /// <see cref="DataAttribute"/> used to specify data captured from resources embedded

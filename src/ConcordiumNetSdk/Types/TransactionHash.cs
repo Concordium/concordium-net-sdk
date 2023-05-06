@@ -1,4 +1,4 @@
-﻿namespace ConcordiumNetSdk.Types;
+﻿namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Represents a transaction hash.
@@ -34,9 +34,9 @@ public record TransactionHash : Hash
     ///
     /// This can be used as the input for class methods of <see cref="ConcordiumNetSdk.Client.RawClient"/>.
     /// </summary>
-    public Concordium.V2.TransactionHash ToProto()
+    public Concordium.Grpc.V2.TransactionHash ToProto()
     {
-        return new Concordium.V2.TransactionHash()
+        return new Concordium.Grpc.V2.TransactionHash()
         {
             Value = Google.Protobuf.ByteString.CopyFrom(this.GetBytes())
         };

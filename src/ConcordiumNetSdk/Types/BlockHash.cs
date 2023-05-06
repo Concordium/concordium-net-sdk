@@ -1,7 +1,7 @@
-﻿using ConcordiumNetSdk.Client;
-using Concordium.V2;
+﻿using Concordium.Sdk.Client;
+using Concordium.Grpc.V2;
 
-namespace ConcordiumNetSdk.Types;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Represents a block hash.
@@ -50,9 +50,9 @@ public record BlockHash : Hash
     ///
     /// This can be used as input for class methods of <see cref="RawClient/>.
     /// </summary>
-    public Concordium.V2.BlockHash ToProto()
+    public Concordium.Grpc.V2.BlockHash ToProto()
     {
-        return new Concordium.V2.BlockHash()
+        return new Concordium.Grpc.V2.BlockHash()
         {
             Value = Google.Protobuf.ByteString.CopyFrom(this.GetBytes())
         };

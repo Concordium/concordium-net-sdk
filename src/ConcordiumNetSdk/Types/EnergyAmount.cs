@@ -1,6 +1,6 @@
-using ConcordiumNetSdk.Helpers;
+using Concordium.Sdk.Helpers;
 
-namespace ConcordiumNetSdk.Types;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Represents an amount of energy.

@@ -1,9 +1,9 @@
-using ConcordiumNetSdk.Transactions;
-using ConcordiumNetSdk.Types;
-using ConcordiumNetSdk.Crypto;
+using Concordium.Sdk.Transactions;
+using Concordium.Sdk.Types;
+using Concordium.Sdk.Crypto;
 using System.Collections.Generic;
 
-namespace ConcordiumNetSdk.UnitTests.Transactions;
+namespace Concordium.Sdk.UnitTests.Transactions;
 
 public class TransactionTestHelpers<T>
     where T : AccountTransactionPayload<T>

@@ -1,11 +1,10 @@
-using ConcordiumNetSdk.Transactions;
-using ConcordiumNetSdk.Types;
+using Concordium.Sdk.Transactions;
+using Concordium.Sdk.Types;
 using System;
-using System.Collections.Generic;
 using FluentAssertions;
 using Xunit;
 
-namespace ConcordiumNetSdk.UnitTests.Transactions;
+namespace Concordium.Sdk.UnitTests.Transactions;
 
 public class RegisterDataTests
 {

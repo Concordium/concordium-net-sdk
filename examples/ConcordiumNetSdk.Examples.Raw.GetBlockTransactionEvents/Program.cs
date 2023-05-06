@@ -1,7 +1,7 @@
-﻿using ConcordiumNetSdk.Client;
-using Concordium.V2;
+﻿using Concordium.Sdk.Client;
+using Concordium.Grpc.V2;
 
-namespace ConcordiumNetSdk.Examples.Raw;
+namespace Concordium.Sdk.Examples.Raw;
 
 /// <summary>
 /// Example demonstrating the use of <see cref="RawClient.GetBlockTransactionEvents"/>.
@@ -31,7 +31,7 @@ class Program
                 blockHashInput = new BlockHashInput() { LastFinal = new Empty() };
                 break;
             default:
-                blockHashInput = ConcordiumNetSdk.Types.BlockHash
+                blockHashInput = Concordium.Sdk.Types.BlockHash
                     .From(options.BlockHash)
                     .ToBlockHashInput();
                 break;
@@ -62,7 +62,7 @@ class Program
                     break;
             }
 
-            var txHash = ConcordiumNetSdk.Types.TransactionHash.From(e.Hash.Value.ToByteArray());
+            var txHash = Concordium.Sdk.Types.TransactionHash.From(e.Hash.Value.ToByteArray());
             Console.WriteLine(
                 $@"
                 Got event with index {e.Index.Value.ToString()} for transaction hash {txHash.ToString()}:

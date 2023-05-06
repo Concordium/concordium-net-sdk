@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace ConcordiumNetSdk.UnitTests;
+namespace Concordium.Sdk.UnitTests;
 
 /// <summary>
 /// <see cref="EmbeddedResourceDataAttribute"/> used to specify data captured from

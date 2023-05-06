@@ -2,7 +2,7 @@ using ConcordiumNetSdk.Types;
 using ConcordiumNetSdk.Crypto;
 using Newtonsoft.Json;
 
-namespace ConcordiumNetSdk.Wallets.Json;
+namespace Concordium.Sdk.Wallets.Json;
 
 /// <summary>
 /// Represents (a subset of) a JSON object indexed by the

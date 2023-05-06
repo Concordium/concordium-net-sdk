@@ -1,13 +1,13 @@
-using ConcordiumNetSdk.Transactions;
-using ConcordiumNetSdk.Types;
-using ConcordiumNetSdk.Wallets;
-using ConcordiumNetSdk.Crypto;
+using Concordium.Sdk.Transactions;
+using Concordium.Sdk.Types;
+using Concordium.Sdk.Wallets;
+using Concordium.Sdk.Crypto;
 using System;
 using System.Collections.Immutable;
 using FluentAssertions;
 using Xunit;
 
-namespace ConcordiumNetSdk.UnitTests.Transactions;
+namespace Concordium.Sdk.UnitTests.Transactions;
 
 public class WalletAccountTests
 {

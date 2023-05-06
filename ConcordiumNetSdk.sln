@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConcordiumNetSdk", "src\ConcordiumNetSdk\ConcordiumNetSdk.csproj", "{9B455DC8-B80A-4E11-A8B8-0DD4CD47E31B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.TestConsoleApp", "src\ConcordiumNetSdk.TestConsoleApp\ConcordiumNetSdk.TestConsoleApp.csproj", "{07DDF416-A5DE-45F7-AC69-2774089289E2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.UnitTests", "tests\ConcordiumNetSdk.UnitTests\ConcordiumNetSdk.UnitTests.csproj", "{E4EEF5B3-C756-43AC-B10B-8C3FBFD70ECE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Transactions.Transfer", "examples\ConcordiumNetSdk.Examples.Transactions.Transfer\ConcordiumNetSdk.Examples.Transactions.Transfer.csproj", "{C88F913A-6357-4A81-AC1A-DE0123F40878}"

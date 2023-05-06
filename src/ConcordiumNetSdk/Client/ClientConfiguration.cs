@@ -1,4 +1,4 @@
-namespace ConcordiumNetSdk.Client;
+namespace Concordium.Sdk.Client;
 
 /// <summary>
 /// Specifies connection settings for the <see cref="Client"/>.

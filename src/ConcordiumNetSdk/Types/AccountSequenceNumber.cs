@@ -1,7 +1,7 @@
-﻿using ConcordiumNetSdk.Client;
-using ConcordiumNetSdk.Helpers;
+﻿using Concordium.Sdk.Client;
+using Concordium.Sdk.Helpers;
 
-namespace ConcordiumNetSdk.Types;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Represents an account sequence number.
@@ -72,9 +72,9 @@ public readonly struct AccountSequenceNumber : IEquatable<AccountSequenceNumber>
     ///
     /// This can be used as the input for class methods of <see cref="RawClient"/>.
     /// </summary>
-    public Concordium.V2.SequenceNumber ToProto()
+    public Concordium.Grpc.V2.SequenceNumber ToProto()
     {
-        return new Concordium.V2.SequenceNumber() { Value = Value };
+        return new Concordium.Grpc.V2.SequenceNumber() { Value = Value };
     }
 
     public static implicit operator AccountSequenceNumber(UInt64 value)

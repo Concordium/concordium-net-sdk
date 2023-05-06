@@ -1,6 +1,6 @@
 using CommandLine;
 
-namespace ConcordiumNetSdk.Examples;
+namespace Concordium.Sdk.Examples;
 
 /// <summary>
 /// Represents an example program which supports the command-line

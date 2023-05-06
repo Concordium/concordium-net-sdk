@@ -1,12 +1,12 @@
 ﻿using CommandLine;
 
-namespace ConcordiumNetSdk.Examples;
+namespace Concordium.Sdk.Examples;
 
 /// <summary>
 /// Command line options for the runnable SDK examples.
 ///
 /// This class can be used to specify options for the
-/// <see cref="ConcordiumNetSdk.Client.ConcordiumClient"/>
+/// <see cref="Concordium.Sdk.Client.ConcordiumClient"/>
 /// at the command-line.
 /// </summary>
 public class ExampleOptions

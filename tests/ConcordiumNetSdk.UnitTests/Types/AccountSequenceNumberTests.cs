@@ -1,9 +1,9 @@
-﻿using ConcordiumNetSdk.Types;
+﻿using Concordium.Sdk.Types;
 using FluentAssertions;
 using System;
 using Xunit;
 
-namespace ConcordiumNetSdk.UnitTests.Types;
+namespace Concordium.Sdk.UnitTests.Types;
 
 public class AccountNonceTests
 {

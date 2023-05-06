@@ -1,7 +1,7 @@
 using ConcordiumNetSdk.Helpers;
 using ConcordiumNetSdk.Types;
 
-namespace ConcordiumNetSdk.Transactions;
+namespace Concordium.Sdk.Transactions;
 
 /// <summary>
 /// Represents a "transfer with memo" account transaction.

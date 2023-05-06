@@ -1,11 +1,11 @@
-﻿using ConcordiumNetSdk.Types;
-using ConcordiumNetSdk.Transactions;
-using ConcordiumNetSdk.Wallets;
-using ConcordiumNetSdk.Client;
+﻿using Concordium.Sdk.Types;
+using Concordium.Sdk.Transactions;
+using Concordium.Sdk.Wallets;
+using Concordium.Sdk.Client;
 
 using Grpc.Core;
 
-namespace ConcordiumNetSdk.Examples.Transactions;
+namespace Concordium.Sdk.Examples.Transactions;
 
 /// <summary>
 /// Example demonstrating how to submit a register data transaction.

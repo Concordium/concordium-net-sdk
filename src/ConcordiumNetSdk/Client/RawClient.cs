@@ -1,8 +1,8 @@
-using Concordium.V2;
+using Concordium.Grpc.V2;
 using Grpc.Core;
 using Grpc.Net.Client;
 
-namespace ConcordiumNetSdk.Client;
+namespace Concordium.Sdk.Client;
 
 /// <summary>
 /// The "raw" GRPC client interface exposing wrappers that abstract away

@@ -1,7 +1,7 @@
 using ConcordiumNetSdk.Types;
 using ConcordiumNetSdk.Crypto;
 
-namespace ConcordiumNetSdk.Wallets;
+namespace Concordium.Sdk.Wallets;
 
 /// <summary>
 /// Implementers of this interface corresponds to a data source

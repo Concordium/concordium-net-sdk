@@ -2,7 +2,7 @@
 using ConcordiumNetSdk.Crypto;
 using ConcordiumNetSdk.Types;
 
-namespace ConcordiumNetSdk.Transactions;
+namespace Concordium.Sdk.Transactions;
 
 /// <summary>
 /// Dictionary based implementation of <see cref="ITransactionSigner"/>.

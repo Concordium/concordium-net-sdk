@@ -1,9 +1,9 @@
-using Concordium.V2;
+using Concordium.Grpc.V2;
 using System.Security.Cryptography;
-using ConcordiumNetSdk.Types;
-using AccountAddress = ConcordiumNetSdk.Types.AccountAddress;
+using Concordium.Sdk.Types;
+using AccountAddress = Concordium.Sdk.Types.AccountAddress;
 
-namespace ConcordiumNetSdk.Transactions;
+namespace Concordium.Sdk.Transactions;
 
 /// <summary>
 /// Represents a signed account transaction which is ready to be sent to the node.

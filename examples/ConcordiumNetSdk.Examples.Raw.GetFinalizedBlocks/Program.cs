@@ -1,7 +1,7 @@
 ﻿using ConcordiumNetSdk.Client;
-using Concordium.V2;
+using Concordium.Grpc.V2;
 
-namespace ConcordiumNetSdk.Examples.Raw;
+namespace Concordium.Sdk.Examples.Raw;
 
 /// <summary>
 /// Example demonstrating the use of <see cref="RawClient.GetFinalizedBlocks"/>.
@@ -30,7 +30,7 @@ class Program
             var blockHash = client.Raw.GetBlockInfo(
                 new BlockHashInput()
                 {
-                    Given = new Concordium.V2.BlockHash() { Value = blockInfo.Hash.Value }
+                    Given = new Concordium.Grpc.V2.BlockHash() { Value = blockInfo.Hash.Value }
                 }
             );
             Console.WriteLine("Got a finalized block:");

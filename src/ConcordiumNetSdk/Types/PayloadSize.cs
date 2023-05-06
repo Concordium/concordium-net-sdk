@@ -1,6 +1,6 @@
-using ConcordiumNetSdk.Helpers;
+using Concordium.Sdk.Helpers;
 
-namespace ConcordiumNetSdk.Transactions;
+namespace Concordium.Sdk.Transactions;
 
 /// <summary>
 /// Represents a payload size.

@@ -3,7 +3,7 @@ using ConcordiumNetSdk.Types;
 
 using Newtonsoft.Json;
 
-namespace ConcordiumNetSdk.Wallets.Json;
+namespace Concordium.Sdk.Wallets.Json;
 
 /// <summary>
 /// Represents (a subset of) a JSON object which is in the

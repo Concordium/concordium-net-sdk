@@ -6,7 +6,7 @@ using ConcordiumNetSdk.Crypto;
 using ConcordiumNetSdk.Types;
 using ConcordiumNetSdk.Transactions;
 
-namespace ConcordiumNetSdk.Wallets;
+namespace Concordium.Sdk.Wallets;
 
 /// <summary>
 /// Represents an account imported from one of the supported wallet export formats.

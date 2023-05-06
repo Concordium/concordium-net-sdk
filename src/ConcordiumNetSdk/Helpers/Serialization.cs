@@ -1,6 +1,6 @@
 using System.Buffers.Binary;
 
-namespace ConcordiumNetSdk.Helpers;
+namespace Concordium.Sdk.Helpers;
 
 /// <summary>
 /// Helpers for serializing data.

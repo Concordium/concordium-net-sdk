@@ -1,7 +1,7 @@
-using AccountAddress = ConcordiumNetSdk.Types.AccountAddress;
-using ConcordiumNetSdk.Types;
+using AccountAddress = Concordium.Sdk.Types.AccountAddress;
+using Concordium.Sdk.Types;
 
-namespace ConcordiumNetSdk.Transactions;
+namespace Concordium.Sdk.Transactions;
 
 /// <summary>
 /// Represents the header of an account transaction.
@@ -112,14 +112,14 @@ public struct AccountTransactionHeader
     /// <summary>
     /// Converts the account transaction header to its corresponding protocol buffer message instance.
     /// </summary>
-    public Concordium.V2.AccountTransactionHeader ToProto()
+    public Concordium.Grpc.V2.AccountTransactionHeader ToProto()
     {
-        return new Concordium.V2.AccountTransactionHeader()
+        return new Concordium.Grpc.V2.AccountTransactionHeader()
         {
             Sender = _sender.ToProto(),
             SequenceNumber = _nonce.ToProto(),
             Expiry = _expiry.ToProto(),
-            EnergyAmount = new Concordium.V2.Energy() { Value = _maxEnergyCost }
+            EnergyAmount = new Concordium.Grpc.V2.Energy() { Value = _maxEnergyCost }
         };
     }
 }

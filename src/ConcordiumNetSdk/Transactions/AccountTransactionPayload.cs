@@ -1,6 +1,6 @@
 using ConcordiumNetSdk.Types;
 
-namespace ConcordiumNetSdk.Transactions;
+namespace Concordium.Sdk.Transactions;
 
 /// <summary>
 /// Represents the payload of account transaction.
@@ -49,9 +49,9 @@ public abstract record AccountTransactionPayload<T>
     /// <summary>
     /// Converts the transaction to its corresponding protocol buffer message instance.
     /// </summary>
-    public Concordium.V2.AccountTransactionPayload ToProto()
+    public Concordium.Grpc.V2.AccountTransactionPayload ToProto()
     {
-        return new Concordium.V2.AccountTransactionPayload()
+        return new Concordium.Grpc.V2.AccountTransactionPayload()
         {
             RawPayload = Google.Protobuf.ByteString.CopyFrom(GetBytes())
         };

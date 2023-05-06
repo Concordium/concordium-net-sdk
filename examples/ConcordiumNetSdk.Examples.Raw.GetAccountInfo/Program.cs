@@ -1,7 +1,7 @@
-﻿using ConcordiumNetSdk.Client;
-using Concordium.V2;
+﻿using Concordium.Sdk.Client;
+using Concordium.Grpc.V2;
 
-namespace ConcordiumNetSdk.Examples.Raw;
+namespace Concordium.Sdk.Examples.Raw;
 
 /// <summary>
 /// Example demonstrating the use of <see cref="RawClient.GetAccountInfo"/>.
@@ -32,7 +32,7 @@ class Program
                 blockHashInput = new BlockHashInput() { LastFinal = new Empty() };
                 break;
             default:
-                blockHashInput = ConcordiumNetSdk.Types.BlockHash
+                blockHashInput = Concordium.Sdk.Types.BlockHash
                     .From(options.BlockHash)
                     .ToBlockHashInput();
                 break;
@@ -41,12 +41,12 @@ class Program
         // Construct the input for the "raw" method.
         AccountInfoRequest request = new AccountInfoRequest
         {
-            /// Convert command line parameter to a <see cref="ConcordiumNetSdk.Types.BlockHash"/>
+            /// Convert command line parameter to a <see cref="Concordium.Sdk.Types.BlockHash"/>
             /// and then to a <see cref="BlockHashInput"/> which is needed for the <see cref="AccountInfoRequest"/>.
             BlockHash = blockHashInput,
-            /// Convert command line parameter to a <see cref="ConcordiumNetSdk.Types.AccountAddress"/>
+            /// Convert command line parameter to a <see cref="Concordium.Sdk.Types.AccountAddress"/>
             /// and then to a <see cref="AccountIdentifierInput"/> which is needed for the <see cref="AccountInfoRequest"/>.
-            AccountIdentifier = ConcordiumNetSdk.Types.AccountAddress
+            AccountIdentifier = Concordium.Sdk.Types.AccountAddress
                 .From(options.AccountAddress)
                 .ToAccountIdentifierInput()
         };
@@ -62,7 +62,7 @@ class Program
     {
         Console.WriteLine(
             $@"
-            Address:          {ConcordiumNetSdk.Types.AccountAddress .From(accountInfo.Address.Value.ToArray()) .ToString()}
+            Address:          {Concordium.Sdk.Types.AccountAddress .From(accountInfo.Address.Value.ToArray()) .ToString()}
             Balance:          {accountInfo.Amount.Value.ToString()} CCD
             Sequence number:  {accountInfo.SequenceNumber.Value.ToString()}
         "

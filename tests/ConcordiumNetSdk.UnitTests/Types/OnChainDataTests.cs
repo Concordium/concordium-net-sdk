@@ -3,9 +3,9 @@ using System.Linq;
 using System.Buffers.Binary;
 using FluentAssertions;
 using Xunit;
-using ConcordiumNetSdk.Types;
+using Concordium.Sdk.Types;
 
-namespace ConcordiumNetSdk.UnitTests.Types;
+namespace Concordium.Sdk.UnitTests.Types;
 
 public class OnChainDataTests
 {

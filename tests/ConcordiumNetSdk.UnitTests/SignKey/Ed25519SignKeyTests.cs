@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Text;
-using ConcordiumNetSdk.Crypto;
+using Concordium.Sdk.Crypto;
 using FluentAssertions;
 using Xunit;
 
-namespace ConcordiumNetSdk.UnitTests.SignKey;
+namespace Concordium.Sdk.UnitTests.SignKey;
 
 public class Ed25519SignKeyTests
 {

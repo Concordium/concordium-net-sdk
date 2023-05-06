@@ -1,6 +1,6 @@
 using ConcordiumNetSdk.Types;
 
-namespace ConcordiumNetSdk.Transactions;
+namespace Concordium.Sdk.Transactions;
 
 /// <summary>
 /// Represents an account transaction which is prepared for signing.

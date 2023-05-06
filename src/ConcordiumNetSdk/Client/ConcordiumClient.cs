@@ -1,9 +1,10 @@
-﻿using Concordium.V2;
+﻿using Concordium.Grpc.V2;
+using Concordium.Sdk.Transactions;
+
 using Grpc.Core;
 using Grpc.Net.Client;
-using ConcordiumNetSdk.Transactions;
 
-namespace ConcordiumNetSdk.Client;
+namespace Concordium.Sdk.Client;
 
 /// <summary>
 /// A client for interacting with the Concordium GRPC API V2 exposed by nodes.
@@ -54,7 +55,7 @@ public class ConcordiumClient : IDisposable
     /// <returns>Hash of the transaction if it was accepted by the node.</returns>
     /// <exception cref="RpcException">The call failed, e.g. due to the node not accepting the transaction.</exception>
     /// <exception cref="FormatException">The returned transaction hash has an invalid number of bytes.</exception>
-    public ConcordiumNetSdk.Types.TransactionHash SendTransaction<T>(
+    public Concordium.Sdk.Types.TransactionHash SendTransaction<T>(
         SignedAccountTransaction<T> transaction
     )
         where T : AccountTransactionPayload<T>
@@ -63,7 +64,7 @@ public class ConcordiumClient : IDisposable
         TransactionHash txHash = Raw.SendBlockItem(transaction.ToSendBlockItemRequest());
 
         // Return the transaction hash as a "native" SDK type.
-        return ConcordiumNetSdk.Types.TransactionHash.From(txHash.Value.ToByteArray());
+        return Concordium.Sdk.Types.TransactionHash.From(txHash.Value.ToByteArray());
     }
 
     /// <summary>
@@ -75,7 +76,7 @@ public class ConcordiumClient : IDisposable
     /// <param name="transaction">The transaction to send.</param>
     /// <returns>Task which returns the hash of the transaction if it was accepted by the node.</returns>
     /// <exception cref="RpcException">The call failed, e.g. due to the node not accepting the transaction.</exception>
-    public Task<ConcordiumNetSdk.Types.TransactionHash> SendTransactionAsync<T>(
+    public Task<Concordium.Sdk.Types.TransactionHash> SendTransactionAsync<T>(
         SignedAccountTransaction<T> transaction
     )
         where T : AccountTransactionPayload<T>
@@ -85,7 +86,7 @@ public class ConcordiumClient : IDisposable
             // Continuation returning the "native" SDK type.
             .ContinueWith(
                 txHash =>
-                    ConcordiumNetSdk.Types.TransactionHash.From(txHash.Result.Value.ToByteArray())
+                    Concordium.Sdk.Types.TransactionHash.From(txHash.Result.Value.ToByteArray())
             );
     }
 
@@ -104,14 +105,14 @@ public class ConcordiumClient : IDisposable
     /// <param name="accountAddress">An address of the account to get the next sequence number of.</param>
     /// <returns>The best guess of the next sequence number for the supplied account.</returns>
     /// <exception cref="RpcException">The call failed.</exception>
-    public ConcordiumNetSdk.Types.AccountSequenceNumber GetNextAccountSequenceNumber(
-        ConcordiumNetSdk.Types.AccountAddress accountAddress
+    public Concordium.Sdk.Types.AccountSequenceNumber GetNextAccountSequenceNumber(
+        Concordium.Sdk.Types.AccountAddress accountAddress
     )
     {
         NextAccountSequenceNumber next = Raw.GetNextAccountSequenceNumber(accountAddress.ToProto());
 
         // Return the sequence number as a "native" SDK type.
-        return ConcordiumNetSdk.Types.AccountSequenceNumber.From(next.SequenceNumber.Value);
+        return Concordium.Sdk.Types.AccountSequenceNumber.From(next.SequenceNumber.Value);
     }
 
     /// <summary>
@@ -129,15 +130,15 @@ public class ConcordiumClient : IDisposable
     /// <param name="accountAddress">An address of the account to get the next sequence number of.</param>
     /// <returns>A task which returns the best guess of the next sequence number for the supplied account.</returns>
     /// <exception cref="RpcException">The call failed.</exception>
-    public Task<ConcordiumNetSdk.Types.AccountSequenceNumber> GetNextAccountSequenceNumberAsync(
-        ConcordiumNetSdk.Types.AccountAddress accountAddress
+    public Task<Concordium.Sdk.Types.AccountSequenceNumber> GetNextAccountSequenceNumberAsync(
+        Concordium.Sdk.Types.AccountAddress accountAddress
     )
     {
         return Raw.GetNextAccountSequenceNumberAsync(accountAddress.ToProto())
             // Continuation returning the "native" SDK type.
             .ContinueWith(
                 next =>
-                    ConcordiumNetSdk.Types.AccountSequenceNumber.From(
+                    Concordium.Sdk.Types.AccountSequenceNumber.From(
                         next.Result.SequenceNumber.Value
                     )
             );

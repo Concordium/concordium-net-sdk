@@ -1,6 +1,6 @@
 using CommandLine;
 
-namespace ConcordiumNetSdk.Examples;
+namespace Concordium.Sdk.Examples;
 
 /// <summary>
 /// Command line options for the runnable SDK examples
@@ -8,7 +8,7 @@ namespace ConcordiumNetSdk.Examples;
 ///
 /// This class can be used to specify the path to a file
 /// containing a supported import formats of
-/// <see cref="ConcordiumNetSdk.Wallets.WalletAccount"/>
+/// <see cref="Concordium.Sdk.Wallets.WalletAccount"/>
 /// at the command-line.
 /// </summary>
 public abstract class TransactionExampleOptions : ExampleOptions

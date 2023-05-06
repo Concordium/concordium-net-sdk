@@ -1,8 +1,8 @@
-using ConcordiumNetSdk.Client;
-using ConcordiumNetSdk.Helpers;
+using Concordium.Sdk.Client;
+using Concordium.Sdk.Helpers;
 using NBitcoin.DataEncoders;
 
-namespace ConcordiumNetSdk.Types;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Represents an account address.
@@ -135,22 +135,22 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     ///
     /// This can be used as the input for class methods of <see cref="RawClient"/>.
     /// </summary>
-    public Concordium.V2.AccountAddress ToProto()
+    public Concordium.Grpc.V2.AccountAddress ToProto()
     {
-        return new Concordium.V2.AccountAddress()
+        return new Concordium.Grpc.V2.AccountAddress()
         {
             Value = Google.Protobuf.ByteString.CopyFrom(this._value)
         };
     }
 
     /// <summary>
-    /// Converts the block hash to a corresponding <see cref="Concordium.V2.AccountIdentifierInput"/>
+    /// Converts the block hash to a corresponding <see cref="Concordium.Grpc.V2.AccountIdentifierInput"/>
     ///
     /// This can be used as the input for class methods of <see cref="RawClient"/>.
     /// </summary>
-    public Concordium.V2.AccountIdentifierInput ToAccountIdentifierInput()
+    public Concordium.Grpc.V2.AccountIdentifierInput ToAccountIdentifierInput()
     {
-        return new Concordium.V2.AccountIdentifierInput() { Address = ToProto() };
+        return new Concordium.Grpc.V2.AccountIdentifierInput() { Address = ToProto() };
     }
 
     public bool Equals(AccountAddress other)

@@ -1,4 +1,4 @@
-namespace ConcordiumNetSdk.Wallets;
+namespace Concordium.Sdk.Wallets;
 
 /// <summary>
 /// Represents an error indicating failure in a receiver

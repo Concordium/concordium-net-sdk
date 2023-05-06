@@ -2,7 +2,7 @@ using ConcordiumNetSdk.Types;
 using ConcordiumNetSdk.Crypto;
 using System.Collections.Immutable;
 
-namespace ConcordiumNetSdk.Transactions;
+namespace Concordium.Sdk.Transactions;
 
 /// <summary>
 /// Represents a map from <see cref="AccountKeyIndex"/> values to signatures.
@@ -39,14 +39,14 @@ public class AccountSignatureMap
     /// <summary>
     /// Converts the account signature map to its corresponding protocol buffer message instance.
     /// </summary>
-    public Concordium.V2.AccountSignatureMap ToProto()
+    public Concordium.Grpc.V2.AccountSignatureMap ToProto()
     {
-        var accountSignatureMap = new Concordium.V2.AccountSignatureMap();
+        var accountSignatureMap = new Concordium.Grpc.V2.AccountSignatureMap();
         foreach (var s in this.Signatures)
         {
             accountSignatureMap.Signatures.Add(
                 s.Key,
-                new Concordium.V2.Signature()
+                new Concordium.Grpc.V2.Signature()
                 {
                     Value = Google.Protobuf.ByteString.CopyFrom(s.Value)
                 }
