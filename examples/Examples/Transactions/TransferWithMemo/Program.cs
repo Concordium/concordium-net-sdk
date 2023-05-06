@@ -3,23 +3,21 @@ using Concordium.Sdk.Transactions;
 using Concordium.Sdk.Wallets;
 using Concordium.Sdk.Client;
 
-using Grpc.Core;
-
 namespace Concordium.Sdk.Examples.Transactions;
 
 /// <summary>
-/// Example demonstrating how to submit a register data transaction.
+/// Example demonstrating how to submit a transfer with memo transaction.
 ///
 /// The example assumes you have your account key information stored
 /// in the Concordium browser wallet key export format, and that a path
 /// pointing to it is supplied to it from the command line.
 ///
-/// Cfr. <see cref="RegisterDataTransactionExampleOptions"/> for more
+/// Cfr. <see cref="TransferWithMemoTransactionExampleOptions"/> for more
 /// info on how to run the program, or refer to the help message.
 /// </summary>
-class RegisterDataTransactionExample
+class Program
 {
-    static void SendRegisterDataTransaction(RegisterDataTransactionExampleOptions options)
+    static void SendTransferWithMemoTransaction(TransferWithMemoTransactionExampleOptions options)
     {
         // Read the account keys from a file.
         string walletData = File.ReadAllText(options.WalletKeysFile);
@@ -32,35 +30,40 @@ class RegisterDataTransactionExample
             60 // Use a timeout of 60 seconds.
         );
 
-        // Create the register data transaction.
-        // Encode a singleton string as CBOR and use that as the data to register.
-        OnChainData data = OnChainData.FromTextEncodeAsCBOR(options.Data);
-        RegisterData transferPayload = new RegisterData(data);
+        // Create the transfer transaction.
+        CcdAmount amount = CcdAmount.FromCcd(options.Amount);
+        AccountAddress receiver = AccountAddress.From(options.Receiver);
+        // Encode a singleton string as CBOR and use that for the memo data.
+        OnChainData memo = OnChainData.FromTextEncodeAsCBOR(options.Memo);
+        TransferWithMemo transferPayload = new TransferWithMemo(amount, receiver, memo);
 
         // Prepare the transaction for signing.
         AccountAddress sender = account.AccountAddress;
         AccountSequenceNumber nonce = client.GetNextAccountSequenceNumber(sender);
         Expiry expiry = Expiry.AtMinutesFromNow(30);
-        PreparedAccountTransaction<RegisterData> preparedTransfer = transferPayload.Prepare(
+        PreparedAccountTransaction<TransferWithMemo> preparedTransfer = transferPayload.Prepare(
             sender,
             nonce,
             expiry
         );
 
         // Sign the transaction using the account keys.
-        SignedAccountTransaction<RegisterData> signedTransfer = preparedTransfer.Sign(account);
+        SignedAccountTransaction<TransferWithMemo> signedTransfer = preparedTransfer.Sign(account);
 
-        // Try to submit the transaction.
+        // Submit the transaction.
         TransactionHash txHash = client.SendTransaction(signedTransfer);
 
         // Print the transaction hash.
         Console.WriteLine(
-            $"Successfully submitted register data transaction with hash {txHash.ToString()}"
+            $"Successfully submitted transfer with memo transaction with hash {txHash.ToString()}"
         );
     }
 
     static void Main(string[] args)
     {
-        Example.Run<RegisterDataTransactionExampleOptions>(args, SendRegisterDataTransaction);
+        Example.Run<TransferWithMemoTransactionExampleOptions>(
+            args,
+            SendTransferWithMemoTransaction
+        );
     }
 }

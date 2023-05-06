@@ -10,7 +10,7 @@ namespace Concordium.Sdk.Examples.RawClient;
 /// from the protocol buffer schema by the <see cref="Grpc.Core"/> library. Creating an instance
 /// of the generated <see cref="AccountInfoRequest"/> class used for the method input is given below.
 /// </summary>
-class GetAccountInfoExample
+class Program
 {
     static void GetAccountInfo(GetAccountInfoExampleOptions options)
     {
@@ -58,11 +58,11 @@ class GetAccountInfoExample
         PrintAccountInfo(accountInfo);
     }
 
-    public static void PrintAccountInfo(AccountInfo accountInfo)
+    static void PrintAccountInfo(AccountInfo accountInfo)
     {
         Console.WriteLine(
             $@"
-            Address:          {Concordium.Sdk.Types.AccountAddress.From(accountInfo.Address.Value.ToArray()).ToString()}
+            Address:          {Concordium.Sdk.Types.AccountAddress .From(accountInfo.Address.Value.ToArray()) .ToString()}
             Balance:          {accountInfo.Amount.Value.ToString()} CCD
             Sequence number:  {accountInfo.SequenceNumber.Value.ToString()}
         "

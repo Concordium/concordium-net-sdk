@@ -2,7 +2,7 @@ using CommandLine;
 
 namespace Concordium.Sdk.Examples.Transactions;
 
-public class TransferWithMemoTransactionExampleOptions : TransactionExampleOptions
+public class TransferWithMemoTransactionExampleOptions : ExampleOptionsWithKeys
 {
     [Option('a', "amount", HelpText = "Amount of CCD to transfer.", Required = true)]
     public UInt64 Amount { get; set; } = 0;

@@ -4,13 +4,13 @@ using Concordium.Grpc.V2;
 namespace Concordium.Sdk.Examples.RawClient;
 
 /// <summary>
-/// Example demonstrating the use of <see cref="RawClient.GetFinalizedBlocks"/>.
+/// Example demonstrating the use of <see cref="Concordium.RawClient.GetFinalizedBlocks"/>.
 ///
 /// <see cref="RawClient"/> wraps methods of the Concordium Node GRPC API V2 that were generated
 /// from the protocol buffer schema by the <see cref="Grpc.Core"/> library. Creating an instance
 /// of the generated <see cref="AccountInfoRequest"/> class used for the method input is given below.
 /// </summary>
-class GetFinalizedBlocksExample
+class Program
 {
     static async Task GetFinalizedBlocks(ExampleOptions options)
     {
