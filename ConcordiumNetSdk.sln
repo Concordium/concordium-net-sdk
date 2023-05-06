@@ -3,23 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConcordiumNetSdk", "src\ConcordiumNetSdk\ConcordiumNetSdk.csproj", "{9B455DC8-B80A-4E11-A8B8-0DD4CD47E31B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConcordiumNetSdk", "src\ConcordiumNetSdk.csproj", "{9B455DC8-B80A-4E11-A8B8-0DD4CD47E31B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.UnitTests", "tests\ConcordiumNetSdk.UnitTests\ConcordiumNetSdk.UnitTests.csproj", "{E4EEF5B3-C756-43AC-B10B-8C3FBFD70ECE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples", "examples\Examples\Examples.csproj", "{074082C5-1760-41E7-B0B9-395D61FE11B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Transactions.Transfer", "examples\ConcordiumNetSdk.Examples.Transactions.Transfer\ConcordiumNetSdk.Examples.Transactions.Transfer.csproj", "{C88F913A-6357-4A81-AC1A-DE0123F40878}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Transactions.Transfer", "examples\Examples\Transactions\Transfer\Transfer.csproj", "{C88F913A-6357-4A81-AC1A-DE0123F40878}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples", "examples\ConcordiumNetSdk.Examples\ConcordiumNetSdk.Examples.csproj", "{074082C5-1760-41E7-B0B9-395D61FE11B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Transactions.TransferWithMemo", "examples\Examples\Transactions\TransferWithMemo\TransferWithMemo.csproj", "{9BDE575F-934F-4600-97E5-49B93EE2A80E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Transactions.TransferWithMemo", "examples\ConcordiumNetSdk.Examples.Transactions.TransferWithMemo\ConcordiumNetSdk.Examples.Transactions.TransferWithMemo.csproj", "{9BDE575F-934F-4600-97E5-49B93EE2A80E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Transactions.RegisterData", "examples\Examples\Transactions\RegisterData\RegisterData.csproj", "{B5D3C743-33A7-4C4C-8D42-35D4231379F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Transactions.RegisterData", "examples\ConcordiumNetSdk.Examples.Transactions.RegisterData\ConcordiumNetSdk.Examples.Transactions.RegisterData.csproj", "{B5D3C743-33A7-4C4C-8D42-35D4231379F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Raw.GetAccountInfo", "examples\Examples\RawClient\GetAccountInfo\GetAccountInfo.csproj", "{B82541A6-827C-488B-A9BF-30BB76FCB2F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Raw.GetAccountInfo", "examples\ConcordiumNetSdk.Examples.Raw.GetAccountInfo\ConcordiumNetSdk.Examples.Raw.GetAccountInfo.csproj", "{B82541A6-827C-488B-A9BF-30BB76FCB2F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Raw.GetBlockTransactionEvents", "examples\Examples\RawClient\GetBlockTransactionEvents\GetBlockTransactionEvents.csproj", "{C2BDECB7-D12D-4B69-B08D-CC956685CD1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Raw.GetBlockTransactionEvents", "examples\ConcordiumNetSdk.Examples.Raw.GetBlockTransactionEvents\ConcordiumNetSdk.Examples.Raw.GetBlockTransactionEvents.csproj", "{C2BDECB7-D12D-4B69-B08D-CC956685CD1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Raw.GetFinalizedBlocks", "examples\Examples\RawClient\GetFinalizedBlocks\GetFinalizedBlocks.csproj", "{50F5728C-19BF-4357-A646-0DDF87586297}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Raw.GetFinalizedBlocks", "examples\ConcordiumNetSdk.Examples.Raw.GetFinalizedBlocks\ConcordiumNetSdk.Examples.Raw.GetFinalizedBlocks.csproj", "{50F5728C-19BF-4357-A646-0DDF87586297}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Tests.UnitTests", "tests\Tests\UnitTests\UnitTests.csproj", "{E4EEF5B3-C756-43AC-B10B-8C3FBFD70ECE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

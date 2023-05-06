@@ -3,12 +3,13 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>ConcordiumNetSdk.Examples.Raw._GetBlockTransactionEvents</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ConcordiumNetSdk.Examples.csproj" />
+    <ProjectReference Include="..\..\Examples.csproj" />
     <ProjectReference Include="..\..\..\..\src\ConcordiumNetSdk.csproj" />
   </ItemGroup>
 </Project>
