@@ -1,4 +1,3 @@
-using Concordium.Sdk.Transactions;
 using Concordium.Sdk.Types;
 using Concordium.Sdk.Wallets;
 using Concordium.Sdk.Crypto;

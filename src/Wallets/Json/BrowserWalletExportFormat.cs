@@ -1,5 +1,5 @@
-using ConcordiumNetSdk.Crypto;
-using ConcordiumNetSdk.Types;
+using Concordium.Sdk.Crypto;
+using Concordium.Sdk.Types;
 
 using Newtonsoft.Json;
 

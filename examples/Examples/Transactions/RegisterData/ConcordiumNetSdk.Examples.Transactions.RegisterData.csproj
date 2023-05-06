@@ -9,11 +9,8 @@
     <Configurations>Release;Debug</Configurations>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <WarningLevel>6</WarningLevel>
-    <WarningLevel>6</WarningLevel>
-  </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Examples.csproj" />
+    <ProjectReference Include="..\..\ConcordiumNetSdk.Examples.csproj" />
+    <ProjectReference Include="..\..\..\..\src\ConcordiumNetSdk.csproj" />
   </ItemGroup>
 </Project>
