@@ -11,6 +11,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <IntermediateOutputPath>obj\Release\net6.0</IntermediateOutputPath>
   </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\..\src\ConcordiumNetSdk.csproj" />
   </ItemGroup>

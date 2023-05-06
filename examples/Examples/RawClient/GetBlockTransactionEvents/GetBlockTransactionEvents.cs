@@ -1,7 +1,7 @@
 ﻿using Concordium.Sdk.Client;
 using Concordium.Grpc.V2;
 
-namespace Concordium.Sdk.Examples.Raw;
+namespace Concordium.Sdk.Examples.RawClient;
 
 /// <summary>
 /// Example demonstrating the use of <see cref="RawClient.GetBlockTransactionEvents"/>.
@@ -9,9 +9,9 @@ namespace Concordium.Sdk.Examples.Raw;
 /// <see cref="RawClient"/> wraps methods of the Concordium Node GRPC API V2 that were generated
 /// from the protocol buffer schema by the <see cref="Grpc.Core"/> library.
 /// </summary>
-class Program
+class GetBlockTransactionEventsExample
 {
-    async static void GetBlockTransactionEventsExample(GetAccountInfoExampleOptions options)
+    async static void GetBlockTransactionEvents(GetBlockTransactionEventsOptions options)
     {
         // Construct the client.
         ConcordiumClient client = new ConcordiumClient(
@@ -74,6 +74,6 @@ class Program
 
     static void Main(string[] args)
     {
-        Example.Run<GetAccountInfoExampleOptions>(args, GetBlockTransactionEventsExample);
+        Example.Run<GetBlockTransactionEventsOptions>(args, GetBlockTransactionEvents);
     }
 }

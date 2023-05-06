@@ -15,9 +15,9 @@ namespace Concordium.Sdk.Examples.Transactions;
 /// Cfr. <see cref="TransferTransactionExampleOptions"/> for more info
 /// on how to run the program, or refer to the help message.
 /// </summary>
-class Program
+class TransferTransactionExample
 {
-    static void SendTransferExample(TransferTransactionExampleOptions options)
+    static void SendTransferTransaction(TransferTransactionExampleOptions options)
     {
         // Read the account keys from a file.
         string walletData = File.ReadAllText(options.WalletKeysFile);
@@ -59,6 +59,6 @@ class Program
 
     static void Main(string[] args)
     {
-        Example.Run<TransferTransactionExampleOptions>(args, SendTransferExample);
+        Example.Run<TransferTransactionExampleOptions>(args, SendTransferTransaction);
     }
 }

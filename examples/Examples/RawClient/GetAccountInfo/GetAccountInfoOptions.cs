@@ -1,6 +1,6 @@
 using CommandLine;
 
-namespace Concordium.Sdk.Examples.Raw;
+namespace Concordium.Sdk.Examples.RawClient;
 
 public class GetAccountInfoExampleOptions : ExampleOptions
 {

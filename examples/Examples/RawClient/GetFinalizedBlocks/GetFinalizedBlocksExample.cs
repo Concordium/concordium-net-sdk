@@ -1,7 +1,7 @@
-﻿using ConcordiumNetSdk.Client;
+﻿using Concordium.Sdk.Client;
 using Concordium.Grpc.V2;
 
-namespace Concordium.Sdk.Examples.Raw;
+namespace Concordium.Sdk.Examples.RawClient;
 
 /// <summary>
 /// Example demonstrating the use of <see cref="RawClient.GetFinalizedBlocks"/>.
@@ -10,9 +10,9 @@ namespace Concordium.Sdk.Examples.Raw;
 /// from the protocol buffer schema by the <see cref="Grpc.Core"/> library. Creating an instance
 /// of the generated <see cref="AccountInfoRequest"/> class used for the method input is given below.
 /// </summary>
-class Program
+class GetFinalizedBlocksExample
 {
-    static async Task GetFinalizedBlocksExample(ExampleOptions options)
+    static async Task GetFinalizedBlocks(ExampleOptions options)
     {
         // Construct the client.
         ConcordiumClient client = new ConcordiumClient(
@@ -40,6 +40,6 @@ class Program
 
     static void Main(string[] args)
     {
-        Example.Run<ExampleOptions>(args, GetFinalizedBlocksExample);
+        Example.Run<ExampleOptions>(args, GetFinalizedBlocks);
     }
 }
