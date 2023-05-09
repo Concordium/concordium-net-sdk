@@ -11,7 +11,7 @@ namespace Concordium.Sdk.Transactions;
 /// A signed account transaction constitutes an <see cref="AccountTransactionHeader"/>, an
 /// <see cref="AccountTransactionPayload{T}"/> as well as an <see cref="AccountTransactionSignature"/>.
 ///
-/// A <see cref="SignedAccountTransaction<T>"/> can be created with the
+/// A <see cref="SignedAccountTransaction{T}"/> can be created with the
 /// <see cref="PreparedAccountTransaction{T}.Sign"/> method with an implementer of
 /// <see cref="ITransactionSigner"/>.
 /// </summary>
@@ -57,7 +57,7 @@ public record SignedAccountTransaction<T>
     /// <param name="nonce">Account nonce to use for the transaction.</param>
     /// <param name="expiry">Expiration time of the transaction.</param>
     /// <param name="payload">Payload to send to the node.</param>
-    /// <param name="signer">The signer to use for signing the transaction.</param>
+    /// <param name="transactionSigner">The signer to use for signing the transaction.</param>
     public static SignedAccountTransaction<T> Create(
         AccountAddress sender,
         AccountSequenceNumber nonce,
@@ -134,7 +134,9 @@ public record SignedAccountTransaction<T>
     }
 
     /// <summary>
-    /// Converts the signed account transaction to a protocol buffer message instance which is compatible with <see cref="SendBlockItem"/>.
+    /// Converts the signed account transaction to a protocol buffer
+    /// message instance which is compatible with
+    /// <see cref="Concordium.Sdk.Client.RawClient.SendBlockItem"/>.
     /// </summary>
     public SendBlockItemRequest ToSendBlockItemRequest()
     {

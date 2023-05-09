@@ -12,6 +12,7 @@ public class ClientConfiguration
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ClientConfiguration"/> class.
+    /// </summary>
     /// <param name="timeout">The request timeout in seconds.</param>
     public ClientConfiguration(ulong timeout)
     {

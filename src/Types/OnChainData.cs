@@ -88,7 +88,7 @@ public record OnChainData : IEquatable<OnChainData>
     /// Try to decode the data to be registered on-chain as a single CBOR encoded string.
     /// </summary>
     /// <returns>
-    /// A <see cref="string"> corresponding to the decoded data if it contained
+    /// A <c>string</c> corresponding to the decoded data if it contained
     /// a single CBOR encoded string, and <c>null</c> otherwise.
     /// </returns>
     public string? TryCborDecodeToString()

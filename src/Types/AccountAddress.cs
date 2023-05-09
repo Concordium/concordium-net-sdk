@@ -76,7 +76,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     /// Checks if passed string is a base58 encoded address.
     /// </summary>
     /// <param name="addressAsBase58String">The account address as base58 encoded string.</param>
-    /// <returns><c>true<c/> if the input could be decoded as a base58 encoded address and <c>false</c> otherwise.</returns>
+    /// <returns><c>true</c> if the input could be decoded as a base58 encoded address and <c>false</c> otherwise.</returns>
     public static bool IsValid(string? addressAsBase58String)
     {
         if (addressAsBase58String == null)

@@ -7,7 +7,7 @@ namespace Concordium.Sdk.Transactions;
 /// <summary>
 /// Represents a map from <see cref="AccountKeyIndex"/> values to signatures.
 ///
-/// An <see cref="AccountSignatureMap"> corresponds to a mapping from key indices
+/// An <see cref="AccountSignatureMap"/> corresponds to a mapping from key indices
 /// to signatures produced by signing a transaction hash with the account keys
 /// corresponding to the indices. A key index is always relative to an
 /// <see cref="AccountCredentialIndex"/>. Each signature is currently produced by

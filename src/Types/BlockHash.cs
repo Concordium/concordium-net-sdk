@@ -48,7 +48,7 @@ public record BlockHash : Hash
     /// <summary>
     /// Converts the block hash to its corresponding protocol buffer message instance.
     ///
-    /// This can be used as input for class methods of <see cref="RawClient/>.
+    /// This can be used as input for class methods of <see cref="RawClient"/>.
     /// </summary>
     public Concordium.Grpc.V2.BlockHash ToProto()
     {

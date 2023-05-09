@@ -71,7 +71,7 @@ Since account transactions are submitted on behalf of an account, any [`AccountT
 
 ```csharp
 AccountAddress sender = AccountAddress.From("3jfAuU1c4kPE6GkpfYw4KcgvJngkgpFrD9SkDBgFW3aHmVB5r1");
-SequenceNumber sequenceNumber = Client.GetNextAccountSequenceNumber(sender);
+SequenceNumber sequenceNumber = Client.GetNextAccountSequenceNumber(sender).Item1;
 Expiry expiry = Expiry.AtMinutesFromNow(10); // Transaction should expire 10 minutes after current system time.
 PreparedAccountTransaction<Transfer> preparedTransfer = transfer.Prepare(sender, sequenceNumber, expiry);
 ```
@@ -94,7 +94,7 @@ The [`TransactionHash`](..) can subsequently be used for querying the status of 
 
 ### Working with transaction signers
 
-As described in the [Account transactions](#account-transactions) section, account transactions must be signed using implementations of [`ITransactionSigner`](...). The SDK ships with the [`TransactionSigner`](..) class which is dictionary based implementation to which [`ISigner`](..)s can be added. An [`ISigner`](..) represents a concrete implementation of a (secret) sign key for an account, and can be used to to write custom signer implementations which can be useful, for instance, if delegating the signing logic to a HSM. The SDK also ships with the [`WalletAccount`](..) class which provides functionality for importing account keys from one of the supported wallet export formats. Currently the Concordium browser and genesis wallet key export (JSON) formats are supported.
+As described in the [Account transactions](#working-with-account-transactions) section, account transactions must be signed using implementations of [`ITransactionSigner`](...). The SDK ships with the [`TransactionSigner`](..) class which is dictionary based implementation to which [`ISigner`](..)s can be added. An [`ISigner`](..) represents a concrete implementation of a (secret) sign key for an account, and can be used to to write custom signer implementations which can be useful, for instance, if delegating the signing logic to a HSM. The SDK also ships with the [`WalletAccount`](..) class which provides functionality for importing account keys from one of the supported wallet export formats. Currently the Concordium browser and genesis wallet key export (JSON) formats are supported.
 
 ### Using the client API
 
@@ -102,7 +102,7 @@ A small subset of the raw methods generated from the Concordium Node GRPC API pr
 
 ```csharp
 AccountAddress sender = AccountAddress.From("3jfAuU1c4kPE6GkpfYw4KcgvJngkgpFrD9SkDBgFW3aHmVB5r1");
-SequenceNumber sequenceNumber = client.GetNextAccountSequenceNumber(sender);
+SequenceNumber sequenceNumber = client.GetNextAccountSequenceNumber(sender).Item1;
 ```
 
 ### Using the raw client API
@@ -195,7 +195,7 @@ Another major difference between this and the previous version of the SDK is tha
 
 This project is licensed under the terms of the Mozilla Public License 2.0.
 
-For more information, please refer to the [LICENSE](LICENSE) file.
+For more information, please refer to the [LICENSE](https://github.com/Concordium/concordium-net-sdk/blob/main/LICENSE) file.
 
 ## Contributing
 

@@ -7,7 +7,7 @@ namespace Concordium.Sdk.Transactions;
 ///
 /// The transasction is prepared in the sense that it contains information about the
 /// <see cref="AccountAddress"/> of the sender, the <see cref="AccountSequenceNumber"/> to use
-/// when submitting the transaction as well as its <see cref="Expiry"/>.
+/// when submitting the transaction as well as its <see cref="Concordium.Sdk.Types.Expiry"/>.
 /// </summary>
 public record PreparedAccountTransaction<T>
     where T : AccountTransactionPayload<T>
@@ -33,12 +33,12 @@ public record PreparedAccountTransaction<T>
     public readonly AccountTransactionPayload<T> Payload;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="PreparedAccountTransaction"/> class.
+    /// Initializes a new instance of the <see cref="PreparedAccountTransaction{T}"/> class.
     /// </summary>
     /// <param name="sender">Address of the sender of the transaction.</param>
     /// <param name="nonce">Account nonce to use for the transaction.</param>
     /// <param name="expiry">Expiration time of the transaction.</param>
-    /// <param name="payload">Payload to send to the node.</param>
+    /// <param name="payload">Payload to be sent to the node.</param>
     public PreparedAccountTransaction(
         AccountAddress sender,
         AccountSequenceNumber nonce,

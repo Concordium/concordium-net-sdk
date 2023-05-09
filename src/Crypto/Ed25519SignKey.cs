@@ -69,7 +69,7 @@ public record Ed25519SignKey : ISigner
     /// Signs the provided data using the ed25519 (secret) sign key.
     /// </summary>
     /// <param name="bytes">A byte array representing the data to sign.</param>
-    /// <return>A length-64 byte array representing the signature.</param>
+    /// <return>A length-64 byte array representing the signature.</return>
     public byte[] Sign(byte[] bytes)
     {
         Ed25519 algorithm = SignatureAlgorithm.Ed25519;

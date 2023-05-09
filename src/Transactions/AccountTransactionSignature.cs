@@ -14,7 +14,7 @@ namespace Concordium.Sdk.Transactions;
 /// index of the account. For each key, it is thus represented by some pair of a credential
 /// index and a key index.
 ///
-/// An <see cref="AccountTransactionSignature"> corresponds to a mapping from credential
+/// An <see cref="AccountTransactionSignature"/> corresponds to a mapping from credential
 /// and key indices to signatures produced by signing the transaction hash with the account
 /// keys corresponding to the indices.
 ///
@@ -31,7 +31,7 @@ public class AccountTransactionSignature
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountTransactionSignature"/> class.
     /// </summary>
-    /// <param name="signatureMaps"><see cref="Dictionary"> corresponding to the map.</param>
+    /// <param name="signatureMaps">Dictionary corresponding to the map.</param>
     public AccountTransactionSignature(
         Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, byte[]>> signatureMaps
     )

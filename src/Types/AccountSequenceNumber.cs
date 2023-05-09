@@ -10,7 +10,7 @@ namespace Concordium.Sdk.Types;
 /// and used when submitting account transactions for that account to the node. The account
 /// sequence number is maintained as on-chain state and is incremented with each finalized
 /// transaction. The next sequence number to be used in a transaction can be queried
-/// with <see cref="ConcordiumClient.GetNextAccountSequenceNumber">.
+/// with <see cref="ConcordiumClient.GetNextAccountSequenceNumber"/>.
 /// </summary>
 public readonly struct AccountSequenceNumber : IEquatable<AccountSequenceNumber>
 {
@@ -24,16 +24,16 @@ public readonly struct AccountSequenceNumber : IEquatable<AccountSequenceNumber>
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountSequenceNumber"/> class.
     /// </summary>
-    /// <param name="nonce">The nonce.</param>
-    private AccountSequenceNumber(UInt64 nonce)
+    /// <param name="sequenceNumber">The nonce.</param>
+    private AccountSequenceNumber(UInt64 sequenceNumber)
     {
-        Value = nonce;
+        Value = sequenceNumber;
     }
 
     /// <summary>
     /// Creates a new instance of the <see cref="AccountSequenceNumber"/> class from an integer.
     /// </summary>
-    /// <param name="nonce">The account sequence number represented as an integer.</param>
+    /// <param name="sequenceNumber">The account sequence number represented as an integer.</param>
     /// <exception cref="ArgumentException">The supplied account sequence number is 0.</exception>
     public static AccountSequenceNumber From(UInt64 sequenceNumber)
     {
