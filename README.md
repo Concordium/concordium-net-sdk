@@ -172,7 +172,7 @@ ERROR(S):
   --version         Display version information.
 ```
 
-To run the example with the same values as before, we can invoke the binary as follows:
+To run the example with similar values, we invoke the binary as follows:
 
 ```
 Concordium.Sdk.Examples.Transactions.Transfer -a 100 -r 4rvQePs6ZKFiW8rwY5nP18Uj2DroWiw9VPKTsTwfwmsjcFCJLy -k /path/to/exported-browser-wallet-keys.json
