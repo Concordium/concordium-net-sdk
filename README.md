@@ -184,7 +184,7 @@ Successfully submitted transfer transaction with hash 6bc9bfac5ef4aa1988ab8b1ab6
 
 ## Documentation
 
-Rendered documentation is available [here](http://developer.concordium.software/concordium-net-sdk/).
+Rendered documentation for this project is available [here](http://developer.concordium.software/concordium-net-sdk/).
 
 ## Migration
 
