@@ -3,7 +3,7 @@ using NSec.Cryptography;
 namespace Concordium.Sdk.Crypto;
 
 /// <summary>
-/// The (secret) sign key of an ed25519 keypair.
+/// Represents a (secret) sign key of an ed25519 keypair.
 ///
 /// Used for signing transactions.
 /// </summary>

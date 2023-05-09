@@ -3,7 +3,7 @@ using Concordium.Sdk.Types;
 namespace Concordium.Sdk.Transactions;
 
 /// <summary>
-/// Represents a "register data" transaction.
+/// Represents a "register data" account transaction.
 ///
 /// Used for registering data on-chain.
 /// </summary>
