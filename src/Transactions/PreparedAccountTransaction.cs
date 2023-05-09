@@ -1,4 +1,5 @@
 using Concordium.Sdk.Types;
+using System.Security.Cryptography;
 
 namespace Concordium.Sdk.Transactions;
 
@@ -15,22 +16,22 @@ public record PreparedAccountTransaction<T>
     /// <summary>
     /// Address of the sender of the transaction.
     /// </summary>
-    public readonly AccountAddress Sender;
+    public AccountAddress Sender { get; init; }
 
     /// <summary>
     /// Account nonce to use for the transaction.
     /// </summary>
-    public readonly AccountSequenceNumber Nonce;
+    public AccountSequenceNumber Nonce { get; init; }
 
     /// <summary>
     /// Expiration time of the transaction.
     /// </summary>
-    public readonly Expiry Expiry;
+    public Expiry Expiry { get; init; }
 
     /// <summary>
     /// Payload to send to the node.
     /// </summary>
-    public readonly AccountTransactionPayload<T> Payload;
+    public AccountTransactionPayload<T> Payload { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PreparedAccountTransaction{T}"/> class.
@@ -53,8 +54,74 @@ public record PreparedAccountTransaction<T>
     }
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="SignedAccountTransaction"/> class.
+    /// </summary>
+    /// <param name="sender">Address of the sender of the transaction.</param>
+    /// <param name="nonce">Account nonce to use for the transaction.</param>
+    /// <param name="expiry">Expiration time of the transaction.</param>
+    /// <param name="payload">Payload to send to the node.</param>
+    /// <param name="transactionSigner">The signer to use for signing the transaction.</param>
+
+    /// <summary>
     /// Signs the prepared transaction using the provided signer.
     /// </summary>
     /// <param name="signer">The signer to use for signing the transaction.</param>
-    public SignedAccountTransaction<T> Sign(ITransactionSigner signer) => SignedAccountTransaction<T>.Create(this.Sender, this.Nonce, this.Expiry, this.Payload, signer);
+    public SignedAccountTransaction<T> Sign(ITransactionSigner transactionSigner)
+    {
+        // Get the serialized payload.
+        var serializedPayload = this.Payload.GetBytes();
+        var serializedPayloadSize = (uint)serializedPayload.Length;
+
+        // Compute the energy cost.
+        var txSpecificCost = this.Payload.GetTransactionSpecificCost();
+        var energyCost = CalculateEnergyCost(
+            transactionSigner.GetSignatureCount(),
+            txSpecificCost,
+            AccountTransactionHeader.BytesLength,
+            serializedPayloadSize
+        );
+
+        // Create the header.
+        var header = new AccountTransactionHeader(
+            this.Sender,
+            this.Nonce,
+            this.Expiry,
+            energyCost,
+            serializedPayloadSize
+        );
+
+        // Construct the serialized payload and its digest for signing.
+        var serializedHeaderAndTxPayload = header.GetBytes().Concat(serializedPayload).ToArray();
+        var signDigest = SHA256.Create().ComputeHash(serializedHeaderAndTxPayload);
+
+        // Sign it.
+        var signature = transactionSigner.Sign(signDigest);
+
+        return new(header, this.Payload, signature);
+    }
+
+    /// <summary>
+    /// Calculates the energy cost associated with processing the transaction.
+    /// </summary>
+    /// <param name="signatureCount">The number of signatures.</param>
+    /// <param name="txSpecificCost">The transaction specific cost.</param>
+    /// <param name="headerSize">The size of the header in bytes.</param>
+    /// <param name="payloadSize">The size of the payload in bytes.</param>
+    private static EnergyAmount CalculateEnergyCost(
+        uint signatureCount,
+        ulong txSpecificCost,
+        uint headerSize,
+        uint payloadSize
+    )
+    {
+        const uint costPerSignature = 100;
+        const uint costPerHeaderAndPayloadByte = 1;
+
+        var result =
+            txSpecificCost
+            + (costPerSignature * signatureCount)
+            + (costPerHeaderAndPayloadByte * (headerSize + payloadSize));
+
+        return new(result);
+    }
 }

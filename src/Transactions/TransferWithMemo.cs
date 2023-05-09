@@ -19,17 +19,17 @@ public record TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
     /// <summary>
     /// Amount to send.
     /// </summary>
-    public readonly CcdAmount Amount;
+    public CcdAmount Amount { get; init; }
 
     /// <summary>
     /// Address of the receiver account to which the amount will be sent.
     /// </summary>
-    public readonly AccountAddress Receiver;
+    public AccountAddress Receiver { get; init; }
 
     /// <summary>
     /// Memo to include with the transaction.
     /// </summary>
-    public readonly OnChainData Memo;
+    public OnChainData Memo { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TransferWithMemo"/> class.

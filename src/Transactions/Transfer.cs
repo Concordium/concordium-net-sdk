@@ -12,17 +12,17 @@ public record Transfer : AccountTransactionPayload<Transfer>
     /// <summary>
     /// The account transaction type to be used in the serialized payload.
     /// </summary>
-    private const byte TRANSACTION_TYPE = (byte)AccountTransactionType.SimpleTransfer;
+    private const byte TransactionType = (byte)AccountTransactionType.SimpleTransfer;
 
     /// <summary>
     /// Amount to send.
     /// </summary>
-    public readonly CcdAmount Amount;
+    public CcdAmount Amount { get; init; }
 
     /// <summary>
     /// Address of the receiver account to which the amount will be sent.
     /// </summary>
-    public readonly AccountAddress Receiver;
+    public AccountAddress Receiver { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Transfer"/> class.
@@ -43,7 +43,7 @@ public record Transfer : AccountTransactionPayload<Transfer>
     private static byte[] Serialize(CcdAmount amount, AccountAddress receiver)
     {
         using var memoryStream = new MemoryStream();
-        memoryStream.WriteByte(TRANSACTION_TYPE);
+        memoryStream.WriteByte(TransactionType);
         memoryStream.Write(receiver.GetBytes());
         memoryStream.Write(amount.GetBytes());
         return memoryStream.ToArray();

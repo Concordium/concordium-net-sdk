@@ -18,7 +18,7 @@ public class AccountSignatureMap
     /// <summary>
     /// Internal representation of the map.
     /// </summary>
-    public readonly ImmutableDictionary<AccountKeyIndex, byte[]> Signatures;
+    public ImmutableDictionary<AccountKeyIndex, byte[]> Signatures { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountSignatureMap"/> class.
@@ -45,10 +45,7 @@ public class AccountSignatureMap
         {
             accountSignatureMap.Signatures.Add(
                 s.Key,
-                new Grpc.V2.Signature()
-                {
-                    Value = Google.Protobuf.ByteString.CopyFrom(s.Value)
-                }
+                new Grpc.V2.Signature() { Value = Google.Protobuf.ByteString.CopyFrom(s.Value) }
             );
         }
         return accountSignatureMap;

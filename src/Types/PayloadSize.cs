@@ -1,6 +1,6 @@
 using Concordium.Sdk.Helpers;
 
-namespace Concordium.Sdk.Transactions;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Represents a payload size.
@@ -19,5 +19,5 @@ public struct PayloadSize
     /// <summary>
     /// Get the payload size in the binary format expected by the node.
     /// </summary>
-    public byte[] GetBytes() => Serialization.GetBytes(this._value);
+    public readonly byte[] GetBytes() => Serialization.GetBytes(this._value);
 }

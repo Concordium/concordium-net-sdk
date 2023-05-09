@@ -14,17 +14,21 @@ namespace Concordium.Sdk.Wallets.Json;
 /// </summary>
 internal record GenesisWalletExportFormat : IWalletDataSource
 {
-    [JsonProperty(Required = Required.DisallowNull)]
-    internal AccountKeys accountKeys { get; init; }
+    [JsonProperty("accountKeys", Required = Required.DisallowNull)]
+    internal AccountKeys? AccountKeysField { get; init; }
 
-    [JsonProperty(Required = Required.DisallowNull)]
-    internal string address { get; init; }
+    [JsonProperty("address", Required = Required.DisallowNull)]
+    internal string? AddressField { get; init; }
 
     public AccountAddress TryGetAccountAddress()
     {
+        if (this.AddressField is null)
+        {
+            throw new WalletDataSourceException("Required field 'address' is missing.");
+        }
         try
         {
-            return AccountAddress.From(this.address);
+            return AccountAddress.From(this.AddressField);
         }
         catch (Exception e)
         {
@@ -37,9 +41,13 @@ internal record GenesisWalletExportFormat : IWalletDataSource
 
     public Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, ISigner>> TryGetSignKeys()
     {
+        if (this.AccountKeysField is null)
+        {
+            throw new WalletDataSourceException("Required field 'accountKeys' is missing.");
+        }
         try
         {
-            return this.accountKeys.TryGetSignKeys();
+            return this.AccountKeysField.TryGetSignKeys();
         }
         catch (Exception e)
         {

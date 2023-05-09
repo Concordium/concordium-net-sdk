@@ -19,7 +19,7 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     /// <summary>
     /// The amount in µCCD.
     /// </summary>
-    public readonly ulong Value;
+    public ulong Value { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CcdAmount"/> class.

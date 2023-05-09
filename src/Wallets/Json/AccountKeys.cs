@@ -23,16 +23,16 @@ internal record AccountKeys
     {
         internal record Key
         {
-            [JsonProperty(Required = Required.DisallowNull)]
-            internal string signKey { get; init; }
+            [JsonProperty("signKey", Required = Required.DisallowNull)]
+            internal string? SignKeyField { get; init; }
         };
 
-        [JsonProperty(Required = Required.DisallowNull)]
-        internal Dictionary<string, Key> keys { get; init; }
+        [JsonProperty("keys", Required = Required.DisallowNull)]
+        internal Dictionary<string, Key>? KeysField { get; init; }
     }
 
-    [JsonProperty(Required = Required.DisallowNull)]
-    internal Dictionary<string, KeyInfo> keys { get; init; }
+    [JsonProperty("keys", Required = Required.DisallowNull)]
+    internal Dictionary<string, KeyInfo>? KeysField { get; init; }
 
     /// <summary>
     /// Try to parse the sign keys into a map from pairs of
@@ -42,25 +42,40 @@ internal record AccountKeys
     /// </summary>
     /// <exception cref="ArgumentNullException">A field is missing.</exception>
     /// <exception cref="ArgumentNullException">An index or sign key could not be parsed.</exception>
-    public Dictionary<
-        AccountCredentialIndex,
-        Dictionary<AccountKeyIndex, ISigner>
-    > TryGetSignKeys() =>
-        this.keys
+    public Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, ISigner>> TryGetSignKeys()
+    {
+        if (this.KeysField is null)
+        {
+            throw new WalletDataSourceException("Required field 'keys' is missing.");
+        }
+
+        return this.KeysField
             .Select(cred =>
             {
+                if (cred.Value.KeysField is null)
+                {
+                    throw new WalletDataSourceException("Required field 'keys' is missing.");
+                }
+
                 // For each credential index, first parse it.
                 var accountCredentialIndex = AccountCredentialIndex.From(cred.Key);
 
                 // Then process its keys.
-                var keysForCredential = cred.Value.keys
+                var keysForCredential = cred.Value.KeysField
                     .Select(key =>
                     {
+                        if (key.Value.SignKeyField is null)
+                        {
+                            throw new WalletDataSourceException(
+                                "Required field 'signKey' is missing."
+                            );
+                        }
+
                         // For each key index, parse it.
                         var accountKeyIndex = AccountKeyIndex.From(key.Key);
 
                         // Then parse the key.
-                        ISigner signer = Ed25519SignKey.From(key.Value.signKey);
+                        ISigner signer = Ed25519SignKey.From(key.Value.SignKeyField);
                         return new KeyValuePair<AccountKeyIndex, ISigner>(accountKeyIndex, signer);
                     })
                     .ToDictionary(kv => kv.Key, kv => kv.Value);
@@ -71,4 +86,5 @@ internal record AccountKeys
                 >(accountCredentialIndex, keysForCredential);
             })
             .ToDictionary(kv => kv.Key, kv => kv.Value);
+    }
 }

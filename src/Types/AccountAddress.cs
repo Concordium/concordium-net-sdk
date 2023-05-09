@@ -1,4 +1,4 @@
-using Concordium.Sdk.Client;
+﻿using Concordium.Sdk.Client;
 using Concordium.Sdk.Helpers;
 using NBitcoin.DataEncoders;
 
@@ -18,7 +18,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     /// </summary>
     private const byte VersionByte = 1;
 
-    private static readonly Base58CheckEncoder EncoderInstance = new();
+    private static readonly Base58CheckEncoder _encoderInstance = new();
 
     /// <summary>
     /// Representation of the account address as a byte array (without the version byte prepended).
@@ -36,7 +36,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     /// </summary>
     public override string ToString() =>
         // Prepend version byte.
-        EncoderInstance.EncodeData((new byte[] { VersionByte }).Concat(this._value).ToArray());
+        _encoderInstance.EncodeData((new byte[] { VersionByte }).Concat(this._value).ToArray());
 
     /// <summary>
     /// Get the address as a length-32 byte array without the version byte prepended.
@@ -49,7 +49,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     /// <param name="addressAsBase58String">The address represented as a base58 encoded string.</param>
     public static AccountAddress From(string addressAsBase58String)
     {
-        var decodedBytes = EncoderInstance.DecodeData(addressAsBase58String).Skip(1).ToArray(); // Remove version byte.
+        var decodedBytes = _encoderInstance.DecodeData(addressAsBase58String).Skip(1).ToArray(); // Remove version byte.
         return new AccountAddress(decodedBytes);
     }
 
@@ -78,10 +78,9 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
         {
             return false;
         }
-
         try
         {
-            EncoderInstance.DecodeData(addressAsBase58String);
+            _ = _encoderInstance.DecodeData(addressAsBase58String);
             return true;
         }
         catch (FormatException)
@@ -98,7 +97,8 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     /// defined to be when the addresses agree on the first 29 bytes.
     /// </summary>
     /// <param name="other">the account address as base58 encoded string.</param>
-    public bool IsAliasOf(AccountAddress other) => this._value.Take(29).SequenceEqual(other._value.Take(29));
+    public bool IsAliasOf(AccountAddress other) =>
+        this._value.Take(29).SequenceEqual(other._value.Take(29));
 
     /// <summary>
     /// Gets the <c>n</c>th alias of this account address.
@@ -130,21 +130,21 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     ///
     /// This can be used as the input for class methods of <see cref="RawClient"/>.
     /// </summary>
-    public Grpc.V2.AccountAddress ToProto() => new()
-    {
-        Value = Google.Protobuf.ByteString.CopyFrom(this._value)
-    };
+    public Grpc.V2.AccountAddress ToProto() =>
+        new() { Value = Google.Protobuf.ByteString.CopyFrom(this._value) };
 
     /// <summary>
     /// Converts the block hash to a corresponding <see cref="Grpc.V2.AccountIdentifierInput"/>
     ///
     /// This can be used as the input for class methods of <see cref="RawClient"/>.
     /// </summary>
-    public Grpc.V2.AccountIdentifierInput ToAccountIdentifierInput() => new() { Address = this.ToProto() };
+    public Grpc.V2.AccountIdentifierInput ToAccountIdentifierInput() =>
+        new() { Address = this.ToProto() };
 
     public bool Equals(AccountAddress other) => this._value.SequenceEqual(other._value);
 
-    public override bool Equals(object? obj) => obj is not null && obj is AccountAddress other && this.Equals(other);
+    public override bool Equals(object? obj) =>
+        obj is not null && obj is AccountAddress other && this.Equals(other);
 
     public override int GetHashCode() => this.GetBytes().GetHashCode();
 

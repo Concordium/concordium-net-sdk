@@ -14,23 +14,31 @@ namespace Concordium.Sdk.Wallets.Json;
 /// </summary>
 internal record BrowserWalletExportFormat : IWalletDataSource
 {
-    internal record Value(AccountKeys accountKeys, string address)
+    internal record Value
     {
-        [JsonProperty(Required = Required.DisallowNull)]
-        internal AccountKeys accountKeys { get; init; } = accountKeys;
+        [JsonProperty("accountKeys", Required = Required.DisallowNull)]
+        internal AccountKeys? AccountKeysField { get; init; }
 
-        [JsonProperty(Required = Required.DisallowNull)]
-        internal string address { get; init; } = address;
+        [JsonProperty("address", Required = Required.DisallowNull)]
+        internal string? AddressField { get; init; }
     }
 
-    [JsonProperty(Required = Required.DisallowNull)]
-    internal Value value { get; init; }
+    [JsonProperty("value", Required = Required.DisallowNull)]
+    internal Value? ValueField { get; init; }
 
     public AccountAddress TryGetAccountAddress()
     {
+        if (this.ValueField is null)
+        {
+            throw new WalletDataSourceException("Required field 'value' is missing.");
+        }
+        if (this.ValueField.AddressField is null)
+        {
+            throw new WalletDataSourceException("Required field 'address' is missing.");
+        }
         try
         {
-            return AccountAddress.From(this.value.address);
+            return AccountAddress.From(this.ValueField.AddressField);
         }
         catch (Exception e)
         {
@@ -43,9 +51,17 @@ internal record BrowserWalletExportFormat : IWalletDataSource
 
     public Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, ISigner>> TryGetSignKeys()
     {
+        if (this.ValueField is null)
+        {
+            throw new WalletDataSourceException("Required field 'value' is missing.");
+        }
+        if (this.ValueField.AccountKeysField is null)
+        {
+            throw new WalletDataSourceException("Required field 'accountKeys' is missing.");
+        }
         try
         {
-            return this.value.accountKeys.TryGetSignKeys();
+            return this.ValueField.AccountKeysField.TryGetSignKeys();
         }
         catch (Exception e)
         {

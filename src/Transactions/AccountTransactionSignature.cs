@@ -26,7 +26,10 @@ public class AccountTransactionSignature
     /// <summary>
     /// Internal representation of the signature. This is a map from account credential indices to account signature maps.
     /// </summary>
-    public readonly ImmutableDictionary<AccountCredentialIndex, AccountSignatureMap> signatureMap;
+    public ImmutableDictionary<
+        AccountCredentialIndex,
+        AccountSignatureMap
+    > SignatureMap { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountTransactionSignature"/> class.
@@ -49,7 +52,7 @@ public class AccountTransactionSignature
             }
             accountTransactionSignature.Add(m.Key, new AccountSignatureMap(accountSignatureMap));
         }
-        this.signatureMap = accountTransactionSignature.ToImmutableDictionary();
+        this.SignatureMap = accountTransactionSignature.ToImmutableDictionary();
     }
 
     /// <summary>
@@ -58,7 +61,7 @@ public class AccountTransactionSignature
     public Grpc.V2.AccountTransactionSignature ToProto()
     {
         var accountTransactionSignature = new Grpc.V2.AccountTransactionSignature();
-        this.signatureMap
+        this.SignatureMap
             .ToList()
             .ForEach(x => accountTransactionSignature.Signatures.Add(x.Key, x.Value.ToProto()));
         return accountTransactionSignature;

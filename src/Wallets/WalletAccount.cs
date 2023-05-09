@@ -21,7 +21,7 @@ public class WalletAccount : ITransactionSigner
     /// <summary>
     /// The address of the imported account.
     /// </summary>
-    public readonly AccountAddress AccountAddress;
+    public AccountAddress AccountAddress { get; init; }
 
     /// <summary>
     /// Internal representation of a signer.
@@ -91,7 +91,11 @@ public class WalletAccount : ITransactionSigner
     /// <exception cref="WalletDataSourceException">Either a field is missing or an index or sign key could not be parsed.</exception>
     private static WalletAccount FromGenesisWalletKeyExportFormat(string json)
     {
-        var genesisWallet = JsonConvert.DeserializeObject<Json.GenesisWalletExportFormat>(json);
+        var genesisWallet =
+            JsonConvert.DeserializeObject<Json.GenesisWalletExportFormat>(json)
+            ?? throw new WalletDataSourceException(
+                "Call to DeserializeObject did not return a value."
+            );
         return From(genesisWallet);
     }
 
@@ -103,7 +107,11 @@ public class WalletAccount : ITransactionSigner
     /// <exception cref="WalletDataSourceException">Either a field is missing or an index or sign key could not be parsed.</exception>
     private static WalletAccount FromBrowserWalletKeyExportFormat(string json)
     {
-        var genesisWallet = JsonConvert.DeserializeObject<Json.BrowserWalletExportFormat>(json);
+        var genesisWallet =
+            JsonConvert.DeserializeObject<Json.BrowserWalletExportFormat>(json)
+            ?? throw new WalletDataSourceException(
+                "Call to DeserializeObject did not return a value."
+            );
         return From(genesisWallet);
     }
 

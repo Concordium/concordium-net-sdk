@@ -17,7 +17,7 @@ public record RegisterData : AccountTransactionPayload<RegisterData>
     /// <summary>
     /// The data to be registered on-chain.
     /// </summary>
-    public readonly OnChainData Data;
+    public OnChainData Data { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="RegisterData"/> class.

@@ -30,27 +30,27 @@ public struct AccountTransactionHeader
     /// <summary>
     /// Address of the sender of the transaction.
     /// </summary>
-    public readonly AccountAddress _sender;
+    public readonly AccountAddress Sender { get; init; }
 
     /// <summary>
     /// Account sequence number to use for the transaction.
     /// </summary>
-    public readonly AccountSequenceNumber _nonce;
+    public AccountSequenceNumber SequenceNumber { get; init; }
 
     /// <summary>
     /// Expiration time of the transaction.
     /// </summary>
-    public readonly Expiry _expiry;
+    public Expiry Expiry { get; init; }
 
     /// <summary>
     /// Maximum amount of energy to spend on this transaction.
     /// </summary>
-    public readonly EnergyAmount _maxEnergyCost;
+    public EnergyAmount MaxEnergyCost { get; init; }
 
     /// <summary>
     /// Size of the transaction payload.
     /// </summary>
-    public readonly PayloadSize _payloadSize;
+    public PayloadSize PayloadSize { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountTransactionHeader"/> class.
@@ -64,15 +64,15 @@ public struct AccountTransactionHeader
         AccountAddress sender,
         AccountSequenceNumber nonce,
         Expiry expiry,
-        ulong maxEnergyCost,
-        uint payloadSize
+        EnergyAmount maxEnergyCost,
+        PayloadSize payloadSize
     )
     {
-        this._sender = sender;
-        this._nonce = nonce;
-        this._expiry = expiry;
-        this._maxEnergyCost = maxEnergyCost;
-        this._payloadSize = payloadSize;
+        this.Sender = sender;
+        this.SequenceNumber = nonce;
+        this.Expiry = expiry;
+        this.MaxEnergyCost = maxEnergyCost;
+        this.PayloadSize = payloadSize;
     }
 
     /// <summary>
@@ -104,16 +104,24 @@ public struct AccountTransactionHeader
     /// <summary>
     /// Get the transaction header in the binary format expected by the node.
     /// </summary>
-    public byte[] GetBytes() => Serialize(this._sender, this._nonce, this._expiry, this._maxEnergyCost, this._payloadSize);
+    public readonly byte[] GetBytes() =>
+        Serialize(
+            this.Sender,
+            this.SequenceNumber,
+            this.Expiry,
+            this.MaxEnergyCost,
+            this.PayloadSize
+        );
 
     /// <summary>
     /// Converts the account transaction header to its corresponding protocol buffer message instance.
     /// </summary>
-    public Grpc.V2.AccountTransactionHeader ToProto() => new()
-    {
-        Sender = this._sender.ToProto(),
-        SequenceNumber = this._nonce.ToProto(),
-        Expiry = this._expiry.ToProto(),
-        EnergyAmount = new Grpc.V2.Energy() { Value = _maxEnergyCost }
-    };
+    public readonly Grpc.V2.AccountTransactionHeader ToProto() =>
+        new()
+        {
+            Sender = this.Sender.ToProto(),
+            SequenceNumber = this.SequenceNumber.ToProto(),
+            Expiry = this.Expiry.ToProto(),
+            EnergyAmount = new Grpc.V2.Energy() { Value = MaxEnergyCost }
+        };
 }

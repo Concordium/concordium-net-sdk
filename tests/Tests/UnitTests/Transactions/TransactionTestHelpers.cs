@@ -3,10 +3,9 @@ using Concordium.Sdk.Crypto;
 using Concordium.Sdk.Transactions;
 using Concordium.Sdk.Types;
 
-namespace Concordium.Sdk.UnitTests.Transactions;
+namespace Concordium.Sdk.Tests.UnitTests.Transactions;
 
-public class TransactionTestHelpers<T>
-    where T : AccountTransactionPayload<T>
+public static class TransactionTestHelpers
 {
     /// <summary>
     /// Prepares a transaction with the sender address set to
@@ -15,11 +14,12 @@ public class TransactionTestHelpers<T>
     /// set to <c>65537</c> seconds after the UNIX epoch.
     /// </summary>
     /// <param name="transaction">The transaction to prepare for signing.</param>
-    public static PreparedAccountTransaction<T> CreatePreparedAccountTransaction(T transaction)
+    public static PreparedAccountTransaction<T> CreatePreparedAccountTransaction<T>(
+        AccountTransactionPayload<T> transaction
+    )
+        where T : AccountTransactionPayload<T>
     {
-        var sender = AccountAddress.From(
-            "3QuZ47NkUk5icdDSvnfX8HiJzCnSRjzi6KwGEmqgQ7hCXNBTWN"
-        );
+        var sender = AccountAddress.From("3QuZ47NkUk5icdDSvnfX8HiJzCnSRjzi6KwGEmqgQ7hCXNBTWN");
         var nonce = AccountSequenceNumber.From(123);
         var expiry = Expiry.From(65537);
         return transaction.Prepare(sender, nonce, expiry);
@@ -43,9 +43,10 @@ public class TransactionTestHelpers<T>
     /// <c>1</c>.
     /// </summary>
     /// <param name="preparedTransaction">The prepared transaction to sign.</param>
-    public static SignedAccountTransaction<T> CreateSignedTransaction(
+    public static SignedAccountTransaction<T> CreateSignedTransaction<T>(
         PreparedAccountTransaction<T> preparedTransaction
     )
+        where T : AccountTransactionPayload<T>
     {
         // Create a signer.
         var key00 = Ed25519SignKey.From(
