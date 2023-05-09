@@ -1,7 +1,11 @@
 name: Build and deploy documentation
 
 on:
-    workflow_dispatch:
+  push:
+    branches: [ "vh/add-formatter" ]
+  pull_request:
+    branches: [ "vh/add-formatter" ]
+  workflow_dispatch:
 
 jobs:
     publish-docs:
