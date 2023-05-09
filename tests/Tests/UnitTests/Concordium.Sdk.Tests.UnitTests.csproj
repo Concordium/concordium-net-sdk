@@ -6,6 +6,7 @@
 
     <IsPackable>false</IsPackable>
     <RootNamespace>Concordium.Sdk.Tests.UnitTests</RootNamespace>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <ItemGroup>

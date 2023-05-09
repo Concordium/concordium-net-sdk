@@ -12,25 +12,25 @@ public class WalletAccountTests
 {
     [Theory]
     [WalletDataAttribute(
-        "ConcordiumNetSdk.UnitTests/Wallets/Data/GenesisWalletKeyExportFormatValid.json",
+        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/GenesisWalletKeyExportFormatValid.json",
         0,
         0,
         "443c20439711361b6870c1679be33860d10cf7cded240e4a567e31ec3a56ecf5"
     )]
     [WalletDataAttribute(
-        "ConcordiumNetSdk.UnitTests/Wallets/Data/GenesisWalletKeyExportFormatValidNonZeroIndices.json",
+        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/GenesisWalletKeyExportFormatValidNonZeroIndices.json",
         17,
         37,
         "443c20439711361b6870c1679be33860d10cf7cded240e4a567e31ec3a56ecf5"
     )]
     [WalletDataAttribute(
-        "ConcordiumNetSdk.UnitTests/Wallets/Data/BrowserWalletKeyExportFormatValid.json",
+        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/BrowserWalletKeyExportFormatValid.json",
         0,
         0,
         "56f60de843790c308dac2d59a5eec9f6b1649513f827e5a13d7038accfe31784"
     )]
     [WalletDataAttribute(
-        "ConcordiumNetSdk.UnitTests/Wallets/Data/BrowserWalletKeyExportFormatValidNonZeroIndices.json",
+        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/BrowserWalletKeyExportFormatValidNonZeroIndices.json",
         17,
         37,
         "56f60de843790c308dac2d59a5eec9f6b1649513f827e5a13d7038accfe31784"
@@ -78,10 +78,10 @@ public class WalletAccountTests
 
     [Theory]
     [EmbeddedResourceData(
-        "ConcordiumNetSdk.UnitTests/Wallets/Data/GenesisWalletKeyExportFormatMissingField.json"
+        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/GenesisWalletKeyExportFormatMissingField.json"
     )]
     [EmbeddedResourceData(
-        "ConcordiumNetSdk.UnitTests/Wallets/Data/BrowserWalletKeyExportFormatMissingField.json"
+        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/BrowserWalletKeyExportFormatMissingField.json"
     )]
     public void FromWalletKeyExportFormat_OnInputWithMissingField_ThrowsException(string json)
     {
@@ -91,10 +91,10 @@ public class WalletAccountTests
 
     [Theory]
     [EmbeddedResourceData(
-        "ConcordiumNetSdk.UnitTests/Wallets/Data/GenesisWalletKeyExportFormatInvalidKeyIndex.json"
+        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/GenesisWalletKeyExportFormatInvalidKeyIndex.json"
     )]
     [EmbeddedResourceData(
-        "ConcordiumNetSdk.UnitTests/Wallets/Data/GenesisWalletKeyExportFormatInvalidKeyIndex.json"
+        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/GenesisWalletKeyExportFormatInvalidKeyIndex.json"
     )]
     public void FromWalletKeyExportFormat_OnInputWithInvalidKeyIndex_ThrowsException(string json)
     {
@@ -104,10 +104,10 @@ public class WalletAccountTests
 
     [Theory]
     [EmbeddedResourceData(
-        "ConcordiumNetSdk.UnitTests/Wallets/Data/GenesisWalletKeyExportFormatInvalidCredentialIndex.json"
+        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/GenesisWalletKeyExportFormatInvalidCredentialIndex.json"
     )]
     [EmbeddedResourceData(
-        "ConcordiumNetSdk.UnitTests/Wallets/Data/BrowserWalletKeyExportFormatInvalidCredentialIndex.json"
+        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/BrowserWalletKeyExportFormatInvalidCredentialIndex.json"
     )]
     public void FromWalletKeyExportFormat_OnInputWithInvalidCredentialIndex_ThrowsException(
         string json
