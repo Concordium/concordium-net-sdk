@@ -89,7 +89,7 @@ SignedAccountTransaction<Transfer> signedTransfer = preparedTransfer.Sign(signer
 A signed transaction can be submitted to the blockchain by invoking the [`SendAccountTransaction`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_SendAccountTransaction__1_Concordium_Sdk_Transactions_SignedAccountTransaction___0__) method. If the transfer was accepted by the node, its [`TransactionHash`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.TransactionHash.html) used to uniquely identify the transaction is returned: 
 
 ```csharp
-TransactionHash = client.SendTransaction(signedTransfer);
+TransactionHash = client.SendAccountTransaction(signedTransfer);
 ```
 
 The [`TransactionHash`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.TransactionHash.html) can subsequently be used for querying the status of the transaction by invoking the [`GetBlockItemStatus`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html#Concordium_Sdk_Client_RawClient_GetBlockItemStatus_Concordium_Grpc_V2_TransactionHash_) method of the [`RawClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html), accessible through`client.Raw` in the above example. For more info on the raw API calls, see the [Using the raw client API](#using-the-raw-client-api) section.

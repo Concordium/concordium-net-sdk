@@ -45,7 +45,7 @@ internal class Program
         var signedTransfer = preparedTransfer.Sign(account);
 
         // Submit the transaction.
-        var txHash = client.SendTransaction(signedTransfer);
+        var txHash = client.SendAccountTransaction(signedTransfer);
 
         // Print the transaction hash.
         Console.WriteLine($"Successfully submitted transfer transaction with hash {txHash}");
