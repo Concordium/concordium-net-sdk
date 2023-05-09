@@ -9,7 +9,7 @@ This SDK is a .NET integration library which adds support for constructing and s
 
 ## Overview
 
-This SDK is currently under development and serves as a wrapper for the Concordium Node GRPC API V2 with some helpers for common tasks.
+This SDK is currently still under development and serves as a wrapper for the Concordium Node GRPC API V2 with helpers for common tasks.
 
 Implementation-wise, this is first and foremost accomplished by exposing "minimal" wrappers for classes generated directly from the protocol buffer definitions of the [Concordium GRPC API](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) using the [`Grpc.Tools`](https://www.nuget.org/packages/Grpc.Tools/) and [`Grpc.Net.Client`](https://www.nuget.org/packages/Grpc.Net.Client) packages. This generation step results in a "raw" client class which exposes a method corresponding to each service definition in the protocol buffer definition as well as a class corresponding to each type declared in the API. See [Using the raw client API](#using-the-raw-client-api) for more information.
 
@@ -134,7 +134,7 @@ AccountInfoRequest request = new AccountInfoRequest
 AccountInfo accountInfo = client.Raw.GetAccountInfo(request);
 ```
 
-Note that all generated types live in the `Concordium.Grpc.V2` namespace, and that there is a vast overlap between the names generated from the protocol buffer definitions file and the types declared in the SDK `Concordium.Types`. The overall structure of the types are one-to-one with the [Concordium GRPC API V2](https://github.com/Concordium/concordium-grpc-api/tree/main/v2/concordium). In the above we thus need to specify the intended namespace for [`AccountAddress`](..) to resolve ambiguity. Furthermore we leverage the convenience method [`ToAccountIdentifierInput`](..) of [`Concordium.SDK.AccountAddress`](..) to convert the the base58 address into its corresponding raw format.
+Note that all generated types live in the `Concordium.Grpc.V2` namespace, and that there is a vast overlap between the names generated from the protocol buffer definitions file and the types declared in the SDK `Concordium.Types`. In the above we thus need to specify the intended namespace for [`AccountAddress`](..) to resolve ambiguity. Furthermore we leverage the convenience method [`ToAccountIdentifierInput`](..) of [`Concordium.SDK.AccountAddress`](..) to convert the the base58 address into its corresponding raw format. Also note that the overall structure of the types are one-to-one with the [Concordium GRPC API V2](https://github.com/Concordium/concordium-grpc-api/tree/main/v2/concordium), so we refer to its documentation and the [Runnable examples](#runnable-examples) section for more information on working with the raw API.
 
 
 ## Runnable examples
