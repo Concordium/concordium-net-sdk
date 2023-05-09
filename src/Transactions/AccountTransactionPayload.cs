@@ -22,10 +22,7 @@ public abstract record AccountTransactionPayload<T>
         AccountAddress sender,
         AccountSequenceNumber nonce,
         Expiry expiry
-    )
-    {
-        return new PreparedAccountTransaction<T>(sender, nonce, expiry, this);
-    }
+    ) => new(sender, nonce, expiry, this);
 
     /// <summary>
     /// Gets the transaction specific cost for submitting this type of
@@ -49,11 +46,6 @@ public abstract record AccountTransactionPayload<T>
     /// <summary>
     /// Converts the transaction to its corresponding protocol buffer message instance.
     /// </summary>
-    public Concordium.Grpc.V2.AccountTransactionPayload ToProto()
-    {
-        return new Concordium.Grpc.V2.AccountTransactionPayload()
-        {
-            RawPayload = Google.Protobuf.ByteString.CopyFrom(GetBytes())
-        };
-    }
+    public Grpc.V2.AccountTransactionPayload ToProto() =>
+        new() { RawPayload = Google.Protobuf.ByteString.CopyFrom(this.GetBytes()) };
 }

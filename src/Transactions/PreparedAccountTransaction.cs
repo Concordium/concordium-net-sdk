@@ -7,7 +7,7 @@ namespace Concordium.Sdk.Transactions;
 ///
 /// The transasction is prepared in the sense that it contains information about the
 /// <see cref="AccountAddress"/> of the sender, the <see cref="AccountSequenceNumber"/> to use
-/// when submitting the transaction as well as its <see cref="Concordium.Sdk.Types.Expiry"/>.
+/// when submitting the transaction as well as its <see cref="Types.Expiry"/>.
 /// </summary>
 public record PreparedAccountTransaction<T>
     where T : AccountTransactionPayload<T>
@@ -46,18 +46,15 @@ public record PreparedAccountTransaction<T>
         AccountTransactionPayload<T> payload
     )
     {
-        Sender = sender;
-        Nonce = nonce;
-        Expiry = expiry;
-        Payload = payload;
+        this.Sender = sender;
+        this.Nonce = nonce;
+        this.Expiry = expiry;
+        this.Payload = payload;
     }
 
     /// <summary>
     /// Signs the prepared transaction using the provided signer.
     /// </summary>
     /// <param name="signer">The signer to use for signing the transaction.</param>
-    public SignedAccountTransaction<T> Sign(ITransactionSigner signer)
-    {
-        return SignedAccountTransaction<T>.Create(Sender, Nonce, Expiry, Payload, signer);
-    }
+    public SignedAccountTransaction<T> Sign(ITransactionSigner signer) => SignedAccountTransaction<T>.Create(this.Sender, this.Nonce, this.Expiry, this.Payload, signer);
 }

@@ -1,10 +1,9 @@
-﻿using Concordium.Sdk.Types;
-using Concordium.Sdk.Transactions;
-using Concordium.Sdk.Wallets;
-using Concordium.Sdk.Client;
+﻿using Concordium.Sdk.Client;
 using Concordium.Sdk.Examples.Common;
+using Concordium.Sdk.Types;
+using Concordium.Sdk.Wallets;
 
-namespace Concordium.Sdk.Examples.Transactions;
+namespace Concordium.Sdk.Examples.Transactions.TransferWithMemo;
 
 /// <summary>
 /// Example demonstrating how to submit a transfer with memo transaction.
@@ -16,55 +15,51 @@ namespace Concordium.Sdk.Examples.Transactions;
 /// Cfr. <see cref="TransferWithMemoTransactionExampleOptions"/> for more
 /// info on how to run the program, or refer to the help message.
 /// </summary>
-class Program
+internal class Program
 {
-    static void SendTransferWithMemoTransaction(TransferWithMemoTransactionExampleOptions options)
+    private static void SendTransferWithMemoTransaction(
+        TransferWithMemoTransactionExampleOptions options
+    )
     {
         // Read the account keys from a file.
-        string walletData = File.ReadAllText(options.WalletKeysFile);
-        WalletAccount account = WalletAccount.FromWalletKeyExportFormat(walletData);
+        var walletData = File.ReadAllText(options.WalletKeysFile);
+        var account = WalletAccount.FromWalletKeyExportFormat(walletData);
 
         // Construct the client.
-        ConcordiumClient client = new ConcordiumClient(
+        var client = new ConcordiumClient(
             new Uri(options.Endpoint), // Endpoint URL.
             options.Port, // Port.
             60 // Use a timeout of 60 seconds.
         );
 
         // Create the transfer transaction.
-        CcdAmount amount = CcdAmount.FromCcd(options.Amount);
-        AccountAddress receiver = AccountAddress.From(options.Receiver);
+        var amount = CcdAmount.FromCcd(options.Amount);
+        var receiver = AccountAddress.From(options.Receiver);
         // Encode a string as CBOR and use that as the memo data.
-        OnChainData memo = OnChainData.FromTextEncodeAsCBOR(options.Memo);
-        TransferWithMemo transferPayload = new TransferWithMemo(amount, receiver, memo);
+        var memo = OnChainData.FromTextEncodeAsCBOR(options.Memo);
+        var transferPayload = new Sdk.Transactions.TransferWithMemo(amount, receiver, memo);
 
         // Prepare the transaction for signing.
-        AccountAddress sender = account.AccountAddress;
-        AccountSequenceNumber nonce = client.GetNextAccountSequenceNumber(sender).Item1;
-        Expiry expiry = Expiry.AtMinutesFromNow(30);
-        PreparedAccountTransaction<TransferWithMemo> preparedTransfer = transferPayload.Prepare(
-            sender,
-            nonce,
-            expiry
-        );
+        var sender = account.AccountAddress;
+        var nonce = client.GetNextAccountSequenceNumber(sender).Item1;
+        var expiry = Expiry.AtMinutesFromNow(30);
+        var preparedTransfer = transferPayload.Prepare(sender, nonce, expiry);
 
         // Sign the transaction using the account keys.
-        SignedAccountTransaction<TransferWithMemo> signedTransfer = preparedTransfer.Sign(account);
+        var signedTransfer = preparedTransfer.Sign(account);
 
         // Submit the transaction.
-        TransactionHash txHash = client.SendTransaction(signedTransfer);
+        var txHash = client.SendTransaction(signedTransfer);
 
         // Print the transaction hash.
         Console.WriteLine(
-            $"Successfully submitted transfer with memo transaction with hash {txHash.ToString()}"
+            $"Successfully submitted transfer with memo transaction with hash {txHash}"
         );
     }
 
-    static void Main(string[] args)
-    {
+    private static void Main(string[] args) =>
         Example.Run<TransferWithMemoTransactionExampleOptions>(
             args,
             SendTransferWithMemoTransaction
         );
-    }
 }

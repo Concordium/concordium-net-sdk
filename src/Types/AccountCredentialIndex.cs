@@ -14,10 +14,7 @@ public readonly struct AccountCredentialIndex
     /// Initializes a new instance of the <see cref="AccountCredentialIndex"/> class.
     /// </summary>
     /// <param name="value">An account credential index represented by a <see cref="byte"/>.</param>
-    public AccountCredentialIndex(byte value)
-    {
-        Value = value;
-    }
+    public AccountCredentialIndex(byte value) => this.Value = value;
 
     /// <summary>
     /// Creates an instance from a string representing a <see cref="byte"/> value.
@@ -25,21 +22,14 @@ public readonly struct AccountCredentialIndex
     /// <param name="index">An index represented as a string representing to be parsed as a <see cref="byte"/> value.</param>
     public static AccountCredentialIndex From(string index)
     {
-        byte result;
-        if (Byte.TryParse(index, out result))
+        if (byte.TryParse(index, out var result))
         {
             return new AccountCredentialIndex(result);
         }
         throw new ArgumentException("Could not parse the account credential index.");
     }
 
-    public static implicit operator AccountCredentialIndex(byte value)
-    {
-        return new AccountCredentialIndex(value);
-    }
+    public static implicit operator AccountCredentialIndex(byte value) => new(value);
 
-    public static implicit operator byte(AccountCredentialIndex accountCredentialIndex)
-    {
-        return accountCredentialIndex.Value;
-    }
+    public static implicit operator byte(AccountCredentialIndex accountCredentialIndex) => accountCredentialIndex.Value;
 }

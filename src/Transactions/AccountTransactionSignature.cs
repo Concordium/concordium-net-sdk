@@ -1,5 +1,5 @@
-using Concordium.Sdk.Types;
 using System.Collections.Immutable;
+using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;
 
@@ -55,10 +55,10 @@ public class AccountTransactionSignature
     /// <summary>
     /// Converts the account transaction signature to its corresponding protocol buffer message instance.
     /// </summary>
-    public Concordium.Grpc.V2.AccountTransactionSignature ToProto()
+    public Grpc.V2.AccountTransactionSignature ToProto()
     {
-        var accountTransactionSignature = new Concordium.Grpc.V2.AccountTransactionSignature();
-        signatureMap
+        var accountTransactionSignature = new Grpc.V2.AccountTransactionSignature();
+        this.signatureMap
             .ToList()
             .ForEach(x => accountTransactionSignature.Signatures.Add(x.Key, x.Value.ToProto()));
         return accountTransactionSignature;

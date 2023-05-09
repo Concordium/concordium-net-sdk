@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Concordium.Sdk.Types;
 using FluentAssertions;
@@ -89,10 +89,10 @@ public class AccountAddressTests
     }
 
     [Theory]
-    [InlineData(0, new Byte[] { 0, 0, 0 })]
-    [InlineData(1, new Byte[] { 0, 0, 1 })]
-    [InlineData((1 << 24) - 1, new Byte[] { 255, 255, 255 })]
-    public void GetNthAlias_OnValidAlias_ReturnsCorrectValue(UInt32 alias, byte[] aliasByteValue)
+    [InlineData(0, new byte[] { 0, 0, 0 })]
+    [InlineData(1, new byte[] { 0, 0, 1 })]
+    [InlineData((1 << 24) - 1, new byte[] { 255, 255, 255 })]
+    public void GetNthAlias_OnValidAlias_ReturnsCorrectValue(uint alias, byte[] aliasByteValue)
     {
         var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
         var address = AccountAddress.From(addressAsBase58String);
@@ -102,7 +102,7 @@ public class AccountAddressTests
 
     [Theory]
     [InlineData(1 << 24)]
-    public void GetNthAlias_OnOutOfRangeAlias_ThrowsException(UInt32 alias)
+    public void GetNthAlias_OnOutOfRangeAlias_ThrowsException(uint alias)
     {
         var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
         var address = AccountAddress.From(addressAsBase58String);

@@ -11,7 +11,7 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public readonly struct AccountAddress : IEquatable<AccountAddress>
 {
-    public const UInt32 BytesLength = 32;
+    public const uint BytesLength = 32;
 
     /// <summary>
     /// A version byte that is prepended to addresses represented as base58 strings.
@@ -29,27 +29,19 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     /// Initializes a new instance of the <see cref="AccountAddress"/> class.
     /// </summary>
     /// <param name="addressAsBytes">The address as a sequence of bytes without a version byte prepended.</param>
-    private AccountAddress(byte[] addressAsBytes)
-    {
-        _value = addressAsBytes;
-    }
+    private AccountAddress(byte[] addressAsBytes) => this._value = addressAsBytes;
 
     /// <summary>
     /// Get the address represented as a base58 encoded string.
     /// </summary>
-    public override string ToString()
-    {
+    public override string ToString() =>
         // Prepend version byte.
-        return EncoderInstance.EncodeData((new byte[] { VersionByte }).Concat(_value).ToArray());
-    }
+        EncoderInstance.EncodeData((new byte[] { VersionByte }).Concat(this._value).ToArray());
 
     /// <summary>
     /// Get the address as a length-32 byte array without the version byte prepended.
     /// </summary>
-    public byte[] GetBytes()
-    {
-        return (byte[])_value.Clone();
-    }
+    public byte[] GetBytes() => (byte[])this._value.Clone();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountAddress"/> class.
@@ -68,7 +60,10 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     public static AccountAddress From(byte[] addressAsBytes)
     {
         if (addressAsBytes.Length != BytesLength)
+        {
             throw new ArgumentException($"The account address bytes length must be {BytesLength}.");
+        }
+
         return new AccountAddress((byte[])addressAsBytes.Clone());
     }
 
@@ -80,7 +75,10 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     public static bool IsValid(string? addressAsBase58String)
     {
         if (addressAsBase58String == null)
+        {
             return false;
+        }
+
         try
         {
             EncoderInstance.DecodeData(addressAsBase58String);
@@ -100,10 +98,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     /// defined to be when the addresses agree on the first 29 bytes.
     /// </summary>
     /// <param name="other">the account address as base58 encoded string.</param>
-    public bool IsAliasOf(AccountAddress other)
-    {
-        return _value.Take(29).SequenceEqual(other._value.Take(29));
-    }
+    public bool IsAliasOf(AccountAddress other) => this._value.Take(29).SequenceEqual(other._value.Take(29));
 
     /// <summary>
     /// Gets the <c>n</c>th alias of this account address.
@@ -117,7 +112,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     /// <param name="n">An unsigned integer representing the <c>n</c>th alias.</param>
     /// <returns name="n">A new account address which is the <c>n</c>th alias of the account.</returns>
     /// <exception cref="ArgumentOutOfRangeException"><c>n</c> is larger than <c>2^24-1</c>.</exception>
-    public AccountAddress GetNthAlias(UInt32 n)
+    public AccountAddress GetNthAlias(uint n)
     {
         if (n > ((1 << 24) - 1))
         {
@@ -125,9 +120,9 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
         }
         // Serialize n to its corresponding alias bytes. Since we output it
         // in big endian format, we truncate the first and most significant byte.
-        byte[] aliasBytes = Serialization.GetBytes((UInt32)n).Skip(1).ToArray();
-        byte[] address = _value.Take(29).ToArray().Concat(aliasBytes).ToArray();
-        return AccountAddress.From(address);
+        var aliasBytes = Serialization.GetBytes(n).Skip(1).ToArray();
+        var address = this._value.Take(29).ToArray().Concat(aliasBytes).ToArray();
+        return From(address);
     }
 
     /// <summary>
@@ -135,36 +130,25 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     ///
     /// This can be used as the input for class methods of <see cref="RawClient"/>.
     /// </summary>
-    public Concordium.Grpc.V2.AccountAddress ToProto()
+    public Grpc.V2.AccountAddress ToProto() => new()
     {
-        return new Concordium.Grpc.V2.AccountAddress()
-        {
-            Value = Google.Protobuf.ByteString.CopyFrom(this._value)
-        };
-    }
+        Value = Google.Protobuf.ByteString.CopyFrom(this._value)
+    };
 
     /// <summary>
-    /// Converts the block hash to a corresponding <see cref="Concordium.Grpc.V2.AccountIdentifierInput"/>
+    /// Converts the block hash to a corresponding <see cref="Grpc.V2.AccountIdentifierInput"/>
     ///
     /// This can be used as the input for class methods of <see cref="RawClient"/>.
     /// </summary>
-    public Concordium.Grpc.V2.AccountIdentifierInput ToAccountIdentifierInput()
-    {
-        return new Concordium.Grpc.V2.AccountIdentifierInput() { Address = ToProto() };
-    }
+    public Grpc.V2.AccountIdentifierInput ToAccountIdentifierInput() => new() { Address = this.ToProto() };
 
-    public bool Equals(AccountAddress other)
-    {
-        return _value.SequenceEqual(other._value);
-    }
+    public bool Equals(AccountAddress other) => this._value.SequenceEqual(other._value);
 
-    public override bool Equals(object? obj)
-    {
-        return obj is not null && obj is AccountAddress other && Equals(other);
-    }
+    public override bool Equals(object? obj) => obj is not null && obj is AccountAddress other && this.Equals(other);
 
-    public override int GetHashCode()
-    {
-        return GetBytes().GetHashCode();
-    }
+    public override int GetHashCode() => this.GetBytes().GetHashCode();
+
+    public static bool operator ==(AccountAddress left, AccountAddress right) => left.Equals(right);
+
+    public static bool operator !=(AccountAddress left, AccountAddress right) => !(left == right);
 }

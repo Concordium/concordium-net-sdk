@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Concordium.Sdk.Types;
 using FluentAssertions;
 using Xunit;

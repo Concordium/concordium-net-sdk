@@ -7,29 +7,17 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public readonly struct EnergyAmount
 {
-    public const UInt32 BytesLength = sizeof(UInt64);
-    public readonly UInt64 Value { get; init; }
+    public const uint BytesLength = sizeof(ulong);
+    public readonly ulong Value { get; init; }
 
-    public EnergyAmount(UInt64 value)
-    {
-        Value = value;
-    }
+    public EnergyAmount(ulong value) => this.Value = value;
 
-    public static implicit operator EnergyAmount(UInt64 value)
-    {
-        return new EnergyAmount(value);
-    }
+    public static implicit operator EnergyAmount(ulong value) => new(value);
 
-    public static implicit operator UInt64(EnergyAmount value)
-    {
-        return value.Value;
-    }
+    public static implicit operator ulong(EnergyAmount value) => value.Value;
 
     /// <summary>
     /// Get the energy amount in the binary format expected by the node.
     /// </summary>
-    public byte[] GetBytes()
-    {
-        return Serialization.GetBytes(Value);
-    }
+    public byte[] GetBytes() => Serialization.GetBytes(this.Value);
 }

@@ -1,4 +1,4 @@
-using CommandLine;
+﻿using CommandLine;
 
 namespace Concordium.Sdk.Examples.Common;
 
@@ -29,11 +29,9 @@ public static class Example
     public static void Run<T>(string[] args, Action<T> exampleCallback)
         where T : ExampleOptions
     {
-        async Task exampleCallbackTask(T options)
-        {
+        async Task exampleCallbackTask(T options) =>
             // Await to squelch compiler warning.
             await Task.Run(() => exampleCallback(options));
-        }
 
         Run<T>(args, exampleCallbackTask);
     }
@@ -60,11 +58,10 @@ public static class Example
     {
         try
         {
-            Task.WaitAll(
-                Parser.Default
-                    .ParseArguments<T>(args)
-                    .WithParsedAsync<T>(options => exampleCallback(options))
-            );
+            Parser.Default
+                .ParseArguments<T>(args)
+                .WithParsedAsync(options => exampleCallback(options))
+                .Wait();
         }
         catch (Exception e)
         {
@@ -77,6 +74,4 @@ public static class Example
         Console.WriteLine($"An error occurred while running the example: {e.Message}");
         Environment.Exit(1);
     }
-
-    private static void HandleParseError(IEnumerable<Error> errors) { }
 }

@@ -1,6 +1,6 @@
-﻿using Concordium.Sdk.Transactions;
-using Concordium.Sdk.Types;
 using System;
+using Concordium.Sdk.Transactions;
+using Concordium.Sdk.Types;
 using FluentAssertions;
 using Xunit;
 
@@ -88,24 +88,24 @@ public class SimpleTransferWithMemoPayloadTests
     public void Prepare_ThenSign_ProducesCorrectSignatures()
     {
         // Create the transfer.
-        TransferWithMemo transfer = CreateTransferWithMemo();
+        var transfer = CreateTransferWithMemo();
 
         // Prepare the transfer.
-        PreparedAccountTransaction<TransferWithMemo> preparedTransfer =
+        var preparedTransfer =
             TransactionTestHelpers<TransferWithMemo>.CreatePreparedAccountTransaction(transfer);
 
         // Sign the transfer.
-        SignedAccountTransaction<TransferWithMemo> signedTransfer =
+        var signedTransfer =
             TransactionTestHelpers<TransferWithMemo>.CreateSignedTransaction(preparedTransfer);
 
         // Create the expected signature. It was generated using the corresponding method in the Concordium Rust SDK.
-        byte[] expectedSignature00 = Convert.FromHexString(
+        var expectedSignature00 = Convert.FromHexString(
             "29aa3584ede6335ab34fac2b0fc2f788087d01043f636eab9be5e682448bdaf0cabdcef2d1978c15116dd7e363eb383aa3176fb4881890fcc1e0d72782a01e03"
         );
-        byte[] expectedSignature01 = Convert.FromHexString(
+        var expectedSignature01 = Convert.FromHexString(
             "d6fe41133848aca9821e0cb07f1a236d124df35a9f8113e7ca7017bd8242f3b53ad997b0cdcf039baa20e1765a05311a676f947093239d98f15a38da98001904"
         );
-        byte[] expectedSignature11 = Convert.FromHexString(
+        var expectedSignature11 = Convert.FromHexString(
             "ab0b927572244f85e45cef55757dc27810f2aa041b0298e3acad26df5eabf09192b9c2fcfb0f5dbfcee4b5a376de5a5b1f86209ead70917fa66e3bd84c9a5a07"
         );
 

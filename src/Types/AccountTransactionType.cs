@@ -1,4 +1,4 @@
-﻿namespace Concordium.Sdk.Types;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Values used for binary serialization of transactions.

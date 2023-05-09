@@ -1,5 +1,5 @@
-using Concordium.Grpc.V2;
 using System.Security.Cryptography;
+using Concordium.Grpc.V2;
 using Concordium.Sdk.Types;
 using AccountAddress = Concordium.Sdk.Types.AccountAddress;
 
@@ -45,9 +45,9 @@ public record SignedAccountTransaction<T>
         AccountTransactionSignature signature
     )
     {
-        Header = header;
-        Payload = payload;
-        Signature = signature;
+        this.Header = header;
+        this.Payload = payload;
+        this.Signature = signature;
     }
 
     /// <summary>
@@ -67,12 +67,12 @@ public record SignedAccountTransaction<T>
     )
     {
         // Get the serialized payload.
-        byte[] serializedPayload = payload.GetBytes();
-        UInt32 serializedPayloadSize = (UInt32)serializedPayload.Length;
+        var serializedPayload = payload.GetBytes();
+        var serializedPayloadSize = (uint)serializedPayload.Length;
 
         // Compute the energy cost.
-        UInt64 txSpecificCost = payload.GetTransactionSpecificCost();
-        UInt64 energyCost = CalculateEnergyCost(
+        var txSpecificCost = payload.GetTransactionSpecificCost();
+        var energyCost = CalculateEnergyCost(
             transactionSigner.GetSignatureCount(),
             txSpecificCost,
             AccountTransactionHeader.BytesLength,
@@ -89,11 +89,11 @@ public record SignedAccountTransaction<T>
         );
 
         // Construct the serialized payload and its digest for signing.
-        byte[] serializedHeaderAndTxPayload = header.GetBytes().Concat(serializedPayload).ToArray();
-        byte[] signDigest = SHA256.Create().ComputeHash(serializedHeaderAndTxPayload);
+        var serializedHeaderAndTxPayload = header.GetBytes().Concat(serializedPayload).ToArray();
+        var signDigest = SHA256.Create().ComputeHash(serializedHeaderAndTxPayload);
 
         // Sign it.
-        AccountTransactionSignature signature = transactionSigner.Sign(signDigest);
+        var signature = transactionSigner.Sign(signDigest);
 
         return new SignedAccountTransaction<T>(header, payload, signature);
     }
@@ -106,40 +106,34 @@ public record SignedAccountTransaction<T>
     /// <param name="headerSize">The size of the header in bytes.</param>
     /// <param name="payloadSize">The size of the payload in bytes.</param>
     public static ulong CalculateEnergyCost(
-        UInt32 signatureCount,
-        UInt64 txSpecificCost,
-        UInt32 headerSize,
-        UInt32 payloadSize
+        uint signatureCount,
+        ulong txSpecificCost,
+        uint headerSize,
+        uint payloadSize
     )
     {
         const uint costPerSignature = 100;
         const uint costPerHeaderAndPayloadByte = 1;
 
-        ulong result =
+        var result =
             txSpecificCost
-            + costPerSignature * signatureCount
-            + costPerHeaderAndPayloadByte * (headerSize + payloadSize);
+            + (costPerSignature * signatureCount)
+            + (costPerHeaderAndPayloadByte * (headerSize + payloadSize));
 
         return result;
     }
 
-    public AccountTransaction ToProto()
+    public AccountTransaction ToProto() => new()
     {
-        return new AccountTransaction()
-        {
-            Header = Header.ToProto(),
-            Payload = Payload.ToProto(),
-            Signature = Signature.ToProto(),
-        };
-    }
+        Header = this.Header.ToProto(),
+        Payload = this.Payload.ToProto(),
+        Signature = this.Signature.ToProto(),
+    };
 
     /// <summary>
     /// Converts the signed account transaction to a protocol buffer
     /// message instance which is compatible with
-    /// <see cref="Concordium.Sdk.Client.RawClient.SendBlockItem"/>.
+    /// <see cref="Client.RawClient.SendBlockItem"/>.
     /// </summary>
-    public SendBlockItemRequest ToSendBlockItemRequest()
-    {
-        return new SendBlockItemRequest { AccountTransaction = this.ToProto() };
-    }
+    public SendBlockItemRequest ToSendBlockItemRequest() => new() { AccountTransaction = this.ToProto() };
 }

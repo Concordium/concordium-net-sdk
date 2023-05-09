@@ -2,7 +2,7 @@ using CommandLine;
 
 using Concordium.Sdk.Examples.Common;
 
-namespace Concordium.Sdk.Examples.Transactions;
+namespace Concordium.Sdk.Examples.Transactions.RegisterData;
 
 public class RegisterDataTransactionExampleOptions : ExampleOptionsWithKeys
 {

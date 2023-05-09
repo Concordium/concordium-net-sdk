@@ -1,6 +1,6 @@
-using Concordium.Sdk.Types;
-using Concordium.Sdk.Crypto;
 using System.Collections.Immutable;
+using Concordium.Sdk.Crypto;
+using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;
 
@@ -38,14 +38,14 @@ public class AccountSignatureMap
     /// <summary>
     /// Converts the account signature map to its corresponding protocol buffer message instance.
     /// </summary>
-    public Concordium.Grpc.V2.AccountSignatureMap ToProto()
+    public Grpc.V2.AccountSignatureMap ToProto()
     {
-        var accountSignatureMap = new Concordium.Grpc.V2.AccountSignatureMap();
+        var accountSignatureMap = new Grpc.V2.AccountSignatureMap();
         foreach (var s in this.Signatures)
         {
             accountSignatureMap.Signatures.Add(
                 s.Key,
-                new Concordium.Grpc.V2.Signature()
+                new Grpc.V2.Signature()
                 {
                     Value = Google.Protobuf.ByteString.CopyFrom(s.Value)
                 }

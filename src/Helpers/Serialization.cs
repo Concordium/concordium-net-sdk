@@ -8,31 +8,31 @@ namespace Concordium.Sdk.Helpers;
 public class Serialization
 {
     /// <summary>
-    /// Gets bytes representing the specified <see cref="UInt64"/> in big-endian format.
+    /// Gets bytes representing the specified <see cref="ulong"/> in big-endian format.
     /// </summary>
-    public static byte[] GetBytes(UInt64 value)
+    public static byte[] GetBytes(ulong value)
     {
-        var bytes = new byte[sizeof(UInt64)];
+        var bytes = new byte[sizeof(ulong)];
         BinaryPrimitives.WriteUInt64BigEndian(bytes, value);
         return bytes;
     }
 
     /// <summary>
-    /// Gets bytes representing the specified <see cref="UInt32"/> in big-endian format.
+    /// Gets bytes representing the specified <see cref="uint"/> in big-endian format.
     /// </summary>
-    public static byte[] GetBytes(UInt32 value)
+    public static byte[] GetBytes(uint value)
     {
-        var bytes = new byte[sizeof(UInt32)];
+        var bytes = new byte[sizeof(uint)];
         BinaryPrimitives.WriteUInt32BigEndian(bytes, value);
         return bytes;
     }
 
     /// <summary>
-    /// Gets bytes representing the specified <see cref="UInt16"/> in big-endian format.
+    /// Gets bytes representing the specified <see cref="ushort"/> in big-endian format.
     /// </summary>
-    public static byte[] GetBytes(UInt16 value)
+    public static byte[] GetBytes(ushort value)
     {
-        var bytes = new byte[sizeof(UInt16)];
+        var bytes = new byte[sizeof(ushort)];
         BinaryPrimitives.WriteUInt16BigEndian(bytes, value);
         return bytes;
     }

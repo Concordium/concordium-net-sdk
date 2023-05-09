@@ -1,5 +1,5 @@
-using Concordium.Sdk.Types;
 using Concordium.Sdk.Crypto;
+using Concordium.Sdk.Types;
 using Newtonsoft.Json;
 
 namespace Concordium.Sdk.Wallets.Json;
@@ -10,7 +10,7 @@ namespace Concordium.Sdk.Wallets.Json;
 /// export JSON formats.
 ///
 /// Such can be parsed into an instance of this class using
-/// <see cref="Newtonsoft.Json.JsonConvert"/>.
+/// <see cref="JsonConvert"/>.
 ///
 /// The object indexed by this field holds the sign keys and can
 /// be parsed into a map from pairs of <see cref="AccountCredentialIndex"/>
@@ -42,21 +42,22 @@ internal record AccountKeys
     /// </summary>
     /// <exception cref="ArgumentNullException">A field is missing.</exception>
     /// <exception cref="ArgumentNullException">An index or sign key could not be parsed.</exception>
-    public Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, ISigner>> TryGetSignKeys()
-    {
-        return keys.Select(cred =>
+    public Dictionary<
+        AccountCredentialIndex,
+        Dictionary<AccountKeyIndex, ISigner>
+    > TryGetSignKeys() =>
+        this.keys
+            .Select(cred =>
             {
                 // For each credential index, first parse it.
-                AccountCredentialIndex accountCredentialIndex = AccountCredentialIndex.From(
-                    cred.Key
-                );
+                var accountCredentialIndex = AccountCredentialIndex.From(cred.Key);
 
                 // Then process its keys.
-                Dictionary<AccountKeyIndex, ISigner> keysForCredential = cred.Value.keys
+                var keysForCredential = cred.Value.keys
                     .Select(key =>
                     {
                         // For each key index, parse it.
-                        AccountKeyIndex accountKeyIndex = AccountKeyIndex.From(key.Key);
+                        var accountKeyIndex = AccountKeyIndex.From(key.Key);
 
                         // Then parse the key.
                         ISigner signer = Ed25519SignKey.From(key.Value.signKey);
@@ -70,5 +71,4 @@ internal record AccountKeys
                 >(accountCredentialIndex, keysForCredential);
             })
             .ToDictionary(kv => kv.Key, kv => kv.Value);
-    }
 }

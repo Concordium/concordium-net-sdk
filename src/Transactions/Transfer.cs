@@ -31,8 +31,8 @@ public record Transfer : AccountTransactionPayload<Transfer>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
     public Transfer(CcdAmount amount, AccountAddress receiver)
     {
-        Amount = amount;
-        Receiver = receiver;
+        this.Amount = amount;
+        this.Receiver = receiver;
     }
 
     /// <summary>
@@ -42,7 +42,7 @@ public record Transfer : AccountTransactionPayload<Transfer>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
     private static byte[] Serialize(CcdAmount amount, AccountAddress receiver)
     {
-        using MemoryStream memoryStream = new MemoryStream();
+        using var memoryStream = new MemoryStream();
         memoryStream.WriteByte(TRANSACTION_TYPE);
         memoryStream.Write(receiver.GetBytes());
         memoryStream.Write(amount.GetBytes());
@@ -51,8 +51,5 @@ public record Transfer : AccountTransactionPayload<Transfer>
 
     public override ulong GetTransactionSpecificCost() => 300;
 
-    public override byte[] GetBytes()
-    {
-        return Serialize(Amount, Receiver);
-    }
+    public override byte[] GetBytes() => Serialize(this.Amount, this.Receiver);
 }

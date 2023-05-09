@@ -1,4 +1,3 @@
-﻿using Concordium.Grpc.V2;
 using Concordium.Sdk.Transactions;
 
 using Grpc.Core;
@@ -27,7 +26,7 @@ public class ConcordiumClient : IDisposable
     /// specified in <paramref name="endpoint"/>.
     /// </param>
     /// <param name="timeout">The request timeout in seconds (default: <c>30</c>).</param>
-    public ConcordiumClient(Uri endpoint, UInt16 port, ulong timeout = 30)
+    public ConcordiumClient(Uri endpoint, ushort port, ulong timeout = 30)
         : this(endpoint, port, new ClientConfiguration(timeout)) { }
 
     /// <summary>
@@ -42,10 +41,8 @@ public class ConcordiumClient : IDisposable
     /// specified in <paramref name="endpoint"/>.
     /// </param>
     /// <param name="configuration">The configuration to use with this client.</param>
-    public ConcordiumClient(Uri endpoint, UInt16 port, ClientConfiguration configuration)
-    {
-        Raw = new RawClient(endpoint, port, configuration);
-    }
+    public ConcordiumClient(Uri endpoint, ushort port, ClientConfiguration configuration) =>
+        this.Raw = new RawClient(endpoint, port, configuration);
 
     /// <summary>
     /// Send a transaction to the node.
@@ -54,16 +51,14 @@ public class ConcordiumClient : IDisposable
     /// <returns>Hash of the transaction if it was accepted by the node.</returns>
     /// <exception cref="RpcException">The call failed, e.g. due to the node not accepting the transaction.</exception>
     /// <exception cref="FormatException">The returned transaction hash has an invalid number of bytes.</exception>
-    public Concordium.Sdk.Types.TransactionHash SendTransaction<T>(
-        SignedAccountTransaction<T> transaction
-    )
+    public Types.TransactionHash SendTransaction<T>(SignedAccountTransaction<T> transaction)
         where T : AccountTransactionPayload<T>
     {
         // Send the transaction as a block item request.
-        TransactionHash txHash = Raw.SendBlockItem(transaction.ToSendBlockItemRequest());
+        var txHash = this.Raw.SendBlockItem(transaction.ToSendBlockItemRequest());
 
         // Return the transaction hash as a "native" SDK type.
-        return Concordium.Sdk.Types.TransactionHash.From(txHash.Value.ToByteArray());
+        return Types.TransactionHash.From(txHash.Value.ToByteArray());
     }
 
     /// <summary>
@@ -75,19 +70,15 @@ public class ConcordiumClient : IDisposable
     /// <param name="transaction">The transaction to send.</param>
     /// <returns>Task which returns the hash of the transaction if it was accepted by the node.</returns>
     /// <exception cref="RpcException">The call failed, e.g. due to the node not accepting the transaction.</exception>
-    public Task<Concordium.Sdk.Types.TransactionHash> SendTransactionAsync<T>(
+    public Task<Types.TransactionHash> SendTransactionAsync<T>(
         SignedAccountTransaction<T> transaction
     )
-        where T : AccountTransactionPayload<T>
-    {
+        where T : AccountTransactionPayload<T> =>
         // Send the transaction as a block item request.
-        return Raw.SendBlockItemAsync(transaction.ToSendBlockItemRequest())
+        this.Raw
+            .SendBlockItemAsync(transaction.ToSendBlockItemRequest())
             // Continuation returning the "native" SDK type.
-            .ContinueWith(
-                txHash =>
-                    Concordium.Sdk.Types.TransactionHash.From(txHash.Result.Value.ToByteArray())
-            );
-    }
+            .ContinueWith(txHash => Types.TransactionHash.From(txHash.Result.Value.ToByteArray()));
 
     /// <summary>
     /// Query the chain for the next sequence number of the account with the supplied
@@ -108,17 +99,14 @@ public class ConcordiumClient : IDisposable
     /// case, then the sequence number is reliable.
     /// </returns>
     /// <exception cref="RpcException">The call failed.</exception>
-    public (Concordium.Sdk.Types.AccountSequenceNumber, bool) GetNextAccountSequenceNumber(
-        Concordium.Sdk.Types.AccountAddress accountAddress
+    public (Types.AccountSequenceNumber, bool) GetNextAccountSequenceNumber(
+        Types.AccountAddress accountAddress
     )
     {
-        NextAccountSequenceNumber next = Raw.GetNextAccountSequenceNumber(accountAddress.ToProto());
+        var next = this.Raw.GetNextAccountSequenceNumber(accountAddress.ToProto());
 
         // Return the sequence number as a "native" SDK type.
-        return (
-            Concordium.Sdk.Types.AccountSequenceNumber.From(next.SequenceNumber.Value),
-            next.AllFinal
-        );
+        return (Types.AccountSequenceNumber.From(next.SequenceNumber.Value), next.AllFinal);
     }
 
     /// <summary>
@@ -140,23 +128,19 @@ public class ConcordiumClient : IDisposable
     /// If the latter is the case, then the sequence number is reliable.
     /// </returns>
     /// <exception cref="RpcException">The call failed.</exception>
-    public Task<(
-        Concordium.Sdk.Types.AccountSequenceNumber,
-        bool
-    )> GetNextAccountSequenceNumberAsync(Concordium.Sdk.Types.AccountAddress accountAddress)
-    {
-        return Raw.GetNextAccountSequenceNumberAsync(accountAddress.ToProto())
+    public Task<(Types.AccountSequenceNumber, bool)> GetNextAccountSequenceNumberAsync(
+        Types.AccountAddress accountAddress
+    ) =>
+        this.Raw
+            .GetNextAccountSequenceNumberAsync(accountAddress.ToProto())
             // Continuation returning the "native" SDK type.
             .ContinueWith(
                 next =>
                     (
-                        Concordium.Sdk.Types.AccountSequenceNumber.From(
-                            next.Result.SequenceNumber.Value
-                        ),
+                        Types.AccountSequenceNumber.From(next.Result.SequenceNumber.Value),
                         next.Result.AllFinal
                     )
             );
-    }
 
     #region IDisposable Support
 
@@ -164,21 +148,18 @@ public class ConcordiumClient : IDisposable
 
     protected virtual void Dispose(bool disposing)
     {
-        if (!_disposedValue)
+        if (!this._disposedValue)
         {
             if (disposing)
             {
-                Raw.Dispose();
+                this.Raw.Dispose();
             }
 
-            _disposedValue = true;
+            this._disposedValue = true;
         }
     }
 
-    public void Dispose()
-    {
-        Dispose(true);
-    }
+    public void Dispose() => this.Dispose(true);
 
     #endregion
 }

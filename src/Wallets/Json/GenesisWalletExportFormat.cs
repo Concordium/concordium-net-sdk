@@ -10,7 +10,7 @@ namespace Concordium.Sdk.Wallets.Json;
 /// genesis wallet key export format.
 ///
 /// Such can be parsed into an instance of this class using
-/// <see cref="Newtonsoft.Json.JsonConvert"/>.
+/// <see cref="JsonConvert"/>.
 /// </summary>
 internal record GenesisWalletExportFormat : IWalletDataSource
 {
@@ -24,7 +24,7 @@ internal record GenesisWalletExportFormat : IWalletDataSource
     {
         try
         {
-            return AccountAddress.From(address);
+            return AccountAddress.From(this.address);
         }
         catch (Exception e)
         {
@@ -39,7 +39,7 @@ internal record GenesisWalletExportFormat : IWalletDataSource
     {
         try
         {
-            return accountKeys.TryGetSignKeys();
+            return this.accountKeys.TryGetSignKeys();
         }
         catch (Exception e)
         {

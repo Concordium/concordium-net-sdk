@@ -1,5 +1,5 @@
-using AccountAddress = Concordium.Sdk.Types.AccountAddress;
 using Concordium.Sdk.Types;
+using AccountAddress = Concordium.Sdk.Types.AccountAddress;
 
 namespace Concordium.Sdk.Transactions;
 
@@ -20,7 +20,7 @@ public struct AccountTransactionHeader
     /// <summary>
     /// The length of the serialized account transaction header in bytes.
     /// </summary>
-    public const UInt32 BytesLength =
+    public const uint BytesLength =
         AccountAddress.BytesLength
         + AccountSequenceNumber.BytesLength
         + EnergyAmount.BytesLength
@@ -64,15 +64,15 @@ public struct AccountTransactionHeader
         AccountAddress sender,
         AccountSequenceNumber nonce,
         Expiry expiry,
-        UInt64 maxEnergyCost,
-        UInt32 payloadSize
+        ulong maxEnergyCost,
+        uint payloadSize
     )
     {
-        _sender = sender;
-        _nonce = nonce;
-        _expiry = expiry;
-        _maxEnergyCost = maxEnergyCost;
-        _payloadSize = payloadSize;
+        this._sender = sender;
+        this._nonce = nonce;
+        this._expiry = expiry;
+        this._maxEnergyCost = maxEnergyCost;
+        this._payloadSize = payloadSize;
     }
 
     /// <summary>
@@ -92,7 +92,7 @@ public struct AccountTransactionHeader
         PayloadSize payloadSize
     )
     {
-        using MemoryStream memoryStream = new MemoryStream();
+        using var memoryStream = new MemoryStream();
         memoryStream.Write(sender.GetBytes());
         memoryStream.Write(nonce.GetBytes());
         memoryStream.Write(maxEnergyCost.GetBytes());
@@ -104,22 +104,16 @@ public struct AccountTransactionHeader
     /// <summary>
     /// Get the transaction header in the binary format expected by the node.
     /// </summary>
-    public byte[] GetBytes()
-    {
-        return Serialize(_sender, _nonce, _expiry, _maxEnergyCost, _payloadSize);
-    }
+    public byte[] GetBytes() => Serialize(this._sender, this._nonce, this._expiry, this._maxEnergyCost, this._payloadSize);
 
     /// <summary>
     /// Converts the account transaction header to its corresponding protocol buffer message instance.
     /// </summary>
-    public Concordium.Grpc.V2.AccountTransactionHeader ToProto()
+    public Grpc.V2.AccountTransactionHeader ToProto() => new()
     {
-        return new Concordium.Grpc.V2.AccountTransactionHeader()
-        {
-            Sender = _sender.ToProto(),
-            SequenceNumber = _nonce.ToProto(),
-            Expiry = _expiry.ToProto(),
-            EnergyAmount = new Concordium.Grpc.V2.Energy() { Value = _maxEnergyCost }
-        };
-    }
+        Sender = this._sender.ToProto(),
+        SequenceNumber = this._nonce.ToProto(),
+        Expiry = this._expiry.ToProto(),
+        EnergyAmount = new Grpc.V2.Energy() { Value = _maxEnergyCost }
+    };
 }

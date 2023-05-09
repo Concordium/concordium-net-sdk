@@ -12,7 +12,7 @@ public record RegisterData : AccountTransactionPayload<RegisterData>
     /// <summary>
     /// The account transaction type to be used in the serialized payload.
     /// </summary>
-    private const byte TRANSACTION_TYPE = (byte)AccountTransactionType.RegisterData;
+    private const byte TransactionType = (byte)AccountTransactionType.RegisterData;
 
     /// <summary>
     /// The data to be registered on-chain.
@@ -23,10 +23,7 @@ public record RegisterData : AccountTransactionPayload<RegisterData>
     /// Initializes a new instance of the <see cref="RegisterData"/> class.
     /// </summary>
     /// <param name="data">The data to be registered on-chain.</param>
-    public RegisterData(OnChainData data)
-    {
-        Data = data;
-    }
+    public RegisterData(OnChainData data) => this.Data = data;
 
     public override ulong GetTransactionSpecificCost() => 300;
 
@@ -36,14 +33,11 @@ public record RegisterData : AccountTransactionPayload<RegisterData>
     /// <param name="data">The data to be registered on-chain.</param>
     private static byte[] Serialize(OnChainData data)
     {
-        using MemoryStream memoryStream = new MemoryStream();
-        memoryStream.WriteByte(TRANSACTION_TYPE);
+        using var memoryStream = new MemoryStream();
+        memoryStream.WriteByte(TransactionType);
         memoryStream.Write(data.GetBytes());
         return memoryStream.ToArray();
     }
 
-    public override byte[] GetBytes()
-    {
-        return Serialize(Data);
-    }
+    public override byte[] GetBytes() => Serialize(this.Data);
 }

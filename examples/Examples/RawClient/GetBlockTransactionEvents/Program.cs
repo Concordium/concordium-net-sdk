@@ -1,8 +1,8 @@
-﻿using Concordium.Sdk.Client;
-using Concordium.Grpc.V2;
+﻿using Concordium.Grpc.V2;
+using Concordium.Sdk.Client;
 using Concordium.Sdk.Examples.Common;
 
-namespace Concordium.Sdk.Examples.RawClient;
+namespace Concordium.Sdk.Examples.RawClient.GetBlockTransactionEvents;
 
 /// <summary>
 /// Example demonstrating the use of <see cref="Client.RawClient.GetBlockTransactionEvents"/>.
@@ -10,71 +10,50 @@ namespace Concordium.Sdk.Examples.RawClient;
 /// <see cref="RawClient"/> wraps methods of the Concordium Node GRPC API V2 that were generated
 /// from the protocol buffer schema by the <see cref="Grpc.Core"/> library.
 /// </summary>
-class Program
+internal class Program
 {
-    async static void GetBlockTransactionEvents(GetBlockTransactionEventsExampleOptions options)
+    private static async void GetBlockTransactionEvents(
+        GetBlockTransactionEventsExampleOptions options
+    )
     {
         // Construct the client.
-        ConcordiumClient client = new ConcordiumClient(
+        var client = new ConcordiumClient(
             new Uri(options.Endpoint), // Endpoint URL.
             options.Port, // Port.
             60 // Use a timeout of 60 seconds.
         );
-
-        BlockHashInput blockHashInput;
-
-        switch (options.BlockHash.ToLower())
+        var blockHashInput = options.BlockHash.ToLowerInvariant() switch
         {
-            case "best":
-                blockHashInput = new BlockHashInput() { Best = new Empty() };
-                break;
-            case "lastfinal":
-                blockHashInput = new BlockHashInput() { LastFinal = new Empty() };
-                break;
-            default:
-                blockHashInput = Concordium.Sdk.Types.BlockHash
-                    .From(options.BlockHash)
-                    .ToBlockHashInput();
-                break;
-        }
+            "best" => new BlockHashInput() { Best = new Empty() },
+            "lastfinal" => new BlockHashInput() { LastFinal = new Empty() },
+            _ => Types.BlockHash.From(options.BlockHash).ToBlockHashInput(),
+        };
 
         // Invoke the "raw" call.
-        IAsyncEnumerable<BlockItemSummary> events = client.Raw.GetBlockTransactionEvents(
-            blockHashInput
-        );
+        var events = client.Raw.GetBlockTransactionEvents(blockHashInput);
 
         // Print the stream elements as they arrive.
-        await foreach (BlockItemSummary e in events)
+        await foreach (var e in events)
         {
-            string details;
-            switch (e.DetailsCase)
+            var details = e.DetailsCase switch
             {
-                case BlockItemSummary.DetailsOneofCase.AccountTransaction:
-                    details = e.AccountTransaction.ToString();
-                    break;
-                case BlockItemSummary.DetailsOneofCase.Update:
-                    details = e.Update.ToString();
-                    break;
-                case BlockItemSummary.DetailsOneofCase.AccountCreation:
-                    details = e.AccountCreation.ToString();
-                    break;
-                default:
-                    details = "Block item summary did not contain any details";
-                    break;
-            }
-
-            var txHash = Concordium.Sdk.Types.TransactionHash.From(e.Hash.Value.ToByteArray());
+                BlockItemSummary.DetailsOneofCase.AccountTransaction
+                    => e.AccountTransaction.ToString(),
+                BlockItemSummary.DetailsOneofCase.Update => e.Update.ToString(),
+                BlockItemSummary.DetailsOneofCase.AccountCreation => e.AccountCreation.ToString(),
+                BlockItemSummary.DetailsOneofCase.None => throw new NotImplementedException(),
+                _ => "Block item summary did not contain any details",
+            };
+            var txHash = Types.TransactionHash.From(e.Hash.Value.ToByteArray());
             Console.WriteLine(
                 $@"
-                Got event with index {e.Index.Value.ToString()} for transaction hash {txHash.ToString()}:
+                Got event with index {e.Index.Value} for transaction hash {txHash}:
                 {details}
             "
             );
         }
     }
 
-    static void Main(string[] args)
-    {
+    private static void Main(string[] args) =>
         Example.Run<GetBlockTransactionEventsExampleOptions>(args, GetBlockTransactionEvents);
-    }
 }

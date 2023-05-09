@@ -1,4 +1,4 @@
-﻿using System.Collections.Immutable;
+using System.Collections.Immutable;
 using Concordium.Sdk.Crypto;
 using Concordium.Sdk.Types;
 
@@ -24,22 +24,14 @@ public class TransactionSigner : ITransactionSigner
     /// <summary>
     /// Initializes a new instance of the <see cref="TransactionSigner"/> class.
     /// </summary>
-    public TransactionSigner()
-    {
-        _signers = new Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, ISigner>>();
-    }
+    public TransactionSigner() => this._signers = new Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, ISigner>>();
 
-    public byte GetSignatureCount()
-    {
-        return (byte)_signers.Values.SelectMany(x => x.Values).Count();
-    }
+    public byte GetSignatureCount() => (byte)this._signers.Values.SelectMany(x => x.Values).Count();
 
     public ImmutableDictionary<
         AccountCredentialIndex,
         ImmutableDictionary<AccountKeyIndex, ISigner>
-    > GetSignerEntries()
-    {
-        return _signers
+    > GetSignerEntries() => this._signers
             .Select(
                 x =>
                     new KeyValuePair<
@@ -48,7 +40,6 @@ public class TransactionSigner : ITransactionSigner
                     >(x.Key, x.Value.ToImmutableDictionary())
             )
             .ToImmutableDictionary();
-    }
 
     /// <summary>
     /// Adds a sign key implementation to the <see cref="TransactionSigner"/>.
@@ -62,11 +53,11 @@ public class TransactionSigner : ITransactionSigner
         ISigner signer
     )
     {
-        if (!_signers.ContainsKey(credentialIndex))
+        if (!this._signers.ContainsKey(credentialIndex))
         {
-            _signers.Add(credentialIndex, new Dictionary<AccountKeyIndex, ISigner>());
+            this._signers.Add(credentialIndex, new Dictionary<AccountKeyIndex, ISigner>());
         }
-        _signers[credentialIndex].Add(keyIndex, signer);
+        this._signers[credentialIndex].Add(keyIndex, signer);
     }
 
     /// <summary>
@@ -76,14 +67,14 @@ public class TransactionSigner : ITransactionSigner
     /// <exception cref="ArgumentException">No signatures were produced.</exception>
     public AccountTransactionSignature Sign(byte[] data)
     {
-        if (GetSignatureCount() == 0)
+        if (this.GetSignatureCount() == 0)
         {
             throw new ArgumentException("The signer will not produce any signatures.");
         }
 
         var signature =
             new Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, byte[]>>();
-        foreach (var signerEntry in GetSignerEntries())
+        foreach (var signerEntry in this.GetSignerEntries())
         {
             var accountSignatureMap = new Dictionary<AccountKeyIndex, byte[]>();
             foreach (var k in signerEntry.Value)

@@ -1,4 +1,4 @@
-﻿using Concordium.Sdk.Client;
+using Concordium.Sdk.Client;
 using Concordium.Sdk.Helpers;
 
 namespace Concordium.Sdk.Types;
@@ -14,28 +14,25 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public readonly struct AccountSequenceNumber : IEquatable<AccountSequenceNumber>
 {
-    public const UInt32 BytesLength = sizeof(UInt64);
+    public const uint BytesLength = sizeof(ulong);
 
     /// <summary>
     /// The value of the account sequence number.
     /// </summary>
-    public readonly UInt64 Value { get; init; }
+    public readonly ulong Value { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountSequenceNumber"/> class.
     /// </summary>
     /// <param name="sequenceNumber">The nonce.</param>
-    private AccountSequenceNumber(UInt64 sequenceNumber)
-    {
-        Value = sequenceNumber;
-    }
+    private AccountSequenceNumber(ulong sequenceNumber) => this.Value = sequenceNumber;
 
     /// <summary>
     /// Creates a new instance of the <see cref="AccountSequenceNumber"/> class from an integer.
     /// </summary>
     /// <param name="sequenceNumber">The account sequence number represented as an integer.</param>
     /// <exception cref="ArgumentException">The supplied account sequence number is 0.</exception>
-    public static AccountSequenceNumber From(UInt64 sequenceNumber)
+    public static AccountSequenceNumber From(ulong sequenceNumber)
     {
         if (sequenceNumber == 0)
         {
@@ -50,55 +47,38 @@ public readonly struct AccountSequenceNumber : IEquatable<AccountSequenceNumber>
     /// <exception cref="OverflowException">The value of the incremented nonce does not fit in a 64-bit unsigned integer.</exception>
     public AccountSequenceNumber GetIncrementedNonce()
     {
-        if (Value == UInt64.MaxValue)
+        if (this.Value == ulong.MaxValue)
         {
             throw new OverflowException(
                 "Value of the incremented nonce does not fit in a 64-bit unsigned integer."
             );
         }
-        return new AccountSequenceNumber(Value + 1);
+        return new AccountSequenceNumber(this.Value + 1);
     }
 
     /// <summary>
     /// Get the account nonce in the binary format expected by the node.
     /// </summary>
-    public byte[] GetBytes()
-    {
-        return Serialization.GetBytes((UInt64)Value);
-    }
+    public byte[] GetBytes() => Serialization.GetBytes(this.Value);
 
     /// <summary>
     /// Converts the account nonce to its corresponding protocol buffer message instance.
     ///
     /// This can be used as the input for class methods of <see cref="RawClient"/>.
     /// </summary>
-    public Concordium.Grpc.V2.SequenceNumber ToProto()
-    {
-        return new Concordium.Grpc.V2.SequenceNumber() { Value = Value };
-    }
+    public Grpc.V2.SequenceNumber ToProto() => new() { Value = Value };
 
-    public static implicit operator AccountSequenceNumber(UInt64 value)
-    {
-        return new AccountSequenceNumber(value);
-    }
+    public static implicit operator AccountSequenceNumber(ulong value) => new(value);
 
-    public static implicit operator UInt64(AccountSequenceNumber byteIndex)
-    {
-        return byteIndex.Value;
-    }
+    public static implicit operator ulong(AccountSequenceNumber byteIndex) => byteIndex.Value;
 
-    public bool Equals(AccountSequenceNumber other)
-    {
-        return Value == other.Value;
-    }
+    public bool Equals(AccountSequenceNumber other) => this.Value == other.Value;
 
-    public override bool Equals(object? obj)
-    {
-        return obj is AccountSequenceNumber other && Equals(other);
-    }
+    public override bool Equals(object? obj) => obj is AccountSequenceNumber other && this.Equals(other);
 
-    public override int GetHashCode()
-    {
-        return Value.GetHashCode();
-    }
+    public override int GetHashCode() => this.Value.GetHashCode();
+
+    public static bool operator ==(AccountSequenceNumber left, AccountSequenceNumber right) => left.Equals(right);
+
+    public static bool operator !=(AccountSequenceNumber left, AccountSequenceNumber right) => !(left == right);
 }

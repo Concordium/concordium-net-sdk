@@ -23,10 +23,7 @@ public record OnChainData : IEquatable<OnChainData>
     /// Initializes a new instance of the <see cref="OnChainData"/> class.
     /// </summary>
     /// <param name="bytes">Data represented by at most <see cref="MaxLength"/> bytes.</param>
-    private OnChainData(byte[] bytes)
-    {
-        _value = bytes;
-    }
+    private OnChainData(byte[] bytes) => this._value = bytes;
 
     /// <summary>
     /// Creates an instance from a hex encoded string.
@@ -38,8 +35,8 @@ public record OnChainData : IEquatable<OnChainData>
     {
         try
         {
-            byte[] value = Convert.FromHexString(hexString);
-            return OnChainData.From(value);
+            var value = Convert.FromHexString(hexString);
+            return From(value);
         }
         catch (Exception e)
         {
@@ -78,9 +75,12 @@ public record OnChainData : IEquatable<OnChainData>
     public static OnChainData From(byte[] dataAsBytes)
     {
         if (dataAsBytes.Length > MaxLength)
+        {
             throw new ArgumentException(
                 $"Size of a data is not allowed to exceed {MaxLength} bytes."
             );
+        }
+
         return new OnChainData((byte[])dataAsBytes.Clone());
     }
 
@@ -93,7 +93,7 @@ public record OnChainData : IEquatable<OnChainData>
     /// </returns>
     public string? TryCborDecodeToString()
     {
-        var encoder = new CborReader(_value);
+        var encoder = new CborReader(this._value);
         try
         {
             var textRead = encoder.ReadTextString();
@@ -115,32 +115,31 @@ public record OnChainData : IEquatable<OnChainData>
     /// </summary>
     public byte[] GetBytes()
     {
-        using MemoryStream memoryStream = new MemoryStream();
-        memoryStream.Write(Serialization.GetBytes((UInt16)_value.Length));
-        memoryStream.Write(_value);
+        using var memoryStream = new MemoryStream();
+        memoryStream.Write(Serialization.GetBytes((ushort)this._value.Length));
+        memoryStream.Write(this._value);
         return memoryStream.ToArray();
     }
 
     /// <summary>
     /// Get the data to register on-chain as a hex-encoded string.
     /// </summary>
-    public override string ToString()
-    {
-        return Convert.ToHexString(_value).ToLowerInvariant();
-    }
+    public override string ToString() => Convert.ToHexString(this._value).ToLowerInvariant();
 
     public virtual bool Equals(OnChainData? other)
     {
-        if (ReferenceEquals(null, other))
+        if (other is null)
+        {
             return false;
-        if (other.GetType() != GetType())
-            return false;
+        }
 
-        return _value.SequenceEqual(other._value);
+        if (other.GetType() != this.GetType())
+        {
+            return false;
+        }
+
+        return this._value.SequenceEqual(other._value);
     }
 
-    public override int GetHashCode()
-    {
-        return _value.GetHashCode();
-    }
+    public override int GetHashCode() => this._value.GetHashCode();
 }

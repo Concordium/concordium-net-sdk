@@ -1,10 +1,8 @@
 using System.Collections.Immutable;
-
-using Newtonsoft.Json;
-
 using Concordium.Sdk.Crypto;
-using Concordium.Sdk.Types;
 using Concordium.Sdk.Transactions;
+using Concordium.Sdk.Types;
+using Newtonsoft.Json;
 
 namespace Concordium.Sdk.Wallets;
 
@@ -28,7 +26,7 @@ public class WalletAccount : ITransactionSigner
     /// <summary>
     /// Internal representation of a signer.
     /// </summary>
-    private TransactionSigner _signer;
+    private readonly TransactionSigner _signer;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="WalletAccount"/> class.
@@ -40,19 +38,16 @@ public class WalletAccount : ITransactionSigner
         Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, ISigner>> signKeys
     )
     {
-        AccountAddress = accountAddress;
-        _signer = new TransactionSigner();
+        this.AccountAddress = accountAddress;
+        this._signer = new TransactionSigner();
         signKeys
             .ToList()
-            .ForEach(cred =>
-            {
-                cred.Value
-                    .ToList()
-                    .ForEach(key =>
-                    {
-                        _signer.AddSignerEntry(cred.Key, key.Key, key.Value);
-                    });
-            });
+            .ForEach(
+                cred =>
+                    cred.Value
+                        .ToList()
+                        .ForEach(key => this._signer.AddSignerEntry(cred.Key, key.Key, key.Value))
+            );
     }
 
     /// <summary>
@@ -60,13 +55,8 @@ public class WalletAccount : ITransactionSigner
     /// </summary>
     /// <param name="walletDataSource">Data source from which to import the wallet.</param>
     /// <exception cref="WalletDataSourceException"/>
-    public static WalletAccount From(IWalletDataSource walletDataSource)
-    {
-        return new WalletAccount(
-            walletDataSource.TryGetAccountAddress(),
-            walletDataSource.TryGetSignKeys()
-        );
-    }
+    public static WalletAccount From(IWalletDataSource walletDataSource) =>
+        new(walletDataSource.TryGetAccountAddress(), walletDataSource.TryGetSignKeys());
 
     /// <summary>
     /// Create a new instance from a string in the browser or genesis wallet key export format.
@@ -101,8 +91,7 @@ public class WalletAccount : ITransactionSigner
     /// <exception cref="WalletDataSourceException">Either a field is missing or an index or sign key could not be parsed.</exception>
     private static WalletAccount FromGenesisWalletKeyExportFormat(string json)
     {
-        Json.GenesisWalletExportFormat genesisWallet =
-            JsonConvert.DeserializeObject<Json.GenesisWalletExportFormat>(json);
+        var genesisWallet = JsonConvert.DeserializeObject<Json.GenesisWalletExportFormat>(json);
         return From(genesisWallet);
     }
 
@@ -114,26 +103,16 @@ public class WalletAccount : ITransactionSigner
     /// <exception cref="WalletDataSourceException">Either a field is missing or an index or sign key could not be parsed.</exception>
     private static WalletAccount FromBrowserWalletKeyExportFormat(string json)
     {
-        Json.BrowserWalletExportFormat genesisWallet =
-            JsonConvert.DeserializeObject<Json.BrowserWalletExportFormat>(json);
+        var genesisWallet = JsonConvert.DeserializeObject<Json.BrowserWalletExportFormat>(json);
         return From(genesisWallet);
     }
 
     public ImmutableDictionary<
         AccountCredentialIndex,
         ImmutableDictionary<AccountKeyIndex, ISigner>
-    > GetSignerEntries()
-    {
-        return _signer.GetSignerEntries();
-    }
+    > GetSignerEntries() => this._signer.GetSignerEntries();
 
-    public byte GetSignatureCount()
-    {
-        return _signer.GetSignatureCount();
-    }
+    public byte GetSignatureCount() => this._signer.GetSignatureCount();
 
-    public AccountTransactionSignature Sign(byte[] data)
-    {
-        return _signer.Sign(data);
-    }
+    public AccountTransactionSignature Sign(byte[] data) => this._signer.Sign(data);
 }

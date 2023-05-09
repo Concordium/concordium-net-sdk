@@ -1,6 +1,6 @@
-﻿using Concordium.Sdk.Types;
-using FluentAssertions;
 using System;
+using Concordium.Sdk.Types;
+using FluentAssertions;
 using Xunit;
 
 namespace Concordium.Sdk.UnitTests.Types;
@@ -41,7 +41,7 @@ public class AccountNonceTests
     [Fact]
     public void GetIncrementedNonce_OnMaxValuedAccountNonce_ThrowsException()
     {
-        var nonce = AccountSequenceNumber.From(UInt64.MaxValue);
+        var nonce = AccountSequenceNumber.From(ulong.MaxValue);
         Action result = () => nonce.GetIncrementedNonce();
         result.Should().Throw<OverflowException>();
     }

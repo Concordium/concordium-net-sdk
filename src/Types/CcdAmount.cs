@@ -1,4 +1,4 @@
-﻿using Concordium.Sdk.Helpers;
+using Concordium.Sdk.Helpers;
 
 namespace Concordium.Sdk.Types;
 
@@ -14,53 +14,41 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     /// <summary>
     /// Conversion factor, 1_000_000 µCCD = 1 CCD.
     /// </summary>
-    public const UInt64 MicroCcdPerCcd = 1_000_000;
+    public const ulong MicroCcdPerCcd = 1_000_000;
 
     /// <summary>
     /// The amount in µCCD.
     /// </summary>
-    public readonly UInt64 Value;
+    public readonly ulong Value;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CcdAmount"/> class.
     /// </summary>
     /// <param name="microCcd">The amount in µCCD.</param>
-    private CcdAmount(UInt64 microCcd)
-    {
-        Value = microCcd;
-    }
+    private CcdAmount(ulong microCcd) => this.Value = microCcd;
 
     /// <summary>
     /// Get a formatted string representing the amount in µCCD.
     /// </summary>
-    public string GetFormattedMicroCcd()
-    {
-        return $"{Value}";
-    }
+    public string GetFormattedMicroCcd() => $"{this.Value}";
 
     /// <summary>
     /// Get a formatted string representing the amount in CCD.
     /// </summary>
-    public string GetFormattedCcd()
-    {
-        return $"{Value / (decimal)MicroCcdPerCcd}";
-    }
+    public string GetFormattedCcd() => $"{this.Value / (decimal)MicroCcdPerCcd}";
 
     /// <summary>
     /// Creates an instance from a µCCD amount represented as an integer.
     /// </summary>
     /// <param name="microCcd">µCCD amount represented as an integer.</param>
-    public static CcdAmount FromMicroCcd(UInt64 microCcd)
-    {
-        return new CcdAmount(microCcd);
-    }
+    public static CcdAmount FromMicroCcd(ulong microCcd) => new(microCcd);
 
     /// <summary>
     /// Creates an instance from a CCD amount represented by an integer.
     /// </summary>
     /// <param name="ccd">CCD amount represented by an integer.</param>
-    /// <exception cref="ArgumentException">The CCD amount in µCCD does not fit in <see cref="UInt64"/></exception>
-    public static CcdAmount FromCcd(UInt64 ccd)
+    /// <exception cref="ArgumentException">The CCD amount in µCCD does not fit in <see cref="ulong"/></exception>
+    public static CcdAmount FromCcd(ulong ccd)
     {
         try
         {
@@ -77,13 +65,13 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     /// <summary>
     /// Add CCD amounts.
     /// </summary>
-    /// <exception cref="ArgumentException">The result odoes not fit in <see cref="UInt64"/></exception>
+    /// <exception cref="ArgumentException">The result odoes not fit in <see cref="ulong"/></exception>
     public static CcdAmount operator +(CcdAmount a, CcdAmount b)
     {
         try
         {
-            UInt64 newAmount = checked(a.Value + b.Value);
-            return CcdAmount.FromMicroCcd(newAmount);
+            var newAmount = checked(a.Value + b.Value);
+            return FromMicroCcd(newAmount);
         }
         catch (OverflowException)
         {
@@ -96,13 +84,13 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     /// <summary>
     /// Subtract CCD amounts.
     /// </summary>
-    /// <exception cref="ArgumentException">The result does not fit in <see cref="UInt64"/></exception>
+    /// <exception cref="ArgumentException">The result does not fit in <see cref="ulong"/></exception>
     public static CcdAmount operator -(CcdAmount a, CcdAmount b)
     {
         try
         {
-            UInt64 newAmount = checked(a.Value - b.Value);
-            return CcdAmount.FromMicroCcd(newAmount);
+            var newAmount = checked(a.Value - b.Value);
+            return FromMicroCcd(newAmount);
         }
         catch (OverflowException)
         {
@@ -115,33 +103,15 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     /// <summary>
     /// Get the CCD amount in the binary format expected by the node.
     /// </summary>
-    public byte[] GetBytes()
-    {
-        return Serialization.GetBytes(this.Value);
-    }
+    public byte[] GetBytes() => Serialization.GetBytes(this.Value);
 
-    public bool Equals(CcdAmount other)
-    {
-        return Value == other.Value;
-    }
+    public bool Equals(CcdAmount other) => this.Value == other.Value;
 
-    public override bool Equals(Object? obj)
-    {
-        return obj is CcdAmount other && Equals(other);
-    }
+    public override bool Equals(object? obj) => obj is CcdAmount other && this.Equals(other);
 
-    public static bool operator ==(CcdAmount? left, CcdAmount? right)
-    {
-        return Equals(left, right);
-    }
+    public static bool operator ==(CcdAmount? left, CcdAmount? right) => Equals(left, right);
 
-    public static bool operator !=(CcdAmount? left, CcdAmount? right)
-    {
-        return !Equals(left, right);
-    }
+    public static bool operator !=(CcdAmount? left, CcdAmount? right) => !Equals(left, right);
 
-    public override int GetHashCode()
-    {
-        return Value.GetHashCode();
-    }
+    public override int GetHashCode() => this.Value.GetHashCode();
 }

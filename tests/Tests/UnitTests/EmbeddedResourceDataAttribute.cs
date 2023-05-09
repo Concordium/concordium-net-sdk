@@ -12,19 +12,16 @@ namespace Concordium.Sdk.UnitTests;
 /// </summary>
 public class EmbeddedResourceDataAttribute : DataAttribute
 {
-    public readonly string[] _args;
+    private readonly string[] _args;
 
-    public EmbeddedResourceDataAttribute(params string[] args)
-    {
-        _args = args;
-    }
+    public EmbeddedResourceDataAttribute(params string[] args) => this._args = args;
 
     public override IEnumerable<object[]> GetData(MethodInfo testMethod)
     {
-        var result = new object[_args.Length];
-        for (var index = 0; index < _args.Length; index++)
+        var result = new object[this._args.Length];
+        for (var index = 0; index < this._args.Length; index++)
         {
-            result[index] = ReadManifestData(_args[index]);
+            result[index] = ReadManifestData(this._args[index]);
         }
         return new[] { result };
     }

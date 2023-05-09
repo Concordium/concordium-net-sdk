@@ -7,29 +7,17 @@ namespace Concordium.Sdk.Transactions;
 /// </summary>
 public struct PayloadSize
 {
-    public const UInt32 BytesLength = sizeof(UInt32);
-    private UInt32 _value;
+    public const uint BytesLength = sizeof(uint);
+    private readonly uint _value;
 
-    public PayloadSize(UInt32 value)
-    {
-        _value = value;
-    }
+    public PayloadSize(uint value) => this._value = value;
 
-    public static implicit operator PayloadSize(UInt32 value)
-    {
-        return new PayloadSize(value);
-    }
+    public static implicit operator PayloadSize(uint value) => new(value);
 
-    public static implicit operator UInt32(PayloadSize byteIndex)
-    {
-        return byteIndex._value;
-    }
+    public static implicit operator uint(PayloadSize byteIndex) => byteIndex._value;
 
     /// <summary>
     /// Get the payload size in the binary format expected by the node.
     /// </summary>
-    public byte[] GetBytes()
-    {
-        return Serialization.GetBytes(_value);
-    }
+    public byte[] GetBytes() => Serialization.GetBytes(this._value);
 }

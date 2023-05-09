@@ -1,4 +1,5 @@
 using Concordium.Sdk.Helpers;
+using System.Globalization;
 
 namespace Concordium.Sdk.Types;
 
@@ -9,7 +10,7 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public readonly struct Expiry : IEquatable<Expiry>
 {
-    public const int BytesLength = sizeof(UInt64);
+    public const int BytesLength = sizeof(ulong);
 
     /// <summary>
     /// Time at which the transaction expires.
@@ -20,43 +21,34 @@ public readonly struct Expiry : IEquatable<Expiry>
     /// Initializes a new instance of the <see cref="Expiry"/> class.
     /// </summary>
     /// <param name="timestamp">Time at which the transaction expires.</param>
-    private Expiry(DateTimeOffset timestamp)
-    {
-        _timestamp = timestamp;
-    }
+    private Expiry(DateTimeOffset timestamp) => this._timestamp = timestamp;
 
     /// <summary>
     /// Creates a new expiration time that is <paramref name="minutes"/> ahead of the current system time.
     /// </summary>
     /// <param name="minutes">An expiration time specified by the number of minutes from the current system time.</param>
-    public static Expiry AtMinutesFromNow(UInt64 minutes)
-    {
-        return Expiry.From(Now().AddMinutes(minutes));
-    }
+    public static Expiry AtMinutesFromNow(ulong minutes) => From(Now().AddMinutes(minutes));
 
     /// <summary>
     /// Creates a new expiration time that is <paramref name="seconds"/> from the current system time.
     /// </summary>
     /// <param name="seconds">An expiration time specified by the number of seconds from the current system time.</param>
-    public static Expiry AtSecondsFromNow(UInt64 seconds)
-    {
-        return Expiry.From(Now().AddSeconds(seconds));
-    }
+    public static Expiry AtSecondsFromNow(ulong seconds) => From(Now().AddSeconds(seconds));
 
     /// <summary>
     /// Creates an instance from a expiration time represented by the elapsed number of seconds since the UNIX epoch.
     /// </summary>
     /// <param name="secondsSinceEpoch">Expiration time represented by the elapsed seconds since the UNIX epoch.</param>
-    public static Expiry From(UInt64 secondsSinceEpoch)
+    public static Expiry From(ulong secondsSinceEpoch)
     {
         // We check due to the type of FromUnixTimeSeconds.
-        if (secondsSinceEpoch > Int64.MaxValue)
+        if (secondsSinceEpoch > long.MaxValue)
         {
             throw new ArgumentOutOfRangeException(
-                "UInt64 timestamp value exceeds maximum value of Int64."
+                $"The supplied UInt64 timestamp has a value of {secondsSinceEpoch} exceeding the maximum value of Int64."
             );
         }
-        return new Expiry(DateTimeOffset.FromUnixTimeSeconds((Int64)secondsSinceEpoch));
+        return new Expiry(DateTimeOffset.FromUnixTimeSeconds((long)secondsSinceEpoch));
     }
 
     /// <summary>
@@ -78,106 +70,69 @@ public readonly struct Expiry : IEquatable<Expiry>
     /// <summary>
     /// Creates an instance from a <see cref="DateTime"/>.
     /// </summary>
-    public static Expiry From(DateTime date)
-    {
-        return new Expiry(new DateTimeOffset(date));
-    }
+    public static Expiry From(DateTime date) => new(new DateTimeOffset(date));
 
     /// <summary>
     /// Creates an instance from a <see cref="DateTimeOffset"/>.
     /// </summary>
-    public static Expiry From(DateTimeOffset timestamp)
-    {
-        return new Expiry(timestamp);
-    }
+    public static Expiry From(DateTimeOffset timestamp) => new(timestamp);
 
     /// <summary>
     /// Get the expiration time represented by the elapsed number of seconds since
     /// the UNIX epoch.
     /// </summary>
-    public UInt64 GetValue()
-    {
-        return (UInt64)_timestamp.ToUnixTimeSeconds();
-    }
+    public ulong GetValue() => (ulong)this._timestamp.ToUnixTimeSeconds();
 
     /// <summary>
     /// Get the expiration time represented by the elapsed number of seconds since
     /// the UNIX epoch written as a 64-bit integer in big-endian format.
     /// </summary>
-    public byte[] GetBytes()
-    {
-        return Serialization.GetBytes(this.GetValue());
-    }
+    public byte[] GetBytes() => Serialization.GetBytes(this.GetValue());
 
     /// <summary>
     /// Get a string representation of the date and time in the calendar used by the current culture.
     /// </summary>
-    public override string ToString()
-    {
-        return _timestamp.ToString();
-    }
+    public override string ToString() => this._timestamp.ToString(CultureInfo.InvariantCulture);
 
     /// <summary>
     /// Converts the expiration time to its corresponding protocol buffer message instance.
     ///
-    /// This can be used as the input for class methods of <see cref="Concordium.Sdk.Client.RawClient"/>.
+    /// This can be used as the input for class methods of <see cref="Client.RawClient"/>.
     /// </summary>
-    public Concordium.Grpc.V2.TransactionTime ToProto()
-    {
-        return new Concordium.Grpc.V2.TransactionTime()
-        {
-            Value = (UInt64)_timestamp.ToUnixTimeSeconds()
-        };
-    }
+    public Grpc.V2.TransactionTime ToProto() =>
+        new() { Value = (ulong)this._timestamp.ToUnixTimeSeconds() };
 
-    public bool Equals(Expiry expiry)
-    {
-        return _timestamp.EqualsExact(expiry._timestamp);
-    }
+    public bool Equals(Expiry other) => this._timestamp.EqualsExact(other._timestamp);
 
     public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(null, obj))
+        if (obj is null)
+        {
             return false;
-        if (obj.GetType() != GetType())
+        }
+
+        if (obj.GetType() != this.GetType())
+        {
             return false;
+        }
 
         var other = (Expiry)obj;
-        return Equals(other);
+        return this.Equals(other);
     }
 
-    public override int GetHashCode()
-    {
-        return _timestamp.GetHashCode();
-    }
+    public override int GetHashCode() => this._timestamp.GetHashCode();
 
-    public static bool operator ==(Expiry? left, Expiry? right)
-    {
-        return Equals(left, right);
-    }
+    public static bool operator ==(Expiry? left, Expiry? right) => Equals(left, right);
 
-    public static bool operator !=(Expiry? left, Expiry? right)
-    {
-        return !Equals(left, right);
-    }
+    public static bool operator !=(Expiry? left, Expiry? right) => !Equals(left, right);
 
-    public static bool operator <(Expiry left, Expiry right)
-    {
-        return left._timestamp < right._timestamp;
-    }
+    public static bool operator <(Expiry left, Expiry right) => left._timestamp < right._timestamp;
 
-    public static bool operator >(Expiry left, Expiry right)
-    {
-        return left._timestamp > right._timestamp;
-    }
+    public static bool operator >(Expiry left, Expiry right) => left._timestamp > right._timestamp;
 
-    public static bool operator <=(Expiry left, Expiry right)
-    {
-        return left._timestamp <= right._timestamp;
-    }
+    public static bool operator <=(Expiry left, Expiry right) =>
+        left._timestamp <= right._timestamp;
 
-    public static bool operator >=(Expiry left, Expiry right)
-    {
-        return left._timestamp >= right._timestamp;
-    }
+    public static bool operator >=(Expiry left, Expiry right) =>
+        left._timestamp >= right._timestamp;
 }

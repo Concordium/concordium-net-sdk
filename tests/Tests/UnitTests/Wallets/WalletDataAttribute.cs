@@ -11,9 +11,9 @@ namespace Concordium.Sdk.UnitTests;
 /// </summary>
 public class WalletDataAttribute : EmbeddedResourceDataAttribute
 {
-    private byte _keyIndex;
-    private byte _credentialIndex;
-    private string _key;
+    private readonly byte _keyIndex;
+    private readonly byte _credentialIndex;
+    private readonly string _key;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="WalletDataAttribute"/> class.
@@ -30,22 +30,22 @@ public class WalletDataAttribute : EmbeddedResourceDataAttribute
     )
         : base(new string[] { walletFilePath })
     {
-        _credentialIndex = credentialIndex;
-        _keyIndex = keyIndex;
-        _key = expectedKey;
+        this._credentialIndex = credentialIndex;
+        this._keyIndex = keyIndex;
+        this._key = expectedKey;
     }
 
     public override IEnumerable<object[]> GetData(MethodInfo testMethod)
     {
         var result = new object[4];
         // Wallet file data.
-        result[0] = ReadManifestData(_args[0]);
+        result[0] = ReadManifestData(this._args[0]);
         // A credential index.
-        result[1] = _credentialIndex;
+        result[1] = this._credentialIndex;
         // A key index.
-        result[2] = _keyIndex;
+        result[2] = this._keyIndex;
         // A sign key.
-        result[3] = _key;
+        result[3] = this._key;
         return new[] { result };
     }
 }

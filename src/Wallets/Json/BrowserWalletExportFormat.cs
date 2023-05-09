@@ -10,7 +10,7 @@ namespace Concordium.Sdk.Wallets.Json;
 /// browser wallet key export format.
 ///
 /// Such can be parsed into an instance of this class using
-/// <see cref="Newtonsoft.Json.JsonConvert"/>.
+/// <see cref="JsonConvert"/>.
 /// </summary>
 internal record BrowserWalletExportFormat : IWalletDataSource
 {
@@ -30,7 +30,7 @@ internal record BrowserWalletExportFormat : IWalletDataSource
     {
         try
         {
-            return AccountAddress.From(value.address);
+            return AccountAddress.From(this.value.address);
         }
         catch (Exception e)
         {
@@ -45,7 +45,7 @@ internal record BrowserWalletExportFormat : IWalletDataSource
     {
         try
         {
-            return value.accountKeys.TryGetSignKeys();
+            return this.value.accountKeys.TryGetSignKeys();
         }
         catch (Exception e)
         {

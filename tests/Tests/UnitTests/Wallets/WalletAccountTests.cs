@@ -1,8 +1,6 @@
-using Concordium.Sdk.Types;
-using Concordium.Sdk.Wallets;
-using Concordium.Sdk.Crypto;
 using System;
-using System.Collections.Immutable;
+using Concordium.Sdk.Crypto;
+using Concordium.Sdk.Wallets;
 using FluentAssertions;
 using Xunit;
 
@@ -11,25 +9,25 @@ namespace Concordium.Sdk.UnitTests.Transactions;
 public class WalletAccountTests
 {
     [Theory]
-    [WalletDataAttribute(
+    [WalletData(
         "Concordium.Sdk.Tests/UnitTests/Wallets/Data/GenesisWalletKeyExportFormatValid.json",
         0,
         0,
         "443c20439711361b6870c1679be33860d10cf7cded240e4a567e31ec3a56ecf5"
     )]
-    [WalletDataAttribute(
+    [WalletData(
         "Concordium.Sdk.Tests/UnitTests/Wallets/Data/GenesisWalletKeyExportFormatValidNonZeroIndices.json",
         17,
         37,
         "443c20439711361b6870c1679be33860d10cf7cded240e4a567e31ec3a56ecf5"
     )]
-    [WalletDataAttribute(
+    [WalletData(
         "Concordium.Sdk.Tests/UnitTests/Wallets/Data/BrowserWalletKeyExportFormatValid.json",
         0,
         0,
         "56f60de843790c308dac2d59a5eec9f6b1649513f827e5a13d7038accfe31784"
     )]
-    [WalletDataAttribute(
+    [WalletData(
         "Concordium.Sdk.Tests/UnitTests/Wallets/Data/BrowserWalletKeyExportFormatValidNonZeroIndices.json",
         17,
         37,
@@ -42,19 +40,17 @@ public class WalletAccountTests
         string expectedKey
     )
     {
-        WalletAccount wallet = WalletAccount.FromWalletKeyExportFormat(walletJson);
+        var wallet = WalletAccount.FromWalletKeyExportFormat(walletJson);
 
         // Get the sign key at the specified account credential index, key index pair.
-        ImmutableDictionary<AccountKeyIndex, ISigner>? keys;
-        wallet.GetSignerEntries().TryGetValue(credIndex, out keys);
+        wallet.GetSignerEntries().TryGetValue(credIndex, out var keys);
 
         if (keys == null)
         {
             throw new ArgumentException($"No sign keys with account credential index {credIndex}.");
         }
 
-        ISigner? key;
-        keys.TryGetValue(keyIndex, out key);
+        keys.TryGetValue(keyIndex, out var key);
 
         if (key == null)
         {
@@ -66,11 +62,11 @@ public class WalletAccountTests
         if (key.GetType() != typeof(Ed25519SignKey))
         {
             throw new ArgumentException(
-                $"Sign key should be of type {typeof(Ed25519SignKey).ToString()}, but got {key.GetType().ToString()} instead."
+                $"Sign key should be of type {typeof(Ed25519SignKey)}, but got {key.GetType()} instead."
             );
         }
 
-        Ed25519SignKey signKey = (Ed25519SignKey)key;
+        var signKey = (Ed25519SignKey)key;
 
         key.ToString().Should().BeEquivalentTo(expectedKey);
         wallet.GetSignerEntries().Count.Should().Be(1);
