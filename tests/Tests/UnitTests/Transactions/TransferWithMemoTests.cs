@@ -4,7 +4,7 @@ using Concordium.Sdk.Types;
 using FluentAssertions;
 using Xunit;
 
-namespace Concordium.Sdk.UnitTests.Transactions;
+namespace Concordium.Sdk.Tests.UnitTests.Transactions;
 
 public class SimpleTransferWithMemoPayloadTests
 {
@@ -92,11 +92,11 @@ public class SimpleTransferWithMemoPayloadTests
 
         // Prepare the transfer.
         var preparedTransfer =
-            TransactionTestHelpers<TransferWithMemo>.CreatePreparedAccountTransaction(transfer);
+            TransactionTestHelpers.CreatePreparedAccountTransaction(transfer);
 
         // Sign the transfer.
         var signedTransfer =
-            TransactionTestHelpers<TransferWithMemo>.CreateSignedTransaction(preparedTransfer);
+            TransactionTestHelpers.CreateSignedTransaction(preparedTransfer);
 
         // Create the expected signature. It was generated using the corresponding method in the Concordium Rust SDK.
         var expectedSignature00 = Convert.FromHexString(
@@ -109,14 +109,14 @@ public class SimpleTransferWithMemoPayloadTests
             "ab0b927572244f85e45cef55757dc27810f2aa041b0298e3acad26df5eabf09192b9c2fcfb0f5dbfcee4b5a376de5a5b1f86209ead70917fa66e3bd84c9a5a07"
         );
 
-        var expectedSignature = TransactionTestHelpers<RegisterData>.FromExpectedSignatures(
+        var expectedSignature = TransactionTestHelpers.FromExpectedSignatures(
             expectedSignature00,
             expectedSignature01,
             expectedSignature11
         );
 
-        signedTransfer.Signature.signatureMap
+        signedTransfer.Signature.SignatureMap
             .Should()
-            .BeEquivalentTo(expectedSignature.signatureMap);
+            .BeEquivalentTo(expectedSignature.SignatureMap);
     }
 }

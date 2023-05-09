@@ -5,7 +5,7 @@ using FluentAssertions;
 using NBitcoin.DataEncoders;
 using Xunit;
 
-namespace Concordium.Sdk.UnitTests.Types;
+namespace Concordium.Sdk.Tests.UnitTests.Types;
 
 public class AccountAddressTests
 {

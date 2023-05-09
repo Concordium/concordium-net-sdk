@@ -4,7 +4,7 @@ using System.IO;
 using System.Reflection;
 using Xunit.Sdk;
 
-namespace Concordium.Sdk.UnitTests;
+namespace Concordium.Sdk.Tests.UnitTests;
 
 /// <summary>
 /// <see cref="DataAttribute"/> used to specify data captured from resources embedded
@@ -12,16 +12,16 @@ namespace Concordium.Sdk.UnitTests;
 /// </summary>
 public class EmbeddedResourceDataAttribute : DataAttribute
 {
-    private readonly string[] _args;
+    public string[] Args { get; init; }
 
-    public EmbeddedResourceDataAttribute(params string[] args) => this._args = args;
+    public EmbeddedResourceDataAttribute(params string[] args) => this.Args = args;
 
     public override IEnumerable<object[]> GetData(MethodInfo testMethod)
     {
-        var result = new object[this._args.Length];
-        for (var index = 0; index < this._args.Length; index++)
+        var result = new object[this.Args.Length];
+        for (var index = 0; index < this.Args.Length; index++)
         {
-            result[index] = ReadManifestData(this._args[index]);
+            result[index] = ReadManifestData(this.Args[index]);
         }
         return new[] { result };
     }

@@ -4,7 +4,7 @@ using Concordium.Sdk.Wallets;
 using FluentAssertions;
 using Xunit;
 
-namespace Concordium.Sdk.UnitTests.Transactions;
+namespace Concordium.Sdk.Tests.UnitTests.Wallets;
 
 public class WalletAccountTests
 {
@@ -65,8 +65,6 @@ public class WalletAccountTests
                 $"Sign key should be of type {typeof(Ed25519SignKey)}, but got {key.GetType()} instead."
             );
         }
-
-        var signKey = (Ed25519SignKey)key;
 
         key.ToString().Should().BeEquivalentTo(expectedKey);
         wallet.GetSignerEntries().Count.Should().Be(1);

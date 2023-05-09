@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Concordium.Sdk.UnitTests;
+namespace Concordium.Sdk.Tests.UnitTests.Wallets;
 
 /// <summary>
 /// <see cref="EmbeddedResourceDataAttribute"/> used to specify data captured from
@@ -39,7 +39,7 @@ public class WalletDataAttribute : EmbeddedResourceDataAttribute
     {
         var result = new object[4];
         // Wallet file data.
-        result[0] = ReadManifestData(this._args[0]);
+        result[0] = ReadManifestData(this.Args[0]);
         // A credential index.
         result[1] = this._credentialIndex;
         // A key index.

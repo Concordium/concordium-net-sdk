@@ -4,7 +4,7 @@ using Concordium.Sdk.Crypto;
 using FluentAssertions;
 using Xunit;
 
-namespace Concordium.Sdk.UnitTests.SignKey;
+namespace Concordium.Sdk.Tests.UnitTests.SignKey;
 
 public class Ed25519SignKeyTests
 {
