@@ -1,7 +1,8 @@
 name: Build and publish documentation.
 
 on:
-    workflow_dispatch:
+    push:
+      branches: [ "gh-pages" ]
 
 jobs:
     publish-docs:
