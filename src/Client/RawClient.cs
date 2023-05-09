@@ -6,7 +6,7 @@ using Grpc.Net.Client;
 namespace Concordium.Sdk.Client;
 
 /// <summary>
-/// The "raw" GRPC client interface exposing wrappers that abstract away
+/// The "raw" gRPC client interface exposing wrappers that abstract away
 /// connection handling and parameters present in generated methods.
 /// </summary>
 public class RawClient : IDisposable
@@ -17,7 +17,7 @@ public class RawClient : IDisposable
     public ulong? Timeout { get; init; }
 
     /// <summary>
-    /// The "internal" client instance generated from the Concordium GRPC API V2 protocol buffer definition.
+    /// The "internal" client instance generated from the Concordium gRPC API V2 protocol buffer definition.
     /// </summary>
     public Queries.QueriesClient InternalClient { get; init; }
 
@@ -31,7 +31,13 @@ public class RawClient : IDisposable
     /// <summary>
     /// Initializes a new instance of the <see cref="RawClient"/> class.
     ///
-    /// Optionally use <paramref name="channelOptions"/> to specify connection settings.
+    /// Optionally use <paramref name="channelOptions"/> to specify connection settings
+    /// such as the retry policy or keepalive ping.
+    ///
+    /// By default the policy is not to retry if a connection could not be established.
+    ///
+    /// See https://github.com/grpc/grpc/blob/master/doc/keepalive.md for default values
+    /// for the keepalive ping parameters.
     /// </summary>
     /// <param name="endpoint">
     /// Endpoint of a resource where the V2 API is served. Any port specified in the URL is
@@ -500,7 +506,7 @@ public class RawClient : IDisposable
     /// <summary>
     /// Request that the node connect to the peer with the specified details.
     /// If the request succeeds, the peer is added to the peer-list of the node.
-    /// Otherwise a GRPC exception is thrown. Note that the peer may not be connected
+    /// Otherwise a gRPC exception is thrown. Note that the peer may not be connected
     /// instantly, in which case the call will still succeed.
     /// </summary>
     public Empty PeerConnect(IpSocketAddress input) =>
@@ -510,7 +516,7 @@ public class RawClient : IDisposable
     /// Spawn a task which requests that the node connect to the peer with
     /// the specified details.
     /// If the request succeeds, the peer is added to the peer-list of the node.
-    /// Otherwise a GRPC exception is thrown. Note that the peer may not be connected
+    /// Otherwise a gRPC exception is thrown. Note that the peer may not be connected
     /// instantly, in which case the call will still succeed.
     /// </summary>
     public Task<Empty> PeerConnectAsync(IpSocketAddress input) =>
@@ -519,7 +525,7 @@ public class RawClient : IDisposable
     /// <summary>
     /// Request the node to disconnect from the peer with the specified details.
     /// If the request was succesfully processed, the peer is removed from the peer-list.
-    /// Otherwise a GRPC exception is returned.
+    /// Otherwise a gRPC exception is returned.
     /// </summary>
     public Empty PeerDisconnect(IpSocketAddress input) =>
         this.InternalClient.PeerDisconnect(input, this.CreateCallOptions());
@@ -527,7 +533,7 @@ public class RawClient : IDisposable
     /// <summary>
     /// Spawn a task which requests the node to disconnect from the peer with the specified
     /// details. If the request was succesfully processed, the peer is removed from the peer-list.
-    /// Otherwise a GRPC exception is returned.
+    /// Otherwise a gRPC exception is returned.
     /// </summary>
     public Task<Empty> PeerDisconnectAsync(IpSocketAddress input) =>
         this.InternalClient.PeerDisconnectAsync(input, this.CreateCallOptions()).ResponseAsync;
@@ -547,25 +553,25 @@ public class RawClient : IDisposable
             .ResponseAsync;
 
     /// <summary>
-    /// Request the node to ban the specified peer. Throws a GRPC exception if the action failed.
+    /// Request the node to ban the specified peer. Throws a gRPC exception if the action failed.
     /// </summary>
     public Empty BanPeer(PeerToBan input) =>
         this.InternalClient.BanPeer(input, this.CreateCallOptions());
 
     /// <summary>
-    /// Spawn a task which requests the node to ban the specified peer. Throws a GRPC exception if the action failed.
+    /// Spawn a task which requests the node to ban the specified peer. Throws a gRPC exception if the action failed.
     /// </summary>
     public Task<Empty> BanPeerAsync(PeerToBan input) =>
         this.InternalClient.BanPeerAsync(input, this.CreateCallOptions()).ResponseAsync;
 
     /// <summary>
-    /// Request the node to unban the specified peer. Throws a GRPC error if the action failed.
+    /// Request the node to unban the specified peer. Throws a gRPC error if the action failed.
     /// </summary>
     public Empty UnbanPeer(BannedPeer input) =>
         this.InternalClient.UnbanPeer(input, this.CreateCallOptions());
 
     /// <summary>
-    /// Spawn a task which requests the node to unban the specified peer. Throws a GRPC error if the action failed.
+    /// Spawn a task which requests the node to unban the specified peer. Throws a gRPC error if the action failed.
     /// </summary>
     public Task<Empty> UnbanPeerAsync(BannedPeer input) =>
         this.InternalClient.UnbanPeerAsync(input, this.CreateCallOptions()).ResponseAsync;
@@ -573,7 +579,7 @@ public class RawClient : IDisposable
     /// <summary>
     /// Request the node to start dumping network packets into the specified file.
     /// This feature is enabled if the node was built with the <c>network_dump</c> feature.
-    /// Returns a GRPC error if the network dump failed to start.
+    /// Returns a gRPC error if the network dump failed to start.
     /// </summary>
     public Empty DumpStart(DumpRequest input) =>
         this.InternalClient.DumpStart(input, this.CreateCallOptions());
@@ -581,7 +587,7 @@ public class RawClient : IDisposable
     /// <summary>
     /// Spawn a task which requests the node to start dumping network packets into the specified file.
     /// This feature is enabled if the node was built with the <c>network_dump</c> feature.
-    /// Returns a GRPC error if the network dump failed to start.
+    /// Returns a gRPC error if the network dump failed to start.
     /// </summary>
     public Task<Empty> DumpStartAsync(DumpRequest input) =>
         this.InternalClient.DumpStartAsync(input, this.CreateCallOptions()).ResponseAsync;
@@ -589,14 +595,14 @@ public class RawClient : IDisposable
     /// <summary>
     /// Request the node to stop dumping packets, if configured to do so.
     /// This feature is enabled if the node was built with the @network_dump@ feature.
-    /// Throws a GRPC error if the network dump could not be stopped.
+    /// Throws a gRPC error if the network dump could not be stopped.
     /// </summary>
     public Empty DumpStop() => this.InternalClient.DumpStop(new Empty(), this.CreateCallOptions());
 
     /// <summary>
     /// Spawn a task which requests the node to stop dumping packets, if configured to do so.
     /// This feature is enabled if the node was built with the <c>network_dump</c> feature.
-    /// Throws a GRPC error if the network dump could not be stopped.
+    /// Throws a gRPC error if the network dump could not be stopped.
     /// </summary>
     public Task<Empty> DumpStopAsync() =>
         this.InternalClient.DumpStopAsync(new Empty(), this.CreateCallOptions()).ResponseAsync;

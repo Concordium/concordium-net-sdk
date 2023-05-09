@@ -7,7 +7,7 @@ namespace Concordium.Sdk.Examples.RawClient.GetAccountInfo;
 /// <summary>
 /// Example demonstrating the use of <see cref="Client.RawClient.GetAccountInfo"/>.
 ///
-/// <see cref="RawClient"/> wraps methods of the Concordium Node GRPC API V2 that were generated
+/// <see cref="RawClient"/> wraps methods of the Concordium Node gRPC API V2 that were generated
 /// from the protocol buffer schema by the <see cref="Grpc.Core"/> library. Creating an instance
 /// of the generated <see cref="AccountInfoRequest"/> class used for the method input is given below.
 /// </summary>

@@ -5,13 +5,13 @@
 
 # A .NET C# SDK for interacting with the Concordium blockchain
 
-This SDK is a .NET integration library which adds support for constructing and sending various transactions, as well as querying various aspects of the Concordium blockchain and its nodes. The SDK uses version 2 of the [Concordium Node GRPC API](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) to interact with Concordium nodes and in turn the Concordium blockchain, and serves as a wrapper for this API with added ergonomics. Note that this deprecates earlier versions of the SDK that use version 1 of the API, cfr. the [migration](#migration) section for more details.
+This SDK is a .NET integration library which adds support for constructing and sending various transactions, as well as querying various aspects of the Concordium blockchain and its nodes. The SDK uses version 2 of the [Concordium Node gRPC API](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) to interact with Concordium nodes and in turn the Concordium blockchain, and serves as a wrapper for this API with added ergonomics. Note that this deprecates earlier versions of the SDK that use version 1 of the API, cfr. the [migration](#migration) section for more details.
 
 Read ahead for a brief overview and some examples, or skip directly the [rendered documentation](#documentation). 
 
 ## Overview
 
-This SDK is currently under development and serves as a wrapper for the [Concordium GRPC API](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) with helpers for common tasks.
+This SDK is currently under development and serves as a wrapper for the [Concordium gRPC API](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) with helpers for common tasks.
 
 Implementation-wise, this is first and foremost accomplished by exposing "minimal" wrappers for classes generated directly from the protocol buffer definitions of the API using the [`Grpc.Tools`](https://www.nuget.org/packages/Grpc.Tools/) and [`Grpc.Net.Client`](https://www.nuget.org/packages/Grpc.Net.Client) packages. This generation step results in a "raw" client class which exposes a method corresponding to each service definition in the protocol buffer definition as well as a class corresponding to each type declared in the API. These are used at the interface of the raw client class. The wrappers are minimal in the sense that they are identical to those of the generated classes but devoid from the complexity of having to specify parameters for connection handling with each call. A drawback of this approach is that the generated classes are devoid of checks for any semantic invariants, which leaves much to be desired. See [Using the raw client API](#using-the-raw-client-api) for more information.
 
@@ -55,7 +55,7 @@ ConcordiumClient client = new ConcordiumClient(
   60 // Use a timeout of 60 seconds.
 );
 ```
-The [`ConcordiumClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html) constructor also optionally takes a [`GrpcChannelOptions`](https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Net.Client.GrpcChannelOptions.html) object which can be used to specify various settings specific to the underlying [`GrpcChannel`](https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Net.Client.GrpcChannel.html) instance which handles the communication with the node. This could be the retry policy of the client or whether the connection should be kept alive if no calls are made event for an extended period of time.
+The [`ConcordiumClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html) constructor also optionally takes a [`GrpcChannelOptions`](https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Net.Client.GrpcChannelOptions.html) object which can be used to specify various settings specific to the underlying [`GrpcChannel`](https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Net.Client.GrpcChannel.html) instance which handles the communication with the node. These could be settings that dictate the retry policy or specify parameters for the [keepalive ping](https://github.com/grpc/grpc/blob/master/doc/keepalive.md), which can be vital to the robustness of the application.
 
 ### Working with account transactions
 
@@ -101,7 +101,7 @@ As described in the [Account transactions](#working-with-account-transactions) s
 
 ### Using the client API
 
-A small subset of the raw methods generated from the Concordium Node GRPC API protocol buffer definitions have corresponding ergonomic wrappers that transparently map input and output types to and from their native equivalents as they are marshalled across the underlying generated API they wrap. One example of such is [`GetNextAccountSequenceNumber`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_GetNextAccountSequenceNumber_Concordium_Sdk_Types_AccountAddress_) which takes an [`AccountAddress`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountAddress.html) and returns a [`AccountSequenceNumber`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountSequenceNumber.html):
+A small subset of the raw methods generated from the Concordium Node gRPC API protocol buffer definitions have corresponding ergonomic wrappers that transparently map input and output types to and from their native equivalents as they are marshalled across the underlying generated API they wrap. One example of such is [`GetNextAccountSequenceNumber`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_GetNextAccountSequenceNumber_Concordium_Sdk_Types_AccountAddress_) which takes an [`AccountAddress`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountAddress.html) and returns a [`AccountSequenceNumber`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountSequenceNumber.html):
 
 ```csharp
 AccountAddress sender = AccountAddress.From("3jfAuU1c4kPE6GkpfYw4KcgvJngkgpFrD9SkDBgFW3aHmVB5r1");
@@ -110,9 +110,9 @@ AccountSequenceNumber sequenceNumber = client.GetNextAccountSequenceNumber(sende
 
 ### Using the raw client API
 
-The entire [Concordium Node GRPC API V2](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) is exposed through minimal wrappers of classes that model the interface types and services as they were generated from the protocol buffer schema definitions using the [`Grpc.Tools`](https://www.nuget.org/packages/Grpc.Tools/) and [`Grpc.Net.Client`](https://www.nuget.org/packages/Grpc.Net.Client) packages. These wrappers are defined in the [`RawClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html), instances of which can *only* be accessed through the [`Raw`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_Raw) field of [`ConcordiumClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html) instances. 
+The entire [Concordium Node gRPC API V2](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) is exposed through minimal wrappers of classes that model the interface types and services as they were generated from the protocol buffer schema definitions using the [`Grpc.Tools`](https://www.nuget.org/packages/Grpc.Tools/) and [`Grpc.Net.Client`](https://www.nuget.org/packages/Grpc.Net.Client) packages. These wrappers are defined in the [`RawClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html), instances of which can *only* be accessed through the [`Raw`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_Raw) field of [`ConcordiumClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html) instances. 
 
-As an example, the raw API call `GetAccountInfo` defined in the [Concordium Node GRPC API V2](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) takes as its input a GRPC message of the [AccountInfoRequest](https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfoRequest) kind and expects a GRPC response of the [AccountInfo](https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfo) kind. This method can be invoked through [`RawClient.GetAccountInfo`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html#Concordium_Sdk_Client_RawClient_GetAccountInfo_Concordium_Grpc_V2_AccountInfoRequest_) by supplying an instance of its corresponding generated type for [`AccountInfoRequest`](https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfoRequest). In the following, we wish to retrieve the information of an account in the last finalized block:
+As an example, the raw API call `GetAccountInfo` defined in the [Concordium Node gRPC API V2](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) takes as its input a gRPC message of the [AccountInfoRequest](https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfoRequest) kind and expects a gRPC response of the [AccountInfo](https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfo) kind. This method can be invoked through [`RawClient.GetAccountInfo`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html#Concordium_Sdk_Client_RawClient_GetAccountInfo_Concordium_Grpc_V2_AccountInfoRequest_) by supplying an instance of its corresponding generated type for [`AccountInfoRequest`](https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfoRequest). In the following, we wish to retrieve the information of an account in the last finalized block:
 
 ```csharp
 using Concordium.Grpc.V2;
@@ -134,7 +134,7 @@ AccountInfoRequest request = new AccountInfoRequest
 AccountInfo accountInfo = client.Raw.GetAccountInfo(request);
 ```
 
-Note that all generated types live in the [`Concordium.Grpc.V2`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Grpc.V2.html) namespace, and that there is a vast overlap between the names generated from the protocol buffer definitions file and the native types that live in the [`Concordium.Types`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.html) namespace. In the above we must therefore explicitly specify the namespace for [`Concordium.Sdk.Types.AccountAddress`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountAddress.html) to resolve this ambiguity. Furthermore we leverage the convenience method [`Concordium.Sdk.Types.AccountAddress.ToAccountIdentifierInput`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountAddress.html#Concordium_Sdk_Types_AccountAddress_ToAccountIdentifierInput) to easily convert the the base58 address into its corresponding raw format. Also note that the overall structure of the interface types are one-to-one with the [Concordium GRPC API V2](https://github.com/Concordium/concordium-grpc-api/tree/main/v2/concordium), so we refer to its documentation and the [Runnable examples](#runnable-examples) section for more information on working with the types of the raw API.
+Note that all generated types live in the [`Concordium.Grpc.V2`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Grpc.V2.html) namespace, and that there is a vast overlap between the names generated from the protocol buffer definitions file and the native types that live in the [`Concordium.Types`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.html) namespace. In the above we must therefore explicitly specify the namespace for [`Concordium.Sdk.Types.AccountAddress`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountAddress.html) to resolve this ambiguity. Furthermore we leverage the convenience method [`Concordium.Sdk.Types.AccountAddress.ToAccountIdentifierInput`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountAddress.html#Concordium_Sdk_Types_AccountAddress_ToAccountIdentifierInput) to easily convert the the base58 address into its corresponding raw format. Also note that the overall structure of the interface types are one-to-one with the [Concordium gRPC API V2](https://github.com/Concordium/concordium-grpc-api/tree/main/v2/concordium), so we refer to its documentation and the [Runnable examples](#runnable-examples) section for more information on working with the types of the raw API.
 
 ## Runnable examples
 
@@ -162,9 +162,9 @@ ERROR(S):
                     browser wallet key export format.
 
   -e, --endpoint    (Default: https://localhost/) URL representing the endpoint where the
-                    GRPC V2 API is served.
+                    gRPC V2 API is served.
 
-  -p, --port        (Default: 20000) Port at the endpoint where the GRPC V2 API is served.
+  -p, --port        (Default: 20000) Port at the endpoint where the gRPC V2 API is served.
 
   --help            Display this help screen.
 
@@ -189,7 +189,7 @@ Rendered documentation for this project is available [here](http://developer.con
 
 ## Migration
 
-This deprecates earlier versions of the Concordium .NET SDK that used version 1 of the Concordium Node GRPC API. In terms of semantics and the information carried in messages, the APIs are quite similar, so APIs of the older SDK versions have corresponding raw methods in this version. Note that in some cases endpoints in the version 1 API are "split" into several endpoints in the version 2 API to increase the granularity.
+This deprecates earlier versions of the Concordium .NET SDK that used version 1 of the Concordium Node gRPC API. In terms of semantics and the information carried in messages, the APIs are quite similar, so APIs of the older SDK versions have corresponding raw methods in this version. Note that in some cases endpoints in the version 1 API are "split" into several endpoints in the version 2 API to increase the granularity.
 
 Another major difference between this and the previous version of the SDK is that this version of the SDK currently does not support deploying contract modules with schemas.
 

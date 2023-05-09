@@ -12,19 +12,19 @@ namespace Concordium.Sdk.Examples.Common;
 public class ExampleOptions
 {
     /// <summary>
-    /// URL representing the endpoint where the GRPC V2 API is served.
+    /// URL representing the endpoint where the gRPC V2 API is served.
     /// </summary>
     private const string DefaultEndpoint = "https://localhost/";
 
     /// <summary>
-    /// Default port at the endpoint where the GRPC V2 API is served.
+    /// Default port at the endpoint where the gRPC V2 API is served.
     /// </summary>
     private const ushort DefaultPort = 20000;
 
     [Option(
         'e',
         "endpoint",
-        HelpText = "URL representing the endpoint where the GRPC V2 API is served.",
+        HelpText = "URL representing the endpoint where the gRPC V2 API is served.",
         Default = DefaultEndpoint
     )]
     public string Endpoint { get; set; } = DefaultEndpoint;
@@ -32,7 +32,7 @@ public class ExampleOptions
     [Option(
         'p',
         "port",
-        HelpText = "Port at the endpoint where the GRPC V2 API is served.",
+        HelpText = "Port at the endpoint where the gRPC V2 API is served.",
         Default = DefaultPort
     )]
     public ushort Port { get; set; } = DefaultPort;

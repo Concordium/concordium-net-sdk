@@ -6,7 +6,7 @@ using Grpc.Net.Client;
 namespace Concordium.Sdk.Client;
 
 /// <summary>
-/// A client for interacting with the Concordium GRPC API V2 exposed by nodes.
+/// A client for interacting with the Concordium gRPC API V2 exposed by nodes.
 /// </summary>
 public class ConcordiumClient : IDisposable
 {
@@ -18,7 +18,13 @@ public class ConcordiumClient : IDisposable
     /// <summary>
     /// Initializes a new instance of the <see cref="Client"/> class.
     ///
-    /// Optionally use <paramref name="channelOptions"/> to specify connection settings.
+    /// Optionally use <paramref name="channelOptions"/> to specify connection settings
+    /// such as the retry policy or keepalive ping.
+    ///
+    /// By default the policy is not to retry if a connection could not be established.
+    ///
+    /// See https://github.com/grpc/grpc/blob/master/doc/keepalive.md for default values
+    /// for the keepalive ping parameters.
     /// </summary>
     /// <param name="endpoint">
     /// Endpoint of a resource where the V2 API is served. Any port specified in the URL is
