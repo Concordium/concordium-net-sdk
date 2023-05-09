@@ -1,5 +1,5 @@
-using Concordium.Sdk.Types;
 using System.Security.Cryptography;
+using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;
 

@@ -12,7 +12,7 @@ public class ConcordiumClient : IDisposable
     /// <summary>
     /// The raw client.
     /// </summary>
-    public readonly RawClient Raw;
+    public RawClient Raw { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Client"/> class.
@@ -159,7 +159,19 @@ public class ConcordiumClient : IDisposable
         }
     }
 
-    public void Dispose() => this.Dispose(true);
+    public void Dispose()
+    {
+        this.Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    ~ConcordiumClient()
+    {
+        // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+        // This simply serves as a fallback for the GC in case that Dispose was not
+        // invoked.
+        this.Dispose(false);
+    }
 
     #endregion
 }

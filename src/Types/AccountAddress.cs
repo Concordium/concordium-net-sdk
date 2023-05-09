@@ -1,4 +1,4 @@
-﻿using Concordium.Sdk.Client;
+using Concordium.Sdk.Client;
 using Concordium.Sdk.Helpers;
 using NBitcoin.DataEncoders;
 

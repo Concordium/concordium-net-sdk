@@ -1,3 +1,4 @@
+using System.Globalization;
 using Concordium.Grpc.V2;
 using Grpc.Core;
 using Grpc.Net.Client;
@@ -13,12 +14,12 @@ public class RawClient : IDisposable
     /// <summary>
     /// The running configuration of the client.
     /// </summary>
-    public readonly ClientConfiguration Config;
+    public ClientConfiguration Config { get; init; }
 
     /// <summary>
     /// The "internal" client instance generated from the Concordium GRPC API V2 protocol buffer definition.
     /// </summary>
-    public readonly Queries.QueriesClient InternalClient;
+    public Queries.QueriesClient InternalClient { get; init; }
 
     /// <summary>
     /// The channel on which the client communicates with the Concordium node.
@@ -57,15 +58,20 @@ public class RawClient : IDisposable
                     : ChannelCredentials.Insecure
         };
 
-        GrpcChannel GrpcChannel = GrpcChannel.ForAddress(
-            endpoint.Scheme + "://" + endpoint.Host + ":" + port.ToString() + endpoint.AbsolutePath,
+        var grpcChannel = GrpcChannel.ForAddress(
+            endpoint.Scheme
+                + "://"
+                + endpoint.Host
+                + ":"
+                + port.ToString(CultureInfo.InvariantCulture)
+                + endpoint.AbsolutePath,
             options
         );
 
         this.Config = configuration;
-        var InternalClient = new Queries.QueriesClient(GrpcChannel);
-        this.InternalClient = InternalClient;
-        this._grpcChannel = GrpcChannel;
+        var internalClient = new Queries.QueriesClient(grpcChannel);
+        this.InternalClient = internalClient;
+        this._grpcChannel = grpcChannel;
     }
 
     /// <summary>
@@ -698,7 +704,19 @@ public class RawClient : IDisposable
         }
     }
 
-    public void Dispose() => this.Dispose(true);
+    public void Dispose()
+    {
+        this.Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    ~RawClient()
+    {
+        // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+        // This simply serves as a fallback for the GC in case that Dispose was not
+        // invoked.
+        this.Dispose(false);
+    }
 
     #endregion
 }

@@ -1,5 +1,5 @@
-using Concordium.Sdk.Helpers;
 using System.Globalization;
+using Concordium.Sdk.Helpers;
 
 namespace Concordium.Sdk.Types;
 

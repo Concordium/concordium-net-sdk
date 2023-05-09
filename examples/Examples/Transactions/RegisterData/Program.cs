@@ -1,4 +1,4 @@
-﻿using Concordium.Sdk.Client;
+using Concordium.Sdk.Client;
 using Concordium.Sdk.Examples.Common;
 using Concordium.Sdk.Types;
 using Concordium.Sdk.Wallets;
