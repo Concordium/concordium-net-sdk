@@ -102,16 +102,23 @@ public class ConcordiumClient : IDisposable
     /// committed to blocks and eventually finalized.
     /// </summary>
     /// <param name="accountAddress">An address of the account to get the next sequence number of.</param>
-    /// <returns>The best guess of the next sequence number for the supplied account.</returns>
+    /// <returns>
+    /// A tuple containing the best guess of the next sequence number for the supplied account and a boolean
+    /// indicating whether all transactions associated with the account are finalized. If the latter is the
+    /// case, then the sequence number is reliable.
+    /// </returns>
     /// <exception cref="RpcException">The call failed.</exception>
-    public Concordium.Sdk.Types.AccountSequenceNumber GetNextAccountSequenceNumber(
+    public (Concordium.Sdk.Types.AccountSequenceNumber, bool) GetNextAccountSequenceNumber(
         Concordium.Sdk.Types.AccountAddress accountAddress
     )
     {
         NextAccountSequenceNumber next = Raw.GetNextAccountSequenceNumber(accountAddress.ToProto());
 
         // Return the sequence number as a "native" SDK type.
-        return Concordium.Sdk.Types.AccountSequenceNumber.From(next.SequenceNumber.Value);
+        return (
+            Concordium.Sdk.Types.AccountSequenceNumber.From(next.SequenceNumber.Value),
+            next.AllFinal
+        );
     }
 
     /// <summary>
@@ -127,18 +134,26 @@ public class ConcordiumClient : IDisposable
     /// committed to blocks and eventually finalized.
     /// </summary>
     /// <param name="accountAddress">An address of the account to get the next sequence number of.</param>
-    /// <returns>A task which returns the best guess of the next sequence number for the supplied account.</returns>
+    /// <returns>
+    /// A task which returns a tuple containing the best guess of the next sequence number for the supplied
+    /// account and a boolean indicating whether all transactions associated with the account are finalized.
+    /// If the latter is the case, then the sequence number is reliable.
+    /// </returns>
     /// <exception cref="RpcException">The call failed.</exception>
-    public Task<Concordium.Sdk.Types.AccountSequenceNumber> GetNextAccountSequenceNumberAsync(
-        Concordium.Sdk.Types.AccountAddress accountAddress
-    )
+    public Task<(
+        Concordium.Sdk.Types.AccountSequenceNumber,
+        bool
+    )> GetNextAccountSequenceNumberAsync(Concordium.Sdk.Types.AccountAddress accountAddress)
     {
         return Raw.GetNextAccountSequenceNumberAsync(accountAddress.ToProto())
             // Continuation returning the "native" SDK type.
             .ContinueWith(
                 next =>
-                    Concordium.Sdk.Types.AccountSequenceNumber.From(
-                        next.Result.SequenceNumber.Value
+                    (
+                        Concordium.Sdk.Types.AccountSequenceNumber.From(
+                            next.Result.SequenceNumber.Value
+                        ),
+                        next.Result.AllFinal
                     )
             );
     }

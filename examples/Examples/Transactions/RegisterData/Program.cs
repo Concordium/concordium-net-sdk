@@ -31,14 +31,13 @@ class Program
             60 // Use a timeout of 60 seconds.
         );
 
-        // Create the register data transaction.
-        // Encode a singleton string as CBOR and use that as the data to register.
+        // Encode a string as CBOR and use that as the data to register.
         OnChainData data = OnChainData.FromTextEncodeAsCBOR(options.Data);
         RegisterData transferPayload = new RegisterData(data);
 
         // Prepare the transaction for signing.
         AccountAddress sender = account.AccountAddress;
-        AccountSequenceNumber nonce = client.GetNextAccountSequenceNumber(sender);
+        AccountSequenceNumber nonce = client.GetNextAccountSequenceNumber(sender).Item1;
         Expiry expiry = Expiry.AtMinutesFromNow(30);
         PreparedAccountTransaction<RegisterData> preparedTransfer = transferPayload.Prepare(
             sender,

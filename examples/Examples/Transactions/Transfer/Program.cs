@@ -38,7 +38,7 @@ class Program
 
         // Prepare the transaction for signing.
         AccountAddress sender = account.AccountAddress;
-        AccountSequenceNumber nonce = client.GetNextAccountSequenceNumber(sender);
+        AccountSequenceNumber nonce = client.GetNextAccountSequenceNumber(sender).Item1;
         Expiry expiry = Expiry.AtMinutesFromNow(30);
         PreparedAccountTransaction<Transfer> preparedTransfer = transferPayload.Prepare(
             sender,

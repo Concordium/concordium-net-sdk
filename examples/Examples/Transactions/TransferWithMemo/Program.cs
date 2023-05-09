@@ -34,13 +34,13 @@ class Program
         // Create the transfer transaction.
         CcdAmount amount = CcdAmount.FromCcd(options.Amount);
         AccountAddress receiver = AccountAddress.From(options.Receiver);
-        // Encode a singleton string as CBOR and use that for the memo data.
+        // Encode a string as CBOR and use that as the memo data.
         OnChainData memo = OnChainData.FromTextEncodeAsCBOR(options.Memo);
         TransferWithMemo transferPayload = new TransferWithMemo(amount, receiver, memo);
 
         // Prepare the transaction for signing.
         AccountAddress sender = account.AccountAddress;
-        AccountSequenceNumber nonce = client.GetNextAccountSequenceNumber(sender);
+        AccountSequenceNumber nonce = client.GetNextAccountSequenceNumber(sender).Item1;
         Expiry expiry = Expiry.AtMinutesFromNow(30);
         PreparedAccountTransaction<TransferWithMemo> preparedTransfer = transferPayload.Prepare(
             sender,

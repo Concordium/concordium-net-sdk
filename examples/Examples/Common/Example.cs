@@ -29,8 +29,6 @@ public static class Example
     public static void Run<T>(string[] args, Action<T> exampleCallback)
         where T : ExampleOptions
     {
-        /// This is a convenience methos which leverages to other overload
-        /// to support callbacks of type <see cref="Action{T}"/>.
         async Task exampleCallbackTask(T options)
         {
             // Await to squelch compiler warning.
