@@ -1,0 +1,3902 @@
+{
+  "homepages": [],
+  "source_base_path": "/home/runner/work/concordium-net-sdk/concordium-net-sdk/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AbsoluteBlockHeight.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AbsoluteBlockHeight.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccessStructure.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccessStructure.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountAddress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountAddress.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountCreationDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountCreationDetails.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountCredential.CredentialValuesOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountCredential.CredentialValuesOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountCredential.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountCredential.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountIdentifierInput.AccountIdentifierInputOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountIdentifierInput.AccountIdentifierInputOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountIdentifierInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountIdentifierInput.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountIndex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountInfoRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountInfoRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountSignatureMap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountSignatureMap.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountStakingInfo.StakingInfoOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountStakingInfo.StakingInfoOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountStakingInfo.Types.Baker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountStakingInfo.Types.Baker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountStakingInfo.Types.Delegator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountStakingInfo.Types.Delegator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountStakingInfo.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountStakingInfo.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountStakingInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountStakingInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountThreshold.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountThreshold.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransaction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransaction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionDetails.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.EffectOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.EffectOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.AccountTransfer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.AccountTransfer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.BakerConfigured.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.BakerConfigured.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.BakerStakeUpdated.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.BakerStakeUpdated.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.ContractUpdateIssued.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.ContractUpdateIssued.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.CredentialsUpdated.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.CredentialsUpdated.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.DelegationConfigured.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.DelegationConfigured.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.EncryptedAmountTransferred.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.EncryptedAmountTransferred.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.None.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.None.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.TransferredToPublic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.TransferredToPublic.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.TransferredWithSchedule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.TransferredWithSchedule.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionEffects.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionHeader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionHeader.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionPayload.PayloadOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionPayload.PayloadOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionPayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionSignHash.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionSignHash.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountTransactionSignature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountTransactionSignature.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountVerifyKey.KeyOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountVerifyKey.KeyOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AccountVerifyKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AccountVerifyKey.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Address.TypeOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Address.TypeOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Address.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Address.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Amount.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Amount.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AmountFraction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AmountFraction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AncestorsRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AncestorsRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ArInfo.Types.ArIdentity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ArInfo.Types.ArIdentity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ArInfo.Types.ArPublicKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ArInfo.Types.ArPublicKey.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ArInfo.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ArInfo.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ArInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ArInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ArThreshold.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ArThreshold.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ArrivedBlockInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ArrivedBlockInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AuthorizationsV0.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AuthorizationsV0.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.AuthorizationsV1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.AuthorizationsV1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerAggregationVerifyKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerAggregationVerifyKey.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerElectionVerifyKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerElectionVerifyKey.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerEvent.EventOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerEvent.EventOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.BakerAdded.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.BakerAdded.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.BakerRestakeEarningsUpdated.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.BakerRestakeEarningsUpdated.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.BakerSetBakingRewardCommission.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.BakerSetBakingRewardCommission.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.BakerSetFinalizationRewardCommission.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.BakerSetFinalizationRewardCommission.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.BakerSetMetadataUrl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.BakerSetMetadataUrl.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.BakerSetOpenStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.BakerSetOpenStatus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.BakerSetTransactionFeeCommission.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.BakerSetTransactionFeeCommission.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.BakerStakeDecreased.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.BakerStakeDecreased.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.BakerStakeIncreased.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.BakerStakeIncreased.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerId.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerKeysEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerKeysEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerPoolInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerPoolInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerSignatureVerifyKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerSignatureVerifyKey.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerStakeThreshold.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerStakeThreshold.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerStakeUpdatedData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerStakeUpdatedData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BannedPeer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BannedPeer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BannedPeers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BannedPeers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockFinalizationSummary.SummaryOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockFinalizationSummary.SummaryOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockFinalizationSummary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockFinalizationSummary.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockHash.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockHash.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockHashInput.BlockHashInputOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockHashInput.BlockHashInputOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockHashInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockHashInput.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockHeight.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockHeight.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockItem.BlockItemOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockItem.BlockItemOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockItem.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockItemStatus.StatusOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockItemStatus.StatusOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockItemStatus.Types.Committed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockItemStatus.Types.Committed.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockItemStatus.Types.Finalized.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockItemStatus.Types.Finalized.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockItemStatus.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockItemStatus.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockItemStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockItemStatus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockItemSummary.Types.TransactionIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockItemSummary.Types.TransactionIndex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockItemSummary.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockItemSummary.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockItemSummary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockItemSummary.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockItemSummaryInBlock.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockItemSummaryInBlock.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.EventOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.EventOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.AccountAmounts.Types.Entry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.AccountAmounts.Types.Entry.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.AccountAmounts.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.AccountAmounts.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.AccountAmounts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.AccountAmounts.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.BakingRewards.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.BakingRewards.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.BlockAccrueReward.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.BlockAccrueReward.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.BlockReward.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.BlockReward.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.FinalizationRewards.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.FinalizationRewards.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.Mint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.Mint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.PaydayAccountReward.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.PaydayAccountReward.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.PaydayFoundationReward.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.PaydayFoundationReward.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.PaydayPoolReward.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.PaydayPoolReward.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockSpecialEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlocksAtHeightRequest.BlocksAtHeightOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlocksAtHeightRequest.BlocksAtHeightOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlocksAtHeightRequest.Types.Absolute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlocksAtHeightRequest.Types.Absolute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlocksAtHeightRequest.Types.Relative.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlocksAtHeightRequest.Types.Relative.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlocksAtHeightRequest.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlocksAtHeightRequest.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlocksAtHeightRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlocksAtHeightRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlocksAtHeightResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlocksAtHeightResponse.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Branch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Branch.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.CapitalBound.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.CapitalBound.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ChainArData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ChainArData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ChainParameters.ParametersOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ChainParameters.ParametersOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ChainParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ChainParameters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ChainParametersV0.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ChainParametersV0.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ChainParametersV1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ChainParametersV1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ChainParametersV2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ChainParametersV2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.CommissionRanges.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.CommissionRanges.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.CommissionRates.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.CommissionRates.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Commitment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Commitment.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ConsensusInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ConsensusInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ConsensusParametersV1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ConsensusParametersV1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ContractAddress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ContractAddress.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ContractEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ContractEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ContractInitializedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ContractInitializedEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ContractStateV0.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ContractStateV0.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ContractTraceElement.ElementOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ContractTraceElement.ElementOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ContractTraceElement.Types.Interrupted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ContractTraceElement.Types.Interrupted.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ContractTraceElement.Types.Resumed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ContractTraceElement.Types.Resumed.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ContractTraceElement.Types.Transferred.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ContractTraceElement.Types.Transferred.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ContractTraceElement.Types.Upgraded.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ContractTraceElement.Types.Upgraded.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ContractTraceElement.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ContractTraceElement.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ContractTraceElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ContractTraceElement.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ContractVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ContractVersion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.CooldownParametersCpv1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.CooldownParametersCpv1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.CredentialCommitments.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.CredentialCommitments.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.CredentialDeployment.PayloadOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.CredentialDeployment.PayloadOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.CredentialDeployment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.CredentialDeployment.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.CredentialIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.CredentialIndex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.CredentialPublicKeys.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.CredentialPublicKeys.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.CredentialRegistrationId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.CredentialRegistrationId.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.CredentialType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.CredentialType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.CredentialsPerBlockLimit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.CredentialsPerBlockLimit.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.CryptographicParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.CryptographicParameters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.DelegationEvent.EventOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.DelegationEvent.EventOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.DelegationEvent.Types.DelegationSetDelegationTarget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.DelegationEvent.Types.DelegationSetDelegationTarget.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.DelegationEvent.Types.DelegationSetRestakeEarnings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.DelegationEvent.Types.DelegationSetRestakeEarnings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.DelegationEvent.Types.DelegationStakeDecreased.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.DelegationEvent.Types.DelegationStakeDecreased.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.DelegationEvent.Types.DelegationStakeIncreased.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.DelegationEvent.Types.DelegationStakeIncreased.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.DelegationEvent.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.DelegationEvent.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.DelegationEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.DelegationEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.DelegationTarget.TargetOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.DelegationTarget.TargetOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.DelegationTarget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.DelegationTarget.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.DelegatorId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.DelegatorId.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.DelegatorInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.DelegatorInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.DelegatorRewardPeriodInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.DelegatorRewardPeriodInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Description.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Description.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.DumpRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.DumpRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Duration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Duration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.DurationSeconds.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.DurationSeconds.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ElectionDifficulty.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ElectionDifficulty.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ElectionInfo.Types.Baker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ElectionInfo.Types.Baker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ElectionInfo.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ElectionInfo.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ElectionInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ElectionInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Empty.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Empty.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.EncryptedAmount.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.EncryptedAmount.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.EncryptedAmountRemovedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.EncryptedAmountRemovedEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.EncryptedBalance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.EncryptedBalance.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.EncryptedSelfAmountAddedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.EncryptedSelfAmountAddedEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.EncryptionKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.EncryptionKey.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Energy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Energy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Epoch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Epoch.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ExchangeRate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ExchangeRate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.FinalizationCommitteeParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.FinalizationCommitteeParameters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.FinalizationIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.FinalizationIndex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.FinalizationSummary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.FinalizationSummary.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.FinalizationSummaryParty.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.FinalizationSummaryParty.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.FinalizedBlockInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.FinalizedBlockInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.GasRewards.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.GasRewards.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.GasRewardsCpv2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.GasRewardsCpv2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.GenesisIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.GenesisIndex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.GetPoolDelegatorsRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.GetPoolDelegatorsRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.HigherLevelKeys.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.HigherLevelKeys.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.IdentityProviderIdentity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.IdentityProviderIdentity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InclusiveRangeAmountFraction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InclusiveRangeAmountFraction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InitContractPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InitContractPayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InitName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InitName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InitialCredentialValues.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InitialCredentialValues.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InstanceInfo.Types.V0.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InstanceInfo.Types.V0.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InstanceInfo.Types.V1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InstanceInfo.Types.V1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InstanceInfo.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InstanceInfo.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InstanceInfo.VersionOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InstanceInfo.VersionOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InstanceInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InstanceInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InstanceInfoRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InstanceInfoRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InstanceStateKVPair.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InstanceStateKVPair.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InstanceStateLookupRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InstanceStateLookupRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InstanceStateValueAtKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InstanceStateValueAtKey.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InstanceUpdatedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InstanceUpdatedEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InvokeInstanceRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InvokeInstanceRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InvokeInstanceResponse.ResultOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InvokeInstanceResponse.ResultOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InvokeInstanceResponse.Types.Failure.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InvokeInstanceResponse.Types.Failure.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InvokeInstanceResponse.Types.Success.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InvokeInstanceResponse.Types.Success.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InvokeInstanceResponse.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InvokeInstanceResponse.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.InvokeInstanceResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.InvokeInstanceResponse.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.IpAddress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.IpAddress.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.IpIdentity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.IpIdentity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.IpInfo.Types.IpCdiVerifyKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.IpInfo.Types.IpCdiVerifyKey.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.IpInfo.Types.IpVerifyKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.IpInfo.Types.IpVerifyKey.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.IpInfo.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.IpInfo.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.IpInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.IpInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.IpSocketAddress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.IpSocketAddress.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.LeadershipElectionNonce.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.LeadershipElectionNonce.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Level1Update.UpdateTypeOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Level1Update.UpdateTypeOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Level1Update.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Level1Update.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.LeverageFactor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.LeverageFactor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Memo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Memo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.MintDistributionCpv0.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.MintDistributionCpv0.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.MintDistributionCpv1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.MintDistributionCpv1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.MintRate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.MintRate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ModuleRef.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ModuleRef.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ModuleSourceRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ModuleSourceRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.NewEncryptedAmountEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.NewEncryptedAmountEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.NewRelease.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.NewRelease.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.NextAccountSequenceNumber.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.NextAccountSequenceNumber.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.NextUpdateSequenceNumbers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.NextUpdateSequenceNumbers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.NodeInfo.DetailsOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.NodeInfo.DetailsOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.ActiveBakerCommitteeInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.ActiveBakerCommitteeInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.ActiveFinalizerCommitteeInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.ActiveFinalizerCommitteeInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.PassiveCommitteeInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.PassiveCommitteeInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.BakerConsensusInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.BakerConsensusInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.NetworkInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.NetworkInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.Node.ConsensusStatusOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.Node.ConsensusStatusOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.Node.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.Node.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.NodeInfo.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.NodeInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.NodeInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.NormalCredentialValues.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.NormalCredentialValues.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.OpenStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.OpenStatus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Parameter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Parameter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PassiveDelegationInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PassiveDelegationInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PeerId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PeerId.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PeerToBan.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PeerToBan.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PeersInfo.Types.Peer.ConsensusInfoOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PeersInfo.Types.Peer.ConsensusInfoOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PeersInfo.Types.Peer.Types.CatchupStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PeersInfo.Types.Peer.Types.CatchupStatus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PeersInfo.Types.Peer.Types.NetworkStats.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PeersInfo.Types.Peer.Types.NetworkStats.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PeersInfo.Types.Peer.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PeersInfo.Types.Peer.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PeersInfo.Types.Peer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PeersInfo.Types.Peer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PeersInfo.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PeersInfo.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PeersInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PeersInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PendingUpdate.EffectOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PendingUpdate.EffectOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PendingUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PendingUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Policy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Policy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PoolCurrentPaydayInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PoolCurrentPaydayInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PoolInfoRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PoolInfoRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PoolInfoResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PoolInfoResponse.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PoolParametersCpv1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PoolParametersCpv1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PoolPendingChange.ChangeOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PoolPendingChange.ChangeOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PoolPendingChange.Types.Reduce.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PoolPendingChange.Types.Reduce.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PoolPendingChange.Types.Remove.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PoolPendingChange.Types.Remove.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PoolPendingChange.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PoolPendingChange.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PoolPendingChange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PoolPendingChange.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Port.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Port.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.PreAccountTransaction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.PreAccountTransaction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ProtocolUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ProtocolUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ProtocolVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ProtocolVersion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Queries.QueriesClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Queries.QueriesClient.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Queries.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Queries.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Ratio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Ratio.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ReceiveName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ReceiveName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.RegisteredData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.RegisteredData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.RejectReason.ReasonOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.RejectReason.ReasonOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.RejectReason.Types.AmountTooLarge.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.RejectReason.Types.AmountTooLarge.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.RejectReason.Types.DuplicateCredIds.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.RejectReason.Types.DuplicateCredIds.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.RejectReason.Types.InvalidInitMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.RejectReason.Types.InvalidInitMethod.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.RejectReason.Types.InvalidReceiveMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.RejectReason.Types.InvalidReceiveMethod.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.RejectReason.Types.NonExistentCredIds.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.RejectReason.Types.NonExistentCredIds.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.RejectReason.Types.RejectedInit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.RejectReason.Types.RejectedInit.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.RejectReason.Types.RejectedReceive.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.RejectReason.Types.RejectedReceive.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.RejectReason.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.RejectReason.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.RejectReason.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.RejectReason.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Release.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Release.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ReleaseSchedule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ReleaseSchedule.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.RewardPeriodLength.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.RewardPeriodLength.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.RootUpdate.UpdateTypeOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.RootUpdate.UpdateTypeOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.RootUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.RootUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.SendBlockItemRequest.BlockItemOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.SendBlockItemRequest.BlockItemOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.SendBlockItemRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.SendBlockItemRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.SequenceNumber.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.SequenceNumber.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.ServiceReflection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.ServiceReflection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Sha256Hash.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Sha256Hash.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Signature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Signature.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.SignatureMap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.SignatureMap.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.SignatureThreshold.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.SignatureThreshold.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Slot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Slot.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.StakePendingChange.ChangeOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.StakePendingChange.ChangeOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.StakePendingChange.Types.Reduce.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.StakePendingChange.Types.Reduce.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.StakePendingChange.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.StakePendingChange.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.StakePendingChange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.StakePendingChange.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.StateHash.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.StateHash.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.TimeParametersCpv1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.TimeParametersCpv1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.TimeoutParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.TimeoutParameters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Timestamp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Timestamp.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.TokenomicsInfo.TokenomicsOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.TokenomicsInfo.TokenomicsOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.TokenomicsInfo.Types.V0.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.TokenomicsInfo.Types.V0.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.TokenomicsInfo.Types.V1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.TokenomicsInfo.Types.V1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.TokenomicsInfo.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.TokenomicsInfo.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.TokenomicsInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.TokenomicsInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.TransactionFeeDistribution.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.TransactionFeeDistribution.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.TransactionHash.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.TransactionHash.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.TransactionTime.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.TransactionTime.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.TransactionType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.TransactionType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.TransferPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.TransferPayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.TransferWithMemoPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.TransferWithMemoPayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.TypesReflection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.TypesReflection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.UpdateContractPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.UpdateContractPayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.UpdateDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.UpdateDetails.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.UpdateInstruction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.UpdateInstruction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.UpdateInstructionHeader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.UpdateInstructionHeader.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.UpdateInstructionPayload.PayloadOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.UpdateInstructionPayload.PayloadOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.UpdateInstructionPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.UpdateInstructionPayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.UpdateInstructionSignature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.UpdateInstructionSignature.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.UpdateKeysIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.UpdateKeysIndex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.UpdateKeysThreshold.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.UpdateKeysThreshold.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.UpdatePayload.PayloadOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.UpdatePayload.PayloadOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.UpdatePayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.UpdatePayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.UpdatePublicKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.UpdatePublicKey.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.UpdateSequenceNumber.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.UpdateSequenceNumber.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.UpdateType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.UpdateType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.VersionedModuleSource.ModuleOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.VersionedModuleSource.ModuleOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.VersionedModuleSource.Types.ModuleSourceV0.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.VersionedModuleSource.Types.ModuleSourceV0.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.VersionedModuleSource.Types.ModuleSourceV1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.VersionedModuleSource.Types.ModuleSourceV1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.VersionedModuleSource.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.VersionedModuleSource.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.VersionedModuleSource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.VersionedModuleSource.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.YearMonth.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.YearMonth.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Client.ClientConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Client.ClientConfiguration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Client.ConcordiumClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Client.ConcordiumClient.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Client.RawClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Client.RawClient.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Client.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Client.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Crypto.Ed25519SignKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Crypto.Ed25519SignKey.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Crypto.ISigner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Crypto.ISigner.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Crypto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Crypto.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Helpers.Serialization.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Helpers.Serialization.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Helpers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Transactions.AccountSignatureMap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Transactions.AccountSignatureMap.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Transactions.AccountTransactionHeader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Transactions.AccountTransactionHeader.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Transactions.AccountTransactionPayload-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Transactions.AccountTransactionPayload-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Transactions.AccountTransactionSignature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Transactions.AccountTransactionSignature.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Transactions.ITransactionSigner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Transactions.ITransactionSigner.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Transactions.PayloadSize.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Transactions.PayloadSize.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Transactions.PreparedAccountTransaction-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Transactions.PreparedAccountTransaction-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Transactions.RegisterData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Transactions.RegisterData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Transactions.SignedAccountTransaction-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Transactions.SignedAccountTransaction-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Transactions.TransactionSigner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Transactions.TransactionSigner.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Transactions.Transfer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Transactions.Transfer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Transactions.TransferWithMemo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Transactions.TransferWithMemo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Transactions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Transactions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AccountAddress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AccountAddress.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AccountCredentialIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AccountCredentialIndex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AccountKeyIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AccountKeyIndex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AccountSequenceNumber.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AccountSequenceNumber.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AccountTransactionType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AccountTransactionType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BlockHash.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BlockHash.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.CcdAmount.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.CcdAmount.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ContractAddress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ContractAddress.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.EnergyAmount.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.EnergyAmount.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Expiry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Expiry.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Hash.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Hash.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.OnChainData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.OnChainData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.TransactionHash.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.TransactionHash.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Wallets.IWalletDataSource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Wallets.IWalletDataSource.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Wallets.WalletAccount.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Wallets.WalletAccount.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Wallets.WalletDataSourceException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Wallets.WalletDataSourceException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Wallets.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Wallets.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "favicon.ico",
+      "output": {
+        "resource": {
+          "relative_path": "favicon.ico"
+        }
+      },
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "logo.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

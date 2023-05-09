@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>A .NET C# SDK for interacting with the Concordium blockchain </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="A .NET C# SDK for interacting with the Concordium blockchain ">
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/docs/index.md/#L1">
+
+      <script type="module">
+        import docfx from './public/main.js'
+        window.docfx = docfx
+        window.MathJax = {
+          options: {
+            processHtmlClass: ['tex2jax_process', 'math']
+          }
+        }
+      </script>
+      <script type="text/javascript" src="public/docfx.min.js"></script>
+  </head>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+
+<p><img src="https://github.com/Concordium/concordium-net-sdk/actions/workflows/dotnet.yml/badge.svg" alt="CI">
+<a href="https://github.com/Concordium/.github/blob/main/.github/CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg" alt="Contributor Covenant"></a>
+<a href="https://badge.fury.io/nu/ConcordiumNetSdk"><img src="https://badge.fury.io/nu/ConcordiumNetSdk.svg" alt="NuGet version"></a></p>
+<h1 id="a-net-c-sdk-for-interacting-with-the-concordium-blockchain">A .NET C# SDK for interacting with the Concordium blockchain</h1>
+<p>This SDK is a .NET integration library which adds support for constructing and sending various transactions, as well as querying various aspects of the Concordium blockchain and its nodes. The SDK uses version 2 of the <a href="https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto">Concordium Node GRPC API</a> to interact with Concordium nodes and in turn the Concordium blockchain, and serves as a wrapper for this API with added ergonomics. Note that this deprecates earlier versions of the SDK that use version 1 of the API, cfr. the <a href="#migration">migration</a> section for more details.</p>
+<h2 id="overview">Overview</h2>
+<p>This SDK is currently under development and serves as a wrapper for the <a href="https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto">Concordium GRPC API</a> with helpers for common tasks.</p>
+<p>Implementation-wise, this is first and foremost accomplished by exposing &quot;minimal&quot; wrappers for classes generated directly from the protocol buffer definitions of the API using the <a href="https://www.nuget.org/packages/Grpc.Tools/"><code>Grpc.Tools</code></a> and <a href="https://www.nuget.org/packages/Grpc.Net.Client"><code>Grpc.Net.Client</code></a> packages. This generation step results in a &quot;raw&quot; client class which exposes a method corresponding to each service definition in the protocol buffer definition as well as a class corresponding to each type declared in the API. These are used at the interface of the raw client class. The wrappers are minimal in the sense that they are identical to those of the generated classes but devoid from the complexity of having to specify parameters for connection handling with each call. A drawback of this approach is that the generated classes are devoid of checks for any semantic invariants, which leaves much to be desired. See <a href="#using-the-raw-client-api">Using the raw client API</a> for more information.</p>
+<p>To remedy this, the SDK provides its own class equivalents corresponding to the most common raw API types, as well as wrappers for a subset of the raw service methods specifying these class equivalents at their interfaces instead. These transparently map input and output types to and from their native equivalents as they are marshalled across the underlying raw API, enforcing the invariants of the input and output data. Similarly, the SDK provides functionality for working with and signing account transactions, as well as for importing keys and implementing signing logic. The latter can be useful e.g. when delegating signing to a HSM. See <a href="#working-with-transaction-signers">Working with transaction signers</a> for more information.</p>
+<p>Currently, helpers for working with transactions of the <a href=""><code>Transfer</code></a>, <a href=""><code>TransferWithMemo</code></a> and <a href=""><code>RegisterData</code></a> kind are provided. Ergonomic APIs that use the aforementioned native class equivalents of the raw API types at their interfaces are provided for <a href=".."><code>GetNextAccountSequenceNumber</code></a>, <a href=".."><code>GetNextAccountSequenceNumber</code></a> and <a href=""><code>SendBlockItem</code></a>. For more information on how to create and submit transactions, respectively using the ergonomic APIs, see the <a href="#working-with-account-transactions">Working with account transactions</a> section, respectively <a href="#using-the-client-api">Using the client API</a>. Further transactions and wrappers are implemented on a per-need basis.</p>
+<h2 id="prerequisitescompatibility">Prerequisites/compatibility</h2>
+<ul>
+<li>.NET Framework: 6.0 or later.</li>
+<li>Concordium Node version compatibility: 5.*</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>The SDK is published on <a href="https://www.nuget.org/packages/ConcordiumNetSdk">nuget.org</a>. Depending on your setup, it can be added to your project as a dependency by running either</p>
+<pre><code class="lang-powershell">PM&gt; Install-Package Concordium.SDK -Version ???
+</code></pre>
+<p>or</p>
+<pre><code class="lang-sh">dotnet add package Concordium.SDK
+</code></pre>
+<p>in your project root. It can also be used as a GIT submodule by embedding the cloned <a href="https://github.com/Concordium/concordium-net-sdk">repository</a> directly into your project:</p>
+<pre><code>git clone https://github.com/Concordium/concordium-net-sdk --recurse-submodules
+</code></pre>
+<h2 id="basic-usage">Basic usage</h2>
+<p>At the core of the SDK is the <a href="..."><code>ConcordiumClient</code></a> class which is used to connect to a Concordium node and exposes methods interacting with it. The <a href=".."><code>ConcordiumClient</code></a> can be instantiated as follows:</p>
+<pre><code class="lang-csharp">using Concordium.Sdk.Client;
+
+// Construct the client.
+ConcordiumClient client = new ConcordiumClient(
+  new Uri(&quot;https://localhost/), // Endpoint  URL.
+  options.Port, // Port.
+  60 // Use a timeout of 60 seconds.
+);
+</code></pre>
+<h3 id="working-with-account-transactions">Working with account transactions</h3>
+<p>Account transactions are blockchain transactions that are signed by and submitted on the behalf of an account. Classes relating to account transactions live in the <code>Concordium.SDK.Transactions</code> namespace. All account transactions are modeled by records that inherit from the abstract record <a href="..."><code>AccountTransactionPayload&lt;T&gt;</code></a>, where <code>T</code> is the type of the transaction. Inheriting records contain data specific to the transaction it models. One example of such is the <a href="..."><code>Transfer</code></a> record representing the transfer of a CCD amount from one account to another. It is instantiated as follows:</p>
+<pre><code class="lang-csharp">using Concordium.Sdk.Types;
+using Concordium.Sdk.Transactions;
+
+CcdAmount amount = CcdAmount.FromCcd(100); // Send 100 CCD.
+AccountAddress receiver = AccountAddress.From(&quot;4rvQePs6ZKFiW8rwY5nP18Uj2DroWiw9VPKTsTwfwmsjcFCJLy&quot;);
+Transfer transfer = new Transfer(amount, receiver);
+</code></pre>
+<p>Since account transactions are submitted on behalf of an account, any <a href=".."><code>AccountTransactionPayload&lt;T&gt;</code></a> must be annotated with an <a href=".."><code>AccountAddress</code></a> of the account submitting the transaction, an account-specific <a href=".."><code>SequenceNumber</code></a> (nonce) which is used to mitigate replay attacks and an <a href="..."><code>Expiry</code></a> representing a point in time after which the transaction will not be included in blocks whose (slot) time lies beyond it. The result of the annotation is a <a href=".."><code>PreparedAccountTransaction&lt;T&gt;</code></a>:</p>
+<pre><code class="lang-csharp">AccountAddress sender = AccountAddress.From(&quot;3jfAuU1c4kPE6GkpfYw4KcgvJngkgpFrD9SkDBgFW3aHmVB5r1&quot;);
+SequenceNumber sequenceNumber = Client.GetNextAccountSequenceNumber(sender).Item1;
+Expiry expiry = Expiry.AtMinutesFromNow(10); // Transaction should expire 10 minutes after current system time.
+PreparedAccountTransaction&lt;Transfer&gt; preparedTransfer = transfer.Prepare(sender, sequenceNumber, expiry);
+</code></pre>
+<p>Finally, the transaction must be signed using an <a href=".."><code>ITransactionSigner</code></a> which implements signing with the (secret) sign keys of the sender account, producing a <a href=".."><code>SignedAccountTransaction&lt;Transfer&gt;</code></a>. In the following example the implementation used is the <a href=".."><code>WalletAccount</code></a> class which supports importing of account keys from the Concordium browser-wallet key export format:</p>
+<pre><code class="lang-csharp">ITransactionSigner signer = WalletAccount.FromWalletKeyExportFormat(&quot;/path/to/exported-browser-wallet-keys.json&quot;);
+Expiry expiry = Expiry.AtMinutesFromNow(10); // Transaction expires 10 minutes after the current system time.
+SignedAccountTransaction&lt;Transfer&gt; signedTransfer = preparedTransfer.Sign(signer);
+</code></pre>
+<p>A signed transaction can be submitted to the blockchain by invoking the <a href=".."><code>SendTransaction</code></a> method. If the transfer was accepted by the node, its <a href=".."><code>TransactionHash</code></a> used to uniquely identify the transaction is returned:</p>
+<pre><code class="lang-csharp">TransactionHash = client.SendTransaction(signedTransfer);
+</code></pre>
+<p>The <a href=".."><code>TransactionHash</code></a> can subsequently be used for querying the status of the transaction by invoking the <a href=".."><code>GetBlockItemStatus</code></a> method of the <a href=".."><code>RawClient</code></a>, accessible through<code>client.Raw</code> in the above example. For more info on raw API calls, see the <a href="#using-the-raw-client-api">Using the raw client API</a> section.</p>
+<h3 id="working-with-transaction-signers">Working with transaction signers</h3>
+<p>As described in the <a href="#working-with-account-transactions">Account transactions</a> section, account transactions must be signed using implementations of <a href="..."><code>ITransactionSigner</code></a>. The SDK ships with the <a href=".."><code>TransactionSigner</code></a> class which is dictionary based implementation to which <a href=".."><code>ISigner</code></a>s can be added. An <a href=".."><code>ISigner</code></a> represents a concrete implementation of a (secret) sign key for an account, and can be used to to write custom signer implementations which can be useful, for instance, if delegating the signing logic to a HSM. The SDK also ships with the <a href=".."><code>WalletAccount</code></a> class which provides functionality for importing account keys from one of the supported wallet export formats. Currently the Concordium browser and genesis wallet key export (JSON) formats are supported.</p>
+<h3 id="using-the-client-api">Using the client API</h3>
+<p>A small subset of the raw methods generated from the Concordium Node GRPC API protocol buffer definitions have corresponding ergonomic wrappers that transparently map input and output types to and from their native equivalents as they are marshalled across the underlying generated API they wrap. One example of such is <a href=".."><code>GetNextAccountSequenceNumber</code></a> which takes an <a href=".."><code>AccountAddress</code></a> and returns a <a href=".."><code>SequenceNumber</code></a>:</p>
+<pre><code class="lang-csharp">AccountAddress sender = AccountAddress.From(&quot;3jfAuU1c4kPE6GkpfYw4KcgvJngkgpFrD9SkDBgFW3aHmVB5r1&quot;);
+SequenceNumber sequenceNumber = client.GetNextAccountSequenceNumber(sender).Item1;
+</code></pre>
+<h3 id="using-the-raw-client-api">Using the raw client API</h3>
+<p>The entire <a href="https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto">Concordium Node GRPC API V2</a> is exposed through minimal wrappers of classes that model the interface types and services as they were generated from the protocol buffer schema definitions using the <a href=".."><code>Grpc.Net.Client</code></a> and <a href=".."><code>Grpc.Tools</code></a> packages. These wrappers are defined in the <a href=".."><code>RawClient</code></a>, instances of which can <em>only</em> be accessed through the <code>Raw</code> field of <a href=".."><code>ConcordiumClient</code></a> instances.</p>
+<p>As an example, the raw API call <code>GetAccountInfo</code> defined in the <a href="https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto">Concordium Node GRPC API V2</a> can be invoked through <a href=".."><code>RawClient.GetAccountInfo</code></a> by supplying an instance of its corresponding generated type for <a href="https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfoRequest"><code>AccountInfoRequest</code></a>. In the following, we wish to retrieve the information of an account in the last finalized block:</p>
+<pre><code class="lang-csharp">using Concordium.Grpc.V2;
+
+BlockHashInput blockHashInput = new BlockHashInput() { LastFinal = new Empty() };
+
+// Construct the input for the raw API.
+AccountInfoRequest request = new AccountInfoRequest
+{
+  BlockHash = blockHashInput,
+  /// Instantiate and convert Concordium.Sdk.Types.AccountAddress
+  /// to an AccountIdentifierInput which is needed for the
+  /// AccountInfoRequest.
+  AccountIdentifier = Concordium.Sdk.Types.AccountAddress
+    .From(&quot;4rvQePs6ZKFiW8rwY5nP18Uj2DroWiw9VPKTsTwfwmsjcFCJLy&quot;)
+    .ToAccountIdentifierInput()
+};
+
+AccountInfo accountInfo = client.Raw.GetAccountInfo(request);
+</code></pre>
+<p>Note that all generated types live in the <code>Concordium.Grpc.V2</code> namespace, and that there is a vast overlap between the names generated from the protocol buffer definitions file and the native types that live in the <code>Concordium.Types</code> namespace. In the above we must therefore specify the namespace for <a href=".."><code>AccountAddress</code></a> to resolve the ambiguity. Furthermore we leverage the convenience method <a href=".."><code>ToAccountIdentifierInput</code></a> of <a href=".."><code>Concordium.SDK.AccountAddress</code></a> to convert the the base58 address into its corresponding raw format. Also note that the overall structure of the interface types are one-to-one with the <a href="https://github.com/Concordium/concordium-grpc-api/tree/main/v2/concordium">Concordium GRPC API V2</a>, so we refer to its documentation and the <a href="#runnable-examples">Runnable examples</a> section for more information on working with the types of the raw API.</p>
+<h2 id="runnable-examples">Runnable examples</h2>
+<p>A number of runnable examples illustrating usage of the SDK API are contained in the <a href="./examples">examples</a> directory:</p>
+<ul>
+<li><a href="./examples/RawClient">examples/RawClient</a> demonstrates usage of the raw API methods exposed in <code>RawClient</code> (instances of which are accessible through the <code>Raw</code> field of the <code>ConcordiumClient</code>).</li>
+<li><a href="./examples/Transactions">examples/Transactions</a> demonstrates how to work with the various transaction types.</li>
+</ul>
+<p>For instance, a runnable example akin to that given in <a href="#working-with-account-transactions">Working with account transactions</a> is found in <a href="./examples/Transactions/Transfer">examples/Transactions/Transfer</a>. Compiling the project and running the resulting binary will print the following help message:</p>
+<pre><code>Concordium.Sdk.Examples.Transactions.Transfer 1.0.0
+Copyright (C) 2023 Concordium.Sdk.Examples.Transactions.Transfer
+
+ERROR(S):
+  Required option 'a, amount' is missing.
+  Required option 'r, receiver' is missing.
+  Required option 'k, keys' is missing.
+
+  -a, --amount      Required. Amount of CCD to transfer.
+
+  -r, --receiver    Required. Receiver of the CCD to transfer.
+
+  -k, --keys        Required. Path to a file with contents that is in the Concordium
+                    browser wallet key export format.
+
+  -e, --endpoint    (Default: https://localhost/) URL representing the endpoint where the
+                    GRPC V2 API is served.
+
+  -p, --port        (Default: 20000) Port at the endpoint where the GRPC V2 API is served.
+
+  --help            Display this help screen.
+
+  --version         Display version information.
+</code></pre>
+<p>To run the example with similar values, invoke the binary as follows:</p>
+<pre><code>Concordium.Sdk.Examples.Transactions.Transfer -a 100 -r 4rvQePs6ZKFiW8rwY5nP18Uj2DroWiw9VPKTsTwfwmsjcFCJLy -k /path/to/exported-browser-wallet-keys.json
+</code></pre>
+<p>Here, the sender account address is contained in the file specified by the <code>--keys</code> option, and the expiration time defaults to 60 seconds, hence is why it is not specified. Upon successful submission of the transaction, the example program will print something like:</p>
+<pre><code>Successfully submitted transfer transaction with hash 6bc9bfac5ef4aa1988ab8b1ab6007a736d4b3fe7e52b942d69a030319d979f13
+</code></pre>
+<h2 id="documentation">Documentation</h2>
+<p>The rendered documentation is available at <a href="https://pages.github.com/???">https://pages.github.com/???</a></p>
+<h2 id="migration">Migration</h2>
+<p>This deprecates earlier versions of the Concordium .NET SDK that used version 1 of the Concordium Node GRPC API. In terms of semantics and the information carried in messages, the APIs are quite similar, so APIs of the older SDK versions have corresponding raw methods in this version. Note that in some cases endpoints in the version 1 API are &quot;split&quot; into several endpoints in the version 2 API to increase the granularity.</p>
+<p>Another major difference between this and the previous version of the SDK is that this version of the SDK currently does not support deploying contract modules with schemas.</p>
+<h2 id="license">License</h2>
+<p>This project is licensed under the terms of the Mozilla Public License 2.0.</p>
+<p>For more information, please refer to the <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/LICENSE">LICENSE</a> file.</p>
+<h2 id="contributing">Contributing</h2>
+<p>Contributions are welcomed. Guidelines for contribution can be found <a href="https://github.com/Concordium/.github/blob/main/.github/CODE_OF_CONDUCT.md">here</a>.</p>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p>This project is developed and maintained by the <a href="https://concordium.foundation/">Concordium Foundation</a>.</p>
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/docs/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,1903 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Namespace Concordium.Grpc.V2
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace Concordium.Grpc.V2
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      
+
+      <script type="module">
+        import docfx from './../public/main.js'
+        window.docfx = docfx
+        window.MathJax = {
+          options: {
+            processHtmlClass: ['tex2jax_process', 'math']
+          }
+        }
+      </script>
+      <script type="text/javascript" src="../public/docfx.min.js"></script>
+  </head>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Concordium.Grpc.V2">
+
+  <h1 id="Concordium_Grpc_V2" data-uid="Concordium.Grpc.V2" class="text-break">Namespace Concordium.Grpc.V2
+</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AbsoluteBlockHeight.html">AbsoluteBlockHeight</a></dt>
+      <dd><p>The absolute height of a block. This is the number of ancestors of a block
+since the genesis block. In particular, the chain genesis block has absolute
+height 0.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccessStructure.html">AccessStructure</a></dt>
+      <dd><p>An access structure which specifies which UpdatePublicKeys in a HigherLevelKeys that are allowed
+to make chain update of a specific type. The threshold defines the minimum number of allowed keys needed
+to make the actual update.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountAddress.html">AccountAddress</a></dt>
+      <dd><p>An address of an account. Always 32 bytes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountCreationDetails.html">AccountCreationDetails</a></dt>
+      <dd><p>Details of an account creation. These transactions are free, and we only
+ever get a response for them if the account is created, hence no failure
+cases.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountCredential.html">AccountCredential</a></dt>
+      <dd><p>Credential that is part of an account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountIdentifierInput.html">AccountIdentifierInput</a></dt>
+      <dd><p>Input to queries which take an account as a parameter.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountIndex.html">AccountIndex</a></dt>
+      <dd><p>Index of the account in the account table. These are assigned sequentially
+in the order of creation of accounts. The first account has index 0.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountInfo.html">AccountInfo</a></dt>
+      <dd><p>Information about the account at a particular point in time.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountInfoRequest.html">AccountInfoRequest</a></dt>
+      <dd><p>Request for account information.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountSignatureMap.html">AccountSignatureMap</a></dt>
+      <dd><p>Wrapper for a map from indexes to signatures.
+Needed because protobuf doesn't allow nested maps directly.
+The keys in the SignatureMap must not exceed 2^8.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountStakingInfo.html">AccountStakingInfo</a></dt>
+      <dd><p>Information about the account stake, if the account is either a baker or a
+delegator.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountStakingInfo.Types.html">AccountStakingInfo.Types</a></dt>
+      <dd><p>Container for nested types declared in the AccountStakingInfo message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountStakingInfo.Types.Baker.html">AccountStakingInfo.Types.Baker</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountStakingInfo.Types.Delegator.html">AccountStakingInfo.Types.Delegator</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountThreshold.html">AccountThreshold</a></dt>
+      <dd><p>The number of credentials required to sign an account transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransaction.html">AccountTransaction</a></dt>
+      <dd><p>Account transactions are messages which are signed and paid for by the sender
+account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionDetails.html">AccountTransactionDetails</a></dt>
+      <dd><p>Details about an account transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a></dt>
+      <dd><p>Effects of an account transaction. All variants except <code>None</code>
+correspond to a unique transaction that was successful.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.html">AccountTransactionEffects.Types</a></dt>
+      <dd><p>Container for nested types declared in the AccountTransactionEffects message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.AccountTransfer.html">AccountTransactionEffects.Types.AccountTransfer</a></dt>
+      <dd><p>A simple account to account transfer occurred. This is the result of a
+successful Transfer transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.BakerConfigured.html">AccountTransactionEffects.Types.BakerConfigured</a></dt>
+      <dd><p>A baker was configured. The details of what happened are contained in
+the list of BakerEvents.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.BakerStakeUpdated.html">AccountTransactionEffects.Types.BakerStakeUpdated</a></dt>
+      <dd><p>An account was deregistered as a baker. This is the result of a
+successful UpdateBakerStake transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.ContractUpdateIssued.html">AccountTransactionEffects.Types.ContractUpdateIssued</a></dt>
+      <dd><p>A contract update transaction was issued and produced the given trace.
+This is the result of Update transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.CredentialsUpdated.html">AccountTransactionEffects.Types.CredentialsUpdated</a></dt>
+      <dd><p>Account's credentials were updated. This is the result of a
+successful UpdateCredentials transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.DelegationConfigured.html">AccountTransactionEffects.Types.DelegationConfigured</a></dt>
+      <dd><p>An account configured delegation. The details of what happened are
+contained in the list of DelegationEvents.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.EncryptedAmountTransferred.html">AccountTransactionEffects.Types.EncryptedAmountTransferred</a></dt>
+      <dd><p>An encrypted amount was transferred. This is the result of a successful
+EncryptedAmountTransfer transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.None.html">AccountTransactionEffects.Types.None</a></dt>
+      <dd><p>No effects other than payment from this transaction.
+The rejection reason indicates why the transaction failed.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.TransferredToPublic.html">AccountTransactionEffects.Types.TransferredToPublic</a></dt>
+      <dd><p>An account transferred part of its encrypted balance to its public
+balance. This is the result of a successful TransferToPublic transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.TransferredWithSchedule.html">AccountTransactionEffects.Types.TransferredWithSchedule</a></dt>
+      <dd><p>A transfer with schedule was performed. This is the result of a
+successful TransferWithSchedule transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionHeader.html">AccountTransactionHeader</a></dt>
+      <dd><p>Header of an account transaction that contains basic data to check whether
+the sender and the transaction are valid. The header is shared by all transaction types.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionPayload.html">AccountTransactionPayload</a></dt>
+      <dd><p>The payload for an account transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionSignHash.html">AccountTransactionSignHash</a></dt>
+      <dd><p>Signature on an account transaction is defined to be the signature on the
+hash of the <code>PreAccountTransaction</code>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionSignature.html">AccountTransactionSignature</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountVerifyKey.html">AccountVerifyKey</a></dt>
+      <dd><p>A public key used to verify transaction signatures from an account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Address.html">Address</a></dt>
+      <dd><p>An address of either a contract or an account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Amount.html">Amount</a></dt>
+      <dd><p>An amount of microCCD.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AmountFraction.html">AmountFraction</a></dt>
+      <dd><p>A fraction of an amount with a precision of <code>1/100_000</code>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AncestorsRequest.html">AncestorsRequest</a></dt>
+      <dd><p>Request the ancestors for the given block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ArInfo.html">ArInfo</a></dt>
+      <dd><p>Information on a single anonymity revoker help by the identity provider.
+Typically an identity provider will hold more than one.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ArInfo.Types.html">ArInfo.Types</a></dt>
+      <dd><p>Container for nested types declared in the ArInfo message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ArInfo.Types.ArIdentity.html">ArInfo.Types.ArIdentity</a></dt>
+      <dd><p>Identity of the anonymity revoker on the chain. This defines their
+evaluateion point for secret sharing, and thus it cannot be 0.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ArInfo.Types.ArPublicKey.html">ArInfo.Types.ArPublicKey</a></dt>
+      <dd><p>Public key of an anonymity revoker.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ArThreshold.html">ArThreshold</a></dt>
+      <dd><p>The number of anonymity revokers needed to revoke anonymity of a credential
+holder.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ArrivedBlockInfo.html">ArrivedBlockInfo</a></dt>
+      <dd><p>Information about an arrived block that is part of the streaming response.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AuthorizationsV0.html">AuthorizationsV0</a></dt>
+      <dd><p>The set of keys authorized for chain updates, together with access structures
+determining which keys are authorized for which update types.
+This is the payload of an update to authorization.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AuthorizationsV1.html">AuthorizationsV1</a></dt>
+      <dd><p>The set of keys authorized for chain updates, together with access structures
+determining which keys are authorized for which update types.
+This is the payload of an update to authorization.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerAggregationVerifyKey.html">BakerAggregationVerifyKey</a></dt>
+      <dd><p>Baker's public key used to check signatures on finalization records.
+This is only used if the baker has sufficient stake to participate in
+finalization.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerElectionVerifyKey.html">BakerElectionVerifyKey</a></dt>
+      <dd><p>Baker's public key used to check whether they won the lottery or not.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerEvent.html">BakerEvent</a></dt>
+      <dd><p>Events that may result from the ConfigureBaker transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerEvent.Types.html">BakerEvent.Types</a></dt>
+      <dd><p>Container for nested types declared in the BakerEvent message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerEvent.Types.BakerAdded.html">BakerEvent.Types.BakerAdded</a></dt>
+      <dd><p>A baker was added.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerEvent.Types.BakerRestakeEarningsUpdated.html">BakerEvent.Types.BakerRestakeEarningsUpdated</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerEvent.Types.BakerSetBakingRewardCommission.html">BakerEvent.Types.BakerSetBakingRewardCommission</a></dt>
+      <dd><p>Updated baking reward commission for baker pool</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerEvent.Types.BakerSetFinalizationRewardCommission.html">BakerEvent.Types.BakerSetFinalizationRewardCommission</a></dt>
+      <dd><p>Updated finalization reward commission for baker pool</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerEvent.Types.BakerSetMetadataUrl.html">BakerEvent.Types.BakerSetMetadataUrl</a></dt>
+      <dd><p>Updated metadata url for a baker pool.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerEvent.Types.BakerSetOpenStatus.html">BakerEvent.Types.BakerSetOpenStatus</a></dt>
+      <dd><p>Updated open status for a baker pool.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerEvent.Types.BakerSetTransactionFeeCommission.html">BakerEvent.Types.BakerSetTransactionFeeCommission</a></dt>
+      <dd><p>Updated transaction fee commission for a baker pool.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerEvent.Types.BakerStakeDecreased.html">BakerEvent.Types.BakerStakeDecreased</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerEvent.Types.BakerStakeIncreased.html">BakerEvent.Types.BakerStakeIncreased</a></dt>
+      <dd><p>Baker stake increased.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerId.html">BakerId</a></dt>
+      <dd><p>The ID of a baker, which is the index of its account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerInfo.html">BakerInfo</a></dt>
+      <dd><p>Information about a baker.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerKeysEvent.html">BakerKeysEvent</a></dt>
+      <dd><p>Result of a successful change of baker keys.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerPoolInfo.html">BakerPoolInfo</a></dt>
+      <dd><p>Additional information about a baking pool.
+This information is added with the introduction of delegation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerSignatureVerifyKey.html">BakerSignatureVerifyKey</a></dt>
+      <dd><p>Baker's public key used to check that they are indeed the ones who
+produced the block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerStakeThreshold.html">BakerStakeThreshold</a></dt>
+      <dd><p>Minimum stake needed to become a baker. This only applies to protocol version
+1-3.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerStakeUpdatedData.html">BakerStakeUpdatedData</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BannedPeer.html">BannedPeer</a></dt>
+      <dd><p>A banned peer</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BannedPeers.html">BannedPeers</a></dt>
+      <dd><p>The banned peers given by
+their IP addresses.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockFinalizationSummary.html">BlockFinalizationSummary</a></dt>
+      <dd><p>Finalization summary that may or may not be part of the block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockHash.html">BlockHash</a></dt>
+      <dd><p>Hash of a block. This is always 32 bytes long.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockHashInput.html">BlockHashInput</a></dt>
+      <dd><p>Input to queries which take a block as a parameter.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockHeight.html">BlockHeight</a></dt>
+      <dd><p>The height of a block relative to the last genesis. This differs from the
+absolute block height in that it counts height from the last protocol update.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockInfo.html">BlockInfo</a></dt>
+      <dd><p>The response for GetBlockInfo.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockItem.html">BlockItem</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockItemStatus.html">BlockItemStatus</a></dt>
+      <dd><p>Status of a block item known to the node.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockItemStatus.Types.html">BlockItemStatus.Types</a></dt>
+      <dd><p>Container for nested types declared in the BlockItemStatus message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockItemStatus.Types.Committed.html">BlockItemStatus.Types.Committed</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockItemStatus.Types.Finalized.html">BlockItemStatus.Types.Finalized</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockItemSummary.html">BlockItemSummary</a></dt>
+      <dd><p>Summary of the outcome of a block item in structured form.
+The summary determines which transaction type it was.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockItemSummary.Types.html">BlockItemSummary.Types</a></dt>
+      <dd><p>Container for nested types declared in the BlockItemSummary message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockItemSummary.Types.TransactionIndex.html">BlockItemSummary.Types.TransactionIndex</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockItemSummaryInBlock.html">BlockItemSummaryInBlock</a></dt>
+      <dd><p>A block item summary together with a block hash. Used in BlockItemStatus.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockSpecialEvent.html">BlockSpecialEvent</a></dt>
+      <dd><p>A protocol generated event that is not directly caused by a transaction. This
+includes minting new CCD, rewarding different bakers and delegators, etc.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockSpecialEvent.Types.html">BlockSpecialEvent.Types</a></dt>
+      <dd><p>Container for nested types declared in the BlockSpecialEvent message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockSpecialEvent.Types.AccountAmounts.html">BlockSpecialEvent.Types.AccountAmounts</a></dt>
+      <dd><p>A representation of a mapping from an account address to an amount.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockSpecialEvent.Types.AccountAmounts.Types.html">BlockSpecialEvent.Types.AccountAmounts.Types</a></dt>
+      <dd><p>Container for nested types declared in the AccountAmounts message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockSpecialEvent.Types.AccountAmounts.Types.Entry.html">BlockSpecialEvent.Types.AccountAmounts.Types.Entry</a></dt>
+      <dd><p>The entry for the map.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockSpecialEvent.Types.BakingRewards.html">BlockSpecialEvent.Types.BakingRewards</a></dt>
+      <dd><p>Payment to each baker of a previous epoch, in proportion to the number
+of blocks they contributed.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockSpecialEvent.Types.BlockAccrueReward.html">BlockSpecialEvent.Types.BlockAccrueReward</a></dt>
+      <dd><p>Amounts accrued to accounts for each baked block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockSpecialEvent.Types.BlockReward.html">BlockSpecialEvent.Types.BlockReward</a></dt>
+      <dd><p>Disbursement of fees from a block between the GAS account,
+the baker, and the foundation. It should always be that:</p>
+<p><code>transaction_fees + old_gas_account = new_gas_account + baker_reward + foundation_charge</code></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockSpecialEvent.Types.FinalizationRewards.html">BlockSpecialEvent.Types.FinalizationRewards</a></dt>
+      <dd><p>Payment to each finalizer on inclusion of a finalization record in a block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockSpecialEvent.Types.Mint.html">BlockSpecialEvent.Types.Mint</a></dt>
+      <dd><p>Minting of new CCD.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockSpecialEvent.Types.PaydayAccountReward.html">BlockSpecialEvent.Types.PaydayAccountReward</a></dt>
+      <dd><p>Reward payment to the given account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockSpecialEvent.Types.PaydayFoundationReward.html">BlockSpecialEvent.Types.PaydayFoundationReward</a></dt>
+      <dd><p>Foundation tax.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockSpecialEvent.Types.PaydayPoolReward.html">BlockSpecialEvent.Types.PaydayPoolReward</a></dt>
+      <dd><p>Payment distributed to a pool or passive delegators.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlocksAtHeightRequest.html">BlocksAtHeightRequest</a></dt>
+      <dd><p>Request for GetBlocksAtHeight.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlocksAtHeightRequest.Types.html">BlocksAtHeightRequest.Types</a></dt>
+      <dd><p>Container for nested types declared in the BlocksAtHeightRequest message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlocksAtHeightRequest.Types.Absolute.html">BlocksAtHeightRequest.Types.Absolute</a></dt>
+      <dd><p>Request using an absolute block height.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlocksAtHeightRequest.Types.Relative.html">BlocksAtHeightRequest.Types.Relative</a></dt>
+      <dd><p>Request using a relative block height.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlocksAtHeightResponse.html">BlocksAtHeightResponse</a></dt>
+      <dd><p>Response for GetBlocksAtHeight.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Branch.html">Branch</a></dt>
+      <dd><p>Response type for GetBranches.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.CapitalBound.html">CapitalBound</a></dt>
+      <dd><p>A bound on the relative share of the total staked capital that a baker can
+have as its stake. This is required to be greater than 0.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ChainArData.html">ChainArData</a></dt>
+      <dd><p>Data relating to a single anonymity revoker sent by the account holder to
+the chain.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ChainParameters.html">ChainParameters</a></dt>
+      <dd><p>Chain parameters.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ChainParametersV0.html">ChainParametersV0</a></dt>
+      <dd><p>Updatable chain parameters that apply to protocol versions 1-3.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ChainParametersV1.html">ChainParametersV1</a></dt>
+      <dd><p>Updatable chain parameters that apply to protocol versions 4-5.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ChainParametersV2.html">ChainParametersV2</a></dt>
+      <dd><p>Updatable chain parameters that apply to protocol versions 6.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.CommissionRanges.html">CommissionRanges</a></dt>
+      <dd><p>Ranges of allowed commission values that pools may choose from.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.CommissionRates.html">CommissionRates</a></dt>
+      <dd><p>Distribution of the rewards for the particular pool.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Commitment.html">Commitment</a></dt>
+      <dd><p>A single commitment in the G1 group of the BLS curve. This is always 48 bytes
+in length.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ConsensusInfo.html">ConsensusInfo</a></dt>
+      <dd><p>The response for GetConsensusInfo.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ConsensusParametersV1.html">ConsensusParametersV1</a></dt>
+      <dd><p>Parameters for the consensus protocol used from protocol version 6.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ContractAddress.html">ContractAddress</a></dt>
+      <dd><p>Address of a smart contract instance.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ContractEvent.html">ContractEvent</a></dt>
+      <dd><p>An event generated by a smart contract.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ContractInitializedEvent.html">ContractInitializedEvent</a></dt>
+      <dd><p>Data generated as part of initializing a single contract instance.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ContractStateV0.html">ContractStateV0</a></dt>
+      <dd><p>A smart contract v0 state.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ContractTraceElement.html">ContractTraceElement</a></dt>
+      <dd><p>Effects produced by successful smart contract invocations.
+A single invocation will produce a sequence of these effects.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ContractTraceElement.Types.html">ContractTraceElement.Types</a></dt>
+      <dd><p>Container for nested types declared in the ContractTraceElement message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ContractTraceElement.Types.Interrupted.html">ContractTraceElement.Types.Interrupted</a></dt>
+      <dd><p>A contract was interrupted.
+This occurs when a contract invokes another contract or makes a transfer to an account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ContractTraceElement.Types.Resumed.html">ContractTraceElement.Types.Resumed</a></dt>
+      <dd><p>A previously interrupted contract was resumed.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ContractTraceElement.Types.Transferred.html">ContractTraceElement.Types.Transferred</a></dt>
+      <dd><p>A contract transferred an amount to an account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ContractTraceElement.Types.Upgraded.html">ContractTraceElement.Types.Upgraded</a></dt>
+      <dd><p>A previously interrupted contract was resumed.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.CooldownParametersCpv1.html">CooldownParametersCpv1</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.CredentialCommitments.html">CredentialCommitments</a></dt>
+      <dd><p>Commitments that are part of a normal credential.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.CredentialDeployment.html">CredentialDeployment</a></dt>
+      <dd><p>Credential deployments create new accounts. They are not paid for
+directly by the sender. Instead, bakers are rewarded by the protocol for
+including them.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.CredentialIndex.html">CredentialIndex</a></dt>
+      <dd><p>Index of a credential on an account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.CredentialPublicKeys.html">CredentialPublicKeys</a></dt>
+      <dd><p>Public keys of a single credential.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.CredentialRegistrationId.html">CredentialRegistrationId</a></dt>
+      <dd><p>A registration ID of a credential, derived from the secret PRF key and a
+nonce. This is always 48 bytes long.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.CredentialsPerBlockLimit.html">CredentialsPerBlockLimit</a></dt>
+      <dd><p>The number of credential deployments allowed in a block. This in effect
+determines the number of accounts that can be created in a block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.CryptographicParameters.html">CryptographicParameters</a></dt>
+      <dd><p>The response for GetCryptographicParameters.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DelegationEvent.html">DelegationEvent</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DelegationEvent.Types.html">DelegationEvent.Types</a></dt>
+      <dd><p>Container for nested types declared in the DelegationEvent message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DelegationEvent.Types.DelegationSetDelegationTarget.html">DelegationEvent.Types.DelegationSetDelegationTarget</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DelegationEvent.Types.DelegationSetRestakeEarnings.html">DelegationEvent.Types.DelegationSetRestakeEarnings</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DelegationEvent.Types.DelegationStakeDecreased.html">DelegationEvent.Types.DelegationStakeDecreased</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DelegationEvent.Types.DelegationStakeIncreased.html">DelegationEvent.Types.DelegationStakeIncreased</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DelegationTarget.html">DelegationTarget</a></dt>
+      <dd><p>Entity to which the account delegates a portion of its stake.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DelegatorId.html">DelegatorId</a></dt>
+      <dd><p>The identifier for a delegator.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DelegatorInfo.html">DelegatorInfo</a></dt>
+      <dd><p>Stream item for GetPoolDelegators and GetPassiveDelegators.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DelegatorRewardPeriodInfo.html">DelegatorRewardPeriodInfo</a></dt>
+      <dd><p>Stream item for GetPoolDelegatorsRewardPeriod and GetPassiveDelegatorsRewardPeriod.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Description.html">Description</a></dt>
+      <dd><p>Description either of an anonymity revoker or identity provider.
+Metadata that should be visible on the chain.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DumpRequest.html">DumpRequest</a></dt>
+      <dd><p>Request to enable dumping of network packages.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Duration.html">Duration</a></dt>
+      <dd><p>A duration of milliseconds.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DurationSeconds.html">DurationSeconds</a></dt>
+      <dd><p>A duration in seconds.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ElectionDifficulty.html">ElectionDifficulty</a></dt>
+      <dd><p>Election difficulty parameter.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ElectionInfo.html">ElectionInfo</a></dt>
+      <dd><p>Response type for GetElectionInfo.
+Contains information related to baker election for a perticular block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ElectionInfo.Types.html">ElectionInfo.Types</a></dt>
+      <dd><p>Container for nested types declared in the ElectionInfo message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ElectionInfo.Types.Baker.html">ElectionInfo.Types.Baker</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+      <dd><p>A message that contains no information.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.EncryptedAmount.html">EncryptedAmount</a></dt>
+      <dd><p>An encrypted amount, in two chunks in &quot;little endian limbs&quot;. That is, the
+first chunk represents the low 32 bits of an amount, and the second chunk
+represents the high 32 bits. The chunks are serialized in order and
+represented as a byte array.
+Always 192 bytes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.EncryptedAmountRemovedEvent.html">EncryptedAmountRemovedEvent</a></dt>
+      <dd><p>Event generated when one or more encrypted amounts are consumed from the account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.EncryptedBalance.html">EncryptedBalance</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.EncryptedSelfAmountAddedEvent.html">EncryptedSelfAmountAddedEvent</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.EncryptionKey.html">EncryptionKey</a></dt>
+      <dd><p>An account encryption key. Always 96 bytes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Energy.html">Energy</a></dt>
+      <dd><p>Energy is used to count exact execution cost.
+This cost is then converted to CCD amounts.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Epoch.html">Epoch</a></dt>
+      <dd><p>A chain epoch.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ExchangeRate.html">ExchangeRate</a></dt>
+      <dd><p>Represents an exchange rate.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.FinalizationCommitteeParameters.html">FinalizationCommitteeParameters</a></dt>
+      <dd><p>Finalization committee parameters used from protocol version 6</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.FinalizationIndex.html">FinalizationIndex</a></dt>
+      <dd><p>Index of the finalization round. This increases on each successfully
+completed finalization.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.FinalizationSummary.html">FinalizationSummary</a></dt>
+      <dd><p>Details about a finalization record included in a block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.FinalizationSummaryParty.html">FinalizationSummaryParty</a></dt>
+      <dd><p>Details about a finalizer for the finalization round.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.FinalizedBlockInfo.html">FinalizedBlockInfo</a></dt>
+      <dd><p>Information about a finalized block that is part of the streaming response.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.GasRewards.html">GasRewards</a></dt>
+      <dd><p>Distribution of gas rewards for chain parameters version 0 and 1.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.GasRewardsCpv2.html">GasRewardsCpv2</a></dt>
+      <dd><p>Distribution of gas rewards for chain parameters version 2.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.GenesisIndex.html">GenesisIndex</a></dt>
+      <dd><p>The number of chain restarts via a protocol update. An effected
+protocol update instruction might not change the protocol version
+specified in the previous field, but it always increments the genesis
+index.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.GetPoolDelegatorsRequest.html">GetPoolDelegatorsRequest</a></dt>
+      <dd><p>Request for GetPoolDelegators and GetPoolDelegatorsRewardPeriod.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.HigherLevelKeys.html">HigherLevelKeys</a></dt>
+      <dd><p>Represents root or level 1 keys.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.IdentityProviderIdentity.html">IdentityProviderIdentity</a></dt>
+      <dd><p>An index of the identity provider that identifies them uniquely in the
+context of a specific chain.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InclusiveRangeAmountFraction.html">InclusiveRangeAmountFraction</a></dt>
+      <dd><p>Inclusive range of amount fractions.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InitContractPayload.html">InitContractPayload</a></dt>
+      <dd><p>Data required to initialize a new contract instance.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InitName.html">InitName</a></dt>
+      <dd><p>The init name of a smart contract function. Expected format:
+<code>init_&lt;contract_name&gt;</code>. It must only consist of atmost 100 ASCII alphanumeric
+or punctuation characters, must not contain a '.' and must start with
+'init_'.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InitialCredentialValues.html">InitialCredentialValues</a></dt>
+      <dd><p>Values contained in an initial credential.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InstanceInfo.html">InstanceInfo</a></dt>
+      <dd><p>Information about a smart contract instance.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InstanceInfo.Types.html">InstanceInfo.Types</a></dt>
+      <dd><p>Container for nested types declared in the InstanceInfo message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InstanceInfo.Types.V0.html">InstanceInfo.Types.V0</a></dt>
+      <dd><p>Version 0 smart contract instance information.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InstanceInfo.Types.V1.html">InstanceInfo.Types.V1</a></dt>
+      <dd><p>Version 1 smart contract instance information.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InstanceInfoRequest.html">InstanceInfoRequest</a></dt>
+      <dd><p>Request for getting information about a smart contract instance.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InstanceStateKVPair.html">InstanceStateKVPair</a></dt>
+      <dd><p>A smart contract instance key-value pair.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InstanceStateLookupRequest.html">InstanceStateLookupRequest</a></dt>
+      <dd><p>Request for a specific key of a smart contract instance state.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InstanceStateValueAtKey.html">InstanceStateValueAtKey</a></dt>
+      <dd><p>Value at the requested key of a smart contract instance state. For V0
+contracts this will always be the entire state of the contract.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InstanceUpdatedEvent.html">InstanceUpdatedEvent</a></dt>
+      <dd><p>Data generated as part of updating a single contract instance.
+In general a single Update transaction will
+generate one or more of these events, together with possibly some transfers.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InvokeInstanceRequest.html">InvokeInstanceRequest</a></dt>
+      <dd><p>Request for InvokeInstance.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InvokeInstanceResponse.html">InvokeInstanceResponse</a></dt>
+      <dd><p>Response type for InvokeInstance.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InvokeInstanceResponse.Types.html">InvokeInstanceResponse.Types</a></dt>
+      <dd><p>Container for nested types declared in the InvokeInstanceResponse message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InvokeInstanceResponse.Types.Failure.html">InvokeInstanceResponse.Types.Failure</a></dt>
+      <dd><p>Contract execution failed.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InvokeInstanceResponse.Types.Success.html">InvokeInstanceResponse.Types.Success</a></dt>
+      <dd><p>Contract execution succeeded.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.IpAddress.html">IpAddress</a></dt>
+      <dd><p>A request to send a new block item to the chain.
+An IP address</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.IpIdentity.html">IpIdentity</a></dt>
+      <dd><p>A succinct identifier of an identity provider on the chain.
+In credential deployments, and other interactions with the chain this is
+used to identify which identity provider is meant.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.IpInfo.html">IpInfo</a></dt>
+      <dd><p>Public information about an identity provider.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.IpInfo.Types.html">IpInfo.Types</a></dt>
+      <dd><p>Container for nested types declared in the IpInfo message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.IpInfo.Types.IpCdiVerifyKey.html">IpInfo.Types.IpCdiVerifyKey</a></dt>
+      <dd><p>Ed25519 public key of the identity provider.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.IpInfo.Types.IpVerifyKey.html">IpInfo.Types.IpVerifyKey</a></dt>
+      <dd><p>Pointcheval-Sanders public key of the identity provider.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.IpSocketAddress.html">IpSocketAddress</a></dt>
+      <dd><p>A socket address consisting of
+an IP + port.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.LeadershipElectionNonce.html">LeadershipElectionNonce</a></dt>
+      <dd><p>The leadership election nonce is an unpredictable value updated once an
+epoch to make sure that bakers cannot predict too far in the future when
+they will win the right to bake blocks.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Level1Update.html">Level1Update</a></dt>
+      <dd><p>Level 1 updates are the intermediate update kind.
+They can update themselves or level 2 keys. They can only be performed by level 1 keys.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.LeverageFactor.html">LeverageFactor</a></dt>
+      <dd><p>A leverage factor.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Memo.html">Memo</a></dt>
+      <dd><p>A memo which can be included as part of a transfer. Max size is 256 bytes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.MintDistributionCpv0.html">MintDistributionCpv0</a></dt>
+      <dd><p>The minting rate and the distribution of newly-minted CCD among bakers,
+finalizers, and the foundation account. It must be the case that
+baking_reward + finalization_reward &lt;= 1. The remaining amount is the
+platform development charge.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.MintDistributionCpv1.html">MintDistributionCpv1</a></dt>
+      <dd><p>Mint distribution payload as it looks in protocol version 4 and onward.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.MintRate.html">MintRate</a></dt>
+      <dd><p>A minting rate of CCD.
+The value is <code>mantissa * 10^(-exponent)</code>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ModuleRef.html">ModuleRef</a></dt>
+      <dd><p>A smart contract module reference. This is always 32 bytes long.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ModuleSourceRequest.html">ModuleSourceRequest</a></dt>
+      <dd><p>Request for getting the source of a smart contract module.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.NewEncryptedAmountEvent.html">NewEncryptedAmountEvent</a></dt>
+      <dd><p>Event generated when an account receives a new encrypted amount.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.NewRelease.html">NewRelease</a></dt>
+      <dd><p>A new individual release. Part of a single transfer with schedule transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.NextAccountSequenceNumber.html">NextAccountSequenceNumber</a></dt>
+      <dd><p>The response for getNextAccountSequenceNumber.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.NextUpdateSequenceNumbers.html">NextUpdateSequenceNumbers</a></dt>
+      <dd><p>The response for <code>GetNextUpdateSequenceNumbers</code>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.NodeInfo.html">NodeInfo</a></dt>
+      <dd><p>Node info response
+Contains various information of the
+enquired node.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.NodeInfo.Types.html">NodeInfo.Types</a></dt>
+      <dd><p>Container for nested types declared in the NodeInfo message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.NodeInfo.Types.BakerConsensusInfo.html">NodeInfo.Types.BakerConsensusInfo</a></dt>
+      <dd><p>Consensus info for a node configured with baker keys.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.html">NodeInfo.Types.BakerConsensusInfo.Types</a></dt>
+      <dd><p>Container for nested types declared in the BakerConsensusInfo message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.ActiveBakerCommitteeInfo.html">NodeInfo.Types.BakerConsensusInfo.Types.ActiveBakerCommitteeInfo</a></dt>
+      <dd><p>Tagging message type for a node that
+is configured with baker keys and active in
+the current baking committee</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.ActiveFinalizerCommitteeInfo.html">NodeInfo.Types.BakerConsensusInfo.Types.ActiveFinalizerCommitteeInfo</a></dt>
+      <dd><p>Tagging message type for a node that
+is configured with baker keys and active in
+the current finalizer committee (and also baking committee).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.NodeInfo.Types.NetworkInfo.html">NodeInfo.Types.NetworkInfo</a></dt>
+      <dd><p>Network related information of the node.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.NodeInfo.Types.Node.html">NodeInfo.Types.Node</a></dt>
+      <dd><p>The node is a regular node.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.NormalCredentialValues.html">NormalCredentialValues</a></dt>
+      <dd><p>Values contained in a normal (non-initial) credential.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Parameter.html">Parameter</a></dt>
+      <dd><p>Parameter to a smart contract initialization or invocation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PassiveDelegationInfo.html">PassiveDelegationInfo</a></dt>
+      <dd><p>Type for the response of GetPassiveDelegationInfo.
+Contains information about passive delegators at the end of a given block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PeerId.html">PeerId</a></dt>
+      <dd><p>A peer id
+An identifier that the peer wants to be
+be recoknized by.
+The underlying value is simply a u64.
+Note. There is no authenticity of the peer id and
+as such it is only used for logging purposes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PeerToBan.html">PeerToBan</a></dt>
+      <dd><p>A peer to ban specified by its IP.
+Note. This will ban all peers located behind the
+specified IP even though they are using different ports.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PeersInfo.html">PeersInfo</a></dt>
+      <dd><p>Peers and their associated network related statistics</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.html">PeersInfo.Types</a></dt>
+      <dd><p>Container for nested types declared in the PeersInfo message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.html">PeersInfo.Types.Peer</a></dt>
+      <dd><p>A peer that the node is connected to.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.Types.html">PeersInfo.Types.Peer.Types</a></dt>
+      <dd><p>Container for nested types declared in the Peer message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.Types.NetworkStats.html">PeersInfo.Types.Peer.Types.NetworkStats</a></dt>
+      <dd><p>Network statistics for the peer</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PendingUpdate.html">PendingUpdate</a></dt>
+      <dd><p>A pending update.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Policy.html">Policy</a></dt>
+      <dd><p>Policy on a credential.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PoolCurrentPaydayInfo.html">PoolCurrentPaydayInfo</a></dt>
+      <dd><p>Information about a baker pool in the current reward period.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PoolInfoRequest.html">PoolInfoRequest</a></dt>
+      <dd><p>Request for GetPoolInfo.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PoolInfoResponse.html">PoolInfoResponse</a></dt>
+      <dd><p>Type for the response of GetPoolInfo.
+Contains information about a given pool at the end of a given block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PoolParametersCpv1.html">PoolParametersCpv1</a></dt>
+      <dd><p>Parameters related to staking pools.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PoolPendingChange.html">PoolPendingChange</a></dt>
+      <dd><p>A pending change to a baker pool.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PoolPendingChange.Types.html">PoolPendingChange.Types</a></dt>
+      <dd><p>Container for nested types declared in the PoolPendingChange message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PoolPendingChange.Types.Reduce.html">PoolPendingChange.Types.Reduce</a></dt>
+      <dd><p>A reduction in baker equity capital is pending.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PoolPendingChange.Types.Remove.html">PoolPendingChange.Types.Remove</a></dt>
+      <dd><p>Removal of the pool is pending.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Port.html">Port</a></dt>
+      <dd><p>A port
+Valid port numbers are expected thus
+the value is expected to be in the range (0..u16::MAX).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PreAccountTransaction.html">PreAccountTransaction</a></dt>
+      <dd><p>An unsigned account transaction. This is used with the
+<code>GetTransactionSignHash</code> endpoint to obtain the message to sign.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ProtocolUpdate.html">ProtocolUpdate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Queries.html">Queries</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Queries.QueriesClient.html">Queries.QueriesClient</a></dt>
+      <dd><p>Client for Queries</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Ratio.html">Ratio</a></dt>
+      <dd><p>Represents a ratio, i.e., 'numerator / denominator'.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ReceiveName.html">ReceiveName</a></dt>
+      <dd><p>The receive name of a smart contract function. Expected format:
+<code>&lt;contract_name&gt;.&lt;func_name&gt;</code>. It must only consist of atmost 100 ASCII
+alphanumeric or punctuation characters, and must contain a '.'.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.RegisteredData.html">RegisteredData</a></dt>
+      <dd><p>Data registered on the chain with a register data transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.html">RejectReason</a></dt>
+      <dd><p>A reason for why a transaction was rejected. Rejected means included in a
+block, but the desired action was not achieved. The only effect of a
+rejected transaction is payment.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.html">RejectReason.Types</a></dt>
+      <dd><p>Container for nested types declared in the RejectReason message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.AmountTooLarge.html">RejectReason.Types.AmountTooLarge</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.DuplicateCredIds.html">RejectReason.Types.DuplicateCredIds</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.InvalidInitMethod.html">RejectReason.Types.InvalidInitMethod</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.InvalidReceiveMethod.html">RejectReason.Types.InvalidReceiveMethod</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.NonExistentCredIds.html">RejectReason.Types.NonExistentCredIds</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.RejectedInit.html">RejectReason.Types.RejectedInit</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.RejectedReceive.html">RejectReason.Types.RejectedReceive</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Release.html">Release</a></dt>
+      <dd><p>An individual release of a locked balance.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ReleaseSchedule.html">ReleaseSchedule</a></dt>
+      <dd><p>State of the account's release schedule. This is the balance of the account
+that is owned by the account, but cannot be used until the release point.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.RewardPeriodLength.html">RewardPeriodLength</a></dt>
+      <dd><p>Length of a reward period in epochs.
+Must always be a strictly positive number.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.RootUpdate.html">RootUpdate</a></dt>
+      <dd><p>Root updates are the highest kind of key updates. They can update every other set of keys,
+even themselves. They can only be performed by Root level keys.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.SendBlockItemRequest.html">SendBlockItemRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.SequenceNumber.html">SequenceNumber</a></dt>
+      <dd><p>A sequence number that determines the ordering of transactions from the
+account. The minimum sequence number is 1.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ServiceReflection.html">ServiceReflection</a></dt>
+      <dd><p>Holder for reflection information generated from v2/concordium/service.proto</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Sha256Hash.html">Sha256Hash</a></dt>
+      <dd><p>A SHA256 hash. This is always 32 bytes long.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Signature.html">Signature</a></dt>
+      <dd><p>A single signature. Used when sending block items to a node with
+<code>SendBlockItem</code>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.SignatureMap.html">SignatureMap</a></dt>
+      <dd><p>Wrapper for a map from indexes to signatures.
+Needed because protobuf doesn't allow nested maps directly.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.SignatureThreshold.html">SignatureThreshold</a></dt>
+      <dd><p>The number of signatures required to sign.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Slot.html">Slot</a></dt>
+      <dd><p>A number representing a slot for baking a block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.StakePendingChange.html">StakePendingChange</a></dt>
+      <dd><p>Pending change to the stake either of a baker or delegator.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.StakePendingChange.Types.html">StakePendingChange.Types</a></dt>
+      <dd><p>Container for nested types declared in the StakePendingChange message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.StakePendingChange.Types.Reduce.html">StakePendingChange.Types.Reduce</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.StateHash.html">StateHash</a></dt>
+      <dd><p>Hash of the state after some block. This is always 32 bytes long.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.TimeParametersCpv1.html">TimeParametersCpv1</a></dt>
+      <dd><p>The time parameters are introduced as of protocol version 4, and consist of
+the reward period length and the mint rate per payday. These are coupled as
+a change to either affects the overall rate of minting.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.TimeoutParameters.html">TimeoutParameters</a></dt>
+      <dd><p>Parameters that determine timeouts in the consensus protocol used from protocol version 6.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Timestamp.html">Timestamp</a></dt>
+      <dd><p>Unix timestamp in milliseconds.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.TokenomicsInfo.html">TokenomicsInfo</a></dt>
+      <dd><p>Type for the response of GetTokenomicsInfo.
+Contains information related to tokenomics at the end of a given block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.TokenomicsInfo.Types.html">TokenomicsInfo.Types</a></dt>
+      <dd><p>Container for nested types declared in the TokenomicsInfo message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.TokenomicsInfo.Types.V0.html">TokenomicsInfo.Types.V0</a></dt>
+      <dd><p>Version 0 tokenomics.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.TokenomicsInfo.Types.V1.html">TokenomicsInfo.Types.V1</a></dt>
+      <dd><p>Version 1 tokenomics.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.TransactionFeeDistribution.html">TransactionFeeDistribution</a></dt>
+      <dd><p>Parameters determining the distribution of transaction fees.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.TransactionHash.html">TransactionHash</a></dt>
+      <dd><p>Hash of a transaction. This is always 32 bytes long.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.TransactionTime.html">TransactionTime</a></dt>
+      <dd><p>Transaction time specified as seconds since unix epoch.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.TransferPayload.html">TransferPayload</a></dt>
+      <dd><p>Payload of a transfer between two accounts.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.TransferWithMemoPayload.html">TransferWithMemoPayload</a></dt>
+      <dd><p>Payload of a transfer between two accounts with a memo.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.TypesReflection.html">TypesReflection</a></dt>
+      <dd><p>Holder for reflection information generated from v2/concordium/types.proto</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.UpdateContractPayload.html">UpdateContractPayload</a></dt>
+      <dd><p>Data required to update a contract instance.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.UpdateDetails.html">UpdateDetails</a></dt>
+      <dd><p>Details of an update instruction. These are free, and we only ever get a
+response for them if the update is successfully enqueued, hence no failure
+cases.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.UpdateInstruction.html">UpdateInstruction</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.UpdateInstructionHeader.html">UpdateInstructionHeader</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.UpdateInstructionPayload.html">UpdateInstructionPayload</a></dt>
+      <dd><p>The payload for an UpdateInstruction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.UpdateInstructionSignature.html">UpdateInstructionSignature</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.UpdateKeysIndex.html">UpdateKeysIndex</a></dt>
+      <dd><p>Index of a key in an authorizations update payload.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.UpdateKeysThreshold.html">UpdateKeysThreshold</a></dt>
+      <dd><p>The threshold for how many UpdatePublicKeys are need to make a certain chain update.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.UpdatePayload.html">UpdatePayload</a></dt>
+      <dd><p>The payload of a chain update.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.UpdatePublicKey.html">UpdatePublicKey</a></dt>
+      <dd><p>A public key used for chain updates.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.UpdateSequenceNumber.html">UpdateSequenceNumber</a></dt>
+      <dd><p>A sequence number that determines the ordering of update transactions.
+Equivalent to <code>SequenceNumber</code> for account transactions.
+Update sequence numbers are per update type and the minimum value is 1.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.VersionedModuleSource.html">VersionedModuleSource</a></dt>
+      <dd><p>Source bytes of a versioned smart contract module.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.VersionedModuleSource.Types.html">VersionedModuleSource.Types</a></dt>
+      <dd><p>Container for nested types declared in the VersionedModuleSource message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.VersionedModuleSource.Types.ModuleSourceV0.html">VersionedModuleSource.Types.ModuleSourceV0</a></dt>
+      <dd><p>Source bytes of a smart contract v0 module.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.VersionedModuleSource.Types.ModuleSourceV1.html">VersionedModuleSource.Types.ModuleSourceV1</a></dt>
+      <dd><p>Source bytes of a smart contract v1 module.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.YearMonth.html">YearMonth</a></dt>
+      <dd><p>Representation of the pair of a year and month.</p>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountCredential.CredentialValuesOneofCase.html">AccountCredential.CredentialValuesOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;credential_values&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountIdentifierInput.AccountIdentifierInputOneofCase.html">AccountIdentifierInput.AccountIdentifierInputOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;account_identifier_input&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountStakingInfo.StakingInfoOneofCase.html">AccountStakingInfo.StakingInfoOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;staking_info&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.EffectOneofCase.html">AccountTransactionEffects.EffectOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;effect&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionPayload.PayloadOneofCase.html">AccountTransactionPayload.PayloadOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;payload&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.AccountVerifyKey.KeyOneofCase.html">AccountVerifyKey.KeyOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;key&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Address.TypeOneofCase.html">Address.TypeOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;type&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerEvent.EventOneofCase.html">BakerEvent.EventOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;event&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockFinalizationSummary.SummaryOneofCase.html">BlockFinalizationSummary.SummaryOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;summary&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockHashInput.BlockHashInputOneofCase.html">BlockHashInput.BlockHashInputOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;block_hash_input&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockItem.BlockItemOneofCase.html">BlockItem.BlockItemOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;block_item&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockItemStatus.StatusOneofCase.html">BlockItemStatus.StatusOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;status&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.html">BlockItemSummary.DetailsOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;details&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockSpecialEvent.EventOneofCase.html">BlockSpecialEvent.EventOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;event&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlocksAtHeightRequest.BlocksAtHeightOneofCase.html">BlocksAtHeightRequest.BlocksAtHeightOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;blocks_at_height&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ChainParameters.ParametersOneofCase.html">ChainParameters.ParametersOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;parameters&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ContractTraceElement.ElementOneofCase.html">ContractTraceElement.ElementOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;element&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ContractVersion.html">ContractVersion</a></dt>
+      <dd><p>Version of smart contract.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.CredentialDeployment.PayloadOneofCase.html">CredentialDeployment.PayloadOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;payload&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.CredentialType.html">CredentialType</a></dt>
+      <dd><p>The type of a credential.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DelegationEvent.EventOneofCase.html">DelegationEvent.EventOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;event&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DelegationTarget.TargetOneofCase.html">DelegationTarget.TargetOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;target&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InstanceInfo.VersionOneofCase.html">InstanceInfo.VersionOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;version&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.InvokeInstanceResponse.ResultOneofCase.html">InvokeInstanceResponse.ResultOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;result&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.Level1Update.UpdateTypeOneofCase.html">Level1Update.UpdateTypeOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;update_type&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.NodeInfo.DetailsOneofCase.html">NodeInfo.DetailsOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;details&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase.html">NodeInfo.Types.BakerConsensusInfo.StatusOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;status&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.PassiveCommitteeInfo.html">NodeInfo.Types.BakerConsensusInfo.Types.PassiveCommitteeInfo</a></dt>
+      <dd><p>The committee information of a node configured with
+baker keys but somehow the node is <em>not</em> part of the
+current baking committee.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.NodeInfo.Types.Node.ConsensusStatusOneofCase.html">NodeInfo.Types.Node.ConsensusStatusOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;consensus_status&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.OpenStatus.html">OpenStatus</a></dt>
+      <dd><p>Information about how open the pool is to new delegators.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.ConsensusInfoOneofCase.html">PeersInfo.Types.Peer.ConsensusInfoOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;consensus_info&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.Types.CatchupStatus.html">PeersInfo.Types.Peer.Types.CatchupStatus</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PendingUpdate.EffectOneofCase.html">PendingUpdate.EffectOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;effect&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.PoolPendingChange.ChangeOneofCase.html">PoolPendingChange.ChangeOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;change&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.ProtocolVersion.html">ProtocolVersion</a></dt>
+      <dd><p>The different versions of the protocol.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.ReasonOneofCase.html">RejectReason.ReasonOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;reason&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.RootUpdate.UpdateTypeOneofCase.html">RootUpdate.UpdateTypeOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;update_type&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.SendBlockItemRequest.BlockItemOneofCase.html">SendBlockItemRequest.BlockItemOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;block_item&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.StakePendingChange.ChangeOneofCase.html">StakePendingChange.ChangeOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;change&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.TokenomicsInfo.TokenomicsOneofCase.html">TokenomicsInfo.TokenomicsOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;tokenomics&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.TransactionType.html">TransactionType</a></dt>
+      <dd><p>The type of transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.UpdateInstructionPayload.PayloadOneofCase.html">UpdateInstructionPayload.PayloadOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;payload&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.UpdatePayload.PayloadOneofCase.html">UpdatePayload.PayloadOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;payload&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.UpdateType.html">UpdateType</a></dt>
+      <dd><p>The type of chain update.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.VersionedModuleSource.ModuleOneofCase.html">VersionedModuleSource.ModuleOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;module&quot; oneof.</p>
+</dd>
+    </dl>
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

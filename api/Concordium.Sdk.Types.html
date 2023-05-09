@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Namespace Concordium.Sdk.Types
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace Concordium.Sdk.Types
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      
+
+      <script type="module">
+        import docfx from './../public/main.js'
+        window.docfx = docfx
+        window.MathJax = {
+          options: {
+            processHtmlClass: ['tex2jax_process', 'math']
+          }
+        }
+      </script>
+      <script type="text/javascript" src="../public/docfx.min.js"></script>
+  </head>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Concordium.Sdk.Types">
+
+  <h1 id="Concordium_Sdk_Types" data-uid="Concordium.Sdk.Types" class="text-break">Namespace Concordium.Sdk.Types
+</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a></dt>
+      <dd><p>Represents a block hash.</p>
+<p>A block hash is a 32-byte hash of a block and serves as
+the canonical way of identifying it.</p>
+<p>The address is usually provided as a hex encoded string.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Hash.html">Hash</a></dt>
+      <dd><p>Represents a 32-byte hash.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.OnChainData.html">OnChainData</a></dt>
+      <dd><p>Represents data to be stored or that was stored on-chain as part of a transaction.</p>
+<p>This can be any data which is at most <a class="xref" href="Concordium.Sdk.Types.OnChainData.html#Concordium_Sdk_Types_OnChainData_MaxLength">MaxLength</a> bytes, but the convention is
+to use CBOR encoded data.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.TransactionHash.html">TransactionHash</a></dt>
+      <dd><p>Represents a transaction hash.</p>
+</dd>
+    </dl>
+    <h3 id="structs">
+Structs
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
+      <dd><p>Represents an account address.</p>
+<p>The address of an account is a 32-byte value which uniquely identifies the account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AccountCredentialIndex.html">AccountCredentialIndex</a></dt>
+      <dd><p>Represents an account credential index.</p>
+<p>An account has one or more credentials, each identified by a unique
+byte-value referred to as its credential index.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AccountKeyIndex.html">AccountKeyIndex</a></dt>
+      <dd><p>Represents an account key index.</p>
+<p>An account has one or more credentials, each identified by a unique
+credential index (modeled by <a class="xref" href="Concordium.Sdk.Types.AccountCredentialIndex.html">AccountCredentialIndex</a>).</p>
+<p>For each credential the account may have up to 255 keys, where each
+such key is identified by another unique byte-value referred to as
+its account key index. This index is relative to the credential index
+of the credential to which it belongs. Thus a pair of a credential
+index of the account and the key index of a key belonging to the
+corresponding credential uniquely identifies that key.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a></dt>
+      <dd><p>Represents an account sequence number.</p>
+<p>The account sequence number is a 64-bit unsigned integer specific to an account
+and used when submitting account transactions for that account to the node. The account
+sequence number is maintained as on-chain state and is incremented with each finalized
+transaction. The next sequence number to be used in a transaction can be queried
+with <a class="xref" href="Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_GetNextAccountSequenceNumber_Concordium_Sdk_Types_AccountAddress_">GetNextAccountSequenceNumber(AccountAddress)</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
+      <dd><p>Represents a CCD amount.</p>
+<p>Note that 1_000_000 µCCD is equal to 1 CCD.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ContractAddress.html">ContractAddress</a></dt>
+      <dd><p>Represents a contract address.</p>
+<p>A contract is identified by its unique <a class="xref" href="Concordium.Sdk.Types.ContractAddress.html">ContractAddress</a>.
+A contract address consists of a contract index and a contact sub-index
+both represented as 64-bit unsigned integers.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.EnergyAmount.html">EnergyAmount</a></dt>
+      <dd><p>Represents an amount of energy.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Expiry.html">Expiry</a></dt>
+      <dd><p>Represents an expiration time for a transaction.</p>
+<p>A transaction can not be included in a block if its expiration time is before the block (slot) time.</p>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AccountTransactionType.html">AccountTransactionType</a></dt>
+      <dd><p>Values used for binary serialization of transactions.</p>
+</dd>
+    </dl>
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

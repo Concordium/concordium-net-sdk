@@ -1,0 +1,4067 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class RejectReason
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class RejectReason
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/prepare-release/apiSpec/new?filename=Concordium_Grpc_V2_RejectReason.md&amp;value=---%0Auid%3A%20Concordium.Grpc.V2.RejectReason%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+
+      <script type="module">
+        import docfx from './../public/main.js'
+        window.docfx = docfx
+        window.MathJax = {
+          options: {
+            processHtmlClass: ['tex2jax_process', 'math']
+          }
+        }
+      </script>
+      <script type="text/javascript" src="../public/docfx.min.js"></script>
+  </head>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Concordium.Grpc.V2.RejectReason">
+
+
+
+  <h1 id="Concordium_Grpc_V2_RejectReason" data-uid="Concordium.Grpc.V2.RejectReason" class="text-break">
+    Class RejectReason
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L21741"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Concordium.html">Concordium</a>.<a class="xref" href="Concordium.Grpc.html">Grpc</a>.<a class="xref" href="Concordium.Grpc.V2.html">V2</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Concordium.Sdk.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>A reason for why a transaction was rejected. Rejected means included in a
+block, but the desired action was not achieved. The only effect of a
+rejected transaction is payment.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class RejectReason : IMessage&lt;RejectReason&gt;, IEquatable&lt;RejectReason&gt;, IDeepCloneable&lt;RejectReason&gt;, IBufferMessage, IMessage</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">RejectReason</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><span class="xref">IMessage</span>&lt;<a class="xref" href="Concordium.Grpc.V2.RejectReason.html">RejectReason</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Grpc.V2.RejectReason.html">RejectReason</a>&gt;</div>
+      <div><span class="xref">IDeepCloneable</span>&lt;<a class="xref" href="Concordium.Grpc.V2.RejectReason.html">RejectReason</a>&gt;</div>
+      <div><span class="xref">IBufferMessage</span></div>
+      <div><span class="xref">IMessage</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Concordium_Grpc_V2_RejectReason__ctor_" data-uid="Concordium.Grpc.V2.RejectReason.#ctor*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason__ctor" data-uid="Concordium.Grpc.V2.RejectReason.#ctor">
+  RejectReason()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L21764"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RejectReason()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason__ctor_" data-uid="Concordium.Grpc.V2.RejectReason.#ctor*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason__ctor_Concordium_Grpc_V2_RejectReason_" data-uid="Concordium.Grpc.V2.RejectReason.#ctor(Concordium.Grpc.V2.RejectReason)">
+  RejectReason(RejectReason)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L21772"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RejectReason(RejectReason other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Grpc.V2.RejectReason.html">RejectReason</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_AlreadyABakerFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.AlreadyABakerFieldNumber">
+  AlreadyABakerFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22163"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;already_a_baker&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int AlreadyABakerFieldNumber = 15</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_AlreadyADelegatorFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.AlreadyADelegatorFieldNumber">
+  AlreadyADelegatorFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22626"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;already_a_delegator&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int AlreadyADelegatorFieldNumber = 45</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_AmountTooLargeFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.AmountTooLargeFieldNumber">
+  AmountTooLargeFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22071"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;amount_too_large&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int AmountTooLargeFieldNumber = 9</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_BakerInCooldownFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.BakerInCooldownFieldNumber">
+  BakerInCooldownFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22223"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;baker_in_cooldown&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BakerInCooldownFieldNumber = 19</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_BakingRewardCommissionNotInRangeFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.BakingRewardCommissionNotInRangeFieldNumber">
+  BakingRewardCommissionNotInRangeFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22596"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;baking_reward_commission_not_in_range&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BakingRewardCommissionNotInRangeFieldNumber = 43</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_CredentialHolderDidNotSignFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.CredentialHolderDidNotSignFieldNumber">
+  CredentialHolderDidNotSignFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22501"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;credential_holder_did_not_sign&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int CredentialHolderDidNotSignFieldNumber = 37</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_DelegationTargetNotABakerFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.DelegationTargetNotABakerFieldNumber">
+  DelegationTargetNotABakerFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22717"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;delegation_target_not_a_baker&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int DelegationTargetNotABakerFieldNumber = 51</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_DelegatorInCooldownFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.DelegatorInCooldownFieldNumber">
+  DelegatorInCooldownFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22687"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;delegator_in_cooldown&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int DelegatorInCooldownFieldNumber = 49</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_DuplicateAggregationKeyFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.DuplicateAggregationKeyFieldNumber">
+  DuplicateAggregationKeyFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22239"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;duplicate_aggregation_key&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int DuplicateAggregationKeyFieldNumber = 20</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_DuplicateCredIdsFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.DuplicateCredIdsFieldNumber">
+  DuplicateCredIdsFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22455"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;duplicate_cred_ids&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int DuplicateCredIdsFieldNumber = 34</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_EncryptedAmountSelfTransferFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.EncryptedAmountSelfTransferFieldNumber">
+  EncryptedAmountSelfTransferFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22346"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;encrypted_amount_self_transfer&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int EncryptedAmountSelfTransferFieldNumber = 27</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_FinalizationRewardCommissionNotInRangeFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.FinalizationRewardCommissionNotInRangeFieldNumber">
+  FinalizationRewardCommissionNotInRangeFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22581"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;finalization_reward_commission_not_in_range&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int FinalizationRewardCommissionNotInRangeFieldNumber = 42</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_FirstScheduledReleaseExpiredFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.FirstScheduledReleaseExpiredFieldNumber">
+  FirstScheduledReleaseExpiredFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22408"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;first_scheduled_release_expired&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int FirstScheduledReleaseExpiredFieldNumber = 31</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InsufficientBalanceForBakerStakeFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.InsufficientBalanceForBakerStakeFieldNumber">
+  InsufficientBalanceForBakerStakeFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22193"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;insufficient_balance_for_baker_stake&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int InsufficientBalanceForBakerStakeFieldNumber = 17</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InsufficientBalanceForDelegationStakeFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.InsufficientBalanceForDelegationStakeFieldNumber">
+  InsufficientBalanceForDelegationStakeFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22641"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;insufficient_balance_for_delegation_stake&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int InsufficientBalanceForDelegationStakeFieldNumber = 46</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InsufficientDelegationStakeFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.InsufficientDelegationStakeFieldNumber">
+  InsufficientDelegationStakeFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22672"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;insufficient_delegation_stake&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int InsufficientDelegationStakeFieldNumber = 48</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidAccountReferenceFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.InvalidAccountReferenceFieldNumber">
+  InvalidAccountReferenceFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L21980"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;invalid_account_reference&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int InvalidAccountReferenceFieldNumber = 3</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidAccountThresholdFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.InvalidAccountThresholdFieldNumber">
+  InvalidAccountThresholdFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22284"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;invalid_account_threshold&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int InvalidAccountThresholdFieldNumber = 23</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidContractAddressFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.InvalidContractAddressFieldNumber">
+  InvalidContractAddressFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22040"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;invalid_contract_address&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int InvalidContractAddressFieldNumber = 7</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidCredentialKeySignThresholdFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.InvalidCredentialKeySignThresholdFieldNumber">
+  InvalidCredentialKeySignThresholdFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22300"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;invalid_credential_key_sign_threshold&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int InvalidCredentialKeySignThresholdFieldNumber = 24</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidCredentialsFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.InvalidCredentialsFieldNumber">
+  InvalidCredentialsFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22439"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;invalid_credentials&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int InvalidCredentialsFieldNumber = 33</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidEncryptedAmountTransferProofFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.InvalidEncryptedAmountTransferProofFieldNumber">
+  InvalidEncryptedAmountTransferProofFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22316"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;invalid_encrypted_amount_transfer_proof&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int InvalidEncryptedAmountTransferProofFieldNumber = 25</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidIndexOnEncryptedTransferFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.InvalidIndexOnEncryptedTransferFieldNumber">
+  InvalidIndexOnEncryptedTransferFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22362"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;invalid_index_on_encrypted_transfer&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int InvalidIndexOnEncryptedTransferFieldNumber = 28</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidInitMethodFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.InvalidInitMethodFieldNumber">
+  InvalidInitMethodFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L21995"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;invalid_init_method&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int InvalidInitMethodFieldNumber = 4</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidModuleReferenceFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.InvalidModuleReferenceFieldNumber">
+  InvalidModuleReferenceFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22025"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;invalid_module_reference&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int InvalidModuleReferenceFieldNumber = 6</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidProofFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.InvalidProofFieldNumber">
+  InvalidProofFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22148"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;invalid_proof&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int InvalidProofFieldNumber = 14</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidReceiveMethodFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.InvalidReceiveMethodFieldNumber">
+  InvalidReceiveMethodFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22010"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;invalid_receive_method&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int InvalidReceiveMethodFieldNumber = 5</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidTransferToPublicProofFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.InvalidTransferToPublicProofFieldNumber">
+  InvalidTransferToPublicProofFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22331"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;invalid_transfer_to_public_proof&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int InvalidTransferToPublicProofFieldNumber = 26</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_KeyIndexAlreadyInUseFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.KeyIndexAlreadyInUseFieldNumber">
+  KeyIndexAlreadyInUseFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22269"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;key_index_already_in_use&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int KeyIndexAlreadyInUseFieldNumber = 22</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_MissingBakerAddParametersFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.MissingBakerAddParametersFieldNumber">
+  MissingBakerAddParametersFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22565"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;missing_baker_add_parameters&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int MissingBakerAddParametersFieldNumber = 41</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_MissingDelegationAddParametersFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.MissingDelegationAddParametersFieldNumber">
+  MissingDelegationAddParametersFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22656"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;missing_delegation_add_parameters&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int MissingDelegationAddParametersFieldNumber = 47</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_ModuleHashAlreadyExistsFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.ModuleHashAlreadyExistsFieldNumber">
+  ModuleHashAlreadyExistsFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L21965"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;module_hash_already_exists&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int ModuleHashAlreadyExistsFieldNumber = 2</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_ModuleNotWfFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.ModuleNotWfFieldNumber">
+  ModuleNotWfFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L21950"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;module_not_wf&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int ModuleNotWfFieldNumber = 1</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_NonExistentCredIdsFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.NonExistentCredIdsFieldNumber">
+  NonExistentCredIdsFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22471"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;non_existent_cred_ids&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int NonExistentCredIdsFieldNumber = 35</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_NonExistentCredentialIdFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.NonExistentCredentialIdFieldNumber">
+  NonExistentCredentialIdFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22254"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;non_existent_credential_id&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int NonExistentCredentialIdFieldNumber = 21</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_NonIncreasingScheduleFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.NonIncreasingScheduleFieldNumber">
+  NonIncreasingScheduleFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22393"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;non_increasing_schedule&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int NonIncreasingScheduleFieldNumber = 30</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_NotABakerFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.NotABakerFieldNumber">
+  NotABakerFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22178"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;not_a_baker&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int NotABakerFieldNumber = 16</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_NotADelegatorFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.NotADelegatorFieldNumber">
+  NotADelegatorFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22702"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;not_a_delegator&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int NotADelegatorFieldNumber = 50</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_NotAllowedMultipleCredentialsFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.NotAllowedMultipleCredentialsFieldNumber">
+  NotAllowedMultipleCredentialsFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22517"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;not_allowed_multiple_credentials&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int NotAllowedMultipleCredentialsFieldNumber = 38</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_NotAllowedToHandleEncryptedFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.NotAllowedToHandleEncryptedFieldNumber">
+  NotAllowedToHandleEncryptedFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22549"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;not_allowed_to_handle_encrypted&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int NotAllowedToHandleEncryptedFieldNumber = 40</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_NotAllowedToReceiveEncryptedFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.NotAllowedToReceiveEncryptedFieldNumber">
+  NotAllowedToReceiveEncryptedFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22533"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;not_allowed_to_receive_encrypted&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int NotAllowedToReceiveEncryptedFieldNumber = 39</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_OutOfEnergyFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.OutOfEnergyFieldNumber">
+  OutOfEnergyFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22103"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;out_of_energy&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int OutOfEnergyFieldNumber = 11</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_PoolClosedFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.PoolClosedFieldNumber">
+  PoolClosedFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22764"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;pool_closed&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int PoolClosedFieldNumber = 54</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_PoolWouldBecomeOverDelegatedFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.PoolWouldBecomeOverDelegatedFieldNumber">
+  PoolWouldBecomeOverDelegatedFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22748"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;pool_would_become_over_delegated&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int PoolWouldBecomeOverDelegatedFieldNumber = 53</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_RejectedInitFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.RejectedInitFieldNumber">
+  RejectedInitFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22118"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;rejected_init&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int RejectedInitFieldNumber = 12</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_RejectedReceiveFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.RejectedReceiveFieldNumber">
+  RejectedReceiveFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22133"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;rejected_receive&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int RejectedReceiveFieldNumber = 13</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_RemoveFirstCredentialFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.RemoveFirstCredentialFieldNumber">
+  RemoveFirstCredentialFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22486"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;remove_first_credential&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int RemoveFirstCredentialFieldNumber = 36</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_RuntimeFailureFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.RuntimeFailureFieldNumber">
+  RuntimeFailureFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22055"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;runtime_failure&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int RuntimeFailureFieldNumber = 8</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_ScheduledSelfTransferFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.ScheduledSelfTransferFieldNumber">
+  ScheduledSelfTransferFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22424"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;scheduled_self_transfer&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int ScheduledSelfTransferFieldNumber = 32</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_SerializationFailureFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.SerializationFailureFieldNumber">
+  SerializationFailureFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22088"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;serialization_failure&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int SerializationFailureFieldNumber = 10</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_StakeOverMaximumThresholdForPoolFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.StakeOverMaximumThresholdForPoolFieldNumber">
+  StakeOverMaximumThresholdForPoolFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22732"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;stake_over_maximum_threshold_for_pool&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int StakeOverMaximumThresholdForPoolFieldNumber = 52</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_StakeUnderMinimumThresholdForBakingFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.StakeUnderMinimumThresholdForBakingFieldNumber">
+  StakeUnderMinimumThresholdForBakingFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22208"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;stake_under_minimum_threshold_for_baking&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int StakeUnderMinimumThresholdForBakingFieldNumber = 18</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_TransactionFeeCommissionNotInRangeFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.TransactionFeeCommissionNotInRangeFieldNumber">
+  TransactionFeeCommissionNotInRangeFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22611"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;transaction_fee_commission_not_in_range&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int TransactionFeeCommissionNotInRangeFieldNumber = 44</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_ZeroScheduledAmountFieldNumber" data-uid="Concordium.Grpc.V2.RejectReason.ZeroScheduledAmountFieldNumber">
+  ZeroScheduledAmountFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22378"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;zero_scheduledAmount&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int ZeroScheduledAmountFieldNumber = 29</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_AlreadyABaker_" data-uid="Concordium.Grpc.V2.RejectReason.AlreadyABaker*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_AlreadyABaker" data-uid="Concordium.Grpc.V2.RejectReason.AlreadyABaker">
+  AlreadyABaker
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22167"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Tried to add baker for an account that already has a baker.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BakerId AlreadyABaker { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.BakerId.html">BakerId</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_AlreadyADelegator_" data-uid="Concordium.Grpc.V2.RejectReason.AlreadyADelegator*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_AlreadyADelegator" data-uid="Concordium.Grpc.V2.RejectReason.AlreadyADelegator">
+  AlreadyADelegator
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22630"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Tried to add baker for an account that already has a delegator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty AlreadyADelegator { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_AmountTooLarge_" data-uid="Concordium.Grpc.V2.RejectReason.AmountTooLarge*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_AmountTooLarge" data-uid="Concordium.Grpc.V2.RejectReason.AmountTooLarge">
+  AmountTooLarge
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22077"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>When one wishes to transfer an amount from A to B but there
+are not enough funds on account/contract A to make this
+possible. The data are the from address and the amount to transfer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RejectReason.Types.AmountTooLarge AmountTooLarge { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.html">RejectReason</a>.<a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.AmountTooLarge.html">AmountTooLarge</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_BakerInCooldown_" data-uid="Concordium.Grpc.V2.RejectReason.BakerInCooldown*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_BakerInCooldown" data-uid="Concordium.Grpc.V2.RejectReason.BakerInCooldown">
+  BakerInCooldown
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22228"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The change could not be made because the baker is in cooldown for
+another change.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty BakerInCooldown { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_BakingRewardCommissionNotInRange_" data-uid="Concordium.Grpc.V2.RejectReason.BakingRewardCommissionNotInRange*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_BakingRewardCommissionNotInRange" data-uid="Concordium.Grpc.V2.RejectReason.BakingRewardCommissionNotInRange">
+  BakingRewardCommissionNotInRange
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22600"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Baking reward commission is not in the valid range for a baker.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty BakingRewardCommissionNotInRange { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_CredentialHolderDidNotSign_" data-uid="Concordium.Grpc.V2.RejectReason.CredentialHolderDidNotSign*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_CredentialHolderDidNotSign" data-uid="Concordium.Grpc.V2.RejectReason.CredentialHolderDidNotSign">
+  CredentialHolderDidNotSign
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22506"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The credential holder of the keys to be updated did not sign the
+transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty CredentialHolderDidNotSign { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_DelegationTargetNotABaker_" data-uid="Concordium.Grpc.V2.RejectReason.DelegationTargetNotABaker*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_DelegationTargetNotABaker" data-uid="Concordium.Grpc.V2.RejectReason.DelegationTargetNotABaker">
+  DelegationTargetNotABaker
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22721"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Delegation target is not a baker</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BakerId DelegationTargetNotABaker { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.BakerId.html">BakerId</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_DelegatorInCooldown_" data-uid="Concordium.Grpc.V2.RejectReason.DelegatorInCooldown*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_DelegatorInCooldown" data-uid="Concordium.Grpc.V2.RejectReason.DelegatorInCooldown">
+  DelegatorInCooldown
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22691"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Account is not a delegation account.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty DelegatorInCooldown { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_Descriptor_" data-uid="Concordium.Grpc.V2.RejectReason.Descriptor*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_Descriptor" data-uid="Concordium.Grpc.V2.RejectReason.Descriptor">
+  Descriptor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L21752"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MessageDescriptor Descriptor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">MessageDescriptor</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_DuplicateAggregationKey_" data-uid="Concordium.Grpc.V2.RejectReason.DuplicateAggregationKey*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_DuplicateAggregationKey" data-uid="Concordium.Grpc.V2.RejectReason.DuplicateAggregationKey">
+  DuplicateAggregationKey
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22243"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A baker with the given aggregation key already exists.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BakerAggregationVerifyKey DuplicateAggregationKey { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.BakerAggregationVerifyKey.html">BakerAggregationVerifyKey</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_DuplicateCredIds_" data-uid="Concordium.Grpc.V2.RejectReason.DuplicateCredIds*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_DuplicateCredIds" data-uid="Concordium.Grpc.V2.RejectReason.DuplicateCredIds">
+  DuplicateCredIds
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22460"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Some of the credential IDs already exist or are duplicated in the
+transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RejectReason.Types.DuplicateCredIds DuplicateCredIds { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.html">RejectReason</a>.<a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.DuplicateCredIds.html">DuplicateCredIds</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_EncryptedAmountSelfTransfer_" data-uid="Concordium.Grpc.V2.RejectReason.EncryptedAmountSelfTransfer*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_EncryptedAmountSelfTransfer" data-uid="Concordium.Grpc.V2.RejectReason.EncryptedAmountSelfTransfer">
+  EncryptedAmountSelfTransfer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22351"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Account tried to transfer an encrypted amount to itself, that's not
+allowed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountAddress EncryptedAmountSelfTransfer { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AccountAddress.html">AccountAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_FinalizationRewardCommissionNotInRange_" data-uid="Concordium.Grpc.V2.RejectReason.FinalizationRewardCommissionNotInRange*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_FinalizationRewardCommissionNotInRange" data-uid="Concordium.Grpc.V2.RejectReason.FinalizationRewardCommissionNotInRange">
+  FinalizationRewardCommissionNotInRange
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22585"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Finalization reward commission is not in the valid range for a baker.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty FinalizationRewardCommissionNotInRange { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_FirstScheduledReleaseExpired_" data-uid="Concordium.Grpc.V2.RejectReason.FirstScheduledReleaseExpired*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_FirstScheduledReleaseExpired" data-uid="Concordium.Grpc.V2.RejectReason.FirstScheduledReleaseExpired">
+  FirstScheduledReleaseExpired
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22413"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The first scheduled release in a transfer with schedule has already
+expired.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty FirstScheduledReleaseExpired { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_InsufficientBalanceForBakerStake_" data-uid="Concordium.Grpc.V2.RejectReason.InsufficientBalanceForBakerStake*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InsufficientBalanceForBakerStake" data-uid="Concordium.Grpc.V2.RejectReason.InsufficientBalanceForBakerStake">
+  InsufficientBalanceForBakerStake
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22197"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The amount on the account was insufficient to cover the proposed stake.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty InsufficientBalanceForBakerStake { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_InsufficientBalanceForDelegationStake_" data-uid="Concordium.Grpc.V2.RejectReason.InsufficientBalanceForDelegationStake*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InsufficientBalanceForDelegationStake" data-uid="Concordium.Grpc.V2.RejectReason.InsufficientBalanceForDelegationStake">
+  InsufficientBalanceForDelegationStake
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22645"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The amount on the account was insufficient to cover the proposed stake.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty InsufficientBalanceForDelegationStake { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_InsufficientDelegationStake_" data-uid="Concordium.Grpc.V2.RejectReason.InsufficientDelegationStake*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InsufficientDelegationStake" data-uid="Concordium.Grpc.V2.RejectReason.InsufficientDelegationStake">
+  InsufficientDelegationStake
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22676"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Delegation stake when adding a delegator was 0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty InsufficientDelegationStake { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_InvalidAccountReference_" data-uid="Concordium.Grpc.V2.RejectReason.InvalidAccountReference*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidAccountReference" data-uid="Concordium.Grpc.V2.RejectReason.InvalidAccountReference">
+  InvalidAccountReference
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L21984"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Account does not exist.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountAddress InvalidAccountReference { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AccountAddress.html">AccountAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_InvalidAccountThreshold_" data-uid="Concordium.Grpc.V2.RejectReason.InvalidAccountThreshold*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidAccountThreshold" data-uid="Concordium.Grpc.V2.RejectReason.InvalidAccountThreshold">
+  InvalidAccountThreshold
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22289"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>When the account threshold is updated, it must not exceed the amount of
+existing keys.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty InvalidAccountThreshold { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_InvalidContractAddress_" data-uid="Concordium.Grpc.V2.RejectReason.InvalidContractAddress*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidContractAddress" data-uid="Concordium.Grpc.V2.RejectReason.InvalidContractAddress">
+  InvalidContractAddress
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22044"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Contract instance does not exist.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ContractAddress InvalidContractAddress { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.ContractAddress.html">ContractAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_InvalidCredentialKeySignThreshold_" data-uid="Concordium.Grpc.V2.RejectReason.InvalidCredentialKeySignThreshold*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidCredentialKeySignThreshold" data-uid="Concordium.Grpc.V2.RejectReason.InvalidCredentialKeySignThreshold">
+  InvalidCredentialKeySignThreshold
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22305"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>When the credential key threshold is updated, it must not exceed the
+amount of existing keys.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty InvalidCredentialKeySignThreshold { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_InvalidCredentials_" data-uid="Concordium.Grpc.V2.RejectReason.InvalidCredentials*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidCredentials" data-uid="Concordium.Grpc.V2.RejectReason.InvalidCredentials">
+  InvalidCredentials
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22444"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>At least one of the credentials was either malformed or its proof was
+incorrect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty InvalidCredentials { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_InvalidEncryptedAmountTransferProof_" data-uid="Concordium.Grpc.V2.RejectReason.InvalidEncryptedAmountTransferProof*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidEncryptedAmountTransferProof" data-uid="Concordium.Grpc.V2.RejectReason.InvalidEncryptedAmountTransferProof">
+  InvalidEncryptedAmountTransferProof
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22320"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Proof for an encrypted amount transfer did not validate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty InvalidEncryptedAmountTransferProof { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_InvalidIndexOnEncryptedTransfer_" data-uid="Concordium.Grpc.V2.RejectReason.InvalidIndexOnEncryptedTransfer*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidIndexOnEncryptedTransfer" data-uid="Concordium.Grpc.V2.RejectReason.InvalidIndexOnEncryptedTransfer">
+  InvalidIndexOnEncryptedTransfer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22367"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The provided index is below the start index or above <code>startIndex + length incomingAmounts</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty InvalidIndexOnEncryptedTransfer { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_InvalidInitMethod_" data-uid="Concordium.Grpc.V2.RejectReason.InvalidInitMethod*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidInitMethod" data-uid="Concordium.Grpc.V2.RejectReason.InvalidInitMethod">
+  InvalidInitMethod
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L21999"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reference to a non-existing contract init method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RejectReason.Types.InvalidInitMethod InvalidInitMethod { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.html">RejectReason</a>.<a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.InvalidInitMethod.html">InvalidInitMethod</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_InvalidModuleReference_" data-uid="Concordium.Grpc.V2.RejectReason.InvalidModuleReference*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidModuleReference" data-uid="Concordium.Grpc.V2.RejectReason.InvalidModuleReference">
+  InvalidModuleReference
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22029"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reference to a non-existing smart contract module.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ModuleRef InvalidModuleReference { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.ModuleRef.html">ModuleRef</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_InvalidProof_" data-uid="Concordium.Grpc.V2.RejectReason.InvalidProof*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidProof" data-uid="Concordium.Grpc.V2.RejectReason.InvalidProof">
+  InvalidProof
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22152"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Proof that the baker owns relevant private keys is not valid.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty InvalidProof { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_InvalidReceiveMethod_" data-uid="Concordium.Grpc.V2.RejectReason.InvalidReceiveMethod*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidReceiveMethod" data-uid="Concordium.Grpc.V2.RejectReason.InvalidReceiveMethod">
+  InvalidReceiveMethod
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22014"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reference to a non-existing contract receive method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RejectReason.Types.InvalidReceiveMethod InvalidReceiveMethod { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.html">RejectReason</a>.<a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.InvalidReceiveMethod.html">InvalidReceiveMethod</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_InvalidTransferToPublicProof_" data-uid="Concordium.Grpc.V2.RejectReason.InvalidTransferToPublicProof*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_InvalidTransferToPublicProof" data-uid="Concordium.Grpc.V2.RejectReason.InvalidTransferToPublicProof">
+  InvalidTransferToPublicProof
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22335"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Proof for a secret to public transfer did not validate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty InvalidTransferToPublicProof { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_KeyIndexAlreadyInUse_" data-uid="Concordium.Grpc.V2.RejectReason.KeyIndexAlreadyInUse*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_KeyIndexAlreadyInUse" data-uid="Concordium.Grpc.V2.RejectReason.KeyIndexAlreadyInUse">
+  KeyIndexAlreadyInUse
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22273"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Attempted to add an account key to a key index already in use.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty KeyIndexAlreadyInUse { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_MissingBakerAddParameters_" data-uid="Concordium.Grpc.V2.RejectReason.MissingBakerAddParameters*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_MissingBakerAddParameters" data-uid="Concordium.Grpc.V2.RejectReason.MissingBakerAddParameters">
+  MissingBakerAddParameters
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22570"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A configure baker transaction is missing one or more arguments in order
+to add a baker.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty MissingBakerAddParameters { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_MissingDelegationAddParameters_" data-uid="Concordium.Grpc.V2.RejectReason.MissingDelegationAddParameters*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_MissingDelegationAddParameters" data-uid="Concordium.Grpc.V2.RejectReason.MissingDelegationAddParameters">
+  MissingDelegationAddParameters
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22661"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A configure delegation transaction is missing one or more arguments in
+order to add a delegator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty MissingDelegationAddParameters { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_ModuleHashAlreadyExists_" data-uid="Concordium.Grpc.V2.RejectReason.ModuleHashAlreadyExists*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_ModuleHashAlreadyExists" data-uid="Concordium.Grpc.V2.RejectReason.ModuleHashAlreadyExists">
+  ModuleHashAlreadyExists
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L21969"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The smart contract module hash already exists.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ModuleRef ModuleHashAlreadyExists { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.ModuleRef.html">ModuleRef</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_ModuleNotWf_" data-uid="Concordium.Grpc.V2.RejectReason.ModuleNotWf*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_ModuleNotWf" data-uid="Concordium.Grpc.V2.RejectReason.ModuleNotWf">
+  ModuleNotWf
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L21954"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Raised while validating a Wasm module that is not well formed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty ModuleNotWf { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_NonExistentCredIds_" data-uid="Concordium.Grpc.V2.RejectReason.NonExistentCredIds*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_NonExistentCredIds" data-uid="Concordium.Grpc.V2.RejectReason.NonExistentCredIds">
+  NonExistentCredIds
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22475"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A credential id that was to be removed is not part of the account.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RejectReason.Types.NonExistentCredIds NonExistentCredIds { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.html">RejectReason</a>.<a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.NonExistentCredIds.html">NonExistentCredIds</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_NonExistentCredentialId_" data-uid="Concordium.Grpc.V2.RejectReason.NonExistentCredentialId*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_NonExistentCredentialId" data-uid="Concordium.Grpc.V2.RejectReason.NonExistentCredentialId">
+  NonExistentCredentialId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22258"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Encountered credential ID that does not exist.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty NonExistentCredentialId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_NonIncreasingSchedule_" data-uid="Concordium.Grpc.V2.RejectReason.NonIncreasingSchedule*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_NonIncreasingSchedule" data-uid="Concordium.Grpc.V2.RejectReason.NonIncreasingSchedule">
+  NonIncreasingSchedule
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22397"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The transfer with schedule has a non strictly increasing schedule.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty NonIncreasingSchedule { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_NotABaker_" data-uid="Concordium.Grpc.V2.RejectReason.NotABaker*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_NotABaker" data-uid="Concordium.Grpc.V2.RejectReason.NotABaker">
+  NotABaker
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22182"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Tried to remove a baker for an account that has no baker.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountAddress NotABaker { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AccountAddress.html">AccountAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_NotADelegator_" data-uid="Concordium.Grpc.V2.RejectReason.NotADelegator*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_NotADelegator" data-uid="Concordium.Grpc.V2.RejectReason.NotADelegator">
+  NotADelegator
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22706"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Account is not a delegation account.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountAddress NotADelegator { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AccountAddress.html">AccountAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_NotAllowedMultipleCredentials_" data-uid="Concordium.Grpc.V2.RejectReason.NotAllowedMultipleCredentials*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_NotAllowedMultipleCredentials" data-uid="Concordium.Grpc.V2.RejectReason.NotAllowedMultipleCredentials">
+  NotAllowedMultipleCredentials
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22522"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Account is not allowed to have multiple credentials because it contains
+a non-zero encrypted transfer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty NotAllowedMultipleCredentials { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_NotAllowedToHandleEncrypted_" data-uid="Concordium.Grpc.V2.RejectReason.NotAllowedToHandleEncrypted*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_NotAllowedToHandleEncrypted" data-uid="Concordium.Grpc.V2.RejectReason.NotAllowedToHandleEncrypted">
+  NotAllowedToHandleEncrypted
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22554"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The account is not allowed to send encrypted transfers (or transfer
+from/to public to/from encrypted).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty NotAllowedToHandleEncrypted { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_NotAllowedToReceiveEncrypted_" data-uid="Concordium.Grpc.V2.RejectReason.NotAllowedToReceiveEncrypted*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_NotAllowedToReceiveEncrypted" data-uid="Concordium.Grpc.V2.RejectReason.NotAllowedToReceiveEncrypted">
+  NotAllowedToReceiveEncrypted
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22538"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The account is not allowed to receive encrypted transfers because it has
+multiple credentials.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty NotAllowedToReceiveEncrypted { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_OutOfEnergy_" data-uid="Concordium.Grpc.V2.RejectReason.OutOfEnergy*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_OutOfEnergy" data-uid="Concordium.Grpc.V2.RejectReason.OutOfEnergy">
+  OutOfEnergy
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22107"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>We ran of out energy to process this transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty OutOfEnergy { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_Parser_" data-uid="Concordium.Grpc.V2.RejectReason.Parser*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_Parser" data-uid="Concordium.Grpc.V2.RejectReason.Parser">
+  Parser
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L21748"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MessageParser&lt;RejectReason&gt; Parser { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">MessageParser</span>&lt;<a class="xref" href="Concordium.Grpc.V2.RejectReason.html">RejectReason</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_PoolClosed_" data-uid="Concordium.Grpc.V2.RejectReason.PoolClosed*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_PoolClosed" data-uid="Concordium.Grpc.V2.RejectReason.PoolClosed">
+  PoolClosed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22768"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The pool is not open to delegators.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty PoolClosed { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_PoolWouldBecomeOverDelegated_" data-uid="Concordium.Grpc.V2.RejectReason.PoolWouldBecomeOverDelegated*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_PoolWouldBecomeOverDelegated" data-uid="Concordium.Grpc.V2.RejectReason.PoolWouldBecomeOverDelegated">
+  PoolWouldBecomeOverDelegated
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22753"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The amount would result in pool with a too high fraction of delegated
+capital.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty PoolWouldBecomeOverDelegated { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_ReasonCase_" data-uid="Concordium.Grpc.V2.RejectReason.ReasonCase*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_ReasonCase" data-uid="Concordium.Grpc.V2.RejectReason.ReasonCase">
+  ReasonCase
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22838"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RejectReason.ReasonOneofCase ReasonCase { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.html">RejectReason</a>.<a class="xref" href="Concordium.Grpc.V2.RejectReason.ReasonOneofCase.html">ReasonOneofCase</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_RejectedInit_" data-uid="Concordium.Grpc.V2.RejectReason.RejectedInit*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_RejectedInit" data-uid="Concordium.Grpc.V2.RejectReason.RejectedInit">
+  RejectedInit
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22122"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Rejected due to contract logic in init function of a contract.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RejectReason.Types.RejectedInit RejectedInit { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.html">RejectReason</a>.<a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.RejectedInit.html">RejectedInit</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_RejectedReceive_" data-uid="Concordium.Grpc.V2.RejectReason.RejectedReceive*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_RejectedReceive" data-uid="Concordium.Grpc.V2.RejectReason.RejectedReceive">
+  RejectedReceive
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22137"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Rejected due to contract logic in receive function of a contract.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RejectReason.Types.RejectedReceive RejectedReceive { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.html">RejectReason</a>.<a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.RejectReason.Types.RejectedReceive.html">RejectedReceive</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_RemoveFirstCredential_" data-uid="Concordium.Grpc.V2.RejectReason.RemoveFirstCredential*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_RemoveFirstCredential" data-uid="Concordium.Grpc.V2.RejectReason.RemoveFirstCredential">
+  RemoveFirstCredential
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22490"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Attemp to remove the first credential.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty RemoveFirstCredential { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_RuntimeFailure_" data-uid="Concordium.Grpc.V2.RejectReason.RuntimeFailure*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_RuntimeFailure" data-uid="Concordium.Grpc.V2.RejectReason.RuntimeFailure">
+  RuntimeFailure
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22060"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Runtime exception occurred when running either the init or receive
+method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty RuntimeFailure { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_ScheduledSelfTransfer_" data-uid="Concordium.Grpc.V2.RejectReason.ScheduledSelfTransfer*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_ScheduledSelfTransfer" data-uid="Concordium.Grpc.V2.RejectReason.ScheduledSelfTransfer">
+  ScheduledSelfTransfer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22428"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Account tried to transfer with schedule to itself, that's not allowed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountAddress ScheduledSelfTransfer { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AccountAddress.html">AccountAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_SerializationFailure_" data-uid="Concordium.Grpc.V2.RejectReason.SerializationFailure*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_SerializationFailure" data-uid="Concordium.Grpc.V2.RejectReason.SerializationFailure">
+  SerializationFailure
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22092"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Serialization of the body failed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty SerializationFailure { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_StakeOverMaximumThresholdForPool_" data-uid="Concordium.Grpc.V2.RejectReason.StakeOverMaximumThresholdForPool*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_StakeOverMaximumThresholdForPool" data-uid="Concordium.Grpc.V2.RejectReason.StakeOverMaximumThresholdForPool">
+  StakeOverMaximumThresholdForPool
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22737"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The amount would result in pool capital higher than the maximum
+threshold.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty StakeOverMaximumThresholdForPool { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_StakeUnderMinimumThresholdForBaking_" data-uid="Concordium.Grpc.V2.RejectReason.StakeUnderMinimumThresholdForBaking*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_StakeUnderMinimumThresholdForBaking" data-uid="Concordium.Grpc.V2.RejectReason.StakeUnderMinimumThresholdForBaking">
+  StakeUnderMinimumThresholdForBaking
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22212"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The amount provided is under the threshold required for becoming a baker.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty StakeUnderMinimumThresholdForBaking { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_TransactionFeeCommissionNotInRange_" data-uid="Concordium.Grpc.V2.RejectReason.TransactionFeeCommissionNotInRange*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_TransactionFeeCommissionNotInRange" data-uid="Concordium.Grpc.V2.RejectReason.TransactionFeeCommissionNotInRange">
+  TransactionFeeCommissionNotInRange
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22615"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Transaction fee commission is not in the valid range for a baker.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty TransactionFeeCommissionNotInRange { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_ZeroScheduledAmount_" data-uid="Concordium.Grpc.V2.RejectReason.ZeroScheduledAmount*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_ZeroScheduledAmount" data-uid="Concordium.Grpc.V2.RejectReason.ZeroScheduledAmount">
+  ZeroScheduledAmount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22382"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The transfer with schedule is going to send 0 tokens.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty ZeroScheduledAmount { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_CalculateSize_" data-uid="Concordium.Grpc.V2.RejectReason.CalculateSize*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_CalculateSize" data-uid="Concordium.Grpc.V2.RejectReason.CalculateSize">
+  CalculateSize()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L23449"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CalculateSize()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_ClearReason_" data-uid="Concordium.Grpc.V2.RejectReason.ClearReason*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_ClearReason" data-uid="Concordium.Grpc.V2.RejectReason.ClearReason">
+  ClearReason()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22844"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearReason()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_Clone_" data-uid="Concordium.Grpc.V2.RejectReason.Clone*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_Clone" data-uid="Concordium.Grpc.V2.RejectReason.Clone">
+  Clone()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L21943"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RejectReason Clone()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.RejectReason.html">RejectReason</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_Equals_" data-uid="Concordium.Grpc.V2.RejectReason.Equals*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_Equals_Concordium_Grpc_V2_RejectReason_" data-uid="Concordium.Grpc.V2.RejectReason.Equals(Concordium.Grpc.V2.RejectReason)">
+  Equals(RejectReason)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22857"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(RejectReason other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Grpc.V2.RejectReason.html">RejectReason</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_Equals_" data-uid="Concordium.Grpc.V2.RejectReason.Equals*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_Equals_System_Object_" data-uid="Concordium.Grpc.V2.RejectReason.Equals(System.Object)">
+  Equals(object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22851"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_GetHashCode_" data-uid="Concordium.Grpc.V2.RejectReason.GetHashCode*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_GetHashCode" data-uid="Concordium.Grpc.V2.RejectReason.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22924"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_MergeFrom_" data-uid="Concordium.Grpc.V2.RejectReason.MergeFrom*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_MergeFrom_Concordium_Grpc_V2_RejectReason_" data-uid="Concordium.Grpc.V2.RejectReason.MergeFrom(Concordium.Grpc.V2.RejectReason)">
+  MergeFrom(RejectReason)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L23621"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MergeFrom(RejectReason other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Grpc.V2.RejectReason.html">RejectReason</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_MergeFrom_" data-uid="Concordium.Grpc.V2.RejectReason.MergeFrom*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_MergeFrom_Google_Protobuf_CodedInputStream_" data-uid="Concordium.Grpc.V2.RejectReason.MergeFrom(Google.Protobuf.CodedInputStream)">
+  MergeFrom(CodedInputStream)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L23957"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MergeFrom(CodedInputStream input)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>input</code> <span class="xref">CodedInputStream</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_ToString_" data-uid="Concordium.Grpc.V2.RejectReason.ToString*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_ToString" data-uid="Concordium.Grpc.V2.RejectReason.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22989"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_RejectReason_WriteTo_" data-uid="Concordium.Grpc.V2.RejectReason.WriteTo*"></a>
+
+  <h3 id="Concordium_Grpc_V2_RejectReason_WriteTo_Google_Protobuf_CodedOutputStream_" data-uid="Concordium.Grpc.V2.RejectReason.WriteTo(Google.Protobuf.CodedOutputStream)">
+  WriteTo(CodedOutputStream)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L22995"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteTo(CodedOutputStream output)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <span class="xref">CodedOutputStream</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L21741" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

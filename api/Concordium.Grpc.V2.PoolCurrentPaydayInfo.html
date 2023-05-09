@@ -1,0 +1,1029 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class PoolCurrentPaydayInfo
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class PoolCurrentPaydayInfo
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/prepare-release/apiSpec/new?filename=Concordium_Grpc_V2_PoolCurrentPaydayInfo.md&amp;value=---%0Auid%3A%20Concordium.Grpc.V2.PoolCurrentPaydayInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+
+      <script type="module">
+        import docfx from './../public/main.js'
+        window.docfx = docfx
+        window.MathJax = {
+          options: {
+            processHtmlClass: ['tex2jax_process', 'math']
+          }
+        }
+      </script>
+      <script type="text/javascript" src="../public/docfx.min.js"></script>
+  </head>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo">
+
+
+
+  <h1 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo" class="text-break">
+    Class PoolCurrentPaydayInfo
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58131"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Concordium.html">Concordium</a>.<a class="xref" href="Concordium.Grpc.html">Grpc</a>.<a class="xref" href="Concordium.Grpc.V2.html">V2</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Concordium.Sdk.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Information about a baker pool in the current reward period.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class PoolCurrentPaydayInfo : IMessage&lt;PoolCurrentPaydayInfo&gt;, IEquatable&lt;PoolCurrentPaydayInfo&gt;, IDeepCloneable&lt;PoolCurrentPaydayInfo&gt;, IBufferMessage, IMessage</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">PoolCurrentPaydayInfo</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><span class="xref">IMessage</span>&lt;<a class="xref" href="Concordium.Grpc.V2.PoolCurrentPaydayInfo.html">PoolCurrentPaydayInfo</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Grpc.V2.PoolCurrentPaydayInfo.html">PoolCurrentPaydayInfo</a>&gt;</div>
+      <div><span class="xref">IDeepCloneable</span>&lt;<a class="xref" href="Concordium.Grpc.V2.PoolCurrentPaydayInfo.html">PoolCurrentPaydayInfo</a>&gt;</div>
+      <div><span class="xref">IBufferMessage</span></div>
+      <div><span class="xref">IMessage</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo__ctor_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.#ctor*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo__ctor" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.#ctor">
+  PoolCurrentPaydayInfo()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58154"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PoolCurrentPaydayInfo()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo__ctor_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.#ctor*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo__ctor_Concordium_Grpc_V2_PoolCurrentPaydayInfo_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.#ctor(Concordium.Grpc.V2.PoolCurrentPaydayInfo)">
+  PoolCurrentPaydayInfo(PoolCurrentPaydayInfo)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58162"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PoolCurrentPaydayInfo(PoolCurrentPaydayInfo other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Grpc.V2.PoolCurrentPaydayInfo.html">PoolCurrentPaydayInfo</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_BakerEquityCapitalFieldNumber" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.BakerEquityCapitalFieldNumber">
+  BakerEquityCapitalFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58257"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;baker_equity_capital&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BakerEquityCapitalFieldNumber = 6</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_BlocksBakedFieldNumber" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.BlocksBakedFieldNumber">
+  BlocksBakedFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58182"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;blocks_baked&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BlocksBakedFieldNumber = 1</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_DelegatedCapitalFieldNumber" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.DelegatedCapitalFieldNumber">
+  DelegatedCapitalFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58272"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;delegated_capital&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int DelegatedCapitalFieldNumber = 7</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_EffectiveStakeFieldNumber" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.EffectiveStakeFieldNumber">
+  EffectiveStakeFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58227"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;effective_stake&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int EffectiveStakeFieldNumber = 4</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_FinalizationLiveFieldNumber" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.FinalizationLiveFieldNumber">
+  FinalizationLiveFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58197"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;finalization_live&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int FinalizationLiveFieldNumber = 2</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_LotteryPowerFieldNumber" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.LotteryPowerFieldNumber">
+  LotteryPowerFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58242"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;lottery_power&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int LotteryPowerFieldNumber = 5</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_TransactionFeesEarnedFieldNumber" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.TransactionFeesEarnedFieldNumber">
+  TransactionFeesEarnedFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58212"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;transaction_fees_earned&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int TransactionFeesEarnedFieldNumber = 3</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_BakerEquityCapital_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.BakerEquityCapital*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_BakerEquityCapital" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.BakerEquityCapital">
+  BakerEquityCapital
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58262"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The effective equity capital of the baker for the current reward period.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Amount BakerEquityCapital { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Amount.html">Amount</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_BlocksBaked_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.BlocksBaked*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_BlocksBaked" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.BlocksBaked">
+  BlocksBaked
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58187"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The number of blocks baked in the current reward period.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong BlocksBaked { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_DelegatedCapital_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.DelegatedCapital*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_DelegatedCapital" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.DelegatedCapital">
+  DelegatedCapital
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58277"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The effective delegated capital to the pool for the current reward period.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Amount DelegatedCapital { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Amount.html">Amount</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_Descriptor_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.Descriptor*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_Descriptor" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.Descriptor">
+  Descriptor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58142"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MessageDescriptor Descriptor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">MessageDescriptor</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_EffectiveStake_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.EffectiveStake*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_EffectiveStake" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.EffectiveStake">
+  EffectiveStake
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58232"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The effective stake of the baker in the current reward period.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Amount EffectiveStake { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Amount.html">Amount</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_FinalizationLive_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.FinalizationLive*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_FinalizationLive" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.FinalizationLive">
+  FinalizationLive
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58202"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether the baker has contributed a finalization proof in the current reward period.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool FinalizationLive { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_LotteryPower_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.LotteryPower*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_LotteryPower" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.LotteryPower">
+  LotteryPower
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58247"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The lottery power of the baker in the current reward period.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double LotteryPower { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_Parser_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.Parser*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_Parser" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.Parser">
+  Parser
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58138"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MessageParser&lt;PoolCurrentPaydayInfo&gt; Parser { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">MessageParser</span>&lt;<a class="xref" href="Concordium.Grpc.V2.PoolCurrentPaydayInfo.html">PoolCurrentPaydayInfo</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_TransactionFeesEarned_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.TransactionFeesEarned*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_TransactionFeesEarned" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.TransactionFeesEarned">
+  TransactionFeesEarned
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58217"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The transaction fees accruing to the pool in the current reward period.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Amount TransactionFeesEarned { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Amount.html">Amount</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_CalculateSize_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.CalculateSize*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_CalculateSize" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.CalculateSize">
+  CalculateSize()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58412"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CalculateSize()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_Clone_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.Clone*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_Clone" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.Clone">
+  Clone()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58175"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PoolCurrentPaydayInfo Clone()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.PoolCurrentPaydayInfo.html">PoolCurrentPaydayInfo</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_Equals_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.Equals*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_Equals_Concordium_Grpc_V2_PoolCurrentPaydayInfo_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.Equals(Concordium.Grpc.V2.PoolCurrentPaydayInfo)">
+  Equals(PoolCurrentPaydayInfo)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58292"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(PoolCurrentPaydayInfo other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Grpc.V2.PoolCurrentPaydayInfo.html">PoolCurrentPaydayInfo</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_Equals_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.Equals*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_Equals_System_Object_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.Equals(System.Object)">
+  Equals(object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58286"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_GetHashCode_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.GetHashCode*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_GetHashCode" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58311"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_MergeFrom_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.MergeFrom*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_MergeFrom_Concordium_Grpc_V2_PoolCurrentPaydayInfo_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.MergeFrom(Concordium.Grpc.V2.PoolCurrentPaydayInfo)">
+  MergeFrom(PoolCurrentPaydayInfo)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58443"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MergeFrom(PoolCurrentPaydayInfo other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Grpc.V2.PoolCurrentPaydayInfo.html">PoolCurrentPaydayInfo</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_MergeFrom_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.MergeFrom*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_MergeFrom_Google_Protobuf_CodedInputStream_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.MergeFrom(Google.Protobuf.CodedInputStream)">
+  MergeFrom(CodedInputStream)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58485"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MergeFrom(CodedInputStream input)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>input</code> <span class="xref">CodedInputStream</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_ToString_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.ToString*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_ToString" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58328"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_WriteTo_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.WriteTo*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PoolCurrentPaydayInfo_WriteTo_Google_Protobuf_CodedOutputStream_" data-uid="Concordium.Grpc.V2.PoolCurrentPaydayInfo.WriteTo(Google.Protobuf.CodedOutputStream)">
+  WriteTo(CodedOutputStream)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58334"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteTo(CodedOutputStream output)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <span class="xref">CodedOutputStream</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L58131" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

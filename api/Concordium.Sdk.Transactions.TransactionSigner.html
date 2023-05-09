@@ -1,0 +1,360 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class TransactionSigner
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class TransactionSigner
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/prepare-release/apiSpec/new?filename=Concordium_Sdk_Transactions_TransactionSigner.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Transactions.TransactionSigner%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+
+      <script type="module">
+        import docfx from './../public/main.js'
+        window.docfx = docfx
+        window.MathJax = {
+          options: {
+            processHtmlClass: ['tex2jax_process', 'math']
+          }
+        }
+      </script>
+      <script type="text/javascript" src="../public/docfx.min.js"></script>
+  </head>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Concordium.Sdk.Transactions.TransactionSigner">
+
+
+
+  <h1 id="Concordium_Sdk_Transactions_TransactionSigner" data-uid="Concordium.Sdk.Transactions.TransactionSigner" class="text-break">
+    Class TransactionSigner
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/TransactionSigner.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Concordium.html">Concordium</a>.<a class="xref" href="Concordium.Sdk.html">Sdk</a>.<a class="xref" href="Concordium.Sdk.Transactions.html">Transactions</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Concordium.Sdk.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Dictionary based implementation of <a class="xref" href="Concordium.Sdk.Transactions.ITransactionSigner.html">ITransactionSigner</a>.</p>
+<p>Maintains a dictionary mapping pairs of <a class="xref" href="Concordium.Sdk.Types.AccountCredentialIndex.html">AccountCredentialIndex</a>
+and <a class="xref" href="Concordium.Sdk.Types.AccountKeyIndex.html">AccountKeyIndex</a> to <a class="xref" href="Concordium.Sdk.Crypto.ISigner.html">ISigner</a>s corresponding
+to the sign keys of an account.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TransactionSigner : ITransactionSigner</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">TransactionSigner</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Concordium.Sdk.Transactions.ITransactionSigner.html">ITransactionSigner</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Concordium_Sdk_Transactions_TransactionSigner__ctor_" data-uid="Concordium.Sdk.Transactions.TransactionSigner.#ctor*"></a>
+
+  <h3 id="Concordium_Sdk_Transactions_TransactionSigner__ctor" data-uid="Concordium.Sdk.Transactions.TransactionSigner.#ctor">
+  TransactionSigner()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/TransactionSigner.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Concordium.Sdk.Transactions.TransactionSigner.html">TransactionSigner</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TransactionSigner()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Concordium_Sdk_Transactions_TransactionSigner_AddSignerEntry_" data-uid="Concordium.Sdk.Transactions.TransactionSigner.AddSignerEntry*"></a>
+
+  <h3 id="Concordium_Sdk_Transactions_TransactionSigner_AddSignerEntry_Concordium_Sdk_Types_AccountCredentialIndex_Concordium_Sdk_Types_AccountKeyIndex_Concordium_Sdk_Crypto_ISigner_" data-uid="Concordium.Sdk.Transactions.TransactionSigner.AddSignerEntry(Concordium.Sdk.Types.AccountCredentialIndex,Concordium.Sdk.Types.AccountKeyIndex,Concordium.Sdk.Crypto.ISigner)">
+  AddSignerEntry(AccountCredentialIndex, AccountKeyIndex, ISigner)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/TransactionSigner.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a sign key implementation to the <a class="xref" href="Concordium.Sdk.Transactions.TransactionSigner.html">TransactionSigner</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddSignerEntry(AccountCredentialIndex credentialIndex, AccountKeyIndex keyIndex, ISigner signer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>credentialIndex</code> <a class="xref" href="Concordium.Sdk.Types.AccountCredentialIndex.html">AccountCredentialIndex</a></dt>
+    <dd><p>The credential index of the credential to which the key belongs.</p>
+</dd>
+    <dt><code>keyIndex</code> <a class="xref" href="Concordium.Sdk.Types.AccountKeyIndex.html">AccountKeyIndex</a></dt>
+    <dd><p>The key index of the key, relative to the credential index.</p>
+</dd>
+    <dt><code>signer</code> <a class="xref" href="Concordium.Sdk.Crypto.ISigner.html">ISigner</a></dt>
+    <dd><p>The sign key implementation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Transactions_TransactionSigner_GetSignatureCount_" data-uid="Concordium.Sdk.Transactions.TransactionSigner.GetSignatureCount*"></a>
+
+  <h3 id="Concordium_Sdk_Transactions_TransactionSigner_GetSignatureCount" data-uid="Concordium.Sdk.Transactions.TransactionSigner.GetSignatureCount">
+  GetSignatureCount()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/TransactionSigner.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the number of signatures that will be produced when signing a transaction using this signer.
+This number is based on the signer count.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte GetSignatureCount()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Transactions_TransactionSigner_GetSignerEntries_" data-uid="Concordium.Sdk.Transactions.TransactionSigner.GetSignerEntries*"></a>
+
+  <h3 id="Concordium_Sdk_Transactions_TransactionSigner_GetSignerEntries" data-uid="Concordium.Sdk.Transactions.TransactionSigner.GetSignerEntries">
+  GetSignerEntries()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/TransactionSigner.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a dictionary mapping pairs of credential and key indices to
+their corresponding sign key implementations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ImmutableDictionary&lt;AccountCredentialIndex, ImmutableDictionary&lt;AccountKeyIndex, ISigner&gt;&gt; GetSignerEntries()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutabledictionary-2">ImmutableDictionary</a>&lt;<a class="xref" href="Concordium.Sdk.Types.AccountCredentialIndex.html">AccountCredentialIndex</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutabledictionary-2">ImmutableDictionary</a>&lt;<a class="xref" href="Concordium.Sdk.Types.AccountKeyIndex.html">AccountKeyIndex</a>, <a class="xref" href="Concordium.Sdk.Crypto.ISigner.html">ISigner</a>&gt;&gt;</dt>
+    <dd><p>A dictionary mapping pairs of credential and key indices to the sign key implementation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Transactions_TransactionSigner_Sign_" data-uid="Concordium.Sdk.Transactions.TransactionSigner.Sign*"></a>
+
+  <h3 id="Concordium_Sdk_Transactions_TransactionSigner_Sign_System_Byte___" data-uid="Concordium.Sdk.Transactions.TransactionSigner.Sign(System.Byte[])">
+  Sign(byte[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/TransactionSigner.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sign the provided transaction hash using all added sign key implementations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountTransactionSignature Sign(byte[] data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd><p>The transaction hash to sign.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionSignature.html">AccountTransactionSignature</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>No signatures were produced.</p>
+</dd>
+  </dl>
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/TransactionSigner.cs/#L14" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

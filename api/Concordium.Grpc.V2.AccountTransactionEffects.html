@@ -1,0 +1,1845 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class AccountTransactionEffects
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AccountTransactionEffects
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/prepare-release/apiSpec/new?filename=Concordium_Grpc_V2_AccountTransactionEffects.md&amp;value=---%0Auid%3A%20Concordium.Grpc.V2.AccountTransactionEffects%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+
+      <script type="module">
+        import docfx from './../public/main.js'
+        window.docfx = docfx
+        window.MathJax = {
+          options: {
+            processHtmlClass: ['tex2jax_process', 'math']
+          }
+        }
+      </script>
+      <script type="text/javascript" src="../public/docfx.min.js"></script>
+  </head>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Concordium.Grpc.V2.AccountTransactionEffects">
+
+
+
+  <h1 id="Concordium_Grpc_V2_AccountTransactionEffects" data-uid="Concordium.Grpc.V2.AccountTransactionEffects" class="text-break">
+    Class AccountTransactionEffects
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36034"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Concordium.html">Concordium</a>.<a class="xref" href="Concordium.Grpc.html">Grpc</a>.<a class="xref" href="Concordium.Grpc.V2.html">V2</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Concordium.Sdk.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Effects of an account transaction. All variants except <code>None</code>
+correspond to a unique transaction that was successful.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class AccountTransactionEffects : IMessage&lt;AccountTransactionEffects&gt;, IEquatable&lt;AccountTransactionEffects&gt;, IDeepCloneable&lt;AccountTransactionEffects&gt;, IBufferMessage, IMessage</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AccountTransactionEffects</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><span class="xref">IMessage</span>&lt;<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a>&gt;</div>
+      <div><span class="xref">IDeepCloneable</span>&lt;<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a>&gt;</div>
+      <div><span class="xref">IBufferMessage</span></div>
+      <div><span class="xref">IMessage</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects__ctor_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.#ctor*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects__ctor" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.#ctor">
+  AccountTransactionEffects()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36057"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountTransactionEffects()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects__ctor_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.#ctor*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects__ctor_Concordium_Grpc_V2_AccountTransactionEffects_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.#ctor(Concordium.Grpc.V2.AccountTransactionEffects)">
+  AccountTransactionEffects(AccountTransactionEffects)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36065"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountTransactionEffects(AccountTransactionEffects other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_AccountTransferFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.AccountTransferFieldNumber">
+  AccountTransferFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36199"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;account_transfer&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int AccountTransferFieldNumber = 5</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_BakerAddedFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.BakerAddedFieldNumber">
+  BakerAddedFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36214"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;baker_added&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BakerAddedFieldNumber = 6</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_BakerConfiguredFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.BakerConfiguredFieldNumber">
+  BakerConfiguredFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36395"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;baker_configured&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BakerConfiguredFieldNumber = 18</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_BakerKeysUpdatedFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.BakerKeysUpdatedFieldNumber">
+  BakerKeysUpdatedFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36274"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;baker_keys_updated&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BakerKeysUpdatedFieldNumber = 10</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_BakerRemovedFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.BakerRemovedFieldNumber">
+  BakerRemovedFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36229"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;baker_removed&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BakerRemovedFieldNumber = 7</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_BakerRestakeEarningsUpdatedFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.BakerRestakeEarningsUpdatedFieldNumber">
+  BakerRestakeEarningsUpdatedFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36259"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;baker_restake_earnings_updated&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BakerRestakeEarningsUpdatedFieldNumber = 9</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_BakerStakeUpdatedFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.BakerStakeUpdatedFieldNumber">
+  BakerStakeUpdatedFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36244"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;baker_stake_updated&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BakerStakeUpdatedFieldNumber = 8</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_ContractInitializedFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.ContractInitializedFieldNumber">
+  ContractInitializedFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36169"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;contract_initialized&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int ContractInitializedFieldNumber = 3</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_ContractUpdateIssuedFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.ContractUpdateIssuedFieldNumber">
+  ContractUpdateIssuedFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36184"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;contract_update_issued&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int ContractUpdateIssuedFieldNumber = 4</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_CredentialKeysUpdatedFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.CredentialKeysUpdatedFieldNumber">
+  CredentialKeysUpdatedFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36350"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;credential_keys_updated&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int CredentialKeysUpdatedFieldNumber = 15</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_CredentialsUpdatedFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.CredentialsUpdatedFieldNumber">
+  CredentialsUpdatedFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36365"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;credentials_updated&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int CredentialsUpdatedFieldNumber = 16</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_DataRegisteredFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.DataRegisteredFieldNumber">
+  DataRegisteredFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36380"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;data_registered&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int DataRegisteredFieldNumber = 17</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_DelegationConfiguredFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.DelegationConfiguredFieldNumber">
+  DelegationConfiguredFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36410"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;delegation_configured&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int DelegationConfiguredFieldNumber = 19</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_EncryptedAmountTransferredFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.EncryptedAmountTransferredFieldNumber">
+  EncryptedAmountTransferredFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36289"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;encrypted_amount_transferred&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int EncryptedAmountTransferredFieldNumber = 11</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_ModuleDeployedFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.ModuleDeployedFieldNumber">
+  ModuleDeployedFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36154"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;module_deployed&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int ModuleDeployedFieldNumber = 2</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_NoneFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.NoneFieldNumber">
+  NoneFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36138"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;none&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int NoneFieldNumber = 1</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_TransferredToEncryptedFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.TransferredToEncryptedFieldNumber">
+  TransferredToEncryptedFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36304"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;transferred_to_encrypted&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int TransferredToEncryptedFieldNumber = 12</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_TransferredToPublicFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.TransferredToPublicFieldNumber">
+  TransferredToPublicFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36320"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;transferred_to_public&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int TransferredToPublicFieldNumber = 13</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_TransferredWithScheduleFieldNumber" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.TransferredWithScheduleFieldNumber">
+  TransferredWithScheduleFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36335"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;transferred_with_schedule&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int TransferredWithScheduleFieldNumber = 14</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_AccountTransfer_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.AccountTransfer*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_AccountTransfer" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.AccountTransfer">
+  AccountTransfer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36203"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A simple account to account transfer occurred.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountTransactionEffects.Types.AccountTransfer AccountTransfer { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.AccountTransfer.html">AccountTransfer</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_BakerAdded_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.BakerAdded*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_BakerAdded" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.BakerAdded">
+  BakerAdded
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36218"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A baker was added.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BakerEvent.Types.BakerAdded BakerAdded { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.BakerEvent.html">BakerEvent</a>.<a class="xref" href="Concordium.Grpc.V2.BakerEvent.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.BakerEvent.Types.BakerAdded.html">BakerAdded</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_BakerConfigured_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.BakerConfigured*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_BakerConfigured" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.BakerConfigured">
+  BakerConfigured
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36399"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A baker was configured. The details of what happened are contained in a list of BakerEvents.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountTransactionEffects.Types.BakerConfigured BakerConfigured { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.BakerConfigured.html">BakerConfigured</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_BakerKeysUpdated_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.BakerKeysUpdated*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_BakerKeysUpdated" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.BakerKeysUpdated">
+  BakerKeysUpdated
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36278"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A baker's keys were updated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BakerKeysEvent BakerKeysUpdated { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.BakerKeysEvent.html">BakerKeysEvent</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_BakerRemoved_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.BakerRemoved*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_BakerRemoved" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.BakerRemoved">
+  BakerRemoved
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36233"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A baker was removed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BakerId BakerRemoved { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.BakerId.html">BakerId</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_BakerRestakeEarningsUpdated_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.BakerRestakeEarningsUpdated*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_BakerRestakeEarningsUpdated" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.BakerRestakeEarningsUpdated">
+  BakerRestakeEarningsUpdated
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36263"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A baker's restake earnings setting was updated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BakerEvent.Types.BakerRestakeEarningsUpdated BakerRestakeEarningsUpdated { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.BakerEvent.html">BakerEvent</a>.<a class="xref" href="Concordium.Grpc.V2.BakerEvent.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.BakerEvent.Types.BakerRestakeEarningsUpdated.html">BakerRestakeEarningsUpdated</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_BakerStakeUpdated_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.BakerStakeUpdated*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_BakerStakeUpdated" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.BakerStakeUpdated">
+  BakerStakeUpdated
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36248"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A baker's stake was updated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountTransactionEffects.Types.BakerStakeUpdated BakerStakeUpdated { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.BakerStakeUpdated.html">BakerStakeUpdated</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_ContractInitialized_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.ContractInitialized*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_ContractInitialized" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.ContractInitialized">
+  ContractInitialized
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36173"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A smart contract was initialized.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ContractInitializedEvent ContractInitialized { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.ContractInitializedEvent.html">ContractInitializedEvent</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_ContractUpdateIssued_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.ContractUpdateIssued*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_ContractUpdateIssued" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.ContractUpdateIssued">
+  ContractUpdateIssued
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36188"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A smart contract instance updated was issued.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountTransactionEffects.Types.ContractUpdateIssued ContractUpdateIssued { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.ContractUpdateIssued.html">ContractUpdateIssued</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_CredentialKeysUpdated_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.CredentialKeysUpdated*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_CredentialKeysUpdated" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.CredentialKeysUpdated">
+  CredentialKeysUpdated
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36354"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Keys of a specific credential were updated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CredentialRegistrationId CredentialKeysUpdated { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.CredentialRegistrationId.html">CredentialRegistrationId</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_CredentialsUpdated_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.CredentialsUpdated*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_CredentialsUpdated" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.CredentialsUpdated">
+  CredentialsUpdated
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36369"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Account credentials were updated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountTransactionEffects.Types.CredentialsUpdated CredentialsUpdated { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.CredentialsUpdated.html">CredentialsUpdated</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_DataRegistered_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.DataRegistered*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_DataRegistered" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.DataRegistered">
+  DataRegistered
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36384"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Some data was registered on the chain.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RegisteredData DataRegistered { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.RegisteredData.html">RegisteredData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_DelegationConfigured_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.DelegationConfigured*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_DelegationConfigured" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.DelegationConfigured">
+  DelegationConfigured
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36414"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A delegator was configured. The details of what happened are contained in a list of DelegatorEvents.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountTransactionEffects.Types.DelegationConfigured DelegationConfigured { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.DelegationConfigured.html">DelegationConfigured</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_Descriptor_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.Descriptor*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_Descriptor" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.Descriptor">
+  Descriptor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36045"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MessageDescriptor Descriptor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">MessageDescriptor</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_EffectCase_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.EffectCase*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_EffectCase" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.EffectCase">
+  EffectCase
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36449"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountTransactionEffects.EffectOneofCase EffectCase { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.EffectOneofCase.html">EffectOneofCase</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_EncryptedAmountTransferred_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.EncryptedAmountTransferred*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_EncryptedAmountTransferred" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.EncryptedAmountTransferred">
+  EncryptedAmountTransferred
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36293"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>An encrypted amount was transferred.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountTransactionEffects.Types.EncryptedAmountTransferred EncryptedAmountTransferred { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.EncryptedAmountTransferred.html">EncryptedAmountTransferred</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_ModuleDeployed_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.ModuleDeployed*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_ModuleDeployed" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.ModuleDeployed">
+  ModuleDeployed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36158"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A smart contract module with the attached reference was deployed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ModuleRef ModuleDeployed { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.ModuleRef.html">ModuleRef</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_None_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.None*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_None" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.None">
+  None
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36143"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>No effects other than payment from this transaction.
+The rejection reason indicates why the transaction failed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountTransactionEffects.Types.None None { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.None.html">None</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_Parser_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.Parser*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_Parser" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.Parser">
+  Parser
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36041"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MessageParser&lt;AccountTransactionEffects&gt; Parser { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">MessageParser</span>&lt;<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_TransferredToEncrypted_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.TransferredToEncrypted*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_TransferredToEncrypted" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.TransferredToEncrypted">
+  TransferredToEncrypted
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36309"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>An account transferred part of its public balance to its encrypted
+balance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EncryptedSelfAmountAddedEvent TransferredToEncrypted { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.EncryptedSelfAmountAddedEvent.html">EncryptedSelfAmountAddedEvent</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_TransferredToPublic_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.TransferredToPublic*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_TransferredToPublic" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.TransferredToPublic">
+  TransferredToPublic
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36324"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>An account transferred part of its encrypted balance to its public balance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountTransactionEffects.Types.TransferredToPublic TransferredToPublic { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.TransferredToPublic.html">TransferredToPublic</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_TransferredWithSchedule_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.TransferredWithSchedule*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_TransferredWithSchedule" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.TransferredWithSchedule">
+  TransferredWithSchedule
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36339"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A transfer with a release schedule was made.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountTransactionEffects.Types.TransferredWithSchedule TransferredWithSchedule { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.Types.TransferredWithSchedule.html">TransferredWithSchedule</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_CalculateSize_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.CalculateSize*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_CalculateSize" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.CalculateSize">
+  CalculateSize()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36710"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CalculateSize()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_ClearEffect_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.ClearEffect*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_ClearEffect" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.ClearEffect">
+  ClearEffect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36455"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearEffect()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_Clone_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.Clone*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_Clone" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.Clone">
+  Clone()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36131"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountTransactionEffects Clone()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_Equals_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.Equals*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_Equals_Concordium_Grpc_V2_AccountTransactionEffects_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.Equals(Concordium.Grpc.V2.AccountTransactionEffects)">
+  Equals(AccountTransactionEffects)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36468"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(AccountTransactionEffects other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_Equals_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.Equals*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_Equals_System_Object_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.Equals(System.Object)">
+  Equals(object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36462"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_GetHashCode_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.GetHashCode*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_GetHashCode" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36500"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_MergeFrom_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.MergeFrom*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_MergeFrom_Concordium_Grpc_V2_AccountTransactionEffects_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.MergeFrom(Concordium.Grpc.V2.AccountTransactionEffects)">
+  MergeFrom(AccountTransactionEffects)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36777"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MergeFrom(AccountTransactionEffects other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Grpc.V2.AccountTransactionEffects.html">AccountTransactionEffects</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_MergeFrom_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.MergeFrom*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_MergeFrom_Google_Protobuf_CodedInputStream_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.MergeFrom(Google.Protobuf.CodedInputStream)">
+  MergeFrom(CodedInputStream)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36903"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MergeFrom(CodedInputStream input)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>input</code> <span class="xref">CodedInputStream</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_ToString_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.ToString*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_ToString" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36530"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_AccountTransactionEffects_WriteTo_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.WriteTo*"></a>
+
+  <h3 id="Concordium_Grpc_V2_AccountTransactionEffects_WriteTo_Google_Protobuf_CodedOutputStream_" data-uid="Concordium.Grpc.V2.AccountTransactionEffects.WriteTo(Google.Protobuf.CodedOutputStream)">
+  WriteTo(CodedOutputStream)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36536"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteTo(CodedOutputStream output)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <span class="xref">CodedOutputStream</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L36034" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

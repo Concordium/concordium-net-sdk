@@ -1,0 +1,1473 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ChainParametersV1
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ChainParametersV1
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/prepare-release/apiSpec/new?filename=Concordium_Grpc_V2_ChainParametersV1.md&amp;value=---%0Auid%3A%20Concordium.Grpc.V2.ChainParametersV1%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+
+      <script type="module">
+        import docfx from './../public/main.js'
+        window.docfx = docfx
+        window.MathJax = {
+          options: {
+            processHtmlClass: ['tex2jax_process', 'math']
+          }
+        }
+      </script>
+      <script type="text/javascript" src="../public/docfx.min.js"></script>
+  </head>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Concordium.Grpc.V2.ChainParametersV1">
+
+
+
+  <h1 id="Concordium_Grpc_V2_ChainParametersV1" data-uid="Concordium.Grpc.V2.ChainParametersV1" class="text-break">
+    Class ChainParametersV1
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82509"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Concordium.html">Concordium</a>.<a class="xref" href="Concordium.Grpc.html">Grpc</a>.<a class="xref" href="Concordium.Grpc.V2.html">V2</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Concordium.Sdk.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Updatable chain parameters that apply to protocol versions 4-5.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class ChainParametersV1 : IMessage&lt;ChainParametersV1&gt;, IEquatable&lt;ChainParametersV1&gt;, IDeepCloneable&lt;ChainParametersV1&gt;, IBufferMessage, IMessage</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ChainParametersV1</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><span class="xref">IMessage</span>&lt;<a class="xref" href="Concordium.Grpc.V2.ChainParametersV1.html">ChainParametersV1</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Grpc.V2.ChainParametersV1.html">ChainParametersV1</a>&gt;</div>
+      <div><span class="xref">IDeepCloneable</span>&lt;<a class="xref" href="Concordium.Grpc.V2.ChainParametersV1.html">ChainParametersV1</a>&gt;</div>
+      <div><span class="xref">IBufferMessage</span></div>
+      <div><span class="xref">IMessage</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1__ctor_" data-uid="Concordium.Grpc.V2.ChainParametersV1.#ctor*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1__ctor" data-uid="Concordium.Grpc.V2.ChainParametersV1.#ctor">
+  ChainParametersV1()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82532"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ChainParametersV1()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1__ctor_" data-uid="Concordium.Grpc.V2.ChainParametersV1.#ctor*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1__ctor_Concordium_Grpc_V2_ChainParametersV1_" data-uid="Concordium.Grpc.V2.ChainParametersV1.#ctor(Concordium.Grpc.V2.ChainParametersV1)">
+  ChainParametersV1(ChainParametersV1)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82540"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ChainParametersV1(ChainParametersV1 other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Grpc.V2.ChainParametersV1.html">ChainParametersV1</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_AccountCreationLimitFieldNumber" data-uid="Concordium.Grpc.V2.ChainParametersV1.AccountCreationLimitFieldNumber">
+  AccountCreationLimitFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82645"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;account_creation_limit&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int AccountCreationLimitFieldNumber = 6</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_CooldownParametersFieldNumber" data-uid="Concordium.Grpc.V2.ChainParametersV1.CooldownParametersFieldNumber">
+  CooldownParametersFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82612"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;cooldown_parameters&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int CooldownParametersFieldNumber = 4</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_ElectionDifficultyFieldNumber" data-uid="Concordium.Grpc.V2.ChainParametersV1.ElectionDifficultyFieldNumber">
+  ElectionDifficultyFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82567"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;election_difficulty&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int ElectionDifficultyFieldNumber = 1</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_EuroPerEnergyFieldNumber" data-uid="Concordium.Grpc.V2.ChainParametersV1.EuroPerEnergyFieldNumber">
+  EuroPerEnergyFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82582"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;euro_per_energy&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int EuroPerEnergyFieldNumber = 2</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_FoundationAccountFieldNumber" data-uid="Concordium.Grpc.V2.ChainParametersV1.FoundationAccountFieldNumber">
+  FoundationAccountFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82705"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;foundation_account&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int FoundationAccountFieldNumber = 10</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_GasRewardsFieldNumber" data-uid="Concordium.Grpc.V2.ChainParametersV1.GasRewardsFieldNumber">
+  GasRewardsFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82690"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;gas_rewards&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int GasRewardsFieldNumber = 9</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_Level1KeysFieldNumber" data-uid="Concordium.Grpc.V2.ChainParametersV1.Level1KeysFieldNumber">
+  Level1KeysFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82750"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;level1_keys&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Level1KeysFieldNumber = 13</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_Level2KeysFieldNumber" data-uid="Concordium.Grpc.V2.ChainParametersV1.Level2KeysFieldNumber">
+  Level2KeysFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82765"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;level2_keys&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Level2KeysFieldNumber = 14</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_MicroCcdPerEuroFieldNumber" data-uid="Concordium.Grpc.V2.ChainParametersV1.MicroCcdPerEuroFieldNumber">
+  MicroCcdPerEuroFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82597"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;micro_ccd_per_euro&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int MicroCcdPerEuroFieldNumber = 3</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_MintDistributionFieldNumber" data-uid="Concordium.Grpc.V2.ChainParametersV1.MintDistributionFieldNumber">
+  MintDistributionFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82660"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;mint_distribution&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int MintDistributionFieldNumber = 7</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_PoolParametersFieldNumber" data-uid="Concordium.Grpc.V2.ChainParametersV1.PoolParametersFieldNumber">
+  PoolParametersFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82720"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;pool_parameters&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int PoolParametersFieldNumber = 11</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_RootKeysFieldNumber" data-uid="Concordium.Grpc.V2.ChainParametersV1.RootKeysFieldNumber">
+  RootKeysFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82735"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;root_keys&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int RootKeysFieldNumber = 12</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_TimeParametersFieldNumber" data-uid="Concordium.Grpc.V2.ChainParametersV1.TimeParametersFieldNumber">
+  TimeParametersFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82628"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;time_parameters&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int TimeParametersFieldNumber = 5</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_TransactionFeeDistributionFieldNumber" data-uid="Concordium.Grpc.V2.ChainParametersV1.TransactionFeeDistributionFieldNumber">
+  TransactionFeeDistributionFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82675"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;transaction_fee_distribution&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int TransactionFeeDistributionFieldNumber = 8</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_AccountCreationLimit_" data-uid="Concordium.Grpc.V2.ChainParametersV1.AccountCreationLimit*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_AccountCreationLimit" data-uid="Concordium.Grpc.V2.ChainParametersV1.AccountCreationLimit">
+  AccountCreationLimit
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82650"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The limit for the number of account creations in a block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CredentialsPerBlockLimit AccountCreationLimit { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.CredentialsPerBlockLimit.html">CredentialsPerBlockLimit</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_CooldownParameters_" data-uid="Concordium.Grpc.V2.ChainParametersV1.CooldownParameters*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_CooldownParameters" data-uid="Concordium.Grpc.V2.ChainParametersV1.CooldownParameters">
+  CooldownParameters
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82618"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Extra number of epochs before reduction in stake, or baker
+deregistration is completed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CooldownParametersCpv1 CooldownParameters { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.CooldownParametersCpv1.html">CooldownParametersCpv1</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_Descriptor_" data-uid="Concordium.Grpc.V2.ChainParametersV1.Descriptor*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_Descriptor" data-uid="Concordium.Grpc.V2.ChainParametersV1.Descriptor">
+  Descriptor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82520"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MessageDescriptor Descriptor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">MessageDescriptor</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_ElectionDifficulty_" data-uid="Concordium.Grpc.V2.ChainParametersV1.ElectionDifficulty*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_ElectionDifficulty" data-uid="Concordium.Grpc.V2.ChainParametersV1.ElectionDifficulty">
+  ElectionDifficulty
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82572"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Election difficulty for consensus lottery.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ElectionDifficulty ElectionDifficulty { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.ElectionDifficulty.html">ElectionDifficulty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_EuroPerEnergy_" data-uid="Concordium.Grpc.V2.ChainParametersV1.EuroPerEnergy*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_EuroPerEnergy" data-uid="Concordium.Grpc.V2.ChainParametersV1.EuroPerEnergy">
+  EuroPerEnergy
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82587"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Euro per energy exchange rate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ExchangeRate EuroPerEnergy { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.ExchangeRate.html">ExchangeRate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_FoundationAccount_" data-uid="Concordium.Grpc.V2.ChainParametersV1.FoundationAccount*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_FoundationAccount" data-uid="Concordium.Grpc.V2.ChainParametersV1.FoundationAccount">
+  FoundationAccount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82710"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The foundation account.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountAddress FoundationAccount { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AccountAddress.html">AccountAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_GasRewards_" data-uid="Concordium.Grpc.V2.ChainParametersV1.GasRewards*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_GasRewards" data-uid="Concordium.Grpc.V2.ChainParametersV1.GasRewards">
+  GasRewards
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82695"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current gas reward parameters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GasRewards GasRewards { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.GasRewards.html">GasRewards</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_Level1Keys_" data-uid="Concordium.Grpc.V2.ChainParametersV1.Level1Keys*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_Level1Keys" data-uid="Concordium.Grpc.V2.ChainParametersV1.Level1Keys">
+  Level1Keys
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82755"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Keys allowed to do level1 updates;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HigherLevelKeys Level1Keys { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.HigherLevelKeys.html">HigherLevelKeys</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_Level2Keys_" data-uid="Concordium.Grpc.V2.ChainParametersV1.Level2Keys*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_Level2Keys" data-uid="Concordium.Grpc.V2.ChainParametersV1.Level2Keys">
+  Level2Keys
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82770"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Keys allowed to do parameter updates.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AuthorizationsV1 Level2Keys { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.AuthorizationsV1.html">AuthorizationsV1</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_MicroCcdPerEuro_" data-uid="Concordium.Grpc.V2.ChainParametersV1.MicroCcdPerEuro*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_MicroCcdPerEuro" data-uid="Concordium.Grpc.V2.ChainParametersV1.MicroCcdPerEuro">
+  MicroCcdPerEuro
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82602"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Micro CCD per euro exchange rate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ExchangeRate MicroCcdPerEuro { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.ExchangeRate.html">ExchangeRate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_MintDistribution_" data-uid="Concordium.Grpc.V2.ChainParametersV1.MintDistribution*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_MintDistribution" data-uid="Concordium.Grpc.V2.ChainParametersV1.MintDistribution">
+  MintDistribution
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82665"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current mint distribution</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MintDistributionCpv1 MintDistribution { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.MintDistributionCpv1.html">MintDistributionCpv1</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_Parser_" data-uid="Concordium.Grpc.V2.ChainParametersV1.Parser*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_Parser" data-uid="Concordium.Grpc.V2.ChainParametersV1.Parser">
+  Parser
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82516"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MessageParser&lt;ChainParametersV1&gt; Parser { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">MessageParser</span>&lt;<a class="xref" href="Concordium.Grpc.V2.ChainParametersV1.html">ChainParametersV1</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_PoolParameters_" data-uid="Concordium.Grpc.V2.ChainParametersV1.PoolParameters*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_PoolParameters" data-uid="Concordium.Grpc.V2.ChainParametersV1.PoolParameters">
+  PoolParameters
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82725"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Parameters governing baking pools and their commissions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PoolParametersCpv1 PoolParameters { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.PoolParametersCpv1.html">PoolParametersCpv1</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_RootKeys_" data-uid="Concordium.Grpc.V2.ChainParametersV1.RootKeys*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_RootKeys" data-uid="Concordium.Grpc.V2.ChainParametersV1.RootKeys">
+  RootKeys
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82740"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Keys allowed to do root updates.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HigherLevelKeys RootKeys { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.HigherLevelKeys.html">HigherLevelKeys</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_TimeParameters_" data-uid="Concordium.Grpc.V2.ChainParametersV1.TimeParameters*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_TimeParameters" data-uid="Concordium.Grpc.V2.ChainParametersV1.TimeParameters">
+  TimeParameters
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82635"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current time parameters.
+The time parameters indicates the mint rate and the
+reward period length, i.e. the time between paydays.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeParametersCpv1 TimeParameters { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.TimeParametersCpv1.html">TimeParametersCpv1</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_TransactionFeeDistribution_" data-uid="Concordium.Grpc.V2.ChainParametersV1.TransactionFeeDistribution*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_TransactionFeeDistribution" data-uid="Concordium.Grpc.V2.ChainParametersV1.TransactionFeeDistribution">
+  TransactionFeeDistribution
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82680"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current transaction fee distribution.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TransactionFeeDistribution TransactionFeeDistribution { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.TransactionFeeDistribution.html">TransactionFeeDistribution</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_CalculateSize_" data-uid="Concordium.Grpc.V2.ChainParametersV1.CalculateSize*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_CalculateSize" data-uid="Concordium.Grpc.V2.ChainParametersV1.CalculateSize">
+  CalculateSize()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82975"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CalculateSize()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_Clone_" data-uid="Concordium.Grpc.V2.ChainParametersV1.Clone*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_Clone" data-uid="Concordium.Grpc.V2.ChainParametersV1.Clone">
+  Clone()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82560"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ChainParametersV1 Clone()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.ChainParametersV1.html">ChainParametersV1</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_Equals_" data-uid="Concordium.Grpc.V2.ChainParametersV1.Equals*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_Equals_Concordium_Grpc_V2_ChainParametersV1_" data-uid="Concordium.Grpc.V2.ChainParametersV1.Equals(Concordium.Grpc.V2.ChainParametersV1)">
+  Equals(ChainParametersV1)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82785"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(ChainParametersV1 other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Grpc.V2.ChainParametersV1.html">ChainParametersV1</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_Equals_" data-uid="Concordium.Grpc.V2.ChainParametersV1.Equals*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_Equals_System_Object_" data-uid="Concordium.Grpc.V2.ChainParametersV1.Equals(System.Object)">
+  Equals(object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82779"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_GetHashCode_" data-uid="Concordium.Grpc.V2.ChainParametersV1.GetHashCode*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_GetHashCode" data-uid="Concordium.Grpc.V2.ChainParametersV1.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82811"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_MergeFrom_" data-uid="Concordium.Grpc.V2.ChainParametersV1.MergeFrom*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_MergeFrom_Concordium_Grpc_V2_ChainParametersV1_" data-uid="Concordium.Grpc.V2.ChainParametersV1.MergeFrom(Concordium.Grpc.V2.ChainParametersV1)">
+  MergeFrom(ChainParametersV1)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L83027"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MergeFrom(ChainParametersV1 other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Grpc.V2.ChainParametersV1.html">ChainParametersV1</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_MergeFrom_" data-uid="Concordium.Grpc.V2.ChainParametersV1.MergeFrom*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_MergeFrom_Google_Protobuf_CodedInputStream_" data-uid="Concordium.Grpc.V2.ChainParametersV1.MergeFrom(Google.Protobuf.CodedInputStream)">
+  MergeFrom(CodedInputStream)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L83120"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MergeFrom(CodedInputStream input)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>input</code> <span class="xref">CodedInputStream</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_ToString_" data-uid="Concordium.Grpc.V2.ChainParametersV1.ToString*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_ToString" data-uid="Concordium.Grpc.V2.ChainParametersV1.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82835"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_ChainParametersV1_WriteTo_" data-uid="Concordium.Grpc.V2.ChainParametersV1.WriteTo*"></a>
+
+  <h3 id="Concordium_Grpc_V2_ChainParametersV1_WriteTo_Google_Protobuf_CodedOutputStream_" data-uid="Concordium.Grpc.V2.ChainParametersV1.WriteTo(Google.Protobuf.CodedOutputStream)">
+  WriteTo(CodedOutputStream)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82841"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteTo(CodedOutputStream output)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <span class="xref">CodedOutputStream</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L82509" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

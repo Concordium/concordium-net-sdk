@@ -1,0 +1,963 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class PeersInfo.Types.Peer
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class PeersInfo.Types.Peer
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/prepare-release/apiSpec/new?filename=Concordium_Grpc_V2_PeersInfo_Types_Peer.md&amp;value=---%0Auid%3A%20Concordium.Grpc.V2.PeersInfo.Types.Peer%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+
+      <script type="module">
+        import docfx from './../public/main.js'
+        window.docfx = docfx
+        window.MathJax = {
+          options: {
+            processHtmlClass: ['tex2jax_process', 'math']
+          }
+        }
+      </script>
+      <script type="text/javascript" src="../public/docfx.min.js"></script>
+  </head>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer">
+
+
+
+  <h1 id="Concordium_Grpc_V2_PeersInfo_Types_Peer" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer" class="text-break">
+    Class PeersInfo.Types.Peer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73580"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Concordium.html">Concordium</a>.<a class="xref" href="Concordium.Grpc.html">Grpc</a>.<a class="xref" href="Concordium.Grpc.V2.html">V2</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Concordium.Sdk.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>A peer that the node is connected to.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class PeersInfo.Types.Peer : IMessage&lt;PeersInfo.Types.Peer&gt;, IEquatable&lt;PeersInfo.Types.Peer&gt;, IDeepCloneable&lt;PeersInfo.Types.Peer&gt;, IBufferMessage, IMessage</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">PeersInfo.Types.Peer</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><span class="xref">IMessage</span>&lt;<a class="xref" href="Concordium.Grpc.V2.PeersInfo.html">PeersInfo</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.html">Peer</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Grpc.V2.PeersInfo.html">PeersInfo</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.html">Peer</a>&gt;</div>
+      <div><span class="xref">IDeepCloneable</span>&lt;<a class="xref" href="Concordium.Grpc.V2.PeersInfo.html">PeersInfo</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.html">Peer</a>&gt;</div>
+      <div><span class="xref">IBufferMessage</span></div>
+      <div><span class="xref">IMessage</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer__ctor_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.#ctor*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer__ctor" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.#ctor">
+  Peer()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73603"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Peer()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer__ctor_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.#ctor*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer__ctor_Concordium_Grpc_V2_PeersInfo_Types_Peer_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.#ctor(Concordium.Grpc.V2.PeersInfo.Types.Peer)">
+  Peer(Peer)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73611"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Peer(PeersInfo.Types.Peer other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Grpc.V2.PeersInfo.html">PeersInfo</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.html">Peer</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_BootstrapperFieldNumber" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.BootstrapperFieldNumber">
+  BootstrapperFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73682"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;bootstrapper&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BootstrapperFieldNumber = 4</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_NetworkStatsFieldNumber" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.NetworkStatsFieldNumber">
+  NetworkStatsFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73667"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;network_stats&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int NetworkStatsFieldNumber = 3</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_NodeCatchupStatusFieldNumber" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.NodeCatchupStatusFieldNumber">
+  NodeCatchupStatusFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73698"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;node_catchup_status&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int NodeCatchupStatusFieldNumber = 5</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_PeerIdFieldNumber" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.PeerIdFieldNumber">
+  PeerIdFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73636"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;peer_id&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int PeerIdFieldNumber = 1</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_SocketAddressFieldNumber" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.SocketAddressFieldNumber">
+  SocketAddressFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73652"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;socket_address&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int SocketAddressFieldNumber = 2</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer_Bootstrapper_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.Bootstrapper*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_Bootstrapper" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.Bootstrapper">
+  Bootstrapper
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73687"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The peer is of type <code>Bootstrapper</code> is not participating in consensus
+and thus has no catchup status.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Empty Bootstrapper { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer_ConsensusInfoCase_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.ConsensusInfoCase*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_ConsensusInfoCase" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.ConsensusInfoCase">
+  ConsensusInfoCase
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73721"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PeersInfo.Types.Peer.ConsensusInfoOneofCase ConsensusInfoCase { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.PeersInfo.html">PeersInfo</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.html">Peer</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.ConsensusInfoOneofCase.html">ConsensusInfoOneofCase</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer_Descriptor_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.Descriptor*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_Descriptor" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.Descriptor">
+  Descriptor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73591"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MessageDescriptor Descriptor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">MessageDescriptor</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer_NetworkStats_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.NetworkStats*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_NetworkStats" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.NetworkStats">
+  NetworkStats
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73672"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Network related statistics for the peer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PeersInfo.Types.Peer.Types.NetworkStats NetworkStats { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.PeersInfo.html">PeersInfo</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.html">Peer</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.Types.NetworkStats.html">NetworkStats</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer_NodeCatchupStatus_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.NodeCatchupStatus*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_NodeCatchupStatus" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.NodeCatchupStatus">
+  NodeCatchupStatus
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73703"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The peer is a regular node and have
+an associated catchup status.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PeersInfo.Types.Peer.Types.CatchupStatus NodeCatchupStatus { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.PeersInfo.html">PeersInfo</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.html">Peer</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.Types.CatchupStatus.html">CatchupStatus</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer_Parser_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.Parser*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_Parser" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.Parser">
+  Parser
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73587"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MessageParser&lt;PeersInfo.Types.Peer&gt; Parser { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">MessageParser</span>&lt;<a class="xref" href="Concordium.Grpc.V2.PeersInfo.html">PeersInfo</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.html">Peer</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer_PeerId_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.PeerId*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_PeerId" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.PeerId">
+  PeerId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73642"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The identifier of the peer that it
+wishes to be identified by.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PeerId PeerId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.PeerId.html">PeerId</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer_SocketAddress_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.SocketAddress*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_SocketAddress" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.SocketAddress">
+  SocketAddress
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73657"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The port of the peer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IpSocketAddress SocketAddress { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.IpSocketAddress.html">IpSocketAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer_CalculateSize_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.CalculateSize*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_CalculateSize" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.CalculateSize">
+  CalculateSize()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73842"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CalculateSize()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer_ClearConsensusInfo_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.ClearConsensusInfo*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_ClearConsensusInfo" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.ClearConsensusInfo">
+  ClearConsensusInfo()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73727"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearConsensusInfo()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer_Clone_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.Clone*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_Clone" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.Clone">
+  Clone()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73629"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PeersInfo.Types.Peer Clone()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.PeersInfo.html">PeersInfo</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.html">Peer</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer_Equals_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.Equals*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_Equals_Concordium_Grpc_V2_PeersInfo_Types_Peer_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.Equals(Concordium.Grpc.V2.PeersInfo.Types.Peer)">
+  Equals(Peer)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73740"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(PeersInfo.Types.Peer other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Grpc.V2.PeersInfo.html">PeersInfo</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.html">Peer</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer_Equals_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.Equals*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_Equals_System_Object_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.Equals(System.Object)">
+  Equals(object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73734"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer_GetHashCode_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.GetHashCode*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_GetHashCode" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73758"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer_MergeFrom_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.MergeFrom*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_MergeFrom_Concordium_Grpc_V2_PeersInfo_Types_Peer_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.MergeFrom(Concordium.Grpc.V2.PeersInfo.Types.Peer)">
+  MergeFrom(Peer)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73867"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MergeFrom(PeersInfo.Types.Peer other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Grpc.V2.PeersInfo.html">PeersInfo</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.html">Types</a>.<a class="xref" href="Concordium.Grpc.V2.PeersInfo.Types.Peer.html">Peer</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer_MergeFrom_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.MergeFrom*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_MergeFrom_Google_Protobuf_CodedInputStream_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.MergeFrom(Google.Protobuf.CodedInputStream)">
+  MergeFrom(CodedInputStream)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73906"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MergeFrom(CodedInputStream input)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>input</code> <span class="xref">CodedInputStream</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer_ToString_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.ToString*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_ToString" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73774"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_PeersInfo_Types_Peer_WriteTo_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.WriteTo*"></a>
+
+  <h3 id="Concordium_Grpc_V2_PeersInfo_Types_Peer_WriteTo_Google_Protobuf_CodedOutputStream_" data-uid="Concordium.Grpc.V2.PeersInfo.Types.Peer.WriteTo(Google.Protobuf.CodedOutputStream)">
+  WriteTo(CodedOutputStream)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73780"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteTo(CodedOutputStream output)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <span class="xref">CodedOutputStream</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L73580" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
