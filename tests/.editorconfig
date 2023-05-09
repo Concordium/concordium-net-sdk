@@ -1,0 +1,8 @@
+# Editor config for tests, overriding specific settings of ../.editorconfig
+
+[*.{cs,vb}]
+# Allow names to start with underscores.
+dotnet_diagnostic.CA1707.severity = none
+
+# Allow unused expression values.
+dotnet_diagnostic.IDE0058.severity = none
