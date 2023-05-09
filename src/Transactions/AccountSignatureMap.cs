@@ -28,7 +28,6 @@ public class AccountSignatureMap
     public AccountSignatureMap(Dictionary<AccountKeyIndex, byte[]> signatures)
     {
         // Signatures are 64-byte ed25519 signatures and therefore 64 bytes.
-        // This could be expressed in a more generic fashion.
         if (signatures.Values.Any(signature => signature.Length != 64))
         {
             throw new ArgumentException($"Signature should be {64} bytes.");

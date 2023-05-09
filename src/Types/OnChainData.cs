@@ -7,7 +7,8 @@ namespace Concordium.Sdk.Types;
 /// <summary>
 /// Represents data to be stored or that was stored on-chain as part of a transaction.
 ///
-/// This can be any data which is at most <see cref="MaxLength"/> bytes, but the convention is to store a single string encoded as CBOR.
+/// This can be any data which is at most <see cref="MaxLength"/> bytes, but the convention is
+/// to use CBOR encoded data.
 /// </summary>
 public record OnChainData : IEquatable<OnChainData>
 {
