@@ -55,6 +55,7 @@ ConcordiumClient client = new ConcordiumClient(
   60 // Use a timeout of 60 seconds.
 );
 ```
+The [`ConcordiumClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html) constructor also optionally takes a [`GrpcChannelOptions`](https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Net.Client.GrpcChannelOptions.html) for setting various settings for the underlying [`GrpcChannel`](https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Net.Client.GrpcChannel.html) instance which handles communication with the node.
 
 ### Working with account transactions
 
