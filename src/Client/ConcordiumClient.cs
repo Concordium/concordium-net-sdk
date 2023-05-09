@@ -1,6 +1,7 @@
 using Concordium.Sdk.Transactions;
 
 using Grpc.Core;
+using Grpc.Net.Client;
 
 namespace Concordium.Sdk.Client;
 
@@ -16,6 +17,8 @@ public class ConcordiumClient : IDisposable
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Client"/> class.
+    ///
+    /// Optionally use <paramref name="channelOptions"/> to specify connection settings.
     /// </summary>
     /// <param name="endpoint">
     /// Endpoint of a resource where the V2 API is served. Any port specified in the URL is
@@ -25,24 +28,10 @@ public class ConcordiumClient : IDisposable
     /// Port of the resource where the V2 API is served. This will override any port
     /// specified in <paramref name="endpoint"/>.
     /// </param>
-    /// <param name="timeout">The request timeout in seconds (default: <c>30</c>).</param>
-    public ConcordiumClient(Uri endpoint, ushort port, ulong timeout = 30)
-        : this(endpoint, port, new ClientConfiguration(timeout)) { }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Client"/> class.
-    /// </summary>
-    /// <param name="endpoint">
-    /// Endpoint of a resource where the V2 API is served. Any port specified in the URL is
-    /// ignored.
-    /// </param>
-    /// <param name="port">
-    /// Port of the resource where the V2 API is served. This will override any port
-    /// specified in <paramref name="endpoint"/>.
-    /// </param>
-    /// <param name="configuration">The configuration to use with this client.</param>
-    public ConcordiumClient(Uri endpoint, ushort port, ClientConfiguration configuration) =>
-        this.Raw = new RawClient(endpoint, port, configuration);
+    /// <param name="timeout">The maximum permitted duration of a call made by this client, in seconds. <c>null</c> allows the call to run indefinitely.</param>
+    /// <param name="channelOptions">The options for the channel that is used to communicate with the node.</param>
+    public ConcordiumClient(Uri endpoint, ushort port, ulong? timeout = 30, GrpcChannelOptions? rawChannelOptions = null)
+    => this.Raw = new(endpoint, port, timeout, rawChannelOptions);
 
     /// <summary>
     /// Send an account transaction to the node.

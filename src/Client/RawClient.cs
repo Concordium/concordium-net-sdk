@@ -12,9 +12,9 @@ namespace Concordium.Sdk.Client;
 public class RawClient : IDisposable
 {
     /// <summary>
-    /// The running configuration of the client.
+    /// The maximum permitted duration for a call made by this client, in seconds.
     /// </summary>
-    public ClientConfiguration Config { get; init; }
+    public ulong? Timeout { get; init; }
 
     /// <summary>
     /// The "internal" client instance generated from the Concordium GRPC API V2 protocol buffer definition.
@@ -30,6 +30,8 @@ public class RawClient : IDisposable
 
     /// <summary>
     /// Initializes a new instance of the <see cref="RawClient"/> class.
+    ///
+    /// Optionally use <paramref name="channelOptions"/> to specify connection settings.
     /// </summary>
     /// <param name="endpoint">
     /// Endpoint of a resource where the V2 API is served. Any port specified in the URL is
@@ -39,8 +41,9 @@ public class RawClient : IDisposable
     /// Port of the resource where the V2 API is served. This will override any port
     /// specified in <paramref name="endpoint"/>.
     /// </param>
-    /// <param name="configuration">The configuration to use with this client.</param>
-    internal RawClient(Uri endpoint, ushort port, ClientConfiguration configuration)
+    /// <param name="timeout">The maximum permitted duration of a call made by this client, in seconds. <c>null</c> allows the call to run indefinitely.</param>
+    /// <param name="channelOptions">The options for the channel that is used to communicate with the node.</param>
+    internal RawClient(Uri endpoint, ushort port, ulong? timeout, GrpcChannelOptions? channelOptions)
     {
         // Check the scheme provided in the URI.
         if (!(endpoint.Scheme == Uri.UriSchemeHttp || endpoint.Scheme == Uri.UriSchemeHttps))
@@ -50,12 +53,20 @@ public class RawClient : IDisposable
             );
         }
 
-        var options = new GrpcChannelOptions
-        {
-            Credentials =
-                endpoint.Scheme == Uri.UriSchemeHttps
+        var scheme = endpoint.Scheme == Uri.UriSchemeHttps
                     ? ChannelCredentials.SecureSsl
-                    : ChannelCredentials.Insecure
+                    : ChannelCredentials.Insecure;
+
+        if (channelOptions is null)
+        {
+            channelOptions = new GrpcChannelOptions
+            {
+                Credentials = scheme
+            };
+        }
+        else
+        {
+            channelOptions.Credentials = scheme;
         };
 
         var grpcChannel = GrpcChannel.ForAddress(
@@ -65,12 +76,10 @@ public class RawClient : IDisposable
                 + ":"
                 + port.ToString(CultureInfo.InvariantCulture)
                 + endpoint.AbsolutePath,
-            options
+            channelOptions
         );
-
-        this.Config = configuration;
-        var internalClient = new Queries.QueriesClient(grpcChannel);
-        this.InternalClient = internalClient;
+        this.Timeout = timeout;
+        this.InternalClient = new Queries.QueriesClient(grpcChannel);
         this._grpcChannel = grpcChannel;
     }
 
@@ -683,8 +692,16 @@ public class RawClient : IDisposable
     /// </summary>
     private CallOptions CreateCallOptions()
     {
-        var timeout = this.Config.Timeout;
-        return new CallOptions(null, DateTime.UtcNow.AddSeconds(timeout), CancellationToken.None);
+        DateTime? deadline;
+        if (this.Timeout is null)
+        {
+            deadline = null;
+        }
+        else
+        {
+            deadline = DateTime.UtcNow.AddSeconds((double)this.Timeout);
+        }
+        return new CallOptions(null, deadline, CancellationToken.None);
     }
 
     #region IDisposable Support
