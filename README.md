@@ -187,22 +187,20 @@ The rendered documentation is available at [https://pages.github.com/???](https:
 
 ## Migration
 
-This deprecates earlier versions of the Concordium .NET SDK that used version 1 of the Concordium Node GRPC API. In terms of semantics and the information carried in messages, the APIs are quite similar, so most of these APIs can be replaced with their raw equivalents. Note that in some cases endpoints in the version 1 API are "split" into several endpoints in the version 2 API to increase the granularity.
+This deprecates earlier versions of the Concordium .NET SDK that used version 1 of the Concordium Node GRPC API. In terms of semantics and the information carried in messages, the APIs are quite similar, so APIs of the older SDK versions have corresponding raw methods in this version. Note that in some cases endpoints in the version 1 API are "split" into several endpoints in the version 2 API to increase the granularity.
 
-A major difference between this and the previous version of the SDK is that this version of the SDK currently does not support deploying contract modules with schemas.
+Another major difference between this and the previous version of the SDK is that this version of the SDK currently does not support deploying contract modules with schemas.
 
-## Licensing
+## License
 
-This project is licensed under the ??? license.
+This project is licensed under the terms of the Mozilla Public License 2.0.
+
+For more information, please refer to the [LICENSE](LICENSE) file.
 
 ## Contributing
 
 Contributions are welcomed. Guidelines for contribution can be found [here](https://github.com/Concordium/.github/blob/main/.github/CODE_OF_CONDUCT.md).
 
-## Contact
-
-Feel free to open an issue if you encounter issues or have questions about this library.
-
 ## Acknowledgements
 
-This project is developed and maintained by the Concordium Foundation.
+This project is developed and maintained by the [Concordium Foundation](https://concordium.foundation/).
