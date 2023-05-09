@@ -1,0 +1,28 @@
+name: Build and deploy documentation
+
+on:
+  push:
+    branches: [ "vh/add-formatter" ]
+  pull_request:
+    branches: [ "vh/add-formatter" ]
+  workflow_dispatch:
+
+jobs:
+    publish-docs:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+            submodules: recursive
+      - name: .NET Setup
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.x
+      - run: dotnet tool update -g docfx
+      - run: docfx docs/docfx.json
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/_site

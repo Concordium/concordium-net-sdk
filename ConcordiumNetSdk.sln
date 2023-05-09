@@ -3,25 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConcordiumNetSdk", "src\ConcordiumNetSdk\ConcordiumNetSdk.csproj", "{9B455DC8-B80A-4E11-A8B8-0DD4CD47E31B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk", "src\Concordium.Sdk.csproj", "{5926362D-5379-4F12-8F1A-F3FA29EDA00F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.TestConsoleApp", "src\ConcordiumNetSdk.TestConsoleApp\ConcordiumNetSdk.TestConsoleApp.csproj", "{07DDF416-A5DE-45F7-AC69-2774089289E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk.Tests.UnitTests", "tests\Tests\UnitTests\Concordium.Sdk.Tests.UnitTests.csproj", "{FA99FA9D-C722-4BD4-BB6E-C83843EC5BA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.UnitTests", "tests\ConcordiumNetSdk.UnitTests\ConcordiumNetSdk.UnitTests.csproj", "{E4EEF5B3-C756-43AC-B10B-8C3FBFD70ECE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk.Examples.RawClient.GetAccountInfo", "examples\Examples\RawClient\GetAccountInfo\Concordium.Sdk.Examples.RawClient.GetAccountInfo.csproj", "{B5E9C218-21CD-42E9-BB37-1D7AB3BAB2C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Transactions.Transfer", "examples\ConcordiumNetSdk.Examples.Transactions.Transfer\ConcordiumNetSdk.Examples.Transactions.Transfer.csproj", "{C88F913A-6357-4A81-AC1A-DE0123F40878}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk.Examples.RawClient.GetBlockTransactionEvents", "examples\Examples\RawClient\GetBlockTransactionEvents\Concordium.Sdk.Examples.RawClient.GetBlockTransactionEvents.csproj", "{0E117FB5-D225-40F1-AB56-BF92350E573B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples", "examples\ConcordiumNetSdk.Examples\ConcordiumNetSdk.Examples.csproj", "{074082C5-1760-41E7-B0B9-395D61FE11B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk.Examples.RawClient.GetFinalizedBlocks", "examples\Examples\RawClient\GetFinalizedBlocks\Concordium.Sdk.Examples.RawClient.GetFinalizedBlocks.csproj", "{F3AED5FA-4BB6-4ADC-A155-C94A2F7A2C1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Transactions.TransferWithMemo", "examples\ConcordiumNetSdk.Examples.Transactions.TransferWithMemo\ConcordiumNetSdk.Examples.Transactions.TransferWithMemo.csproj", "{9BDE575F-934F-4600-97E5-49B93EE2A80E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk.Examples.Transactions.RegisterData", "examples\Examples\Transactions\RegisterData\Concordium.Sdk.Examples.Transactions.RegisterData.csproj", "{4FF4E689-3B03-4754-A7DF-E15B6A79D5F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Transactions.RegisterData", "examples\ConcordiumNetSdk.Examples.Transactions.RegisterData\ConcordiumNetSdk.Examples.Transactions.RegisterData.csproj", "{B5D3C743-33A7-4C4C-8D42-35D4231379F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk.Examples.Transactions.Transfer", "examples\Examples\Transactions\Transfer\Concordium.Sdk.Examples.Transactions.Transfer.csproj", "{506A963D-B243-4DE8-B04C-7A30A2A7AAA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Raw.GetAccountInfo", "examples\ConcordiumNetSdk.Examples.Raw.GetAccountInfo\ConcordiumNetSdk.Examples.Raw.GetAccountInfo.csproj", "{B82541A6-827C-488B-A9BF-30BB76FCB2F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk.Examples.Transactions.TransferWithMemo", "examples\Examples\Transactions\TransferWithMemo\Concordium.Sdk.Examples.Transactions.TransferWithMemo.csproj", "{E3006800-82A4-495E-8886-BC98F858875C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Raw.GetBlockTransactionEvents", "examples\ConcordiumNetSdk.Examples.Raw.GetBlockTransactionEvents\ConcordiumNetSdk.Examples.Raw.GetBlockTransactionEvents.csproj", "{C2BDECB7-D12D-4B69-B08D-CC956685CD1E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordiumNetSdk.Examples.Raw.GetFinalizedBlocks", "examples\ConcordiumNetSdk.Examples.Raw.GetFinalizedBlocks\ConcordiumNetSdk.Examples.Raw.GetFinalizedBlocks.csproj", "{50F5728C-19BF-4357-A646-0DDF87586297}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk.Examples.Common", "examples\Examples\Common\Concordium.Sdk.Examples.Common.csproj", "{F5B375A5-F7A7-4D01-A24F-62F4DA9D7659}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,46 +27,46 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9B455DC8-B80A-4E11-A8B8-0DD4CD47E31B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B455DC8-B80A-4E11-A8B8-0DD4CD47E31B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B455DC8-B80A-4E11-A8B8-0DD4CD47E31B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B455DC8-B80A-4E11-A8B8-0DD4CD47E31B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{07DDF416-A5DE-45F7-AC69-2774089289E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{07DDF416-A5DE-45F7-AC69-2774089289E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07DDF416-A5DE-45F7-AC69-2774089289E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07DDF416-A5DE-45F7-AC69-2774089289E2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E4EEF5B3-C756-43AC-B10B-8C3FBFD70ECE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E4EEF5B3-C756-43AC-B10B-8C3FBFD70ECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E4EEF5B3-C756-43AC-B10B-8C3FBFD70ECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E4EEF5B3-C756-43AC-B10B-8C3FBFD70ECE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C88F913A-6357-4A81-AC1A-DE0123F40878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C88F913A-6357-4A81-AC1A-DE0123F40878}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C88F913A-6357-4A81-AC1A-DE0123F40878}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C88F913A-6357-4A81-AC1A-DE0123F40878}.Release|Any CPU.Build.0 = Release|Any CPU
-		{074082C5-1760-41E7-B0B9-395D61FE11B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{074082C5-1760-41E7-B0B9-395D61FE11B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{074082C5-1760-41E7-B0B9-395D61FE11B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{074082C5-1760-41E7-B0B9-395D61FE11B7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9BDE575F-934F-4600-97E5-49B93EE2A80E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9BDE575F-934F-4600-97E5-49B93EE2A80E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9BDE575F-934F-4600-97E5-49B93EE2A80E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9BDE575F-934F-4600-97E5-49B93EE2A80E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B5D3C743-33A7-4C4C-8D42-35D4231379F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5D3C743-33A7-4C4C-8D42-35D4231379F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B5D3C743-33A7-4C4C-8D42-35D4231379F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B5D3C743-33A7-4C4C-8D42-35D4231379F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B82541A6-827C-488B-A9BF-30BB76FCB2F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B82541A6-827C-488B-A9BF-30BB76FCB2F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B82541A6-827C-488B-A9BF-30BB76FCB2F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B82541A6-827C-488B-A9BF-30BB76FCB2F2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2BDECB7-D12D-4B69-B08D-CC956685CD1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2BDECB7-D12D-4B69-B08D-CC956685CD1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2BDECB7-D12D-4B69-B08D-CC956685CD1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2BDECB7-D12D-4B69-B08D-CC956685CD1E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50F5728C-19BF-4357-A646-0DDF87586297}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50F5728C-19BF-4357-A646-0DDF87586297}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50F5728C-19BF-4357-A646-0DDF87586297}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50F5728C-19BF-4357-A646-0DDF87586297}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5926362D-5379-4F12-8F1A-F3FA29EDA00F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5926362D-5379-4F12-8F1A-F3FA29EDA00F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5926362D-5379-4F12-8F1A-F3FA29EDA00F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5926362D-5379-4F12-8F1A-F3FA29EDA00F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA99FA9D-C722-4BD4-BB6E-C83843EC5BA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA99FA9D-C722-4BD4-BB6E-C83843EC5BA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA99FA9D-C722-4BD4-BB6E-C83843EC5BA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA99FA9D-C722-4BD4-BB6E-C83843EC5BA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5E9C218-21CD-42E9-BB37-1D7AB3BAB2C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5E9C218-21CD-42E9-BB37-1D7AB3BAB2C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5E9C218-21CD-42E9-BB37-1D7AB3BAB2C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5E9C218-21CD-42E9-BB37-1D7AB3BAB2C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E117FB5-D225-40F1-AB56-BF92350E573B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E117FB5-D225-40F1-AB56-BF92350E573B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E117FB5-D225-40F1-AB56-BF92350E573B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E117FB5-D225-40F1-AB56-BF92350E573B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3AED5FA-4BB6-4ADC-A155-C94A2F7A2C1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3AED5FA-4BB6-4ADC-A155-C94A2F7A2C1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3AED5FA-4BB6-4ADC-A155-C94A2F7A2C1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3AED5FA-4BB6-4ADC-A155-C94A2F7A2C1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FF4E689-3B03-4754-A7DF-E15B6A79D5F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FF4E689-3B03-4754-A7DF-E15B6A79D5F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FF4E689-3B03-4754-A7DF-E15B6A79D5F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FF4E689-3B03-4754-A7DF-E15B6A79D5F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{506A963D-B243-4DE8-B04C-7A30A2A7AAA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{506A963D-B243-4DE8-B04C-7A30A2A7AAA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{506A963D-B243-4DE8-B04C-7A30A2A7AAA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{506A963D-B243-4DE8-B04C-7A30A2A7AAA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3006800-82A4-495E-8886-BC98F858875C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3006800-82A4-495E-8886-BC98F858875C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3006800-82A4-495E-8886-BC98F858875C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3006800-82A4-495E-8886-BC98F858875C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5B375A5-F7A7-4D01-A24F-62F4DA9D7659}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5B375A5-F7A7-4D01-A24F-62F4DA9D7659}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5B375A5-F7A7-4D01-A24F-62F4DA9D7659}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B375A5-F7A7-4D01-A24F-62F4DA9D7659}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
