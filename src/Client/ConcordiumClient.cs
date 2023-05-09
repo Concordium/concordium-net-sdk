@@ -45,13 +45,13 @@ public class ConcordiumClient : IDisposable
         this.Raw = new RawClient(endpoint, port, configuration);
 
     /// <summary>
-    /// Send a transaction to the node.
+    /// Send an account transaction to the node.
     /// </summary>
-    /// <param name="transaction">The transaction to send.</param>
+    /// <param name="transaction">The account transaction to send.</param>
     /// <returns>Hash of the transaction if it was accepted by the node.</returns>
     /// <exception cref="RpcException">The call failed, e.g. due to the node not accepting the transaction.</exception>
     /// <exception cref="FormatException">The returned transaction hash has an invalid number of bytes.</exception>
-    public Types.TransactionHash SendTransaction<T>(SignedAccountTransaction<T> transaction)
+    public Types.TransactionHash SendAccountTransaction<T>(SignedAccountTransaction<T> transaction)
         where T : AccountTransactionPayload<T>
     {
         // Send the transaction as a block item request.
@@ -62,15 +62,15 @@ public class ConcordiumClient : IDisposable
     }
 
     /// <summary>
-    /// Spawn a task which sends a transaction to the node.
+    /// Spawn a task which sends an account transaction to the node.
     ///
     /// Note that the task may throw a <see cref="FormatException"/> if the transaction hash it returns
     /// has an invalid number of bytes.
     /// </summary>
-    /// <param name="transaction">The transaction to send.</param>
+    /// <param name="transaction">The account transaction to send.</param>
     /// <returns>Task which returns the hash of the transaction if it was accepted by the node.</returns>
     /// <exception cref="RpcException">The call failed, e.g. due to the node not accepting the transaction.</exception>
-    public Task<Types.TransactionHash> SendTransactionAsync<T>(
+    public Task<Types.TransactionHash> SendAccountTransactionAsync<T>(
         SignedAccountTransaction<T> transaction
     )
         where T : AccountTransactionPayload<T> =>
