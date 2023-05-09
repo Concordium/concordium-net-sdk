@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/prepare-release/apiSpec/new?filename=Concordium_Sdk_Client_ConcordiumClient.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Client.ConcordiumClient%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/add-formatter/apiSpec/new?filename=Concordium_Sdk_Client_ConcordiumClient.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Client.ConcordiumClient%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
 
       <script type="module">
         import docfx from './../public/main.js'
@@ -79,7 +79,7 @@
 
   <h1 id="Concordium_Sdk_Client_ConcordiumClient" data-uid="Concordium.Sdk.Client.ConcordiumClient" class="text-break">
     Class ConcordiumClient
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Client/ConcordiumClient.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/ConcordiumClient.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -153,7 +153,7 @@
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient__ctor_System_Uri_System_UInt16_Concordium_Sdk_Client_ClientConfiguration_" data-uid="Concordium.Sdk.Client.ConcordiumClient.#ctor(System.Uri,System.UInt16,Concordium.Sdk.Client.ClientConfiguration)">
   ConcordiumClient(Uri, ushort, ClientConfiguration)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Client/ConcordiumClient.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/ConcordiumClient.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Concordium.Sdk.Client.html">Concordium.Sdk.Client</a> class.</p>
@@ -194,7 +194,7 @@ specified in <code class="paramref">endpoint</code>.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient__ctor_System_Uri_System_UInt16_System_UInt64_" data-uid="Concordium.Sdk.Client.ConcordiumClient.#ctor(System.Uri,System.UInt16,System.UInt64)">
   ConcordiumClient(Uri, ushort, ulong)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Client/ConcordiumClient.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/ConcordiumClient.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Concordium.Sdk.Client.html">Concordium.Sdk.Client</a> class.</p>
@@ -231,14 +231,15 @@ specified in <code class="paramref">endpoint</code>.</p>
 
 
 
-  <h2 class="section" id="fields">Fields
+  <h2 class="section" id="properties">Properties
 </h2>
 
 
+  <a id="Concordium_Sdk_Client_ConcordiumClient_Raw_" data-uid="Concordium.Sdk.Client.ConcordiumClient.Raw*"></a>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_Raw" data-uid="Concordium.Sdk.Client.ConcordiumClient.Raw">
   Raw
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Client/ConcordiumClient.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/ConcordiumClient.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The raw client.</p>
@@ -246,18 +247,18 @@ specified in <code class="paramref">endpoint</code>.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly RawClient Raw</code></pre>
+    <pre><code class="lang-csharp hljs">public RawClient Raw { get; init; }</code></pre>
   </div>
 
 
 
 
-  <h4 class="section">Field Value</h4>
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Concordium.Sdk.Client.RawClient.html">RawClient</a></dt>
     <dd></dd>
   </dl>
-
 
 
 
@@ -274,7 +275,7 @@ specified in <code class="paramref">endpoint</code>.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_Dispose" data-uid="Concordium.Sdk.Client.ConcordiumClient.Dispose">
   Dispose()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Client/ConcordiumClient.cs/#L178"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/ConcordiumClient.cs/#L162"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
@@ -301,7 +302,7 @@ specified in <code class="paramref">endpoint</code>.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_Dispose_System_Boolean_" data-uid="Concordium.Sdk.Client.ConcordiumClient.Dispose(System.Boolean)">
   Dispose(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Client/ConcordiumClient.cs/#L165"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/ConcordiumClient.cs/#L149"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -328,11 +329,37 @@ specified in <code class="paramref">endpoint</code>.</p>
 
 
 
+  <a id="Concordium_Sdk_Client_ConcordiumClient_Finalize_" data-uid="Concordium.Sdk.Client.ConcordiumClient.Finalize*"></a>
+
+  <h3 id="Concordium_Sdk_Client_ConcordiumClient_Finalize" data-uid="Concordium.Sdk.Client.ConcordiumClient.Finalize">
+  ~ConcordiumClient()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/ConcordiumClient.cs/#L168"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ~ConcordiumClient()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Concordium_Sdk_Client_ConcordiumClient_GetNextAccountSequenceNumber_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetNextAccountSequenceNumber*"></a>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetNextAccountSequenceNumber_Concordium_Sdk_Types_AccountAddress_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetNextAccountSequenceNumber(Concordium.Sdk.Types.AccountAddress)">
   GetNextAccountSequenceNumber(AccountAddress)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Client/ConcordiumClient.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/ConcordiumClient.cs/#L102"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Query the chain for the next sequence number of the account with the supplied
@@ -385,7 +412,7 @@ case, then the sequence number is reliable.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetNextAccountSequenceNumberAsync_Concordium_Sdk_Types_AccountAddress_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetNextAccountSequenceNumberAsync(Concordium.Sdk.Types.AccountAddress)">
   GetNextAccountSequenceNumberAsync(AccountAddress)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Client/ConcordiumClient.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/ConcordiumClient.cs/#L131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which queries the chain for the next sequence number of the
@@ -434,27 +461,27 @@ If the latter is the case, then the sequence number is reliable.</p>
 
 
 
-  <a id="Concordium_Sdk_Client_ConcordiumClient_SendTransactionAsync_" data-uid="Concordium.Sdk.Client.ConcordiumClient.SendTransactionAsync*"></a>
+  <a id="Concordium_Sdk_Client_ConcordiumClient_SendAccountTransactionAsync_" data-uid="Concordium.Sdk.Client.ConcordiumClient.SendAccountTransactionAsync*"></a>
 
-  <h3 id="Concordium_Sdk_Client_ConcordiumClient_SendTransactionAsync__1_Concordium_Sdk_Transactions_SignedAccountTransaction___0__" data-uid="Concordium.Sdk.Client.ConcordiumClient.SendTransactionAsync``1(Concordium.Sdk.Transactions.SignedAccountTransaction{``0})">
-  SendTransactionAsync&lt;T&gt;(SignedAccountTransaction&lt;T&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Client/ConcordiumClient.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Concordium_Sdk_Client_ConcordiumClient_SendAccountTransactionAsync__1_Concordium_Sdk_Transactions_SignedAccountTransaction___0__" data-uid="Concordium.Sdk.Client.ConcordiumClient.SendAccountTransactionAsync``1(Concordium.Sdk.Transactions.SignedAccountTransaction{``0})">
+  SendAccountTransactionAsync&lt;T&gt;(SignedAccountTransaction&lt;T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/ConcordiumClient.cs/#L73"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Spawn a task which sends a transaction to the node.</p>
+  <div class="markdown level1 summary"><p>Spawn a task which sends an account transaction to the node.</p>
 <p>Note that the task may throw a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.formatexception">FormatException</a> if the transaction hash it returns
 has an invalid number of bytes.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;TransactionHash&gt; SendTransactionAsync&lt;T&gt;(SignedAccountTransaction&lt;T&gt; transaction) where T : AccountTransactionPayload&lt;T&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;TransactionHash&gt; SendAccountTransactionAsync&lt;T&gt;(SignedAccountTransaction&lt;T&gt; transaction) where T : AccountTransactionPayload&lt;T&gt;</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>transaction</code> <a class="xref" href="Concordium.Sdk.Transactions.SignedAccountTransaction-1.html">SignedAccountTransaction</a>&lt;T&gt;</dt>
-    <dd><p>The transaction to send.</p>
+    <dd><p>The account transaction to send.</p>
 </dd>
   </dl>
 
@@ -486,25 +513,25 @@ has an invalid number of bytes.</p>
 
 
 
-  <a id="Concordium_Sdk_Client_ConcordiumClient_SendTransaction_" data-uid="Concordium.Sdk.Client.ConcordiumClient.SendTransaction*"></a>
+  <a id="Concordium_Sdk_Client_ConcordiumClient_SendAccountTransaction_" data-uid="Concordium.Sdk.Client.ConcordiumClient.SendAccountTransaction*"></a>
 
-  <h3 id="Concordium_Sdk_Client_ConcordiumClient_SendTransaction__1_Concordium_Sdk_Transactions_SignedAccountTransaction___0__" data-uid="Concordium.Sdk.Client.ConcordiumClient.SendTransaction``1(Concordium.Sdk.Transactions.SignedAccountTransaction{``0})">
-  SendTransaction&lt;T&gt;(SignedAccountTransaction&lt;T&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Client/ConcordiumClient.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Concordium_Sdk_Client_ConcordiumClient_SendAccountTransaction__1_Concordium_Sdk_Transactions_SignedAccountTransaction___0__" data-uid="Concordium.Sdk.Client.ConcordiumClient.SendAccountTransaction``1(Concordium.Sdk.Transactions.SignedAccountTransaction{``0})">
+  SendAccountTransaction&lt;T&gt;(SignedAccountTransaction&lt;T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/ConcordiumClient.cs/#L54"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Send a transaction to the node.</p>
+  <div class="markdown level1 summary"><p>Send an account transaction to the node.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TransactionHash SendTransaction&lt;T&gt;(SignedAccountTransaction&lt;T&gt; transaction) where T : AccountTransactionPayload&lt;T&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public TransactionHash SendAccountTransaction&lt;T&gt;(SignedAccountTransaction&lt;T&gt; transaction) where T : AccountTransactionPayload&lt;T&gt;</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>transaction</code> <a class="xref" href="Concordium.Sdk.Transactions.SignedAccountTransaction-1.html">SignedAccountTransaction</a>&lt;T&gt;</dt>
-    <dd><p>The transaction to send.</p>
+    <dd><p>The account transaction to send.</p>
 </dd>
   </dl>
 
@@ -543,7 +570,7 @@ has an invalid number of bytes.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Client/ConcordiumClient.cs/#L11" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/ConcordiumClient.cs/#L10" class="edit-link">Edit this page</a>
         </div>
 
         

@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/prepare-release/apiSpec/new?filename=Concordium_Sdk_Types_Expiry.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Types.Expiry%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/add-formatter/apiSpec/new?filename=Concordium_Sdk_Types_Expiry.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Types.Expiry%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
 
       <script type="module">
         import docfx from './../public/main.js'
@@ -79,7 +79,7 @@
 
   <h1 id="Concordium_Sdk_Types_Expiry" data-uid="Concordium.Sdk.Types.Expiry" class="text-break">
     Struct Expiry
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -134,7 +134,7 @@
 
   <h3 id="Concordium_Sdk_Types_Expiry_BytesLength" data-uid="Concordium.Sdk.Types.Expiry.BytesLength">
   BytesLength
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -169,7 +169,7 @@
 
   <h3 id="Concordium_Sdk_Types_Expiry_AtMinutesFromNow_System_UInt64_" data-uid="Concordium.Sdk.Types.Expiry.AtMinutesFromNow(System.UInt64)">
   AtMinutesFromNow(ulong)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates a new expiration time that is <code class="paramref">minutes</code> ahead of the current system time.</p>
@@ -207,7 +207,7 @@
 
   <h3 id="Concordium_Sdk_Types_Expiry_AtSecondsFromNow_System_UInt64_" data-uid="Concordium.Sdk.Types.Expiry.AtSecondsFromNow(System.UInt64)">
   AtSecondsFromNow(ulong)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates a new expiration time that is <code class="paramref">seconds</code> from the current system time.</p>
@@ -245,19 +245,19 @@
 
   <h3 id="Concordium_Sdk_Types_Expiry_Equals_Concordium_Sdk_Types_Expiry_" data-uid="Concordium.Sdk.Types.Expiry.Equals(Concordium.Sdk.Types.Expiry)">
   Equals(Expiry)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L133"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L105"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Equals(Expiry expiry)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool Equals(Expiry other)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>expiry</code> <a class="xref" href="Concordium.Sdk.Types.Expiry.html">Expiry</a></dt>
+    <dt><code>other</code> <a class="xref" href="Concordium.Sdk.Types.Expiry.html">Expiry</a></dt>
     <dd></dd>
   </dl>
 
@@ -281,7 +281,7 @@
 
   <h3 id="Concordium_Sdk_Types_Expiry_Equals_System_Object_" data-uid="Concordium.Sdk.Types.Expiry.Equals(System.Object)">
   Equals(object?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L138"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L107"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -317,7 +317,7 @@
 
   <h3 id="Concordium_Sdk_Types_Expiry_From_System_DateTime_" data-uid="Concordium.Sdk.Types.Expiry.From(System.DateTime)">
   From(DateTime)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L73"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates an instance from a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>.</p>
@@ -354,7 +354,7 @@
 
   <h3 id="Concordium_Sdk_Types_Expiry_From_System_DateTimeOffset_" data-uid="Concordium.Sdk.Types.Expiry.From(System.DateTimeOffset)">
   From(DateTimeOffset)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L78"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates an instance from a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>.</p>
@@ -391,7 +391,7 @@
 
   <h3 id="Concordium_Sdk_Types_Expiry_From_System_UInt64_" data-uid="Concordium.Sdk.Types.Expiry.From(System.UInt64)">
   From(ulong)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates an instance from a expiration time represented by the elapsed number of seconds since the UNIX epoch.</p>
@@ -429,7 +429,7 @@
 
   <h3 id="Concordium_Sdk_Types_Expiry_GetBytes" data-uid="Concordium.Sdk.Types.Expiry.GetBytes">
   GetBytes()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L90"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the expiration time represented by the elapsed number of seconds since
@@ -462,7 +462,7 @@ the UNIX epoch written as a 64-bit integer in big-endian format.</p>
 
   <h3 id="Concordium_Sdk_Types_Expiry_GetHashCode" data-uid="Concordium.Sdk.Types.Expiry.GetHashCode">
   GetHashCode()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L123"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -493,7 +493,7 @@ the UNIX epoch written as a 64-bit integer in big-endian format.</p>
 
   <h3 id="Concordium_Sdk_Types_Expiry_GetValue" data-uid="Concordium.Sdk.Types.Expiry.GetValue">
   GetValue()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L84"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the expiration time represented by the elapsed number of seconds since
@@ -526,7 +526,7 @@ the UNIX epoch.</p>
 
   <h3 id="Concordium_Sdk_Types_Expiry_Now" data-uid="Concordium.Sdk.Types.Expiry.Now">
   Now()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L57"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates an instance whose expiration time is the current system time.</p>
@@ -558,7 +558,7 @@ the UNIX epoch.</p>
 
   <h3 id="Concordium_Sdk_Types_Expiry_ToProto" data-uid="Concordium.Sdk.Types.Expiry.ToProto">
   ToProto()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L102"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts the expiration time to its corresponding protocol buffer message instance.</p>
@@ -591,7 +591,7 @@ the UNIX epoch.</p>
 
   <h3 id="Concordium_Sdk_Types_Expiry_ToString" data-uid="Concordium.Sdk.Types.Expiry.ToString">
   ToString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L95"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a string representation of the date and time in the calendar used by the current culture.</p>
@@ -627,7 +627,7 @@ the UNIX epoch.</p>
 
   <h3 id="Concordium_Sdk_Types_Expiry_op_Equality_System_Nullable_Concordium_Sdk_Types_Expiry__System_Nullable_Concordium_Sdk_Types_Expiry__" data-uid="Concordium.Sdk.Types.Expiry.op_Equality(System.Nullable{Concordium.Sdk.Types.Expiry},System.Nullable{Concordium.Sdk.Types.Expiry})">
   operator ==(Expiry?, Expiry?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L154"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L125"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -665,7 +665,7 @@ the UNIX epoch.</p>
 
   <h3 id="Concordium_Sdk_Types_Expiry_op_GreaterThan_Concordium_Sdk_Types_Expiry_Concordium_Sdk_Types_Expiry_" data-uid="Concordium.Sdk.Types.Expiry.op_GreaterThan(Concordium.Sdk.Types.Expiry,Concordium.Sdk.Types.Expiry)">
   operator &gt;(Expiry, Expiry)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L169"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -703,7 +703,7 @@ the UNIX epoch.</p>
 
   <h3 id="Concordium_Sdk_Types_Expiry_op_GreaterThanOrEqual_Concordium_Sdk_Types_Expiry_Concordium_Sdk_Types_Expiry_" data-uid="Concordium.Sdk.Types.Expiry.op_GreaterThanOrEqual(Concordium.Sdk.Types.Expiry,Concordium.Sdk.Types.Expiry)">
   operator &gt;=(Expiry, Expiry)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L179"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L136"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -741,7 +741,7 @@ the UNIX epoch.</p>
 
   <h3 id="Concordium_Sdk_Types_Expiry_op_Inequality_System_Nullable_Concordium_Sdk_Types_Expiry__System_Nullable_Concordium_Sdk_Types_Expiry__" data-uid="Concordium.Sdk.Types.Expiry.op_Inequality(System.Nullable{Concordium.Sdk.Types.Expiry},System.Nullable{Concordium.Sdk.Types.Expiry})">
   operator !=(Expiry?, Expiry?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L159"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L127"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -779,7 +779,7 @@ the UNIX epoch.</p>
 
   <h3 id="Concordium_Sdk_Types_Expiry_op_LessThan_Concordium_Sdk_Types_Expiry_Concordium_Sdk_Types_Expiry_" data-uid="Concordium.Sdk.Types.Expiry.op_LessThan(Concordium.Sdk.Types.Expiry,Concordium.Sdk.Types.Expiry)">
   operator &lt;(Expiry, Expiry)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L129"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -817,7 +817,7 @@ the UNIX epoch.</p>
 
   <h3 id="Concordium_Sdk_Types_Expiry_op_LessThanOrEqual_Concordium_Sdk_Types_Expiry_Concordium_Sdk_Types_Expiry_" data-uid="Concordium.Sdk.Types.Expiry.op_LessThanOrEqual(Concordium.Sdk.Types.Expiry,Concordium.Sdk.Types.Expiry)">
   operator &lt;=(Expiry, Expiry)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L174"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L133"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -855,7 +855,7 @@ the UNIX epoch.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Types/Expiry.cs/#L10" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Types/Expiry.cs/#L11" class="edit-link">Edit this page</a>
         </div>
 
         

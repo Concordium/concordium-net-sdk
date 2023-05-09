@@ -3565,16 +3565,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Concordium.Sdk.Transactions.PayloadSize.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Concordium.Sdk.Transactions.PayloadSize.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Transactions.PreparedAccountTransaction-1.yml",
       "output": {
         ".html": {
@@ -3759,6 +3749,16 @@
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.OnChainData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.PayloadSize.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.PayloadSize.html"
         }
       },
       "version": ""

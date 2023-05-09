@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/prepare-release/apiSpec/new?filename=Concordium_Sdk_Transactions_AccountTransactionSignature.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Transactions.AccountTransactionSignature%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/add-formatter/apiSpec/new?filename=Concordium_Sdk_Transactions_AccountTransactionSignature.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Transactions.AccountTransactionSignature%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
 
       <script type="module">
         import docfx from './../public/main.js'
@@ -79,7 +79,7 @@
 
   <h1 id="Concordium_Sdk_Transactions_AccountTransactionSignature" data-uid="Concordium.Sdk.Transactions.AccountTransactionSignature" class="text-break">
     Class AccountTransactionSignature
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/AccountTransactionSignature.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/AccountTransactionSignature.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -159,7 +159,7 @@ keys corresponding to the indices.</p>
 
   <h3 id="Concordium_Sdk_Transactions_AccountTransactionSignature__ctor_System_Collections_Generic_Dictionary_Concordium_Sdk_Types_AccountCredentialIndex_System_Collections_Generic_Dictionary_Concordium_Sdk_Types_AccountKeyIndex_System_Byte_____" data-uid="Concordium.Sdk.Transactions.AccountTransactionSignature.#ctor(System.Collections.Generic.Dictionary{Concordium.Sdk.Types.AccountCredentialIndex,System.Collections.Generic.Dictionary{Concordium.Sdk.Types.AccountKeyIndex,System.Byte[]}})">
   AccountTransactionSignature(Dictionary&lt;AccountCredentialIndex, Dictionary&lt;AccountKeyIndex, byte[]&gt;&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/AccountTransactionSignature.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/AccountTransactionSignature.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionSignature.html">AccountTransactionSignature</a> class.</p>
@@ -188,14 +188,15 @@ keys corresponding to the indices.</p>
 
 
 
-  <h2 class="section" id="fields">Fields
+  <h2 class="section" id="properties">Properties
 </h2>
 
 
+  <a id="Concordium_Sdk_Transactions_AccountTransactionSignature_SignatureMap_" data-uid="Concordium.Sdk.Transactions.AccountTransactionSignature.SignatureMap*"></a>
 
-  <h3 id="Concordium_Sdk_Transactions_AccountTransactionSignature_signatureMap" data-uid="Concordium.Sdk.Transactions.AccountTransactionSignature.signatureMap">
-  signatureMap
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/AccountTransactionSignature.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Concordium_Sdk_Transactions_AccountTransactionSignature_SignatureMap" data-uid="Concordium.Sdk.Transactions.AccountTransactionSignature.SignatureMap">
+  SignatureMap
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/AccountTransactionSignature.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Internal representation of the signature. This is a map from account credential indices to account signature maps.</p>
@@ -203,18 +204,18 @@ keys corresponding to the indices.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly ImmutableDictionary&lt;AccountCredentialIndex, AccountSignatureMap&gt; signatureMap</code></pre>
+    <pre><code class="lang-csharp hljs">public ImmutableDictionary&lt;AccountCredentialIndex, AccountSignatureMap&gt; SignatureMap { get; init; }</code></pre>
   </div>
 
 
 
 
-  <h4 class="section">Field Value</h4>
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutabledictionary-2">ImmutableDictionary</a>&lt;<a class="xref" href="Concordium.Sdk.Types.AccountCredentialIndex.html">AccountCredentialIndex</a>, <a class="xref" href="Concordium.Sdk.Transactions.AccountSignatureMap.html">AccountSignatureMap</a>&gt;</dt>
     <dd></dd>
   </dl>
-
 
 
 
@@ -231,7 +232,7 @@ keys corresponding to the indices.</p>
 
   <h3 id="Concordium_Sdk_Transactions_AccountTransactionSignature_ToProto" data-uid="Concordium.Sdk.Transactions.AccountTransactionSignature.ToProto">
   ToProto()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/AccountTransactionSignature.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/AccountTransactionSignature.cs/#L62"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts the account transaction signature to its corresponding protocol buffer message instance.</p>
@@ -263,7 +264,7 @@ keys corresponding to the indices.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/AccountTransactionSignature.cs/#L24" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/AccountTransactionSignature.cs/#L24" class="edit-link">Edit this page</a>
         </div>
 
         

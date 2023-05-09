@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/prepare-release/apiSpec/new?filename=Concordium_Sdk_Transactions_TransferWithMemo.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Transactions.TransferWithMemo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/add-formatter/apiSpec/new?filename=Concordium_Sdk_Transactions_TransferWithMemo.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Transactions.TransferWithMemo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
 
       <script type="module">
         import docfx from './../public/main.js'
@@ -79,7 +79,7 @@
 
   <h1 id="Concordium_Sdk_Transactions_TransferWithMemo" data-uid="Concordium.Sdk.Transactions.TransferWithMemo" class="text-break">
     Class TransferWithMemo
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/TransferWithMemo.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/TransferWithMemo.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -163,7 +163,7 @@ but additionally stores a memo associated with the transfer on-chain.</p>
 
   <h3 id="Concordium_Sdk_Transactions_TransferWithMemo__ctor_Concordium_Sdk_Types_CcdAmount_Concordium_Sdk_Types_AccountAddress_Concordium_Sdk_Types_OnChainData_" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.#ctor(Concordium.Sdk.Types.CcdAmount,Concordium.Sdk.Types.AccountAddress,Concordium.Sdk.Types.OnChainData)">
   TransferWithMemo(CcdAmount, AccountAddress, OnChainData)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/TransferWithMemo.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/TransferWithMemo.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Concordium.Sdk.Transactions.TransferWithMemo.html">TransferWithMemo</a> class.</p>
@@ -198,14 +198,15 @@ but additionally stores a memo associated with the transfer on-chain.</p>
 
 
 
-  <h2 class="section" id="fields">Fields
+  <h2 class="section" id="properties">Properties
 </h2>
 
 
+  <a id="Concordium_Sdk_Transactions_TransferWithMemo_Amount_" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.Amount*"></a>
 
   <h3 id="Concordium_Sdk_Transactions_TransferWithMemo_Amount" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.Amount">
   Amount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/TransferWithMemo.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/TransferWithMemo.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Amount to send.</p>
@@ -213,13 +214,14 @@ but additionally stores a memo associated with the transfer on-chain.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly CcdAmount Amount</code></pre>
+    <pre><code class="lang-csharp hljs">public CcdAmount Amount { get; init; }</code></pre>
   </div>
 
 
 
 
-  <h4 class="section">Field Value</h4>
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
     <dd></dd>
@@ -232,11 +234,11 @@ but additionally stores a memo associated with the transfer on-chain.</p>
 
 
 
-
+  <a id="Concordium_Sdk_Transactions_TransferWithMemo_Memo_" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.Memo*"></a>
 
   <h3 id="Concordium_Sdk_Transactions_TransferWithMemo_Memo" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.Memo">
   Memo
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/TransferWithMemo.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/TransferWithMemo.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Memo to include with the transaction.</p>
@@ -244,13 +246,14 @@ but additionally stores a memo associated with the transfer on-chain.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly OnChainData Memo</code></pre>
+    <pre><code class="lang-csharp hljs">public OnChainData Memo { get; init; }</code></pre>
   </div>
 
 
 
 
-  <h4 class="section">Field Value</h4>
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Concordium.Sdk.Types.OnChainData.html">OnChainData</a></dt>
     <dd></dd>
@@ -263,11 +266,11 @@ but additionally stores a memo associated with the transfer on-chain.</p>
 
 
 
-
+  <a id="Concordium_Sdk_Transactions_TransferWithMemo_Receiver_" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.Receiver*"></a>
 
   <h3 id="Concordium_Sdk_Transactions_TransferWithMemo_Receiver" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.Receiver">
   Receiver
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/TransferWithMemo.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/TransferWithMemo.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Address of the receiver account to which the amount will be sent.</p>
@@ -275,18 +278,18 @@ but additionally stores a memo associated with the transfer on-chain.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly AccountAddress Receiver</code></pre>
+    <pre><code class="lang-csharp hljs">public AccountAddress Receiver { get; init; }</code></pre>
   </div>
 
 
 
 
-  <h4 class="section">Field Value</h4>
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
     <dd></dd>
   </dl>
-
 
 
 
@@ -303,7 +306,7 @@ but additionally stores a memo associated with the transfer on-chain.</p>
 
   <h3 id="Concordium_Sdk_Transactions_TransferWithMemo_GetBytes" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.GetBytes">
   GetBytes()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/TransferWithMemo.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/TransferWithMemo.cs/#L65"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the transaction payload in the binary format expected by the node.</p>
@@ -335,7 +338,7 @@ but additionally stores a memo associated with the transfer on-chain.</p>
 
   <h3 id="Concordium_Sdk_Transactions_TransferWithMemo_GetTransactionSpecificCost" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.GetTransactionSpecificCost">
   GetTransactionSpecificCost()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/TransferWithMemo.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/TransferWithMemo.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the transaction specific cost for submitting this type of
@@ -374,7 +377,7 @@ when initializing or updating a smart contract.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/prepare-release/src/Transactions/TransferWithMemo.cs/#L12" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/TransferWithMemo.cs/#L12" class="edit-link">Edit this page</a>
         </div>
 
         
