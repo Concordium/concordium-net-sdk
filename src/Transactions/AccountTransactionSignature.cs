@@ -29,7 +29,8 @@ public class AccountTransactionSignature
     public ImmutableDictionary<
         AccountCredentialIndex,
         AccountSignatureMap
-    > SignatureMap { get; init; }
+    > SignatureMap
+    { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountTransactionSignature"/> class.
