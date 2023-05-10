@@ -145,7 +145,7 @@ A number of runnable examples illustrating usage of the SDK API are contained in
 
 For instance, a runnable example akin to that given in [Working with account transactions](#working-with-account-transactions) is found in [examples/Transactions/Transfer](https://github.com/Concordium/concordium-net-sdk/main/examples/Transactions/Transfer). Compiling the project and running the resulting binary will print the following help message:
 
-```
+```text
 Concordium.Sdk.Examples.Transactions.Transfer 1.0.0
 Copyright (C) 2023 Concordium.Sdk.Examples.Transactions.Transfer
 
@@ -173,13 +173,13 @@ ERROR(S):
 
 To run the example with similar values, invoke the binary as follows:
 
-```
-Concordium.Sdk.Examples.Transactions.Transfer -a 100 -r 4rvQePs6ZKFiW8rwY5nP18Uj2DroWiw9VPKTsTwfwmsjcFCJLy -k /path/to/exported-browser-wallet-keys.json
+```text
+$ Concordium.Sdk.Examples.Transactions.Transfer -a 100 -r 4rvQePs6ZKFiW8rwY5nP18Uj2DroWiw9VPKTsTwfwmsjcFCJLy -k /path/to/exported-browser-wallet-keys.json
 ```
 
 Here, the sender account address is contained in the file specified by the `--keys` option, and the expiration time defaults to 60 seconds, hence is why it is not specified. Upon successful submission of the transaction, the example program will print something like:
 
-```
+```text
 Successfully submitted transfer transaction with hash 6bc9bfac5ef4aa1988ab8b1ab6007a736d4b3fe7e52b942d69a030319d979f13
 ```
 
