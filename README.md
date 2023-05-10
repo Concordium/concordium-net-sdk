@@ -34,11 +34,11 @@ PM> Install-Package Concordium.SDK -Version ???
 or
 
 ```sh
-$ dotnet add package Concordium.SDK
+dotnet add package Concordium.SDK
 ```
 in your project root. It can also be used as a GIT submodule by embedding the cloned [repository](https://github.com/Concordium/concordium-net-sdk) directly into your project:
 ```sh
-$ git clone https://github.com/Concordium/concordium-net-sdk --recurse-submodules
+git clone https://github.com/Concordium/concordium-net-sdk --recurse-submodules
 ```
 
 ## Basic usage
@@ -97,7 +97,7 @@ The [`TransactionHash`](http://developer.concordium.software/concordium-net-sdk/
 
 ### Working with transaction signers
 
-As described in the [Account transactions](#working-with-account-transactions) section, account transactions must be signed using implementations of [`ITransactionSigner`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.ITransactionSigner.html). The SDK ships with the [`TransactionSigner`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.TransactionSigner.html) class which is dictionary based implementation to which [`ISigner`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Crypto.ISigner.html)s can be added. An [`ISigner`](developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Crypto.ISigner.html) represents a concrete implementation of a (secret) sign key for an account, and can be used to to write custom signer implementations which can be useful, for instance, if delegating the signing logic to a HSM. The SDK also ships with the [`WalletAccount`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Wallets.WalletAccount.html) class which provides functionality for importing account keys from one of the supported wallet export formats. Currently the Concordium browser and genesis wallet key export (JSON) formats are supported.
+As described in the [Account transactions](#working-with-account-transactions) section, account transactions must be signed using implementations of [`ITransactionSigner`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.ITransactionSigner.html). The SDK ships with the [`TransactionSigner`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.TransactionSigner.html) class which is dictionary based implementation to which [`ISigner`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Crypto.ISigner.html)s can be added. An [`ISigner`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Crypto.ISigner.html) represents a concrete implementation of a (secret) sign key for an account, and can be used to to write custom signer implementations which can be useful, for instance, if delegating the signing logic to a HSM. The SDK also ships with the [`WalletAccount`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Wallets.WalletAccount.html) class which provides functionality for importing account keys from one of the supported wallet export formats. Currently the Concordium browser and genesis wallet key export (JSON) formats are supported.
 
 ### Using the client API
 
@@ -175,7 +175,7 @@ ERROR(S):
 To run the example with similar values, invoke the binary as follows:
 
 ```sh
-$ Concordium.Sdk.Examples.Transactions.Transfer -a 100 -r 4rvQePs6ZKFiW8rwY5nP18Uj2DroWiw9VPKTsTwfwmsjcFCJLy -k /path/to/exported-browser-wallet-keys.json
+Concordium.Sdk.Examples.Transactions.Transfer -a 100 -r 4rvQePs6ZKFiW8rwY5nP18Uj2DroWiw9VPKTsTwfwmsjcFCJLy -k /path/to/exported-browser-wallet-keys.json
 ```
 
 Here, the sender account address is contained in the file specified by the `--keys` option which is why it is not included here. Upon successful submission of the transaction, the example program will print something like:
