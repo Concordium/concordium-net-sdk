@@ -34,11 +34,11 @@ PM> Install-Package Concordium.SDK -Version ???
 or
 
 ```sh
-dotnet add package Concordium.SDK
+$ dotnet add package Concordium.SDK
 ```
 in your project root. It can also be used as a GIT submodule by embedding the cloned [repository](https://github.com/Concordium/concordium-net-sdk) directly into your project:
-```
-git clone https://github.com/Concordium/concordium-net-sdk --recurse-submodules
+```sh
+$ git clone https://github.com/Concordium/concordium-net-sdk --recurse-submodules
 ```
 
 ## Basic usage
@@ -174,7 +174,7 @@ ERROR(S):
 
 To run the example with similar values, invoke the binary as follows:
 
-```text
+```sh
 $ Concordium.Sdk.Examples.Transactions.Transfer -a 100 -r 4rvQePs6ZKFiW8rwY5nP18Uj2DroWiw9VPKTsTwfwmsjcFCJLy -k /path/to/exported-browser-wallet-keys.json
 ```
 
