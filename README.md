@@ -50,9 +50,9 @@ using Concordium.Sdk.Client;
 
 // Construct the client.
 ConcordiumClient client = new ConcordiumClient(
-  new Uri("https://localhost/), // Endpoint  URL.
-  options.Port, // Port.
-  60 // Use a connection timeout of 60 seconds.
+  new Uri("https://localhost/"), // Endpoint URL.
+  20000, // Port.
+  60 // Connection timeout in seconds.
 );
 ```
 The [`ConcordiumClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html) constructor also optionally takes a [`GrpcChannelOptions`](https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Net.Client.GrpcChannelOptions.html) object which can be used to specify various settings specific to the underlying [`GrpcChannel`](https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Net.Client.GrpcChannel.html) instance which handles the communication with the node. These could be settings that dictate the retry policy or specify parameters for the [keepalive ping](https://github.com/grpc/grpc/blob/master/doc/keepalive.md), which can be vital to the robustness of the application.
