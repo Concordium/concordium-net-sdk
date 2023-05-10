@@ -5,11 +5,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageVersion>2.0.0</PackageVersion>
-    <Description>A C# .NET SDK for interacting with Concordium blockchain.</Description>
+    <Description>
+      A .NET integration library written in C# which adds support for
+      constructing and sending various transactions, as well as querying
+      various aspects of the Concordium blockchain and its nodes. This SDK
+      uses version 2 of the Concordium Node gRPC API to interact with
+      Concordium nodes and in turn the Concordium blockchain.
+    </Description>
     <PackageProjectUrl>https://concordium.foundation/</PackageProjectUrl>
-    <PackageIconUrl>https://avatars.githubusercontent.com/u/39614219?s=200&amp;v=4</PackageIconUrl>
     <RepositoryUrl>https://github.com/Concordium/concordium-net-sdk</RepositoryUrl>
-    <PackageTags>concordium; concordium-net-sdk;</PackageTags>
+    <PackageTags>concordium;concordium-net-sdk;blockchain;sdk;</PackageTags>
     <Company>Concordium</Company>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
