@@ -16,25 +16,34 @@ public abstract record Hash : IEquatable<Hash>
     /// Initializes a new instance of the <see cref="Hash"/> class.
     /// </summary>
     /// <param name="hashAsBase16String">A hash represented as a length-64 hex encoded string.</param>
-    /// <exception cref="FormatException">The supplied string is not a hex string which represents a hash.</exception>
+    /// <exception cref="ArgumentException">The supplied string is not a 64-character hex encoded string.</exception>
     protected Hash(string hashAsBase16String)
     {
         if (hashAsBase16String.Length != BytesLength * 2)
-            throw new FormatException(
+            throw new ArgumentException(
                 $"The provided hex string must be {BytesLength * 2} characters long."
             );
-        _value = Convert.FromHexString(hashAsBase16String);
+        try
+        {
+            _value = Convert.FromHexString(hashAsBase16String);
+        }
+        catch (FormatException)
+        {
+            throw new ArgumentException("The provided string must be hex encoded.");
+        }
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Hash"/> class.
     /// </summary>
     /// <param name="hashAsBytes">A hash represented as a length-32 byte array.</param>
-    /// <exception cref="FormatException">The supplied string is not a hex string which represents a hash.</exception>
+    /// <exception cref="FormatException">The supplied array is not 32 bytes long.</exception>
     protected Hash(byte[] hashAsBytes)
     {
         if (hashAsBytes.Length != BytesLength)
-            throw new FormatException($"The provided byte array must be {BytesLength} bytes long.");
+            throw new ArgumentException(
+                $"The provided byte array must be {BytesLength} bytes long."
+            );
         _value = (byte[])hashAsBytes.Clone();
     }
 
