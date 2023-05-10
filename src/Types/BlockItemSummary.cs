@@ -2,6 +2,7 @@ using Concordium.Grpc.V2;
 using Concordium.Sdk.Types;
 using AccountAddress = Concordium.Sdk.Types.AccountAddress;
 using ContractAddress = Concordium.Sdk.Types.ContractAddress;
+using ContractEvent = Concordium.Sdk.Types.ContractEvent;
 using ContractInitializedEvent = Concordium.Sdk.Types.ContractInitializedEvent;
 
 namespace BlockItemSummary;
@@ -119,8 +120,130 @@ public sealed class BlockItemSummary {
 
         return true;
     }
-    
-    
+
+    public bool ContractUpdateLogs(out IList<(ContractAddress, IList<ContractEvent>)>? items)
+    {
+        items = new List<(ContractAddress, IList<ContractEvent>)>();
+        if (_blockItemSummary.DetailsCase != Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction)
+        {
+            return false; 
+        }
+        if (_blockItemSummary.AccountTransaction.Effects.EffectCase != AccountTransactionEffects.EffectOneofCase.ContractUpdateIssued)
+        {
+            return false;
+        }
+        
+        foreach (var contractTraceElement in _blockItemSummary.AccountTransaction.Effects.ContractUpdateIssued.Effects)
+        {
+            switch (contractTraceElement.ElementCase)
+            {
+                case ContractTraceElement.ElementOneofCase.Updated:
+                    var itemUpdated = (
+                        ContractAddress.From(contractTraceElement.Updated.Address),
+                        contractTraceElement.Updated.Events
+                            .Select(e => new ContractEvent(e.Value.ToByteArray()))
+                            .ToList())
+                        ;
+                    items.Add(itemUpdated);
+                    break;
+                case ContractTraceElement.ElementOneofCase.Interrupted:
+                    var itemInterrupted = (
+                            ContractAddress.From(contractTraceElement.Updated.Address),
+                            contractTraceElement.Updated.Events
+                                .Select(e => new ContractEvent(e.Value.ToByteArray()))
+                                .ToList())
+                        ;
+                    items.Add(itemInterrupted);
+                    break;
+                default:
+                    continue;
+            }
+        }
+
+        return true;
+    }
+
+    public IList<AccountAddress> AffectedAddresses()
+    {
+        var affectedAddresses = new List<AccountAddress>();
+        
+        if (_blockItemSummary.DetailsCase != Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction)
+        {
+            return affectedAddresses; 
+        }
+
+        var accountTransaction = _blockItemSummary.AccountTransaction;
+        var effects = accountTransaction.Effects;
+
+        switch (effects.EffectCase)
+        {
+            case AccountTransactionEffects.EffectOneofCase.None:
+                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                break;
+            case AccountTransactionEffects.EffectOneofCase.None_:
+                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                break;
+            case AccountTransactionEffects.EffectOneofCase.ModuleDeployed:
+                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                break;
+            case AccountTransactionEffects.EffectOneofCase.ContractInitialized:
+                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                break;
+            case AccountTransactionEffects.EffectOneofCase.ContractUpdateIssued:
+                // TODO
+                break;
+            case AccountTransactionEffects.EffectOneofCase.AccountTransfer:
+                // TODO
+                break;
+            case AccountTransactionEffects.EffectOneofCase.BakerAdded:
+                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                break;
+            case AccountTransactionEffects.EffectOneofCase.BakerRemoved:
+                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                break;
+            case AccountTransactionEffects.EffectOneofCase.BakerStakeUpdated:
+                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                break;
+            case AccountTransactionEffects.EffectOneofCase.BakerRestakeEarningsUpdated:
+                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                break;
+            case AccountTransactionEffects.EffectOneofCase.BakerKeysUpdated:
+                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                break;
+            case AccountTransactionEffects.EffectOneofCase.EncryptedAmountTransferred:
+                // TODO
+                break;
+            case AccountTransactionEffects.EffectOneofCase.TransferredToEncrypted:
+                // TODO
+                break;
+            case AccountTransactionEffects.EffectOneofCase.TransferredToPublic:
+                // TODO
+                break;
+            case AccountTransactionEffects.EffectOneofCase.TransferredWithSchedule:
+                // TODO
+                break;
+            case AccountTransactionEffects.EffectOneofCase.CredentialKeysUpdated:
+                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                break;
+            case AccountTransactionEffects.EffectOneofCase.CredentialsUpdated:
+                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                break;
+            case AccountTransactionEffects.EffectOneofCase.DataRegistered:
+                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                break;
+            case AccountTransactionEffects.EffectOneofCase.BakerConfigured:
+                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                break;
+            case AccountTransactionEffects.EffectOneofCase.DelegationConfigured:
+                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(); // TODO
+        }
+
+
+        return affectedAddresses;
+    }
 
     private static bool AccountTransactionDetailsIsRejected(AccountTransactionDetails details,
         out Concordium.Sdk.Types.RejectReason? rejectReason)
