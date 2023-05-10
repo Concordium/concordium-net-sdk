@@ -39,13 +39,14 @@ public readonly struct Expiry : IEquatable<Expiry>
     /// Creates an instance from a expiration time represented by the elapsed number of seconds since the UNIX epoch.
     /// </summary>
     /// <param name="secondsSinceEpoch">Expiration time represented by the elapsed seconds since the UNIX epoch.</param>
+    /// <exception cref="ArgumentOutOfRangeException">The supplied <see cref="ulong"/> timestamp has a value which exceeds the maximum value of a <see cref="long"/>.</exception>
     public static Expiry From(ulong secondsSinceEpoch)
     {
         // We check due to the type of FromUnixTimeSeconds.
         if (secondsSinceEpoch > long.MaxValue)
         {
             throw new ArgumentOutOfRangeException(
-                $"The supplied UInt64 timestamp has a value of {secondsSinceEpoch} exceeding the maximum value of Int64."
+                $"The supplied ulong timestamp has a value of {secondsSinceEpoch} which exceeds the maximum value of long."
             );
         }
         return new Expiry(DateTimeOffset.FromUnixTimeSeconds((long)secondsSinceEpoch));
@@ -54,6 +55,7 @@ public readonly struct Expiry : IEquatable<Expiry>
     /// <summary>
     /// Creates an instance whose expiration time is the current system time.
     /// </summary>
+    /// <exception cref="ArgumentOutOfRangeException">System time as number of seconds since UNIX epoch should be larger than 0.</exception>
     public static DateTimeOffset Now()
     {
         var now = DateTimeOffset.UtcNow;
@@ -61,7 +63,7 @@ public readonly struct Expiry : IEquatable<Expiry>
         if (now.ToUnixTimeSeconds() < 0)
         {
             throw new ArgumentOutOfRangeException(
-                "System time as number of seconds since UNIX epoch must be larger than 0."
+                "System time as number of seconds since UNIX epoch should be larger than 0."
             );
         }
         return now;

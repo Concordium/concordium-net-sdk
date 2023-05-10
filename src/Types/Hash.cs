@@ -40,7 +40,7 @@ public abstract record Hash : IEquatable<Hash>
     /// Initializes a new instance of the <see cref="Hash"/> class.
     /// </summary>
     /// <param name="hashAsBytes">A hash represented as a length-32 byte array.</param>
-    /// <exception cref="FormatException">The supplied array is not 32 bytes long.</exception>
+    /// <exception cref="ArgumentException">The supplied array is not a length-32 byte array.</exception>
     protected Hash(byte[] hashAsBytes)
     {
         if (hashAsBytes.Length != BytesLength)

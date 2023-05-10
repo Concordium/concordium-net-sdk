@@ -27,13 +27,14 @@ public readonly struct AccountKeyIndex
     /// Creates an instance from a string representing a <see cref="byte"/> value.
     /// </summary>
     /// <param name="index">An index represented as a string representing to be parsed as a <see cref="byte"/> value.</param>
+    /// <exception cref="ArgumentException">The index could not be parsed as a <see cref="byte"/> value.</exception>
     public static AccountKeyIndex From(string index)
     {
         if (byte.TryParse(index, out var result))
         {
             return new AccountKeyIndex(result);
         }
-        throw new ArgumentException("Could not parse the account key index.");
+        throw new ArgumentException($"Could not parse '{index}' as a byte value.");
     }
 
     public static implicit operator AccountKeyIndex(byte value) => new(value);

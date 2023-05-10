@@ -28,9 +28,8 @@ public record OnChainData : IEquatable<OnChainData>
     /// <summary>
     /// Creates an instance from a hex encoded string.
     /// </summary>
-    /// <param name="hexString">Data represented as a hex encoded string.</param>
-    /// <exception cref="FormatException">The supplied data is not a hex encoded string.</exception>
-    /// <exception cref="ArgumentException">The array corresponding to the hex string exceeds <see cref="MaxLength"/> bytes.</exception>
+    /// <param name="hexString">Data represented as a hex encoded string corresponding to at most see <see cref="MaxLength"/> bytes.</param>
+    /// <exception cref="ArgumentException">The supplied string is not a hex encoded string corresponding to at most see <see cref="MaxLength"/> bytes.</exception>
     public static OnChainData FromHex(string hexString)
     {
         try

@@ -44,7 +44,7 @@ public class AccountAddressTests
     public void From_OnInvalidString_ThrowsException(string invalidAddressAsBase58String)
     {
         Action result = () => AccountAddress.From(invalidAddressAsBase58String);
-        result.Should().Throw<FormatException>();
+        result.Should().Throw<ArgumentException>();
     }
 
     [Fact]

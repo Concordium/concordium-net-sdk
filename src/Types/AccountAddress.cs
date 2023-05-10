@@ -46,17 +46,26 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountAddress"/> class.
     /// </summary>
-    /// <param name="addressAsBase58String">The address represented as a base58 encoded string.</param>
+    /// <param name="addressAsBase58String">The address represented as a length-50 base58 encoded string.</param>
+    /// <exception cref="ArgumentException">The input is not a length-50 base58 encoded string.</exception>
     public static AccountAddress From(string addressAsBase58String)
     {
-        var decodedBytes = _encoderInstance.DecodeData(addressAsBase58String).Skip(1).ToArray(); // Remove version byte.
-        return new AccountAddress(decodedBytes);
+        try
+        {
+            var decodedBytes = _encoderInstance.DecodeData(addressAsBase58String).Skip(1).ToArray(); // Remove version byte.
+            return From(decodedBytes);
+        }
+        catch (Exception)
+        {
+            throw new ArgumentException($"'{addressAsBase58String}' is not a length-50 base58 encoded string");
+        }
     }
 
     /// <summary>
     /// Creates an instance from a length-32 byte array representing the address (without the version byte prepended).
     /// </summary>
-    /// <param name="addressAsBytes">The address as a length-32 byte array without the version byte prepended.</param>
+    /// <param name="addressAsBytes">The address as a length-32 byte array, i.e. without the version byte prepended.</param>
+    /// <exception cref="ArgumentException">The input is not a length-32 byte array.</exception>
     public static AccountAddress From(byte[] addressAsBytes)
     {
         if (addressAsBytes.Length != BytesLength)
