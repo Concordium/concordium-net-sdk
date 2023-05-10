@@ -140,7 +140,7 @@ Note that all generated types live in the [`Concordium.Grpc.V2`](http://develope
 
 A number of runnable examples illustrating usage of the SDK API are contained in the [examples](https://github.com/Concordium/concordium-net-sdk/main/examples) directory:
 
-- [examples/RawClient](https://github.com/Concordium/concordium-net-sdk/main/examples/RawClient) demonstrates usage of the raw API methods exposed in `RawClient` (instances of which are accessible through the `Raw` field of the `ConcordiumClient`).
+- [examples/RawClient](https://github.com/Concordium/concordium-net-sdk/main/examples/RawClient) demonstrates usage of the raw API methods exposed in [`RawClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html).
 - [examples/Transactions](https://github.com/Concordium/concordium-net-sdk/main/examples/Transactions) demonstrates how to work with the various transaction types.
 
 For instance, a runnable example akin to that given in [Working with account transactions](#working-with-account-transactions) is found in [examples/Transactions/Transfer](https://github.com/Concordium/concordium-net-sdk/main/examples/Transactions/Transfer). Compiling the project and running the resulting binary will print the following help message:

@@ -5,8 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageVersion>2.0.0</PackageVersion>
-    <Description>C# SDK for interacting with Concordium block chain.</Description>
-    <PackageProjectUrl>https://www.concordium.com/</PackageProjectUrl>
+    <Description>A C# .NET SDK for interacting with Concordium blockchain.</Description>
+    <PackageProjectUrl>https://concordium.foundation/</PackageProjectUrl>
     <PackageIconUrl>https://avatars.githubusercontent.com/u/39614219?s=200&amp;v=4</PackageIconUrl>
     <RepositoryUrl>https://github.com/Concordium/concordium-net-sdk</RepositoryUrl>
     <PackageTags>concordium; concordium-net-sdk;</PackageTags>
