@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>A .NET C# SDK for interacting with the Concordium blockchain </title>
+      <title>C# .NET SDK for interacting with the Concordium blockchain </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="A .NET C# SDK for interacting with the Concordium blockchain ">
+      <meta name="title" content="C# .NET SDK for interacting with the Concordium blockchain ">
       
       <link rel="icon" href="favicon.ico">
       <link rel="stylesheet" href="public/docfx.min.css">
@@ -15,7 +15,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/docs/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/docs/index.md/#L1">
 
       <script type="module">
         import docfx from './public/main.js'
@@ -76,11 +76,11 @@
 <p><img src="https://github.com/Concordium/concordium-net-sdk/actions/workflows/dotnet.yml/badge.svg" alt="CI">
 <a href="https://github.com/Concordium/.github/blob/main/.github/CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg" alt="Contributor Covenant"></a>
 <a href="https://badge.fury.io/nu/ConcordiumNetSdk"><img src="https://badge.fury.io/nu/ConcordiumNetSdk.svg" alt="NuGet version"></a></p>
-<h1 id="a-net-c-sdk-for-interacting-with-the-concordium-blockchain">A .NET C# SDK for interacting with the Concordium blockchain</h1>
-<p>This SDK is a .NET integration library which adds support for constructing and sending various transactions, as well as querying various aspects of the Concordium blockchain and its nodes. The SDK uses version 2 of the <a href="https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto">Concordium Node GRPC API</a> to interact with Concordium nodes and in turn the Concordium blockchain, and serves as a wrapper for this API with added ergonomics. Note that this deprecates earlier versions of the SDK that use version 1 of the API, cfr. the <a href="#migration">migration</a> section for more details.</p>
+<h1 id="c-net-sdk-for-interacting-with-the-concordium-blockchain">C# .NET SDK for interacting with the Concordium blockchain</h1>
+<p>This is a .NET integration library written in C# which adds support for constructing and sending various transactions, as well as querying various aspects of the Concordium blockchain and its nodes. This SDK uses version 2 of the <a href="https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto">Concordium Node gRPC API</a> to interact with Concordium nodes and in turn the Concordium blockchain, and serves as a wrapper for this API with added ergonomics. Note that this deprecates earlier versions of the SDK that use version 1 of the API, cfr. the <a href="#migration">migration</a> section for more details.</p>
 <p>Read ahead for a brief overview and some examples, or skip directly the <a href="#documentation">rendered documentation</a>.</p>
 <h2 id="overview">Overview</h2>
-<p>This SDK is currently under development and serves as a wrapper for the <a href="https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto">Concordium GRPC API</a> with helpers for common tasks.</p>
+<p>This SDK is currently under development and serves as a wrapper for the <a href="https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto">Concordium gRPC API</a> with helpers for common tasks.</p>
 <p>Implementation-wise, this is first and foremost accomplished by exposing &quot;minimal&quot; wrappers for classes generated directly from the protocol buffer definitions of the API using the <a href="https://www.nuget.org/packages/Grpc.Tools/"><code>Grpc.Tools</code></a> and <a href="https://www.nuget.org/packages/Grpc.Net.Client"><code>Grpc.Net.Client</code></a> packages. This generation step results in a &quot;raw&quot; client class which exposes a method corresponding to each service definition in the protocol buffer definition as well as a class corresponding to each type declared in the API. These are used at the interface of the raw client class. The wrappers are minimal in the sense that they are identical to those of the generated classes but devoid from the complexity of having to specify parameters for connection handling with each call. A drawback of this approach is that the generated classes are devoid of checks for any semantic invariants, which leaves much to be desired. See <a href="#using-the-raw-client-api">Using the raw client API</a> for more information.</p>
 <p>To remedy this, the SDK provides its own class equivalents corresponding to the most common raw API types, as well as wrappers for a subset of the raw service methods specifying these class equivalents at their interfaces instead. These transparently map input and output types to and from their native equivalents as they are marshalled across the underlying raw API, enforcing the invariants of the input and output data. Similarly, the SDK provides functionality for working with and signing account transactions, as well as for importing keys and implementing signing logic. The latter can be useful e.g. when delegating signing to a HSM. See <a href="#working-with-transaction-signers">Working with transaction signers</a> for more information.</p>
 <p>Currently, helpers for working with transactions of the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.Transfer.html"><code>Transfer</code></a>, <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.TransferWithMemo.html"><code>TransferWithMemo</code></a> and <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.RegisterData.html"><code>RegisterData</code></a> kind are provided. Ergonomic APIs that use the aforementioned native class equivalents of the raw API types at their interfaces are provided for <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_GetNextAccountSequenceNumber_Concordium_Sdk_Types_AccountAddress_"><code>GetNextAccountSequenceNumber</code></a> and <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_SendAccountTransaction__1_Concordium_Sdk_Transactions_SignedAccountTransaction___0__"><code>SendAccountTransaction</code></a>. For more information on how to create and submit transactions, respectively using the ergonomic APIs, see the <a href="#working-with-account-transactions">Working with account transactions</a> section, respectively <a href="#using-the-client-api">Using the client API</a>. Further transactions and wrappers are implemented on a per-need basis.</p>
@@ -94,10 +94,10 @@
 <pre><code class="lang-powershell">PM&gt; Install-Package Concordium.SDK -Version ???
 </code></pre>
 <p>or</p>
-<pre><code class="lang-sh">dotnet add package Concordium.SDK
+<pre><code class="lang-sh">$ dotnet add package Concordium.SDK
 </code></pre>
 <p>in your project root. It can also be used as a GIT submodule by embedding the cloned <a href="https://github.com/Concordium/concordium-net-sdk">repository</a> directly into your project:</p>
-<pre><code>git clone https://github.com/Concordium/concordium-net-sdk --recurse-submodules
+<pre><code class="lang-sh">$ git clone https://github.com/Concordium/concordium-net-sdk --recurse-submodules
 </code></pre>
 <h2 id="basic-usage">Basic usage</h2>
 <p>At the core of the SDK is the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html"><code>ConcordiumClient</code></a> class which is used to connect to a Concordium node and exposes methods interacting with it. The <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html"><code>ConcordiumClient</code></a> can be instantiated as follows:</p>
@@ -107,9 +107,10 @@
 ConcordiumClient client = new ConcordiumClient(
   new Uri(&quot;https://localhost/), // Endpoint  URL.
   options.Port, // Port.
-  60 // Use a timeout of 60 seconds.
+  60 // Use a connection timeout of 60 seconds.
 );
 </code></pre>
+<p>The <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html"><code>ConcordiumClient</code></a> constructor also optionally takes a <a href="https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Net.Client.GrpcChannelOptions.html"><code>GrpcChannelOptions</code></a> object which can be used to specify various settings specific to the underlying <a href="https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Net.Client.GrpcChannel.html"><code>GrpcChannel</code></a> instance which handles the communication with the node. These could be settings that dictate the retry policy or specify parameters for the <a href="https://github.com/grpc/grpc/blob/master/doc/keepalive.md">keepalive ping</a>, which can be vital to the robustness of the application.</p>
 <h3 id="working-with-account-transactions">Working with account transactions</h3>
 <p>Account transactions are blockchain transactions that are signed by and submitted on the behalf of an account. Classes relating to account transactions live in the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.html"><code>Concordium.SDK.Transactions</code></a> namespace. All account transactions are modeled by records that inherit from the abstract record <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.AccountTransactionPayload-1.html"><code>AccountTransactionPayload&lt;T&gt;</code></a>, where <code>T</code> is the type of the transaction. Inheriting records contain data specific to the transaction it models. One example of such is the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.Transfer.html"><code>Transfer</code></a> record representing the transfer of a CCD amount from one account to another. It is instantiated as follows:</p>
 <pre><code class="lang-csharp">using Concordium.Sdk.Types;
@@ -131,19 +132,19 @@ Expiry expiry = Expiry.AtMinutesFromNow(10); // Transaction expires 10 minutes a
 SignedAccountTransaction&lt;Transfer&gt; signedTransfer = preparedTransfer.Sign(signer);
 </code></pre>
 <p>A signed transaction can be submitted to the blockchain by invoking the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_SendAccountTransaction__1_Concordium_Sdk_Transactions_SignedAccountTransaction___0__"><code>SendAccountTransaction</code></a> method. If the transfer was accepted by the node, its <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.TransactionHash.html"><code>TransactionHash</code></a> used to uniquely identify the transaction is returned:</p>
-<pre><code class="lang-csharp">TransactionHash = client.SendTransaction(signedTransfer);
+<pre><code class="lang-csharp">TransactionHash = client.SendAccountTransaction(signedTransfer);
 </code></pre>
 <p>The <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.TransactionHash.html"><code>TransactionHash</code></a> can subsequently be used for querying the status of the transaction by invoking the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html#Concordium_Sdk_Client_RawClient_GetBlockItemStatus_Concordium_Grpc_V2_TransactionHash_"><code>GetBlockItemStatus</code></a> method of the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html"><code>RawClient</code></a>, accessible through<code>client.Raw</code> in the above example. For more info on the raw API calls, see the <a href="#using-the-raw-client-api">Using the raw client API</a> section.</p>
 <h3 id="working-with-transaction-signers">Working with transaction signers</h3>
 <p>As described in the <a href="#working-with-account-transactions">Account transactions</a> section, account transactions must be signed using implementations of <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.ITransactionSigner.html"><code>ITransactionSigner</code></a>. The SDK ships with the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.TransactionSigner.html"><code>TransactionSigner</code></a> class which is dictionary based implementation to which <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Crypto.ISigner.html"><code>ISigner</code></a>s can be added. An <a href="developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Crypto.ISigner.html"><code>ISigner</code></a> represents a concrete implementation of a (secret) sign key for an account, and can be used to to write custom signer implementations which can be useful, for instance, if delegating the signing logic to a HSM. The SDK also ships with the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Wallets.WalletAccount.html"><code>WalletAccount</code></a> class which provides functionality for importing account keys from one of the supported wallet export formats. Currently the Concordium browser and genesis wallet key export (JSON) formats are supported.</p>
 <h3 id="using-the-client-api">Using the client API</h3>
-<p>A small subset of the raw methods generated from the Concordium Node GRPC API protocol buffer definitions have corresponding ergonomic wrappers that transparently map input and output types to and from their native equivalents as they are marshalled across the underlying generated API they wrap. One example of such is <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_GetNextAccountSequenceNumber_Concordium_Sdk_Types_AccountAddress_"><code>GetNextAccountSequenceNumber</code></a> which takes an <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountAddress.html"><code>AccountAddress</code></a> and returns a <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountSequenceNumber.html"><code>AccountSequenceNumber</code></a>:</p>
+<p>A small subset of the raw methods generated from the Concordium Node gRPC API protocol buffer definitions have corresponding ergonomic wrappers that transparently map input and output types to and from their native equivalents as they are marshalled across the underlying generated API they wrap. One example of such is <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_GetNextAccountSequenceNumber_Concordium_Sdk_Types_AccountAddress_"><code>GetNextAccountSequenceNumber</code></a> which takes an <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountAddress.html"><code>AccountAddress</code></a> and returns a <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountSequenceNumber.html"><code>AccountSequenceNumber</code></a>:</p>
 <pre><code class="lang-csharp">AccountAddress sender = AccountAddress.From(&quot;3jfAuU1c4kPE6GkpfYw4KcgvJngkgpFrD9SkDBgFW3aHmVB5r1&quot;);
 AccountSequenceNumber sequenceNumber = client.GetNextAccountSequenceNumber(sender).Item1;
 </code></pre>
 <h3 id="using-the-raw-client-api">Using the raw client API</h3>
-<p>The entire <a href="https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto">Concordium Node GRPC API V2</a> is exposed through minimal wrappers of classes that model the interface types and services as they were generated from the protocol buffer schema definitions using the <a href="https://www.nuget.org/packages/Grpc.Tools/"><code>Grpc.Tools</code></a> and <a href="https://www.nuget.org/packages/Grpc.Net.Client"><code>Grpc.Net.Client</code></a> packages. These wrappers are defined in the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html"><code>RawClient</code></a>, instances of which can <em>only</em> be accessed through the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_Raw"><code>Raw</code></a> field of <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html"><code>ConcordiumClient</code></a> instances.</p>
-<p>As an example, the raw API call <code>GetAccountInfo</code> defined in the <a href="https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto">Concordium Node GRPC API V2</a> takes as its input a GRPC message of the <a href="https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfoRequest">AccountInfoRequest</a> kind and expects a GRPC response of the <a href="https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfo">AccountInfo</a> kind. This method can be invoked through <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html#Concordium_Sdk_Client_RawClient_GetAccountInfo_Concordium_Grpc_V2_AccountInfoRequest_"><code>RawClient.GetAccountInfo</code></a> by supplying an instance of its corresponding generated type for <a href="https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfoRequest"><code>AccountInfoRequest</code></a>. In the following, we wish to retrieve the information of an account in the last finalized block:</p>
+<p>The entire <a href="https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto">Concordium Node gRPC API V2</a> is exposed through minimal wrappers of classes that model the interface types and services as they were generated from the protocol buffer schema definitions using the <a href="https://www.nuget.org/packages/Grpc.Tools/"><code>Grpc.Tools</code></a> and <a href="https://www.nuget.org/packages/Grpc.Net.Client"><code>Grpc.Net.Client</code></a> packages. These wrappers are defined in the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html"><code>RawClient</code></a>, instances of which can <em>only</em> be accessed through the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_Raw"><code>Raw</code></a> field of <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html"><code>ConcordiumClient</code></a> instances.</p>
+<p>As an example, the raw API call <code>GetAccountInfo</code> defined in the <a href="https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto">Concordium Node gRPC API V2</a> takes as its input a gRPC message of the <a href="https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfoRequest">AccountInfoRequest</a> kind and expects a gRPC response of the <a href="https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfo">AccountInfo</a> kind. This method can be invoked through <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html#Concordium_Sdk_Client_RawClient_GetAccountInfo_Concordium_Grpc_V2_AccountInfoRequest_"><code>RawClient.GetAccountInfo</code></a> by supplying an instance of its corresponding generated type for <a href="https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfoRequest"><code>AccountInfoRequest</code></a>. In the following, we wish to retrieve the information of an account in the last finalized block:</p>
 <pre><code class="lang-csharp">using Concordium.Grpc.V2;
 
 BlockHashInput blockHashInput = new BlockHashInput() { LastFinal = new Empty() };
@@ -162,7 +163,7 @@ AccountInfoRequest request = new AccountInfoRequest
 
 AccountInfo accountInfo = client.Raw.GetAccountInfo(request);
 </code></pre>
-<p>Note that all generated types live in the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Grpc.V2.html"><code>Concordium.Grpc.V2</code></a> namespace, and that there is a vast overlap between the names generated from the protocol buffer definitions file and the native types that live in the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.html"><code>Concordium.Types</code></a> namespace. In the above we must therefore explicitly specify the namespace for <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountAddress.html"><code>Concordium.Sdk.Types.AccountAddress</code></a> to resolve this ambiguity. Furthermore we leverage the convenience method <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountAddress.html#Concordium_Sdk_Types_AccountAddress_ToAccountIdentifierInput"><code>Concordium.Sdk.Types.AccountAddress.ToAccountIdentifierInput</code></a> to easily convert the the base58 address into its corresponding raw format. Also note that the overall structure of the interface types are one-to-one with the <a href="https://github.com/Concordium/concordium-grpc-api/tree/main/v2/concordium">Concordium GRPC API V2</a>, so we refer to its documentation and the <a href="#runnable-examples">Runnable examples</a> section for more information on working with the types of the raw API.</p>
+<p>Note that all generated types live in the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Grpc.V2.html"><code>Concordium.Grpc.V2</code></a> namespace, and that there is a vast overlap between the names generated from the protocol buffer definitions file and the native types that live in the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.html"><code>Concordium.Types</code></a> namespace. In the above we must therefore explicitly specify the namespace for <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountAddress.html"><code>Concordium.Sdk.Types.AccountAddress</code></a> to resolve this ambiguity. Furthermore we leverage the convenience method <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountAddress.html#Concordium_Sdk_Types_AccountAddress_ToAccountIdentifierInput"><code>Concordium.Sdk.Types.AccountAddress.ToAccountIdentifierInput</code></a> to easily convert the the base58 address into its corresponding raw format. Also note that the overall structure of the interface types are one-to-one with the <a href="https://github.com/Concordium/concordium-grpc-api/tree/main/v2/concordium">Concordium gRPC API V2</a>, so we refer to its documentation and the <a href="#runnable-examples">Runnable examples</a> section for more information on working with the types of the raw API.</p>
 <h2 id="runnable-examples">Runnable examples</h2>
 <p>A number of runnable examples illustrating usage of the SDK API are contained in the <a href="https://github.com/Concordium/concordium-net-sdk/main/examples">examples</a> directory:</p>
 <ul>
@@ -170,8 +171,7 @@ AccountInfo accountInfo = client.Raw.GetAccountInfo(request);
 <li><a href="https://github.com/Concordium/concordium-net-sdk/main/examples/Transactions">examples/Transactions</a> demonstrates how to work with the various transaction types.</li>
 </ul>
 <p>For instance, a runnable example akin to that given in <a href="#working-with-account-transactions">Working with account transactions</a> is found in <a href="https://github.com/Concordium/concordium-net-sdk/main/examples/Transactions/Transfer">examples/Transactions/Transfer</a>. Compiling the project and running the resulting binary will print the following help message:</p>
-<pre><code>Concordium.Sdk.Examples.Transactions.Transfer 1.0.0
-Copyright (C) 2023 Concordium.Sdk.Examples.Transactions.Transfer
+<pre><code class="lang-text">Copyright (C) 2023 Concordium.Sdk.Examples.Transactions.Transfer
 
 ERROR(S):
   Required option 'a, amount' is missing.
@@ -186,24 +186,26 @@ ERROR(S):
                     browser wallet key export format.
 
   -e, --endpoint    (Default: https://localhost/) URL representing the endpoint where the
-                    GRPC V2 API is served.
+                    gRPC V2 API is served.
 
-  -p, --port        (Default: 20000) Port at the endpoint where the GRPC V2 API is served.
+  -p, --port        (Default: 20000) Port at the endpoint where the gRPC V2 API is served.
+
+  -t, --timeout     (Default: 60) Default connection timeout in seconds.
 
   --help            Display this help screen.
 
   --version         Display version information.
 </code></pre>
 <p>To run the example with similar values, invoke the binary as follows:</p>
-<pre><code>Concordium.Sdk.Examples.Transactions.Transfer -a 100 -r 4rvQePs6ZKFiW8rwY5nP18Uj2DroWiw9VPKTsTwfwmsjcFCJLy -k /path/to/exported-browser-wallet-keys.json
+<pre><code class="lang-sh">$ Concordium.Sdk.Examples.Transactions.Transfer -a 100 -r 4rvQePs6ZKFiW8rwY5nP18Uj2DroWiw9VPKTsTwfwmsjcFCJLy -k /path/to/exported-browser-wallet-keys.json
 </code></pre>
-<p>Here, the sender account address is contained in the file specified by the <code>--keys</code> option, and the expiration time defaults to 60 seconds, hence is why it is not specified. Upon successful submission of the transaction, the example program will print something like:</p>
-<pre><code>Successfully submitted transfer transaction with hash 6bc9bfac5ef4aa1988ab8b1ab6007a736d4b3fe7e52b942d69a030319d979f13
+<p>Here, the sender account address is contained in the file specified by the <code>--keys</code> option which is why it is not included here. Upon successful submission of the transaction, the example program will print something like:</p>
+<pre><code class="lang-text">Successfully submitted transfer transaction with hash 6bc9bfac5ef4aa1988ab8b1ab6007a736d4b3fe7e52b942d69a030319d979f13
 </code></pre>
 <h2 id="documentation">Documentation</h2>
 <p>Rendered documentation for this project is available <a href="http://developer.concordium.software/concordium-net-sdk/">here</a>.</p>
 <h2 id="migration">Migration</h2>
-<p>This deprecates earlier versions of the Concordium .NET SDK that used version 1 of the Concordium Node GRPC API. In terms of semantics and the information carried in messages, the APIs are quite similar, so APIs of the older SDK versions have corresponding raw methods in this version. Note that in some cases endpoints in the version 1 API are &quot;split&quot; into several endpoints in the version 2 API to increase the granularity.</p>
+<p>This deprecates earlier versions of the Concordium .NET SDK that used version 1 of the Concordium Node gRPC API. In terms of semantics and the information carried in messages, the APIs are quite similar, so APIs of the older SDK versions have corresponding raw methods in this version. Note that in some cases endpoints in the version 1 API are &quot;split&quot; into several endpoints in the version 2 API to increase the granularity.</p>
 <p>Another major difference between this and the previous version of the SDK is that this version of the SDK currently does not support deploying contract modules with schemas.</p>
 <h2 id="license">License</h2>
 <p>This project is licensed under the terms of the Mozilla Public License 2.0.</p>
@@ -215,7 +217,7 @@ ERROR(S):
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/docs/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/docs/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

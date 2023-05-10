@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/add-formatter/apiSpec/new?filename=Concordium_Sdk_Transactions_PreparedAccountTransaction_1.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Transactions.PreparedAccountTransaction%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/32/merge/apiSpec/new?filename=Concordium_Sdk_Transactions_PreparedAccountTransaction_1.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Transactions.PreparedAccountTransaction%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
 
       <script type="module">
         import docfx from './../public/main.js'
@@ -79,7 +79,7 @@
 
   <h1 id="Concordium_Sdk_Transactions_PreparedAccountTransaction_1" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction`1" class="text-break">
     Class PreparedAccountTransaction&lt;T&gt;
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/PreparedAccountTransaction.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Transactions/PreparedAccountTransaction.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -161,7 +161,7 @@ when submitting the transaction as well as its <a class="xref" href="Concordium.
 
   <h3 id="Concordium_Sdk_Transactions_PreparedAccountTransaction_1__ctor_Concordium_Sdk_Types_AccountAddress_Concordium_Sdk_Types_AccountSequenceNumber_Concordium_Sdk_Types_Expiry_Concordium_Sdk_Transactions_AccountTransactionPayload__0__" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction`1.#ctor(Concordium.Sdk.Types.AccountAddress,Concordium.Sdk.Types.AccountSequenceNumber,Concordium.Sdk.Types.Expiry,Concordium.Sdk.Transactions.AccountTransactionPayload{`0})">
   PreparedAccountTransaction(AccountAddress, AccountSequenceNumber, Expiry, AccountTransactionPayload&lt;T&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/PreparedAccountTransaction.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Transactions/PreparedAccountTransaction.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Concordium.Sdk.Transactions.PreparedAccountTransaction-1.html">PreparedAccountTransaction&lt;T&gt;</a> class.</p>
@@ -169,7 +169,7 @@ when submitting the transaction as well as its <a class="xref" href="Concordium.
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PreparedAccountTransaction(AccountAddress sender, AccountSequenceNumber nonce, Expiry expiry, AccountTransactionPayload&lt;T&gt; payload)</code></pre>
+    <pre><code class="lang-csharp hljs">public PreparedAccountTransaction(AccountAddress sender, AccountSequenceNumber sequenceNumber, Expiry expiry, AccountTransactionPayload&lt;T&gt; payload)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -177,8 +177,8 @@ when submitting the transaction as well as its <a class="xref" href="Concordium.
     <dt><code>sender</code> <a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
     <dd><p>Address of the sender of the transaction.</p>
 </dd>
-    <dt><code>nonce</code> <a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a></dt>
-    <dd><p>Account nonce to use for the transaction.</p>
+    <dt><code>sequenceNumber</code> <a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a></dt>
+    <dd><p>Account sequence number to use for the transaction.</p>
 </dd>
     <dt><code>expiry</code> <a class="xref" href="Concordium.Sdk.Types.Expiry.html">Expiry</a></dt>
     <dd><p>Expiration time of the transaction.</p>
@@ -207,7 +207,7 @@ when submitting the transaction as well as its <a class="xref" href="Concordium.
 
   <h3 id="Concordium_Sdk_Transactions_PreparedAccountTransaction_1_Expiry" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction`1.Expiry">
   Expiry
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/PreparedAccountTransaction.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Transactions/PreparedAccountTransaction.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Expiration time of the transaction.</p>
@@ -235,43 +235,11 @@ when submitting the transaction as well as its <a class="xref" href="Concordium.
 
 
 
-  <a id="Concordium_Sdk_Transactions_PreparedAccountTransaction_1_Nonce_" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction`1.Nonce*"></a>
-
-  <h3 id="Concordium_Sdk_Transactions_PreparedAccountTransaction_1_Nonce" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction`1.Nonce">
-  Nonce
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/PreparedAccountTransaction.cs/#L24"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Account nonce to use for the transaction.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AccountSequenceNumber Nonce { get; init; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <a id="Concordium_Sdk_Transactions_PreparedAccountTransaction_1_Payload_" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction`1.Payload*"></a>
 
   <h3 id="Concordium_Sdk_Transactions_PreparedAccountTransaction_1_Payload" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction`1.Payload">
   Payload
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/PreparedAccountTransaction.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Transactions/PreparedAccountTransaction.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Payload to send to the node.</p>
@@ -303,7 +271,7 @@ when submitting the transaction as well as its <a class="xref" href="Concordium.
 
   <h3 id="Concordium_Sdk_Transactions_PreparedAccountTransaction_1_Sender" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction`1.Sender">
   Sender
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/PreparedAccountTransaction.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Transactions/PreparedAccountTransaction.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Address of the sender of the transaction.</p>
@@ -331,6 +299,38 @@ when submitting the transaction as well as its <a class="xref" href="Concordium.
 
 
 
+  <a id="Concordium_Sdk_Transactions_PreparedAccountTransaction_1_SequenceNumber_" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction`1.SequenceNumber*"></a>
+
+  <h3 id="Concordium_Sdk_Transactions_PreparedAccountTransaction_1_SequenceNumber" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction`1.SequenceNumber">
+  SequenceNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Transactions/PreparedAccountTransaction.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Account sequence number to use for the transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountSequenceNumber SequenceNumber { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -339,7 +339,7 @@ when submitting the transaction as well as its <a class="xref" href="Concordium.
 
   <h3 id="Concordium_Sdk_Transactions_PreparedAccountTransaction_1_Sign_Concordium_Sdk_Transactions_ITransactionSigner_" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction`1.Sign(Concordium.Sdk.Transactions.ITransactionSigner)">
   Sign(ITransactionSigner)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/PreparedAccountTransaction.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Transactions/PreparedAccountTransaction.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <see cref="!:SignedAccountTransaction"></see> class.</p>
@@ -370,6 +370,12 @@ when submitting the transaction as well as its <a class="xref" href="Concordium.
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>A signature produced by the signing is not 64 bytes.</p>
+</dd>
+  </dl>
 
 
 
@@ -377,7 +383,7 @@ when submitting the transaction as well as its <a class="xref" href="Concordium.
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Transactions/PreparedAccountTransaction.cs/#L13" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Transactions/PreparedAccountTransaction.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
         

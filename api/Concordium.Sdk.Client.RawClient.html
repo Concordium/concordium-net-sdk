@@ -17,7 +17,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/add-formatter/apiSpec/new?filename=Concordium_Sdk_Client_RawClient.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Client.RawClient%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/32/merge/apiSpec/new?filename=Concordium_Sdk_Client_RawClient.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Client.RawClient%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
 
       <script type="module">
         import docfx from './../public/main.js'
@@ -79,7 +79,7 @@
 
   <h1 id="Concordium_Sdk_Client_RawClient" data-uid="Concordium.Sdk.Client.RawClient" class="text-break">
     Class RawClient
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -87,8 +87,10 @@
   <dl><dt>Assembly</dt><dd>Concordium.Sdk.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>The &quot;raw&quot; GRPC client interface exposing wrappers that abstract away
-connection handling and parameters present in generated methods.</p>
+  <div class="markdown summary"><p>The raw gRPC client interface exposing wrappers that abstract away
+connection handling and parameters present in the <a class="xref" href="Concordium.Sdk.Client.RawClient.html#Concordium_Sdk_Client_RawClient_InternalClient">InternalClient</a>
+which was generated from the protocol buffer definition files for the
+Concordium Node gRPC API V2.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -150,46 +152,14 @@ connection handling and parameters present in generated methods.</p>
 </h2>
 
 
-  <a id="Concordium_Sdk_Client_RawClient_Config_" data-uid="Concordium.Sdk.Client.RawClient.Config*"></a>
-
-  <h3 id="Concordium_Sdk_Client_RawClient_Config" data-uid="Concordium.Sdk.Client.RawClient.Config">
-  Config
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L17"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>The running configuration of the client.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ClientConfiguration Config { get; init; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Concordium.Sdk.Client.ClientConfiguration.html">ClientConfiguration</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <a id="Concordium_Sdk_Client_RawClient_InternalClient_" data-uid="Concordium.Sdk.Client.RawClient.InternalClient*"></a>
 
   <h3 id="Concordium_Sdk_Client_RawClient_InternalClient" data-uid="Concordium.Sdk.Client.RawClient.InternalClient">
   InternalClient
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The &quot;internal&quot; client instance generated from the Concordium GRPC API V2 protocol buffer definition.</p>
+  <div class="markdown level1 summary"><p>The &quot;internal&quot; client instance generated from the Concordium gRPC API V2 protocol buffer definition.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -214,6 +184,38 @@ connection handling and parameters present in generated methods.</p>
 
 
 
+  <a id="Concordium_Sdk_Client_RawClient_Timeout_" data-uid="Concordium.Sdk.Client.RawClient.Timeout*"></a>
+
+  <h3 id="Concordium_Sdk_Client_RawClient_Timeout" data-uid="Concordium.Sdk.Client.RawClient.Timeout">
+  Timeout
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The maximum permitted duration for a call made by this client, in seconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong? Timeout { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -222,10 +224,10 @@ connection handling and parameters present in generated methods.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_BanPeer_Concordium_Grpc_V2_PeerToBan_" data-uid="Concordium.Sdk.Client.RawClient.BanPeer(Concordium.Grpc.V2.PeerToBan)">
   BanPeer(PeerToBan)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L543"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L560"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Request the node to ban the specified peer. Throws a GRPC exception if the action failed.</p>
+  <div class="markdown level1 summary"><p>Request the node to ban the specified peer. Throws a gRPC exception if the action failed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -259,10 +261,10 @@ connection handling and parameters present in generated methods.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_BanPeerAsync_Concordium_Grpc_V2_PeerToBan_" data-uid="Concordium.Sdk.Client.RawClient.BanPeerAsync(Concordium.Grpc.V2.PeerToBan)">
   BanPeerAsync(PeerToBan)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L549"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L566"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Spawn a task which requests the node to ban the specified peer. Throws a GRPC exception if the action failed.</p>
+  <div class="markdown level1 summary"><p>Spawn a task which requests the node to ban the specified peer. Throws a gRPC exception if the action failed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -296,7 +298,7 @@ connection handling and parameters present in generated methods.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_Dispose" data-uid="Concordium.Sdk.Client.RawClient.Dispose">
   Dispose()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L707"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L732"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
@@ -323,7 +325,7 @@ connection handling and parameters present in generated methods.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_Dispose_System_Boolean_" data-uid="Concordium.Sdk.Client.RawClient.Dispose(System.Boolean)">
   Dispose(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L694"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L719"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -354,12 +356,12 @@ connection handling and parameters present in generated methods.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_DumpStart_Concordium_Grpc_V2_DumpRequest_" data-uid="Concordium.Sdk.Client.RawClient.DumpStart(Concordium.Grpc.V2.DumpRequest)">
   DumpStart(DumpRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L569"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L586"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Request the node to start dumping network packets into the specified file.
 This feature is enabled if the node was built with the <code>network_dump</code> feature.
-Returns a GRPC error if the network dump failed to start.</p>
+Returns a gRPC error if the network dump failed to start.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -393,12 +395,12 @@ Returns a GRPC error if the network dump failed to start.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_DumpStartAsync_Concordium_Grpc_V2_DumpRequest_" data-uid="Concordium.Sdk.Client.RawClient.DumpStartAsync(Concordium.Grpc.V2.DumpRequest)">
   DumpStartAsync(DumpRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L577"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L594"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which requests the node to start dumping network packets into the specified file.
 This feature is enabled if the node was built with the <code>network_dump</code> feature.
-Returns a GRPC error if the network dump failed to start.</p>
+Returns a gRPC error if the network dump failed to start.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -432,12 +434,12 @@ Returns a GRPC error if the network dump failed to start.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_DumpStop" data-uid="Concordium.Sdk.Client.RawClient.DumpStop">
   DumpStop()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L585"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L602"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Request the node to stop dumping packets, if configured to do so.
 This feature is enabled if the node was built with the @network_dump@ feature.
-Throws a GRPC error if the network dump could not be stopped.</p>
+Throws a gRPC error if the network dump could not be stopped.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -466,12 +468,12 @@ Throws a GRPC error if the network dump could not be stopped.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_DumpStopAsync" data-uid="Concordium.Sdk.Client.RawClient.DumpStopAsync">
   DumpStopAsync()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L592"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L609"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which requests the node to stop dumping packets, if configured to do so.
 This feature is enabled if the node was built with the <code>network_dump</code> feature.
-Throws a GRPC error if the network dump could not be stopped.</p>
+Throws a gRPC error if the network dump could not be stopped.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -500,7 +502,7 @@ Throws a GRPC error if the network dump could not be stopped.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_Finalize" data-uid="Concordium.Sdk.Client.RawClient.Finalize">
   ~RawClient()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L713"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L738"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -526,7 +528,7 @@ Throws a GRPC error if the network dump could not be stopped.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetAccountInfo_Concordium_Grpc_V2_AccountInfoRequest_" data-uid="Concordium.Sdk.Client.RawClient.GetAccountInfo(Concordium.Grpc.V2.AccountInfoRequest)">
   GetAccountInfo(AccountInfoRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L118"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information about an account.</p>
@@ -563,7 +565,7 @@ Throws a GRPC error if the network dump could not be stopped.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetAccountInfoAsync_Concordium_Grpc_V2_AccountInfoRequest_" data-uid="Concordium.Sdk.Client.RawClient.GetAccountInfoAsync(Concordium.Grpc.V2.AccountInfoRequest)">
   GetAccountInfoAsync(AccountInfoRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L124"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns information about an account.</p>
@@ -600,7 +602,7 @@ Throws a GRPC error if the network dump could not be stopped.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetAccountList_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetAccountList(Concordium.Grpc.V2.BlockHashInput)">
   GetAccountList(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L130"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all accounts that exist at the end of a given block.</p>
@@ -637,7 +639,7 @@ Throws a GRPC error if the network dump could not be stopped.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetAccountNonFinalizedTransactions_Concordium_Grpc_V2_AccountAddress_" data-uid="Concordium.Sdk.Client.RawClient.GetAccountNonFinalizedTransactions(Concordium.Grpc.V2.AccountAddress)">
   GetAccountNonFinalizedTransactions(AccountAddress)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L432"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L449"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all hashes of non-finalized transactions for a given account.</p>
@@ -674,7 +676,7 @@ Throws a GRPC error if the network dump could not be stopped.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetAncestors_Concordium_Grpc_V2_AncestorsRequest_" data-uid="Concordium.Sdk.Client.RawClient.GetAncestors(Concordium.Grpc.V2.AncestorsRequest)">
   GetAncestors(AncestorsRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L133"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L150"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get ancestors of a given block.
@@ -715,7 +717,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetAnonymityRevokers_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetAnonymityRevokers(Concordium.Grpc.V2.BlockHashInput)">
   GetAnonymityRevokers(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L424"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L441"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all anonymity revokers registered at the end of a given block.</p>
@@ -752,7 +754,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBakerList_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetBakerList(Concordium.Grpc.V2.BlockHashInput)">
   GetBakerList(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L278"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L295"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get IDs of all bakers at the end of a given block.</p>
@@ -789,7 +791,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBannedPeers" data-uid="Concordium.Sdk.Client.RawClient.GetBannedPeers">
   GetBannedPeers()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L529"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L546"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a list of peers banned by the node.</p>
@@ -821,7 +823,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBannedPeersAsync" data-uid="Concordium.Sdk.Client.RawClient.GetBannedPeersAsync">
   GetBannedPeersAsync()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L535"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L552"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns a list of peers banned by the node.</p>
@@ -853,7 +855,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockChainParameters_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockChainParameters(Concordium.Grpc.V2.BlockHashInput)">
   GetBlockChainParameters(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L648"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L665"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get values of block chain parameters in a given block.</p>
@@ -890,7 +892,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockChainParametersAsync_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockChainParametersAsync(Concordium.Grpc.V2.BlockHashInput)">
   GetBlockChainParametersAsync(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L654"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L671"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns values of block chain parameters in a given block.</p>
@@ -927,7 +929,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockFinalizationSummary_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockFinalizationSummary(Concordium.Grpc.V2.BlockHashInput)">
   GetBlockFinalizationSummary(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L662"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L679"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a summary of the finalization data in a given block.</p>
@@ -964,7 +966,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockFinalizationSummaryAsync_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockFinalizationSummaryAsync(Concordium.Grpc.V2.BlockHashInput)">
   GetBlockFinalizationSummaryAsync(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L668"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L685"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns a summary of the finalization data in a given block.</p>
@@ -1001,7 +1003,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockInfo_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockInfo(Concordium.Grpc.V2.BlockHashInput)">
   GetBlockInfo(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L266"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L283"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information such as height, timings, and transaction counts for a given block.</p>
@@ -1038,7 +1040,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockInfoAsync_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockInfoAsync(Concordium.Grpc.V2.BlockHashInput)">
   GetBlockInfoAsync(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L272"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L289"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns information such as height, timings, and transaction counts for a given block.</p>
@@ -1075,7 +1077,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockItemStatus_Concordium_Grpc_V2_TransactionHash_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockItemStatus(Concordium.Grpc.V2.TransactionHash)">
   GetBlockItemStatus(TransactionHash)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L240"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L257"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the status of and information about a specific block item (transaction).</p>
@@ -1112,7 +1114,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockItemStatusAsync_Concordium_Grpc_V2_TransactionHash_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockItemStatusAsync(Concordium.Grpc.V2.TransactionHash)">
   GetBlockItemStatusAsync(TransactionHash)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L246"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L263"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns the status of and information about a specific block item (transaction).</p>
@@ -1149,7 +1151,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockItems_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockItems(Concordium.Grpc.V2.BlockHashInput)">
   GetBlockItems(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L676"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L693"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the items of a block.</p>
@@ -1186,7 +1188,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockPendingUpdates_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockPendingUpdates(Concordium.Grpc.V2.BlockHashInput)">
   GetBlockPendingUpdates(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L459"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L476"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all pending updates to chain parameters at the end of a given block.</p>
@@ -1223,7 +1225,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockSpecialEvents_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockSpecialEvents(Concordium.Grpc.V2.BlockHashInput)">
   GetBlockSpecialEvents(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L451"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L468"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all special events in a given block.
@@ -1261,7 +1263,7 @@ A special event is protocol generated event that is not directly caused by a tra
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockTransactionEvents_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockTransactionEvents(Concordium.Grpc.V2.BlockHashInput)">
   GetBlockTransactionEvents(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L442"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L459"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all transaction events in a given block.</p>
@@ -1298,7 +1300,7 @@ A special event is protocol generated event that is not directly caused by a tra
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlocks" data-uid="Concordium.Sdk.Client.RawClient.GetBlocks">
   GetBlocks()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L99"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Process a stream of blocks that arrive from the time the query is made onward.
@@ -1332,7 +1334,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlocksAtHeight_Concordium_Grpc_V2_BlocksAtHeightRequest_" data-uid="Concordium.Sdk.Client.RawClient.GetBlocksAtHeight(Concordium.Grpc.V2.BlocksAtHeightRequest)">
   GetBlocksAtHeight(BlocksAtHeightRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L312"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L329"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a list of live blocks at a given height.</p>
@@ -1369,7 +1371,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlocksAtHeightAsync_Concordium_Grpc_V2_BlocksAtHeightRequest_" data-uid="Concordium.Sdk.Client.RawClient.GetBlocksAtHeightAsync(Concordium.Grpc.V2.BlocksAtHeightRequest)">
   GetBlocksAtHeightAsync(BlocksAtHeightRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L318"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L335"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns a list of live blocks at a given height.</p>
@@ -1406,7 +1408,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBranches" data-uid="Concordium.Sdk.Client.RawClient.GetBranches">
   GetBranches()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L392"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L409"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the current branches of blocks starting from and including the last finalized block.</p>
@@ -1438,7 +1440,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBranchesAsync" data-uid="Concordium.Sdk.Client.RawClient.GetBranchesAsync">
   GetBranchesAsync()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L398"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L415"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns the current branches of blocks starting from and including the last finalized block.</p>
@@ -1470,7 +1472,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetConsensusInfo" data-uid="Concordium.Sdk.Client.RawClient.GetConsensusInfo">
   GetConsensusInfo()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L226"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L243"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information about the current state of consensus.</p>
@@ -1502,7 +1504,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetConsensusInfoAsync" data-uid="Concordium.Sdk.Client.RawClient.GetConsensusInfoAsync">
   GetConsensusInfoAsync()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L232"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L249"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns information about the current state of consensus.</p>
@@ -1534,7 +1536,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetCryptographicParameters_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetCryptographicParameters(Concordium.Grpc.V2.BlockHashInput)">
   GetCryptographicParameters(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L252"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L269"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get cryptographic parameters in a given block.</p>
@@ -1571,7 +1573,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetCryptographicParametersAsync_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetCryptographicParametersAsync(Concordium.Grpc.V2.BlockHashInput)">
   GetCryptographicParametersAsync(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L258"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L275"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns the cryptographic parameters in a given block.</p>
@@ -1608,7 +1610,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetElectionInfo_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetElectionInfo(Concordium.Grpc.V2.BlockHashInput)">
   GetElectionInfo(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L404"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L421"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information related to the baker election for a particular block.</p>
@@ -1645,7 +1647,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetElectionInfoAsync_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetElectionInfoAsync(Concordium.Grpc.V2.BlockHashInput)">
   GetElectionInfoAsync(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L410"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L427"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns information related to the baker election for a particular block.</p>
@@ -1682,7 +1684,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetFinalizedBlocks" data-uid="Concordium.Sdk.Client.RawClient.GetFinalizedBlocks">
   GetFinalizedBlocks()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L110"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Process a stream of blocks that are finalized from the time the query is made onward.
@@ -1717,7 +1719,7 @@ however blocks are guaranteed to arrive in order of increasing block height.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetIdentityProviders_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetIdentityProviders(Concordium.Grpc.V2.BlockHashInput)">
   GetIdentityProviders(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L416"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L433"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all identity providers registered at the end of a given block.</p>
@@ -1754,7 +1756,7 @@ however blocks are guaranteed to arrive in order of increasing block height.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetInstanceInfo_Concordium_Grpc_V2_InstanceInfoRequest_" data-uid="Concordium.Sdk.Client.RawClient.GetInstanceInfo(Concordium.Grpc.V2.InstanceInfoRequest)">
   GetInstanceInfo(InstanceInfoRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L162"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L179"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information about a smart contract instance as it appears at the end of a
@@ -1792,7 +1794,7 @@ given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetInstanceInfoAsync_Concordium_Grpc_V2_InstanceInfoRequest_" data-uid="Concordium.Sdk.Client.RawClient.GetInstanceInfoAsync(Concordium.Grpc.V2.InstanceInfoRequest)">
   GetInstanceInfoAsync(InstanceInfoRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L169"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L186"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns information about a smart contract instance as it
@@ -1830,7 +1832,7 @@ appears at the end of a given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetInstanceList_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetInstanceList(Concordium.Grpc.V2.BlockHashInput)">
   GetInstanceList(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L153"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L170"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the addresses of all smart contract instances in a given block.</p>
@@ -1867,7 +1869,7 @@ appears at the end of a given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetInstanceState_Concordium_Grpc_V2_InstanceInfoRequest_" data-uid="Concordium.Sdk.Client.RawClient.GetInstanceState(Concordium.Grpc.V2.InstanceInfoRequest)">
   GetInstanceState(InstanceInfoRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L176"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L193"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get key-value pairs representing the entire state of a specific contract instance in a given block.
@@ -1905,7 +1907,7 @@ The resulting sequence consists of key-value pairs ordered lexicographically acc
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetModuleList_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetModuleList(Concordium.Grpc.V2.BlockHashInput)">
   GetModuleList(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L138"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all smart contract modules that exist at the end of a given block.</p>
@@ -1942,7 +1944,7 @@ The resulting sequence consists of key-value pairs ordered lexicographically acc
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetModuleSource_Concordium_Grpc_V2_ModuleSourceRequest_" data-uid="Concordium.Sdk.Client.RawClient.GetModuleSource(Concordium.Grpc.V2.ModuleSourceRequest)">
   GetModuleSource(ModuleSourceRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L158"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the source of a smart contract module.</p>
@@ -1979,7 +1981,7 @@ The resulting sequence consists of key-value pairs ordered lexicographically acc
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetModuleSourceAsync_Concordium_Grpc_V2_ModuleSourceRequest_" data-uid="Concordium.Sdk.Client.RawClient.GetModuleSourceAsync(Concordium.Grpc.V2.ModuleSourceRequest)">
   GetModuleSourceAsync(ModuleSourceRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L147"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L164"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns the source of a smart contract module.</p>
@@ -2016,7 +2018,7 @@ The resulting sequence consists of key-value pairs ordered lexicographically acc
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetNextAccountSequenceNumber_Concordium_Grpc_V2_AccountAddress_" data-uid="Concordium.Sdk.Client.RawClient.GetNextAccountSequenceNumber(Concordium.Grpc.V2.AccountAddress)">
   GetNextAccountSequenceNumber(AccountAddress)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L206"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L223"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the best guess as to what the next account sequence number (nonce) should be
@@ -2057,7 +2059,7 @@ committed to blocks and eventually finalized.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetNextAccountSequenceNumberAsync_Concordium_Grpc_V2_AccountAddress_" data-uid="Concordium.Sdk.Client.RawClient.GetNextAccountSequenceNumberAsync(Concordium.Grpc.V2.AccountAddress)">
   GetNextAccountSequenceNumberAsync(AccountAddress)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L216"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L233"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns the best guess as to what the next account sequence number (nonce)
@@ -2098,7 +2100,7 @@ committed to blocks and eventually finalized.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetNextUpdateSequenceNumbers_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetNextUpdateSequenceNumbers(Concordium.Grpc.V2.BlockHashInput)">
   GetNextUpdateSequenceNumbers(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L467"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L484"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get next available sequence numbers for updating chain parameters after a given block.</p>
@@ -2135,7 +2137,7 @@ committed to blocks and eventually finalized.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetNextUpdateSequenceNumbersAsync_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetNextUpdateSequenceNumbersAsync(Concordium.Grpc.V2.BlockHashInput)">
   GetNextUpdateSequenceNumbersAsync(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L473"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L490"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task that returns the next available sequence numbers for updating chain parameters after a given block.</p>
@@ -2172,7 +2174,7 @@ committed to blocks and eventually finalized.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetNodeInfo" data-uid="Concordium.Sdk.Client.RawClient.GetNodeInfo">
   GetNodeInfo()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L610"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L627"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information about the node.</p>
@@ -2204,7 +2206,7 @@ committed to blocks and eventually finalized.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetNodeInfoAsync" data-uid="Concordium.Sdk.Client.RawClient.GetNodeInfoAsync">
   GetNodeInfoAsync()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L616"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L633"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns information about the node.</p>
@@ -2236,7 +2238,7 @@ committed to blocks and eventually finalized.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPassiveDelegationInfo_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetPassiveDelegationInfo(Concordium.Grpc.V2.BlockHashInput)">
   GetPassiveDelegationInfo(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L298"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L315"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information about the passive delegators at the end of a given block.</p>
@@ -2273,7 +2275,7 @@ committed to blocks and eventually finalized.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPassiveDelegationInfoAsync_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetPassiveDelegationInfoAsync(Concordium.Grpc.V2.BlockHashInput)">
   GetPassiveDelegationInfoAsync(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L304"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L321"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns information about the passive delegators at the end of a given block.</p>
@@ -2310,7 +2312,7 @@ committed to blocks and eventually finalized.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPassiveDelegators_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetPassiveDelegators(Concordium.Grpc.V2.BlockHashInput)">
   GetPassiveDelegators(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L371"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L388"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all registered passive delegators at the end of a given block.</p>
@@ -2347,7 +2349,7 @@ committed to blocks and eventually finalized.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPassiveDelegatorsRewardPeriod_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetPassiveDelegatorsRewardPeriod(Concordium.Grpc.V2.BlockHashInput)">
   GetPassiveDelegatorsRewardPeriod(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L382"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L399"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all fixed passive delegators for the reward period of a given block.
@@ -2387,7 +2389,7 @@ stake in the reward period containing the given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPeersInfo" data-uid="Concordium.Sdk.Client.RawClient.GetPeersInfo">
   GetPeersInfo()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L598"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L615"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a list of the peers that the node is connected to as well as network-related information for each such peer.</p>
@@ -2419,7 +2421,7 @@ stake in the reward period containing the given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPeersInfoAsync" data-uid="Concordium.Sdk.Client.RawClient.GetPeersInfoAsync">
   GetPeersInfoAsync()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L604"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L621"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns a list of the peers that the node is connected to as well as network-related information for each such peer.</p>
@@ -2451,7 +2453,7 @@ stake in the reward period containing the given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPoolDelegators_Concordium_Grpc_V2_GetPoolDelegatorsRequest_" data-uid="Concordium.Sdk.Client.RawClient.GetPoolDelegators(Concordium.Grpc.V2.GetPoolDelegatorsRequest)">
   GetPoolDelegators(GetPoolDelegatorsRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L350"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L367"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all registered delegators of a given pool at the end of a given block.</p>
@@ -2488,7 +2490,7 @@ stake in the reward period containing the given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPoolDelegatorsRewardPeriod_Concordium_Grpc_V2_GetPoolDelegatorsRequest_" data-uid="Concordium.Sdk.Client.RawClient.GetPoolDelegatorsRewardPeriod(Concordium.Grpc.V2.GetPoolDelegatorsRequest)">
   GetPoolDelegatorsRewardPeriod(GetPoolDelegatorsRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L361"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L378"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all fixed delegators of a given pool for the reward period of a given block.
@@ -2528,7 +2530,7 @@ in the reward period containing the given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPoolInfo_Concordium_Grpc_V2_PoolInfoRequest_" data-uid="Concordium.Sdk.Client.RawClient.GetPoolInfo(Concordium.Grpc.V2.PoolInfoRequest)">
   GetPoolInfo(PoolInfoRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L286"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L303"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information about a given pool at the end of a given block.</p>
@@ -2565,7 +2567,7 @@ in the reward period containing the given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPoolInfoAsync_Concordium_Grpc_V2_PoolInfoRequest_" data-uid="Concordium.Sdk.Client.RawClient.GetPoolInfoAsync(Concordium.Grpc.V2.PoolInfoRequest)">
   GetPoolInfoAsync(PoolInfoRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L292"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L309"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns information about a given pool at the end of a given block.</p>
@@ -2602,7 +2604,7 @@ in the reward period containing the given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetTokenomicsInfo_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetTokenomicsInfo(Concordium.Grpc.V2.BlockHashInput)">
   GetTokenomicsInfo(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L324"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L341"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information about tokenomics at the end of a given block.</p>
@@ -2639,7 +2641,7 @@ in the reward period containing the given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetTokenomicsInfoAsync_Concordium_Grpc_V2_BlockHashInput_" data-uid="Concordium.Sdk.Client.RawClient.GetTokenomicsInfoAsync(Concordium.Grpc.V2.BlockHashInput)">
   GetTokenomicsInfoAsync(BlockHashInput)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L330"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L347"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns information about tokenomics at the end of a given block.</p>
@@ -2676,7 +2678,7 @@ in the reward period containing the given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_InstanceStateLookup_Concordium_Grpc_V2_InstanceStateLookupRequest_" data-uid="Concordium.Sdk.Client.RawClient.InstanceStateLookup(Concordium.Grpc.V2.InstanceStateLookupRequest)">
   InstanceStateLookup(InstanceStateLookupRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L186"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L203"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the value at a specific key of a contract state. In contrast to
@@ -2715,7 +2717,7 @@ the specific key to look up in advance.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_InstanceStateLookupAsync_Concordium_Grpc_V2_InstanceStateLookupRequest_" data-uid="Concordium.Sdk.Client.RawClient.InstanceStateLookupAsync(Concordium.Grpc.V2.InstanceStateLookupRequest)">
   InstanceStateLookupAsync(InstanceStateLookupRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L194"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L211"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which returns the value at a specific key of a contract state. In contrast to
@@ -2754,7 +2756,7 @@ the specific key to look up in advance.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_InvokeInstance_Concordium_Grpc_V2_InvokeInstanceRequest_" data-uid="Concordium.Sdk.Client.RawClient.InvokeInstance(Concordium.Grpc.V2.InvokeInstanceRequest)">
   InvokeInstance(InvokeInstanceRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L337"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L354"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Instructs the node to run a smart contract entrypoint in the given context and
@@ -2792,7 +2794,7 @@ state at the end of a given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_InvokeInstanceAsync_Concordium_Grpc_V2_InvokeInstanceRequest_" data-uid="Concordium.Sdk.Client.RawClient.InvokeInstanceAsync(Concordium.Grpc.V2.InvokeInstanceRequest)">
   InvokeInstanceAsync(InvokeInstanceRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L344"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L361"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which instructs the node to run a smart contract entrypoint in the given context and
@@ -2830,12 +2832,12 @@ state at the end of a given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_PeerConnect_Concordium_Grpc_V2_IpSocketAddress_" data-uid="Concordium.Sdk.Client.RawClient.PeerConnect(Concordium.Grpc.V2.IpSocketAddress)">
   PeerConnect(IpSocketAddress)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L497"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L514"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Request that the node connect to the peer with the specified details.
 If the request succeeds, the peer is added to the peer-list of the node.
-Otherwise a GRPC exception is thrown. Note that the peer may not be connected
+Otherwise a gRPC exception is thrown. Note that the peer may not be connected
 instantly, in which case the call will still succeed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2870,13 +2872,13 @@ instantly, in which case the call will still succeed.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_PeerConnectAsync_Concordium_Grpc_V2_IpSocketAddress_" data-uid="Concordium.Sdk.Client.RawClient.PeerConnectAsync(Concordium.Grpc.V2.IpSocketAddress)">
   PeerConnectAsync(IpSocketAddress)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L507"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L524"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which requests that the node connect to the peer with
 the specified details.
 If the request succeeds, the peer is added to the peer-list of the node.
-Otherwise a GRPC exception is thrown. Note that the peer may not be connected
+Otherwise a gRPC exception is thrown. Note that the peer may not be connected
 instantly, in which case the call will still succeed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2911,12 +2913,12 @@ instantly, in which case the call will still succeed.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_PeerDisconnect_Concordium_Grpc_V2_IpSocketAddress_" data-uid="Concordium.Sdk.Client.RawClient.PeerDisconnect(Concordium.Grpc.V2.IpSocketAddress)">
   PeerDisconnect(IpSocketAddress)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L515"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L532"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Request the node to disconnect from the peer with the specified details.
 If the request was succesfully processed, the peer is removed from the peer-list.
-Otherwise a GRPC exception is returned.</p>
+Otherwise a gRPC exception is returned.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -2950,12 +2952,12 @@ Otherwise a GRPC exception is returned.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_PeerDisconnectAsync_Concordium_Grpc_V2_IpSocketAddress_" data-uid="Concordium.Sdk.Client.RawClient.PeerDisconnectAsync(Concordium.Grpc.V2.IpSocketAddress)">
   PeerDisconnectAsync(IpSocketAddress)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L523"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L540"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which requests the node to disconnect from the peer with the specified
 details. If the request was succesfully processed, the peer is removed from the peer-list.
-Otherwise a GRPC exception is returned.</p>
+Otherwise a gRPC exception is returned.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -2989,7 +2991,7 @@ Otherwise a GRPC exception is returned.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_SendBlockItem_Concordium_Grpc_V2_SendBlockItemRequest_" data-uid="Concordium.Sdk.Client.RawClient.SendBlockItem(Concordium.Grpc.V2.SendBlockItemRequest)">
   SendBlockItem(SendBlockItemRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L629"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L646"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Send a block item to the node. A block item is either an account transaction,
@@ -3032,7 +3034,7 @@ the governance committee.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_SendBlockItemAsync_Concordium_Grpc_V2_SendBlockItemRequest_" data-uid="Concordium.Sdk.Client.RawClient.SendBlockItemAsync(Concordium.Grpc.V2.SendBlockItemRequest)">
   SendBlockItemAsync(SendBlockItemRequest)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L642"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L659"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which send a block item to the node. A block item is either an
@@ -3075,7 +3077,7 @@ can only be sent by the governance committee.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_Shutdown" data-uid="Concordium.Sdk.Client.RawClient.Shutdown">
   Shutdown()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L483"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L500"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Request that the node shut down. Throws an exception if the shutdown failed.</p>
@@ -3107,7 +3109,7 @@ can only be sent by the governance committee.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_ShutdownAsync" data-uid="Concordium.Sdk.Client.RawClient.ShutdownAsync">
   ShutdownAsync()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L488"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L505"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task that requests that the node shut down. Throws an exception if the shutdown failed.</p>
@@ -3139,10 +3141,10 @@ can only be sent by the governance committee.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_UnbanPeer_Concordium_Grpc_V2_BannedPeer_" data-uid="Concordium.Sdk.Client.RawClient.UnbanPeer(Concordium.Grpc.V2.BannedPeer)">
   UnbanPeer(BannedPeer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L555"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L572"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Request the node to unban the specified peer. Throws a GRPC error if the action failed.</p>
+  <div class="markdown level1 summary"><p>Request the node to unban the specified peer. Throws a gRPC error if the action failed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -3176,10 +3178,10 @@ can only be sent by the governance committee.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_UnbanPeerAsync_Concordium_Grpc_V2_BannedPeer_" data-uid="Concordium.Sdk.Client.RawClient.UnbanPeerAsync(Concordium.Grpc.V2.BannedPeer)">
   UnbanPeerAsync(BannedPeer)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L561"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L578"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Spawn a task which requests the node to unban the specified peer. Throws a GRPC error if the action failed.</p>
+  <div class="markdown level1 summary"><p>Spawn a task which requests the node to unban the specified peer. Throws a gRPC error if the action failed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -3213,7 +3215,7 @@ can only be sent by the governance committee.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/add-formatter/src/Client/RawClient.cs/#L12" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/32/merge/src/Client/RawClient.cs/#L14" class="edit-link">Edit this page</a>
         </div>
 
         

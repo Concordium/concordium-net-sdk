@@ -3425,16 +3425,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Concordium.Sdk.Client.ClientConfiguration.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Concordium.Sdk.Client.ClientConfiguration.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Client.ConcordiumClient.yml",
       "output": {
         ".html": {
