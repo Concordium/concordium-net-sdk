@@ -27,7 +27,7 @@ internal class Program
         var client = new ConcordiumClient(
             new Uri(options.Endpoint), // Endpoint URL.
             options.Port, // Port.
-            60 // Use a timeout of 60 seconds.
+            options.Timeout // Timeout.
         );
 
         // Create the transfer transaction.
@@ -37,9 +37,9 @@ internal class Program
 
         // Prepare the transaction for signing.
         var sender = account.AccountAddress;
-        var nonce = client.GetNextAccountSequenceNumber(sender).Item1;
+        var sequenceNumber = client.GetNextAccountSequenceNumber(sender).Item1;
         var expiry = Expiry.AtMinutesFromNow(30);
-        var preparedTransfer = transferPayload.Prepare(sender, nonce, expiry);
+        var preparedTransfer = transferPayload.Prepare(sender, sequenceNumber, expiry);
 
         // Sign the transaction using the account keys.
         var signedTransfer = preparedTransfer.Sign(account);

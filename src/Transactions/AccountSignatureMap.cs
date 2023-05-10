@@ -20,19 +20,26 @@ public class AccountSignatureMap
     /// </summary>
     public ImmutableDictionary<AccountKeyIndex, byte[]> Signatures { get; init; }
 
+
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountSignatureMap"/> class.
     /// </summary>
     /// <param name="signatures">A map from account key indices to signatures.</param>
-    /// <exception cref="ArgumentException">Some signature is not 64 bytes.</exception>
-    public AccountSignatureMap(Dictionary<AccountKeyIndex, byte[]> signatures)
+    private AccountSignatureMap(Dictionary<AccountKeyIndex, byte[]> signatures) => this.Signatures = signatures.ToImmutableDictionary();
+
+    /// <summary>
+    /// Creates a new instance of the <see cref="AccountSignatureMap"/> class.
+    /// </summary>
+    /// <param name="signatures">A map from account key indices to signatures.</param>
+    /// <exception cref="ArgumentException">A signature is not 64 bytes.</exception>
+    public static AccountSignatureMap Create(Dictionary<AccountKeyIndex, byte[]> signatures)
     {
         // Signatures are 64-byte ed25519 signatures and therefore 64 bytes.
         if (signatures.Values.Any(signature => signature.Length != 64))
         {
             throw new ArgumentException($"Signature should be {64} bytes.");
         }
-        this.Signatures = signatures.ToImmutableDictionary();
+        return new AccountSignatureMap(signatures);
     }
 
     /// <summary>

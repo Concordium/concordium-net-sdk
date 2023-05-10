@@ -4,7 +4,7 @@ namespace Concordium.Sdk.Examples.Common;
 
 /// <summary>
 /// Represents an example program which supports the command-line
-/// parameters defined by a sub-class of <see cref="ExampleOptions"/>.
+/// parameters defined by instances of <see cref="ExampleOptions"/>.
 /// </summary>
 public static class Example
 {

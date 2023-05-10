@@ -3,9 +3,9 @@
 [![NuGet version](https://badge.fury.io/nu/ConcordiumNetSdk.svg)](https://badge.fury.io/nu/ConcordiumNetSdk)
 
 
-# A .NET C# SDK for interacting with the Concordium blockchain
+# C# .NET SDK for interacting with the Concordium blockchain
 
-This SDK is a .NET integration library which adds support for constructing and sending various transactions, as well as querying various aspects of the Concordium blockchain and its nodes. The SDK uses version 2 of the [Concordium Node gRPC API](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) to interact with Concordium nodes and in turn the Concordium blockchain, and serves as a wrapper for this API with added ergonomics. Note that this deprecates earlier versions of the SDK that use version 1 of the API, cfr. the [migration](#migration) section for more details.
+This is a .NET integration library written in C# which adds support for constructing and sending various transactions, as well as querying various aspects of the Concordium blockchain and its nodes. This SDK uses version 2 of the [Concordium Node gRPC API](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) to interact with Concordium nodes and in turn the Concordium blockchain, and serves as a wrapper for this API with added ergonomics. Note that this deprecates earlier versions of the SDK that use version 1 of the API, cfr. the [migration](#migration) section for more details.
 
 Read ahead for a brief overview and some examples, or skip directly the [rendered documentation](#documentation). 
 
@@ -52,7 +52,7 @@ using Concordium.Sdk.Client;
 ConcordiumClient client = new ConcordiumClient(
   new Uri("https://localhost/), // Endpoint  URL.
   options.Port, // Port.
-  60 // Use a timeout of 60 seconds.
+  60 // Use a connection timeout of 60 seconds.
 );
 ```
 The [`ConcordiumClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html) constructor also optionally takes a [`GrpcChannelOptions`](https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Net.Client.GrpcChannelOptions.html) object which can be used to specify various settings specific to the underlying [`GrpcChannel`](https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Net.Client.GrpcChannel.html) instance which handles the communication with the node. These could be settings that dictate the retry policy or specify parameters for the [keepalive ping](https://github.com/grpc/grpc/blob/master/doc/keepalive.md), which can be vital to the robustness of the application.
@@ -146,7 +146,6 @@ A number of runnable examples illustrating usage of the SDK API are contained in
 For instance, a runnable example akin to that given in [Working with account transactions](#working-with-account-transactions) is found in [examples/Transactions/Transfer](https://github.com/Concordium/concordium-net-sdk/main/examples/Transactions/Transfer). Compiling the project and running the resulting binary will print the following help message:
 
 ```text
-Concordium.Sdk.Examples.Transactions.Transfer 1.0.0
 Copyright (C) 2023 Concordium.Sdk.Examples.Transactions.Transfer
 
 ERROR(S):
@@ -166,6 +165,8 @@ ERROR(S):
 
   -p, --port        (Default: 20000) Port at the endpoint where the gRPC V2 API is served.
 
+  -t, --timeout     (Default: 60) Default connection timeout in seconds.
+
   --help            Display this help screen.
 
   --version         Display version information.
@@ -177,7 +178,7 @@ To run the example with similar values, invoke the binary as follows:
 $ Concordium.Sdk.Examples.Transactions.Transfer -a 100 -r 4rvQePs6ZKFiW8rwY5nP18Uj2DroWiw9VPKTsTwfwmsjcFCJLy -k /path/to/exported-browser-wallet-keys.json
 ```
 
-Here, the sender account address is contained in the file specified by the `--keys` option, and the expiration time defaults to 60 seconds, hence is why it is not specified. Upon successful submission of the transaction, the example program will print something like:
+Here, the sender account address is contained in the file specified by the `--keys` option which is why it is not included here. Upon successful submission of the transaction, the example program will print something like:
 
 ```text
 Successfully submitted transfer transaction with hash 6bc9bfac5ef4aa1988ab8b1ab6007a736d4b3fe7e52b942d69a030319d979f13

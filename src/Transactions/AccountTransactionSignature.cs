@@ -36,7 +36,16 @@ public class AccountTransactionSignature
     /// Initializes a new instance of the <see cref="AccountTransactionSignature"/> class.
     /// </summary>
     /// <param name="signatureMaps">Dictionary corresponding to the map.</param>
-    public AccountTransactionSignature(
+    private AccountTransactionSignature(
+        Dictionary<AccountCredentialIndex, AccountSignatureMap> signatureMaps
+    ) => this.SignatureMap = signatureMaps.ToImmutableDictionary();
+
+    /// <summary>
+    /// Creates a new instance of the <see cref="AccountTransactionSignature"/> class.
+    /// </summary>
+    /// <param name="signatureMaps">Dictionary corresponding to the map.</param>
+    /// <exception cref="ArgumentException">A signature is not 64 bytes.</exception>
+    public static AccountTransactionSignature Create(
         Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, byte[]>> signatureMaps
     )
     {
@@ -51,9 +60,9 @@ public class AccountTransactionSignature
             {
                 accountSignatureMap.Add(k.Key, k.Value);
             }
-            accountTransactionSignature.Add(m.Key, new AccountSignatureMap(accountSignatureMap));
+            accountTransactionSignature.Add(m.Key, AccountSignatureMap.Create(accountSignatureMap));
         }
-        this.SignatureMap = accountTransactionSignature.ToImmutableDictionary();
+        return new AccountTransactionSignature(accountTransactionSignature);
     }
 
     /// <summary>

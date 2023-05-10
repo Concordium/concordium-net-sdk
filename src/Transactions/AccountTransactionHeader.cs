@@ -56,20 +56,20 @@ public struct AccountTransactionHeader
     /// Initializes a new instance of the <see cref="AccountTransactionHeader"/> class.
     /// </summary>
     /// <param name="sender">Address of the sender of the transaction.</param>
-    /// <param name="nonce">Account nonce to use for the transaction.</param>
+    /// <param name="sequenceNumber">Account sequence number to use for the transaction.</param>
     /// <param name="expiry">Expiration time of the transaction.</param>
     /// <param name="maxEnergyCost">Maximum amount of energy to spend on this transaction.</param>
     /// <param name="payloadSize">Size of the transaction payload.</param>
     public AccountTransactionHeader(
         AccountAddress sender,
-        AccountSequenceNumber nonce,
+        AccountSequenceNumber sequenceNumber,
         Expiry expiry,
         EnergyAmount maxEnergyCost,
         PayloadSize payloadSize
     )
     {
         this.Sender = sender;
-        this.SequenceNumber = nonce;
+        this.SequenceNumber = sequenceNumber;
         this.Expiry = expiry;
         this.MaxEnergyCost = maxEnergyCost;
         this.PayloadSize = payloadSize;
@@ -80,13 +80,13 @@ public struct AccountTransactionHeader
     /// This is used when signing transactions.
     /// </summary>
     /// <param name="sender">Address of the sender of the transaction.</param>
-    /// <param name="nonce">Account nonce to use for the transaction.</param>
+    /// <param name="sequenceNumber">Account sequence number to use for the transaction.</param>
     /// <param name="expiry">Expiration time of the transaction.</param>
     /// <param name="maxEnergyCost">Maximum amount of energy to spend on this transaction.</param>
     /// <param name="payloadSize">Size of the transaction payload.</param>
     private static byte[] Serialize(
         AccountAddress sender,
-        AccountSequenceNumber nonce,
+        AccountSequenceNumber sequenceNumber,
         Expiry expiry,
         EnergyAmount maxEnergyCost,
         PayloadSize payloadSize
@@ -94,7 +94,7 @@ public struct AccountTransactionHeader
     {
         using var memoryStream = new MemoryStream();
         memoryStream.Write(sender.GetBytes());
-        memoryStream.Write(nonce.GetBytes());
+        memoryStream.Write(sequenceNumber.GetBytes());
         memoryStream.Write(maxEnergyCost.GetBytes());
         memoryStream.Write(payloadSize.GetBytes());
         memoryStream.Write(expiry.GetBytes());

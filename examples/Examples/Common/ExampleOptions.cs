@@ -14,12 +14,17 @@ public class ExampleOptions
     /// <summary>
     /// URL representing the endpoint where the gRPC V2 API is served.
     /// </summary>
-    private const string DefaultEndpoint = "https://localhost/";
+    public const string DefaultEndpoint = "https://localhost/";
 
     /// <summary>
     /// Default port at the endpoint where the gRPC V2 API is served.
     /// </summary>
-    private const ushort DefaultPort = 20000;
+    public const ushort DefaultPort = 20000;
+
+    /// <summary>
+    /// Default connection timeout in seconds.
+    /// </summary>
+    public const ushort DefaultTimeout = 60;
 
     [Option(
         'e',
@@ -36,4 +41,12 @@ public class ExampleOptions
         Default = DefaultPort
     )]
     public ushort Port { get; set; } = DefaultPort;
+
+    [Option(
+        't',
+        "timeout",
+        HelpText = "Default connection timeout in seconds.",
+        Default = DefaultTimeout
+    )]
+    public uint Timeout { get; set; } = DefaultTimeout;
 }

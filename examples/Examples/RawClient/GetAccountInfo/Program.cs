@@ -19,7 +19,7 @@ internal class Program
         var client = new ConcordiumClient(
             new Uri(options.Endpoint), // Endpoint URL.
             options.Port, // Port.
-            60 // Use a timeout of 60 seconds.
+            options.Timeout // Timeout.
         );
         var blockHashInput = options.BlockHash.ToLowerInvariant() switch
         {
@@ -28,7 +28,7 @@ internal class Program
             _ => Types.BlockHash.From(options.BlockHash).ToBlockHashInput(),
         };
 
-        // Construct the input for the "raw" method.
+        // Construct the input for the raw method.
         var request = new AccountInfoRequest
         {
             /// Convert command line parameter to a <see cref="Types.BlockHash"/>
@@ -41,7 +41,7 @@ internal class Program
                 .ToAccountIdentifierInput()
         };
 
-        // Invoke the "raw" call.
+        // Invoke the raw call.
         var accountInfo = client.Raw.GetAccountInfo(request);
 
         // Print account info.

@@ -19,9 +19,9 @@ public record PreparedAccountTransaction<T>
     public AccountAddress Sender { get; init; }
 
     /// <summary>
-    /// Account nonce to use for the transaction.
+    /// Account sequence number to use for the transaction.
     /// </summary>
-    public AccountSequenceNumber Nonce { get; init; }
+    public AccountSequenceNumber SequenceNumber { get; init; }
 
     /// <summary>
     /// Expiration time of the transaction.
@@ -37,18 +37,18 @@ public record PreparedAccountTransaction<T>
     /// Initializes a new instance of the <see cref="PreparedAccountTransaction{T}"/> class.
     /// </summary>
     /// <param name="sender">Address of the sender of the transaction.</param>
-    /// <param name="nonce">Account nonce to use for the transaction.</param>
+    /// <param name="sequenceNumber">Account sequence number to use for the transaction.</param>
     /// <param name="expiry">Expiration time of the transaction.</param>
     /// <param name="payload">Payload to be sent to the node.</param>
     public PreparedAccountTransaction(
         AccountAddress sender,
-        AccountSequenceNumber nonce,
+        AccountSequenceNumber sequenceNumber,
         Expiry expiry,
         AccountTransactionPayload<T> payload
     )
     {
         this.Sender = sender;
-        this.Nonce = nonce;
+        this.SequenceNumber = sequenceNumber;
         this.Expiry = expiry;
         this.Payload = payload;
     }
@@ -57,15 +57,15 @@ public record PreparedAccountTransaction<T>
     /// Initializes a new instance of the <see cref="SignedAccountTransaction"/> class.
     /// </summary>
     /// <param name="sender">Address of the sender of the transaction.</param>
-    /// <param name="nonce">Account nonce to use for the transaction.</param>
+    /// <param name="sequenceNumber">Account sequence number to use for the transaction.</param>
     /// <param name="expiry">Expiration time of the transaction.</param>
     /// <param name="payload">Payload to send to the node.</param>
     /// <param name="transactionSigner">The signer to use for signing the transaction.</param>
-
     /// <summary>
     /// Signs the prepared transaction using the provided signer.
     /// </summary>
     /// <param name="signer">The signer to use for signing the transaction.</param>
+    /// <exception cref="ArgumentException">A signature produced by the signing is not 64 bytes.</exception>
     public SignedAccountTransaction<T> Sign(ITransactionSigner transactionSigner)
     {
         // Get the serialized payload.
@@ -84,7 +84,7 @@ public record PreparedAccountTransaction<T>
         // Create the header.
         var header = new AccountTransactionHeader(
             this.Sender,
-            this.Nonce,
+            this.SequenceNumber,
             this.Expiry,
             energyCost,
             serializedPayloadSize

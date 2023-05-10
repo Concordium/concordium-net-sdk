@@ -65,6 +65,7 @@ public class TransactionSigner : ITransactionSigner
     /// </summary>
     /// <param name="data">The transaction hash to sign.</param>
     /// <exception cref="ArgumentException">No signatures were produced.</exception>
+    /// <exception cref="ArgumentException">A signature produced by signing is not 64 bytes.</exception>
     public AccountTransactionSignature Sign(byte[] data)
     {
         if (this.GetSignatureCount() == 0)
@@ -79,13 +80,12 @@ public class TransactionSigner : ITransactionSigner
             var accountSignatureMap = new Dictionary<AccountKeyIndex, byte[]>();
             foreach (var k in signerEntry.Value)
             {
-                var index = k.Key;
                 var signer = k.Value;
                 accountSignatureMap.Add(k.Key, signer.Sign(data));
             }
             signature.Add(signerEntry.Key, accountSignatureMap);
         }
 
-        return new AccountTransactionSignature(signature);
+        return AccountTransactionSignature.Create(signature);
     }
 }

@@ -6,8 +6,10 @@ using Grpc.Net.Client;
 namespace Concordium.Sdk.Client;
 
 /// <summary>
-/// The "raw" gRPC client interface exposing wrappers that abstract away
-/// connection handling and parameters present in generated methods.
+/// The raw gRPC client interface exposing wrappers that abstract away
+/// connection handling and parameters present in the <see cref="InternalClient"/>
+/// which was generated from the protocol buffer definition files for the
+/// Concordium Node gRPC API V2.
 /// </summary>
 public class RawClient : IDisposable
 {

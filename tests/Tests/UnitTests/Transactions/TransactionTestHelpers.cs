@@ -20,9 +20,9 @@ public static class TransactionTestHelpers
         where T : AccountTransactionPayload<T>
     {
         var sender = AccountAddress.From("3QuZ47NkUk5icdDSvnfX8HiJzCnSRjzi6KwGEmqgQ7hCXNBTWN");
-        var nonce = AccountSequenceNumber.From(123);
+        var sequenceNumber = AccountSequenceNumber.From(123);
         var expiry = Expiry.From(65537);
-        return transaction.Prepare(sender, nonce, expiry);
+        return transaction.Prepare(sender, sequenceNumber, expiry);
     }
 
     /// <summary>
@@ -117,6 +117,6 @@ public static class TransactionTestHelpers
             },
         };
 
-        return new AccountTransactionSignature(signatureDictionary);
+        return AccountTransactionSignature.Create(signatureDictionary);
     }
 }

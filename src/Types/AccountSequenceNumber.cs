@@ -24,7 +24,7 @@ public readonly struct AccountSequenceNumber : IEquatable<AccountSequenceNumber>
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountSequenceNumber"/> class.
     /// </summary>
-    /// <param name="sequenceNumber">The nonce.</param>
+    /// <param name="sequenceNumber">The sequence number.</param>
     private AccountSequenceNumber(ulong sequenceNumber) => this.Value = sequenceNumber;
 
     /// <summary>
@@ -42,27 +42,27 @@ public readonly struct AccountSequenceNumber : IEquatable<AccountSequenceNumber>
     }
 
     /// <summary>
-    /// Returns a new nonce whose value is increased by 1 relative to the current nonce.
+    /// Returns a new sequence number whose value is increased by 1 relative to the current one.
     /// </summary>
-    /// <exception cref="OverflowException">The value of the incremented nonce does not fit in a 64-bit unsigned integer.</exception>
-    public AccountSequenceNumber GetIncrementedNonce()
+    /// <exception cref="OverflowException">The value of the incremented sequence number does not fit in a 64-bit unsigned integer.</exception>
+    public AccountSequenceNumber GetIncrementedSequenceNumber()
     {
         if (this.Value == ulong.MaxValue)
         {
             throw new OverflowException(
-                "Value of the incremented nonce does not fit in a 64-bit unsigned integer."
+                "Value of the incremented sequence number does not fit in a 64-bit unsigned integer."
             );
         }
         return new AccountSequenceNumber(this.Value + 1);
     }
 
     /// <summary>
-    /// Get the account nonce in the binary format expected by the node.
+    /// Get the account sequence number in the binary format expected by the node.
     /// </summary>
     public byte[] GetBytes() => Serialization.GetBytes(this.Value);
 
     /// <summary>
-    /// Converts the account nonce to its corresponding protocol buffer message instance.
+    /// Converts the account sequence number to its corresponding protocol buffer message instance.
     ///
     /// This can be used as the input for class methods of <see cref="RawClient"/>.
     /// </summary>

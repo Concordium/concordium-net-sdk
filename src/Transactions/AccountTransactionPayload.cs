@@ -16,13 +16,13 @@ public abstract record AccountTransactionPayload<T>
     /// Prepares the account transaction payload for signing.
     /// </summary>
     /// <param name="sender">Address of the sender of the transaction.</param>
-    /// <param name="nonce">Account nonce to use for the transaction.</param>
+    /// <param name="sequenceNumber">Account sequence number to use for the transaction.</param>
     /// <param name="expiry">Expiration time of the transaction.</param>
     public PreparedAccountTransaction<T> Prepare(
         AccountAddress sender,
-        AccountSequenceNumber nonce,
+        AccountSequenceNumber sequenceNumber,
         Expiry expiry
-    ) => new(sender, nonce, expiry, this);
+    ) => new(sender, sequenceNumber, expiry, this);
 
     /// <summary>
     /// Gets the transaction specific cost for submitting this type of

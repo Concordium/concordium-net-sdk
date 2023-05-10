@@ -5,30 +5,30 @@ using Xunit;
 
 namespace Concordium.Sdk.Tests.UnitTests.Types;
 
-public class AccountNonceTests
+public class AccountSequenceNumberTests
 {
     [Fact]
-    public void Same_AccountNonces_AreEqual()
+    public void Same_SequenceNumbers_AreEqual()
     {
-        var nonceA = AccountSequenceNumber.From(1);
-        var nonceB = AccountSequenceNumber.From(1);
-        Assert.Equal(nonceA, nonceB);
+        var sequenceNumberA = AccountSequenceNumber.From(1);
+        var sequenceNumberB = AccountSequenceNumber.From(1);
+        Assert.Equal(sequenceNumberA, sequenceNumberB);
     }
 
     [Fact]
-    public void Different_AccountNonces_AreNotEqual()
+    public void Different_SequenceNumbers_AreNotEqual()
     {
-        var nonceA = AccountSequenceNumber.From(1);
-        var nonceB = AccountSequenceNumber.From(2);
-        Assert.NotEqual(nonceA, nonceB);
+        var sequenceNumberA = AccountSequenceNumber.From(1);
+        var sequenceNumberB = AccountSequenceNumber.From(2);
+        Assert.NotEqual(sequenceNumberA, sequenceNumberB);
     }
 
     [Fact]
-    public void GetIncrementedNonce_OnAccountNonce_ReturnsIncrementedNonce()
+    public void GetIncrementedSequenceNumber_OnSufficientlySmallSequenceNumber_ReturnsIncremented()
     {
-        var nonceA = AccountSequenceNumber.From(1).GetIncrementedNonce();
-        var nonceB = AccountSequenceNumber.From(2);
-        Assert.Equal(nonceA, nonceB);
+        var sequenceNumberA = AccountSequenceNumber.From(1).GetIncrementedSequenceNumber();
+        var sequenceNumberB = AccountSequenceNumber.From(2);
+        Assert.Equal(sequenceNumberA, sequenceNumberB);
     }
 
     [Fact]
@@ -39,19 +39,19 @@ public class AccountNonceTests
     }
 
     [Fact]
-    public void GetIncrementedNonce_OnMaxValuedAccountNonce_ThrowsException()
+    public void GetIncrementedSequenceNumber_OnMaxValuedAccountSequenceNumber_ThrowsException()
     {
-        var nonce = AccountSequenceNumber.From(ulong.MaxValue);
-        Action result = () => nonce.GetIncrementedNonce();
+        var sequenceNumber = AccountSequenceNumber.From(ulong.MaxValue);
+        Action result = () => sequenceNumber.GetIncrementedSequenceNumber();
         result.Should().Throw<OverflowException>();
     }
 
     [Fact]
     public void GetBytes_ReturnsCorrectValue()
     {
-        var nonce = AccountSequenceNumber.From(100);
-        var expectedSerializedNonce = new byte[] { 0, 0, 0, 0, 0, 0, 0, 100 };
-        var serializedNonce = nonce.GetBytes();
-        serializedNonce.Should().BeEquivalentTo(expectedSerializedNonce);
+        var sequenceNumber = AccountSequenceNumber.From(100);
+        var expectedSerializedSequenceNumber = new byte[] { 0, 0, 0, 0, 0, 0, 0, 100 };
+        var serializedSequenceNumber = sequenceNumber.GetBytes();
+        serializedSequenceNumber.Should().BeEquivalentTo(expectedSerializedSequenceNumber);
     }
 }
