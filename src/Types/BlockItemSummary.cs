@@ -1,5 +1,4 @@
 using Concordium.Grpc.V2;
-using Concordium.Sdk.Types;
 using AccountAddress = Concordium.Sdk.Types.AccountAddress;
 using ContractAddress = Concordium.Sdk.Types.ContractAddress;
 using ContractEvent = Concordium.Sdk.Types.ContractEvent;
@@ -174,74 +173,100 @@ public sealed class BlockItemSummary {
 
         var accountTransaction = _blockItemSummary.AccountTransaction;
         var effects = accountTransaction.Effects;
+        var sender = AccountAddress.From(accountTransaction.Sender.Value.ToByteArray());
 
         switch (effects.EffectCase)
         {
             case AccountTransactionEffects.EffectOneofCase.None:
-                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                affectedAddresses.Add(sender);
                 break;
             case AccountTransactionEffects.EffectOneofCase.None_:
-                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                affectedAddresses.Add(sender);
                 break;
             case AccountTransactionEffects.EffectOneofCase.ModuleDeployed:
-                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                affectedAddresses.Add(sender);
                 break;
             case AccountTransactionEffects.EffectOneofCase.ContractInitialized:
-                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                affectedAddresses.Add(sender);
                 break;
             case AccountTransactionEffects.EffectOneofCase.ContractUpdateIssued:
-                // TODO
+                var seen = new HashSet<AccountAddress>();
+                affectedAddresses.Add(sender);
+                seen.Add(sender);
+
+                foreach (var effect in effects.ContractUpdateIssued.Effects)
+                {
+                    switch (effect.ElementCase)
+                    {
+                        case ContractTraceElement.ElementOneofCase.Transferred:
+                            var to = AccountAddress.From(effect.Transferred.Receiver.Value.ToByteArray());
+                            if (seen.Add(to))
+                            {
+                                affectedAddresses.Add(to);
+                            }
+                            break;
+                        default:
+                            continue;
+                    }
+                }
                 break;
             case AccountTransactionEffects.EffectOneofCase.AccountTransfer:
-                // TODO
+                affectedAddresses.Add(sender);
+                var toTransfer = AccountAddress.From(effects.AccountTransfer.Receiver.Value.ToByteArray());
+                if (!sender.Equals(toTransfer))
+                {
+                    affectedAddresses.Add(toTransfer);
+                }
                 break;
             case AccountTransactionEffects.EffectOneofCase.BakerAdded:
-                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                affectedAddresses.Add(sender);
                 break;
             case AccountTransactionEffects.EffectOneofCase.BakerRemoved:
-                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                affectedAddresses.Add(sender);
                 break;
             case AccountTransactionEffects.EffectOneofCase.BakerStakeUpdated:
-                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                affectedAddresses.Add(sender);
                 break;
             case AccountTransactionEffects.EffectOneofCase.BakerRestakeEarningsUpdated:
-                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                affectedAddresses.Add(sender);
                 break;
             case AccountTransactionEffects.EffectOneofCase.BakerKeysUpdated:
-                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                affectedAddresses.Add(sender);
                 break;
             case AccountTransactionEffects.EffectOneofCase.EncryptedAmountTransferred:
-                // TODO
+                affectedAddresses.Add(AccountAddress.From(effects.EncryptedAmountTransferred.Removed.Account.Value.ToByteArray()));
+                affectedAddresses.Add(AccountAddress.From(effects.EncryptedAmountTransferred.Added.Receiver.Value.ToByteArray()));
                 break;
             case AccountTransactionEffects.EffectOneofCase.TransferredToEncrypted:
-                // TODO
+                affectedAddresses.Add(AccountAddress.From(effects.TransferredToEncrypted.Account.Value.ToByteArray()));
                 break;
             case AccountTransactionEffects.EffectOneofCase.TransferredToPublic:
-                // TODO
+                affectedAddresses.Add(AccountAddress.From(effects.TransferredToPublic.Removed.Account.Value.ToByteArray()));
                 break;
             case AccountTransactionEffects.EffectOneofCase.TransferredWithSchedule:
-                // TODO
+                affectedAddresses.Add(sender);
+                affectedAddresses.Add(AccountAddress.From(effects.TransferredWithSchedule.Receiver.Value.ToByteArray()));
                 break;
             case AccountTransactionEffects.EffectOneofCase.CredentialKeysUpdated:
-                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                affectedAddresses.Add(sender);
                 break;
             case AccountTransactionEffects.EffectOneofCase.CredentialsUpdated:
-                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                affectedAddresses.Add(sender);
                 break;
             case AccountTransactionEffects.EffectOneofCase.DataRegistered:
-                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                affectedAddresses.Add(sender);
                 break;
             case AccountTransactionEffects.EffectOneofCase.BakerConfigured:
-                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                affectedAddresses.Add(sender);
                 break;
             case AccountTransactionEffects.EffectOneofCase.DelegationConfigured:
-                affectedAddresses.Add(AccountAddress.From(accountTransaction.Sender.Value.ToByteArray()));
+                affectedAddresses.Add(sender);
                 break;
             default:
-                throw new ArgumentOutOfRangeException(); // TODO
+                affectedAddresses.Add(sender);
+                break;
         }
-
-
+        
         return affectedAddresses;
     }
 

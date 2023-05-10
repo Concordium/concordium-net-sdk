@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Helpers;
 using NBitcoin.DataEncoders;
@@ -165,6 +166,12 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
 
     public override int GetHashCode()
     {
-        return GetBytes().GetHashCode();
+        var hash = 1;
+        foreach (var b in _value.AsSpan())
+        {
+            hash *= b.GetHashCode();
+        }
+
+        return hash;
     }
 }

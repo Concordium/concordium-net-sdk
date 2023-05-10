@@ -521,7 +521,7 @@ public class RawClient : IDisposable
     /// <summary>
     /// Get all transaction events in a given block.
     /// </summary>
-    public IAsyncEnumerable<BlockItemSummary> GetBlockTransactionEvents(BlockHashInput input)
+    public IAsyncEnumerable<Grpc.V2.BlockItemSummary> GetBlockTransactionEvents(BlockHashInput input)
     {
         return InternalClient
             .GetBlockTransactionEvents(input, CreateCallOptions())
