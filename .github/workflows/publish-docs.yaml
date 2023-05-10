@@ -1,10 +1,6 @@
 name: Build and deploy documentation
 
 on:
-  push:
-    branches: [ "vh/grpc-api-v2-rewrite" ]
-  pull_request:
-    branches: [ "vh/grpc-api-v2-rewrite" ]
   workflow_dispatch:
 
 jobs:
