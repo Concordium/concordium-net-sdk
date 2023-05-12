@@ -4,7 +4,7 @@ namespace Concordium.Sdk.Examples.Common;
 
 /// <summary>
 /// Represents an example program which supports the command-line
-/// parameters defined by a sub-class of <see cref="ExampleOptions"/>.
+/// parameters defined by instances of <see cref="ExampleOptions"/>.
 /// </summary>
 public static class Example
 {
@@ -29,13 +29,9 @@ public static class Example
     public static void Run<T>(string[] args, Action<T> exampleCallback)
         where T : ExampleOptions
     {
-        /// This is a convenience methos which leverages to other overload
-        /// to support callbacks of type <see cref="Action{T}"/>.
-        async Task exampleCallbackTask(T options)
-        {
+        async Task exampleCallbackTask(T options) =>
             // Await to squelch compiler warning.
             await Task.Run(() => exampleCallback(options));
-        }
 
         Run<T>(args, exampleCallbackTask);
     }
@@ -62,11 +58,10 @@ public static class Example
     {
         try
         {
-            Task.WaitAll(
-                Parser.Default
-                    .ParseArguments<T>(args)
-                    .WithParsedAsync<T>(options => exampleCallback(options))
-            );
+            Parser.Default
+                .ParseArguments<T>(args)
+                .WithParsedAsync(options => exampleCallback(options))
+                .Wait();
         }
         catch (Exception e)
         {
@@ -79,6 +74,4 @@ public static class Example
         Console.WriteLine($"An error occurred while running the example: {e.Message}");
         Environment.Exit(1);
     }
-
-    private static void HandleParseError(IEnumerable<Error> errors) { }
 }

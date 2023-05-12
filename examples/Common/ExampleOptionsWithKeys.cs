@@ -8,7 +8,7 @@ namespace Concordium.Sdk.Examples.Common;
 /// Like <see cref="ExampleOptions"/> with a further
 /// option for specifying a path the path to a file
 /// containing a supported import formats of
-/// <see cref="Concordium.Sdk.Wallets.WalletAccount"/>
+/// <see cref="Wallets.WalletAccount"/>
 /// at the command-line.
 ///
 /// This is useful when writing examples that work with

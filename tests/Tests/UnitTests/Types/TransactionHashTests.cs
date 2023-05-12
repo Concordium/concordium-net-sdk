@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using Concordium.Sdk.Types;
 using FluentAssertions;
 using Xunit;
 
-namespace Concordium.Sdk.UnitTests.Types;
+namespace Concordium.Sdk.Tests.UnitTests.Types;
 
 public class TransactionHashTests
 {

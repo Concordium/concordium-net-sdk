@@ -1,4 +1,4 @@
-﻿using CommandLine;
+using CommandLine;
 
 namespace Concordium.Sdk.Examples.Common;
 
@@ -6,34 +6,47 @@ namespace Concordium.Sdk.Examples.Common;
 /// Command line options for the runnable SDK examples.
 ///
 /// This class can be used to specify options for the
-/// <see cref="Concordium.Sdk.Client.ConcordiumClient"/>
+/// <see cref="Client.ConcordiumClient"/>
 /// at the command-line.
 /// </summary>
 public class ExampleOptions
 {
     /// <summary>
-    /// URL representing the endpoint where the GRPC V2 API is served.
+    /// URL representing the endpoint where the gRPC V2 API is served.
     /// </summary>
-    const string DEFAULT_ENDPOINT = "https://localhost/";
+    public const string DefaultEndpoint = "https://localhost/";
 
     /// <summary>
-    /// Default port at the endpoint where the GRPC V2 API is served.
+    /// Default port at the endpoint where the gRPC V2 API is served.
     /// </summary>
-    const UInt16 DEFAULT_PORT = 20000;
+    public const ushort DefaultPort = 20000;
+
+    /// <summary>
+    /// Default connection timeout in seconds.
+    /// </summary>
+    public const ushort DefaultTimeout = 60;
 
     [Option(
         'e',
         "endpoint",
-        HelpText = "URL representing the endpoint where the GRPC V2 API is served.",
-        Default = DEFAULT_ENDPOINT
+        HelpText = "URL representing the endpoint where the gRPC V2 API is served.",
+        Default = DefaultEndpoint
     )]
-    public string Endpoint { get; set; } = DEFAULT_ENDPOINT;
+    public string Endpoint { get; set; } = DefaultEndpoint;
 
     [Option(
         'p',
         "port",
-        HelpText = "Port at the endpoint where the GRPC V2 API is served.",
-        Default = DEFAULT_PORT
+        HelpText = "Port at the endpoint where the gRPC V2 API is served.",
+        Default = DefaultPort
     )]
-    public UInt16 Port { get; set; } = DEFAULT_PORT;
+    public ushort Port { get; set; } = DefaultPort;
+
+    [Option(
+        't',
+        "timeout",
+        HelpText = "Default connection timeout in seconds.",
+        Default = DefaultTimeout
+    )]
+    public uint Timeout { get; set; } = DefaultTimeout;
 }

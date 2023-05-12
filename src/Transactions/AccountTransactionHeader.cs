@@ -1,5 +1,5 @@
-using AccountAddress = Concordium.Sdk.Types.AccountAddress;
 using Concordium.Sdk.Types;
+using AccountAddress = Concordium.Sdk.Types.AccountAddress;
 
 namespace Concordium.Sdk.Transactions;
 
@@ -20,7 +20,7 @@ public struct AccountTransactionHeader
     /// <summary>
     /// The length of the serialized account transaction header in bytes.
     /// </summary>
-    public const UInt32 BytesLength =
+    public const uint BytesLength =
         AccountAddress.BytesLength
         + AccountSequenceNumber.BytesLength
         + EnergyAmount.BytesLength
@@ -30,49 +30,49 @@ public struct AccountTransactionHeader
     /// <summary>
     /// Address of the sender of the transaction.
     /// </summary>
-    public readonly AccountAddress _sender;
+    public readonly AccountAddress Sender { get; init; }
 
     /// <summary>
     /// Account sequence number to use for the transaction.
     /// </summary>
-    public readonly AccountSequenceNumber _nonce;
+    public AccountSequenceNumber SequenceNumber { get; init; }
 
     /// <summary>
     /// Expiration time of the transaction.
     /// </summary>
-    public readonly Expiry _expiry;
+    public Expiry Expiry { get; init; }
 
     /// <summary>
     /// Maximum amount of energy to spend on this transaction.
     /// </summary>
-    public readonly EnergyAmount _maxEnergyCost;
+    public EnergyAmount MaxEnergyCost { get; init; }
 
     /// <summary>
     /// Size of the transaction payload.
     /// </summary>
-    public readonly PayloadSize _payloadSize;
+    public PayloadSize PayloadSize { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountTransactionHeader"/> class.
     /// </summary>
     /// <param name="sender">Address of the sender of the transaction.</param>
-    /// <param name="nonce">Account nonce to use for the transaction.</param>
+    /// <param name="sequenceNumber">Account sequence number to use for the transaction.</param>
     /// <param name="expiry">Expiration time of the transaction.</param>
     /// <param name="maxEnergyCost">Maximum amount of energy to spend on this transaction.</param>
     /// <param name="payloadSize">Size of the transaction payload.</param>
     public AccountTransactionHeader(
         AccountAddress sender,
-        AccountSequenceNumber nonce,
+        AccountSequenceNumber sequenceNumber,
         Expiry expiry,
-        UInt64 maxEnergyCost,
-        UInt32 payloadSize
+        EnergyAmount maxEnergyCost,
+        PayloadSize payloadSize
     )
     {
-        _sender = sender;
-        _nonce = nonce;
-        _expiry = expiry;
-        _maxEnergyCost = maxEnergyCost;
-        _payloadSize = payloadSize;
+        this.Sender = sender;
+        this.SequenceNumber = sequenceNumber;
+        this.Expiry = expiry;
+        this.MaxEnergyCost = maxEnergyCost;
+        this.PayloadSize = payloadSize;
     }
 
     /// <summary>
@@ -80,21 +80,21 @@ public struct AccountTransactionHeader
     /// This is used when signing transactions.
     /// </summary>
     /// <param name="sender">Address of the sender of the transaction.</param>
-    /// <param name="nonce">Account nonce to use for the transaction.</param>
+    /// <param name="sequenceNumber">Account sequence number to use for the transaction.</param>
     /// <param name="expiry">Expiration time of the transaction.</param>
     /// <param name="maxEnergyCost">Maximum amount of energy to spend on this transaction.</param>
     /// <param name="payloadSize">Size of the transaction payload.</param>
     private static byte[] Serialize(
         AccountAddress sender,
-        AccountSequenceNumber nonce,
+        AccountSequenceNumber sequenceNumber,
         Expiry expiry,
         EnergyAmount maxEnergyCost,
         PayloadSize payloadSize
     )
     {
-        using MemoryStream memoryStream = new MemoryStream();
+        using var memoryStream = new MemoryStream();
         memoryStream.Write(sender.GetBytes());
-        memoryStream.Write(nonce.GetBytes());
+        memoryStream.Write(sequenceNumber.GetBytes());
         memoryStream.Write(maxEnergyCost.GetBytes());
         memoryStream.Write(payloadSize.GetBytes());
         memoryStream.Write(expiry.GetBytes());
@@ -104,22 +104,24 @@ public struct AccountTransactionHeader
     /// <summary>
     /// Get the transaction header in the binary format expected by the node.
     /// </summary>
-    public byte[] GetBytes()
-    {
-        return Serialize(_sender, _nonce, _expiry, _maxEnergyCost, _payloadSize);
-    }
+    public readonly byte[] GetBytes() =>
+        Serialize(
+            this.Sender,
+            this.SequenceNumber,
+            this.Expiry,
+            this.MaxEnergyCost,
+            this.PayloadSize
+        );
 
     /// <summary>
     /// Converts the account transaction header to its corresponding protocol buffer message instance.
     /// </summary>
-    public Concordium.Grpc.V2.AccountTransactionHeader ToProto()
-    {
-        return new Concordium.Grpc.V2.AccountTransactionHeader()
+    public readonly Grpc.V2.AccountTransactionHeader ToProto() =>
+        new()
         {
-            Sender = _sender.ToProto(),
-            SequenceNumber = _nonce.ToProto(),
-            Expiry = _expiry.ToProto(),
-            EnergyAmount = new Concordium.Grpc.V2.Energy() { Value = _maxEnergyCost }
+            Sender = this.Sender.ToProto(),
+            SequenceNumber = this.SequenceNumber.ToProto(),
+            Expiry = this.Expiry.ToProto(),
+            EnergyAmount = new Grpc.V2.Energy() { Value = MaxEnergyCost }
         };
-    }
 }

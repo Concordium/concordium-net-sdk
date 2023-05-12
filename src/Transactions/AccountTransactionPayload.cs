@@ -16,16 +16,13 @@ public abstract record AccountTransactionPayload<T>
     /// Prepares the account transaction payload for signing.
     /// </summary>
     /// <param name="sender">Address of the sender of the transaction.</param>
-    /// <param name="nonce">Account nonce to use for the transaction.</param>
+    /// <param name="sequenceNumber">Account sequence number to use for the transaction.</param>
     /// <param name="expiry">Expiration time of the transaction.</param>
     public PreparedAccountTransaction<T> Prepare(
         AccountAddress sender,
-        AccountSequenceNumber nonce,
+        AccountSequenceNumber sequenceNumber,
         Expiry expiry
-    )
-    {
-        return new PreparedAccountTransaction<T>(sender, nonce, expiry, this);
-    }
+    ) => new(sender, sequenceNumber, expiry, this);
 
     /// <summary>
     /// Gets the transaction specific cost for submitting this type of
@@ -49,11 +46,6 @@ public abstract record AccountTransactionPayload<T>
     /// <summary>
     /// Converts the transaction to its corresponding protocol buffer message instance.
     /// </summary>
-    public Concordium.Grpc.V2.AccountTransactionPayload ToProto()
-    {
-        return new Concordium.Grpc.V2.AccountTransactionPayload()
-        {
-            RawPayload = Google.Protobuf.ByteString.CopyFrom(GetBytes())
-        };
-    }
+    public Grpc.V2.AccountTransactionPayload ToProto() =>
+        new() { RawPayload = Google.Protobuf.ByteString.CopyFrom(this.GetBytes()) };
 }

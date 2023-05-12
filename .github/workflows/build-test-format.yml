@@ -1,18 +1,19 @@
-name: .NET
+name: Build, test and format
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
-  build:
-
+  build-test-format:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
+      with:
+        submodules: recursive
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
@@ -23,3 +24,5 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --filter FullyQualifiedName!~IntegrationTests --no-build --verbosity normal
+    - name: Check formatting
+      run: dotnet format --verify-no-changes

@@ -1,23 +1,31 @@
-﻿using Concordium.Grpc.V2;
 using Concordium.Sdk.Transactions;
 using Concordium.Sdk.Types;
 using Grpc.Core;
 using TransactionHash = Concordium.Grpc.V2.TransactionHash;
+using Grpc.Net.Client;
 
 namespace Concordium.Sdk.Client;
 
 /// <summary>
-/// A client for interacting with the Concordium GRPC API V2 exposed by nodes.
+/// A client for interacting with the Concordium gRPC API V2 exposed by nodes.
 /// </summary>
 public class ConcordiumClient : IDisposable
 {
     /// <summary>
     /// The raw client.
     /// </summary>
-    public readonly RawClient Raw;
+    public RawClient Raw { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Client"/> class.
+    ///
+    /// Optionally use <paramref name="channelOptions"/> to specify connection settings
+    /// such as the retry policy or keepalive ping.
+    ///
+    /// By default the policy is not to retry if a connection could not be established.
+    ///
+    /// See https://github.com/grpc/grpc/blob/master/doc/keepalive.md for default values
+    /// for the keepalive ping parameters.
     /// </summary>
     /// <param name="endpoint">
     /// Endpoint of a resource where the V2 API is served. Any port specified in the URL is
@@ -27,68 +35,46 @@ public class ConcordiumClient : IDisposable
     /// Port of the resource where the V2 API is served. This will override any port
     /// specified in <paramref name="endpoint"/>.
     /// </param>
-    /// <param name="timeout">The request timeout in seconds (default: <c>30</c>).</param>
-    public ConcordiumClient(Uri endpoint, UInt16 port, ulong timeout = 30)
-        : this(endpoint, port, new ClientConfiguration(timeout)) { }
+    /// <param name="timeout">The maximum permitted duration of a call made by this client, in seconds. <c>null</c> allows the call to run indefinitely.</param>
+    /// <param name="channelOptions">The options for the channel that is used to communicate with the node.</param>
+    public ConcordiumClient(Uri endpoint, ushort port, ulong? timeout = 30, GrpcChannelOptions? rawChannelOptions = null)
+    => this.Raw = new(endpoint, port, timeout, rawChannelOptions);
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Client"/> class.
+    /// Send an account transaction to the node.
     /// </summary>
-    /// <param name="endpoint">
-    /// Endpoint of a resource where the V2 API is served. Any port specified in the URL is
-    /// ignored.
-    /// </param>
-    /// <param name="port">
-    /// Port of the resource where the V2 API is served. This will override any port
-    /// specified in <paramref name="endpoint"/>.
-    /// </param>
-    /// <param name="configuration">The configuration to use with this client.</param>
-    public ConcordiumClient(Uri endpoint, UInt16 port, ClientConfiguration configuration)
-    {
-        Raw = new RawClient(endpoint, port, configuration);
-    }
-
-    /// <summary>
-    /// Send a transaction to the node.
-    /// </summary>
-    /// <param name="transaction">The transaction to send.</param>
+    /// <param name="transaction">The account transaction to send.</param>
     /// <returns>Hash of the transaction if it was accepted by the node.</returns>
     /// <exception cref="RpcException">The call failed, e.g. due to the node not accepting the transaction.</exception>
     /// <exception cref="FormatException">The returned transaction hash has an invalid number of bytes.</exception>
-    public Concordium.Sdk.Types.TransactionHash SendTransaction<T>(
-        SignedAccountTransaction<T> transaction
-    )
+    public Types.TransactionHash SendAccountTransaction<T>(SignedAccountTransaction<T> transaction)
         where T : AccountTransactionPayload<T>
     {
         // Send the transaction as a block item request.
-        TransactionHash txHash = Raw.SendBlockItem(transaction.ToSendBlockItemRequest());
+        var txHash = this.Raw.SendBlockItem(transaction.ToSendBlockItemRequest());
 
         // Return the transaction hash as a "native" SDK type.
-        return Concordium.Sdk.Types.TransactionHash.From(txHash.Value.ToByteArray());
+        return Types.TransactionHash.From(txHash.Value.ToByteArray());
     }
 
     /// <summary>
-    /// Spawn a task which sends a transaction to the node.
+    /// Spawn a task which sends an account transaction to the node.
     ///
     /// Note that the task may throw a <see cref="FormatException"/> if the transaction hash it returns
     /// has an invalid number of bytes.
     /// </summary>
-    /// <param name="transaction">The transaction to send.</param>
+    /// <param name="transaction">The account transaction to send.</param>
     /// <returns>Task which returns the hash of the transaction if it was accepted by the node.</returns>
     /// <exception cref="RpcException">The call failed, e.g. due to the node not accepting the transaction.</exception>
-    public Task<Concordium.Sdk.Types.TransactionHash> SendTransactionAsync<T>(
+    public Task<Types.TransactionHash> SendAccountTransactionAsync<T>(
         SignedAccountTransaction<T> transaction
     )
-        where T : AccountTransactionPayload<T>
-    {
+        where T : AccountTransactionPayload<T> =>
         // Send the transaction as a block item request.
-        return Raw.SendBlockItemAsync(transaction.ToSendBlockItemRequest())
+        this.Raw
+            .SendBlockItemAsync(transaction.ToSendBlockItemRequest())
             // Continuation returning the "native" SDK type.
-            .ContinueWith(
-                txHash =>
-                    Concordium.Sdk.Types.TransactionHash.From(txHash.Result.Value.ToByteArray())
-            );
-    }
+            .ContinueWith(txHash => Types.TransactionHash.From(txHash.Result.Value.ToByteArray()));
 
     /// <summary>
     /// Query the chain for the next sequence number of the account with the supplied
@@ -103,16 +89,20 @@ public class ConcordiumClient : IDisposable
     /// committed to blocks and eventually finalized.
     /// </summary>
     /// <param name="accountAddress">An address of the account to get the next sequence number of.</param>
-    /// <returns>The best guess of the next sequence number for the supplied account.</returns>
+    /// <returns>
+    /// A tuple containing the best guess of the next sequence number for the supplied account and a boolean
+    /// indicating whether all transactions associated with the account are finalized. If the latter is the
+    /// case, then the sequence number is reliable.
+    /// </returns>
     /// <exception cref="RpcException">The call failed.</exception>
-    public Concordium.Sdk.Types.AccountSequenceNumber GetNextAccountSequenceNumber(
-        Concordium.Sdk.Types.AccountAddress accountAddress
+    public (Types.AccountSequenceNumber, bool) GetNextAccountSequenceNumber(
+        Types.AccountAddress accountAddress
     )
     {
-        NextAccountSequenceNumber next = Raw.GetNextAccountSequenceNumber(accountAddress.ToProto());
+        var next = this.Raw.GetNextAccountSequenceNumber(accountAddress.ToProto());
 
         // Return the sequence number as a "native" SDK type.
-        return Concordium.Sdk.Types.AccountSequenceNumber.From(next.SequenceNumber.Value);
+        return (Types.AccountSequenceNumber.From(next.SequenceNumber.Value), next.AllFinal);
     }
 
     /// <summary>
@@ -128,21 +118,25 @@ public class ConcordiumClient : IDisposable
     /// committed to blocks and eventually finalized.
     /// </summary>
     /// <param name="accountAddress">An address of the account to get the next sequence number of.</param>
-    /// <returns>A task which returns the best guess of the next sequence number for the supplied account.</returns>
+    /// <returns>
+    /// A task which returns a tuple containing the best guess of the next sequence number for the supplied
+    /// account and a boolean indicating whether all transactions associated with the account are finalized.
+    /// If the latter is the case, then the sequence number is reliable.
+    /// </returns>
     /// <exception cref="RpcException">The call failed.</exception>
-    public Task<Types.AccountSequenceNumber> GetNextAccountSequenceNumberAsync(
-        Concordium.Sdk.Types.AccountAddress accountAddress
-    )
-    {
-        return Raw.GetNextAccountSequenceNumberAsync(accountAddress.ToProto())
+    public Task<(Types.AccountSequenceNumber, bool)> GetNextAccountSequenceNumberAsync(
+        Types.AccountAddress accountAddress
+    ) =>
+        this.Raw
+            .GetNextAccountSequenceNumberAsync(accountAddress.ToProto())
             // Continuation returning the "native" SDK type.
             .ContinueWith(
                 next =>
-                    Concordium.Sdk.Types.AccountSequenceNumber.From(
-                        next.Result.SequenceNumber.Value
+                    (
+                        Types.AccountSequenceNumber.From(next.Result.SequenceNumber.Value),
+                        next.Result.AllFinal
                     )
             );
-    }
 
     /// <summary>
     /// Get the status of and information about a specific block item
@@ -161,20 +155,29 @@ public class ConcordiumClient : IDisposable
 
     protected virtual void Dispose(bool disposing)
     {
-        if (!_disposedValue)
+        if (!this._disposedValue)
         {
             if (disposing)
             {
-                Raw.Dispose();
+                this.Raw.Dispose();
             }
 
-            _disposedValue = true;
+            this._disposedValue = true;
         }
     }
 
     public void Dispose()
     {
-        Dispose(true);
+        this.Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    ~ConcordiumClient()
+    {
+        // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+        // This simply serves as a fallback for the GC in case that Dispose was not
+        // invoked.
+        this.Dispose(false);
     }
 
     #endregion

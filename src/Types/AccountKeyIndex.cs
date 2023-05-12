@@ -21,32 +21,23 @@ public readonly struct AccountKeyIndex
     /// Initializes a new instance of the <see cref="AccountKeyIndex"/> class.
     /// </summary>
     /// <param name="value">An account key index represented by a <see cref="byte"/>.</param>
-    public AccountKeyIndex(byte value)
-    {
-        Value = value;
-    }
+    public AccountKeyIndex(byte value) => this.Value = value;
 
     /// <summary>
     /// Creates an instance from a string representing a <see cref="byte"/> value.
     /// </summary>
     /// <param name="index">An index represented as a string representing to be parsed as a <see cref="byte"/> value.</param>
+    /// <exception cref="ArgumentException">The index could not be parsed as a <see cref="byte"/> value.</exception>
     public static AccountKeyIndex From(string index)
     {
-        byte result;
-        if (Byte.TryParse(index, out result))
+        if (byte.TryParse(index, out var result))
         {
             return new AccountKeyIndex(result);
         }
-        throw new ArgumentException("Could not parse the account key index.");
+        throw new ArgumentException($"Could not parse '{index}' as a byte value.");
     }
 
-    public static implicit operator AccountKeyIndex(byte value)
-    {
-        return new AccountKeyIndex(value);
-    }
+    public static implicit operator AccountKeyIndex(byte value) => new(value);
 
-    public static implicit operator byte(AccountKeyIndex accountKeyIndex)
-    {
-        return accountKeyIndex.Value;
-    }
+    public static implicit operator byte(AccountKeyIndex accountKeyIndex) => accountKeyIndex.Value;
 }

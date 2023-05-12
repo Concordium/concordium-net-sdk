@@ -1,4 +1,4 @@
-﻿namespace Concordium.Sdk.Types;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Represents a transaction hash.
@@ -15,30 +15,24 @@ public record TransactionHash : Hash
     /// Creates an instance from a transaction hash represented by a length-64 encoded string.
     /// </summary>
     /// <param name="transactionHashAsBase16String">The transaction hash represented by a length-64 encoded string.</param>
-    public static TransactionHash From(string transactionHashAsBase16String)
-    {
-        return new TransactionHash(transactionHashAsBase16String);
-    }
+    public static TransactionHash From(string transactionHashAsBase16String) =>
+        new(transactionHashAsBase16String);
 
     /// <summary>
     /// Creates an instance from a transaction hash represented by a length-32 byte array.
     /// </summary>
     /// <param name="transactionHashAsBytes">The transaction hash represented by a length-32 byte array</param>
-    public static TransactionHash From(byte[] transactionHashAsBytes)
-    {
-        return new TransactionHash(transactionHashAsBytes);
-    }
+    public static TransactionHash From(byte[] transactionHashAsBytes) =>
+        new(transactionHashAsBytes);
 
     /// <summary>
     /// Converts the transaction hash to its corresponding protocol buffer message instance.
     ///
-    /// This can be used as the input for class methods of <see cref="Concordium.Sdk.Client.RawClient"/>.
+    /// This can be used as the input for class methods of <see cref="Client.RawClient"/>.
     /// </summary>
-    public Concordium.Grpc.V2.TransactionHash ToProto()
-    {
-        return new Concordium.Grpc.V2.TransactionHash()
+    public Grpc.V2.TransactionHash ToProto() =>
+        new()
         {
             Value = Google.Protobuf.ByteString.CopyFrom(this.GetBytes())
         };
-    }
 }

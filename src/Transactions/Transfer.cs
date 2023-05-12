@@ -12,17 +12,17 @@ public record Transfer : AccountTransactionPayload<Transfer>
     /// <summary>
     /// The account transaction type to be used in the serialized payload.
     /// </summary>
-    private const byte TRANSACTION_TYPE = (byte)AccountTransactionType.SimpleTransfer;
+    private const byte TransactionType = (byte)AccountTransactionType.SimpleTransfer;
 
     /// <summary>
     /// Amount to send.
     /// </summary>
-    public readonly CcdAmount Amount;
+    public CcdAmount Amount { get; init; }
 
     /// <summary>
     /// Address of the receiver account to which the amount will be sent.
     /// </summary>
-    public readonly AccountAddress Receiver;
+    public AccountAddress Receiver { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Transfer"/> class.
@@ -31,8 +31,8 @@ public record Transfer : AccountTransactionPayload<Transfer>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
     public Transfer(CcdAmount amount, AccountAddress receiver)
     {
-        Amount = amount;
-        Receiver = receiver;
+        this.Amount = amount;
+        this.Receiver = receiver;
     }
 
     /// <summary>
@@ -42,8 +42,8 @@ public record Transfer : AccountTransactionPayload<Transfer>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
     private static byte[] Serialize(CcdAmount amount, AccountAddress receiver)
     {
-        using MemoryStream memoryStream = new MemoryStream();
-        memoryStream.WriteByte(TRANSACTION_TYPE);
+        using var memoryStream = new MemoryStream();
+        memoryStream.WriteByte(TransactionType);
         memoryStream.Write(receiver.GetBytes());
         memoryStream.Write(amount.GetBytes());
         return memoryStream.ToArray();
@@ -51,8 +51,5 @@ public record Transfer : AccountTransactionPayload<Transfer>
 
     public override ulong GetTransactionSpecificCost() => 300;
 
-    public override byte[] GetBytes()
-    {
-        return Serialize(Amount, Receiver);
-    }
+    public override byte[] GetBytes() => Serialize(this.Amount, this.Receiver);
 }

@@ -1,5 +1,5 @@
-using Concordium.Sdk.Types;
 using System.Collections.Immutable;
+using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;
 
@@ -14,7 +14,7 @@ namespace Concordium.Sdk.Transactions;
 /// index of the account. For each key, it is thus represented by some pair of a credential
 /// index and a key index.
 ///
-/// An <see cref="AccountTransactionSignature"> corresponds to a mapping from credential
+/// An <see cref="AccountTransactionSignature"/> corresponds to a mapping from credential
 /// and key indices to signatures produced by signing the transaction hash with the account
 /// keys corresponding to the indices.
 ///
@@ -26,13 +26,26 @@ public class AccountTransactionSignature
     /// <summary>
     /// Internal representation of the signature. This is a map from account credential indices to account signature maps.
     /// </summary>
-    public readonly ImmutableDictionary<AccountCredentialIndex, AccountSignatureMap> signatureMap;
+    public ImmutableDictionary<
+        AccountCredentialIndex,
+        AccountSignatureMap
+    > SignatureMap
+    { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountTransactionSignature"/> class.
     /// </summary>
-    /// <param name="signatureMaps"><see cref="Dictionary"> corresponding to the map.</param>
-    public AccountTransactionSignature(
+    /// <param name="signatureMaps">Dictionary corresponding to the map.</param>
+    private AccountTransactionSignature(
+        Dictionary<AccountCredentialIndex, AccountSignatureMap> signatureMaps
+    ) => this.SignatureMap = signatureMaps.ToImmutableDictionary();
+
+    /// <summary>
+    /// Creates a new instance of the <see cref="AccountTransactionSignature"/> class.
+    /// </summary>
+    /// <param name="signatureMaps">Dictionary corresponding to the map.</param>
+    /// <exception cref="ArgumentException">A signature is not 64 bytes.</exception>
+    public static AccountTransactionSignature Create(
         Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, byte[]>> signatureMaps
     )
     {
@@ -47,18 +60,18 @@ public class AccountTransactionSignature
             {
                 accountSignatureMap.Add(k.Key, k.Value);
             }
-            accountTransactionSignature.Add(m.Key, new AccountSignatureMap(accountSignatureMap));
+            accountTransactionSignature.Add(m.Key, AccountSignatureMap.Create(accountSignatureMap));
         }
-        this.signatureMap = accountTransactionSignature.ToImmutableDictionary();
+        return new AccountTransactionSignature(accountTransactionSignature);
     }
 
     /// <summary>
     /// Converts the account transaction signature to its corresponding protocol buffer message instance.
     /// </summary>
-    public Concordium.Grpc.V2.AccountTransactionSignature ToProto()
+    public Grpc.V2.AccountTransactionSignature ToProto()
     {
-        var accountTransactionSignature = new Concordium.Grpc.V2.AccountTransactionSignature();
-        signatureMap
+        var accountTransactionSignature = new Grpc.V2.AccountTransactionSignature();
+        this.SignatureMap
             .ToList()
             .ForEach(x => accountTransactionSignature.Signatures.Add(x.Key, x.Value.ToProto()));
         return accountTransactionSignature;

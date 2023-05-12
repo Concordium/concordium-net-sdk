@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Text;
 using Concordium.Sdk.Crypto;
 using FluentAssertions;
 using Xunit;
 
-namespace Concordium.Sdk.UnitTests.SignKey;
+namespace Concordium.Sdk.Tests.UnitTests.SignKey;
 
 public class Ed25519SignKeyTests
 {
@@ -49,7 +49,7 @@ public class Ed25519SignKeyTests
     {
         var shortEd25519SignKeyAsHexString = "1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbbb";
         Action result = () => Ed25519SignKey.From(shortEd25519SignKeyAsHexString);
-        result.Should().Throw<FormatException>();
+        result.Should().Throw<ArgumentException>();
     }
 
     [Fact]
@@ -57,7 +57,7 @@ public class Ed25519SignKeyTests
     {
         var shortEd25519SignKeyAsHexString = "1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbQ";
         Action result = () => Ed25519SignKey.From(shortEd25519SignKeyAsHexString);
-        result.Should().Throw<FormatException>();
+        result.Should().Throw<ArgumentException>();
     }
 
     [Fact]

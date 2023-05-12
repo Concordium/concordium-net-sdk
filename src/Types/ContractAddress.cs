@@ -14,22 +14,22 @@ public readonly struct ContractAddress : IEquatable<ContractAddress>
     /// <summary>
     /// The index part of the address of a contract.
     /// </summary>
-    public readonly UInt64 Index { get; init; }
+    public readonly ulong Index { get; init; }
 
     /// <summary>
     /// The sub-index part of the address of a contract.
     /// </summary>
-    public readonly UInt64 SubIndex { get; init; }
+    public readonly ulong SubIndex { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ContractAddress"/> class.
     /// </summary>
     /// <param name="index">The contract index.</param>
     /// <param name="subIndex">The contract sub index.</param>
-    private ContractAddress(UInt64 index, UInt64 subIndex)
+    private ContractAddress(ulong index, ulong subIndex)
     {
-        Index = index;
-        SubIndex = subIndex;
+        this.Index = index;
+        this.SubIndex = subIndex;
     }
 
     /// <summary>
@@ -37,10 +37,7 @@ public readonly struct ContractAddress : IEquatable<ContractAddress>
     /// </summary>
     /// <param name="index">the index value.</param>
     /// <param name="subIndex">the sub index value.</param>
-    public static ContractAddress Create(UInt64 index, UInt64 subIndex)
-    {
-        return new ContractAddress(index, subIndex);
-    }
+    public static ContractAddress Create(ulong index, ulong subIndex) => new(index, subIndex);
 
     internal static ContractAddress From(Concordium.Grpc.V2.ContractAddress contractAddress)
     {
@@ -50,43 +47,36 @@ public readonly struct ContractAddress : IEquatable<ContractAddress>
     /// <summary>
     /// Converts the contract address to its corresponding protocol buffer message instance.
     ///
-    /// This can be used as the input for class methods of <see cref="Concordium.Sdk.Client.RawClient"/>.
+    /// This can be used as the input for class methods of <see cref="Client.RawClient"/>.
     /// </summary>
-    public Concordium.Grpc.V2.ContractAddress ToProto()
-    {
-        return new Concordium.Grpc.V2.ContractAddress() { Index = Index, Subindex = SubIndex };
-    }
+    public Grpc.V2.ContractAddress ToProto() => new() { Index = Index, Subindex = SubIndex };
 
-    public bool Equals(ContractAddress contractAddress)
-    {
-        return Index == contractAddress.Index && SubIndex == contractAddress.SubIndex;
-    }
+    public bool Equals(ContractAddress other) => this.Index == other.Index && this.SubIndex == other.SubIndex;
 
     public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(null, obj))
+        if (obj is null)
+        {
             return false;
-        if (obj.GetType() != GetType())
+        }
+
+        if (obj.GetType() != this.GetType())
+        {
             return false;
+        }
 
         var other = (ContractAddress)obj;
-        return Equals(other);
+        return this.Equals(other);
     }
 
     public override int GetHashCode()
     {
-        byte[] indexBytes = Serialization.GetBytes(Index);
-        byte[] subIndexBytes = Serialization.GetBytes(SubIndex);
+        var indexBytes = Serialization.GetBytes(this.Index);
+        var subIndexBytes = Serialization.GetBytes(this.SubIndex);
         return indexBytes.Concat(subIndexBytes).GetHashCode();
     }
 
-    public static bool operator ==(ContractAddress? left, ContractAddress? right)
-    {
-        return Equals(left, right);
-    }
+    public static bool operator ==(ContractAddress? left, ContractAddress? right) => Equals(left, right);
 
-    public static bool operator !=(ContractAddress? left, ContractAddress? right)
-    {
-        return !Equals(left, right);
-    }
+    public static bool operator !=(ContractAddress? left, ContractAddress? right) => !Equals(left, right);
 }
