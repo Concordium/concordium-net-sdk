@@ -1,7 +1,8 @@
 ﻿using Concordium.Grpc.V2;
 using Concordium.Sdk.Transactions;
-
+using Concordium.Sdk.Types;
 using Grpc.Core;
+using TransactionHash = Concordium.Grpc.V2.TransactionHash;
 
 namespace Concordium.Sdk.Client;
 
@@ -129,7 +130,7 @@ public class ConcordiumClient : IDisposable
     /// <param name="accountAddress">An address of the account to get the next sequence number of.</param>
     /// <returns>A task which returns the best guess of the next sequence number for the supplied account.</returns>
     /// <exception cref="RpcException">The call failed.</exception>
-    public Task<Concordium.Sdk.Types.AccountSequenceNumber> GetNextAccountSequenceNumberAsync(
+    public Task<Types.AccountSequenceNumber> GetNextAccountSequenceNumberAsync(
         Concordium.Sdk.Types.AccountAddress accountAddress
     )
     {
@@ -141,6 +142,17 @@ public class ConcordiumClient : IDisposable
                         next.Result.SequenceNumber.Value
                     )
             );
+    }
+
+    /// <summary>
+    /// Get the status of and information about a specific block item
+    /// (transaction).
+    /// </summary>
+    public async Task<ITransactionStatus> GetBlockItemStatus(Types.TransactionHash transactionHash)
+    {
+        var blockItemStatus = await Raw.GetBlockItemStatusAsync(transactionHash.ToProto());
+
+        return TransactionStatusFactory.CreateTransactionStatus(blockItemStatus);
     }
 
     #region IDisposable Support

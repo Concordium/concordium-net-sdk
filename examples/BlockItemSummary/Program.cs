@@ -1,5 +1,4 @@
-﻿using BlockItemSummary;
-using Concordium.Sdk.Client;
+﻿using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
 
 Console.WriteLine("Started...");
@@ -9,9 +8,7 @@ var client = new ConcordiumClient(endpoint, 20_000);
 
 var transactionHash = TransactionHash.From("6bd564e9e600fd0e5b0e197133a3448c819dfd4f9bcbec956a39d5b2a5029c48");
 
-var blockItemStatus = client.Raw.GetBlockItemStatus(transactionHash.ToProto());
-
-var transactionStatus = TransactionStatusFactory.CreateTransactionStatus(blockItemStatus);
+var transactionStatus = await client.GetBlockItemStatus(transactionHash);
 
 switch (transactionStatus)
 {
@@ -26,4 +23,4 @@ switch (transactionStatus)
         break;
 };
 
-Console.WriteLine("{0}", blockItemStatus);
+// Console.WriteLine("{0}", blockItemStatus);
