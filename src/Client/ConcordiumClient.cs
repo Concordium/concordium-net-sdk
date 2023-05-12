@@ -1,6 +1,7 @@
 using Concordium.Sdk.Transactions;
-
+using Concordium.Sdk.Types;
 using Grpc.Core;
+using TransactionHash = Concordium.Grpc.V2.TransactionHash;
 using Grpc.Net.Client;
 
 namespace Concordium.Sdk.Client;
@@ -136,6 +137,17 @@ public class ConcordiumClient : IDisposable
                         next.Result.AllFinal
                     )
             );
+
+    /// <summary>
+    /// Get the status of and information about a specific block item
+    /// (transaction).
+    /// </summary>
+    public async Task<ITransactionStatus> GetBlockItemStatus(Types.TransactionHash transactionHash)
+    {
+        var blockItemStatus = await Raw.GetBlockItemStatusAsync(transactionHash.ToProto());
+
+        return TransactionStatusFactory.CreateTransactionStatus(blockItemStatus);
+    }
 
     #region IDisposable Support
 

@@ -155,7 +155,16 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     public override bool Equals(object? obj) =>
         obj is not null && obj is AccountAddress other && this.Equals(other);
 
-    public override int GetHashCode() => this.GetBytes().GetHashCode();
+    public override int GetHashCode()
+    {
+        var hash = 1;
+        foreach (var b in _value.AsSpan())
+        {
+            hash *= b.GetHashCode();
+        }
+
+        return hash;
+    }
 
     public static bool operator ==(AccountAddress left, AccountAddress right) => left.Equals(right);
 

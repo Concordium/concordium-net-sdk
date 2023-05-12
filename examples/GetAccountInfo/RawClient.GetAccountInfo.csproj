@@ -5,14 +5,17 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <RootNamespace>RawClient.GetAccountInfo</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Common\Concordium.Sdk.Examples.Common.csproj" />
-    <ProjectReference Include="..\..\..\..\src\Concordium.Sdk.csproj" />
-  </ItemGroup>
+  
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" AllowedVersions="[2.9.0, 2.10.0)" />
+  </ItemGroup>
+  
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Concordium.Sdk.csproj" />
+    <ProjectReference Include="..\Common\Common.csproj" />
   </ItemGroup>
 </Project>
