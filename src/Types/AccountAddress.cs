@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Helpers;
 using NBitcoin.DataEncoders;
