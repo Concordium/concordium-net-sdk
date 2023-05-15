@@ -1,5 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -16,17 +15,19 @@
     <RepositoryUrl>https://github.com/Concordium/concordium-net-sdk</RepositoryUrl>
     <PackageTags>concordium;concordium-net-sdk;blockchain;sdk;</PackageTags>
     <Company>Concordium</Company>
+    <PackageId>Concordium.Sdk</PackageId>
+    <Version>2.0.0</Version>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version>2.0.0</Version>
+    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\nuget\icon.png">
+    <None Include="..\nuget\icon.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Include="..\..\nuget\README.md">
+    <None Include="..\nuget\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
