@@ -10,18 +10,14 @@ namespace Concordium.Sdk.Types;
 public sealed class BlockItemSummary {
     private readonly Concordium.Grpc.V2.BlockItemSummary _blockItemSummary;
 
-    internal BlockItemSummary(Concordium.Grpc.V2.BlockItemSummary blockItemSummary)
-    {
-        this._blockItemSummary = blockItemSummary;
-    }
+    internal BlockItemSummary(Concordium.Grpc.V2.BlockItemSummary blockItemSummary) => this._blockItemSummary = blockItemSummary;
 
     /// <summary>
     /// Return whether the transaction was successful, i.e., the intended effect
     /// happened.
     /// </summary>
-    public bool IsSuccess()
-    {
-        return this._blockItemSummary.DetailsCase switch
+    public bool IsSuccess() =>
+        this._blockItemSummary.DetailsCase switch
         {
             Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction =>
                 !AccountTransactionDetailsIsRejected(this._blockItemSummary.AccountTransaction, out _),
@@ -32,16 +28,12 @@ public sealed class BlockItemSummary {
             _ =>
                 throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(this._blockItemSummary.DetailsCase)
         };
-    }
 
     /// <summary>
     /// Return whether the transaction has failed to achieve the intended
     /// effects.
     /// </summary>
-    public bool IsReject()
-    {
-        return this.IsRejectedAccountTransaction(out _);
-    }
+    public bool IsReject() => this.IsRejectedAccountTransaction(out _);
 
     /// <summary>
     /// Return true and sets `rejectReason` if the result corresponds to a rejected account
@@ -92,20 +84,7 @@ public sealed class BlockItemSummary {
     {
         var affectedContracts = new List<ContractAddress>();
 
-        var isAccountTransaction = this._blockItemSummary.DetailsCase switch
-        {
-            Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction => true,
-            Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountCreation => false,
-            Grpc.V2.BlockItemSummary.DetailsOneofCase.Update => false,
-            Grpc.V2.BlockItemSummary.DetailsOneofCase.None =>
-                throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(
-                    Grpc.V2.BlockItemSummary.DetailsOneofCase.None),
-            _ =>
-                throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(this._blockItemSummary
-                    .DetailsCase)
-        };
-
-        if (!isAccountTransaction)
+        if (this._blockItemSummary.DetailsCase != Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction)
         {
             return affectedContracts;
         }
@@ -130,6 +109,11 @@ public sealed class BlockItemSummary {
                                 affectedContracts.Add(ContractAddress.From(contractTraceElement.Updated.Address));
                             }
                             break;
+                        case ContractTraceElement.ElementOneofCase.None:
+                        case ContractTraceElement.ElementOneofCase.Transferred:
+                        case ContractTraceElement.ElementOneofCase.Interrupted:
+                        case ContractTraceElement.ElementOneofCase.Resumed:
+                        case ContractTraceElement.ElementOneofCase.Upgraded:
                         default:
                             continue;
                     }
@@ -216,8 +200,8 @@ public sealed class BlockItemSummary {
                     break;
                 case ContractTraceElement.ElementOneofCase.Interrupted:
                     var itemInterrupted = (
-                            ContractAddress.From(contractTraceElement.Updated.Address),
-                            contractTraceElement.Updated.Events
+                            ContractAddress.From(contractTraceElement.Interrupted.Address),
+                            contractTraceElement.Interrupted.Events
                                 .Select(e => new ContractEvent(e.Value.ToByteArray()))
                                 .ToList())
                         ;

@@ -186,7 +186,6 @@ public sealed class RejectReason
       case Grpc.V2.RejectReason.ReasonOneofCase.AlreadyABaker:
         var accountIndex = new AccountIndex(other.AlreadyABaker.Value);
         this.AlreadyABaker = new BakerId(accountIndex);
-        ;
         this.ReasonCase = ReasonOneOfCase.AlreadyABaker;
         break;
 
@@ -340,7 +339,6 @@ public sealed class RejectReason
       case Grpc.V2.RejectReason.ReasonOneofCase.DelegationTargetNotABaker:
         var accountIndexDelegationTargetNotABaker = new AccountIndex(other.DelegationTargetNotABaker.Value);
         this.DelegationTargetNotABaker = new BakerId(accountIndexDelegationTargetNotABaker);
-        ;
         this.ReasonCase = ReasonOneOfCase.DelegationTargetNotABaker;
         break;
 

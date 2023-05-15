@@ -31,7 +31,7 @@ public sealed class TransactionStatusFinalized : ITransactionStatus
         var itemSummary = blockItemSummaryInBlock.Outcome;
 
         var blockItemSummary = new BlockItemSummary(itemSummary);
-        State = (new HashBytes(blockItemSummaryInBlock.BlockHash.Value), blockItemSummary);
+        this.State = (new HashBytes(blockItemSummaryInBlock.BlockHash.Value), blockItemSummary);
     }
 }
 
@@ -50,7 +50,7 @@ public sealed class TransactionStatusCommitted : ITransactionStatus
 
     internal TransactionStatusCommitted(BlockItemStatus blockItemStatus)
     {
-        States = new List<(HashBytes, BlockItemSummary)>();
+        this.States = new List<(HashBytes, BlockItemSummary)>();
         foreach (var blockItemSummaryInBlock in blockItemStatus.Committed.Outcomes)
         {
             var itemSummary = blockItemSummaryInBlock.Outcome;
@@ -58,7 +58,7 @@ public sealed class TransactionStatusCommitted : ITransactionStatus
             var hash = new HashBytes(blockItemSummaryInBlock.BlockHash.Value);
             var state = (hash, blockItemSummary);
 
-            States.Add(state);
+            this.States.Add(state);
         }
     }
 }
@@ -68,9 +68,8 @@ public sealed class TransactionStatusCommitted : ITransactionStatus
 /// </summary>
 internal static class TransactionStatusFactory
 {
-    internal static ITransactionStatus CreateTransactionStatus(BlockItemStatus blockItemStatus)
-    {
-        return blockItemStatus.StatusCase switch
+    internal static ITransactionStatus CreateTransactionStatus(BlockItemStatus blockItemStatus) =>
+        blockItemStatus.StatusCase switch
         {
             BlockItemStatus.StatusOneofCase.Received => new TransactionStatusReceived(),
             BlockItemStatus.StatusOneofCase.Committed => new TransactionStatusCommitted(blockItemStatus),
@@ -78,5 +77,4 @@ internal static class TransactionStatusFactory
             BlockItemStatus.StatusOneofCase.None => throw new MissingEnumException<BlockItemStatus.StatusOneofCase>(blockItemStatus.StatusCase),
             _ => throw new MissingEnumException<BlockItemStatus.StatusOneofCase>(blockItemStatus.StatusCase)
         };
-    }
 }
