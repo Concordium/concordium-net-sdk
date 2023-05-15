@@ -14,7 +14,7 @@ public sealed class RejectReason
   /// Type of reason. Should be used to determine which property is set.
   /// </summary>
   public ReasonOneOfCase ReasonCase { get; init; }
-  
+
   /// <summary>
   /// As the name says.
   /// </summary>
@@ -54,7 +54,7 @@ public sealed class RejectReason
   /// </summary>
   public (
     int RejectReason,
-    ContractAddress ContractAddress,                
+    ContractAddress ContractAddress,
     OwnedReceiveName OwnedReceiveName,
     OwnedParameter OwnedParameter
     )? RejectedReceive { get; init; }
@@ -96,264 +96,264 @@ public sealed class RejectReason
   /// Delegation target is not a baker.
   /// </summary>
   public BakerId? DelegationTargetNotABaker { get; init; }
-  
+
 
   internal RejectReason(Concordium.Grpc.V2.RejectReason other)
   {
     switch (other.ReasonCase)
     {
       case Grpc.V2.RejectReason.ReasonOneofCase.ModuleNotWf:
-        ReasonCase = ReasonOneOfCase.ModuleNotWf;
+          this.ReasonCase = ReasonOneOfCase.ModuleNotWf;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.ModuleHashAlreadyExists:
-        ModuleHashAlreadyExists = new ModuleReference(new HashBytes(other.ModuleHashAlreadyExists.Value));
-        ReasonCase = ReasonOneOfCase.ModuleHashAlreadyExists;
+          this.ModuleHashAlreadyExists = new ModuleReference(new HashBytes(other.ModuleHashAlreadyExists.Value));
+          this.ReasonCase = ReasonOneOfCase.ModuleHashAlreadyExists;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.InvalidAccountReference:
-        InvalidAccountReference = AccountAddress.From(other.InvalidAccountReference.Value.ToByteArray());
-        ReasonCase = ReasonOneOfCase.InvalidAccountReference;
+          this.InvalidAccountReference = AccountAddress.From(other.InvalidAccountReference.Value.ToByteArray());
+          this.ReasonCase = ReasonOneOfCase.InvalidAccountReference;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.InvalidInitMethod:
-        InvalidInitMethod = new(
+          this.InvalidInitMethod = new(
           new ModuleReference(new HashBytes(other.InvalidInitMethod.ModuleRef.Value)),
           new OwnedContractName(other.InvalidInitMethod.InitName.Value)
         );
-        ReasonCase = ReasonOneOfCase.InvalidInitMethod;
+          this.ReasonCase = ReasonOneOfCase.InvalidInitMethod;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.InvalidReceiveMethod:
-        InvalidReceiveMethod = new(
+          this.InvalidReceiveMethod = new(
           new ModuleReference(new HashBytes(other.InvalidReceiveMethod.ModuleRef.Value)),
           new OwnedReceiveName(other.InvalidReceiveMethod.ReceiveName.Value)
         );
-        ReasonCase = ReasonOneOfCase.InvalidReceiveMethod;
+          this.ReasonCase = ReasonOneOfCase.InvalidReceiveMethod;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.InvalidModuleReference:
-        InvalidModuleReference = new ModuleReference(new HashBytes(other.InvalidModuleReference.Value));
-        ReasonCase = ReasonOneOfCase.InvalidModuleReference;
+          this.InvalidModuleReference = new ModuleReference(new HashBytes(other.InvalidModuleReference.Value));
+          this.ReasonCase = ReasonOneOfCase.InvalidModuleReference;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.InvalidContractAddress:
-        InvalidContractAddress = ContractAddress.Create(
+          this.InvalidContractAddress = ContractAddress.Create(
           other.InvalidContractAddress.Index,
           other.InvalidContractAddress.Subindex
         );
-        ReasonCase = ReasonOneOfCase.InvalidContractAddress;
+          this.ReasonCase = ReasonOneOfCase.InvalidContractAddress;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.RuntimeFailure:
-        ReasonCase = ReasonOneOfCase.RuntimeFailure;
+          this.ReasonCase = ReasonOneOfCase.RuntimeFailure;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.AmountTooLarge:
         var amount = CcdAmount.FromMicroCcd(other.AmountTooLarge.Amount.Value);
         var address = new Address(other.AmountTooLarge.Address);
-        AmountTooLarge = (address, amount);
-        ReasonCase = ReasonOneOfCase.AmountTooLarge;
+        this.AmountTooLarge = (address, amount);
+        this.ReasonCase = ReasonOneOfCase.AmountTooLarge;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.SerializationFailure:
-        ReasonCase = ReasonOneOfCase.SerializationFailure;
+          this.ReasonCase = ReasonOneOfCase.SerializationFailure;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.OutOfEnergy:
-        ReasonCase = ReasonOneOfCase.OutOfEnergy;
+          this.ReasonCase = ReasonOneOfCase.OutOfEnergy;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.RejectedInit:
-        RejectedInit = other.RejectedInit.RejectReason;
-        ReasonCase = ReasonOneOfCase.RejectedInit;
+          this.RejectedInit = other.RejectedInit.RejectReason;
+          this.ReasonCase = ReasonOneOfCase.RejectedInit;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.RejectedReceive:
-        RejectedReceive = new(
+          this.RejectedReceive = new(
           other.RejectedReceive.RejectReason,
           ContractAddress.From(other.RejectedReceive.ContractAddress),
           new OwnedReceiveName(other.RejectedReceive.ReceiveName.Value),
           new OwnedParameter(other.RejectedReceive.Parameter.Value.ToByteArray())
         );
-        ReasonCase = ReasonOneOfCase.RejectedReceive;
+          this.ReasonCase = ReasonOneOfCase.RejectedReceive;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.InvalidProof:
-        ReasonCase = ReasonOneOfCase.InvalidProof;
+          this.ReasonCase = ReasonOneOfCase.InvalidProof;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.AlreadyABaker:
         var accountIndex = new AccountIndex(other.AlreadyABaker.Value);
-        AlreadyABaker = new BakerId(accountIndex);
+        this.AlreadyABaker = new BakerId(accountIndex);
         ;
-        ReasonCase = ReasonOneOfCase.AlreadyABaker;
+        this.ReasonCase = ReasonOneOfCase.AlreadyABaker;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.NotABaker:
-        NotABaker = AccountAddress.From(other.NotABaker.ToByteArray());
-        ReasonCase = ReasonOneOfCase.NotABaker;
+          this.NotABaker = AccountAddress.From(other.NotABaker.ToByteArray());
+          this.ReasonCase = ReasonOneOfCase.NotABaker;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.InsufficientBalanceForBakerStake:
-        ReasonCase = ReasonOneOfCase.InsufficientBalanceForBakerStake;
+          this.ReasonCase = ReasonOneOfCase.InsufficientBalanceForBakerStake;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.StakeUnderMinimumThresholdForBaking:
-        ReasonCase = ReasonOneOfCase.StakeUnderMinimumThresholdForBaking;
+          this.ReasonCase = ReasonOneOfCase.StakeUnderMinimumThresholdForBaking;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.BakerInCooldown:
-        ReasonCase = ReasonOneOfCase.BakerInCooldown;
+          this.ReasonCase = ReasonOneOfCase.BakerInCooldown;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.DuplicateAggregationKey:
-        DuplicateAggregationKey = other.DuplicateAggregationKey.Value.ToByteArray();
-        ReasonCase = ReasonOneOfCase.DuplicateAggregationKey;
+          this.DuplicateAggregationKey = other.DuplicateAggregationKey.Value.ToByteArray();
+          this.ReasonCase = ReasonOneOfCase.DuplicateAggregationKey;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.NonExistentCredentialId:
-        ReasonCase = ReasonOneOfCase.NonExistentCredentialId;
+          this.ReasonCase = ReasonOneOfCase.NonExistentCredentialId;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.KeyIndexAlreadyInUse:
-        ReasonCase = ReasonOneOfCase.KeyIndexAlreadyInUse;
+          this.ReasonCase = ReasonOneOfCase.KeyIndexAlreadyInUse;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.InvalidAccountThreshold:
-        ReasonCase = ReasonOneOfCase.InvalidAccountThreshold;
+          this.ReasonCase = ReasonOneOfCase.InvalidAccountThreshold;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.InvalidCredentialKeySignThreshold:
-        ReasonCase = ReasonOneOfCase.InvalidCredentialKeySignThreshold;
+          this.ReasonCase = ReasonOneOfCase.InvalidCredentialKeySignThreshold;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.InvalidEncryptedAmountTransferProof:
-        ReasonCase = ReasonOneOfCase.InvalidEncryptedAmountTransferProof;
+          this.ReasonCase = ReasonOneOfCase.InvalidEncryptedAmountTransferProof;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.InvalidTransferToPublicProof:
-        ReasonCase = ReasonOneOfCase.InvalidTransferToPublicProof;
+          this.ReasonCase = ReasonOneOfCase.InvalidTransferToPublicProof;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.EncryptedAmountSelfTransfer:
-        EncryptedAmountSelfTransfer = AccountAddress.From(other.EncryptedAmountSelfTransfer.ToByteArray());
-        ReasonCase = ReasonOneOfCase.EncryptedAmountSelfTransfer;
+          this.EncryptedAmountSelfTransfer = AccountAddress.From(other.EncryptedAmountSelfTransfer.ToByteArray());
+          this.ReasonCase = ReasonOneOfCase.EncryptedAmountSelfTransfer;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.InvalidIndexOnEncryptedTransfer:
-        ReasonCase = ReasonOneOfCase.InvalidIndexOnEncryptedTransfer;
+          this.ReasonCase = ReasonOneOfCase.InvalidIndexOnEncryptedTransfer;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.ZeroScheduledAmount:
-        ReasonCase = ReasonOneOfCase.ZeroScheduledAmount;
+          this.ReasonCase = ReasonOneOfCase.ZeroScheduledAmount;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.NonIncreasingSchedule:
-        ReasonCase = ReasonOneOfCase.NonIncreasingSchedule;
+          this.ReasonCase = ReasonOneOfCase.NonIncreasingSchedule;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.FirstScheduledReleaseExpired:
-        ReasonCase = ReasonOneOfCase.FirstScheduledReleaseExpired;
+          this.ReasonCase = ReasonOneOfCase.FirstScheduledReleaseExpired;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.ScheduledSelfTransfer:
-        ScheduledSelfTransfer = AccountAddress.From(other.ScheduledSelfTransfer.ToByteArray());
-        ReasonCase = ReasonOneOfCase.ScheduledSelfTransfer;
+          this.ScheduledSelfTransfer = AccountAddress.From(other.ScheduledSelfTransfer.ToByteArray());
+          this.ReasonCase = ReasonOneOfCase.ScheduledSelfTransfer;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.InvalidCredentials:
-        ReasonCase = ReasonOneOfCase.InvalidCredentials;
+          this.ReasonCase = ReasonOneOfCase.InvalidCredentials;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.DuplicateCredIds:
-        DuplicateCredIds = other.DuplicateCredIds.Ids.Select(id => id.ToByteArray()).ToList();
-        ReasonCase = ReasonOneOfCase.DuplicateCredIds;
+          this.DuplicateCredIds = other.DuplicateCredIds.Ids.Select(id => id.ToByteArray()).ToList();
+          this.ReasonCase = ReasonOneOfCase.DuplicateCredIds;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.NonExistentCredIds:
-        NonExistentCredIds = other.NonExistentCredIds.Ids.Select(id => id.ToByteArray()).ToList();
-        ReasonCase = ReasonOneOfCase.NonExistentCredIds;
+          this.NonExistentCredIds = other.NonExistentCredIds.Ids.Select(id => id.ToByteArray()).ToList();
+          this.ReasonCase = ReasonOneOfCase.NonExistentCredIds;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.RemoveFirstCredential:
-        ReasonCase = ReasonOneOfCase.RemoveFirstCredential;
+          this.ReasonCase = ReasonOneOfCase.RemoveFirstCredential;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.CredentialHolderDidNotSign:
-        ReasonCase = ReasonOneOfCase.CredentialHolderDidNotSign;
+          this.ReasonCase = ReasonOneOfCase.CredentialHolderDidNotSign;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.NotAllowedMultipleCredentials:
-        ReasonCase = ReasonOneOfCase.NotAllowedMultipleCredentials;
+          this.ReasonCase = ReasonOneOfCase.NotAllowedMultipleCredentials;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.NotAllowedToReceiveEncrypted:
-        ReasonCase = ReasonOneOfCase.NotAllowedToReceiveEncrypted;
+          this.ReasonCase = ReasonOneOfCase.NotAllowedToReceiveEncrypted;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.NotAllowedToHandleEncrypted:
-        ReasonCase = ReasonOneOfCase.NotAllowedToHandleEncrypted;
+          this.ReasonCase = ReasonOneOfCase.NotAllowedToHandleEncrypted;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.MissingBakerAddParameters:
-        ReasonCase = ReasonOneOfCase.MissingBakerAddParameters;
+          this.ReasonCase = ReasonOneOfCase.MissingBakerAddParameters;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.FinalizationRewardCommissionNotInRange:
-        ReasonCase = ReasonOneOfCase.FinalizationRewardCommissionNotInRange;
+          this.ReasonCase = ReasonOneOfCase.FinalizationRewardCommissionNotInRange;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.BakingRewardCommissionNotInRange:
-        ReasonCase = ReasonOneOfCase.BakingRewardCommissionNotInRange;
+          this.ReasonCase = ReasonOneOfCase.BakingRewardCommissionNotInRange;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.TransactionFeeCommissionNotInRange:
-        ReasonCase = ReasonOneOfCase.TransactionFeeCommissionNotInRange;
+          this.ReasonCase = ReasonOneOfCase.TransactionFeeCommissionNotInRange;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.AlreadyADelegator:
-        ReasonCase = ReasonOneOfCase.AlreadyADelegator;
+          this.ReasonCase = ReasonOneOfCase.AlreadyADelegator;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.InsufficientBalanceForDelegationStake:
-        ReasonCase = ReasonOneOfCase.InsufficientBalanceForDelegationStake;
+          this.ReasonCase = ReasonOneOfCase.InsufficientBalanceForDelegationStake;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.MissingDelegationAddParameters:
-        ReasonCase = ReasonOneOfCase.MissingDelegationAddParameters;
+          this.ReasonCase = ReasonOneOfCase.MissingDelegationAddParameters;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.InsufficientDelegationStake:
-        ReasonCase = ReasonOneOfCase.InsufficientDelegationStake;
+          this.ReasonCase = ReasonOneOfCase.InsufficientDelegationStake;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.DelegatorInCooldown:
-        ReasonCase = ReasonOneOfCase.DelegatorInCooldown;
+          this.ReasonCase = ReasonOneOfCase.DelegatorInCooldown;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.NotADelegator:
-        NotADelegator = AccountAddress.From(other.NotADelegator.Value.ToByteArray());
-        ReasonCase = ReasonOneOfCase.NotADelegator;
+          this.NotADelegator = AccountAddress.From(other.NotADelegator.Value.ToByteArray());
+          this.ReasonCase = ReasonOneOfCase.NotADelegator;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.DelegationTargetNotABaker:
         var accountIndexDelegationTargetNotABaker = new AccountIndex(other.DelegationTargetNotABaker.Value);
-        DelegationTargetNotABaker = new BakerId(accountIndexDelegationTargetNotABaker);
+        this.DelegationTargetNotABaker = new BakerId(accountIndexDelegationTargetNotABaker);
         ;
-        ReasonCase = ReasonOneOfCase.DelegationTargetNotABaker;
+        this.ReasonCase = ReasonOneOfCase.DelegationTargetNotABaker;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.StakeOverMaximumThresholdForPool:
-        ReasonCase = ReasonOneOfCase.StakeOverMaximumThresholdForPool;
+          this.ReasonCase = ReasonOneOfCase.StakeOverMaximumThresholdForPool;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.PoolWouldBecomeOverDelegated:
-        ReasonCase = ReasonOneOfCase.PoolWouldBecomeOverDelegated;
+          this.ReasonCase = ReasonOneOfCase.PoolWouldBecomeOverDelegated;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.PoolClosed:
-        ReasonCase = ReasonOneOfCase.PoolClosed;
+          this.ReasonCase = ReasonOneOfCase.PoolClosed;
         break;
 
       case Grpc.V2.RejectReason.ReasonOneofCase.None:
@@ -361,7 +361,7 @@ public sealed class RejectReason
         throw new MissingEnumException<Grpc.V2.RejectReason.ReasonOneofCase>(other.ReasonCase);
     }
   }
-  
+
   /// A reason for why a transaction was rejected.
   public enum ReasonOneOfCase {
       None = 0,

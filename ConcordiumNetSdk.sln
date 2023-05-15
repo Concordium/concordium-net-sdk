@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk.Tests.UnitTe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{D86A7796-6AD5-48CA-9DC6-415CC53629B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockItemSummary", "examples\BlockItemSummary\BlockItemSummary.csproj", "{CAC92E03-8FC8-474A-93F0-B31119CEE0BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetBlockItemStatus", "examples\GetBlockItemStatus\GetBlockItemStatus.csproj", "{CAC92E03-8FC8-474A-93F0-B31119CEE0BF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "examples\Common\Common.csproj", "{DEFCB599-F5A6-4CD1-806A-4F77BC378562}"
 EndProject

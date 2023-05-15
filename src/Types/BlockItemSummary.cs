@@ -12,7 +12,7 @@ public sealed class BlockItemSummary {
 
     internal BlockItemSummary(Concordium.Grpc.V2.BlockItemSummary blockItemSummary)
     {
-        _blockItemSummary = blockItemSummary;
+        this._blockItemSummary = blockItemSummary;
     }
 
     /// <summary>
@@ -21,16 +21,16 @@ public sealed class BlockItemSummary {
     /// </summary>
     public bool IsSuccess()
     {
-        return _blockItemSummary.DetailsCase switch
+        return this._blockItemSummary.DetailsCase switch
         {
             Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction =>
-                !AccountTransactionDetailsIsRejected(_blockItemSummary.AccountTransaction, out _),
+                !AccountTransactionDetailsIsRejected(this._blockItemSummary.AccountTransaction, out _),
             Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountCreation => true,
             Grpc.V2.BlockItemSummary.DetailsOneofCase.Update => true,
-            Grpc.V2.BlockItemSummary.DetailsOneofCase.None => 
+            Grpc.V2.BlockItemSummary.DetailsOneofCase.None =>
                 throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(Grpc.V2.BlockItemSummary.DetailsOneofCase.None),
-            _ => 
-                throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(_blockItemSummary.DetailsCase)
+            _ =>
+                throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(this._blockItemSummary.DetailsCase)
         };
     }
 
@@ -40,7 +40,7 @@ public sealed class BlockItemSummary {
     /// </summary>
     public bool IsReject()
     {
-        return IsRejectedAccountTransaction(out _);
+        return this.IsRejectedAccountTransaction(out _);
     }
 
     /// <summary>
@@ -50,16 +50,16 @@ public sealed class BlockItemSummary {
     public bool IsRejectedAccountTransaction(out RejectReason? rejectReason)
     {
         rejectReason = null;
-        return _blockItemSummary.DetailsCase switch
+        return this._blockItemSummary.DetailsCase switch
         {
             Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction =>
-                AccountTransactionDetailsIsRejected(_blockItemSummary.AccountTransaction, out rejectReason),
+                AccountTransactionDetailsIsRejected(this._blockItemSummary.AccountTransaction, out rejectReason),
             Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountCreation => false,
             Grpc.V2.BlockItemSummary.DetailsOneofCase.Update => false,
-            Grpc.V2.BlockItemSummary.DetailsOneofCase.None => 
+            Grpc.V2.BlockItemSummary.DetailsOneofCase.None =>
                 throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(Grpc.V2.BlockItemSummary.DetailsOneofCase.None),
-            _ => 
-                throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(_blockItemSummary.DetailsCase)
+            _ =>
+                throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(this._blockItemSummary.DetailsCase)
         };
     }
 
@@ -69,17 +69,17 @@ public sealed class BlockItemSummary {
     public bool SenderAccount(out AccountAddress? sender)
     {
         sender = null;
-        switch (_blockItemSummary.DetailsCase)
+        switch (this._blockItemSummary.DetailsCase)
         {
             case Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction:
-                sender = AccountAddress.From(_blockItemSummary.AccountTransaction.Sender.Value.ToByteArray());
+                sender = AccountAddress.From(this._blockItemSummary.AccountTransaction.Sender.Value.ToByteArray());
                 return true;
             case Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountCreation:
             case Grpc.V2.BlockItemSummary.DetailsOneofCase.Update:
                 return false;
             case Grpc.V2.BlockItemSummary.DetailsOneofCase.None:
             default:
-                throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(_blockItemSummary
+                throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(this._blockItemSummary
                     .DetailsCase);
         }
     }
@@ -92,7 +92,7 @@ public sealed class BlockItemSummary {
     {
         var affectedContracts = new List<ContractAddress>();
 
-        var isAccountTransaction = _blockItemSummary.DetailsCase switch
+        var isAccountTransaction = this._blockItemSummary.DetailsCase switch
         {
             Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction => true,
             Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountCreation => false,
@@ -101,7 +101,7 @@ public sealed class BlockItemSummary {
                 throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(
                     Grpc.V2.BlockItemSummary.DetailsOneofCase.None),
             _ =>
-                throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(_blockItemSummary
+                throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(this._blockItemSummary
                     .DetailsCase)
         };
 
@@ -110,32 +110,32 @@ public sealed class BlockItemSummary {
             return affectedContracts;
         }
 
-        var effects = _blockItemSummary.AccountTransaction.Effects; 
-        
-        switch (effects.EffectCase)                                                                            
-        {                                                                                                      
+        var effects = this._blockItemSummary.AccountTransaction.Effects;
+
+        switch (effects.EffectCase)
+        {
             case AccountTransactionEffects.EffectOneofCase.ContractInitialized:
                 affectedContracts.Add(ContractAddress.From(effects.ContractInitialized.Address));
                 break;
             case AccountTransactionEffects.EffectOneofCase.ContractUpdateIssued:
-                var seen = new HashSet<(ulong, ulong)>();                                                      
-                foreach (var contractTraceElement in effects.ContractUpdateIssued.Effects)                     
-                {                                                                                              
-                    switch (contractTraceElement.ElementCase)                                                  
-                    {                                                                                          
-                        case ContractTraceElement.ElementOneofCase.Updated:                                    
-                            if (seen.Add((contractTraceElement.Updated.Address.Index,                          
-                                    contractTraceElement.Updated.Address.Subindex)))                           
-                            {                                                                                  
-                                affectedContracts.Add(ContractAddress.From(contractTraceElement.Updated.Address));     
-                            }                                                                                  
-                            break;                                                                             
-                        default:                                                                               
-                            continue;                                                                          
-                    }                                                                                          
+                var seen = new HashSet<(ulong, ulong)>();
+                foreach (var contractTraceElement in effects.ContractUpdateIssued.Effects)
+                {
+                    switch (contractTraceElement.ElementCase)
+                    {
+                        case ContractTraceElement.ElementOneofCase.Updated:
+                            if (seen.Add((contractTraceElement.Updated.Address.Index,
+                                    contractTraceElement.Updated.Address.Subindex)))
+                            {
+                                affectedContracts.Add(ContractAddress.From(contractTraceElement.Updated.Address));
+                            }
+                            break;
+                        default:
+                            continue;
+                    }
                 }
                 break;
-            case AccountTransactionEffects.EffectOneofCase.None:
+            case AccountTransactionEffects.EffectOneofCase.None_:
             case AccountTransactionEffects.EffectOneofCase.ModuleDeployed:
             case AccountTransactionEffects.EffectOneofCase.AccountTransfer:
             case AccountTransactionEffects.EffectOneofCase.BakerAdded:
@@ -153,7 +153,7 @@ public sealed class BlockItemSummary {
             case AccountTransactionEffects.EffectOneofCase.BakerConfigured:
             case AccountTransactionEffects.EffectOneofCase.DelegationConfigured:
                 break;
-            case AccountTransactionEffects.EffectOneofCase.None_:
+            case AccountTransactionEffects.EffectOneofCase.None:
             default:
                 throw new MissingEnumException<AccountTransactionEffects.EffectOneofCase>(effects.EffectCase);
         }
@@ -168,18 +168,18 @@ public sealed class BlockItemSummary {
     public bool ContractInit(out ContractInitializedEvent? contractInitializedEventEvent)
     {
         contractInitializedEventEvent = null;
-        if (_blockItemSummary.DetailsCase != Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction)
+        if (this._blockItemSummary.DetailsCase != Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction)
         {
-            return false; 
+            return false;
         }
-        
-        if (_blockItemSummary.AccountTransaction.Effects.EffectCase != AccountTransactionEffects.EffectOneofCase.ContractInitialized)
+
+        if (this._blockItemSummary.AccountTransaction.Effects.EffectCase != AccountTransactionEffects.EffectOneofCase.ContractInitialized)
         {
             return false;
         }
 
         contractInitializedEventEvent =
-            new ContractInitializedEvent(_blockItemSummary.AccountTransaction.Effects.ContractInitialized);
+            new ContractInitializedEvent(this._blockItemSummary.AccountTransaction.Effects.ContractInitialized);
 
         return true;
     }
@@ -187,21 +187,21 @@ public sealed class BlockItemSummary {
     /// <summary>
     /// If the block item is a smart contract update transaction then return
     /// an iterator over pairs of a contract address that was affected, and the
-    /// logs that were produced. 
+    /// logs that were produced.
     /// </summary>
     public bool ContractUpdateLogs(out IList<(ContractAddress, IList<ContractEvent>)> items)
     {
         items = new List<(ContractAddress, IList<ContractEvent>)>();
-        if (_blockItemSummary.DetailsCase != Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction)
-        {
-            return false; 
-        }
-        if (_blockItemSummary.AccountTransaction.Effects.EffectCase != AccountTransactionEffects.EffectOneofCase.ContractUpdateIssued)
+        if (this._blockItemSummary.DetailsCase != Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction)
         {
             return false;
         }
-        
-        foreach (var contractTraceElement in _blockItemSummary.AccountTransaction.Effects.ContractUpdateIssued.Effects)
+        if (this._blockItemSummary.AccountTransaction.Effects.EffectCase != AccountTransactionEffects.EffectOneofCase.ContractUpdateIssued)
+        {
+            return false;
+        }
+
+        foreach (var contractTraceElement in this._blockItemSummary.AccountTransaction.Effects.ContractUpdateIssued.Effects)
         {
             switch (contractTraceElement.ElementCase)
             {
@@ -242,13 +242,13 @@ public sealed class BlockItemSummary {
     public IList<AccountAddress> AffectedAddresses()
     {
         var affectedAddresses = new List<AccountAddress>();
-        
-        if (_blockItemSummary.DetailsCase != Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction)
+
+        if (this._blockItemSummary.DetailsCase != Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction)
         {
-            return affectedAddresses; 
+            return affectedAddresses;
         }
 
-        var accountTransaction = _blockItemSummary.AccountTransaction;
+        var accountTransaction = this._blockItemSummary.AccountTransaction;
         var effects = accountTransaction.Effects;
         var sender = AccountAddress.From(accountTransaction.Sender.Value.ToByteArray());
 
@@ -303,7 +303,7 @@ public sealed class BlockItemSummary {
                 affectedAddresses.Add(sender);
                 affectedAddresses.Add(AccountAddress.From(effects.TransferredWithSchedule.Receiver.Value.ToByteArray()));
                 break;
-            case AccountTransactionEffects.EffectOneofCase.None:
+            case AccountTransactionEffects.EffectOneofCase.None_:
             case AccountTransactionEffects.EffectOneofCase.ModuleDeployed:
             case AccountTransactionEffects.EffectOneofCase.ContractInitialized:
             case AccountTransactionEffects.EffectOneofCase.BakerAdded:
@@ -318,11 +318,11 @@ public sealed class BlockItemSummary {
             case AccountTransactionEffects.EffectOneofCase.DelegationConfigured:
                 affectedAddresses.Add(sender);
                 break;
-            case AccountTransactionEffects.EffectOneofCase.None_:
+            case AccountTransactionEffects.EffectOneofCase.None:
             default:
                 throw new MissingEnumException<AccountTransactionEffects.EffectOneofCase>(effects.EffectCase);
         }
-        
+
         return affectedAddresses;
     }
 
@@ -331,7 +331,7 @@ public sealed class BlockItemSummary {
     {
         switch (details.Effects.EffectCase)
         {
-            case AccountTransactionEffects.EffectOneofCase.None:
+            case AccountTransactionEffects.EffectOneofCase.None_:
                 rejectReason = new RejectReason(details.Effects.None.RejectReason);
                 return true;
             case AccountTransactionEffects.EffectOneofCase.ModuleDeployed:
@@ -354,7 +354,7 @@ public sealed class BlockItemSummary {
             case AccountTransactionEffects.EffectOneofCase.DelegationConfigured:
                 rejectReason = null;
                 return false;
-            case AccountTransactionEffects.EffectOneofCase.None_:
+            case AccountTransactionEffects.EffectOneofCase.None:
             default:
                 throw new MissingEnumException<AccountTransactionEffects.EffectOneofCase>(details.Effects.EffectCase);
         }

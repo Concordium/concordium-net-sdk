@@ -23,13 +23,13 @@ public sealed class TransactionStatusFinalized : ITransactionStatus
     /// <summary>
     /// Record with the block hash and summary of the outcome of a block item.
     /// </summary>
-    public (HashBytes, BlockItemSummary) State { get; init;  }
+    public (HashBytes BlockHash, BlockItemSummary Summary) State { get; }
 
     internal TransactionStatusFinalized(BlockItemStatus blockItemStatus)
     {
         var blockItemSummaryInBlock = blockItemStatus.Finalized.Outcome;
         var itemSummary = blockItemSummaryInBlock.Outcome;
-        
+
         var blockItemSummary = new BlockItemSummary(itemSummary);
         State = (new HashBytes(blockItemSummaryInBlock.BlockHash.Value), blockItemSummary);
     }
@@ -46,7 +46,7 @@ public sealed class TransactionStatusCommitted : ITransactionStatus
     /// <summary>
     /// Map with records which each gives the block hash and summary of the outcome of a block item.
     /// </summary>
-    public IList<(HashBytes, BlockItemSummary)> States { get; init; }
+    public IList<(HashBytes BlockHash, BlockItemSummary Summary)> States { get; }
 
     internal TransactionStatusCommitted(BlockItemStatus blockItemStatus)
     {
@@ -57,11 +57,11 @@ public sealed class TransactionStatusCommitted : ITransactionStatus
             var blockItemSummary = new BlockItemSummary(itemSummary);
             var hash = new HashBytes(blockItemSummaryInBlock.BlockHash.Value);
             var state = (hash, blockItemSummary);
-            
+
             States.Add(state);
         }
     }
-}   
+}
 
 /// <summary>
 /// Creates a TransactionStatus dependent of the status in the returned BlockItemStatus from the node.
