@@ -8,7 +8,7 @@ namespace Concordium.Sdk.Client;
 /// <summary>
 /// A client for interacting with the Concordium gRPC API V2 exposed by nodes.
 /// </summary>
-public class ConcordiumClient : IDisposable
+public sealed class ConcordiumClient : IDisposable
 {
     /// <summary>
     /// The raw client.
@@ -141,7 +141,7 @@ public class ConcordiumClient : IDisposable
 
     private bool _disposedValue;
 
-    protected virtual void Dispose(bool disposing)
+    private void Dispose(bool disposing)
     {
         if (!this._disposedValue)
         {
@@ -154,19 +154,6 @@ public class ConcordiumClient : IDisposable
         }
     }
 
-    public void Dispose()
-    {
-        this.Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-
-    ~ConcordiumClient()
-    {
-        // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-        // This simply serves as a fallback for the GC in case that Dispose was not
-        // invoked.
-        this.Dispose(false);
-    }
-
+    public void Dispose() => this.Dispose(true);
     #endregion
 }

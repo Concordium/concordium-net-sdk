@@ -9,7 +9,7 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public readonly struct CcdAmount : IEquatable<CcdAmount>
 {
-    public const int BytesLength = 8;
+    public const uint BytesLength = 8;
 
     /// <summary>
     /// Conversion factor, 1_000_000 µCCD = 1 CCD.

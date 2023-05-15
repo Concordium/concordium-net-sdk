@@ -49,7 +49,7 @@ public record Ed25519SignKey : ISigner
         }
         catch (FormatException e)
         {
-            throw new ArgumentException($"'{signKeyAsHexString}' is not a valid hex formatted string: {e.Message}");
+            throw new ArgumentException($"'{signKeyAsHexString}' is not a valid hex formatted string: {e.Message}", e);
         }
         return From(bytes);
     }

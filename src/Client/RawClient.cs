@@ -11,7 +11,7 @@ namespace Concordium.Sdk.Client;
 /// which was generated from the protocol buffer definition files for the
 /// Concordium Node gRPC API V2.
 /// </summary>
-public class RawClient : IDisposable
+public sealed class RawClient : IDisposable
 {
     /// <summary>
     /// The maximum permitted duration for a call made by this client, in seconds.
@@ -716,7 +716,7 @@ public class RawClient : IDisposable
 
     private bool _disposedValue;
 
-    protected virtual void Dispose(bool disposing)
+    public void Dispose(bool disposing)
     {
         if (!this._disposedValue)
         {
@@ -729,19 +729,6 @@ public class RawClient : IDisposable
         }
     }
 
-    public void Dispose()
-    {
-        this.Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-
-    ~RawClient()
-    {
-        // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-        // This simply serves as a fallback for the GC in case that Dispose was not
-        // invoked.
-        this.Dispose(false);
-    }
-
+    public void Dispose() => this.Dispose(true);
     #endregion
 }

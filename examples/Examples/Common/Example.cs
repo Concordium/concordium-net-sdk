@@ -29,9 +29,9 @@ public static class Example
     public static void Run<T>(string[] args, Action<T> exampleCallback)
         where T : ExampleOptions
     {
-        async Task exampleCallbackTask(T options) =>
+        Task exampleCallbackTask(T options) =>
             // Await to squelch compiler warning.
-            await Task.Run(() => exampleCallback(options));
+            Task.Run(() => exampleCallback(options));
 
         Run<T>(args, exampleCallbackTask);
     }
