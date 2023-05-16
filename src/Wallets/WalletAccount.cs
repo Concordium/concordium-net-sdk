@@ -21,8 +21,6 @@ public class WalletAccount : ITransactionSigner
 {
     private static readonly JsonSerializerOptions _options = new JsonSerializerOptions
     {
-        AllowTrailingCommas = true,
-        IncludeFields = true,
         PropertyNameCaseInsensitive = true,
     };
 
@@ -84,7 +82,7 @@ public class WalletAccount : ITransactionSigner
             {
                 return FromBrowserWalletKeyExportFormat(json);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw e;
             }
