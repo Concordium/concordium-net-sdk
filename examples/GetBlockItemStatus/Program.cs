@@ -1,25 +1,57 @@
-﻿using Concordium.Sdk.Client;
+﻿using CommandLine;
+using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
+// ReSharper disable ClassNeverInstantiated.Global
+#pragma warning disable CS8618
 
-namespace BlockItemSummary;
+namespace GetBlockItemSummary;
+
+internal sealed class GetBlockItemSummaryOptions
+{
+    [Option(HelpText = "Transaction hash to lookup", Required = true)]
+    public string TransactionHash { get; set; }
+
+    [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Required = true)]
+    public string Endpoint { get; set; }
+}
+
+internal static class ExampleHelpers
+{
+    public static bool TryParse<T>(string[] args, out T? options)
+    {
+        var parserResult = Parser.Default
+            .ParseArguments<T>(args);
+        if (parserResult.Tag == ParserResultType.NotParsed)
+        {
+            foreach (var error in parserResult.Errors)
+            {
+                Console.WriteLine(error);
+            }
+            options = default;
+            return false;
+        }
+
+        options = parserResult.Value;
+        return true;
+    }
+}
 
 public static class Program
 {
     /// <summary>
     /// An example showing how one can query transaction status from a node.
     /// </summary>
-    /// <param name="args">endpoint transactionHash
-    /// Example: http://node.testnet.concordium.com/ 6bd564e9e600fd0e5b0e197133a3448c819dfd4f9bcbec956a31d5b2a5029c48</param>
+    /// <param name="args">GetBlockItemSummaryOptions
+    /// Example: --endpoint http://node.testnet.concordium.com/ --transactionhash 143ca4183d0bb204000ad08e0fd5792985c808861b97f3b81cb9016ad39d09d2</param>
     public static async Task Main(string[] args)
     {
-        if (args.Length != 2)
+        if (!ExampleHelpers.TryParse(args, out GetBlockItemSummaryOptions? options))
         {
-            Console.WriteLine("Usage: .. endpoint transactionHash");
             return;
         }
 
-        var endpoint = new Uri(args[0]);
-        var transactionHash = TransactionHash.From(args[1]);
+        var endpoint = new Uri(options!.Endpoint);
+        var transactionHash = TransactionHash.From(options.TransactionHash);
 
         using var client = new ConcordiumClient(endpoint, 20_000);
 
