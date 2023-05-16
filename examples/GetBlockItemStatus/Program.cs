@@ -2,6 +2,7 @@
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
 // ReSharper disable ClassNeverInstantiated.Global
+// ReSharper disable ParameterTypeCanBeEnumerable.Global
 #pragma warning disable CS8618
 
 namespace GetBlockItemSummary;
