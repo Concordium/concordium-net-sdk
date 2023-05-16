@@ -14,7 +14,7 @@ public struct PayloadSize
 
     public static implicit operator PayloadSize(uint value) => new(value);
 
-    public static implicit operator uint(PayloadSize byteIndex) => byteIndex._value;
+    public static implicit operator uint(PayloadSize payloadSize) => payloadSize._value;
 
     /// <summary>
     /// Get the payload size in the binary format expected by the node.

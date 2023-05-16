@@ -12,7 +12,7 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public record OnChainData : IEquatable<OnChainData>
 {
-    public const int MaxLength = 256;
+    public const uint MaxLength = 256;
 
     /// <summary>
     /// Byte array representing the data.
@@ -114,7 +114,7 @@ public record OnChainData : IEquatable<OnChainData>
     /// </summary>
     public byte[] GetBytes()
     {
-        using var memoryStream = new MemoryStream();
+        using var memoryStream = new MemoryStream(sizeof(ushort) + this._value.Length);
         memoryStream.Write(Serialization.GetBytes((ushort)this._value.Length));
         memoryStream.Write(this._value);
         return memoryStream.ToArray();

@@ -42,7 +42,10 @@ public record Transfer : AccountTransactionPayload<Transfer>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
     private static byte[] Serialize(CcdAmount amount, AccountAddress receiver)
     {
-        using var memoryStream = new MemoryStream();
+        using var memoryStream = new MemoryStream((int)(
+            sizeof(AccountTransactionType) +
+            AccountAddress.BytesLength +
+            CcdAmount.BytesLength));
         memoryStream.WriteByte(TransactionType);
         memoryStream.Write(receiver.GetBytes());
         memoryStream.Write(amount.GetBytes());

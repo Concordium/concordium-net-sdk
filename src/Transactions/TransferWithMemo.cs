@@ -52,11 +52,15 @@ public record TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
     /// <param name="memo">Memo to include with the transaction.</param>
     private static byte[] Serialize(CcdAmount amount, AccountAddress receiver, OnChainData memo)
     {
-        using var memoryStream = new MemoryStream();
+        using var memoryStream = new MemoryStream((int)(
+            sizeof(AccountTransactionType) +
+            AccountAddress.BytesLength +
+            OnChainData.MaxLength +
+            CcdAmount.BytesLength));
         memoryStream.WriteByte(TransactionType);
         memoryStream.Write(receiver.GetBytes());
         memoryStream.Write(memo.GetBytes());
-        memoryStream.Write(Serialization.GetBytes(amount.Value));
+        memoryStream.Write(amount.GetBytes());
         return memoryStream.ToArray();
     }
 
