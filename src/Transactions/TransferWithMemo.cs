@@ -1,4 +1,3 @@
-using Concordium.Sdk.Helpers;
 using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;

@@ -19,7 +19,7 @@ public class WalletDataAttribute : EmbeddedResourceDataAttribute
     /// Initializes a new instance of the <see cref="WalletDataAttribute"/> class.
     /// </summary>
     /// <param name="walletFilePath">A path to the manifest resource representing the exported wallet keys.</param>
-    /// <param name="credentialIndex">A crenential index.</param>
+    /// <param name="credentialIndex">A credential index.</param>
     /// <param name="keyIndex">A key index.</param>
     /// <param name="expectedKey">A string representing the expected key with the corresponding indices.</param>
     public WalletDataAttribute(

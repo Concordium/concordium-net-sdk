@@ -52,12 +52,13 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     {
         try
         {
-            var decodedBytes = _encoderInstance.DecodeData(addressAsBase58String).Skip(1).ToArray(); // Remove version byte.
+            var decodedData = _encoderInstance.DecodeData(addressAsBase58String).AsSpan();
+            var decodedBytes = decodedData[1..].ToArray(); // Remove version byte.
             return From(decodedBytes);
         }
-        catch (Exception)
+        catch (Exception e) when (e is FormatException or ArgumentException or ArgumentNullException)
         {
-            throw new ArgumentException($"'{addressAsBase58String}' is not a length-50 base58 encoded string");
+            throw new ArgumentException($"'{addressAsBase58String}' is not a length-50 base58 encoded string", e);
         }
     }
 
@@ -155,7 +156,16 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     public override bool Equals(object? obj) =>
         obj is not null && obj is AccountAddress other && this.Equals(other);
 
-    public override int GetHashCode() => this.GetBytes().GetHashCode();
+    public override int GetHashCode()
+    {
+        var hash = 1;
+        foreach (var b in this._value.AsSpan())
+        {
+            hash *= b.GetHashCode();
+        }
+
+        return hash;
+    }
 
     public static bool operator ==(AccountAddress left, AccountAddress right) => left.Equals(right);
 

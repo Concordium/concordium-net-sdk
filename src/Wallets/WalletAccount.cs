@@ -40,14 +40,13 @@ public class WalletAccount : ITransactionSigner
     {
         this.AccountAddress = accountAddress;
         this._signer = new TransactionSigner();
-        signKeys
-            .ToList()
-            .ForEach(
-                cred =>
-                    cred.Value
-                        .ToList()
-                        .ForEach(key => this._signer.AddSignerEntry(cred.Key, key.Key, key.Value))
-            );
+        foreach (var (key, value) in signKeys)
+        {
+            foreach (var (accountKeyIndex, signer) in value)
+            {
+                this._signer.AddSignerEntry(key, accountKeyIndex, signer);
+            }
+        }
     }
 
     /// <summary>
@@ -70,15 +69,15 @@ public class WalletAccount : ITransactionSigner
         {
             return FromGenesisWalletKeyExportFormat(json);
         }
-        catch (Exception e)
+        catch (Exception e1) when (e1 is JsonException or WalletDataSourceException)
         {
             try
             {
                 return FromBrowserWalletKeyExportFormat(json);
             }
-            catch (Exception)
+            catch (Exception e2) when (e2 is JsonException or WalletDataSourceException)
             {
-                throw e;
+                throw e1;
             }
         }
     }

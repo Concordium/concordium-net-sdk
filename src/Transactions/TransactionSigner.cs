@@ -75,7 +75,7 @@ public class TransactionSigner : ITransactionSigner
 
         var signature =
             new Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, byte[]>>();
-        foreach (var signerEntry in this.GetSignerEntries())
+        foreach (var signerEntry in this._signers)
         {
             var accountSignatureMap = new Dictionary<AccountKeyIndex, byte[]>();
             foreach (var k in signerEntry.Value)

@@ -137,23 +137,5 @@ public sealed class ConcordiumClient : IDisposable
                     )
             );
 
-    #region IDisposable Support
-
-    private bool _disposedValue;
-
-    private void Dispose(bool disposing)
-    {
-        if (!this._disposedValue)
-        {
-            if (disposing)
-            {
-                this.Raw.Dispose();
-            }
-
-            this._disposedValue = true;
-        }
-    }
-
-    public void Dispose() => this.Dispose(true);
-    #endregion
+    public void Dispose() => this.Raw.Dispose();
 }

@@ -54,10 +54,10 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
         {
             return new CcdAmount(checked(ccd * MicroCcdPerCcd));
         }
-        catch (OverflowException)
+        catch (OverflowException e)
         {
             throw new ArgumentException(
-                $"The result of {ccd} CCD * {MicroCcdPerCcd} µCCD/CCD does not fit in UInt64."
+                $"The result of {ccd} CCD * {MicroCcdPerCcd} µCCD/CCD does not fit in UInt64.", e
             );
         }
     }
@@ -73,10 +73,10 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
             var newAmount = checked(a.Value + b.Value);
             return FromMicroCcd(newAmount);
         }
-        catch (OverflowException)
+        catch (OverflowException e)
         {
             throw new ArgumentException(
-                $"The result of {a.Value} + {b.Value} does not fit in UInt64."
+                $"The result of {a.Value} + {b.Value} does not fit in UInt64.", e
             );
         }
     }
@@ -92,10 +92,10 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
             var newAmount = checked(a.Value - b.Value);
             return FromMicroCcd(newAmount);
         }
-        catch (OverflowException)
+        catch (OverflowException e)
         {
             throw new ArgumentException(
-                $"The result of {a.Value} - {b.Value} does not fit in UInt64."
+                $"The result of {a.Value} - {b.Value} does not fit in UInt64.", e
             );
         }
     }

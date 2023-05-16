@@ -12,7 +12,7 @@ namespace Concordium.Sdk.Wallets.Json;
 /// Such can be parsed into an instance of this class using
 /// <see cref="JsonConvert"/>.
 /// </summary>
-internal record BrowserWalletExportFormat : IWalletDataSource
+internal class BrowserWalletExportFormat : IWalletDataSource
 {
     internal record Value
     {

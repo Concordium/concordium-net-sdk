@@ -92,12 +92,7 @@ public struct AccountTransactionHeader
         PayloadSize payloadSize
     )
     {
-        using var memoryStream = new MemoryStream((int)(
-            AccountAddress.BytesLength +
-            AccountSequenceNumber.BytesLength +
-            EnergyAmount.BytesLength +
-            PayloadSize.BytesLength +
-            Expiry.BytesLength));
+        using var memoryStream = new MemoryStream((int)BytesLength);
         memoryStream.Write(sender.GetBytes());
         memoryStream.Write(sequenceNumber.GetBytes());
         memoryStream.Write(maxEnergyCost.GetBytes());

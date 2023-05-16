@@ -30,9 +30,9 @@ public abstract record Hash : IEquatable<Hash>
         {
             this._value = Convert.FromHexString(hashAsBase16String);
         }
-        catch (FormatException)
+        catch (FormatException e)
         {
-            throw new ArgumentException("The provided string must be hex encoded.");
+            throw new ArgumentException("The provided string must be hex encoded.", e);
         }
     }
 
@@ -83,5 +83,14 @@ public abstract record Hash : IEquatable<Hash>
         return this._value.SequenceEqual(other._value);
     }
 
-    public override int GetHashCode() => this._value.GetHashCode();
+    public override int GetHashCode()
+    {
+        var hash = 1;
+        foreach (var b in this._value.AsSpan())
+        {
+            hash *= b.GetHashCode();
+        }
+
+        return hash;
+    }
 }

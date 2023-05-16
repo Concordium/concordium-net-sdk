@@ -10,7 +10,7 @@ namespace Concordium.Sdk.Types;
 /// This can be any data which is at most <see cref="MaxLength"/> bytes, but the convention is
 /// to use CBOR encoded data.
 /// </summary>
-public record OnChainData : IEquatable<OnChainData>
+public class OnChainData : IEquatable<OnChainData>
 {
     public const uint MaxLength = 256;
 
@@ -101,8 +101,8 @@ public record OnChainData : IEquatable<OnChainData>
                 return textRead;
             }
         }
-        catch (CborContentException) { }
-        catch (InvalidOperationException) { }
+        catch (Exception e) when (e is CborContentException or InvalidOperationException)
+        { }
         return null;
     }
 
@@ -140,5 +140,14 @@ public record OnChainData : IEquatable<OnChainData>
         return this._value.SequenceEqual(other._value);
     }
 
-    public override int GetHashCode() => this._value.GetHashCode();
+    public override int GetHashCode()
+    {
+        var hash = 1;
+        foreach (var b in this._value.AsSpan())
+        {
+            hash *= b.GetHashCode();
+        }
+
+        return hash;
+    }
 }
