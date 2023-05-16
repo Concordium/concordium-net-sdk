@@ -115,6 +115,6 @@ public class WalletAccountTests
     public void FromWalletKeyExportFormat_OnNonJsonInput_ThrowsException()
     {
         Action result = () => WalletAccount.FromWalletKeyExportFormat("Not JSON.");
-        result.Should().Throw<Newtonsoft.Json.JsonException>();
+        result.Should().Throw<System.Text.Json.JsonException>();
     }
 }

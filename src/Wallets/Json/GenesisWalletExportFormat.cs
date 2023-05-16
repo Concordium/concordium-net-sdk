@@ -1,34 +1,27 @@
 using Concordium.Sdk.Crypto;
 using Concordium.Sdk.Types;
 
-using Newtonsoft.Json;
-
 namespace Concordium.Sdk.Wallets.Json;
 
 /// <summary>
 /// Represents (a subset of) a JSON object which is in the
 /// genesis wallet key export format.
-///
-/// Such can be parsed into an instance of this class using
-/// <see cref="JsonConvert"/>.
 /// </summary>
-internal record GenesisWalletExportFormat : IWalletDataSource
+public record GenesisWalletExportFormat : IWalletDataSource
 {
-    [JsonProperty("accountKeys", Required = Required.DisallowNull)]
-    internal AccountKeys? AccountKeysField { get; init; }
+    public AccountKeys AccountKeys { get; init; }
 
-    [JsonProperty("address", Required = Required.DisallowNull)]
-    internal string? AddressField { get; init; }
+    public string Address { get; init; }
 
     public AccountAddress TryGetAccountAddress()
     {
-        if (this.AddressField is null)
+        if (this.Address is null)
         {
             throw new WalletDataSourceException("Required field 'address' is missing.");
         }
         try
         {
-            return AccountAddress.From(this.AddressField);
+            return AccountAddress.From(this.Address);
         }
         catch (Exception e)
         {
@@ -41,13 +34,13 @@ internal record GenesisWalletExportFormat : IWalletDataSource
 
     public Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, ISigner>> TryGetSignKeys()
     {
-        if (this.AccountKeysField is null)
+        if (this.AccountKeys is null)
         {
             throw new WalletDataSourceException("Required field 'accountKeys' is missing.");
         }
         try
         {
-            return this.AccountKeysField.TryGetSignKeys();
+            return this.AccountKeys.TryGetSignKeys();
         }
         catch (Exception e)
         {

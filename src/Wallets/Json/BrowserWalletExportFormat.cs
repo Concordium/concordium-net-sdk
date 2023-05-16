@@ -1,44 +1,37 @@
 using Concordium.Sdk.Crypto;
 using Concordium.Sdk.Types;
 
-using Newtonsoft.Json;
-
 namespace Concordium.Sdk.Wallets.Json;
 
 /// <summary>
 /// Represents (a subset of) a JSON object which is in the
 /// browser wallet key export format.
 ///
-/// Such can be parsed into an instance of this class using
-/// <see cref="JsonConvert"/>.
 /// </summary>
-internal record BrowserWalletExportFormat : IWalletDataSource
+public record BrowserWalletExportFormat : IWalletDataSource
 {
-    internal record Value
+    public record ValueField
     {
-        [JsonProperty("accountKeys", Required = Required.DisallowNull)]
-        internal AccountKeys? AccountKeysField { get; init; }
+        public AccountKeys AccountKeys { get; init; }
 
-        [JsonProperty("address", Required = Required.DisallowNull)]
-        internal string? AddressField { get; init; }
+        public string Address { get; init; }
     }
 
-    [JsonProperty("value", Required = Required.DisallowNull)]
-    internal Value? ValueField { get; init; }
+    public ValueField Value { get; init; }
 
     public AccountAddress TryGetAccountAddress()
     {
-        if (this.ValueField is null)
+        if (this.Value is null)
         {
             throw new WalletDataSourceException("Required field 'value' is missing.");
         }
-        if (this.ValueField.AddressField is null)
+        if (this.Value.Address is null)
         {
             throw new WalletDataSourceException("Required field 'address' is missing.");
         }
         try
         {
-            return AccountAddress.From(this.ValueField.AddressField);
+            return AccountAddress.From(this.Value.Address);
         }
         catch (Exception e)
         {
@@ -51,17 +44,17 @@ internal record BrowserWalletExportFormat : IWalletDataSource
 
     public Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, ISigner>> TryGetSignKeys()
     {
-        if (this.ValueField is null)
+        if (this.Value is null)
         {
             throw new WalletDataSourceException("Required field 'value' is missing.");
         }
-        if (this.ValueField.AccountKeysField is null)
+        if (this.Value.AccountKeys is null)
         {
             throw new WalletDataSourceException("Required field 'accountKeys' is missing.");
         }
         try
         {
-            return this.ValueField.AccountKeysField.TryGetSignKeys();
+            return this.Value.AccountKeys.TryGetSignKeys();
         }
         catch (Exception e)
         {

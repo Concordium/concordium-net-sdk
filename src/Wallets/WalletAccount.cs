@@ -1,8 +1,9 @@
 using System.Collections.Immutable;
+using System.Text.Json;
 using Concordium.Sdk.Crypto;
 using Concordium.Sdk.Transactions;
 using Concordium.Sdk.Types;
-using Newtonsoft.Json;
+
 
 namespace Concordium.Sdk.Wallets;
 
@@ -18,6 +19,13 @@ namespace Concordium.Sdk.Wallets;
 /// </summary>
 public class WalletAccount : ITransactionSigner
 {
+    private static readonly JsonSerializerOptions _options = new JsonSerializerOptions
+    {
+        AllowTrailingCommas = true,
+        IncludeFields = true,
+        PropertyNameCaseInsensitive = true,
+    };
+
     /// <summary>
     /// The address of the imported account.
     /// </summary>
@@ -76,7 +84,7 @@ public class WalletAccount : ITransactionSigner
             {
                 return FromBrowserWalletKeyExportFormat(json);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw e;
             }
@@ -91,8 +99,7 @@ public class WalletAccount : ITransactionSigner
     /// <exception cref="WalletDataSourceException">Either a field is missing or an index or sign key could not be parsed.</exception>
     private static WalletAccount FromGenesisWalletKeyExportFormat(string json)
     {
-        var genesisWallet =
-            JsonConvert.DeserializeObject<Json.GenesisWalletExportFormat>(json)
+        var genesisWallet = JsonSerializer.Deserialize<Json.GenesisWalletExportFormat>(json, _options)
             ?? throw new WalletDataSourceException(
                 "Call to DeserializeObject did not return a value."
             );
@@ -108,7 +115,7 @@ public class WalletAccount : ITransactionSigner
     private static WalletAccount FromBrowserWalletKeyExportFormat(string json)
     {
         var genesisWallet =
-            JsonConvert.DeserializeObject<Json.BrowserWalletExportFormat>(json)
+            JsonSerializer.Deserialize<Json.BrowserWalletExportFormat>(json, _options)
             ?? throw new WalletDataSourceException(
                 "Call to DeserializeObject did not return a value."
             );
