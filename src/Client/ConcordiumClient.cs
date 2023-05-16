@@ -65,15 +65,18 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="transaction">The account transaction to send.</param>
     /// <returns>Task which returns the hash of the transaction if it was accepted by the node.</returns>
     /// <exception cref="RpcException">The call failed, e.g. due to the node not accepting the transaction.</exception>
-    public Task<Types.TransactionHash> SendAccountTransactionAsync<T>(
+    public async Task<Types.TransactionHash> SendAccountTransactionAsync<T>(
         SignedAccountTransaction<T> transaction
     )
-        where T : AccountTransactionPayload<T> =>
+        where T : AccountTransactionPayload<T>
+    {
         // Send the transaction as a block item request.
-        this.Raw
-            .SendBlockItemAsync(transaction.ToSendBlockItemRequest())
-            // Continuation returning the "native" SDK type.
-            .ContinueWith(txHash => Types.TransactionHash.From(txHash.Result.Value.ToByteArray()));
+        var txHash = await this.Raw
+            .SendBlockItemAsync(transaction.ToSendBlockItemRequest());
+
+        // Return the "native" SDK type.
+        return Types.TransactionHash.From(txHash.Value.ToByteArray());
+    }
 
     /// <summary>
     /// Query the chain for the next sequence number of the account with the supplied
@@ -123,19 +126,15 @@ public sealed class ConcordiumClient : IDisposable
     /// If the latter is the case, then the sequence number is reliable.
     /// </returns>
     /// <exception cref="RpcException">The call failed.</exception>
-    public Task<(Types.AccountSequenceNumber, bool)> GetNextAccountSequenceNumberAsync(
+    public async Task<(Types.AccountSequenceNumber, bool)> GetNextAccountSequenceNumberAsync(
         Types.AccountAddress accountAddress
-    ) =>
-        this.Raw
-            .GetNextAccountSequenceNumberAsync(accountAddress.ToProto())
-            // Continuation returning the "native" SDK type.
-            .ContinueWith(
-                next =>
-                    (
-                        Types.AccountSequenceNumber.From(next.Result.SequenceNumber.Value),
-                        next.Result.AllFinal
-                    )
-            );
+    )
+    {
+        var next = await this.Raw
+            .GetNextAccountSequenceNumberAsync(accountAddress.ToProto());
+
+        return (Types.AccountSequenceNumber.From(next.SequenceNumber.Value), next.AllFinal);
+    }
 
     public void Dispose() => this.Raw.Dispose();
 }
