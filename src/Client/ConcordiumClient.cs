@@ -139,12 +139,26 @@ public sealed class ConcordiumClient : IDisposable
             );
 
     /// <summary>
-    /// Get the status of and information about a specific block item
-    /// (transaction).
+    /// Get the status of and information about a specific block item given a transaction hash.
     /// </summary>
-    public async Task<ITransactionStatus> GetBlockItemStatus(Types.TransactionHash transactionHash)
+    /// <param name="transactionHash">Transaction Hash which is included in blocks returned.</param>
+    /// <returns>A common return type for TransactionStatus.</returns>
+    public ITransactionStatus GetBlockItemStatus(Types.TransactionHash transactionHash)
     {
-        var blockItemStatus = await Raw.GetBlockItemStatusAsync(transactionHash.ToProto());
+        var blockItemStatus = this.Raw.GetBlockItemStatus(transactionHash.ToProto());
+
+        return TransactionStatusFactory.CreateTransactionStatus(blockItemStatus);
+    }
+
+    /// <summary>
+    /// Get the status of and information about a specific block item given a transaction hash.
+    /// </summary>
+    /// <param name="transactionHash">Transaction Hash which is included in blocks returned.</param>
+    /// <returns>Task which wraps a common return type for TransactionStatus.</returns>
+    public async Task<ITransactionStatus> GetBlockItemStatusAsync(Types.TransactionHash transactionHash)
+    {
+        var blockItemStatus = await this.Raw.GetBlockItemStatusAsync(transactionHash.ToProto())
+            .ConfigureAwait(false);
 
         return TransactionStatusFactory.CreateTransactionStatus(blockItemStatus);
     }
