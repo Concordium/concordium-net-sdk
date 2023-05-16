@@ -1,7 +1,7 @@
 namespace Concordium.Sdk.Exceptions;
 
 /// <summary>
-/// Thrown when a enum is matches in a switch statements which isn't handled.
+/// Thrown when a matched enum value could not be handled in a switch statement.
 /// </summary>
 public class MissingEnumException<T> : Exception where T : Enum
 {                                  
