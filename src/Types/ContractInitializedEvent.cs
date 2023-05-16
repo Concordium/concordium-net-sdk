@@ -32,7 +32,7 @@ public class ContractInitializedEvent
     /// </summary>
     public IList<ContractEvent> Events { get; init; }
 
-    internal ContractInitializedEvent(Concordium.Grpc.V2.ContractInitializedEvent initializedEvent)
+    internal ContractInitializedEvent(Grpc.V2.ContractInitializedEvent initializedEvent)
     {
         this.ContractVersion = initializedEvent.ContractVersion switch
         {

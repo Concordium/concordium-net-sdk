@@ -7,13 +7,13 @@ namespace Concordium.Sdk.Types;
 /// A common return type for TransactionStatus.
 /// </summary>
 public interface ITransactionStatus
-{}
+{ }
 
 /// <summary>
 /// Transaction is received, but not yet in any blocks.
 /// </summary>
 public sealed class TransactionStatusReceived : ITransactionStatus
-{}
+{ }
 
 /// <summary>
 /// Transaction is finalized in the given block, with the given summary.

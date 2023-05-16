@@ -1,4 +1,4 @@
-﻿using CommandLine;
+using CommandLine;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
 // ReSharper disable ClassNeverInstantiated.Global
@@ -97,7 +97,7 @@ public static class Program
 
         if (transactionStatusFinalized.State.Summary.TryGetRejectedAccountTransaction(out var rejectReason))
         {
-            Console.WriteLine($"Transaction rejected due to: {rejectReason!.ReasonCase.ToString()}");
+            Console.WriteLine($"Transaction rejected due to: {rejectReason!.ReasonCase}");
         }
     }
 

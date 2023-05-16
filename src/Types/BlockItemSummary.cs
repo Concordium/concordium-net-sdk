@@ -7,10 +7,11 @@ namespace Concordium.Sdk.Types;
 /// Summary of the outcome of a block item in structured form.
 /// The summary determines which transaction type it was.
 /// </summary>
-public sealed class BlockItemSummary {
-    private readonly Concordium.Grpc.V2.BlockItemSummary _blockItemSummary;
+public sealed class BlockItemSummary
+{
+    private readonly Grpc.V2.BlockItemSummary _blockItemSummary;
 
-    internal BlockItemSummary(Concordium.Grpc.V2.BlockItemSummary blockItemSummary) => this._blockItemSummary = blockItemSummary;
+    internal BlockItemSummary(Grpc.V2.BlockItemSummary blockItemSummary) => this._blockItemSummary = blockItemSummary;
 
 
     /// <summary>
@@ -22,14 +23,14 @@ public sealed class BlockItemSummary {
     public bool IsSuccess() =>
         this._blockItemSummary.DetailsCase switch
         {
-            Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction =>
+            Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction =>
                 !AccountTransactionDetailsIsRejected(this._blockItemSummary.AccountTransaction, out _),
             Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountCreation => true,
             Grpc.V2.BlockItemSummary.DetailsOneofCase.Update => true,
             Grpc.V2.BlockItemSummary.DetailsOneofCase.None =>
-                throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(Grpc.V2.BlockItemSummary.DetailsOneofCase.None),
+                throw new MissingEnumException<Grpc.V2.BlockItemSummary.DetailsOneofCase>(Grpc.V2.BlockItemSummary.DetailsOneofCase.None),
             _ =>
-                throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(this._blockItemSummary.DetailsCase)
+                throw new MissingEnumException<Grpc.V2.BlockItemSummary.DetailsOneofCase>(this._blockItemSummary.DetailsCase)
         };
 
     /// <summary>
@@ -51,14 +52,14 @@ public sealed class BlockItemSummary {
         rejectReason = null;
         return this._blockItemSummary.DetailsCase switch
         {
-            Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction =>
+            Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction =>
                 AccountTransactionDetailsIsRejected(this._blockItemSummary.AccountTransaction, out rejectReason),
             Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountCreation => false,
             Grpc.V2.BlockItemSummary.DetailsOneofCase.Update => false,
             Grpc.V2.BlockItemSummary.DetailsOneofCase.None =>
-                throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(Grpc.V2.BlockItemSummary.DetailsOneofCase.None),
+                throw new MissingEnumException<Grpc.V2.BlockItemSummary.DetailsOneofCase>(Grpc.V2.BlockItemSummary.DetailsOneofCase.None),
             _ =>
-                throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(this._blockItemSummary.DetailsCase)
+                throw new MissingEnumException<Grpc.V2.BlockItemSummary.DetailsOneofCase>(this._blockItemSummary.DetailsCase)
         };
     }
 
@@ -73,7 +74,7 @@ public sealed class BlockItemSummary {
         sender = null;
         switch (this._blockItemSummary.DetailsCase)
         {
-            case Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction:
+            case Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction:
                 sender = AccountAddress.From(this._blockItemSummary.AccountTransaction.Sender.Value.ToByteArray());
                 return true;
             case Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountCreation:
@@ -81,7 +82,7 @@ public sealed class BlockItemSummary {
                 return false;
             case Grpc.V2.BlockItemSummary.DetailsOneofCase.None:
             default:
-                throw new MissingEnumException<Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase>(this._blockItemSummary
+                throw new MissingEnumException<Grpc.V2.BlockItemSummary.DetailsOneofCase>(this._blockItemSummary
                     .DetailsCase);
         }
     }
@@ -167,7 +168,7 @@ public sealed class BlockItemSummary {
     public bool TryGetContractInit(out ContractInitializedEvent? contractInitializedEventEvent)
     {
         contractInitializedEventEvent = null;
-        if (this._blockItemSummary.DetailsCase != Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction)
+        if (this._blockItemSummary.DetailsCase != Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction)
         {
             return false;
         }
@@ -195,7 +196,7 @@ public sealed class BlockItemSummary {
     public bool TryGetContractUpdateLogs(out IList<(ContractAddress, IList<ContractEvent>)> items)
     {
         items = new List<(ContractAddress, IList<ContractEvent>)>();
-        if (this._blockItemSummary.DetailsCase != Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction)
+        if (this._blockItemSummary.DetailsCase != Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction)
         {
             return false;
         }
@@ -248,7 +249,7 @@ public sealed class BlockItemSummary {
     {
         var affectedAddresses = new List<AccountAddress>();
 
-        if (this._blockItemSummary.DetailsCase != Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction)
+        if (this._blockItemSummary.DetailsCase != Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction)
         {
             return affectedAddresses;
         }

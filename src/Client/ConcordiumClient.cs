@@ -1,7 +1,6 @@
 using Concordium.Sdk.Transactions;
 using Concordium.Sdk.Types;
 using Grpc.Core;
-using TransactionHash = Concordium.Grpc.V2.TransactionHash;
 using Grpc.Net.Client;
 
 namespace Concordium.Sdk.Client;
@@ -95,14 +94,14 @@ public sealed class ConcordiumClient : IDisposable
     /// case, then the sequence number is reliable.
     /// </returns>
     /// <exception cref="RpcException">The call failed.</exception>
-    public (Types.AccountSequenceNumber, bool) GetNextAccountSequenceNumber(
-        Types.AccountAddress accountAddress
+    public (AccountSequenceNumber, bool) GetNextAccountSequenceNumber(
+        AccountAddress accountAddress
     )
     {
         var next = this.Raw.GetNextAccountSequenceNumber(accountAddress.ToProto());
 
         // Return the sequence number as a "native" SDK type.
-        return (Types.AccountSequenceNumber.From(next.SequenceNumber.Value), next.AllFinal);
+        return (AccountSequenceNumber.From(next.SequenceNumber.Value), next.AllFinal);
     }
 
     /// <summary>
@@ -124,8 +123,8 @@ public sealed class ConcordiumClient : IDisposable
     /// If the latter is the case, then the sequence number is reliable.
     /// </returns>
     /// <exception cref="RpcException">The call failed.</exception>
-    public Task<(Types.AccountSequenceNumber, bool)> GetNextAccountSequenceNumberAsync(
-        Types.AccountAddress accountAddress
+    public Task<(AccountSequenceNumber, bool)> GetNextAccountSequenceNumberAsync(
+        AccountAddress accountAddress
     ) =>
         this.Raw
             .GetNextAccountSequenceNumberAsync(accountAddress.ToProto())
@@ -133,7 +132,7 @@ public sealed class ConcordiumClient : IDisposable
             .ContinueWith(
                 next =>
                     (
-                        Types.AccountSequenceNumber.From(next.Result.SequenceNumber.Value),
+                        AccountSequenceNumber.From(next.Result.SequenceNumber.Value),
                         next.Result.AllFinal
                     )
             );

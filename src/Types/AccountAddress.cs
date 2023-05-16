@@ -158,7 +158,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>, IAddress
     public override int GetHashCode()
     {
         var hash = 1;
-        foreach (var b in _value.AsSpan())
+        foreach (var b in this._value.AsSpan())
         {
             hash *= b.GetHashCode();
         }

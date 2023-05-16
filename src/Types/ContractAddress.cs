@@ -39,10 +39,7 @@ public readonly struct ContractAddress : IEquatable<ContractAddress>, IAddress
     /// <param name="subIndex">the sub index value.</param>
     public static ContractAddress Create(ulong index, ulong subIndex) => new(index, subIndex);
 
-    internal static ContractAddress From(Concordium.Grpc.V2.ContractAddress contractAddress)
-    {
-        return new ContractAddress(contractAddress.Index, contractAddress.Subindex);
-    }
+    internal static ContractAddress From(Grpc.V2.ContractAddress contractAddress) => new ContractAddress(contractAddress.Index, contractAddress.Subindex);
 
     /// <summary>
     /// Converts the contract address to its corresponding protocol buffer message instance.

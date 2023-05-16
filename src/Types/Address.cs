@@ -24,7 +24,7 @@ namespace Concordium.Sdk.Types;
 /// }
 /// </code>
 /// </example>
-public interface IAddress{}
+public interface IAddress { }
 
 /// <summary>
 /// Creates a address dependent on address returned from generated address code.
