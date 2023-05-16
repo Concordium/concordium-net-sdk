@@ -6,7 +6,7 @@ namespace Concordium.Sdk.Types;
 /// block, but the desired action was not achieved. The only effect of a
 /// rejected transaction is payment.
 ///
-/// OBS: Always check property ReasonCase first to validate which property is not null and hence
+/// Attention: Always check property ReasonCase first to validate which property is not null and hence
 /// which type of reject reason the object is.
 public sealed class RejectReason
 {
@@ -16,7 +16,7 @@ public sealed class RejectReason
   public ReasonOneOfCase ReasonCase { get; init; }
 
   /// <summary>
-  /// As the name says.
+  /// Module Hash Already Exists
   /// </summary>
   public ModuleReference? ModuleHashAlreadyExists { get; init; }
   /// <summary>
@@ -44,7 +44,7 @@ public sealed class RejectReason
   /// are not enough funds on account/contract A to make this
   /// possible. The data are the from address and the amount to transfer.
   /// </summary>
-  public (Address, CcdAmount)? AmountTooLarge { get; init; }
+  public (IAddress, CcdAmount)? AmountTooLarge { get; init; }
   /// <summary>
   /// Rejected due to contract logic in init function of a contract.
   /// </summary>
@@ -151,7 +151,7 @@ public sealed class RejectReason
 
       case Grpc.V2.RejectReason.ReasonOneofCase.AmountTooLarge:
         var amount = CcdAmount.FromMicroCcd(other.AmountTooLarge.Amount.Value);
-        var address = new Address(other.AmountTooLarge.Address);
+        var address = AddressFactory.CreateAddress(other.AmountTooLarge.Address);
         this.AmountTooLarge = (address, amount);
         this.ReasonCase = ReasonOneOfCase.AmountTooLarge;
         break;

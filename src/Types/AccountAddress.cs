@@ -9,7 +9,7 @@ namespace Concordium.Sdk.Types;
 ///
 /// The address of an account is a 32-byte value which uniquely identifies the account.
 /// </summary>
-public readonly struct AccountAddress : IEquatable<AccountAddress>
+public readonly struct AccountAddress : IEquatable<AccountAddress>, IAddress
 {
     public const uint BytesLength = 32;
 

@@ -9,7 +9,7 @@ namespace Concordium.Sdk.Types;
 /// A contract address consists of a contract index and a contact sub-index
 /// both represented as 64-bit unsigned integers.
 /// </summary>
-public readonly struct ContractAddress : IEquatable<ContractAddress>
+public readonly struct ContractAddress : IEquatable<ContractAddress>, IAddress
 {
     /// <summary>
     /// The index part of the address of a contract.

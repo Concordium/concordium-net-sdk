@@ -95,7 +95,7 @@ public static class Program
     {
         Console.WriteLine($"Finalized in block: {transactionStatusFinalized.State.BlockHash}");
 
-        if (transactionStatusFinalized.State.Summary.IsRejectedAccountTransaction(out var rejectReason))
+        if (transactionStatusFinalized.State.Summary.TryGetRejectedAccountTransaction(out var rejectReason))
         {
             Console.WriteLine($"Transaction rejected due to: {rejectReason!.ReasonCase.ToString()}");
         }

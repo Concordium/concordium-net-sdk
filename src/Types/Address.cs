@@ -3,49 +3,41 @@ using Google.Protobuf;
 
 namespace Concordium.Sdk.Types;
 
-/// An address of either a contract or an account.
-public sealed class Address
-{
-    /// <summary>
-    /// Address of a account.
-    /// Should only be called after TypeCase check.
-    /// </summary>
-    public AccountAddress AccountAddress { get; init; }
-    /// <summary>
-    /// Address of a contract.
-    /// Should only be called after TypeCase check.  
-    /// </summary>
-    public ContractAddress ContractAddress { get; init; }
-    /// <summary>
-    /// Specify if this is a Account or Contract address. Should always be called first
-    /// to determine address type.
-    /// </summary>
-    public AddressTypeCase TypeCase { get; init; }
-    
-    internal Address(Grpc.V2.Address address)
-    {
-        switch (address.TypeCase)
-        {
-            case Grpc.V2.Address.TypeOneofCase.Account:
-                TypeCase = AddressTypeCase.Account;
-                AccountAddress = AccountAddress.From(address.Account.ToByteArray());
-                break;
-            case Grpc.V2.Address.TypeOneofCase.Contract:
-                TypeCase = AddressTypeCase.Contract;
-                ContractAddress = ContractAddress.From(address.Contract);
-                break;
-            case Grpc.V2.Address.TypeOneofCase.None:
-            default:
-                throw new MissingEnumException<Grpc.V2.Address.TypeOneofCase>(address.TypeCase);
-        }
-    }
+/// <summary>
+/// A interface implemented by addresses like Account- and Contract address.
+/// </summary>
+/// <example>
+/// <code>
+/// internal static void Example(Grpc.V2.Address address)
+/// {
+///     var addressMapped = CreateAddress(address);
+///
+///     switch (addressMapped)
+///     {
+///         case AccountAddress aa:
+///             Console.WriteLine($"Do something with: {aa}");
+///             break;
+///         case ContractAddress ca:
+///             Console.WriteLine($"Do something with: {ca}");
+///             break;
+///     }
+/// }
+/// </code>
+/// </example>
+public interface IAddress{}
 
-    /// <summary>
-    /// Specify address type.
-    /// </summary>
-    public enum AddressTypeCase
-    {
-        Contract,
-        Account
-    }
+/// <summary>
+/// Creates a address dependent on address returned from generated address code.
+/// </summary>
+internal static class AddressFactory
+{
+    internal static IAddress CreateAddress(Grpc.V2.Address address) =>
+        address.TypeCase switch
+        {
+            Grpc.V2.Address.TypeOneofCase.Account => AccountAddress.From(address.Account.ToByteArray()),
+            Grpc.V2.Address.TypeOneofCase.Contract => ContractAddress.From(address.Contract),
+            Grpc.V2.Address.TypeOneofCase.None => throw new MissingEnumException<Grpc.V2.Address.TypeOneofCase>(
+                address.TypeCase),
+            _ => throw new MissingEnumException<Grpc.V2.Address.TypeOneofCase>(address.TypeCase)
+        };
 }

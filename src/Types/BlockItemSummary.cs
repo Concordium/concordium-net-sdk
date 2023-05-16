@@ -12,10 +12,13 @@ public sealed class BlockItemSummary {
 
     internal BlockItemSummary(Concordium.Grpc.V2.BlockItemSummary blockItemSummary) => this._blockItemSummary = blockItemSummary;
 
+
     /// <summary>
     /// Return whether the transaction was successful, i.e., the intended effect
     /// happened.
     /// </summary>
+    /// <returns>bool representing if transaction succeeded.</returns>
+    /// <exception cref="MissingEnumException{DetailsOneofCase}">Throws exception when returned type not known</exception>
     public bool IsSuccess() =>
         this._blockItemSummary.DetailsCase switch
         {
@@ -33,13 +36,17 @@ public sealed class BlockItemSummary {
     /// Return whether the transaction has failed to achieve the intended
     /// effects.
     /// </summary>
-    public bool IsReject() => this.IsRejectedAccountTransaction(out _);
+    /// <returns>bool representing if transaction is rejected</returns>
+    public bool IsReject() => this.TryGetRejectedAccountTransaction(out _);
 
     /// <summary>
-    /// Return true and sets `rejectReason` if the result corresponds to a rejected account
-    /// transaction.
+    /// When transaction is rejected this method will return true and rejected reason
+    /// will be return in out param.
     /// </summary>
-    public bool IsRejectedAccountTransaction(out RejectReason? rejectReason)
+    /// <param name="rejectReason">Output with rejected reason if rejected.</param>
+    /// <returns>bool representing if transaction is rejected.</returns>
+    /// <exception cref="MissingEnumException{DetailsOneofCase}">Throws exception when returned type not known</exception>
+    public bool TryGetRejectedAccountTransaction(out RejectReason? rejectReason)
     {
         rejectReason = null;
         return this._blockItemSummary.DetailsCase switch
@@ -58,7 +65,10 @@ public sealed class BlockItemSummary {
     /// <summary>
     /// Returns true and set sender account if of account transaction type.
     /// </summary>
-    public bool SenderAccount(out AccountAddress? sender)
+    /// <param name="sender">Output given when sender present.</param>
+    /// <returns>If sender account present.</returns>
+    /// <exception cref="MissingEnumException{DetailsOneofCase}">Throws exception when returned type not known</exception>
+    public bool TryGetSenderAccount(out AccountAddress? sender)
     {
         sender = null;
         switch (this._blockItemSummary.DetailsCase)
@@ -80,6 +90,8 @@ public sealed class BlockItemSummary {
     /// Returns affected contracts. Only relevant if transaction is a account transaction and effect of the
     /// transaction was contract initialization or contract update.
     /// </summary>
+    /// <returns>List of affected contract addresses.</returns>
+    /// <exception cref="MissingEnumException{DetailsOneofCase}">Throws exception when returned type not known</exception>
     public IList<ContractAddress> AffectedContracts()
     {
         var affectedContracts = new List<ContractAddress>();
@@ -149,7 +161,10 @@ public sealed class BlockItemSummary {
     /// If the block item is a smart contract init transaction then
     /// return the initialization data.
     /// </summary>
-    public bool ContractInit(out ContractInitializedEvent? contractInitializedEventEvent)
+    /// <param name="contractInitializedEventEvent">Output as a contract initialization event when transaction
+    /// was of type contract initialization.</param>
+    /// <returns>bool representing if transaction of type contract initialization.</returns>
+    public bool TryGetContractInit(out ContractInitializedEvent? contractInitializedEventEvent)
     {
         contractInitializedEventEvent = null;
         if (this._blockItemSummary.DetailsCase != Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction)
@@ -173,7 +188,11 @@ public sealed class BlockItemSummary {
     /// an iterator over pairs of a contract address that was affected, and the
     /// logs that were produced.
     /// </summary>
-    public bool ContractUpdateLogs(out IList<(ContractAddress, IList<ContractEvent>)> items)
+    /// <param name="items">Output as list of contract event for all updated contract when
+    /// transaction of type contract update.</param>
+    /// <returns>bool representing if transaction of type contract update.</returns>
+    /// <exception cref="MissingEnumException{ElementOneofCase}">Throws exception when returned type not known</exception>
+    public bool TryGetContractUpdateLogs(out IList<(ContractAddress, IList<ContractEvent>)> items)
     {
         items = new List<(ContractAddress, IList<ContractEvent>)>();
         if (this._blockItemSummary.DetailsCase != Concordium.Grpc.V2.BlockItemSummary.DetailsOneofCase.AccountTransaction)
@@ -223,6 +242,8 @@ public sealed class BlockItemSummary {
     /// <summary>
     /// Return the list of addresses affected by the block summary.
     /// </summary>
+    /// <returns>list of affected addresses in block</returns>
+    /// <exception cref="MissingEnumException{ElementOneofCase}">Throws exception when returned type not known</exception>
     public IList<AccountAddress> AffectedAddresses()
     {
         var affectedAddresses = new List<AccountAddress>();
