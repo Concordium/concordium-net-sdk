@@ -55,7 +55,6 @@ public static class Program
         Console.WriteLine("Query node...");
         var transactionStatus = await client.GetBlockItemStatusAsync(transactionHash);
 
-        // Conditional on the transaction status different actions can be handled.
         switch (transactionStatus)
         {
             case TransactionStatusReceived received:
