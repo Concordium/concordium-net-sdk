@@ -22,5 +22,5 @@ public abstract class ExampleOptionsWithKeys : ExampleOptions
         HelpText = "Path to a file with contents that is in the Concordium browser wallet key export format.",
         Required = true
     )]
-    public string WalletKeysFile { get; set; } = "";
+    public string WalletKeysFile { get; set; } = default!;
 }

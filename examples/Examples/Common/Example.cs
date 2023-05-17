@@ -26,14 +26,13 @@ public static class Example
     /// invoked with the parsed <typeparam name="T"/> instance as its
     /// argument.
     /// </param>
-    public static void Run<T>(string[] args, Action<T> exampleCallback)
+    public static Task Run<T>(string[] args, Action<T> exampleCallback)
         where T : ExampleOptions
     {
         Task exampleCallbackTask(T options) =>
-            // Await to squelch compiler warning.
             Task.Run(() => exampleCallback(options));
 
-        Run<T>(args, exampleCallbackTask);
+        return Run<T>(args, exampleCallbackTask);
     }
 
     /// <summary>
@@ -53,21 +52,22 @@ public static class Example
     /// The asynchronous callback corresponding to the example program which will be
     /// invoked with the parsed <typeparam name="T"/> instance as its argument.
     /// </param>
-    public static void Run<T>(string[] args, Func<T, Task> exampleCallback)
-        where T : ExampleOptions
-    {
-        try
-        {
-            Parser.Default
-                .ParseArguments<T>(args)
-                .WithParsedAsync(options => exampleCallback(options))
-                .Wait();
-        }
-        catch (Exception e)
-        {
-            HandleCallbackException(e);
-        }
-    }
+    public static Task Run<T>(string[] args, Func<T, Task> exampleCallback)
+        where T : ExampleOptions => Task.Run(() =>
+                                         {
+                                             try
+                                             {
+                                                 Parser.Default
+                                                     .ParseArguments<T>(args)
+                                                     .WithParsedAsync(options => exampleCallback(options))
+                                                     .Wait();
+                                             }
+                                             catch (Exception e)
+                                             {
+                                                 HandleCallbackException(e);
+                                             }
+                                         });
+
 
     private static void HandleCallbackException(Exception e)
     {

@@ -32,7 +32,7 @@ public class ExampleOptions
         HelpText = "URL representing the endpoint where the gRPC V2 API is served.",
         Default = DefaultEndpoint
     )]
-    public string Endpoint { get; set; } = DefaultEndpoint;
+    public string Endpoint { get; set; } = default!;
 
     [Option(
         'p',
@@ -40,7 +40,7 @@ public class ExampleOptions
         HelpText = "Port at the endpoint where the gRPC V2 API is served.",
         Default = DefaultPort
     )]
-    public ushort Port { get; set; } = DefaultPort;
+    public ushort Port { get; set; } = default!;
 
     [Option(
         't',
@@ -48,5 +48,5 @@ public class ExampleOptions
         HelpText = "Default connection timeout in seconds.",
         Default = DefaultTimeout
     )]
-    public uint Timeout { get; set; } = DefaultTimeout;
+    public uint Timeout { get; set; } = default!;
 }

@@ -14,7 +14,7 @@ public class GetAccountInfoExampleOptions : ExampleOptions
         HelpText = "Address of the account to retrieve the info of.",
         Required = true
     )]
-    public string AccountAddress { get; set; } = "";
+    public string AccountAddress { get; set; } = default!;
 
     [Option(
         'b',
@@ -23,5 +23,5 @@ public class GetAccountInfoExampleOptions : ExampleOptions
         Required = true,
         Default = DefaultBlockHash
     )]
-    public string BlockHash { get; set; } = DefaultBlockHash;
+    public string BlockHash { get; set; } = default!;
 }

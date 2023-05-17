@@ -15,5 +15,5 @@ public class GetBlockTransactionEventsExampleOptions : ExampleOptions
         Required = true,
         Default = DefaultBlockHash
     )]
-    public string BlockHash { get; set; } = DefaultBlockHash;
+    public string BlockHash { get; set; } = default!;
 }

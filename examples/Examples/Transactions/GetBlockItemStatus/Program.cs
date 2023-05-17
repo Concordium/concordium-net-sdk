@@ -1,11 +1,12 @@
 using CommandLine;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
+
 // ReSharper disable ClassNeverInstantiated.Global
 // ReSharper disable ParameterTypeCanBeEnumerable.Global
 #pragma warning disable CS8618
 
-namespace GetBlockItemSummary;
+namespace Concordium.Sdk.Examples.Transactions.GetBlockItemStatus;
 
 internal sealed class GetBlockItemSummaryOptions
 {
@@ -22,22 +23,15 @@ internal sealed class GetBlockItemSummaryOptions
 
 internal static class ExampleHelpers
 {
-    public static bool TryParse<T>(string[] args, out T? options)
+    public static T Parse<T>(string[] args)
     {
         var parserResult = Parser.Default
             .ParseArguments<T>(args);
-        if (parserResult.Tag == ParserResultType.NotParsed)
+        if (parserResult.Errors.Any())
         {
-            foreach (var error in parserResult.Errors)
-            {
-                Console.WriteLine(error);
-            }
-            options = default;
-            return false;
+            Environment.Exit(1);
         }
-
-        options = parserResult.Value;
-        return true;
+        return parserResult.Value;
     }
 }
 
@@ -51,11 +45,7 @@ public static class Program
     /// </param>
     public static async Task Main(string[] args)
     {
-        if (!ExampleHelpers.TryParse(args, out GetBlockItemSummaryOptions? options))
-        {
-            return;
-        }
-
+        var options = ExampleHelpers.Parse<GetBlockItemSummaryOptions>(args);
         var endpoint = new Uri(options!.Endpoint);
         var transactionHash = TransactionHash.From(options.TransactionHash);
         var port = options.Port;
