@@ -712,23 +712,5 @@ public sealed class RawClient : IDisposable
         return new CallOptions(null, deadline, CancellationToken.None);
     }
 
-    #region IDisposable Support
-
-    private bool _disposedValue;
-
-    public void Dispose(bool disposing)
-    {
-        if (!this._disposedValue)
-        {
-            if (disposing)
-            {
-                this._grpcChannel.Dispose();
-            }
-
-            this._disposedValue = true;
-        }
-    }
-
-    public void Dispose() => this.Dispose(true);
-    #endregion
+    public void Dispose() => this._grpcChannel.Dispose();
 }

@@ -66,12 +66,7 @@ public readonly struct ContractAddress : IEquatable<ContractAddress>, IAddress
         return this.Equals(other);
     }
 
-    public override int GetHashCode()
-    {
-        var indexBytes = Serialization.GetBytes(this.Index);
-        var subIndexBytes = Serialization.GetBytes(this.SubIndex);
-        return indexBytes.Concat(subIndexBytes).GetHashCode();
-    }
+    public override int GetHashCode() => this.Index.GetHashCode() * this.SubIndex.GetHashCode();
 
     public static bool operator ==(ContractAddress? left, ContractAddress? right) => Equals(left, right);
 

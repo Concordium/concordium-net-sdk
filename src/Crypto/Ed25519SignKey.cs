@@ -7,7 +7,7 @@ namespace Concordium.Sdk.Crypto;
 ///
 /// Used for signing transactions.
 /// </summary>
-public record Ed25519SignKey : ISigner
+public class Ed25519SignKey : ISigner
 {
     /// <summary>
     /// The length of an ed25519 (secret) sign key in bytes.
@@ -49,7 +49,7 @@ public record Ed25519SignKey : ISigner
         }
         catch (FormatException e)
         {
-            throw new ArgumentException($"'{signKeyAsHexString}' is not a valid hex formatted string: {e.Message}", e);
+            throw new ArgumentException($"'{signKeyAsHexString}' is not a valid hex formatted string.", e);
         }
         return From(bytes);
     }

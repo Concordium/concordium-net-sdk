@@ -33,11 +33,11 @@ public record RegisterData : AccountTransactionPayload<RegisterData>
     /// <param name="data">The data to be registered on-chain.</param>
     private static byte[] Serialize(OnChainData data)
     {
-        using var memoryStream = new MemoryStream((int)(
-            sizeof(AccountTransactionType) +
-            OnChainData.MaxLength));
+        var buffer = data.GetBytes();
+        var size = sizeof(AccountTransactionType) + buffer.Length;
+        using var memoryStream = new MemoryStream(size);
         memoryStream.WriteByte(TransactionType);
-        memoryStream.Write(data.GetBytes());
+        memoryStream.Write(buffer);
         return memoryStream.ToArray();
     }
 

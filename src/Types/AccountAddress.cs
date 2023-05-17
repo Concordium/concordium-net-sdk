@@ -52,12 +52,13 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>, IAddress
     {
         try
         {
-            var decodedBytes = _encoderInstance.DecodeData(addressAsBase58String).Skip(1).ToArray(); // Remove version byte.
+            var decodedData = _encoderInstance.DecodeData(addressAsBase58String).AsSpan();
+            var decodedBytes = decodedData[1..].ToArray(); // Remove version byte.
             return From(decodedBytes);
         }
-        catch (Exception)
+        catch (Exception e) when (e is FormatException or ArgumentException or ArgumentNullException)
         {
-            throw new ArgumentException($"'{addressAsBase58String}' is not a length-50 base58 encoded string");
+            throw new ArgumentException($"'{addressAsBase58String}' is not a length-50 base58 encoded string", e);
         }
     }
 

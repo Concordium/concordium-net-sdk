@@ -65,15 +65,18 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="transaction">The account transaction to send.</param>
     /// <returns>Task which returns the hash of the transaction if it was accepted by the node.</returns>
     /// <exception cref="RpcException">The call failed, e.g. due to the node not accepting the transaction.</exception>
-    public Task<Types.TransactionHash> SendAccountTransactionAsync<T>(
+    public async Task<Types.TransactionHash> SendAccountTransactionAsync<T>(
         SignedAccountTransaction<T> transaction
     )
-        where T : AccountTransactionPayload<T> =>
+        where T : AccountTransactionPayload<T>
+    {
         // Send the transaction as a block item request.
-        this.Raw
-            .SendBlockItemAsync(transaction.ToSendBlockItemRequest())
-            // Continuation returning the "native" SDK type.
-            .ContinueWith(txHash => Types.TransactionHash.From(txHash.Result.Value.ToByteArray()));
+        var txHash = await this.Raw
+            .SendBlockItemAsync(transaction.ToSendBlockItemRequest());
+
+        // Return the "native" SDK type.
+        return Types.TransactionHash.From(txHash.Value.ToByteArray());
+    }
 
     /// <summary>
     /// Query the chain for the next sequence number of the account with the supplied
@@ -162,23 +165,5 @@ public sealed class ConcordiumClient : IDisposable
         return TransactionStatusFactory.CreateTransactionStatus(blockItemStatus);
     }
 
-    #region IDisposable Support
-
-    private bool _disposedValue;
-
-    private void Dispose(bool disposing)
-    {
-        if (!this._disposedValue)
-        {
-            if (disposing)
-            {
-                this.Raw.Dispose();
-            }
-
-            this._disposedValue = true;
-        }
-    }
-
-    public void Dispose() => this.Dispose(true);
-    #endregion
+    public void Dispose() => this.Raw.Dispose();
 }
