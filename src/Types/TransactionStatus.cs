@@ -23,7 +23,7 @@ public sealed class TransactionStatusFinalized : ITransactionStatus
     /// <summary>
     /// Record with the block hash and summary of the outcome of a block item.
     /// </summary>
-    public (HashBytes BlockHash, BlockItemSummary Summary) State { get; }
+    public (BlockHash BlockHash, BlockItemSummary Summary) State { get; }
 
     internal TransactionStatusFinalized(BlockItemStatus blockItemStatus)
     {
@@ -31,7 +31,7 @@ public sealed class TransactionStatusFinalized : ITransactionStatus
         var itemSummary = blockItemSummaryInBlock.Outcome;
 
         var blockItemSummary = new BlockItemSummary(itemSummary);
-        this.State = (new HashBytes(blockItemSummaryInBlock.BlockHash.Value), blockItemSummary);
+        this.State = (BlockHash.From(blockItemSummaryInBlock.BlockHash.Value), blockItemSummary);
     }
 }
 
@@ -46,16 +46,16 @@ public sealed class TransactionStatusCommitted : ITransactionStatus
     /// <summary>
     /// Map with records which each gives the block hash and summary of the outcome of a block item.
     /// </summary>
-    public IList<(HashBytes BlockHash, BlockItemSummary Summary)> States { get; }
+    public IList<(BlockHash BlockHash, BlockItemSummary Summary)> States { get; }
 
     internal TransactionStatusCommitted(BlockItemStatus blockItemStatus)
     {
-        this.States = new List<(HashBytes, BlockItemSummary)>();
+        this.States = new List<(BlockHash, BlockItemSummary)>();
         foreach (var blockItemSummaryInBlock in blockItemStatus.Committed.Outcomes)
         {
             var itemSummary = blockItemSummaryInBlock.Outcome;
             var blockItemSummary = new BlockItemSummary(itemSummary);
-            var hash = new HashBytes(blockItemSummaryInBlock.BlockHash.Value);
+            var hash = BlockHash.From(blockItemSummaryInBlock.BlockHash.Value);
             var state = (hash, blockItemSummary);
 
             this.States.Add(state);

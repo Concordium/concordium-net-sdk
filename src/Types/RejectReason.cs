@@ -103,7 +103,7 @@ public sealed class RejectReason
                 break;
 
             case Grpc.V2.RejectReason.ReasonOneofCase.ModuleHashAlreadyExists:
-                this.ModuleHashAlreadyExists = new ModuleReference(new HashBytes(other.ModuleHashAlreadyExists.Value));
+                this.ModuleHashAlreadyExists = new ModuleReference(other.ModuleHashAlreadyExists.Value);
                 this.ReasonCase = ReasonOneOfCase.ModuleHashAlreadyExists;
                 break;
 
@@ -114,7 +114,7 @@ public sealed class RejectReason
 
             case Grpc.V2.RejectReason.ReasonOneofCase.InvalidInitMethod:
                 this.InvalidInitMethod = new(
-                new ModuleReference(new HashBytes(other.InvalidInitMethod.ModuleRef.Value)),
+                new ModuleReference(other.InvalidInitMethod.ModuleRef.Value),
                 new ContractName(other.InvalidInitMethod.InitName.Value)
               );
                 this.ReasonCase = ReasonOneOfCase.InvalidInitMethod;
@@ -122,14 +122,14 @@ public sealed class RejectReason
 
             case Grpc.V2.RejectReason.ReasonOneofCase.InvalidReceiveMethod:
                 this.InvalidReceiveMethod = new(
-                new ModuleReference(new HashBytes(other.InvalidReceiveMethod.ModuleRef.Value)),
+                new ModuleReference(other.InvalidReceiveMethod.ModuleRef.Value),
                 new ReceiveName(other.InvalidReceiveMethod.ReceiveName.Value)
               );
                 this.ReasonCase = ReasonOneOfCase.InvalidReceiveMethod;
                 break;
 
             case Grpc.V2.RejectReason.ReasonOneofCase.InvalidModuleReference:
-                this.InvalidModuleReference = new ModuleReference(new HashBytes(other.InvalidModuleReference.Value));
+                this.InvalidModuleReference = new ModuleReference(other.InvalidModuleReference.Value);
                 this.ReasonCase = ReasonOneOfCase.InvalidModuleReference;
                 break;
 

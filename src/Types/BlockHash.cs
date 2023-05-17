@@ -1,5 +1,6 @@
 using Concordium.Grpc.V2;
 using Concordium.Sdk.Client;
+using Google.Protobuf;
 
 namespace Concordium.Sdk.Types;
 
@@ -26,6 +27,12 @@ public record BlockHash : Hash
     /// <param name="blockHashAsBytes">A block hash represented as a length-32 byte array.</param>
     private BlockHash(byte[] blockHashAsBytes)
         : base(blockHashAsBytes) { }
+
+    /// <summary>
+    /// Creates an instance from a byte string object given from generated code. Only internal use.
+    /// </summary>
+    /// <param name="byteString">A block hash represented as a immutable array.</param>
+    internal static BlockHash From(ByteString byteString) => new(byteString.ToByteArray());
 
     /// <summary>
     /// Creates an instance from a block hash represented by a length-64 hex encoded string.

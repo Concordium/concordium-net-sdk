@@ -40,7 +40,7 @@ public class ContractInitializedEvent
             Grpc.V2.ContractVersion.V1 => ContractVersion.V1,
             _ => throw new MissingEnumException<Grpc.V2.ContractVersion>(initializedEvent.ContractVersion)
         };
-        this.ModuleReference = new ModuleReference(new HashBytes(initializedEvent.OriginRef.Value));
+        this.ModuleReference = new ModuleReference(initializedEvent.OriginRef.Value);
         this.ContractAddress = ContractAddress.From(initializedEvent.Address);
         this.Amount = CcdAmount.FromMicroCcd(initializedEvent.Amount.Value);
         this.InitName = new ContractName(initializedEvent.InitName.Value);
