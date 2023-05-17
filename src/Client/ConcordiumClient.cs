@@ -97,14 +97,14 @@ public sealed class ConcordiumClient : IDisposable
     /// case, then the sequence number is reliable.
     /// </returns>
     /// <exception cref="RpcException">The call failed.</exception>
-    public (AccountSequenceNumber, bool) GetNextAccountSequenceNumber(
-        AccountAddress accountAddress
+    public (Types.AccountSequenceNumber, bool) GetNextAccountSequenceNumber(
+        Types.AccountAddress accountAddress
     )
     {
         var next = this.Raw.GetNextAccountSequenceNumber(accountAddress.ToProto());
 
         // Return the sequence number as a "native" SDK type.
-        return (AccountSequenceNumber.From(next.SequenceNumber.Value), next.AllFinal);
+        return (Types.AccountSequenceNumber.From(next.SequenceNumber.Value), next.AllFinal);
     }
 
     /// <summary>
@@ -126,19 +126,15 @@ public sealed class ConcordiumClient : IDisposable
     /// If the latter is the case, then the sequence number is reliable.
     /// </returns>
     /// <exception cref="RpcException">The call failed.</exception>
-    public Task<(AccountSequenceNumber, bool)> GetNextAccountSequenceNumberAsync(
-        AccountAddress accountAddress
-    ) =>
-        this.Raw
-            .GetNextAccountSequenceNumberAsync(accountAddress.ToProto())
-            // Continuation returning the "native" SDK type.
-            .ContinueWith(
-                next =>
-                    (
-                        AccountSequenceNumber.From(next.Result.SequenceNumber.Value),
-                        next.Result.AllFinal
-                    )
-            );
+    public async Task<(Types.AccountSequenceNumber, bool)> GetNextAccountSequenceNumberAsync(
+        Types.AccountAddress accountAddress
+    )
+    {
+        var next = await this.Raw
+            .GetNextAccountSequenceNumberAsync(accountAddress.ToProto());
+
+        return (Types.AccountSequenceNumber.From(next.SequenceNumber.Value), next.AllFinal);
+    }
 
     /// <summary>
     /// Get the status of and information about a specific block item given a transaction hash.
