@@ -140,14 +140,5 @@ public class OnChainData : IEquatable<OnChainData>
         return this._value.SequenceEqual(other._value);
     }
 
-    public override int GetHashCode()
-    {
-        var hash = 1;
-        foreach (var b in this._value.AsSpan())
-        {
-            hash *= b.GetHashCode();
-        }
-
-        return hash;
-    }
+    public override int GetHashCode() => Helpers.HashCode.GetHashCodeByteArray(this._value);
 }
