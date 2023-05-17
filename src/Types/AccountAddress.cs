@@ -161,7 +161,8 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>, IAddress
         var hash = 1;
         foreach (var b in this._value.AsSpan())
         {
-            hash *= b.GetHashCode();
+            var innerHash = b.GetHashCode();
+            hash *= innerHash != 0 ? innerHash : 1;
         }
 
         return hash;

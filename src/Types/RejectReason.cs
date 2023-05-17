@@ -26,11 +26,11 @@ public sealed class RejectReason
     /// <summary>
     /// Reference to a non-existing contract init method.
     /// </summary>
-    public (ModuleReference ModuleReference, OwnedContractName OwnedContractName)? InvalidInitMethod { get; init; }
+    public (ModuleReference ModuleReference, ContractName ContractName)? InvalidInitMethod { get; init; }
     /// <summary>
     /// Reference to a non-existing contract receive method.
     /// </summary>
-    public (ModuleReference ModuleReference, OwnedReceiveName OwnedReceivedName)? InvalidReceiveMethod { get; init; }
+    public (ModuleReference ModuleReference, ReceiveName ReceivedName)? InvalidReceiveMethod { get; init; }
     /// <summary>
     /// Reference to a non-existing module.
     /// </summary>
@@ -52,12 +52,7 @@ public sealed class RejectReason
     /// <summary>
     /// Rejected due to contract logic in receive function of a contract.
     /// </summary>
-    public (
-      int RejectReason,
-      ContractAddress ContractAddress,
-      OwnedReceiveName OwnedReceiveName,
-      OwnedParameter OwnedParameter
-      )? RejectedReceive
+    public (int RejectReason, ContractAddress ContractAddress, ReceiveName ReceiveName, Parameter Parameter)? RejectedReceive
     { get; init; }
     /// <summary>
     /// Tried to add baker for an account that already has a baker
@@ -120,7 +115,7 @@ public sealed class RejectReason
             case Grpc.V2.RejectReason.ReasonOneofCase.InvalidInitMethod:
                 this.InvalidInitMethod = new(
                 new ModuleReference(new HashBytes(other.InvalidInitMethod.ModuleRef.Value)),
-                new OwnedContractName(other.InvalidInitMethod.InitName.Value)
+                new ContractName(other.InvalidInitMethod.InitName.Value)
               );
                 this.ReasonCase = ReasonOneOfCase.InvalidInitMethod;
                 break;
@@ -128,7 +123,7 @@ public sealed class RejectReason
             case Grpc.V2.RejectReason.ReasonOneofCase.InvalidReceiveMethod:
                 this.InvalidReceiveMethod = new(
                 new ModuleReference(new HashBytes(other.InvalidReceiveMethod.ModuleRef.Value)),
-                new OwnedReceiveName(other.InvalidReceiveMethod.ReceiveName.Value)
+                new ReceiveName(other.InvalidReceiveMethod.ReceiveName.Value)
               );
                 this.ReasonCase = ReasonOneOfCase.InvalidReceiveMethod;
                 break;
@@ -174,8 +169,8 @@ public sealed class RejectReason
                 this.RejectedReceive = new(
                 other.RejectedReceive.RejectReason,
                 ContractAddress.From(other.RejectedReceive.ContractAddress),
-                new OwnedReceiveName(other.RejectedReceive.ReceiveName.Value),
-                new OwnedParameter(other.RejectedReceive.Parameter.Value.ToByteArray())
+                new ReceiveName(other.RejectedReceive.ReceiveName.Value),
+                new Parameter(other.RejectedReceive.Parameter.Value.ToByteArray())
               );
                 this.ReasonCase = ReasonOneOfCase.RejectedReceive;
                 break;
