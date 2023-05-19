@@ -8,6 +8,14 @@ namespace Concordium.Sdk.Tests.UnitTests.Types;
 public class AccountSequenceNumberTests
 {
     [Fact]
+    public void Same_SequenceNumbers_HaveSameHashCode()
+    {
+        var sequenceNumberA = AccountSequenceNumber.From(1);
+        var sequenceNumberB = AccountSequenceNumber.From(1);
+        Assert.Equal(sequenceNumberA.GetHashCode(), sequenceNumberB.GetHashCode());
+    }
+
+    [Fact]
     public void Same_SequenceNumbers_AreEqual()
     {
         var sequenceNumberA = AccountSequenceNumber.From(1);

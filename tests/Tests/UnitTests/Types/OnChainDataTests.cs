@@ -10,6 +10,14 @@ namespace Concordium.Sdk.Tests.UnitTests.Types;
 public class OnChainDataTests
 {
     [Fact]
+    public void Same_Datas_HaveSameHashCode()
+    {
+        var dataA = OnChainData.FromHex("feedbeef");
+        var dataB = OnChainData.FromHex("feedbeef");
+        Assert.Equal(dataA.GetHashCode(), dataB.GetHashCode());
+    }
+
+    [Fact]
     public void Same_Datas_AreEqual()
     {
         var dataA = OnChainData.FromHex("feedbeef");

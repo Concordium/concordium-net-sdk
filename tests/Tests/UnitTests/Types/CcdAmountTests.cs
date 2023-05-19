@@ -7,6 +7,30 @@ namespace Concordium.Sdk.Tests.UnitTests.Types;
 
 public class CcdAmountTests
 {
+    [Fact]
+    public void Same_CcdAmounts_AreEqual()
+    {
+        var ccdAmountA = CcdAmount.FromCcd(1);
+        var ccdAmountB = CcdAmount.FromCcd(1);
+        Assert.Equal(ccdAmountA.GetHashCode(), ccdAmountB.GetHashCode());
+    }
+
+    [Fact]
+    public void Different_CcdAmounts_AreNotEqual()
+    {
+        var ccdAmountA = CcdAmount.FromCcd(1);
+        var ccdAmountB = CcdAmount.FromCcd(2);
+        Assert.NotEqual(ccdAmountA, ccdAmountB);
+    }
+
+    [Fact]
+    public void Same_CcdAmounts_HaveSameHashCode()
+    {
+        var ccdAmountA = CcdAmount.FromCcd(1);
+        var ccdAmountB = CcdAmount.FromCcd(1);
+        Assert.Equal(ccdAmountA, ccdAmountB);
+    }
+
     [Theory]
     [InlineData(0)]
     [InlineData(10)]

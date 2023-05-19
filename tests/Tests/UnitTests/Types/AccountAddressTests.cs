@@ -10,6 +10,15 @@ namespace Concordium.Sdk.Tests.UnitTests.Types;
 public class AccountAddressTests
 {
     [Fact]
+    public void Same_Addresses_HaveSameHashCode()
+    {
+        var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
+        var accountAddressA = AccountAddress.From(addressAsBase58String);
+        var accountAddressB = AccountAddress.From(addressAsBase58String);
+        Assert.Equal(accountAddressA.GetHashCode(), accountAddressB.GetHashCode());
+    }
+
+    [Fact]
     public void Same_Addresses_AreEqual()
     {
         var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";

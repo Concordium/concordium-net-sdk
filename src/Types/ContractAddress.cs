@@ -35,7 +35,7 @@ public readonly struct ContractAddress : IEquatable<ContractAddress>
     /// </summary>
     /// <param name="index">the index value.</param>
     /// <param name="subIndex">the sub index value.</param>
-    public static ContractAddress Create(ulong index, ulong subIndex) => new(index, subIndex);
+    public static ContractAddress From(ulong index, ulong subIndex) => new(index, subIndex);
 
     /// <summary>
     /// Converts the contract address to its corresponding protocol buffer message instance.

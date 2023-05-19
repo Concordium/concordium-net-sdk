@@ -8,6 +8,18 @@ namespace Concordium.Sdk.Tests.UnitTests.Types;
 public class TransactionHashTests
 {
     [Fact]
+    public void Same_TransactionHashes_HaveSameHashCode()
+    {
+        var transactionHashA = TransactionHash.From(
+            "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af"
+        );
+        var transactionHashB = TransactionHash.From(
+            "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af"
+        );
+        Assert.Equal(transactionHashA.GetHashCode(), transactionHashB.GetHashCode());
+    }
+
+    [Fact]
     public void Same_TransactionHashes_AreEqual()
     {
         var transactionHashA = TransactionHash.From(
