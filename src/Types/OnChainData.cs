@@ -80,7 +80,7 @@ public class OnChainData : IEquatable<OnChainData>
             );
         }
 
-        return new OnChainData((byte[])dataAsBytes.Clone());
+        return new OnChainData(dataAsBytes.ToArray());
     }
 
     /// <summary>

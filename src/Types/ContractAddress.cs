@@ -1,5 +1,3 @@
-using Concordium.Sdk.Helpers;
-
 namespace Concordium.Sdk.Types;
 
 /// <summary>

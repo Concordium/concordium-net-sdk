@@ -33,7 +33,7 @@ public class Ed25519SignKey : ISigner
     /// <summary>
     /// Copies the ed25519 (secret) sign to length-32 byte array.
     /// </summary>
-    public byte[] ToBytes() => (byte[])this._value.Clone();
+    public byte[] ToBytes() => this._value.ToArray();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Ed25519SignKey"/> class.

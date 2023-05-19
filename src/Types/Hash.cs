@@ -50,13 +50,13 @@ public abstract record Hash : IEquatable<Hash>
             );
         }
 
-        this._value = (byte[])hashAsBytes.Clone();
+        this._value = hashAsBytes;
     }
 
     /// <summary>
     /// Copies the hash to a length-32 byte array.
     /// </summary>
-    public byte[] ToBytes() => (byte[])this._value.Clone();
+    public byte[] ToBytes() => this._value.ToArray();
 
     /// <summary>
     /// Get the hash as a length-64 hex encoded string.

@@ -41,7 +41,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
     /// <summary>
     /// Copies the address to a byte array which has the version byte preprended.
     /// </summary>
-    public byte[] ToBytes() => (byte[])this._value.Clone();
+    public byte[] ToBytes() => this._value.ToArray();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountAddress"/> class.
@@ -74,7 +74,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
             throw new ArgumentException($"The account address bytes length must be {BytesLength}.");
         }
 
-        return new AccountAddress((byte[])addressAsBytes.Clone());
+        return new AccountAddress(addressAsBytes.ToArray());
     }
 
     /// <summary>
