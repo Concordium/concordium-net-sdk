@@ -39,9 +39,9 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
         _encoderInstance.EncodeData((new byte[] { VersionByte }).Concat(this._value).ToArray());
 
     /// <summary>
-    /// Get the address as a length-32 byte array without the version byte prepended.
+    /// Copies the address to a byte array which has the version byte preprended.
     /// </summary>
-    public byte[] GetBytes() => (byte[])this._value.Clone();
+    public byte[] ToBytes() => (byte[])this._value.Clone();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountAddress"/> class.
@@ -130,7 +130,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>
         }
         // Serialize n to its corresponding alias bytes. Since we output it
         // in big endian format, we truncate the first and most significant byte.
-        var aliasBytes = Serialization.GetBytes(n).Skip(1).ToArray();
+        var aliasBytes = Serialization.ToBytes(n).Skip(1).ToArray();
         var address = this._value.Take(29).ToArray().Concat(aliasBytes).ToArray();
         return From(address);
     }

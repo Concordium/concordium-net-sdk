@@ -54,9 +54,9 @@ public abstract record Hash : IEquatable<Hash>
     }
 
     /// <summary>
-    /// Get the hash as a length-32 byte array.
+    /// Copies the hash to a length-32 byte array.
     /// </summary>
-    public byte[] GetBytes() => (byte[])this._value.Clone();
+    public byte[] ToBytes() => (byte[])this._value.Clone();
 
     /// <summary>
     /// Get the hash as a length-64 hex encoded string.

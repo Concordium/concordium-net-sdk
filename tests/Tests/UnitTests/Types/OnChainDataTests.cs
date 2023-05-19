@@ -43,7 +43,7 @@ public class OnChainDataTests
         BinaryPrimitives.WriteUInt16BigEndian(header, (ushort)length);
         var data = Enumerable.Repeat((byte)128, length).ToArray();
         var bytes = header.Concat(data).ToArray();
-        OnChainData.From(data).GetBytes().Should().BeEquivalentTo(bytes);
+        OnChainData.From(data).ToBytes().Should().BeEquivalentTo(bytes);
     }
 
     [Theory]

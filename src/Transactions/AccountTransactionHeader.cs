@@ -76,8 +76,8 @@ public struct AccountTransactionHeader
     }
 
     /// <summary>
-    /// Get the account transaction serialized to the binary format expected by the node.
-    /// This is used when signing transactions.
+    /// Copies the account transaction serialized to the binary format expected by the node
+    /// to a byte array. This is used for signing transactions.
     /// </summary>
     /// <param name="sender">Address of the sender of the transaction.</param>
     /// <param name="sequenceNumber">Account sequence number to use for the transaction.</param>
@@ -93,18 +93,18 @@ public struct AccountTransactionHeader
     )
     {
         using var memoryStream = new MemoryStream((int)BytesLength);
-        memoryStream.Write(sender.GetBytes());
-        memoryStream.Write(sequenceNumber.GetBytes());
-        memoryStream.Write(maxEnergyCost.GetBytes());
-        memoryStream.Write(payloadSize.GetBytes());
-        memoryStream.Write(expiry.GetBytes());
+        memoryStream.Write(sender.ToBytes());
+        memoryStream.Write(sequenceNumber.ToBytes());
+        memoryStream.Write(maxEnergyCost.ToBytes());
+        memoryStream.Write(payloadSize.ToBytes());
+        memoryStream.Write(expiry.ToBytes());
         return memoryStream.ToArray();
     }
 
     /// <summary>
-    /// Get the transaction header in the binary format expected by the node.
+    /// Copies the transaction header in the binary format expected by the node to a byte array.
     /// </summary>
-    public readonly byte[] GetBytes() =>
+    public readonly byte[] ToBytes() =>
         Serialize(
             this.Sender,
             this.SequenceNumber,

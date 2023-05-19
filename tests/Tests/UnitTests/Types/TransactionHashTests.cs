@@ -57,8 +57,8 @@ public class TransactionHashTests
         var transactionHashAsBase16String =
             "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af";
         var transactionHash = TransactionHash.From(transactionHashAsBase16String);
-        var transactionHashAsBytes = transactionHash.GetBytes();
-        transactionHash.GetBytes().Should().BeEquivalentTo(transactionHashAsBytes);
+        var transactionHashAsBytes = transactionHash.ToBytes();
+        transactionHash.ToBytes().Should().BeEquivalentTo(transactionHashAsBytes);
     }
 
     [Fact]
@@ -78,13 +78,13 @@ public class TransactionHashTests
     }
 
     [Fact]
-    public void GetBytes_ReturnsCorrectValue()
+    public void ToBytes_ReturnsCorrectValue()
     {
         var transactionHashAsBase16String =
             "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af";
         var transactionHash = TransactionHash.From(transactionHashAsBase16String);
         var expectedTransactionHashAsBytes = Convert.FromHexString(transactionHashAsBase16String);
-        var transactionHashAsBytes = transactionHash.GetBytes();
+        var transactionHashAsBytes = transactionHash.ToBytes();
         transactionHashAsBytes.Should().BeEquivalentTo(expectedTransactionHashAsBytes);
     }
 }

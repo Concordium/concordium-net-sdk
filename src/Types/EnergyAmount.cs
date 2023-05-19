@@ -16,8 +16,9 @@ public readonly struct EnergyAmount
 
     public static implicit operator ulong(EnergyAmount value) => value.Value;
 
+
     /// <summary>
-    /// Get the energy amount in the binary format expected by the node.
+    /// Copies the energy amount represented in big-endian format to byte array.
     /// </summary>
-    public byte[] GetBytes() => Serialization.GetBytes(this.Value);
+    public byte[] ToBytes() => Serialization.ToBytes(this.Value);
 }

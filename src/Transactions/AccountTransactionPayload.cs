@@ -39,13 +39,13 @@ public abstract record AccountTransactionPayload<T>
     public abstract ulong GetTransactionSpecificCost();
 
     /// <summary>
-    /// Get the transaction payload in the binary format expected by the node.
+    /// Copies the on-chain data in the binary format expected by the node to a byte array.
     /// </summary>
-    public abstract byte[] GetBytes();
+    public abstract byte[] ToBytes();
 
     /// <summary>
     /// Converts the transaction to its corresponding protocol buffer message instance.
     /// </summary>
     public Grpc.V2.AccountTransactionPayload ToProto() =>
-        new() { RawPayload = Google.Protobuf.ByteString.CopyFrom(this.GetBytes()) };
+        new() { RawPayload = Google.Protobuf.ByteString.CopyFrom(this.ToBytes()) };
 }

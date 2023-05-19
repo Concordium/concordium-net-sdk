@@ -101,9 +101,9 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     }
 
     /// <summary>
-    /// Get the CCD amount in the binary format expected by the node.
+    /// Copies the CCD amuunt represented in big-endian format to  byte array.
     /// </summary>
-    public byte[] GetBytes() => Serialization.GetBytes(this.Value);
+    public byte[] ToBytes() => Serialization.ToBytes(this.Value);
 
     public bool Equals(CcdAmount other) => this.Value == other.Value;
 

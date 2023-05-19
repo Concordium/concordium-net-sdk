@@ -57,9 +57,9 @@ public readonly struct AccountSequenceNumber : IEquatable<AccountSequenceNumber>
     }
 
     /// <summary>
-    /// Get the account sequence number in the binary format expected by the node.
+    /// Copies the account sequence represented in big-endian format to a byte array.
     /// </summary>
-    public byte[] GetBytes() => Serialization.GetBytes(this.Value);
+    public byte[] ToBytes() => Serialization.ToBytes(this.Value);
 
     /// <summary>
     /// Converts the account sequence number to its corresponding protocol buffer message instance.

@@ -76,7 +76,7 @@ public class AccountAddressTests
     }
 
     [Fact]
-    public void GetBytes_ReturnsCorrectValue()
+    public void ToBytes_ReturnsCorrectValue()
     {
         var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
         var address = AccountAddress.From(addressAsBase58String);
@@ -84,7 +84,7 @@ public class AccountAddressTests
             .DecodeData(addressAsBase58String)
             .Skip(1) // Remove version byte.
             .ToArray();
-        var addressAsBytes = address.GetBytes();
+        var addressAsBytes = address.ToBytes();
         addressAsBytes.Should().Equal(expectedAddressAsBytes);
     }
 
@@ -96,8 +96,8 @@ public class AccountAddressTests
     {
         var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
         var address = AccountAddress.From(addressAsBase58String);
-        var firstAliasBytes = address.GetBytes().Take(29).Concat(aliasByteValue).ToArray();
-        address.GetNthAlias(alias).GetBytes().Should().Equal(firstAliasBytes);
+        var firstAliasBytes = address.ToBytes().Take(29).Concat(aliasByteValue).ToArray();
+        address.GetNthAlias(alias).ToBytes().Should().Equal(firstAliasBytes);
     }
 
     [Theory]

@@ -33,6 +33,6 @@ public record TransactionHash : Hash
     public Grpc.V2.TransactionHash ToProto() =>
         new()
         {
-            Value = Google.Protobuf.ByteString.CopyFrom(this.GetBytes())
+            Value = Google.Protobuf.ByteString.CopyFrom(this.ToBytes())
         };
 }

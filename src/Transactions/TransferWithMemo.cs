@@ -44,7 +44,7 @@ public record TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
     }
 
     /// <summary>
-    /// Get the "transfer with memo" account transaction serialized to the binary format expected by the node.
+    /// Copies the "transfer with memo" account transaction in the binary format expected by the node to a byte array.
     /// </summary>
     /// <param name="amount">Amount to send.</param>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
@@ -57,13 +57,13 @@ public record TransferWithMemo : AccountTransactionPayload<TransferWithMemo>
             OnChainData.MaxLength +
             CcdAmount.BytesLength));
         memoryStream.WriteByte(TransactionType);
-        memoryStream.Write(receiver.GetBytes());
-        memoryStream.Write(memo.GetBytes());
-        memoryStream.Write(amount.GetBytes());
+        memoryStream.Write(receiver.ToBytes());
+        memoryStream.Write(memo.ToBytes());
+        memoryStream.Write(amount.ToBytes());
         return memoryStream.ToArray();
     }
 
     public override ulong GetTransactionSpecificCost() => 300;
 
-    public override byte[] GetBytes() => Serialize(this.Amount, this.Receiver, this.Memo);
+    public override byte[] ToBytes() => Serialize(this.Amount, this.Receiver, this.Memo);
 }

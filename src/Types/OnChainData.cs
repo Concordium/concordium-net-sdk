@@ -107,15 +107,16 @@ public class OnChainData : IEquatable<OnChainData>
     }
 
     /// <summary>
-    /// Get the on-chain data in the binary format expected by the node.
+    /// Copies the on-chain data in the binary format expected by the node
+    /// to a byte array.
     ///
     /// That is, represented as a byte array with the length of the array
     /// prepended as a 16-bit unsigned integer in big-endian format.
     /// </summary>
-    public byte[] GetBytes()
+    public byte[] ToBytes()
     {
         using var memoryStream = new MemoryStream(sizeof(ushort) + this._value.Length);
-        memoryStream.Write(Serialization.GetBytes((ushort)this._value.Length));
+        memoryStream.Write(Serialization.ToBytes((ushort)this._value.Length));
         memoryStream.Write(this._value);
         return memoryStream.ToArray();
     }
@@ -125,14 +126,25 @@ public class OnChainData : IEquatable<OnChainData>
     /// </summary>
     public override string ToString() => Convert.ToHexString(this._value).ToLowerInvariant();
 
-    public virtual bool Equals(OnChainData? other)
+    public override bool Equals(object? obj)
     {
-        if (other is null)
+        if (obj is null)
         {
             return false;
         }
 
-        if (other.GetType() != this.GetType())
+        if (obj.GetType() != this.GetType())
+        {
+            return false;
+        }
+
+        var other = (OnChainData)obj;
+        return this.Equals(other);
+    }
+
+    public virtual bool Equals(OnChainData? other)
+    {
+        if (other is null)
         {
             return false;
         }

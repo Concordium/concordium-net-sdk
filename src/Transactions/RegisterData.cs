@@ -28,12 +28,12 @@ public record RegisterData : AccountTransactionPayload<RegisterData>
     public override ulong GetTransactionSpecificCost() => 300;
 
     /// <summary>
-    /// Get the "register data" account transaction serialized to the binary format expected by the node.
+    /// Copies the "register data" account transaction in the binary format expected by the node to a byte array.
     /// </summary>
     /// <param name="data">The data to be registered on-chain.</param>
     private static byte[] Serialize(OnChainData data)
     {
-        var buffer = data.GetBytes();
+        var buffer = data.ToBytes();
         var size = sizeof(AccountTransactionType) + buffer.Length;
         using var memoryStream = new MemoryStream(size);
         memoryStream.WriteByte(TransactionType);
@@ -41,5 +41,5 @@ public record RegisterData : AccountTransactionPayload<RegisterData>
         return memoryStream.ToArray();
     }
 
-    public override byte[] GetBytes() => Serialize(this.Data);
+    public override byte[] ToBytes() => Serialize(this.Data);
 }

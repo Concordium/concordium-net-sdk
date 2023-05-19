@@ -17,7 +17,7 @@ public struct PayloadSize
     public static implicit operator uint(PayloadSize payloadSize) => payloadSize._value;
 
     /// <summary>
-    /// Get the payload size in the binary format expected by the node.
+    /// Copies the payload size in big-endian format to a byte array.
     /// </summary>
-    public readonly byte[] GetBytes() => Serialization.GetBytes(this._value);
+    public readonly byte[] ToBytes() => Serialization.ToBytes(this._value);
 }

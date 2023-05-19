@@ -61,7 +61,7 @@ public record PreparedAccountTransaction<T>
     public SignedAccountTransaction<T> Sign(ITransactionSigner transactionSigner)
     {
         // Get the serialized payload.
-        var serializedPayload = this.Payload.GetBytes();
+        var serializedPayload = this.Payload.ToBytes();
         var serializedPayloadSize = (uint)serializedPayload.Length;
 
         // Compute the energy cost.
@@ -83,7 +83,7 @@ public record PreparedAccountTransaction<T>
         );
 
         // Construct the serialized payload and its digest for signing.
-        var serializedHeaderAndTxPayload = header.GetBytes().Concat(serializedPayload).ToArray();
+        var serializedHeaderAndTxPayload = header.ToBytes().Concat(serializedPayload).ToArray();
         var signDigest = SHA256.Create().ComputeHash(serializedHeaderAndTxPayload);
 
         // Sign it.

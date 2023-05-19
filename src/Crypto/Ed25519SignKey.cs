@@ -31,9 +31,9 @@ public class Ed25519SignKey : ISigner
     public override string ToString() => Convert.ToHexString(this._value).ToLowerInvariant();
 
     /// <summary>
-    /// Gets the ed25519 (secret) sign key represented as a length-32 byte array.
+    /// Copies the ed25519 (secret) sign to length-32 byte array.
     /// </summary>
-    public byte[] GetBytes() => (byte[])this._value.Clone();
+    public byte[] ToBytes() => (byte[])this._value.Clone();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Ed25519SignKey"/> class.

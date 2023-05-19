@@ -57,8 +57,8 @@ public class BlockHashTests
         var blockHashAsBase16String =
             "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af";
         var blockHash = BlockHash.From(blockHashAsBase16String);
-        var blockHashAsBytes = blockHash.GetBytes();
-        blockHash.GetBytes().Should().BeEquivalentTo(blockHashAsBytes);
+        var blockHashAsBytes = blockHash.ToBytes();
+        blockHash.ToBytes().Should().BeEquivalentTo(blockHashAsBytes);
     }
 
     [Fact]
@@ -78,13 +78,13 @@ public class BlockHashTests
     }
 
     [Fact]
-    public void GetBytes_ReturnsCorrectValue()
+    public void ToBytes_ReturnsCorrectValue()
     {
         var blockHashAsBase16String =
             "44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af";
         var blockHash = BlockHash.From(blockHashAsBase16String);
         var expectedBlockHashAsBytes = Convert.FromHexString(blockHashAsBase16String);
-        var blockHashAsBytes = blockHash.GetBytes();
+        var blockHashAsBytes = blockHash.ToBytes();
         blockHashAsBytes.Should().BeEquivalentTo(expectedBlockHashAsBytes);
     }
 }
