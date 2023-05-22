@@ -22,7 +22,7 @@ public class TransferTests
     }
 
     [Fact]
-    public void GetBytes_ReturnsCorrectValue()
+    public void ToBytes_ReturnsCorrectValue()
     {
         // The expected payload was generated using the Concordium Rust SDK.
         var expectedBytes = new byte[]
@@ -69,7 +69,7 @@ public class TransferTests
             225,
             0
         };
-        CreateTransfer().GetBytes().Should().BeEquivalentTo(expectedBytes);
+        CreateTransfer().ToBytes().Should().BeEquivalentTo(expectedBytes);
     }
 
     [Fact]

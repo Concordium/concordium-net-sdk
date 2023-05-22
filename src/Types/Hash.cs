@@ -50,13 +50,13 @@ public abstract record Hash : IEquatable<Hash>
             );
         }
 
-        this._value = (byte[])hashAsBytes.Clone();
+        this._value = hashAsBytes;
     }
 
     /// <summary>
-    /// Get the hash as a length-32 byte array.
+    /// Copies the hash to a length-32 byte array.
     /// </summary>
-    public byte[] GetBytes() => (byte[])this._value.Clone();
+    public byte[] ToBytes() => this._value.ToArray();
 
     /// <summary>
     /// Get the hash as a length-64 hex encoded string.
@@ -83,14 +83,5 @@ public abstract record Hash : IEquatable<Hash>
         return this._value.SequenceEqual(other._value);
     }
 
-    public override int GetHashCode()
-    {
-        var hash = 1;
-        foreach (var b in this._value.AsSpan())
-        {
-            hash *= b.GetHashCode();
-        }
-
-        return hash;
-    }
+    public override int GetHashCode() => Helpers.HashCode.GetHashCodeByteArray(this._value);
 }

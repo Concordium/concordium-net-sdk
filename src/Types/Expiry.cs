@@ -86,10 +86,10 @@ public readonly struct Expiry : IEquatable<Expiry>
     public ulong GetValue() => (ulong)this._timestamp.ToUnixTimeSeconds();
 
     /// <summary>
-    /// Get the expiration time represented by the elapsed number of seconds since
-    /// the UNIX epoch written as a 64-bit integer in big-endian format.
+    /// Copies the expiration time represented by the elapsed number of seconds since
+    /// the UNIX epoch written as a 64-bit integer in big-endian format to a byte array.
     /// </summary>
-    public byte[] GetBytes() => Serialization.GetBytes(this.GetValue());
+    public byte[] ToBytes() => Serialization.ToBytes(this.GetValue());
 
     /// <summary>
     /// Get a string representation of the date and time in the calendar used by the current culture.

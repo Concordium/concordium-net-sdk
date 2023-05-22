@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Concordium.Sdk.Crypto;
 using Concordium.Sdk.Wallets;
 using FluentAssertions;
@@ -9,38 +10,19 @@ namespace Concordium.Sdk.Tests.UnitTests.Wallets;
 public class WalletAccountTests
 {
     [Theory]
-    [WalletData(
-        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/GenesisWalletKeyExportFormatValid.json",
-        0,
-        0,
-        "443c20439711361b6870c1679be33860d10cf7cded240e4a567e31ec3a56ecf5"
-    )]
-    [WalletData(
-        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/GenesisWalletKeyExportFormatValidNonZeroIndices.json",
-        17,
-        37,
-        "443c20439711361b6870c1679be33860d10cf7cded240e4a567e31ec3a56ecf5"
-    )]
-    [WalletData(
-        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/BrowserWalletKeyExportFormatValid.json",
-        0,
-        0,
-        "56f60de843790c308dac2d59a5eec9f6b1649513f827e5a13d7038accfe31784"
-    )]
-    [WalletData(
-        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/BrowserWalletKeyExportFormatValidNonZeroIndices.json",
-        17,
-        37,
-        "56f60de843790c308dac2d59a5eec9f6b1649513f827e5a13d7038accfe31784"
-    )]
+    [InlineData("./Wallets/Data/GenesisWalletKeyExportFormatValid.json", 0, 0, "443c20439711361b6870c1679be33860d10cf7cded240e4a567e31ec3a56ecf5")]
+    [InlineData("./Wallets/Data/GenesisWalletKeyExportFormatValidNonZeroIndices.json", 17, 37, "443c20439711361b6870c1679be33860d10cf7cded240e4a567e31ec3a56ecf5")]
+    [InlineData("./Wallets/Data/BrowserWalletKeyExportFormatValid.json", 0, 0, "56f60de843790c308dac2d59a5eec9f6b1649513f827e5a13d7038accfe31784")]
+    [InlineData("./Wallets/Data/BrowserWalletKeyExportFormatValidNonZeroIndices.json", 17, 37, "56f60de843790c308dac2d59a5eec9f6b1649513f827e5a13d7038accfe31784")]
     public void FromWalletKeyExportFormat_OnValidInput_ReturnsCorrectInstance(
-        string walletJson,
+        string path,
         byte credIndex,
         byte keyIndex,
         string expectedKey
     )
     {
-        var wallet = WalletAccount.FromWalletKeyExportFormat(walletJson);
+        var json = File.ReadAllText(path);
+        var wallet = WalletAccount.FromWalletKeyExportFormat(json);
 
         // Get the sign key at the specified account credential index, key index pair.
         wallet.GetSignerEntries().TryGetValue(credIndex, out var keys);
@@ -71,42 +53,33 @@ public class WalletAccountTests
     }
 
     [Theory]
-    [EmbeddedResourceData(
-        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/GenesisWalletKeyExportFormatMissingField.json"
-    )]
-    [EmbeddedResourceData(
-        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/BrowserWalletKeyExportFormatMissingField.json"
-    )]
-    public void FromWalletKeyExportFormat_OnInputWithMissingField_ThrowsException(string json)
+    [InlineData("./Wallets/Data/GenesisWalletKeyExportFormatMissingField.json")]
+    [InlineData("./Wallets/Data/BrowserWalletKeyExportFormatMissingField.json")]
+    public void FromWalletKeyExportFormat_OnInputWithMissingField_ThrowsException(string path)
     {
+        var json = File.ReadAllText(path);
         Action result = () => WalletAccount.FromWalletKeyExportFormat(json);
         result.Should().Throw<WalletDataSourceException>();
     }
 
     [Theory]
-    [EmbeddedResourceData(
-        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/GenesisWalletKeyExportFormatInvalidKeyIndex.json"
-    )]
-    [EmbeddedResourceData(
-        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/GenesisWalletKeyExportFormatInvalidKeyIndex.json"
-    )]
-    public void FromWalletKeyExportFormat_OnInputWithInvalidKeyIndex_ThrowsException(string json)
+    [InlineData("./Wallets/Data/GenesisWalletKeyExportFormatInvalidKeyIndex.json")]
+    [InlineData("./Wallets/Data/BrowserWalletKeyExportFormatInvalidKeyIndex.json")]
+    public void FromWalletKeyExportFormat_OnInputWithInvalidKeyIndex_ThrowsException(string path)
     {
+        var json = File.ReadAllText(path);
         Action result = () => WalletAccount.FromWalletKeyExportFormat(json);
         result.Should().Throw<WalletDataSourceException>();
     }
 
     [Theory]
-    [EmbeddedResourceData(
-        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/GenesisWalletKeyExportFormatInvalidCredentialIndex.json"
-    )]
-    [EmbeddedResourceData(
-        "Concordium.Sdk.Tests/UnitTests/Wallets/Data/BrowserWalletKeyExportFormatInvalidCredentialIndex.json"
-    )]
+    [InlineData("./Wallets/Data/GenesisWalletKeyExportFormatInvalidCredentialIndex.json")]
+    [InlineData("./Wallets/Data/BrowserWalletKeyExportFormatInvalidCredentialIndex.json")]
     public void FromWalletKeyExportFormat_OnInputWithInvalidCredentialIndex_ThrowsException(
-        string json
+        string path
     )
     {
+        var json = File.ReadAllText(path);
         Action result = () => WalletAccount.FromWalletKeyExportFormat(json);
         result.Should().Throw<WalletDataSourceException>();
     }

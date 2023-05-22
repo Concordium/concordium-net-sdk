@@ -36,7 +36,7 @@ public record Transfer : AccountTransactionPayload<Transfer>
     }
 
     /// <summary>
-    /// Get the "transfer" account transaction serialized to the binary format expected by the node.
+    /// Copies the "transfer" account transaction in the binary format expected by the node to a byte array.
     /// </summary>
     /// <param name="amount">Amount to send.</param>
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
@@ -47,12 +47,12 @@ public record Transfer : AccountTransactionPayload<Transfer>
             AccountAddress.BytesLength +
             CcdAmount.BytesLength));
         memoryStream.WriteByte(TransactionType);
-        memoryStream.Write(receiver.GetBytes());
-        memoryStream.Write(amount.GetBytes());
+        memoryStream.Write(receiver.ToBytes());
+        memoryStream.Write(amount.ToBytes());
         return memoryStream.ToArray();
     }
 
     public override ulong GetTransactionSpecificCost() => 300;
 
-    public override byte[] GetBytes() => Serialize(this.Amount, this.Receiver);
+    public override byte[] ToBytes() => Serialize(this.Amount, this.Receiver);
 }

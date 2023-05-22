@@ -8,6 +8,14 @@ namespace Concordium.Sdk.Tests.UnitTests.Types;
 public class AccountSequenceNumberTests
 {
     [Fact]
+    public void Same_SequenceNumbers_HaveSameHashCode()
+    {
+        var sequenceNumberA = AccountSequenceNumber.From(1);
+        var sequenceNumberB = AccountSequenceNumber.From(1);
+        Assert.Equal(sequenceNumberA.GetHashCode(), sequenceNumberB.GetHashCode());
+    }
+
+    [Fact]
     public void Same_SequenceNumbers_AreEqual()
     {
         var sequenceNumberA = AccountSequenceNumber.From(1);
@@ -47,11 +55,11 @@ public class AccountSequenceNumberTests
     }
 
     [Fact]
-    public void GetBytes_ReturnsCorrectValue()
+    public void ToBytes_ReturnsCorrectValue()
     {
         var sequenceNumber = AccountSequenceNumber.From(100);
         var expectedSerializedSequenceNumber = new byte[] { 0, 0, 0, 0, 0, 0, 0, 100 };
-        var serializedSequenceNumber = sequenceNumber.GetBytes();
+        var serializedSequenceNumber = sequenceNumber.ToBytes();
         serializedSequenceNumber.Should().BeEquivalentTo(expectedSerializedSequenceNumber);
     }
 }

@@ -80,7 +80,7 @@ public class OnChainData : IEquatable<OnChainData>
             );
         }
 
-        return new OnChainData((byte[])dataAsBytes.Clone());
+        return new OnChainData(dataAsBytes.ToArray());
     }
 
     /// <summary>
@@ -107,15 +107,16 @@ public class OnChainData : IEquatable<OnChainData>
     }
 
     /// <summary>
-    /// Get the on-chain data in the binary format expected by the node.
+    /// Copies the on-chain data in the binary format expected by the node
+    /// to a byte array.
     ///
     /// That is, represented as a byte array with the length of the array
     /// prepended as a 16-bit unsigned integer in big-endian format.
     /// </summary>
-    public byte[] GetBytes()
+    public byte[] ToBytes()
     {
         using var memoryStream = new MemoryStream(sizeof(ushort) + this._value.Length);
-        memoryStream.Write(Serialization.GetBytes((ushort)this._value.Length));
+        memoryStream.Write(Serialization.ToBytes((ushort)this._value.Length));
         memoryStream.Write(this._value);
         return memoryStream.ToArray();
     }
@@ -125,6 +126,22 @@ public class OnChainData : IEquatable<OnChainData>
     /// </summary>
     public override string ToString() => Convert.ToHexString(this._value).ToLowerInvariant();
 
+    public override bool Equals(object? obj)
+    {
+        if (obj is null)
+        {
+            return false;
+        }
+
+        if (obj.GetType() != this.GetType())
+        {
+            return false;
+        }
+
+        var other = (OnChainData)obj;
+        return this.Equals(other);
+    }
+
     public virtual bool Equals(OnChainData? other)
     {
         if (other is null)
@@ -132,22 +149,8 @@ public class OnChainData : IEquatable<OnChainData>
             return false;
         }
 
-        if (other.GetType() != this.GetType())
-        {
-            return false;
-        }
-
         return this._value.SequenceEqual(other._value);
     }
 
-    public override int GetHashCode()
-    {
-        var hash = 1;
-        foreach (var b in this._value.AsSpan())
-        {
-            hash *= b.GetHashCode();
-        }
-
-        return hash;
-    }
+    public override int GetHashCode() => Helpers.HashCode.GetHashCodeByteArray(this._value);
 }

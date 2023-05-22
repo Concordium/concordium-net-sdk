@@ -39,9 +39,9 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>, IAddress
         _encoderInstance.EncodeData((new byte[] { VersionByte }).Concat(this._value).ToArray());
 
     /// <summary>
-    /// Get the address as a length-32 byte array without the version byte prepended.
+    /// Copies the address to a byte array which has the version byte preprended.
     /// </summary>
-    public byte[] GetBytes() => (byte[])this._value.Clone();
+    public byte[] ToBytes() => this._value.ToArray();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountAddress"/> class.
@@ -74,7 +74,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>, IAddress
             throw new ArgumentException($"The account address bytes length must be {BytesLength}.");
         }
 
-        return new AccountAddress((byte[])addressAsBytes.Clone());
+        return new AccountAddress(addressAsBytes.ToArray());
     }
 
     /// <summary>
@@ -130,7 +130,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>, IAddress
         }
         // Serialize n to its corresponding alias bytes. Since we output it
         // in big endian format, we truncate the first and most significant byte.
-        var aliasBytes = Serialization.GetBytes(n).Skip(1).ToArray();
+        var aliasBytes = Serialization.ToBytes(n).Skip(1).ToArray();
         var address = this._value.Take(29).ToArray().Concat(aliasBytes).ToArray();
         return From(address);
     }
@@ -156,17 +156,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>, IAddress
     public override bool Equals(object? obj) =>
         obj is not null && obj is AccountAddress other && this.Equals(other);
 
-    public override int GetHashCode()
-    {
-        var hash = 1;
-        foreach (var b in this._value.AsSpan())
-        {
-            var innerHash = b.GetHashCode();
-            hash *= innerHash != 0 ? innerHash : 1;
-        }
-
-        return hash;
-    }
+    public override int GetHashCode() => Helpers.HashCode.GetHashCodeByteArray(this._value);
 
     public static bool operator ==(AccountAddress left, AccountAddress right) => left.Equals(right);
 

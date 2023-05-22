@@ -20,11 +20,11 @@ public class RegisterDataTests
     }
 
     [Fact]
-    public void GetBytes_ReturnsCorrectValue()
+    public void ToBytes_ReturnsCorrectValue()
     {
         // The expected payload was generated using the Concordium Rust SDK.
         var expectedBytes = new byte[] { 21, 0, 4, 254, 237, 190, 239 };
-        CreateRegisterData().GetBytes().Should().BeEquivalentTo(expectedBytes);
+        CreateRegisterData().ToBytes().Should().BeEquivalentTo(expectedBytes);
     }
 
     [Fact]

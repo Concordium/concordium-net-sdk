@@ -1,5 +1,3 @@
-using Concordium.Sdk.Helpers;
-
 namespace Concordium.Sdk.Types;
 
 /// <summary>
@@ -37,7 +35,7 @@ public readonly struct ContractAddress : IEquatable<ContractAddress>, IAddress
     /// </summary>
     /// <param name="index">the index value.</param>
     /// <param name="subIndex">the sub index value.</param>
-    public static ContractAddress Create(ulong index, ulong subIndex) => new(index, subIndex);
+    public static ContractAddress From(ulong index, ulong subIndex) => new(index, subIndex);
 
     internal static ContractAddress From(Grpc.V2.ContractAddress contractAddress) => new ContractAddress(contractAddress.Index, contractAddress.Subindex);
 

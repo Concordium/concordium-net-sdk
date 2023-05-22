@@ -18,13 +18,13 @@ public class Ed25519SignKeyTests
     }
 
     [Fact]
-    public void From_OnValidBytes_GetBytes_AreEqual()
+    public void From_OnValidBytes_ToBytes_AreEqual()
     {
         var ed25519SignKeyAsBytes = Convert.FromHexString(
             "1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbbf23aad218e888bb26fda"
         );
         var ed25519SignKey = Ed25519SignKey.From(ed25519SignKeyAsBytes);
-        ed25519SignKey.GetBytes().Should().BeEquivalentTo(ed25519SignKeyAsBytes);
+        ed25519SignKey.ToBytes().Should().BeEquivalentTo(ed25519SignKeyAsBytes);
     }
 
     [Fact]
