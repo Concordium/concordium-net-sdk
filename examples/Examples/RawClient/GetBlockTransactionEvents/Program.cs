@@ -54,6 +54,6 @@ internal class Program
         }
     }
 
-    private static async void Main(string[] args) =>
+    private static async Task Main(string[] args) =>
         await Example.RunAsync<GetBlockTransactionEventsExampleOptions>(args, GetBlockTransactionEvents);
 }
