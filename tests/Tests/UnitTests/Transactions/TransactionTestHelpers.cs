@@ -14,10 +14,9 @@ public static class TransactionTestHelpers
     /// set to <c>65537</c> seconds after the UNIX epoch.
     /// </summary>
     /// <param name="transaction">The transaction to prepare for signing.</param>
-    public static PreparedAccountTransaction<T> CreatePreparedAccountTransaction<T>(
-        AccountTransactionPayload<T> transaction
+    public static PreparedAccountTransaction CreatePreparedAccountTransaction(
+        AccountTransactionPayload transaction
     )
-        where T : AccountTransactionPayload<T>
     {
         var sender = AccountAddress.From("3QuZ47NkUk5icdDSvnfX8HiJzCnSRjzi6KwGEmqgQ7hCXNBTWN");
         var sequenceNumber = AccountSequenceNumber.From(123);
@@ -43,10 +42,9 @@ public static class TransactionTestHelpers
     /// <c>1</c>.
     /// </summary>
     /// <param name="preparedTransaction">The prepared transaction to sign.</param>
-    public static SignedAccountTransaction<T> CreateSignedTransaction<T>(
-        PreparedAccountTransaction<T> preparedTransaction
+    public static SignedAccountTransaction CreateSignedTransaction(
+        PreparedAccountTransaction preparedTransaction
     )
-        where T : AccountTransactionPayload<T>
     {
         // Create a signer.
         var key00 = Ed25519SignKey.From(
