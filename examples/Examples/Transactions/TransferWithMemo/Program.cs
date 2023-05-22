@@ -26,7 +26,7 @@ internal class Program
         var account = WalletAccount.FromWalletKeyExportFormat(walletData);
 
         // Construct the client.
-        var client = new ConcordiumClient(
+        using var client = new ConcordiumClient(
             new Uri(options.Endpoint),
             options.Port,
             options.Timeout
@@ -57,7 +57,7 @@ internal class Program
         );
     }
 
-    private static Task Main(string[] args) =>
+    private static void Main(string[] args) =>
         Example.Run<TransferWithMemoTransactionExampleOptions>(
             args,
             SendTransferWithMemoTransaction

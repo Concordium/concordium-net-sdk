@@ -16,7 +16,7 @@ internal class Program
     private static async Task GetFinalizedBlocks(ExampleOptions options)
     {
         // Construct the client.
-        var client = new ConcordiumClient(
+        using var client = new ConcordiumClient(
             new Uri(options.Endpoint),
             options.Port,
             options.Timeout
@@ -36,6 +36,6 @@ internal class Program
         }
     }
 
-    private static Task Main(string[] args) =>
-        Example.Run<ExampleOptions>(args, GetFinalizedBlocks);
+    private static void Main(string[] args) =>
+        Example.RunAsync<ExampleOptions>(args, GetFinalizedBlocks);
 }

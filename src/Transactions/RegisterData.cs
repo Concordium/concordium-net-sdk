@@ -7,7 +7,7 @@ namespace Concordium.Sdk.Transactions;
 ///
 /// Used for registering data on-chain.
 /// </summary>
-public record RegisterData : AccountTransactionPayload<RegisterData>
+public record RegisterData : AccountTransactionPayload
 {
     /// <summary>
     /// The account transaction type to be used in the serialized payload.

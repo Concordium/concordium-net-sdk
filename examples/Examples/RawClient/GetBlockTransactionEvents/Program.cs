@@ -12,12 +12,12 @@ namespace Concordium.Sdk.Examples.RawClient.GetBlockTransactionEvents;
 /// </summary>
 internal class Program
 {
-    private static async void GetBlockTransactionEvents(
+    private static async Task GetBlockTransactionEvents(
         GetBlockTransactionEventsExampleOptions options
     )
     {
         // Construct the client.
-        var client = new ConcordiumClient(
+        using var client = new ConcordiumClient(
             new Uri(options.Endpoint),
             options.Port,
             options.Timeout
@@ -54,6 +54,6 @@ internal class Program
         }
     }
 
-    private static Task Main(string[] args) =>
-        Example.Run<GetBlockTransactionEventsExampleOptions>(args, GetBlockTransactionEvents);
+    private static void Main(string[] args) =>
+        Example.RunAsync<GetBlockTransactionEventsExampleOptions>(args, GetBlockTransactionEvents);
 }
