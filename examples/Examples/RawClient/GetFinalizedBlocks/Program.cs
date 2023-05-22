@@ -36,6 +36,6 @@ internal class Program
         }
     }
 
-    private static void Main(string[] args) =>
-        Example.RunAsync<ExampleOptions>(args, GetFinalizedBlocks);
+    private static async void Main(string[] args) =>
+        await Example.RunAsync<ExampleOptions>(args, GetFinalizedBlocks);
 }

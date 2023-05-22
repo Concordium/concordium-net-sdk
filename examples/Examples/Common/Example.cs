@@ -58,15 +58,14 @@ public static class Example
     /// The asynchronous callback corresponding to the example program which will be
     /// invoked with the parsed <typeparam name="T"/> instance as its argument.
     /// </param>
-    public static void RunAsync<T>(string[] args, Func<T, Task> exampleCallback)
+    public static async Task RunAsync<T>(string[] args, Func<T, Task> exampleCallback)
         where T : ExampleOptions
     {
         try
         {
-            Parser.Default
+            _ = await Parser.Default
                 .ParseArguments<T>(args)
-                .WithParsedAsync(options => exampleCallback(options))
-                .Wait();
+                .WithParsedAsync(options => exampleCallback(options));
         }
         catch (Exception e)
         {
