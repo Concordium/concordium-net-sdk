@@ -1,817 +1,209 @@
-# concordium-net-sdk
-
+![CI](https://github.com/Concordium/concordium-net-sdk/actions/workflows/dotnet.yml/badge.svg)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://github.com/Concordium/.github/blob/main/.github/CODE_OF_CONDUCT.md)
+[![NuGet version](https://badge.fury.io/nu/ConcordiumNetSdk.svg)](https://badge.fury.io/nu/ConcordiumNetSdk)
 
-Represents an API wirten on C# for interacting with the [Concordium Node](https://github.com/Concordium/concordium-node).
 
-# ConcordiumNodeClient
+# C# .NET SDK for interacting with the Concordium blockchain
 
-The `ConcordiumNodeClient` is the main entrypoint for the SDK. It defines the api to be used to send and receive data from
-the [Concordium Node](https://github.com/Concordium/concordium-node).
+This is a .NET integration library written in C# which adds support for constructing and sending various transactions, as well as querying various aspects of the Concordium blockchain and its nodes. This SDK uses version 2 of the [Concordium Node gRPC API](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) to interact with Concordium nodes and in turn the Concordium blockchain, and serves as a wrapper for this API with added ergonomics. Note that this deprecates earlier versions of the SDK that use version 1 of the API, cfr. the [migration](#migration) section for more details.
 
-## Creating a client
-The current `ConcordiumNodeClient` setup only allows for insecure connections, which can be set up in the following way.
-The access is controlled by the [Connection](https://github.com/Concordium/concordium-node).
+Read ahead for a brief overview and some examples, or skip directly the [rendered documentation](#documentation). 
+
+## Overview
+
+This SDK is currently under development and serves as a wrapper for the [Concordium gRPC API](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) with helpers for common tasks.
+
+Implementation-wise, this is first and foremost accomplished by exposing "minimal" wrappers for classes generated directly from the protocol buffer definitions of the API using the [`Grpc.Tools`](https://www.nuget.org/packages/Grpc.Tools/) and [`Grpc.Net.Client`](https://www.nuget.org/packages/Grpc.Net.Client) packages. This generation step results in a "raw" client class which exposes a method corresponding to each service definition in the protocol buffer definition as well as a class corresponding to each type declared in the API. These are used at the interface of the raw client class. The wrappers are minimal in the sense that they are identical to those of the generated classes but devoid from the complexity of having to specify parameters for connection handling with each call. A drawback of this approach is that the generated classes are devoid of checks for any semantic invariants, which leaves much to be desired. See [Using the raw client API](#using-the-raw-client-api) for more information.
+
+To remedy this, the SDK provides its own class equivalents corresponding to the most common raw API types, as well as wrappers for a subset of the raw service methods specifying these class equivalents at their interfaces instead. These transparently map input and output types to and from their native equivalents as they are marshalled across the underlying raw API, enforcing the invariants of the input and output data. Similarly, the SDK provides functionality for working with and signing account transactions, as well as for importing keys and implementing signing logic. The latter can be useful e.g. when delegating signing to a HSM. See [Working with transaction signers](#working-with-transaction-signers) for more information.
+
+Currently, helpers for working with transactions of the [`Transfer`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.Transfer.html), [`TransferWithMemo`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.TransferWithMemo.html) and [`RegisterData`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.RegisterData.html) kind are provided. Ergonomic APIs that use the aforementioned native class equivalents of the raw API types at their interfaces are provided for [`GetNextAccountSequenceNumber`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_GetNextAccountSequenceNumber_Concordium_Sdk_Types_AccountAddress_) and [`SendAccountTransaction`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_SendAccountTransaction__1_Concordium_Sdk_Transactions_SignedAccountTransaction___0__). For more information on how to create and submit transactions, respectively using the ergonomic APIs, see the [Working with account transactions](#working-with-account-transactions) section, respectively [Using the client API](#using-the-client-api). Further transactions and wrappers are implemented on a per-need basis.
+
+## Prerequisites/compatibility
+
+- .NET Framework: 6.0 or later.
+- Concordium Node version compatibility: 5.*
+
+## Installation
+
+The SDK is published on [nuget.org](https://www.nuget.org/packages/ConcordiumNetSdk). Depending on your setup, it can be added to your project as a dependency by running either
+
+```powershell
+PM> Install-Package Concordium.SDK -Version ???
+```
+or
+
+```sh
+dotnet add package Concordium.SDK
+```
+in your project root. It can also be used as a GIT submodule by embedding the cloned [repository](https://github.com/Concordium/concordium-net-sdk) directly into your project:
+```sh
+git clone https://github.com/Concordium/concordium-net-sdk --recurse-submodules
+```
+
+## Basic usage
+
+At the core of the SDK is the [`ConcordiumClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html) class which is used to connect to a Concordium node and exposes methods interacting with it. The [`ConcordiumClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html) can be instantiated as follows:
+
 ```csharp
-Connection connection = new Connection
+using Concordium.Sdk.Client;
+
+// Construct the client.
+ConcordiumClient client = new ConcordiumClient(
+  new Uri("https://localhost/"), // Endpoint URL.
+  20000, // Port.
+  60 // Connection timeout in seconds.
+);
+```
+The [`ConcordiumClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html) constructor also optionally takes a [`GrpcChannelOptions`](https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Net.Client.GrpcChannelOptions.html) object which can be used to specify various settings specific to the underlying [`GrpcChannel`](https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Net.Client.GrpcChannel.html) instance which handles the communication with the node. These could be settings that dictate the retry policy or specify parameters for the [keepalive ping](https://github.com/grpc/grpc/blob/master/doc/keepalive.md), which can be vital to the robustness of the application.
+
+### Working with account transactions
+
+Account transactions are blockchain transactions that are signed by and submitted on the behalf of an account. Classes relating to account transactions live in the [`Concordium.SDK.Transactions`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.html) namespace. All account transactions are modeled by records that inherit from the abstract record [`AccountTransactionPayload<T>`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.AccountTransactionPayload-1.html), where `T` is the type of the transaction. Inheriting records contain data specific to the transaction it models. One example of such is the [`Transfer`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.Transfer.html) record representing the transfer of a CCD amount from one account to another. It is instantiated as follows:
+
+```csharp
+using Concordium.Sdk.Types;
+using Concordium.Sdk.Transactions;
+
+CcdAmount amount = CcdAmount.FromCcd(100); // Send 100 CCD.
+AccountAddress receiver = AccountAddress.From("4rvQePs6ZKFiW8rwY5nP18Uj2DroWiw9VPKTsTwfwmsjcFCJLy");
+Transfer transfer = new Transfer(amount, receiver);
+```
+
+Since account transactions are submitted on behalf of an account, any [`AccountTransactionPayload<T>`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.AccountTransactionPayload-1.html) must be annotated with an [`AccountAddress`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountAddress.html) of the account submitting the transaction, an account-specific [`AccountSequenceNumber`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountSequenceNumber.html) (nonce) which is used to mitigate replay attacks and an [`Expiry`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.Expiry.html) representing a point in time after which the transaction will not be included in blocks whose (slot) time lies beyond it. The result of the annotation is a [`PreparedAccountTransaction<T>`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.PreparedAccountTransaction-1.html):
+
+```csharp
+AccountAddress sender = AccountAddress.From("3jfAuU1c4kPE6GkpfYw4KcgvJngkgpFrD9SkDBgFW3aHmVB5r1");
+SequenceNumber sequenceNumber = Client.GetNextAccountSequenceNumber(sender).Item1;
+Expiry expiry = Expiry.AtMinutesFromNow(10); // Transaction should expire 10 minutes after current system time.
+PreparedAccountTransaction<Transfer> preparedTransfer = transfer.Prepare(sender, sequenceNumber, expiry);
+```
+
+Finally, the transaction must be signed using an [`ITransactionSigner`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.ITransactionSigner.html) which implements signing with the (secret) sign keys of the sender account, producing a [`SignedAccountTransaction<Transfer>`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.SignedAccountTransaction-1.html). In the following example the implementation used is the [`WalletAccount`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Wallets.WalletAccount.html) class which supports importing of account keys from the Concordium browser-wallet key export format:
+
+```csharp
+ITransactionSigner signer = WalletAccount.FromWalletKeyExportFormat("/path/to/exported-browser-wallet-keys.json");
+Expiry expiry = Expiry.AtMinutesFromNow(10); // Transaction expires 10 minutes after the current system time.
+SignedAccountTransaction<Transfer> signedTransfer = preparedTransfer.Sign(signer);
+```
+
+A signed transaction can be submitted to the blockchain by invoking the [`SendAccountTransaction`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_SendAccountTransaction__1_Concordium_Sdk_Transactions_SignedAccountTransaction___0__) method. If the transfer was accepted by the node, its [`TransactionHash`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.TransactionHash.html) used to uniquely identify the transaction is returned: 
+
+```csharp
+TransactionHash = client.SendAccountTransaction(signedTransfer);
+```
+
+The [`TransactionHash`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.TransactionHash.html) can subsequently be used for querying the status of the transaction by invoking the [`GetBlockItemStatus`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html#Concordium_Sdk_Client_RawClient_GetBlockItemStatus_Concordium_Grpc_V2_TransactionHash_) method of the [`RawClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html), accessible through`client.Raw` in the above example. For more info on the raw API calls, see the [Using the raw client API](#using-the-raw-client-api) section.
+
+### Working with transaction signers
+
+As described in the [Account transactions](#working-with-account-transactions) section, account transactions must be signed using implementations of [`ITransactionSigner`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.ITransactionSigner.html). The SDK ships with the [`TransactionSigner`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.TransactionSigner.html) class which is dictionary based implementation to which [`ISigner`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Crypto.ISigner.html)s can be added. An [`ISigner`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Crypto.ISigner.html) represents a concrete implementation of a (secret) sign key for an account, and can be used to to write custom signer implementations which can be useful, for instance, if delegating the signing logic to a HSM. The SDK also ships with the [`WalletAccount`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Wallets.WalletAccount.html) class which provides functionality for importing account keys from one of the supported wallet export formats. Currently the Concordium browser and genesis wallet key export (JSON) formats are supported.
+
+### Using the client API
+
+A small subset of the raw methods generated from the Concordium Node gRPC API protocol buffer definitions have corresponding ergonomic wrappers that transparently map input and output types to and from their native equivalents as they are marshalled across the underlying generated API they wrap. One example of such is [`GetNextAccountSequenceNumber`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_GetNextAccountSequenceNumber_Concordium_Sdk_Types_AccountAddress_) which takes an [`AccountAddress`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountAddress.html) and returns a [`AccountSequenceNumber`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountSequenceNumber.html):
+
+```csharp
+AccountAddress sender = AccountAddress.From("3jfAuU1c4kPE6GkpfYw4KcgvJngkgpFrD9SkDBgFW3aHmVB5r1");
+AccountSequenceNumber sequenceNumber = client.GetNextAccountSequenceNumber(sender).Item1;
+```
+
+### Using the raw client API
+
+The entire [Concordium Node gRPC API V2](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) is exposed through minimal wrappers of classes that model the interface types and services as they were generated from the protocol buffer schema definitions using the [`Grpc.Tools`](https://www.nuget.org/packages/Grpc.Tools/) and [`Grpc.Net.Client`](https://www.nuget.org/packages/Grpc.Net.Client) packages. These wrappers are defined in the [`RawClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html), instances of which can *only* be accessed through the [`Raw`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_Raw) field of [`ConcordiumClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html) instances. 
+
+As an example, the raw API call `GetAccountInfo` defined in the [Concordium Node gRPC API V2](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) takes as its input a gRPC message of the [AccountInfoRequest](https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfoRequest) kind and expects a gRPC response of the [AccountInfo](https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfo) kind. This method can be invoked through [`RawClient.GetAccountInfo`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html#Concordium_Sdk_Client_RawClient_GetAccountInfo_Concordium_Grpc_V2_AccountInfoRequest_) by supplying an instance of its corresponding generated type for [`AccountInfoRequest`](https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfoRequest). In the following, we wish to retrieve the information of an account in the last finalized block:
+
+```csharp
+using Concordium.Grpc.V2;
+
+BlockHashInput blockHashInput = new BlockHashInput() { LastFinal = new Empty() };
+
+// Construct the input for the raw API.
+AccountInfoRequest request = new AccountInfoRequest
 {
-    Address = "http://localhost:10001",
-    AuthenticationToken = "rpcadmin"
-};
-ConcordiumNodeClient concordiumNodeClient = new ConcordiumNodeClient(connection);
-```
-
-# API Overview
-
-## Peer Connect
-The `PeerConnectAsync` connects to a specified peer.
-- `ip` - the IP of the peer we want to connect to.
-- `port`- the port of the peer we want to connect to.
-
-```csharp
-// create a concordiumNodeClient
-
-bool isConnected = await concordiumNodeClient.PeerConnectAsync("127.0.0.1", 10001);
-```
-
-## Peer Disconnect
-The `PeerDisconnectAsync` disconnects from a specified peer.
-- `ip` - the IP of the peer we want to disconnect from.
-- `port`- the port of the peer we want to disconnect from.
-
-```csharp
-// create a concordiumNodeClient
-
-bool isDisconnected = await concordiumNodeClient.PeerDisconnectAsync("127.0.0.1", 10001);
-```
-
-## Get Peer Uptime
-The `GetPeerUptimeAsync` retrieves an information about a node uptime.
-
-```csharp
-// create a concordiumNodeClient
-
-ulong peerUptime = await concordiumNodeClient.GetPeerUptimeAsync();
-```
-
-## Get Peer Total Sent
-The `GetPeerTotalSentAsync` retrieves an information about a node total send count..
-
-```csharp
-// create a concordiumNodeClient
-
-ulong peerTotalSent = await concordiumNodeClient.GetPeerTotalSentAsync();
-```
-
-## Get Peer Total Received
-The `GetPeerTotalReceivedAsync` retrieves an information about a node total received count.
-
-```csharp
-// create a concordiumNodeClient
-
-bool peerTotalReceived = await concordiumNodeClient.GetPeerTotalReceivedAsync();
-```
-
-## Get Peer Version
-The `GetPeerVersionAsync` retrieves an information about a node version.
-
-```csharp
-// create a concordiumNodeClient
-
-string peerVersion = await concordiumNodeClient.GetPeerVersionAsync();
-```
-
-## Get Peer Stats
-The `GetPeerStatsAsync` retrieves an information about a node stats.
-- `includeBootstrappers` - does include bootstrappers. By default is `false`.
-
-```csharp
-// create a concordiumNodeClient
-
-PeerStatsResponse peerStats = await concordiumNodeClient.GetPeerStatsAsync();
-```
-
-## Get Peer List
-The `GetPeerListAsync` retrieves an information about a node list.
-- `includeBootstrappers` - does include bootstrappers. By default is `false`.
-
-```csharp
-// create a concordiumNodeClient
-
-PeerListResponse peerList = await concordiumNodeClient.GetPeerListAsync();
-```
-
-## Ban Node
-The `BanNodeAsync` ban a node. The node to ban can either be supplied via a node-id or via an IP and port, but not both.
-- `ip` - the node IP.
-- `nodeId`- the node ID.
-- `catchupStatus`- the catchup status.
-- `port`- the node port.
-
-```csharp
-// create a concordiumNodeClient
-
-bool isBannedNode = await concordiumNodeClient.BanNodeAsync("127.0.0.1", null, PeerElement.Types.CatchupStatus.Pending, 1001);
-```
-
-## Unban Node
-The `UnbanNodeAsync` unban a node. The node to unban can either be supplied via a node-id or via an IP.
-- `ip` - the node IP.
-- `nodeId`- the node ID.
-- `catchupStatus`- the catchup status.
-- `port`- the node port.
-
-```csharp
-// create a concordiumNodeClient
-
-bool isUnbannedNode = await concordiumNodeClient.UnbanNodeAsync("127.0.0.1", null, PeerElement.Types.CatchupStatus.Pending, 1001);
-```
-
-## Shutdown
-The `ShutdownAsync` shutdown the node gracefully.
-
-```csharp
-// create a concordiumNodeClient
-
-bool isShutdowned = await concordiumNodeClient.ShutdownAsync();
-```
-
-## Dump Start
-The `DumpStartAsync` start dumping the packages.
-- `file` - the file.
-- `isRaw`- does raw. The default is `false`.
-
-```csharp
-// create a concordiumNodeClient
-
-bool isDumpStarted = await concordiumNodeClient.DumpStartAsync("some file data");
-```
-
-## Dump Stop
-The `DumpStopAsync` stop dumping the packages.
-
-```csharp
-// create a concordiumNodeClient
-
-bool isDumpStoped = await concordiumNodeClient.DumpStopAsync();
-```
-
-## Join Network
-The `JoinNetworkAsync` join a network.
-- `networkId` - the network id.
-
-```csharp
-// create a concordiumNodeClient
-
-bool isNetworkJoined = await concordiumNodeClient.JoinNetworkAsync(103);
-```
-
-## Leave Network
-The `LeaveNetworkAsync` leave a network.
-- `networkId` - the network id.
-
-```csharp
-// create a concordiumNodeClient
-
-bool isNetworkLeft = await concordiumNodeClient.LeaveNetworkAsync(103);
-```
-
-## Start Baker
-The `StartBakerAsync` start the baker.
-
-```csharp
-// create a concordiumNodeClient
-
-bool isBakerStarted = await concordiumNodeClient.StartBakerAsync();
-```
-
-## Stop Baker
-The `StopBakerAsync` stop the baker.
-
-```csharp
-// create a concordiumNodeClient
-
-bool isBakerStoped = await concordiumNodeClient.StopBakerAsync();
-```
-
-## Get Node Info
-The `GetNodeInfoAsync` retrieves an information about a node.
-
-```csharp
-// create a concordiumNodeClient
-
-NodeInfoResponse nodeInfo = await concordiumNodeClient.GetNodeInfoAsync();
-```
-
-## Get Account Info
-The `GetAccountInfoAsync` retrieves an information about a state of account corresponding to account address and block hash.
-- `accountAddress` - the base58 check with version byte 1 encoded address (with Bitcoin mapping table).
-- `blockHash`- the base16 encoded hash of a block (64 characters).
-
-```csharp
-// create a concordiumNodeClient
-
-AccountAddress accountAddress = AccountAddress.From("32gxbDZj3aCr5RYnKJFkigPazHinKcnAhkxpade17htB4fj6DN");
-BlockHash blockHash = BlockHash.From("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af");
-
-AccountInfo? accountInfo = await concordiumNodeClient.GetAccountInfoAsync(accountAddress, blockHash);
-```
-
-## Get Next Account Nonce
-The `GetNextAccountNonceAsync` retrieves the best guess as to what the next account nonce should be. If all account transactions are finalized then this information is reliable. Otherwise this is the best guess, assuming all other transactions will be committed to blocks and eventually finalized.
-- `accountAddress` - the base58 check with version byte 1 encoded address (with Bitcoin mapping table).
-
-```csharp
-// create a concordiumNodeClient
-
-AccountAddress accountAddress = AccountAddress.From("32gxbDZj3aCr5RYnKJFkigPazHinKcnAhkxpade17htB4fj6DN");
-
-NextAccountNonce? nextAccountNonce = await concordiumNodeClient.GetNextAccountNonceAsync(accountAddress);
-```
-
-## Get Reward Status
-The `GetRewardStatusAsync` retrieves the information about a current balance of special accounts.
-- `blockHash`- the base16 encoded hash of a block (64 characters).
-
-```csharp
-// create a concordiumNodeClient
-
-BlockHash blockHash = BlockHash.From("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af");
-
-RewardStatus? rewardStatus = await concordiumNodeClient.GetRewardStatusAsync(blockHash);
-```
-
-## Get Birk Parameters
-The `GetBirkParametersAsync` retrieves the information about a parameters used for baking.
-- `blockHash`- the base16 encoded hash of a block (64 characters).
-
-```csharp
-// create a concordiumNodeClient
-
-BlockHash blockHash = BlockHash.From("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af");
-
-BirkParameters? birkParameters = await concordiumNodeClient.GetBirkParametersAsync(blockHash);
-```
-
-## Get Module List
-The `GetModuleListAsync` retrieves the list of smart contract modules.
-- `blockHash`- the base16 encoded hash of a block (64 characters).
-
-```csharp
-// create a concordiumNodeClient
-
-BlockHash blockHash = BlockHash.From("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af");
-
-List<ModuleRef> moduleList = await concordiumNodeClient.GetModuleListAsync(blockHash);
-```
-
-## Get Identity Providers
-The `GetIdentityProvidersAsync` retrieves a list of identity providers in a specific block.
-- `blockHash`- the base16 encoded hash of a block (64 characters).
-
-```csharp
-// create a concordiumNodeClient
-
-BlockHash blockHash = BlockHash.From("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af");
-
-List<IdentityProviderInfo> identityProviders = await concordiumNodeClient.GetIdentityProvidersAsync(blockHash);
-```
-
-## Get Anonymity Revokers
-The `GetAnonymityRevokersAsync` retrieves a list of anonymity revokers in a specific block.
-- `blockHash`- the base16 encoded hash of a block (64 characters).
-
-```csharp
-// create a concordiumNodeClient
-
-BlockHash blockHash = BlockHash.From("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af");
-
-List<AnonymityRevokerInfo> anonymityRevokers = await concordiumNodeClient.GetAnonymityRevokersAsync(blockHash);
-```
-
-## Get Cryptographic Parameters
-The `GetCryptographicParametersAsync` retrieves the information about a cryptographic parameters in a specific block.
-- `blockHash`- the base16 encoded hash of a block (64 characters).
-
-```csharp
-// create a concordiumNodeClient
-
-BlockHash blockHash = BlockHash.From("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af");
-
-VersionedValue<CryptographicParameters>? cryptographicParameters = await concordiumNodeClient.GetCryptographicParametersAsync(blockHash);
-```
-
-## Get Banned Peers
-The `GetBannedPeersAsync` retrieves the information about a banned peers.
-
-```csharp
-// create a concordiumNodeClient
-
-PeerListResponse bannedPeers = await concordiumNodeClient.GetBannedPeersAsync();
-```
-
-## Get Consensus Status
-The `GetConsensusStatusAsync` retrieves an information about a current state of the consensus layer.
-
-```csharp
-// create a concordiumNodeClient
-
-ConsensusStatus? consensusStatus = await concordiumNodeClient.GetConsensusStatusAsync();
-```
-
-## Get Account List
-The `GetAccountListAsync` retrieves a list of accounts that exist in the given block. Empty list indicates the block does not exist.
-- `blockHash`- the base16 encoded hash of a block (64 characters).
-
-```csharp
-// create a concordiumNodeClient
-
-BlockHash blockHash = BlockHash.From("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af");
-
-List<AccountAddress> accountList = await concordiumNodeClient.GetAccountListAsync(blockHash);
-```
-
-## Get Block Info
-The `GetBlockInfoAsync` retrieves an information about a particular block with various details.
-- `blockHash`- the base16 encoded hash of a block (64 characters).
-
-```csharp
-// create a concordiumNodeClient
-
-BlockHash blockHash = BlockHash.From("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af");
-
-BlockInfo? blockInfo = await concordiumNodeClient.GetBlockInfoAsync(blockHash);
-```
-
-## Get Instances
-The `GetInstancesAsync` retrieves a list of smart contract instances that exist in the given block. Empty list indicates that the block does not exist.
-- `blockHash`- the base16 encoded hash of a block (64 characters).
-
-```csharp
-// create a concordiumNodeClient
-
-BlockHash blockHash = BlockHash.From("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af");
-
-List<ContractAddress> instances = await concordiumNodeClient.GetInstancesAsync(blockHash);
-```
-
-## Get Instance Info
-The `GetInstanceInfoAsync` retrieves the information about the specific smart contract instance.
-- `contractAddress`- the contract address.
-- `blockHash`- the base16 encoded hash of a block (64 characters).
-
-```csharp
-// create a concordiumNodeClient
-
-ContractAddress contractAddress = ContractAddress.Create(1, 1);
-BlockHash blockHash = BlockHash.From("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af");
-
-ContractInfo? instanceInfo = await concordiumNodeClient.GetInstanceInfoAsync(blockHash);
-```
-
-## Get Ancestors
-The `GetAncestorsAsync` returns the list of the given block hash and the hashes of its ancestors going back the given number of generations. The length of the list will be the given number, or the list will be the entire chain going back from the given block until the closest genesis or regenesis block. If the block is not live or finalized, the function returns null.
-- `amount`- the number of hash and hashes of its ancestors generations.
-- `blockHash`- the base16 encoded hash of a block (64 characters).
-
-```csharp
-// create a concordiumNodeClient
-
-ulong amount = 1000;
-BlockHash blockHash = BlockHash.From("44c52f0dc89c5244b494223c96f037b5e312572b4dc6658abe23832e3e5494af");
-
-List<BlockHash> ancestors = await concordiumNodeClient.GetAncestorsAsync(amount, blockHash);
-```
-
-## Get Branches
-The `GetBranchesAsync` returns branches of the tree from the last finalized block.
-
-```csharp
-// create a concordiumNodeClient
-
-Branch branches = await concordiumNodeClient.GetBranchesAsync();
-```
-
-
-## Get Blocks At Height
-The `GetBlocksAtHeightAsync` returns all blocks at the given height.
-- `blockHeight`- the height of the blocks to query.
-- `fromGenesisIndex`- the base genesis index. The default is 0.
-- `restrictToGenesisIndex`- does restrict to specified genesis index. The default is false.
-
-```csharp
-// create a concordiumNodeClient
-
-ulong blockHeight = 10u;
-
-List<BlockHash> blocksAtHeight = await concordiumNodeClient.GetBlocksAtHeightAsync(blockHeight);
-```
-
-## Decrypt encrypted sign key
-`ISignKeyEncryption.Decrypt` decrypts encrypted sign key. 
-
-```csharp
-public Ed25519SignKey Decrypt(EncryptedSignKey encryptedSignKey);
-```
-
-**Input:**
-
-- [EncryptedSignKey]() `encryptedSignKey`: encrypted sign key
-    - [Password]() `password`: password
-    - [EncryptedSignKeyMetadata]() `metadata`: encrypted sign key metadata
-        - [Salt]() `salt`: salt
-        - [InitializationVector]() `initializationVector`: initialization vector
-        - [int]() `iterations`: iterations
-        - [HashAlgorithmName]() `hashAlgorithmName`: hash algorithm name
-        - [int]() `keySize`: key size
-    - [CipherText]() `cipherText`: cipher text
-
-
-**Output:**
-
-- The [Ed25519SignKey]() object containing information about a hex encoded ed25519 sign key.
-
-### Code Sample
-```csharp
-Salt salt = Salt.From("9ghclsnOgezPZuEpynAg+A==");
-InitializationVector initializationVector = InitializationVector.From("e5STldOLG+ZEXf7UsV1pyg==");
-int iterations = 100000;
-HashAlgorithmName hashAlgorithmName = HashAlgorithmName.SHA256;
-string password = "qwaszx12";
-CipherText cipherText = CipherText.From("ShQe196p5DyR9uF7SOrvCutJmYhm+Ggf9ZDOp5nr7UfqB/FChqBa9XTaSPQFob+1CG7Sl9lwLAcZdi5O0Cq7rHXmAzDdK0pgrcH2eLd34Oc=");
-
-EncryptedSignKeyMetadata encryptedSignKeyMetadata = new EncryptedSignKeyMetadata(
-    salt,
-    initializationVector,
-    iterations,
-    hashAlgorithmName);
-
-EncryptedSignKey encryptedSignKey = new EncryptedSignKey(
-    password,
-    encryptedSignKeyMetadata,
-    cipherText);
-
-string signKey = new SignKeyEncryption().Decrypt(encryptedSignKey);
-```
-
-## Send Simple Transfer Payload
-The `SimpleTransferPayload` represents an object which knows all the information needed to send simple transfer.
-Creating the instance of this object and passing it as a payload of the transaction in `AccountTransactionService` will send simple transfer.
-
-```csharp
-// create a concordiumNodeClient
-
-AccountTransactionService accountTransactionService = new AccountTransactionService(concordiumNodeClient);
-
-var fromAccountAddress = AccountAddress.From("45rzWwzY8hXFxQEAPMpR19RZJafAQV7iA3p3WP8xso49cVqArP");
-var toAccountAddress = AccountAddress.From("3V3QhN4USoMB8FMnPFHx8zoLoJexv8f5ka1a1uS8sERoSrahbw");
-var simpleTransferPayload = SimpleTransferPayload.Create(CcdAmount.FromCcd(100), toAccountAddress);
-var ed25519TransactionSigner = Ed25519SignKey.From("1ddce38dd4c6c4b98b9939542612e6a90928c35f8bbbf23aad218e888bb26fda");
-var transactionSigner= new TransactionSigner();
-transactionSigner.AddSignerEntry(Index.Create(0), Index.Create(0), ed25519TransactionSigner);
-
-var transactionHash = await accountTransactionService.SendAccountTransactionAsync(fromAccountAddress, simpleTransferPayload, transactionSigner);
-
-```
-
-## Deploy Module
-The `DeployModulePayload` represents an object which knows all the information needed to deploy a module.
-Creating the instance of this object and passing it as a payload of the transaction in `AccountTransactionService` will deploy a module.
-
-```csharp
-// create a concordiumNodeClient
-
-AccountTransactionService accountTransactionService = new AccountTransactionService(concordiumNodeClient);
-
-string path = @"C:\Users\User\Your_Module_Directory_Path\a.wasm.v1"; // path to your module file (Your_Module_Directory_Path) as wasm file and your wasm file name (a.wasm.v1).
-byte[] module = File.ReadAllBytes(path);
-
-DeployModulePayload deployModulePayload = DeployModulePayload.Create(module);
-
-AccountAddress sender = AccountAddress.From("4hvvPeHb9HY4Lur7eUZv4KfL3tYBug8DRc4X9cVU8mpJLa1f2X");
-Ed25519SignKey ed25519TransactionSigner = Ed25519SignKey.From(signKey); // signKey can be decrypted using SignKeyEncryption or if you know it you can just pass as a string value.
-TransactionSigner transactionSigner = new TransactionSigner();
-transactionSigner.AddSignerEntry(Index.Create(0), Index.Create(0), ed25519TransactionSigner);
-
-var transactionHash = await accountTransactionService.SendAccountTransactionAsync(sender, deployModulePayload, transactionSigner);
-
-```
-
-## Init Contract
-The `InitContractPayload` represents an object which knows all the information needed to init a contract.
-Creating the instance of this object and passing it as a payload of the transaction in `AccountTransactionService` will init a contract.
-
-# Without Parameters
-```csharp
-// create a concordiumNodeClient
-
-AccountTransactionService accountTransactionService = new AccountTransactionService(concordiumNodeClient);
-
-InitContractPayload initContractPayload = InitContractPayload.Create(
-    CcdAmount.Zero,
-    ModuleRef.From("2c490881e1f87e46cac9a9419f1c669d5f6d74eabc3c5a4fd10d13ab29f8b8c2"),
-    "init_a",
-    InitContractParameter.Empty(),
-    10_000);
-
-AccountAddress sender = AccountAddress.From("4hvvPeHb9HY4Lur7eUZv4KfL3tYBug8DRc4X9cVU8mpJLa1f2X");
-Ed25519SignKey ed25519TransactionSigner = Ed25519SignKey.From(signKey); // signKey can be decrypted using SignKeyEncryption or if you know it you can just pass as a string value.
-TransactionSigner transactionSigner = new TransactionSigner();
-transactionSigner.AddSignerEntry(Index.Create(0), Index.Create(0), ed25519TransactionSigner);
-
-var transactionHash = await accountTransactionService.SendAccountTransactionAsync(sender, initContractPayload, transactionSigner);
-
-```
-
-# With Parameters
-```csharp
-// create a concordiumNodeClient
-
-AccountTransactionService accountTransactionService = new AccountTransactionService(concordiumNodeClient);
-
-// you can build your own schema if you know it exactly
-(string, Type)[] contents = new[]
-{
-    ("Bool", new Type(ParameterType.Bool)),
-    ("U8", new Type(ParameterType.U8)),
-    ("U16", new Type(ParameterType.U16)),
-    ("U32", new Type(ParameterType.U32)),
-    ("U64", new Type(ParameterType.U64)),
-    ("U128", new Type(ParameterType.U128)),
-    ("I8", new Type(ParameterType.I8)),
-    ("I16", new Type(ParameterType.I16)),
-    ("I32", new Type(ParameterType.I32)),
-    ("I64", new Type(ParameterType.I64)),
-    ("I128", new Type(ParameterType.I128)),
-    ("Amount", new Type(ParameterType.Amount)),
-    ("AccountAddress", new Type(ParameterType.AccountAddress)),
-    ("ContractAddress", new Type(ParameterType.ContractAddress)),
-    ("Timestamp", new Type(ParameterType.Timestamp)),
-    ("Duration", new Type(ParameterType.Duration)),
-    ("Pair", new PairType(new Type(ParameterType.I32), new Type(ParameterType.Bool))),
-    ("Array", new ArrayType(2, new Type(ParameterType.I32))),
-    ("Map", new MapType(
-        SizeLength.U8,
-        new Type(ParameterType.I32),
-        new Type(ParameterType.Bool))),
-    ("List", new ListType(
-        SizeLength.U8,
-        new Type(ParameterType.I32),
-        ParameterType.List)),
-    ("Set", new ListType(
-        SizeLength.U8,
-        new Type(ParameterType.I32),
-        ParameterType.Set)),
-    ("Struct", new StructType(
-        new NamedFields(
-            new (string FieldName, Type FieldType)[]
-            {
-                ("AccountAddress", new Type(ParameterType.AccountAddress)),
-                ("Amount", new Type(ParameterType.Amount))
-            }))),
-    ("Enumerable", new EnumType(
-        new (string VariantName, Fields VariantFields)[]
-        {
-            ("Some", new UnnamedFields(
-                new[]
-                {
-                    new Type(ParameterType.I32),
-                    new Type(ParameterType.Bool)
-                })),
-            ("Extra", new NamedFields(
-                new[]
-                {
-                    ("One", new Type(ParameterType.I32)),
-                    ("Two", new Type(ParameterType.I32))
-                }))
-        })),
-    ("String", new StringType(SizeLength.U8)),
-    ("InitName", new StringType(SizeLength.U8, ParameterType.ContractName)),
-    ("ReceiveName", new StringType(SizeLength.U8, ParameterType.ReceiveName))
-};
-NamedFields fields = new NamedFields(contents);
-StructType initParamType = new StructType(fields);
-Contract contractSchema = new Contract(null, initParamType, new Dictionary<string, Type>());
-Dictionary<string, Contract> contractSchemas = new Dictionary<string, Contract> { {"a", contractSchema}};
-Module schemaModule = new Module(contractSchemas);
-
-// or deserialize it if you have schema module as wasm file
-string path = @"C:\Users\User\Your_Schema_Module_Directory_Path\schema.wasm.v1"; // path to your schema module file (Your_Schema_Module_Directory_Path) as wasm file and your schema wasm file name (schema.wasm.v1).
-byte[] schemaModuleAsBytes = File.ReadAllBytes(path);
-
-Module schemaModule = ModuleDeserializer.Deserialize(schemaModuleAsBytes);
-
-var userInput = new
-{
-    Bool = true,
-    U8 = byte.MaxValue,
-    U16 = ushort.MaxValue,
-    U32 = uint.MaxValue,
-    U64 = ulong.MaxValue,
-    U128 = BigInteger.Parse("340282366920938463463374607431768211455"),
-    I8 = sbyte.MinValue,
-    I16 = short.MinValue,
-    I32 = int.MinValue,
-    I64 = long.MinValue,
-    I128 = BigInteger.Parse("-170141183460469231731687303715884105728"),
-    Amount = CcdAmount.FromMicroCcd(10),
-    AccountAddress = AccountAddress.From("4hvvPeHb9HY4Lur7eUZv4KfL3tYBug8DRc4X9cVU8mpJLa1f2X"),
-    ContractAddress = ContractAddress.Create(10, 0),
-    Timestamp = new DateTime(1998, 2, 20, 1, 1, 1),
-    Duration = "1d 1h 1m 1s 1ms",
-    Pair = new ArrayList {1, true},
-    Array = new[] {1, 2},
-    Map = new Dictionary<int, bool> {{1, true}},
-    List = new List<int> {1, 2, 3},
-    Set = new List<int> {1, 2, 3},
-    Struct = new
-    {
-        AccountAddress = AccountAddress.From("4hvvPeHb9HY4Lur7eUZv4KfL3tYBug8DRc4X9cVU8mpJLa1f2X"),
-        Amount = CcdAmount.FromMicroCcd(10)
-    },
-    Enumerable = new {Some = new ArrayList{1, true}, Extra = new {One = 1, Two = 2}},
-    String = "foo",
-    InitName = new {Contract = "contract"},
-    ReceiveName = new {Contract = "contract", Func = "func"}
+  BlockHash = blockHashInput,
+  /// Instantiate and convert Concordium.Sdk.Types.AccountAddress
+  /// to an AccountIdentifierInput which is needed for the
+  /// AccountInfoRequest.
+  AccountIdentifier = Concordium.Sdk.Types.AccountAddress
+    .From("4rvQePs6ZKFiW8rwY5nP18Uj2DroWiw9VPKTsTwfwmsjcFCJLy")
+    .ToAccountIdentifierInput()
 };
 
-InitContractParameter initContractParameter = InitContractParameter.Create(
-    "a",
-    userInput,
-    schemaModule);
-
-InitContractPayload initContractPayload = InitContractPayload.Create(
-    CcdAmount.Zero,
-    ModuleRef.From("2c490881e1f87e46cac9a9419f1c669d5f6d74eabc3c5a4fd10d13ab29f8b8c2"),
-    "init_a",
-    initContractParameter,
-    10_000);
-
-AccountAddress sender = AccountAddress.From("4hvvPeHb9HY4Lur7eUZv4KfL3tYBug8DRc4X9cVU8mpJLa1f2X");
-Ed25519SignKey ed25519TransactionSigner = Ed25519SignKey.From(signKey); // signKey can be decrypted using SignKeyEncryption or if you know it you can just pass as a string value.
-TransactionSigner transactionSigner = new TransactionSigner();
-transactionSigner.AddSignerEntry(Index.Create(0), Index.Create(0), ed25519TransactionSigner);
-
-var transactionHash = await accountTransactionService.SendAccountTransactionAsync(sender, initContractPayload, transactionSigner);
-
+AccountInfo accountInfo = client.Raw.GetAccountInfo(request);
 ```
 
-## Update Contract
-The `UpdateContractPayload` represents an object which knows all the information needed to update a contract.
-Creating the instance of this object and passing it as a payload of the transaction in `AccountTransactionService` will update a contract.
+Note that all generated types live in the [`Concordium.Grpc.V2`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Grpc.V2.html) namespace, and that there is a vast overlap between the names generated from the protocol buffer definitions file and the native types that live in the [`Concordium.Types`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.html) namespace. In the above we must therefore explicitly specify the namespace for [`Concordium.Sdk.Types.AccountAddress`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountAddress.html) to resolve this ambiguity. Furthermore we leverage the convenience method [`Concordium.Sdk.Types.AccountAddress.ToAccountIdentifierInput`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountAddress.html#Concordium_Sdk_Types_AccountAddress_ToAccountIdentifierInput) to easily convert the the base58 address into its corresponding raw format. Also note that the overall structure of the interface types are one-to-one with the [Concordium gRPC API V2](https://github.com/Concordium/concordium-grpc-api/tree/main/v2/concordium), so we refer to its documentation and the [Runnable examples](#runnable-examples) section for more information on working with the types of the raw API.
 
-# Without Parameters
-```csharp
-// create a concordiumNodeClient
+## Runnable examples
 
-AccountTransactionService accountTransactionService = new AccountTransactionService(concordiumNodeClient);
+A number of runnable examples illustrating usage of the SDK API are contained in the [examples](https://github.com/Concordium/concordium-net-sdk/main/examples) directory:
 
-UpdateContractPayload updateContractPayload = UpdateContractPayload.Create(
-    CcdAmount.Zero,
-    ContractAddress.Create(96, 0),
-    "a.func",
-    UpdateContractParameter.Empty(),
-    10_000);
+- [examples/RawClient](https://github.com/Concordium/concordium-net-sdk/main/examples/RawClient) demonstrates usage of the raw API methods exposed in [`RawClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html).
+- [examples/Transactions](https://github.com/Concordium/concordium-net-sdk/main/examples/Transactions) demonstrates how to work with the various transaction types.
 
-AccountAddress sender = AccountAddress.From("4hvvPeHb9HY4Lur7eUZv4KfL3tYBug8DRc4X9cVU8mpJLa1f2X");
-Ed25519SignKey ed25519TransactionSigner = Ed25519SignKey.From(signKey); // signKey can be decrypted using SignKeyEncryption or if you know it you can just pass as a string value.
-TransactionSigner transactionSigner = new TransactionSigner();
-transactionSigner.AddSignerEntry(Index.Create(0), Index.Create(0), ed25519TransactionSigner);
+For instance, a runnable example akin to that given in [Working with account transactions](#working-with-account-transactions) is found in [examples/Transactions/Transfer](https://github.com/Concordium/concordium-net-sdk/main/examples/Transactions/Transfer). Compiling the project and running the resulting binary will print the following help message:
 
-var transactionHash = await accountTransactionService.SendAccountTransactionAsync(sender, updateContractPayload, transactionSigner);
+```text
+Copyright (C) 2023 Concordium.Sdk.Examples.Transactions.Transfer
 
+ERROR(S):
+  Required option 'a, amount' is missing.
+  Required option 'r, receiver' is missing.
+  Required option 'k, keys' is missing.
+
+  -a, --amount      Required. Amount of CCD to transfer.
+
+  -r, --receiver    Required. Receiver of the CCD to transfer.
+
+  -k, --keys        Required. Path to a file with contents that is in the Concordium
+                    browser wallet key export format.
+
+  -e, --endpoint    (Default: https://localhost/) URL representing the endpoint where the
+                    gRPC V2 API is served.
+
+  -p, --port        (Default: 20000) Port at the endpoint where the gRPC V2 API is served.
+
+  -t, --timeout     (Default: 60) Default connection timeout in seconds.
+
+  --help            Display this help screen.
+
+  --version         Display version information.
 ```
 
-# With Parameters
-```csharp
-// create a concordiumNodeClient
+To run the example with similar values, invoke the binary as follows:
 
-AccountTransactionService accountTransactionService = new AccountTransactionService(concordiumNodeClient);
-
-// you can build your own schema if you know it exactly
-(string, Type)[] contents = new[]
-{
-    ("Bool", new Type(ParameterType.Bool)),
-    ("U8", new Type(ParameterType.U8)),
-    ("U16", new Type(ParameterType.U16)),
-    ("U32", new Type(ParameterType.U32)),
-    ("U64", new Type(ParameterType.U64)),
-    ("U128", new Type(ParameterType.U128)),
-    ("I8", new Type(ParameterType.I8)),
-    ("I16", new Type(ParameterType.I16)),
-    ("I32", new Type(ParameterType.I32)),
-    ("I64", new Type(ParameterType.I64)),
-    ("I128", new Type(ParameterType.I128)),
-    ("Amount", new Type(ParameterType.Amount)),
-    ("AccountAddress", new Type(ParameterType.AccountAddress)),
-    ("ContractAddress", new Type(ParameterType.ContractAddress)),
-    ("Timestamp", new Type(ParameterType.Timestamp)),
-    ("Duration", new Type(ParameterType.Duration)),
-    ("Pair", new PairType(new Type(ParameterType.I32), new Type(ParameterType.Bool))),
-    ("Array", new ArrayType(2, new Type(ParameterType.I32))),
-    ("Map", new MapType(
-        SizeLength.U8,
-        new Type(ParameterType.I32),
-        new Type(ParameterType.Bool))),
-    ("List", new ListType(
-        SizeLength.U8,
-        new Type(ParameterType.I32),
-        ParameterType.List)),
-    ("Set", new ListType(
-        SizeLength.U8,
-        new Type(ParameterType.I32),
-        ParameterType.Set)),
-    ("Struct", new StructType(
-        new NamedFields(
-            new (string FieldName, Type FieldType)[]
-            {
-                ("AccountAddress", new Type(ParameterType.AccountAddress)),
-                ("Amount", new Type(ParameterType.Amount))
-            }))),
-    ("Enumerable", new EnumType(
-        new (string VariantName, Fields VariantFields)[]
-        {
-            ("Some", new UnnamedFields(
-                new[]
-                {
-                    new Type(ParameterType.I32),
-                    new Type(ParameterType.Bool)
-                })),
-            ("Extra", new NamedFields(
-                new[]
-                {
-                    ("One", new Type(ParameterType.I32)),
-                    ("Two", new Type(ParameterType.I32))
-                }))
-        })),
-    ("String", new StringType(SizeLength.U8)),
-    ("InitName", new StringType(SizeLength.U8, ParameterType.ContractName)),
-    ("ReceiveName", new StringType(SizeLength.U8, ParameterType.ReceiveName))
-};
-NamedFields fields = new NamedFields(contents);
-StructType initParamType = new StructType(fields);
-Contract contractSchema = new Contract(null, initParamType, new Dictionary<string, Type>());
-Dictionary<string, Contract> contractSchemas = new Dictionary<string, Contract> { {"a", contractSchema}};
-Module schemaModule = new Module(contractSchemas);
-
-// or deserialize it if you have schema module as wasm file
-string path = @"C:\Users\User\Your_Schema_Module_Directory_Path\schema.wasm.v1"; // path to your schema module file (Your_Schema_Module_Directory_Path) as wasm file and your schema wasm file name (schema.wasm.v1).
-byte[] schemaModuleAsBytes = File.ReadAllBytes(path);
-
-Module schemaModule = ModuleDeserializer.Deserialize(schemaModuleAsBytes);
-
-var userInput = new
-{
-    Bool = true,
-    U8 = byte.MaxValue,
-    U16 = ushort.MaxValue,
-    U32 = uint.MaxValue,
-    U64 = ulong.MaxValue,
-    U128 = BigInteger.Parse("340282366920938463463374607431768211455"),
-    I8 = sbyte.MinValue,
-    I16 = short.MinValue,
-    I32 = int.MinValue,
-    I64 = long.MinValue,
-    I128 = BigInteger.Parse("-170141183460469231731687303715884105728"),
-    Amount = CcdAmount.FromMicroCcd(10),
-    AccountAddress = AccountAddress.From("4hvvPeHb9HY4Lur7eUZv4KfL3tYBug8DRc4X9cVU8mpJLa1f2X"),
-    ContractAddress = ContractAddress.Create(10, 0),
-    Timestamp = new DateTime(1998, 2, 20, 1, 1, 1),
-    Duration = "1d 1h 1m 1s 1ms",
-    Pair = new ArrayList {1, true},
-    Array = new[] {1, 2},
-    Map = new Dictionary<int, bool> {{1, true}},
-    List = new List<int> {1, 2, 3},
-    Set = new List<int> {1, 2, 3},
-    Struct = new
-    {
-        AccountAddress = AccountAddress.From("4hvvPeHb9HY4Lur7eUZv4KfL3tYBug8DRc4X9cVU8mpJLa1f2X"),
-        Amount = CcdAmount.FromMicroCcd(10)
-    },
-    Enumerable = new {Some = new ArrayList{1, true}, Extra = new {One = 1, Two = 2}},
-    String = "foo",
-    InitName = new {Contract = "contract"},
-    ReceiveName = new {Contract = "contract", Func = "func"}
-};
-
-UpdateContractParameter updateContractParameter = UpdateContractParameter.Create(
-"a",
-"a.func",
-userInput,
-schemaModule);
-
-UpdateContractPayload updateContractPayload = UpdateContractPayload.Create(
-    CcdAmount.Zero,
-    ContractAddress.Create(96, 0),
-    "a.func",
-    updateContractParameter,
-    10_000);
-
-AccountAddress sender = AccountAddress.From("4hvvPeHb9HY4Lur7eUZv4KfL3tYBug8DRc4X9cVU8mpJLa1f2X");
-Ed25519SignKey ed25519TransactionSigner = Ed25519SignKey.From(signKey); // signKey can be decrypted using SignKeyEncryption or if you know it you can just pass as a string value.
-TransactionSigner transactionSigner = new TransactionSigner();
-transactionSigner.AddSignerEntry(Index.Create(0), Index.Create(0), ed25519TransactionSigner);
-
-var transactionHash = await accountTransactionService.SendAccountTransactionAsync(sender, updateContractPayload, transactionSigner);
-
+```sh
+Concordium.Sdk.Examples.Transactions.Transfer -a 100 -r 4rvQePs6ZKFiW8rwY5nP18Uj2DroWiw9VPKTsTwfwmsjcFCJLy -k /path/to/exported-browser-wallet-keys.json
 ```
+
+Here, the sender account address is contained in the file specified by the `--keys` option which is why it is not included here. Upon successful submission of the transaction, the example program will print something like:
+
+```text
+Successfully submitted transfer transaction with hash 6bc9bfac5ef4aa1988ab8b1ab6007a736d4b3fe7e52b942d69a030319d979f13
+```
+
+## Documentation
+
+Rendered documentation for this project is available [here](http://developer.concordium.software/concordium-net-sdk/).
+
+## Migration
+
+This deprecates earlier versions of the Concordium .NET SDK that used version 1 of the Concordium Node gRPC API. In terms of semantics and the information carried in messages, the APIs are quite similar, so APIs of the older SDK versions have corresponding raw methods in this version. Note that in some cases endpoints in the version 1 API are "split" into several endpoints in the version 2 API to increase the granularity.
+
+Another major difference between this and the previous version of the SDK is that this version of the SDK currently does not support deploying contract modules with schemas.
+
+## License
+
+This project is licensed under the terms of the Mozilla Public License 2.0.
+
+For more information, please refer to the [LICENSE](https://github.com/Concordium/concordium-net-sdk/blob/main/LICENSE) file.
+
+## Contributing
+
+Contributions are welcomed. Guidelines for contribution can be found [here](https://github.com/Concordium/.github/blob/main/.github/CODE_OF_CONDUCT.md). GitHub workflows specify CI jobs for building, unit testing and formatting. Passing build jobs is a requirement for a pull request to be considered eligible for merging. The formatting rules are specified in the [EditorConfig](https://editorconfig.org/) format and are found in the [.editorconfig](https://github.com/Concordium/concordium-net-sdk/blob/main/.editorconfig) file at the root of the project.
+
+## Acknowledgements
+
+This project is developed and maintained by the [Concordium Foundation](https://concordium.foundation/).
