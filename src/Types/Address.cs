@@ -31,7 +31,13 @@ public interface IAddress { }
 /// </summary>
 internal static class AddressFactory
 {
-    internal static IAddress CreateAddress(Grpc.V2.Address address) =>
+    /// <summary>
+    /// Create a instance of a address
+    /// </summary>
+    /// <param name="address">Address returned in response</param>
+    /// <returns>Address</returns>
+    /// <exception cref="MissingEnumException{TypeOneofCase}">When address type not known</exception>
+    internal static IAddress From(Grpc.V2.Address address) =>
         address.TypeCase switch
         {
             Grpc.V2.Address.TypeOneofCase.Account => AccountAddress.From(address.Account.ToByteArray()),

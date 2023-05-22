@@ -179,7 +179,7 @@ public sealed class BlockItemSummary
         }
 
         contractInitializedEventEvent =
-            new ContractInitializedEvent(this._blockItemSummary.AccountTransaction.Effects.ContractInitialized);
+            ContractInitializedEvent.From(this._blockItemSummary.AccountTransaction.Effects.ContractInitialized);
 
         return true;
     }

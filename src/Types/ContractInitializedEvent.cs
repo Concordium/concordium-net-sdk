@@ -32,20 +32,39 @@ public class ContractInitializedEvent
     /// </summary>
     public IList<ContractEvent> Events { get; init; }
 
-    internal ContractInitializedEvent(Grpc.V2.ContractInitializedEvent initializedEvent)
+    private ContractInitializedEvent(ContractVersion contractVersion, ModuleReference moduleReference,
+        ContractAddress contractAddress, CcdAmount amount, ContractName initName, IList<ContractEvent> events)
     {
-        this.ContractVersion = initializedEvent.ContractVersion switch
+        this.ContractVersion = contractVersion;
+        this.ModuleReference = moduleReference;
+        this.ContractAddress = contractAddress;
+        this.Amount = amount;
+        this.InitName = initName;
+        this.Events = events;
+    }
+
+    /// <summary>
+    /// Create a instance of a Contract Initialization Event
+    /// </summary>
+    /// <param name="initializedEvent">initialization event</param>
+    /// <returns>Contract Initialization Event</returns>
+    /// <exception cref="MissingEnumException{ContractVersion}">When contract version not known</exception>
+    internal static ContractInitializedEvent From(Grpc.V2.ContractInitializedEvent initializedEvent)
+    {
+        var contractVersion = initializedEvent.ContractVersion switch
         {
             Grpc.V2.ContractVersion.V0 => ContractVersion.V0,
             Grpc.V2.ContractVersion.V1 => ContractVersion.V1,
             _ => throw new MissingEnumException<Grpc.V2.ContractVersion>(initializedEvent.ContractVersion)
         };
-        this.ModuleReference = new ModuleReference(initializedEvent.OriginRef.Value);
-        this.ContractAddress = ContractAddress.From(initializedEvent.Address);
-        this.Amount = CcdAmount.FromMicroCcd(initializedEvent.Amount.Value);
-        this.InitName = new ContractName(initializedEvent.InitName.Value);
-        this.Events = initializedEvent.Events
+        var moduleReference = new ModuleReference(initializedEvent.OriginRef.Value);
+        var contractAddress = ContractAddress.From(initializedEvent.Address);
+        var amount = CcdAmount.FromMicroCcd(initializedEvent.Amount.Value);
+        var initName = new ContractName(initializedEvent.InitName.Value);
+        var events = initializedEvent.Events
             .Select(e => new ContractEvent(e.Value.ToByteArray()))
             .ToList();
+        return new ContractInitializedEvent(contractVersion, moduleReference, contractAddress, amount,
+            initName, events);
     }
 }

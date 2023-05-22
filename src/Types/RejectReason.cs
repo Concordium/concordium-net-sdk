@@ -94,6 +94,11 @@ public sealed class RejectReason
     public BakerId? DelegationTargetNotABaker { get; init; }
 
 
+    /// <summary>
+    /// Creates a Reject Reason instance.
+    /// </summary>
+    /// <param name="other"></param>
+    /// <exception cref="MissingEnumException{ReasonOneofCase}"></exception>
     internal RejectReason(Grpc.V2.RejectReason other)
     {
         switch (other.ReasonCase)
@@ -134,7 +139,7 @@ public sealed class RejectReason
                 break;
 
             case Grpc.V2.RejectReason.ReasonOneofCase.InvalidContractAddress:
-                this.InvalidContractAddress = ContractAddress.Create(
+                this.InvalidContractAddress = ContractAddress.From(
                 other.InvalidContractAddress.Index,
                 other.InvalidContractAddress.Subindex
               );
@@ -147,7 +152,7 @@ public sealed class RejectReason
 
             case Grpc.V2.RejectReason.ReasonOneofCase.AmountTooLarge:
                 var amount = CcdAmount.FromMicroCcd(other.AmountTooLarge.Amount.Value);
-                var address = AddressFactory.CreateAddress(other.AmountTooLarge.Address);
+                var address = AddressFactory.From(other.AmountTooLarge.Address);
                 this.AmountTooLarge = (address, amount);
                 this.ReasonCase = ReasonOneOfCase.AmountTooLarge;
                 break;
@@ -356,7 +361,9 @@ public sealed class RejectReason
         }
     }
 
+    /// <summary>
     /// A reason for why a transaction was rejected.
+    /// </summary>
     public enum ReasonOneOfCase
     {
         None = 0,
