@@ -17,19 +17,19 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/grpc-api-v2-rewrite/apiSpec/new?filename=Concordium_Sdk_Wallets_WalletAccount.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Wallets.WalletAccount%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-
-      <script type="module">
-        import docfx from './../public/main.js'
-        window.docfx = docfx
-        window.MathJax = {
-          options: {
-            processHtmlClass: ['tex2jax_process', 'math']
-          }
-        }
-      </script>
-      <script type="text/javascript" src="../public/docfx.min.js"></script>
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/main/apiSpec/new?filename=Concordium_Sdk_Wallets_WalletAccount.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Wallets.WalletAccount%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
 
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
@@ -79,7 +79,7 @@
 
   <h1 id="Concordium_Sdk_Wallets_WalletAccount" data-uid="Concordium.Sdk.Wallets.WalletAccount" class="text-break">
     Class WalletAccount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Wallets/WalletAccount.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Wallets/WalletAccount.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -158,7 +158,7 @@ contains keys for signing transactions.</p>
 
   <h3 id="Concordium_Sdk_Wallets_WalletAccount_AccountAddress" data-uid="Concordium.Sdk.Wallets.WalletAccount.AccountAddress">
   AccountAddress
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Wallets/WalletAccount.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Wallets/WalletAccount.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The address of the imported account.</p>
@@ -194,7 +194,7 @@ contains keys for signing transactions.</p>
 
   <h3 id="Concordium_Sdk_Wallets_WalletAccount_From_Concordium_Sdk_Wallets_IWalletDataSource_" data-uid="Concordium.Sdk.Wallets.WalletAccount.From(Concordium.Sdk.Wallets.IWalletDataSource)">
   From(IWalletDataSource)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Wallets/WalletAccount.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Wallets/WalletAccount.cs/#L57"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Try to create a new instance from a wallet data source.</p>
@@ -237,7 +237,7 @@ contains keys for signing transactions.</p>
 
   <h3 id="Concordium_Sdk_Wallets_WalletAccount_FromWalletKeyExportFormat_System_String_" data-uid="Concordium.Sdk.Wallets.WalletAccount.FromWalletKeyExportFormat(System.String)">
   FromWalletKeyExportFormat(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Wallets/WalletAccount.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Wallets/WalletAccount.cs/#L66"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create a new instance from a string in the browser or genesis wallet key export format.</p>
@@ -284,7 +284,7 @@ contains keys for signing transactions.</p>
 
   <h3 id="Concordium_Sdk_Wallets_WalletAccount_GetSignatureCount" data-uid="Concordium.Sdk.Wallets.WalletAccount.GetSignatureCount">
   GetSignatureCount()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Wallets/WalletAccount.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Wallets/WalletAccount.cs/#L122"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the number of signatures that will be produced when signing a transaction using this signer.
@@ -317,7 +317,7 @@ This number is based on the signer count.</p>
 
   <h3 id="Concordium_Sdk_Wallets_WalletAccount_GetSignerEntries" data-uid="Concordium.Sdk.Wallets.WalletAccount.GetSignerEntries">
   GetSignerEntries()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Wallets/WalletAccount.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Wallets/WalletAccount.cs/#L117"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets a dictionary mapping pairs of credential and key indices to
@@ -351,7 +351,7 @@ their corresponding sign key implementations.</p>
 
   <h3 id="Concordium_Sdk_Wallets_WalletAccount_Sign_System_Byte___" data-uid="Concordium.Sdk.Wallets.WalletAccount.Sign(System.Byte[])">
   Sign(byte[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Wallets/WalletAccount.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Wallets/WalletAccount.cs/#L124"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sign a transaction hash.</p>
@@ -395,7 +395,7 @@ their corresponding sign key implementations.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Wallets/WalletAccount.cs/#L19" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Wallets/WalletAccount.cs/#L19" class="edit-link">Edit this page</a>
         </div>
 
         

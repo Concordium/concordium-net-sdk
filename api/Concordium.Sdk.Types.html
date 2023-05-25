@@ -18,18 +18,18 @@
       
       
       
-
-      <script type="module">
-        import docfx from './../public/main.js'
-        window.docfx = docfx
-        window.MathJax = {
-          options: {
-            processHtmlClass: ['tex2jax_process', 'math']
-          }
-        }
-      </script>
-      <script type="text/javascript" src="../public/docfx.min.js"></script>
   </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
 
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
@@ -85,6 +85,34 @@
 Classes
 </h3>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AlreadyABaker.html">AlreadyABaker</a></dt>
+      <dd><p>Tried to add baker for an account that already has a baker</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AlreadyADelegator.html">AlreadyADelegator</a></dt>
+      <dd><p>Tried to add baker for an account that already has a delegator.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AmountTooLarge.html">AmountTooLarge</a></dt>
+      <dd><p>When one wishes to transfer an amount from A to B but there
+are not enough funds on account/contract A to make this
+possible. The data are the from address and the amount to transfer.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerInCooldown.html">BakerInCooldown</a></dt>
+      <dd><p>The change could not be made because the baker is in cooldown for
+another change</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakingRewardCommissionNotInRange.html">BakingRewardCommissionNotInRange</a></dt>
+      <dd><p>Baking reward commission is not in the valid range for a baker</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a></dt>
       <dd><p>Represents a block hash.</p>
 <p>A block hash is a 32-byte hash of a block and serves as
@@ -93,8 +121,216 @@ the canonical way of identifying it.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BlockItemSummary.html">BlockItemSummary</a></dt>
+      <dd><p>Summary of the outcome of a block item in structured form.
+The summary determines which transaction type it was.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ContractInitializedEvent.html">ContractInitializedEvent</a></dt>
+      <dd><p>Data generated as part of initializing a single contract instance.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.CredentialHolderDidNotSign.html">CredentialHolderDidNotSign</a></dt>
+      <dd><p>The credential holder of the keys to be updated did not sign the
+transaction</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.DelegationTargetNotABaker.html">DelegationTargetNotABaker</a></dt>
+      <dd><p>Delegation target is not a baker.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.DelegatorInCooldown.html">DelegatorInCooldown</a></dt>
+      <dd><p>Account is not a delegation account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.DuplicateAggregationKey.html">DuplicateAggregationKey</a></dt>
+      <dd><p>A baker with the given aggregation key already exists</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.DuplicateCredIds.html">DuplicateCredIds</a></dt>
+      <dd><p>Some of the credential IDs already exist or are duplicated in the
+transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.EncryptedAmountSelfTransfer.html">EncryptedAmountSelfTransfer</a></dt>
+      <dd><p>Account tried to transfer an encrypted amount to itself, that's not
+allowed.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.FinalizationRewardCommissionNotInRange.html">FinalizationRewardCommissionNotInRange</a></dt>
+      <dd><p>Finalization reward commission is not in the valid range for a baker</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.FirstScheduledReleaseExpired.html">FirstScheduledReleaseExpired</a></dt>
+      <dd><p>The first scheduled release in a transfer with schedule has already
+expired</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.Hash.html">Hash</a></dt>
       <dd><p>Represents a 32-byte hash.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.InsufficientBalanceForBakerStake.html">InsufficientBalanceForBakerStake</a></dt>
+      <dd><p>The amount on the account was insufficient to cover the proposed stake</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.InsufficientBalanceForDelegationStake.html">InsufficientBalanceForDelegationStake</a></dt>
+      <dd><p>The amount on the account was insufficient to cover the proposed stake.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.InsufficientDelegationStake.html">InsufficientDelegationStake</a></dt>
+      <dd><p>Delegation stake when adding a delegator was 0.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.InvalidAccountReference.html">InvalidAccountReference</a></dt>
+      <dd><p>Account does not exist.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.InvalidAccountThreshold.html">InvalidAccountThreshold</a></dt>
+      <dd><p>When the account threshold is updated, it must not exceed the amount of
+existing keys</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.InvalidContractAddress.html">InvalidContractAddress</a></dt>
+      <dd><p>Contract instance does not exist.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.InvalidCredentialKeySignThreshold.html">InvalidCredentialKeySignThreshold</a></dt>
+      <dd><p>When the credential key threshold is updated, it must not exceed the
+amount of existing keys</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.InvalidCredentials.html">InvalidCredentials</a></dt>
+      <dd><p>At least one of the credentials was either malformed or its proof was
+incorrect.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.InvalidEncryptedAmountTransferProof.html">InvalidEncryptedAmountTransferProof</a></dt>
+      <dd><p>Proof for an encrypted amount transfer did not validate.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.InvalidIndexOnEncryptedTransfer.html">InvalidIndexOnEncryptedTransfer</a></dt>
+      <dd><p>The provided index is below the start index or above <code>startIndex + length incomingAmounts</code></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.InvalidInitMethod.html">InvalidInitMethod</a></dt>
+      <dd><p>Reference to a non-existing contract init method.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.InvalidModuleReference.html">InvalidModuleReference</a></dt>
+      <dd><p>Reference to a non-existing module.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.InvalidProof.html">InvalidProof</a></dt>
+      <dd><p>Proof that the baker owns relevant private keys is not valid.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.InvalidReceiveMethod.html">InvalidReceiveMethod</a></dt>
+      <dd><p>Reference to a non-existing contract receive method.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.InvalidTransferToPublicProof.html">InvalidTransferToPublicProof</a></dt>
+      <dd><p>Proof for a secret to public transfer did not validate.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.KeyIndexAlreadyInUse.html">KeyIndexAlreadyInUse</a></dt>
+      <dd><p>Attempted to add an account key to a key index already in use</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.MissingBakerAddParameters.html">MissingBakerAddParameters</a></dt>
+      <dd><p>A configure baker transaction is missing one or more arguments in order
+to add a baker.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.MissingDelegationAddParameter.html">MissingDelegationAddParameter</a></dt>
+      <dd><p>A configure delegation transaction is missing one or more arguments in
+order to add a delegator.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ModuleHashAlreadyExists.html">ModuleHashAlreadyExists</a></dt>
+      <dd><p>Module Hash Already Exists</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ModuleNotWf.html">ModuleNotWf</a></dt>
+      <dd><p>Error raised when validating the Wasm module.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ModuleReference.html">ModuleReference</a></dt>
+      <dd><p>A reference to a smart contract module deployed on the chain.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.NonExistentCredIds.html">NonExistentCredIds</a></dt>
+      <dd><p>A credential id that was to be removed is not part of the account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.NonExistentCredentialId.html">NonExistentCredentialId</a></dt>
+      <dd><p>Encountered credential ID that does not exist</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.NonIncreasingSchedule.html">NonIncreasingSchedule</a></dt>
+      <dd><p>The transfer with schedule has a non strictly increasing schedule</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.NotABaker.html">NotABaker</a></dt>
+      <dd><p>Tried to remove a baker for an account that has no baker</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.NotADelegator.html">NotADelegator</a></dt>
+      <dd><p>Account is not a delegation account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.NotAllowedMultipleCredentials.html">NotAllowedMultipleCredentials</a></dt>
+      <dd><p>Account is not allowed to have multiple credentials because it contains
+a non-zero encrypted transfer.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.NotAllowedToHandleEncrypted.html">NotAllowedToHandleEncrypted</a></dt>
+      <dd><p>The account is not allowed to send encrypted transfers (or transfer
+from/to public to/from encrypted)</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.NotAllowedToReceiveEncrypted.html">NotAllowedToReceiveEncrypted</a></dt>
+      <dd><p>The account is not allowed to receive encrypted transfers because it has
+multiple credentials.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -105,8 +341,94 @@ to use CBOR encoded data.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.OutOfEnergy.html">OutOfEnergy</a></dt>
+      <dd><p>We ran of out energy to process this transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.PoolClosed.html">PoolClosed</a></dt>
+      <dd><p>The pool is not open to delegators.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.PoolWouldBecomeOverDelegated.html">PoolWouldBecomeOverDelegated</a></dt>
+      <dd><p>The amount would result in pool with a too high fraction of delegated
+capital.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.RejectedInit.html">RejectedInit</a></dt>
+      <dd><p>Rejected due to contract logic in init function of a contract.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.RejectedReceive.html">RejectedReceive</a></dt>
+      <dd><p>Rejected due to contract logic in receive function of a contract.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.RemoveFirstCredential.html">RemoveFirstCredential</a></dt>
+      <dd><p>Attempt to remove the first credential</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.RuntimeFailure.html">RuntimeFailure</a></dt>
+      <dd><p>Runtime exception occurred when running either the init or receive
+method.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ScheduledSelfTransfer.html">ScheduledSelfTransfer</a></dt>
+      <dd><p>Account tried to transfer with schedule to itself, that's not allowed.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.SerializationFailure.html">SerializationFailure</a></dt>
+      <dd><p>Serialization of the body failed.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.StakeOverMaximumThresholdForPool.html">StakeOverMaximumThresholdForPool</a></dt>
+      <dd><p>The amount would result in pool capital higher than the maximum
+threshold.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.StakeUnderMinimumThresholdForBaking.html">StakeUnderMinimumThresholdForBaking</a></dt>
+      <dd><p>The amount provided is under the threshold required for becoming a baker</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.TransactionFeeCommissionNotInRange.html">TransactionFeeCommissionNotInRange</a></dt>
+      <dd><p>Transaction fee commission is not in the valid range for a baker</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.TransactionHash.html">TransactionHash</a></dt>
       <dd><p>Represents a transaction hash.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.TransactionStatusCommitted.html">TransactionStatusCommitted</a></dt>
+      <dd><p>Transaction is committed to one or more blocks. The outcomes are listed
+for each block. Note that in the vast majority of cases the outcome of a
+transaction should not be dependent on the block it is in, but this
+can in principle happen.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.TransactionStatusFinalized.html">TransactionStatusFinalized</a></dt>
+      <dd><p>Transaction is finalized in the given block, with the given summary.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.TransactionStatusReceived.html">TransactionStatusReceived</a></dt>
+      <dd><p>Transaction is received, but not yet in any blocks.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ZeroScheduledAmount.html">ZeroScheduledAmount</a></dt>
+      <dd><p>The transfer with schedule is going to send 0 tokens</p>
 </dd>
     </dl>
     <h3 id="structs">
@@ -124,6 +446,10 @@ Structs
 <p>An account has one or more credentials, each identified by a unique
 byte-value referred to as its credential index.</p>
 </dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AccountIndex.html">AccountIndex</a></dt>
+      <dd></dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.AccountKeyIndex.html">AccountKeyIndex</a></dt>
@@ -149,6 +475,11 @@ with <a class="xref" href="Concordium.Sdk.Client.ConcordiumClient.html#Concordiu
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerId.html">BakerId</a></dt>
+      <dd><p>Internal short id of the baker.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
       <dd><p>Represents a CCD amount.</p>
 <p>Note that 1_000_000 µCCD is equal to 1 CCD.</p>
@@ -163,6 +494,16 @@ both represented as 64-bit unsigned integers.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ContractEvent.html">ContractEvent</a></dt>
+      <dd><p>An event generated by a smart contract.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ContractName.html">ContractName</a></dt>
+      <dd><p>A contract name. Expected format: &quot;init_&lt;contract_name&gt;&quot;.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.EnergyAmount.html">EnergyAmount</a></dt>
       <dd><p>Represents an amount of energy.</p>
 </dd>
@@ -174,8 +515,37 @@ both represented as 64-bit unsigned integers.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Parameter.html">Parameter</a></dt>
+      <dd><p>Parameter to the init function or entrypoint.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.PayloadSize.html">PayloadSize</a></dt>
       <dd><p>Represents a payload size.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ReceiveName.html">ReceiveName</a></dt>
+      <dd><p>A receive name of the contract function called. Expected format: &quot;&lt;contract_name&gt;.&lt;func_name&gt;&quot;.</p>
+</dd>
+    </dl>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.IAddress.html">IAddress</a></dt>
+      <dd><p>A interface implemented by addresses like Account- and Contract address.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.IRejectReason.html">IRejectReason</a></dt>
+      <dd><p>Common interface for reject reasons. The user can with a switch statement determine the type
+and act on it. See example.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ITransactionStatus.html">ITransactionStatus</a></dt>
+      <dd><p>A common return type for TransactionStatus.</p>
 </dd>
     </dl>
     <h3 id="enums">
@@ -184,6 +554,11 @@ Enums
     <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.AccountTransactionType.html">AccountTransactionType</a></dt>
       <dd><p>Values used for binary serialization of transactions.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ContractVersion.html">ContractVersion</a></dt>
+      <dd><p>Contract version.</p>
 </dd>
     </dl>
 

@@ -18,18 +18,18 @@
       
       
       
-
-      <script type="module">
-        import docfx from './../public/main.js'
-        window.docfx = docfx
-        window.MathJax = {
-          options: {
-            processHtmlClass: ['tex2jax_process', 'math']
-          }
-        }
-      </script>
-      <script type="text/javascript" src="../public/docfx.min.js"></script>
   </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
 
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
@@ -95,7 +95,7 @@ signing with an <a class="xref" href="Concordium.Sdk.Crypto.Ed25519SignKey.html"
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionPayload-1.html">AccountTransactionPayload&lt;T&gt;</a></dt>
+      <dt><a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionPayload.html">AccountTransactionPayload</a></dt>
       <dd><p>Represents the payload of account transaction.</p>
 <p>Inheriting records should implement data specific to the transaction they
 model as well as helpers for constructing serialized transaction payloads
@@ -120,11 +120,12 @@ keys corresponding to the indices.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Concordium.Sdk.Transactions.PreparedAccountTransaction-1.html">PreparedAccountTransaction&lt;T&gt;</a></dt>
+      <dt><a class="xref" href="Concordium.Sdk.Transactions.PreparedAccountTransaction.html">PreparedAccountTransaction</a></dt>
       <dd><p>Represents an account transaction which is prepared for signing.</p>
-<p>The transasction is prepared in the sense that it contains information about the
+<p>The transaction is prepared in the sense that it is augmented with the
 <a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a> of the sender, the <a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a> to use
-when submitting the transaction as well as its <a class="xref" href="Concordium.Sdk.Types.Expiry.html">Expiry</a>.</p>
+when submitting the transaction as well as its <a class="xref" href="Concordium.Sdk.Types.Expiry.html">Expiry</a>. These are also
+used when signing the transaction.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -134,12 +135,12 @@ when submitting the transaction as well as its <a class="xref" href="Concordium.
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Concordium.Sdk.Transactions.SignedAccountTransaction-1.html">SignedAccountTransaction&lt;T&gt;</a></dt>
+      <dt><a class="xref" href="Concordium.Sdk.Transactions.SignedAccountTransaction.html">SignedAccountTransaction</a></dt>
       <dd><p>Represents a signed account transaction which is ready to be sent to the node.</p>
 <p>A signed account transaction constitutes an <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.html">AccountTransactionHeader</a>, an
-<a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionPayload-1.html">AccountTransactionPayload&lt;T&gt;</a> as well as an <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionSignature.html">AccountTransactionSignature</a>.</p>
-<p>A <a class="xref" href="Concordium.Sdk.Transactions.SignedAccountTransaction-1.html">SignedAccountTransaction&lt;T&gt;</a> can be created with the
-<a class="xref" href="Concordium.Sdk.Transactions.PreparedAccountTransaction-1.html#Concordium_Sdk_Transactions_PreparedAccountTransaction_1_Sign_Concordium_Sdk_Transactions_ITransactionSigner_">Sign(ITransactionSigner)</a> method with an implementer of
+<a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionPayload.html">AccountTransactionPayload</a> as well as an <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionSignature.html">AccountTransactionSignature</a>.</p>
+<p>A <a class="xref" href="Concordium.Sdk.Transactions.SignedAccountTransaction.html">SignedAccountTransaction</a> can be created with the
+<a class="xref" href="Concordium.Sdk.Transactions.PreparedAccountTransaction.html#Concordium_Sdk_Transactions_PreparedAccountTransaction_Sign_Concordium_Sdk_Transactions_ITransactionSigner_">Sign(ITransactionSigner)</a> method with an implementer of
 <a class="xref" href="Concordium.Sdk.Transactions.ITransactionSigner.html">ITransactionSigner</a>.</p>
 </dd>
     </dl>

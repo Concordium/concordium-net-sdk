@@ -15,19 +15,19 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/docs/api/index.md/#L1">
-
-      <script type="module">
-        import docfx from './../public/main.js'
-        window.docfx = docfx
-        window.MathJax = {
-          options: {
-            processHtmlClass: ['tex2jax_process', 'math']
-          }
-        }
-      </script>
-      <script type="text/javascript" src="../public/docfx.min.js"></script>
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/blob/main/docs/api/index.md/#L1">
   </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
 
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
@@ -78,7 +78,7 @@
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/docs/api/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/docs/api/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

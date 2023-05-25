@@ -17,19 +17,19 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/grpc-api-v2-rewrite/apiSpec/new?filename=Concordium_Sdk_Types_ContractAddress.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Types.ContractAddress%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-
-      <script type="module">
-        import docfx from './../public/main.js'
-        window.docfx = docfx
-        window.MathJax = {
-          options: {
-            processHtmlClass: ['tex2jax_process', 'math']
-          }
-        }
-      </script>
-      <script type="text/javascript" src="../public/docfx.min.js"></script>
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/main/apiSpec/new?filename=Concordium_Sdk_Types_ContractAddress.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Types.ContractAddress%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
 
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
@@ -79,7 +79,7 @@
 
   <h1 id="Concordium_Sdk_Types_ContractAddress" data-uid="Concordium.Sdk.Types.ContractAddress" class="text-break">
     Struct ContractAddress
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/ContractAddress.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractAddress.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -95,7 +95,7 @@ both represented as 64-bit unsigned integers.</p>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly struct ContractAddress : IEquatable&lt;ContractAddress&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly struct ContractAddress : IEquatable&lt;ContractAddress&gt;, IAddress</code></pre>
   </div>
 
 
@@ -106,6 +106,7 @@ both represented as 64-bit unsigned integers.</p>
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Sdk.Types.ContractAddress.html">ContractAddress</a>&gt;</div>
+      <div><a class="xref" href="Concordium.Sdk.Types.IAddress.html">IAddress</a></div>
     </dd>
   </dl>
 
@@ -140,7 +141,7 @@ both represented as 64-bit unsigned integers.</p>
 
   <h3 id="Concordium_Sdk_Types_ContractAddress_Index" data-uid="Concordium.Sdk.Types.ContractAddress.Index">
   Index
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/ContractAddress.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractAddress.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The index part of the address of a contract.</p>
@@ -172,7 +173,7 @@ both represented as 64-bit unsigned integers.</p>
 
   <h3 id="Concordium_Sdk_Types_ContractAddress_SubIndex" data-uid="Concordium.Sdk.Types.ContractAddress.SubIndex">
   SubIndex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/ContractAddress.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractAddress.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The sub-index part of the address of a contract.</p>
@@ -204,52 +205,11 @@ both represented as 64-bit unsigned integers.</p>
 </h2>
 
 
-  <a id="Concordium_Sdk_Types_ContractAddress_Create_" data-uid="Concordium.Sdk.Types.ContractAddress.Create*"></a>
-
-  <h3 id="Concordium_Sdk_Types_ContractAddress_Create_System_UInt64_System_UInt64_" data-uid="Concordium.Sdk.Types.ContractAddress.Create(System.UInt64,System.UInt64)">
-  Create(ulong, ulong)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/ContractAddress.cs/#L40"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Creates an instance of contract address.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static ContractAddress Create(ulong index, ulong subIndex)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd><p>the index value.</p>
-</dd>
-    <dt><code>subIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd><p>the sub index value.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Concordium.Sdk.Types.ContractAddress.html">ContractAddress</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
   <a id="Concordium_Sdk_Types_ContractAddress_Equals_" data-uid="Concordium.Sdk.Types.ContractAddress.Equals*"></a>
 
   <h3 id="Concordium_Sdk_Types_ContractAddress_Equals_Concordium_Sdk_Types_ContractAddress_" data-uid="Concordium.Sdk.Types.ContractAddress.Equals(Concordium.Sdk.Types.ContractAddress)">
   Equals(ContractAddress)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/ContractAddress.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractAddress.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -285,7 +245,7 @@ both represented as 64-bit unsigned integers.</p>
 
   <h3 id="Concordium_Sdk_Types_ContractAddress_Equals_System_Object_" data-uid="Concordium.Sdk.Types.ContractAddress.Equals(System.Object)">
   Equals(object?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/ContractAddress.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractAddress.cs/#L51"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -317,11 +277,52 @@ both represented as 64-bit unsigned integers.</p>
 
 
 
+  <a id="Concordium_Sdk_Types_ContractAddress_From_" data-uid="Concordium.Sdk.Types.ContractAddress.From*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ContractAddress_From_System_UInt64_System_UInt64_" data-uid="Concordium.Sdk.Types.ContractAddress.From(System.UInt64,System.UInt64)">
+  From(ulong, ulong)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractAddress.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates an instance of contract address.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ContractAddress From(ulong index, ulong subIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>the index value.</p>
+</dd>
+    <dt><code>subIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>the sub index value.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.ContractAddress.html">ContractAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Concordium_Sdk_Types_ContractAddress_GetHashCode_" data-uid="Concordium.Sdk.Types.ContractAddress.GetHashCode*"></a>
 
   <h3 id="Concordium_Sdk_Types_ContractAddress_GetHashCode" data-uid="Concordium.Sdk.Types.ContractAddress.GetHashCode">
   GetHashCode()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/ContractAddress.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractAddress.cs/#L67"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -352,7 +353,7 @@ both represented as 64-bit unsigned integers.</p>
 
   <h3 id="Concordium_Sdk_Types_ContractAddress_ToProto" data-uid="Concordium.Sdk.Types.ContractAddress.ToProto">
   ToProto()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/ContractAddress.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractAddress.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts the contract address to its corresponding protocol buffer message instance.</p>
@@ -389,7 +390,7 @@ both represented as 64-bit unsigned integers.</p>
 
   <h3 id="Concordium_Sdk_Types_ContractAddress_op_Equality_System_Nullable_Concordium_Sdk_Types_ContractAddress__System_Nullable_Concordium_Sdk_Types_ContractAddress__" data-uid="Concordium.Sdk.Types.ContractAddress.op_Equality(System.Nullable{Concordium.Sdk.Types.ContractAddress},System.Nullable{Concordium.Sdk.Types.ContractAddress})">
   operator ==(ContractAddress?, ContractAddress?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/ContractAddress.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractAddress.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -427,7 +428,7 @@ both represented as 64-bit unsigned integers.</p>
 
   <h3 id="Concordium_Sdk_Types_ContractAddress_op_Inequality_System_Nullable_Concordium_Sdk_Types_ContractAddress__System_Nullable_Concordium_Sdk_Types_ContractAddress__" data-uid="Concordium.Sdk.Types.ContractAddress.op_Inequality(System.Nullable{Concordium.Sdk.Types.ContractAddress},System.Nullable{Concordium.Sdk.Types.ContractAddress})">
   operator !=(ContractAddress?, ContractAddress?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/ContractAddress.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractAddress.cs/#L71"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -465,7 +466,7 @@ both represented as 64-bit unsigned integers.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/ContractAddress.cs/#L12" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractAddress.cs/#L10" class="edit-link">Edit this page</a>
         </div>
 
         

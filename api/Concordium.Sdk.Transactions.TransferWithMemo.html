@@ -17,19 +17,19 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/grpc-api-v2-rewrite/apiSpec/new?filename=Concordium_Sdk_Transactions_TransferWithMemo.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Transactions.TransferWithMemo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-
-      <script type="module">
-        import docfx from './../public/main.js'
-        window.docfx = docfx
-        window.MathJax = {
-          options: {
-            processHtmlClass: ['tex2jax_process', 'math']
-          }
-        }
-      </script>
-      <script type="text/javascript" src="../public/docfx.min.js"></script>
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/main/apiSpec/new?filename=Concordium_Sdk_Transactions_TransferWithMemo.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Transactions.TransferWithMemo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
 
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
@@ -79,7 +79,7 @@
 
   <h1 id="Concordium_Sdk_Transactions_TransferWithMemo" data-uid="Concordium.Sdk.Transactions.TransferWithMemo" class="text-break">
     Class TransferWithMemo
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Transactions/TransferWithMemo.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -94,7 +94,7 @@ but additionally stores a memo associated with the transfer on-chain.</p>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public record TransferWithMemo : AccountTransactionPayload&lt;TransferWithMemo&gt;, IEquatable&lt;AccountTransactionPayload&lt;TransferWithMemo&gt;&gt;, IEquatable&lt;TransferWithMemo&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public record TransferWithMemo : AccountTransactionPayload, IEquatable&lt;AccountTransactionPayload&gt;, IEquatable&lt;TransferWithMemo&gt;</code></pre>
   </div>
 
 
@@ -104,7 +104,7 @@ but additionally stores a memo associated with the transfer on-chain.</p>
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionPayload-1.html">AccountTransactionPayload</a>&lt;<a class="xref" href="Concordium.Sdk.Transactions.TransferWithMemo.html">TransferWithMemo</a>&gt;</div>
+      <div><a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionPayload.html">AccountTransactionPayload</a></div>
       <div><span class="xref">TransferWithMemo</span></div>
     </dd>
   </dl>
@@ -112,7 +112,7 @@ but additionally stores a memo associated with the transfer on-chain.</p>
   <dl class="typelist implements">
     <dt>Implements</dt>
     <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionPayload-1.html">AccountTransactionPayload</a>&lt;<a class="xref" href="Concordium.Sdk.Transactions.TransferWithMemo.html">TransferWithMemo</a>&gt;&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionPayload.html">AccountTransactionPayload</a>&gt;</div>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Sdk.Transactions.TransferWithMemo.html">TransferWithMemo</a>&gt;</div>
     </dd>
   </dl>
@@ -122,10 +122,10 @@ but additionally stores a memo associated with the transfer on-chain.</p>
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionPayload-1.html#Concordium_Sdk_Transactions_AccountTransactionPayload_1_Prepare_Concordium_Sdk_Types_AccountAddress_Concordium_Sdk_Types_AccountSequenceNumber_Concordium_Sdk_Types_Expiry_">AccountTransactionPayload&lt;TransferWithMemo&gt;.Prepare(AccountAddress, AccountSequenceNumber, Expiry)</a>
+      <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionPayload.html#Concordium_Sdk_Transactions_AccountTransactionPayload_Prepare_Concordium_Sdk_Types_AccountAddress_Concordium_Sdk_Types_AccountSequenceNumber_Concordium_Sdk_Types_Expiry_">AccountTransactionPayload.Prepare(AccountAddress, AccountSequenceNumber, Expiry)</a>
     </div>
     <div>
-      <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionPayload-1.html#Concordium_Sdk_Transactions_AccountTransactionPayload_1_ToProto">AccountTransactionPayload&lt;TransferWithMemo&gt;.ToProto()</a>
+      <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionPayload.html#Concordium_Sdk_Transactions_AccountTransactionPayload_ToProto">AccountTransactionPayload.ToProto()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -163,7 +163,7 @@ but additionally stores a memo associated with the transfer on-chain.</p>
 
   <h3 id="Concordium_Sdk_Transactions_TransferWithMemo__ctor_Concordium_Sdk_Types_CcdAmount_Concordium_Sdk_Types_AccountAddress_Concordium_Sdk_Types_OnChainData_" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.#ctor(Concordium.Sdk.Types.CcdAmount,Concordium.Sdk.Types.AccountAddress,Concordium.Sdk.Types.OnChainData)">
   TransferWithMemo(CcdAmount, AccountAddress, OnChainData)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Transactions/TransferWithMemo.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Concordium.Sdk.Transactions.TransferWithMemo.html">TransferWithMemo</a> class.</p>
@@ -206,7 +206,7 @@ but additionally stores a memo associated with the transfer on-chain.</p>
 
   <h3 id="Concordium_Sdk_Transactions_TransferWithMemo_Amount" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.Amount">
   Amount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Transactions/TransferWithMemo.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Amount to send.</p>
@@ -238,7 +238,7 @@ but additionally stores a memo associated with the transfer on-chain.</p>
 
   <h3 id="Concordium_Sdk_Transactions_TransferWithMemo_Memo" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.Memo">
   Memo
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Transactions/TransferWithMemo.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Memo to include with the transaction.</p>
@@ -270,7 +270,7 @@ but additionally stores a memo associated with the transfer on-chain.</p>
 
   <h3 id="Concordium_Sdk_Transactions_TransferWithMemo_Receiver" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.Receiver">
   Receiver
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Transactions/TransferWithMemo.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Address of the receiver account to which the amount will be sent.</p>
@@ -302,43 +302,11 @@ but additionally stores a memo associated with the transfer on-chain.</p>
 </h2>
 
 
-  <a id="Concordium_Sdk_Transactions_TransferWithMemo_GetBytes_" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.GetBytes*"></a>
-
-  <h3 id="Concordium_Sdk_Transactions_TransferWithMemo_GetBytes" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.GetBytes">
-  GetBytes()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Transactions/TransferWithMemo.cs/#L65"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Get the transaction payload in the binary format expected by the node.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override byte[] GetBytes()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
   <a id="Concordium_Sdk_Transactions_TransferWithMemo_GetTransactionSpecificCost_" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.GetTransactionSpecificCost*"></a>
 
   <h3 id="Concordium_Sdk_Transactions_TransferWithMemo_GetTransactionSpecificCost" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.GetTransactionSpecificCost">
   GetTransactionSpecificCost()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Transactions/TransferWithMemo.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L66"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the transaction specific cost for submitting this type of
@@ -373,11 +341,43 @@ when initializing or updating a smart contract.</p>
 
 
 
+  <a id="Concordium_Sdk_Transactions_TransferWithMemo_ToBytes_" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.ToBytes*"></a>
+
+  <h3 id="Concordium_Sdk_Transactions_TransferWithMemo_ToBytes" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.ToBytes">
+  ToBytes()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Copies the on-chain data in the binary format expected by the node to a byte array.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override byte[] ToBytes()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Transactions/TransferWithMemo.cs/#L12" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L11" class="edit-link">Edit this page</a>
         </div>
 
         

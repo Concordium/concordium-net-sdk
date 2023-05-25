@@ -17,19 +17,19 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/grpc-api-v2-rewrite/apiSpec/new?filename=Concordium_Sdk_Types_Hash.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Types.Hash%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-
-      <script type="module">
-        import docfx from './../public/main.js'
-        window.docfx = docfx
-        window.MathJax = {
-          options: {
-            processHtmlClass: ['tex2jax_process', 'math']
-          }
-        }
-      </script>
-      <script type="text/javascript" src="../public/docfx.min.js"></script>
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/main/apiSpec/new?filename=Concordium_Sdk_Types_Hash.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Types.Hash%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
 
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
@@ -79,7 +79,7 @@
 
   <h1 id="Concordium_Sdk_Types_Hash" data-uid="Concordium.Sdk.Types.Hash" class="text-break">
     Class Hash
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/Hash.cs/#L6"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Hash.cs/#L6"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -117,6 +117,7 @@
     <dt>Derived</dt>
     <dd>
       <div><a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a></div>
+      <div><a class="xref" href="Concordium.Sdk.Types.ModuleReference.html">ModuleReference</a></div>
       <div><a class="xref" href="Concordium.Sdk.Types.TransactionHash.html">TransactionHash</a></div>
     </dd>
   </dl>
@@ -154,7 +155,7 @@
 
   <h3 id="Concordium_Sdk_Types_Hash__ctor_System_Byte___" data-uid="Concordium.Sdk.Types.Hash.#ctor(System.Byte[])">
   Hash(byte[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/Hash.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Hash.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Concordium.Sdk.Types.Hash.html">Hash</a> class.</p>
@@ -193,7 +194,7 @@
 
   <h3 id="Concordium_Sdk_Types_Hash__ctor_System_String_" data-uid="Concordium.Sdk.Types.Hash.#ctor(System.String)">
   Hash(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/Hash.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Hash.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Concordium.Sdk.Types.Hash.html">Hash</a> class.</p>
@@ -235,7 +236,7 @@
 
   <h3 id="Concordium_Sdk_Types_Hash_BytesLength" data-uid="Concordium.Sdk.Types.Hash.BytesLength">
   BytesLength
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/Hash.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Hash.cs/#L8"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -270,7 +271,7 @@
 
   <h3 id="Concordium_Sdk_Types_Hash_Equals_Concordium_Sdk_Types_Hash_" data-uid="Concordium.Sdk.Types.Hash.Equals(Concordium.Sdk.Types.Hash)">
   Equals(Hash?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/Hash.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Hash.cs/#L66"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -302,43 +303,11 @@
 
 
 
-  <a id="Concordium_Sdk_Types_Hash_GetBytes_" data-uid="Concordium.Sdk.Types.Hash.GetBytes*"></a>
-
-  <h3 id="Concordium_Sdk_Types_Hash_GetBytes" data-uid="Concordium.Sdk.Types.Hash.GetBytes">
-  GetBytes()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/Hash.cs/#L59"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Get the hash as a length-32 byte array.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public byte[] GetBytes()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
   <a id="Concordium_Sdk_Types_Hash_GetHashCode_" data-uid="Concordium.Sdk.Types.Hash.GetHashCode*"></a>
 
   <h3 id="Concordium_Sdk_Types_Hash_GetHashCode" data-uid="Concordium.Sdk.Types.Hash.GetHashCode">
   GetHashCode()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/Hash.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Hash.cs/#L86"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -365,11 +334,43 @@
 
 
 
+  <a id="Concordium_Sdk_Types_Hash_ToBytes_" data-uid="Concordium.Sdk.Types.Hash.ToBytes*"></a>
+
+  <h3 id="Concordium_Sdk_Types_Hash_ToBytes" data-uid="Concordium.Sdk.Types.Hash.ToBytes">
+  ToBytes()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Hash.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Copies the hash to a length-32 byte array.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] ToBytes()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Concordium_Sdk_Types_Hash_ToString_" data-uid="Concordium.Sdk.Types.Hash.ToString*"></a>
 
   <h3 id="Concordium_Sdk_Types_Hash_ToString" data-uid="Concordium.Sdk.Types.Hash.ToString">
   ToString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/Hash.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Hash.cs/#L64"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the hash as a length-64 hex encoded string.</p>
@@ -401,7 +402,7 @@
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Types/Hash.cs/#L6" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Hash.cs/#L6" class="edit-link">Edit this page</a>
         </div>
 
         

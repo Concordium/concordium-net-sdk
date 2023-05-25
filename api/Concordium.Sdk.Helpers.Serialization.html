@@ -17,19 +17,19 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/vh/grpc-api-v2-rewrite/apiSpec/new?filename=Concordium_Sdk_Helpers_Serialization.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Helpers.Serialization%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-
-      <script type="module">
-        import docfx from './../public/main.js'
-        window.docfx = docfx
-        window.MathJax = {
-          options: {
-            processHtmlClass: ['tex2jax_process', 'math']
-          }
-        }
-      </script>
-      <script type="text/javascript" src="../public/docfx.min.js"></script>
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/main/apiSpec/new?filename=Concordium_Sdk_Helpers_Serialization.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Helpers.Serialization%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
   </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
 
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
@@ -79,7 +79,7 @@
 
   <h1 id="Concordium_Sdk_Helpers_Serialization" data-uid="Concordium.Sdk.Helpers.Serialization" class="text-break">
     Class Serialization
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Helpers/Serialization.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Helpers/Serialization.cs/#L8"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -143,19 +143,19 @@
 </h2>
 
 
-  <a id="Concordium_Sdk_Helpers_Serialization_GetBytes_" data-uid="Concordium.Sdk.Helpers.Serialization.GetBytes*"></a>
+  <a id="Concordium_Sdk_Helpers_Serialization_ToBytes_" data-uid="Concordium.Sdk.Helpers.Serialization.ToBytes*"></a>
 
-  <h3 id="Concordium_Sdk_Helpers_Serialization_GetBytes_System_UInt16_" data-uid="Concordium.Sdk.Helpers.Serialization.GetBytes(System.UInt16)">
-  GetBytes(ushort)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Helpers/Serialization.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Concordium_Sdk_Helpers_Serialization_ToBytes_System_UInt16_" data-uid="Concordium.Sdk.Helpers.Serialization.ToBytes(System.UInt16)">
+  ToBytes(ushort)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Helpers/Serialization.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets bytes representing the specified <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a> in big-endian format.</p>
+  <div class="markdown level1 summary"><p>Copies the bytes representing the specified <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> in big-endian format to a byte array.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static byte[] GetBytes(ushort value)</code></pre>
+    <pre><code class="lang-csharp hljs">public static byte[] ToBytes(ushort value)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -180,19 +180,19 @@
 
 
 
-  <a id="Concordium_Sdk_Helpers_Serialization_GetBytes_" data-uid="Concordium.Sdk.Helpers.Serialization.GetBytes*"></a>
+  <a id="Concordium_Sdk_Helpers_Serialization_ToBytes_" data-uid="Concordium.Sdk.Helpers.Serialization.ToBytes*"></a>
 
-  <h3 id="Concordium_Sdk_Helpers_Serialization_GetBytes_System_UInt32_" data-uid="Concordium.Sdk.Helpers.Serialization.GetBytes(System.UInt32)">
-  GetBytes(uint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Helpers/Serialization.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Concordium_Sdk_Helpers_Serialization_ToBytes_System_UInt32_" data-uid="Concordium.Sdk.Helpers.Serialization.ToBytes(System.UInt32)">
+  ToBytes(uint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Helpers/Serialization.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets bytes representing the specified <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a> in big-endian format.</p>
+  <div class="markdown level1 summary"><p>Copies the bytes representing the specified <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> in big-endian format to a byte array.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static byte[] GetBytes(uint value)</code></pre>
+    <pre><code class="lang-csharp hljs">public static byte[] ToBytes(uint value)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -217,19 +217,19 @@
 
 
 
-  <a id="Concordium_Sdk_Helpers_Serialization_GetBytes_" data-uid="Concordium.Sdk.Helpers.Serialization.GetBytes*"></a>
+  <a id="Concordium_Sdk_Helpers_Serialization_ToBytes_" data-uid="Concordium.Sdk.Helpers.Serialization.ToBytes*"></a>
 
-  <h3 id="Concordium_Sdk_Helpers_Serialization_GetBytes_System_UInt64_" data-uid="Concordium.Sdk.Helpers.Serialization.GetBytes(System.UInt64)">
-  GetBytes(ulong)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Helpers/Serialization.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Concordium_Sdk_Helpers_Serialization_ToBytes_System_UInt64_" data-uid="Concordium.Sdk.Helpers.Serialization.ToBytes(System.UInt64)">
+  ToBytes(ulong)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Helpers/Serialization.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets bytes representing the specified <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> in big-endian format.</p>
+  <div class="markdown level1 summary"><p>Copies the bytes representing the specified <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a> in big-endian format to a byte array.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static byte[] GetBytes(ulong value)</code></pre>
+    <pre><code class="lang-csharp hljs">public static byte[] ToBytes(ulong value)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -258,7 +258,7 @@
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/src/Helpers/Serialization.cs/#L8" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Helpers/Serialization.cs/#L8" class="edit-link">Edit this page</a>
         </div>
 
         

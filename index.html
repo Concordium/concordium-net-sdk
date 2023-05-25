@@ -15,19 +15,19 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/docs/index.md/#L1">
-
-      <script type="module">
-        import docfx from './public/main.js'
-        window.docfx = docfx
-        window.MathJax = {
-          options: {
-            processHtmlClass: ['tex2jax_process', 'math']
-          }
-        }
-      </script>
-      <script type="text/javascript" src="public/docfx.min.js"></script>
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/blob/main/docs/index.md/#L1">
   </head>
+
+  <script type="module">
+    import options from './public/main.js'
+    import { init } from './public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
 
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
@@ -73,7 +73,7 @@
 
         <article data-uid="">
 
-<p><img src="https://github.com/Concordium/concordium-net-sdk/actions/workflows/dotnet.yml/badge.svg" alt="CI">
+<p><img src="https://github.com/Concordium/concordium-net-sdk/actions/workflows/build-test-format.yml/badge.svg" alt="CI">
 <a href="https://github.com/Concordium/.github/blob/main/.github/CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg" alt="Contributor Covenant"></a>
 <a href="https://badge.fury.io/nu/ConcordiumNetSdk"><img src="https://badge.fury.io/nu/ConcordiumNetSdk.svg" alt="NuGet version"></a></p>
 <h1 id="c-net-sdk-for-interacting-with-the-concordium-blockchain">C# .NET SDK for interacting with the Concordium blockchain</h1>
@@ -91,13 +91,13 @@
 </ul>
 <h2 id="installation">Installation</h2>
 <p>The SDK is published on <a href="https://www.nuget.org/packages/ConcordiumNetSdk">nuget.org</a>. Depending on your setup, it can be added to your project as a dependency by running either</p>
-<pre><code class="lang-powershell">PM&gt; Install-Package Concordium.SDK -Version ???
+<pre><code class="lang-powershell">PM&gt; Install-Package Concordium.SDK -Version 2.0
 </code></pre>
 <p>or</p>
-<pre><code class="lang-sh">$ dotnet add package Concordium.SDK
+<pre><code class="lang-sh">dotnet add package Concordium.SDK
 </code></pre>
 <p>in your project root. It can also be used as a GIT submodule by embedding the cloned <a href="https://github.com/Concordium/concordium-net-sdk">repository</a> directly into your project:</p>
-<pre><code class="lang-sh">$ git clone https://github.com/Concordium/concordium-net-sdk --recurse-submodules
+<pre><code class="lang-sh">git clone https://github.com/Concordium/concordium-net-sdk --recurse-submodules
 </code></pre>
 <h2 id="basic-usage">Basic usage</h2>
 <p>At the core of the SDK is the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html"><code>ConcordiumClient</code></a> class which is used to connect to a Concordium node and exposes methods interacting with it. The <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html"><code>ConcordiumClient</code></a> can be instantiated as follows:</p>
@@ -105,9 +105,9 @@
 
 // Construct the client.
 ConcordiumClient client = new ConcordiumClient(
-  new Uri(&quot;https://localhost/), // Endpoint  URL.
-  options.Port, // Port.
-  60 // Use a connection timeout of 60 seconds.
+  new Uri(&quot;https://localhost/&quot;), // Endpoint URL.
+  20000, // Port.
+  60 // Connection timeout in seconds.
 );
 </code></pre>
 <p>The <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html"><code>ConcordiumClient</code></a> constructor also optionally takes a <a href="https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Net.Client.GrpcChannelOptions.html"><code>GrpcChannelOptions</code></a> object which can be used to specify various settings specific to the underlying <a href="https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Net.Client.GrpcChannel.html"><code>GrpcChannel</code></a> instance which handles the communication with the node. These could be settings that dictate the retry policy or specify parameters for the <a href="https://github.com/grpc/grpc/blob/master/doc/keepalive.md">keepalive ping</a>, which can be vital to the robustness of the application.</p>
@@ -136,7 +136,7 @@ SignedAccountTransaction&lt;Transfer&gt; signedTransfer = preparedTransfer.Sign(
 </code></pre>
 <p>The <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.TransactionHash.html"><code>TransactionHash</code></a> can subsequently be used for querying the status of the transaction by invoking the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html#Concordium_Sdk_Client_RawClient_GetBlockItemStatus_Concordium_Grpc_V2_TransactionHash_"><code>GetBlockItemStatus</code></a> method of the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html"><code>RawClient</code></a>, accessible through<code>client.Raw</code> in the above example. For more info on the raw API calls, see the <a href="#using-the-raw-client-api">Using the raw client API</a> section.</p>
 <h3 id="working-with-transaction-signers">Working with transaction signers</h3>
-<p>As described in the <a href="#working-with-account-transactions">Account transactions</a> section, account transactions must be signed using implementations of <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.ITransactionSigner.html"><code>ITransactionSigner</code></a>. The SDK ships with the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.TransactionSigner.html"><code>TransactionSigner</code></a> class which is dictionary based implementation to which <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Crypto.ISigner.html"><code>ISigner</code></a>s can be added. An <a href="developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Crypto.ISigner.html"><code>ISigner</code></a> represents a concrete implementation of a (secret) sign key for an account, and can be used to to write custom signer implementations which can be useful, for instance, if delegating the signing logic to a HSM. The SDK also ships with the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Wallets.WalletAccount.html"><code>WalletAccount</code></a> class which provides functionality for importing account keys from one of the supported wallet export formats. Currently the Concordium browser and genesis wallet key export (JSON) formats are supported.</p>
+<p>As described in the <a href="#working-with-account-transactions">Account transactions</a> section, account transactions must be signed using implementations of <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.ITransactionSigner.html"><code>ITransactionSigner</code></a>. The SDK ships with the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Transactions.TransactionSigner.html"><code>TransactionSigner</code></a> class which is dictionary based implementation to which <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Crypto.ISigner.html"><code>ISigner</code></a>s can be added. An <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Crypto.ISigner.html"><code>ISigner</code></a> represents a concrete implementation of a (secret) sign key for an account, and can be used to to write custom signer implementations which can be useful, for instance, if delegating the signing logic to a HSM. The SDK also ships with the <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Wallets.WalletAccount.html"><code>WalletAccount</code></a> class which provides functionality for importing account keys from one of the supported wallet export formats. Currently the Concordium browser and genesis wallet key export (JSON) formats are supported.</p>
 <h3 id="using-the-client-api">Using the client API</h3>
 <p>A small subset of the raw methods generated from the Concordium Node gRPC API protocol buffer definitions have corresponding ergonomic wrappers that transparently map input and output types to and from their native equivalents as they are marshalled across the underlying generated API they wrap. One example of such is <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_GetNextAccountSequenceNumber_Concordium_Sdk_Types_AccountAddress_"><code>GetNextAccountSequenceNumber</code></a> which takes an <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountAddress.html"><code>AccountAddress</code></a> and returns a <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.AccountSequenceNumber.html"><code>AccountSequenceNumber</code></a>:</p>
 <pre><code class="lang-csharp">AccountAddress sender = AccountAddress.From(&quot;3jfAuU1c4kPE6GkpfYw4KcgvJngkgpFrD9SkDBgFW3aHmVB5r1&quot;);
@@ -167,7 +167,7 @@ AccountInfo accountInfo = client.Raw.GetAccountInfo(request);
 <h2 id="runnable-examples">Runnable examples</h2>
 <p>A number of runnable examples illustrating usage of the SDK API are contained in the <a href="https://github.com/Concordium/concordium-net-sdk/main/examples">examples</a> directory:</p>
 <ul>
-<li><a href="https://github.com/Concordium/concordium-net-sdk/main/examples/RawClient">examples/RawClient</a> demonstrates usage of the raw API methods exposed in <code>RawClient</code> (instances of which are accessible through the <code>Raw</code> field of the <code>ConcordiumClient</code>).</li>
+<li><a href="https://github.com/Concordium/concordium-net-sdk/main/examples/RawClient">examples/RawClient</a> demonstrates usage of the raw API methods exposed in <a href="http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html"><code>RawClient</code></a>.</li>
 <li><a href="https://github.com/Concordium/concordium-net-sdk/main/examples/Transactions">examples/Transactions</a> demonstrates how to work with the various transaction types.</li>
 </ul>
 <p>For instance, a runnable example akin to that given in <a href="#working-with-account-transactions">Working with account transactions</a> is found in <a href="https://github.com/Concordium/concordium-net-sdk/main/examples/Transactions/Transfer">examples/Transactions/Transfer</a>. Compiling the project and running the resulting binary will print the following help message:</p>
@@ -197,7 +197,7 @@ ERROR(S):
   --version         Display version information.
 </code></pre>
 <p>To run the example with similar values, invoke the binary as follows:</p>
-<pre><code class="lang-sh">$ Concordium.Sdk.Examples.Transactions.Transfer -a 100 -r 4rvQePs6ZKFiW8rwY5nP18Uj2DroWiw9VPKTsTwfwmsjcFCJLy -k /path/to/exported-browser-wallet-keys.json
+<pre><code class="lang-sh">Concordium.Sdk.Examples.Transactions.Transfer -a 100 -r 4rvQePs6ZKFiW8rwY5nP18Uj2DroWiw9VPKTsTwfwmsjcFCJLy -k /path/to/exported-browser-wallet-keys.json
 </code></pre>
 <p>Here, the sender account address is contained in the file specified by the <code>--keys</code> option which is why it is not included here. Upon successful submission of the transaction, the example program will print something like:</p>
 <pre><code class="lang-text">Successfully submitted transfer transaction with hash 6bc9bfac5ef4aa1988ab8b1ab6007a736d4b3fe7e52b942d69a030319d979f13
@@ -217,7 +217,7 @@ ERROR(S):
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/vh/grpc-api-v2-rewrite/docs/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/docs/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

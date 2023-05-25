@@ -1,0 +1,401 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class PreparedAccountTransaction
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class PreparedAccountTransaction
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/main/apiSpec/new?filename=Concordium_Sdk_Transactions_PreparedAccountTransaction.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Transactions.PreparedAccountTransaction%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+  </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction">
+
+
+
+  <h1 id="Concordium_Sdk_Transactions_PreparedAccountTransaction" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction" class="text-break">
+    Class PreparedAccountTransaction
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/PreparedAccountTransaction.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Concordium.html">Concordium</a>.<a class="xref" href="Concordium.Sdk.html">Sdk</a>.<a class="xref" href="Concordium.Sdk.Transactions.html">Transactions</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Concordium.Sdk.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Represents an account transaction which is prepared for signing.</p>
+<p>The transaction is prepared in the sense that it is augmented with the
+<a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a> of the sender, the <a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a> to use
+when submitting the transaction as well as its <a class="xref" href="Concordium.Sdk.Types.Expiry.html">Expiry</a>. These are also
+used when signing the transaction.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public record PreparedAccountTransaction : IEquatable&lt;PreparedAccountTransaction&gt;</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">PreparedAccountTransaction</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Sdk.Transactions.PreparedAccountTransaction.html">PreparedAccountTransaction</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Concordium_Sdk_Transactions_PreparedAccountTransaction__ctor_" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction.#ctor*"></a>
+
+  <h3 id="Concordium_Sdk_Transactions_PreparedAccountTransaction__ctor_Concordium_Sdk_Types_AccountAddress_Concordium_Sdk_Types_AccountSequenceNumber_Concordium_Sdk_Types_Expiry_Concordium_Sdk_Transactions_AccountTransactionPayload_" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction.#ctor(Concordium.Sdk.Types.AccountAddress,Concordium.Sdk.Types.AccountSequenceNumber,Concordium.Sdk.Types.Expiry,Concordium.Sdk.Transactions.AccountTransactionPayload)">
+  PreparedAccountTransaction(AccountAddress, AccountSequenceNumber, Expiry, AccountTransactionPayload)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/PreparedAccountTransaction.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Concordium.Sdk.Transactions.PreparedAccountTransaction.html">PreparedAccountTransaction</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PreparedAccountTransaction(AccountAddress sender, AccountSequenceNumber sequenceNumber, Expiry expiry, AccountTransactionPayload payload)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sender</code> <a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
+    <dd><p>Address of the sender of the transaction.</p>
+</dd>
+    <dt><code>sequenceNumber</code> <a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a></dt>
+    <dd><p>Account sequence number to use for the transaction.</p>
+</dd>
+    <dt><code>expiry</code> <a class="xref" href="Concordium.Sdk.Types.Expiry.html">Expiry</a></dt>
+    <dd><p>Expiration time of the transaction.</p>
+</dd>
+    <dt><code>payload</code> <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionPayload.html">AccountTransactionPayload</a></dt>
+    <dd><p>Payload to be sent to the node.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Concordium_Sdk_Transactions_PreparedAccountTransaction_Expiry_" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction.Expiry*"></a>
+
+  <h3 id="Concordium_Sdk_Transactions_PreparedAccountTransaction_Expiry" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction.Expiry">
+  Expiry
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/PreparedAccountTransaction.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Expiration time of the transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Expiry Expiry { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.Expiry.html">Expiry</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Transactions_PreparedAccountTransaction_Payload_" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction.Payload*"></a>
+
+  <h3 id="Concordium_Sdk_Transactions_PreparedAccountTransaction_Payload" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction.Payload">
+  Payload
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/PreparedAccountTransaction.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Payload to send to the node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountTransactionPayload Payload { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionPayload.html">AccountTransactionPayload</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Transactions_PreparedAccountTransaction_Sender_" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction.Sender*"></a>
+
+  <h3 id="Concordium_Sdk_Transactions_PreparedAccountTransaction_Sender" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction.Sender">
+  Sender
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/PreparedAccountTransaction.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Address of the sender of the transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountAddress Sender { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Transactions_PreparedAccountTransaction_SequenceNumber_" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction.SequenceNumber*"></a>
+
+  <h3 id="Concordium_Sdk_Transactions_PreparedAccountTransaction_SequenceNumber" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction.SequenceNumber">
+  SequenceNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/PreparedAccountTransaction.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Account sequence number to use for the transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountSequenceNumber SequenceNumber { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Concordium_Sdk_Transactions_PreparedAccountTransaction_Sign_" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction.Sign*"></a>
+
+  <h3 id="Concordium_Sdk_Transactions_PreparedAccountTransaction_Sign_Concordium_Sdk_Transactions_ITransactionSigner_" data-uid="Concordium.Sdk.Transactions.PreparedAccountTransaction.Sign(Concordium.Sdk.Transactions.ITransactionSigner)">
+  Sign(ITransactionSigner)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/PreparedAccountTransaction.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Signs the prepared transaction using the provided signer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SignedAccountTransaction Sign(ITransactionSigner transactionSigner)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>transactionSigner</code> <a class="xref" href="Concordium.Sdk.Transactions.ITransactionSigner.html">ITransactionSigner</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Transactions.SignedAccountTransaction.html">SignedAccountTransaction</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>A signature produced by the signing is not 64 bytes.</p>
+</dd>
+  </dl>
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/PreparedAccountTransaction.cs/#L14" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
