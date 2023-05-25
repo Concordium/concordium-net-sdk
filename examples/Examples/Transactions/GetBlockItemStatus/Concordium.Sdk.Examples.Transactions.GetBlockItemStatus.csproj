@@ -1,4 +1,3 @@
-<<<<<<<< HEAD:examples/Examples/Transactions/GetBlockItemStatus/Concordium.Sdk.Examples.Transactions.GetBlockItemStatus.csproj
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
@@ -15,22 +14,6 @@
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
   </ItemGroup>
-  
+
 
 </Project>
-========
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Common\Concordium.Sdk.Examples.Common.csproj" />
-    <ProjectReference Include="..\..\..\..\src\Concordium.Sdk.csproj" />
-  </ItemGroup>
-</Project>
->>>>>>>> main:examples/Examples/RawClient/GetAccountInfo/Concordium.Sdk.Examples.RawClient.GetAccountInfo.csproj
