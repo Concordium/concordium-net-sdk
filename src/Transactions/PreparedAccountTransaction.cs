@@ -34,7 +34,7 @@ public record PreparedAccountTransaction
     public AccountTransactionPayload Payload { get; init; }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="PreparedAccountTransaction{T}"/> class.
+    /// Initializes a new instance of the <see cref="PreparedAccountTransaction"/> class.
     /// </summary>
     /// <param name="sender">Address of the sender of the transaction.</param>
     /// <param name="sequenceNumber">Account sequence number to use for the transaction.</param>

@@ -30,7 +30,7 @@ public record SignedAccountTransaction
     public AccountTransactionSignature Signature { get; init; }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SignedAccountTransaction{T}"/> class.
+    /// Initializes a new instance of the <see cref="SignedAccountTransaction"/> class.
     /// </summary>
     /// <param name="data">Header of the signed account transaction.</param>
     /// <param name="payload">Payload of the signed account transaction.</param>
