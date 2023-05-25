@@ -24,7 +24,7 @@ public class ContractInitializedEvent
     /// </summary>
     public CcdAmount Amount { get; init; }
     /// <summary>
-    /// A contract name with format: "init_<contract_name>".
+    /// A contract name with format: "init_&lt;contract_name&gt;".
     /// </summary>
     public ContractName InitName { get; init; }
     /// <summary>
