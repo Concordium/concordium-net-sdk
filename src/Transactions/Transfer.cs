@@ -7,7 +7,7 @@ namespace Concordium.Sdk.Transactions;
 ///
 /// Used for transferring CCD from one account to another.
 /// </summary>
-public record Transfer : AccountTransactionPayload<Transfer>
+public record Transfer : AccountTransactionPayload
 {
     /// <summary>
     /// The account transaction type to be used in the serialized payload.

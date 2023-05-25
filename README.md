@@ -1,4 +1,4 @@
-![CI](https://github.com/Concordium/concordium-net-sdk/actions/workflows/dotnet.yml/badge.svg)
+![CI](https://github.com/Concordium/concordium-net-sdk/actions/workflows/build-test-format.yml/badge.svg)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://github.com/Concordium/.github/blob/main/.github/CODE_OF_CONDUCT.md)
 [![NuGet version](https://badge.fury.io/nu/ConcordiumNetSdk.svg)](https://badge.fury.io/nu/ConcordiumNetSdk)
 

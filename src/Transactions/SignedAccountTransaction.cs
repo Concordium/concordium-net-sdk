@@ -6,14 +6,13 @@ namespace Concordium.Sdk.Transactions;
 /// Represents a signed account transaction which is ready to be sent to the node.
 ///
 /// A signed account transaction constitutes an <see cref="AccountTransactionHeader"/>, an
-/// <see cref="AccountTransactionPayload{T}"/> as well as an <see cref="AccountTransactionSignature"/>.
+/// <see cref="AccountTransactionPayload"/> as well as an <see cref="AccountTransactionSignature"/>.
 ///
-/// A <see cref="SignedAccountTransaction{T}"/> can be created with the
-/// <see cref="PreparedAccountTransaction{T}.Sign"/> method with an implementer of
+/// A <see cref="SignedAccountTransaction"/> can be created with the
+/// <see cref="PreparedAccountTransaction.Sign"/> method with an implementer of
 /// <see cref="ITransactionSigner"/>.
 /// </summary>
-public record SignedAccountTransaction<T>
-    where T : AccountTransactionPayload<T>
+public record SignedAccountTransaction
 {
     /// <summary>
     /// Header of the signed account transaction.
@@ -23,7 +22,7 @@ public record SignedAccountTransaction<T>
     /// <summary>
     /// Payload of the signed account transaction.
     /// </summary>
-    public AccountTransactionPayload<T> Payload { get; init; }
+    public AccountTransactionPayload Payload { get; init; }
 
     /// <summary>
     /// Signature of the signed account transaction.
@@ -38,7 +37,7 @@ public record SignedAccountTransaction<T>
     /// <param name="signature">Signature of the signed account transaction.</param>
     public SignedAccountTransaction(
         AccountTransactionHeader header,
-        AccountTransactionPayload<T> payload,
+        AccountTransactionPayload payload,
         AccountTransactionSignature signature
     )
     {

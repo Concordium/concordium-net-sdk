@@ -9,8 +9,7 @@ namespace Concordium.Sdk.Transactions;
 /// model as well as helpers for constructing serialized transaction payloads
 /// to be sent to the Concordium node.
 /// </summary>
-public abstract record AccountTransactionPayload<T>
-    where T : AccountTransactionPayload<T>
+public abstract record AccountTransactionPayload
 {
     /// <summary>
     /// Prepares the account transaction payload for signing.
@@ -18,7 +17,7 @@ public abstract record AccountTransactionPayload<T>
     /// <param name="sender">Address of the sender of the transaction.</param>
     /// <param name="sequenceNumber">Account sequence number to use for the transaction.</param>
     /// <param name="expiry">Expiration time of the transaction.</param>
-    public PreparedAccountTransaction<T> Prepare(
+    public PreparedAccountTransaction Prepare(
         AccountAddress sender,
         AccountSequenceNumber sequenceNumber,
         Expiry expiry

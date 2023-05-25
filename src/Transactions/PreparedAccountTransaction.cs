@@ -10,8 +10,7 @@ namespace Concordium.Sdk.Transactions;
 /// <see cref="AccountAddress"/> of the sender, the <see cref="AccountSequenceNumber"/> to use
 /// when submitting the transaction as well as its <see cref="Types.Expiry"/>.
 /// </summary>
-public record PreparedAccountTransaction<T>
-    where T : AccountTransactionPayload<T>
+public record PreparedAccountTransaction
 {
     /// <summary>
     /// Address of the sender of the transaction.
@@ -31,7 +30,7 @@ public record PreparedAccountTransaction<T>
     /// <summary>
     /// Payload to send to the node.
     /// </summary>
-    public AccountTransactionPayload<T> Payload { get; init; }
+    public AccountTransactionPayload Payload { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PreparedAccountTransaction{T}"/> class.
@@ -44,7 +43,7 @@ public record PreparedAccountTransaction<T>
         AccountAddress sender,
         AccountSequenceNumber sequenceNumber,
         Expiry expiry,
-        AccountTransactionPayload<T> payload
+        AccountTransactionPayload payload
     )
     {
         this.Sender = sender;
@@ -58,7 +57,7 @@ public record PreparedAccountTransaction<T>
     /// </summary>
     /// <param name="signer">The signer to use for signing the transaction.</param>
     /// <exception cref="ArgumentException">A signature produced by the signing is not 64 bytes.</exception>
-    public SignedAccountTransaction<T> Sign(ITransactionSigner transactionSigner)
+    public SignedAccountTransaction Sign(ITransactionSigner transactionSigner)
     {
         // Get the serialized payload.
         var serializedPayload = this.Payload.ToBytes();
@@ -84,7 +83,9 @@ public record PreparedAccountTransaction<T>
 
         // Construct the serialized payload and its digest for signing.
         var serializedHeaderAndTxPayload = header.ToBytes().Concat(serializedPayload).ToArray();
-        var signDigest = SHA256.Create().ComputeHash(serializedHeaderAndTxPayload);
+
+        using var hasher = SHA256.Create();
+        var signDigest = hasher.ComputeHash(serializedHeaderAndTxPayload);
 
         // Sign it.
         var signature = transactionSigner.Sign(signDigest);

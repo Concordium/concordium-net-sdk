@@ -46,8 +46,7 @@ public sealed class ConcordiumClient : IDisposable
     /// <returns>Hash of the transaction if it was accepted by the node.</returns>
     /// <exception cref="RpcException">The call failed, e.g. due to the node not accepting the transaction.</exception>
     /// <exception cref="FormatException">The returned transaction hash has an invalid number of bytes.</exception>
-    public Types.TransactionHash SendAccountTransaction<T>(SignedAccountTransaction<T> transaction)
-        where T : AccountTransactionPayload<T>
+    public Types.TransactionHash SendAccountTransaction(SignedAccountTransaction transaction)
     {
         // Send the transaction as a block item request.
         var txHash = this.Raw.SendBlockItem(transaction.ToSendBlockItemRequest());
@@ -65,10 +64,9 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="transaction">The account transaction to send.</param>
     /// <returns>Task which returns the hash of the transaction if it was accepted by the node.</returns>
     /// <exception cref="RpcException">The call failed, e.g. due to the node not accepting the transaction.</exception>
-    public async Task<Types.TransactionHash> SendAccountTransactionAsync<T>(
-        SignedAccountTransaction<T> transaction
+    public async Task<Types.TransactionHash> SendAccountTransactionAsync(
+        SignedAccountTransaction transaction
     )
-        where T : AccountTransactionPayload<T>
     {
         // Send the transaction as a block item request.
         var txHash = await this.Raw
