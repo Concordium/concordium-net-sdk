@@ -131,7 +131,7 @@ internal static class RejectReasonFactory
 /// }
 /// </code>
 /// </example>
-public interface IRejectReason{}
+public interface IRejectReason { }
 /// <summary>
 /// Error raised when validating the Wasm module.
 /// </summary>

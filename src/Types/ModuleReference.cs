@@ -6,6 +6,6 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public record ModuleReference : Hash
 {
-     internal ModuleReference(ByteString byteString) : base(byteString.ToArray())
-     { }
+    internal ModuleReference(ByteString byteString) : base(byteString.ToArray())
+    { }
 }

@@ -53,7 +53,7 @@ public record BlockHash : Hash
     /// </summary>
     public Grpc.V2.BlockHash ToProto() => new()
     {
-        Value = Google.Protobuf.ByteString.CopyFrom(this.ToBytes())
+        Value = ByteString.CopyFrom(this.ToBytes())
     };
 
     /// <summary>

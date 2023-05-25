@@ -46,13 +46,13 @@ public sealed class ConcordiumClient : IDisposable
     /// <returns>Hash of the transaction if it was accepted by the node.</returns>
     /// <exception cref="RpcException">The call failed, e.g. due to the node not accepting the transaction.</exception>
     /// <exception cref="FormatException">The returned transaction hash has an invalid number of bytes.</exception>
-    public Types.TransactionHash SendAccountTransaction(SignedAccountTransaction transaction)
+    public TransactionHash SendAccountTransaction(SignedAccountTransaction transaction)
     {
         // Send the transaction as a block item request.
         var txHash = this.Raw.SendBlockItem(transaction.ToSendBlockItemRequest());
 
         // Return the transaction hash as a "native" SDK type.
-        return Types.TransactionHash.From(txHash.Value.ToByteArray());
+        return TransactionHash.From(txHash.Value.ToByteArray());
     }
 
     /// <summary>
@@ -64,7 +64,7 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="transaction">The account transaction to send.</param>
     /// <returns>Task which returns the hash of the transaction if it was accepted by the node.</returns>
     /// <exception cref="RpcException">The call failed, e.g. due to the node not accepting the transaction.</exception>
-    public async Task<Types.TransactionHash> SendAccountTransactionAsync(
+    public async Task<TransactionHash> SendAccountTransactionAsync(
         SignedAccountTransaction transaction
     )
     {
@@ -73,7 +73,7 @@ public sealed class ConcordiumClient : IDisposable
             .SendBlockItemAsync(transaction.ToSendBlockItemRequest());
 
         // Return the "native" SDK type.
-        return Types.TransactionHash.From(txHash.Value.ToByteArray());
+        return TransactionHash.From(txHash.Value.ToByteArray());
     }
 
     /// <summary>
@@ -95,14 +95,14 @@ public sealed class ConcordiumClient : IDisposable
     /// case, then the sequence number is reliable.
     /// </returns>
     /// <exception cref="RpcException">The call failed.</exception>
-    public (Types.AccountSequenceNumber, bool) GetNextAccountSequenceNumber(
-        Types.AccountAddress accountAddress
+    public (AccountSequenceNumber, bool) GetNextAccountSequenceNumber(
+        AccountAddress accountAddress
     )
     {
         var next = this.Raw.GetNextAccountSequenceNumber(accountAddress.ToProto());
 
         // Return the sequence number as a "native" SDK type.
-        return (Types.AccountSequenceNumber.From(next.SequenceNumber.Value), next.AllFinal);
+        return (AccountSequenceNumber.From(next.SequenceNumber.Value), next.AllFinal);
     }
 
     /// <summary>
@@ -124,14 +124,14 @@ public sealed class ConcordiumClient : IDisposable
     /// If the latter is the case, then the sequence number is reliable.
     /// </returns>
     /// <exception cref="RpcException">The call failed.</exception>
-    public async Task<(Types.AccountSequenceNumber, bool)> GetNextAccountSequenceNumberAsync(
-        Types.AccountAddress accountAddress
+    public async Task<(AccountSequenceNumber, bool)> GetNextAccountSequenceNumberAsync(
+        AccountAddress accountAddress
     )
     {
         var next = await this.Raw
             .GetNextAccountSequenceNumberAsync(accountAddress.ToProto());
 
-        return (Types.AccountSequenceNumber.From(next.SequenceNumber.Value), next.AllFinal);
+        return (AccountSequenceNumber.From(next.SequenceNumber.Value), next.AllFinal);
     }
 
     /// <summary>
@@ -139,7 +139,7 @@ public sealed class ConcordiumClient : IDisposable
     /// </summary>
     /// <param name="transactionHash">Transaction Hash which is included in blocks returned.</param>
     /// <returns>A common return type for TransactionStatus.</returns>
-    public ITransactionStatus GetBlockItemStatus(Types.TransactionHash transactionHash)
+    public ITransactionStatus GetBlockItemStatus(TransactionHash transactionHash)
     {
         var blockItemStatus = this.Raw.GetBlockItemStatus(transactionHash.ToProto());
 
@@ -151,7 +151,7 @@ public sealed class ConcordiumClient : IDisposable
     /// </summary>
     /// <param name="transactionHash">Transaction Hash which is included in blocks returned.</param>
     /// <returns>Task which wraps a common return type for TransactionStatus.</returns>
-    public async Task<ITransactionStatus> GetBlockItemStatusAsync(Types.TransactionHash transactionHash)
+    public async Task<ITransactionStatus> GetBlockItemStatusAsync(TransactionHash transactionHash)
     {
         var blockItemStatus = await this.Raw.GetBlockItemStatusAsync(transactionHash.ToProto())
             .ConfigureAwait(false);
