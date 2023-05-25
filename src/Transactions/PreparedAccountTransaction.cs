@@ -6,9 +6,10 @@ namespace Concordium.Sdk.Transactions;
 /// <summary>
 /// Represents an account transaction which is prepared for signing.
 ///
-/// The transasction is prepared in the sense that it contains information about the
+/// The transaction is prepared in the sense that it contains information about the
 /// <see cref="AccountAddress"/> of the sender, the <see cref="AccountSequenceNumber"/> to use
-/// when submitting the transaction as well as its <see cref="Types.Expiry"/>.
+/// when submitting the transaction as well as its <see cref="Types.Expiry"/>. These are needed
+/// for signing the transaction.
 /// </summary>
 public record PreparedAccountTransaction
 {
