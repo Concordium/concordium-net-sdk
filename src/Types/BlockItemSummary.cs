@@ -44,10 +44,10 @@ public sealed class BlockItemSummary
     /// When transaction is rejected this method will return true and rejected reason
     /// will be return in out param.
     /// </summary>
-    /// <param name="rejectReason">Output with rejected reason if rejected.</param>
+    /// <param name="rejectReason">If rejected then reject reason not null.</param>
     /// <returns>bool representing if transaction is rejected.</returns>
     /// <exception cref="MissingEnumException{DetailsOneofCase}">Throws exception when returned type not known</exception>
-    public bool TryGetRejectedAccountTransaction(out RejectReason? rejectReason)
+    public bool TryGetRejectedAccountTransaction(out IRejectReason? rejectReason)
     {
         rejectReason = null;
         return this._blockItemSummary.DetailsCase switch
@@ -333,12 +333,12 @@ public sealed class BlockItemSummary
     }
 
     private static bool AccountTransactionDetailsIsRejected(AccountTransactionDetails details,
-        out RejectReason? rejectReason)
+        out IRejectReason? rejectReason)
     {
         switch (details.Effects.EffectCase)
         {
             case AccountTransactionEffects.EffectOneofCase.None_:
-                rejectReason = new RejectReason(details.Effects.None.RejectReason);
+                rejectReason = RejectReasonFactory.From(details.Effects.None.RejectReason);
                 return true;
             case AccountTransactionEffects.EffectOneofCase.ModuleDeployed:
             case AccountTransactionEffects.EffectOneofCase.ContractInitialized:

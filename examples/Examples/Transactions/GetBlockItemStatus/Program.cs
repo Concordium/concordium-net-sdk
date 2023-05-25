@@ -86,7 +86,7 @@ public static class Program
 
         if (transactionStatusFinalized.State.Summary.TryGetRejectedAccountTransaction(out var rejectReason))
         {
-            Console.WriteLine($"Transaction rejected due to: {rejectReason!.ReasonCase}");
+            Console.WriteLine($"Transaction rejected due to: {rejectReason!.GetType().Name}");
         }
     }
 
