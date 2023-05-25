@@ -1,5 +1,6 @@
 using Concordium.Grpc.V2;
 using Concordium.Sdk.Client;
+using Google.Protobuf;
 
 namespace Concordium.Sdk.Types;
 
@@ -28,6 +29,12 @@ public record BlockHash : Hash
         : base(blockHashAsBytes) { }
 
     /// <summary>
+    /// Creates an instance from a byte string object given from generated code. Only internal use.
+    /// </summary>
+    /// <param name="byteString">A block hash represented as a immutable array.</param>
+    internal static BlockHash From(ByteString byteString) => new(byteString.ToByteArray());
+
+    /// <summary>
     /// Creates an instance from a block hash represented by a length-64 hex encoded string.
     /// </summary>
     /// <param name="blockHashAsBase16String">A block hash represented as a length-64 hex encoded string.</param>
@@ -46,7 +53,7 @@ public record BlockHash : Hash
     /// </summary>
     public Grpc.V2.BlockHash ToProto() => new()
     {
-        Value = Google.Protobuf.ByteString.CopyFrom(this.ToBytes())
+        Value = ByteString.CopyFrom(this.ToBytes())
     };
 
     /// <summary>

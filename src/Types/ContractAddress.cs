@@ -7,7 +7,7 @@ namespace Concordium.Sdk.Types;
 /// A contract address consists of a contract index and a contact sub-index
 /// both represented as 64-bit unsigned integers.
 /// </summary>
-public readonly struct ContractAddress : IEquatable<ContractAddress>
+public readonly struct ContractAddress : IEquatable<ContractAddress>, IAddress
 {
     /// <summary>
     /// The index part of the address of a contract.
@@ -36,6 +36,8 @@ public readonly struct ContractAddress : IEquatable<ContractAddress>
     /// <param name="index">the index value.</param>
     /// <param name="subIndex">the sub index value.</param>
     public static ContractAddress From(ulong index, ulong subIndex) => new(index, subIndex);
+
+    internal static ContractAddress From(Grpc.V2.ContractAddress contractAddress) => new(contractAddress.Index, contractAddress.Subindex);
 
     /// <summary>
     /// Converts the contract address to its corresponding protocol buffer message instance.

@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk.Examples.Tra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk.Examples.Common", "examples\Examples\Common\Concordium.Sdk.Examples.Common.csproj", "{F5B375A5-F7A7-4D01-A24F-62F4DA9D7659}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk.Examples.Transactions.GetBlockItemStatus", "examples\Examples\Transactions\GetBlockItemStatus\Concordium.Sdk.Examples.Transactions.GetBlockItemStatus.csproj", "{7D878D67-5FDD-46C3-956B-19195F62EE5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{F5B375A5-F7A7-4D01-A24F-62F4DA9D7659}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5B375A5-F7A7-4D01-A24F-62F4DA9D7659}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5B375A5-F7A7-4D01-A24F-62F4DA9D7659}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D878D67-5FDD-46C3-956B-19195F62EE5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D878D67-5FDD-46C3-956B-19195F62EE5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D878D67-5FDD-46C3-956B-19195F62EE5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D878D67-5FDD-46C3-956B-19195F62EE5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
