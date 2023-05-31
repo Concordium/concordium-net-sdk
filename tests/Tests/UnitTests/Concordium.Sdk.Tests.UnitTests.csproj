@@ -28,7 +28,43 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Wallets\Data\*">
+    <EmbeddedResource Include="..\..\..\data\wallets\BrowserWalletKeyExportFormatInvalidCredentialIndex.json" Link=".\data\wallets\BrowserWalletKeyExportFormatInvalidCredentialIndex.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\data\wallets\BrowserWalletKeyExportFormatInvalidKey.json" Link=".\data\wallets\BrowserWalletKeyExportFormatInvalidKey.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\data\wallets\BrowserWalletKeyExportFormatInvalidKeyIndex.json" Link=".\data\wallets\BrowserWalletKeyExportFormatInvalidKeyIndex.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\data\wallets\BrowserWalletKeyExportFormatInvalidMissingField.json" Link=".\data\wallets\BrowserWalletKeyExportFormatInvalidMissingField.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\data\wallets\BrowserWalletKeyExportFormatValid.json" Link=".\data\wallets\BrowserWalletKeyExportFormatValid.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\data\wallets\BrowserWalletKeyExportFormatValidNonZeroIndices.json" Link=".\data\wallets\BrowserWalletKeyExportFormatValidNonZeroIndices.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\data\wallets\GenesisWalletKeyExportFormatInvalidCredentialIndex.json" Link=".\data\wallets\GenesisWalletKeyExportFormatInvalidCredentialIndex.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\data\wallets\GenesisWalletKeyExportFormatInvalidKey.json" Link=".\data\wallets\GenesisWalletKeyExportFormatInvalidKey.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\data\wallets\GenesisWalletKeyExportFormatInvalidKeyIndex.json" Link=".\data\wallets\GenesisWalletKeyExportFormatInvalidKeyIndex.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\data\wallets\GenesisWalletKeyExportFormatInvalidMissingField.json" Link=".\data\wallets\GenesisWalletKeyExportFormatInvalidMissingField.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\data\wallets\GenesisWalletKeyExportFormatValid.json" Link=".\data\wallets\GenesisWalletKeyExportFormatValid.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\data\wallets\GenesisWalletKeyExportFormatValidNonZeroIndices.json" Link=".\data\wallets\GenesisWalletKeyExportFormatValidNonZeroIndices.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\data\modules\module.wasm.v1" Link=".\data\modules\module.wasm.v1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
 </ItemGroup>
