@@ -77,6 +77,15 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>, IAddress
         return new AccountAddress(addressAsBytes.ToArray());
     }
 
+    internal static AccountAddress From(Grpc.V2.AccountAddress accountAddress)
+    {
+        if (accountAddress.Value.Length != BytesLength)
+        {
+            throw new ArgumentException($"The account address bytes length must be {BytesLength}.");
+        }
+        return new AccountAddress(accountAddress.Value.ToByteArray());
+    }
+
     /// <summary>
     /// Checks if passed string is a base58 encoded address.
     /// </summary>
@@ -135,6 +144,33 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>, IAddress
         return From(address);
     }
 
+    public AccountAddress CreateAliasAddress(byte byte1, byte byte2, byte byte3)
+    {
+        var aliasBytes = this._value.Take(29).Concat(new[] { byte1, byte2, byte3 }).ToArray();
+        return new AccountAddress(aliasBytes);
+    }
+
+    public AccountAddress GetBaseAddress()
+    {
+        Span<byte> span = stackalloc byte[32];
+        this._value.AsSpan()[..29].CopyTo(span);
+        return From(span.ToArray());
+    }
+
+    public static bool TryParse(string base58EncodedAddress, out AccountAddress? address)
+    {
+        address = null;
+        try
+        {
+            address = AccountAddress.From(base58EncodedAddress);
+            return true;
+        }
+        catch (ArgumentException)
+        {
+            return false;
+        }
+    }
+
     /// <summary>
     /// Converts the account address to its corresponding protocol buffer message instance.
     ///
@@ -144,7 +180,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>, IAddress
         new() { Value = Google.Protobuf.ByteString.CopyFrom(this._value) };
 
     /// <summary>
-    /// Converts the block hash to a corresponding <see cref="Grpc.V2.AccountIdentifierInput"/>
+    /// Converts the account address to a corresponding <see cref="Grpc.V2.AccountIdentifierInput"/>
     ///
     /// This can be used as the input for class methods of <see cref="RawClient"/>.
     /// </summary>

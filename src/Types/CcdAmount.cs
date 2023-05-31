@@ -7,8 +7,9 @@ namespace Concordium.Sdk.Types;
 ///
 /// Note that 1_000_000 µCCD is equal to 1 CCD.
 /// </summary>
-public readonly struct CcdAmount : IEquatable<CcdAmount>
+public readonly struct CcdAmount : IEquatable<CcdAmount>, IComparable<CcdAmount>
 {
+    public static CcdAmount Zero = CcdAmount.FromCcd(0);
     public const uint BytesLength = 8;
 
     /// <summary>
@@ -62,6 +63,8 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
         }
     }
 
+    internal static CcdAmount From(Concordium.Grpc.V2.Amount amount) => new(amount.Value);
+
     /// <summary>
     /// Add CCD amounts.
     /// </summary>
@@ -106,6 +109,11 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     public byte[] ToBytes() => Serialization.ToBytes(this.Value);
 
     public bool Equals(CcdAmount other) => this.Value == other.Value;
+
+    public int CompareTo(CcdAmount other) => this.Value.CompareTo(other.Value);
+
+    public static bool operator <(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) < 0;
+    public static bool operator >(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) > 0;
 
     public override bool Equals(object? obj) => obj is CcdAmount other && this.Equals(other);
 

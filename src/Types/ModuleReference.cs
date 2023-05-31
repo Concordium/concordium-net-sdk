@@ -8,4 +8,7 @@ public record ModuleReference : Hash
 {
     internal ModuleReference(ByteString byteString) : base(byteString.ToArray())
     { }
+
+    public ModuleReference(string hash) : base(hash)
+    {}
 }

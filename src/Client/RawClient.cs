@@ -246,9 +246,9 @@ public sealed class RawClient : IDisposable
     /// <summary>
     /// Spawn a task which returns information about the current state of consensus.
     /// </summary>
-    public Task<ConsensusInfo> GetConsensusInfoAsync() =>
+    public Task<ConsensusInfo> GetConsensusInfoAsync(CancellationToken token = default) =>
         this.InternalClient
-            .GetConsensusInfoAsync(new Empty(), this.CreateCallOptions())
+            .GetConsensusInfoAsync(new Empty(), this.CreateCallOptions(token))
             .ResponseAsync;
 
     /// <summary>
@@ -698,7 +698,7 @@ public sealed class RawClient : IDisposable
     /// <summary>
     /// Create the call options for invoking the <see cref="InternalClient">.
     /// </summary>
-    private CallOptions CreateCallOptions()
+    private CallOptions CreateCallOptions(CancellationToken token = default)
     {
         DateTime? deadline;
         if (this.Timeout is null)
@@ -709,7 +709,7 @@ public sealed class RawClient : IDisposable
         {
             deadline = DateTime.UtcNow.AddSeconds((double)this.Timeout);
         }
-        return new CallOptions(null, deadline, CancellationToken.None);
+        return new CallOptions(null, deadline, token);
     }
 
     public void Dispose() => this._grpcChannel.Dispose();

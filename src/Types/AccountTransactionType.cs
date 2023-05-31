@@ -24,4 +24,6 @@ public enum AccountTransactionType : byte
     SimpleTransferWithMemo = 22,
     EncryptedTransferWithMemo = 23,
     TransferWithScheduleWithMemo = 24,
+    ConfigureBaker = 25,
+    ConfigureDelegation = 26,
 }

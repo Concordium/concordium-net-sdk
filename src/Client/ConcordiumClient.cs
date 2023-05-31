@@ -1,7 +1,13 @@
+using Concordium.Grpc.V2;
 using Concordium.Sdk.Transactions;
 using Concordium.Sdk.Types;
+using Concordium.Sdk.Types.New;
 using Grpc.Core;
 using Grpc.Net.Client;
+using AccountAddress = Concordium.Sdk.Types.AccountAddress;
+using BlockHash = Concordium.Sdk.Types.BlockHash;
+using BlockInfo = Concordium.Sdk.Types.New.BlockInfo;
+using TransactionHash = Concordium.Sdk.Types.TransactionHash;
 
 namespace Concordium.Sdk.Client;
 
@@ -158,6 +164,105 @@ public sealed class ConcordiumClient : IDisposable
 
         return TransactionStatusFactory.CreateTransactionStatus(blockItemStatus);
     }
+
+    public async Task<Concordium.Sdk.Types.New.AccountInfo> GetAccountInfoAsync(AccountAddress accountAddress, BlockHash blockHash)
+    {
+        var accountInfoRequest = new AccountInfoRequest
+        {
+
+            BlockHash = blockHash.ToBlockHashInput(),
+            AccountIdentifier = accountAddress.ToAccountIdentifierInput()
+        };
+        var accountInfoAsync = await this.Raw.GetAccountInfoAsync(accountInfoRequest);
+        return Concordium.Sdk.Types.New.AccountInfo.From(accountInfoAsync);
+    }
+
+    public async IAsyncEnumerable<AccountAddress> GetAccountListAsync(BlockHash input)
+    {
+        var blockHash = input.ToBlockHashInput();
+        await foreach (var account in this.Raw.GetAccountList(blockHash).ConfigureAwait(false))
+        {
+            yield return AccountAddress.From(account);
+        }
+    }
+
+    public async Task<PeerVersion> GetPeerVersionAsync()
+    {
+        var nodeInfo = await this.Raw.GetNodeInfoAsync();
+        return PeerVersion.Parse(nodeInfo.PeerVersion);
+    }
+
+    public async Task<BakerPoolStatus> GetPoolStatusForBakerAsync(ulong bakerId, BlockHash blockHash)
+    {
+        var poolInfoAsync = await this.Raw.GetPoolInfoAsync(new PoolInfoRequest
+        {
+            BlockHash = blockHash.ToBlockHashInput(),
+            Baker = new Concordium.Grpc.V2.BakerId
+            {
+                Value = bakerId
+            }
+        });
+        return BakerPoolStatus.From(poolInfoAsync);
+    }
+
+    public async Task<RewardStatusBase> GetRewardStatusAsync(BlockHash blockHash)
+    {
+        var tokenomicsInfo = await this.Raw.GetTokenomicsInfoAsync(blockHash.ToBlockHashInput());
+        return RewardStatusBase.From(tokenomicsInfo);
+    }
+
+    public async Task<PoolStatusPassiveDelegation> GetPoolStatusForPassiveDelegation(BlockHash blockHash)
+    {
+        var passiveDelegationInfoAsync = await this.Raw.GetPassiveDelegationInfoAsync(blockHash.ToBlockHashInput());
+        return PoolStatusPassiveDelegation.From(passiveDelegationInfoAsync);
+    }
+
+    public async Task<ConsensusStatus> GetConsensusStatusAsync(CancellationToken token = default)
+    {
+        var consensusInfoAsync = await this.Raw.GetConsensusInfoAsync(token)
+            .ConfigureAwait(false);
+        return ConsensusStatus.From(consensusInfoAsync);
+    }
+
+    public async Task<IList<BlockHash>> GetBlocksAtHeightAsync(ulong blockHeight, CancellationToken token)
+    {
+        // TODO: what are the difference between absolute and relative
+        var blocksAtHeightResponse = await this.Raw.GetBlocksAtHeightAsync(new BlocksAtHeightRequest {
+            Absolute = new BlocksAtHeightRequest.Types.Absolute
+            {
+                Height = new AbsoluteBlockHeight
+                {
+                    Value = blockHeight
+                }
+            }
+        });
+        return blocksAtHeightResponse.Blocks.Select(b => BlockHash.From(b)).ToList();
+    }
+
+    public async Task<BlockInfo> GetBlockInfoAsync(BlockHash blockHash)
+    {
+        var blockInfo = await this.Raw.GetBlockInfoAsync(blockHash.ToBlockHashInput());
+        return BlockInfo.From(blockInfo);
+    }
+
+    public async Task<BlockSummaryBase> GetBlockSummaryAsync(BlockHash blockHash)
+    {
+        var blockHashInput = blockHash.ToBlockHashInput();
+        var events = this.Raw.GetBlockSpecialEvents(blockHashInput);
+        var finalization = await this.Raw.GetBlockFinalizationSummaryAsync(blockHashInput);
+        var blockTransactionEvents = this.Raw.GetBlockTransactionEvents(blockHashInput);
+        return BlockSummaryBase.From(events, finalization, blockTransactionEvents);
+    }
+
+    public ValueTask<IdentityProviderInfo[]> GetIdentityProvidersAsync(BlockHash blockHash)
+    {
+        var identityProviders = this.Raw.GetIdentityProviders(blockHash.ToBlockHashInput());
+        return IdentityProviderInfo.From(identityProviders);
+    }
+
+    public IAsyncEnumerable<ulong> GetBakerListAsync(BlockHash blockHash) =>
+        this.Raw.GetBakerList(blockHash.ToBlockHashInput())
+            .Select(b => b.Value);
 
     public void Dispose() => this.Raw.Dispose();
 }
