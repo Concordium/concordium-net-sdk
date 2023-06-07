@@ -1,3 +1,4 @@
+using Concordium.Grpc.V2;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Helpers;
 
@@ -40,6 +41,8 @@ public readonly struct AccountSequenceNumber : IEquatable<AccountSequenceNumber>
         }
         return new AccountSequenceNumber(sequenceNumber);
     }
+
+    internal static AccountSequenceNumber From(SequenceNumber sequenceNumber) => From(sequenceNumber.Value);
 
     /// <summary>
     /// Returns a new sequence number whose value is increased by 1 relative to the current one.

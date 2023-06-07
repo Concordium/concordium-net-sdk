@@ -1,6 +1,6 @@
-﻿namespace Concordium.Sdk.Types.New;
+﻿namespace Concordium.Sdk.Types.Mapped;
 
-public enum BakerPoolOpenStatus 
+public enum BakerPoolOpenStatus
 {
     /// <summary>
     /// New delegators may join the pool.
@@ -11,7 +11,7 @@ public enum BakerPoolOpenStatus
     /// </summary>
     ClosedForNew,
     /// <summary>
-    /// No delegators are allowed. 
+    /// No delegators are allowed.
     /// </summary>
     ClosedForAll,
 }

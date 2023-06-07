@@ -1,4 +1,5 @@
 ﻿using Concordium.Grpc.V2;
+using CommissionRates = Concordium.Sdk.Types.Mapped.CommissionRates;
 
 namespace Concordium.Sdk.Types.New;
 
@@ -17,7 +18,7 @@ public record PoolStatusPassiveDelegation (
     public static PoolStatusPassiveDelegation From(PassiveDelegationInfo passiveDelegationInfoAsync) =>
         new(
             CcdAmount.From(passiveDelegationInfoAsync.DelegatedCapital),
-            New.CommissionRates.From(passiveDelegationInfoAsync.CommissionRates),
+            CommissionRates.From(passiveDelegationInfoAsync.CommissionRates),
             CcdAmount.From(passiveDelegationInfoAsync.CurrentPaydayTransactionFeesEarned),
             CcdAmount.From(passiveDelegationInfoAsync.CurrentPaydayDelegatedCapital),
             CcdAmount.From(passiveDelegationInfoAsync.AllPoolTotalCapital)

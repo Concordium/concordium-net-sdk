@@ -1,3 +1,5 @@
+using Concordium.Sdk.Types.Mapped;
+
 namespace Concordium.Sdk.Types.New;
 
 public class TransactionSuccessResult : TransactionResult

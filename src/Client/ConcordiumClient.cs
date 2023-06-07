@@ -5,6 +5,7 @@ using Concordium.Sdk.Types.New;
 using Grpc.Core;
 using Grpc.Net.Client;
 using AccountAddress = Concordium.Sdk.Types.AccountAddress;
+using AccountInfo = Concordium.Sdk.Types.Mapped.AccountInfo;
 using BlockHash = Concordium.Sdk.Types.BlockHash;
 using BlockInfo = Concordium.Sdk.Types.New.BlockInfo;
 using TransactionHash = Concordium.Sdk.Types.TransactionHash;
@@ -165,16 +166,21 @@ public sealed class ConcordiumClient : IDisposable
         return TransactionStatusFactory.CreateTransactionStatus(blockItemStatus);
     }
 
-    public async Task<Concordium.Sdk.Types.New.AccountInfo> GetAccountInfoAsync(AccountAddress accountAddress, BlockHash blockHash)
+    /// <summary>
+    /// Get the information for the given account in the given block.
+    /// </summary>
+    /// <param name="accountAddress">An address of the account.</param>
+    /// <param name="blockHash">A hash of the block</param>
+    /// <returns>Account information at the given block.</returns>
+    public async Task<AccountInfo> GetAccountInfoAsync(AccountAddress accountAddress, BlockHash blockHash)
     {
         var accountInfoRequest = new AccountInfoRequest
         {
-
             BlockHash = blockHash.ToBlockHashInput(),
             AccountIdentifier = accountAddress.ToAccountIdentifierInput()
         };
         var accountInfoAsync = await this.Raw.GetAccountInfoAsync(accountInfoRequest);
-        return Concordium.Sdk.Types.New.AccountInfo.From(accountInfoAsync);
+        return AccountInfo.From(accountInfoAsync);
     }
 
     public async IAsyncEnumerable<AccountAddress> GetAccountListAsync(BlockHash input)
