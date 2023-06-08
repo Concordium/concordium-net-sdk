@@ -1,0 +1,6 @@
+{
+  "endpoint": "http://node.testnet.concordium.com/",
+  "port": 20000,
+  "accountAddress": "IfbBy...3y2Vn",
+  "blockHash": "789c17879e4594225a0ae8363d2e9364676f93e7d61d33ec9b5d23345aa156ba"
+}

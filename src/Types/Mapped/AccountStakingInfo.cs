@@ -7,8 +7,14 @@ public interface IAccountStakingInfo {}
 
 internal static class AccountStakingInfo
 {
-    internal static IAccountStakingInfo? From(Grpc.V2.AccountStakingInfo accountStakingInfo) =>
-        accountStakingInfo.StakingInfoCase switch
+    internal static IAccountStakingInfo? From(Grpc.V2.AccountStakingInfo? accountStakingInfo)
+    {
+        if (accountStakingInfo is null)
+        {
+            return null;
+        }
+
+        return accountStakingInfo.StakingInfoCase switch
         {
             Grpc.V2.AccountStakingInfo.StakingInfoOneofCase.Baker => AccountBaker.From(accountStakingInfo
                 .Baker),
@@ -18,6 +24,7 @@ internal static class AccountStakingInfo
             _ => throw new MissingEnumException<Grpc.V2.AccountStakingInfo.StakingInfoOneofCase>(accountStakingInfo
                 .StakingInfoCase)
         };
+    }
 }
 
 /// <summary>

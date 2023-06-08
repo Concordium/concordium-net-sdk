@@ -1,6 +1,7 @@
 using Concordium.Grpc.V2;
 using Concordium.Sdk.Transactions;
 using Concordium.Sdk.Types;
+using Concordium.Sdk.Types.Mapped;
 using Concordium.Sdk.Types.New;
 using Grpc.Core;
 using Grpc.Net.Client;
@@ -183,6 +184,13 @@ public sealed class ConcordiumClient : IDisposable
         return AccountInfo.From(accountInfoAsync);
     }
 
+    /// <summary>
+    /// Get the list of accounts in the given block.
+    /// The stream will end when all accounts that exist in the state at the end
+    /// of the given block have been returned.
+    /// </summary>
+    /// <param name="input">A hash of block</param>
+    /// <returns>Accounts at given block</returns>
     public async IAsyncEnumerable<AccountAddress> GetAccountListAsync(BlockHash input)
     {
         var blockHash = input.ToBlockHashInput();
@@ -192,6 +200,10 @@ public sealed class ConcordiumClient : IDisposable
         }
     }
 
+    /// <summary>
+    /// Retrieve version of the software on the node.
+    /// </summary>
+    /// <returns>Version of the node in semantic format</returns>
     public async Task<PeerVersion> GetPeerVersionAsync()
     {
         var nodeInfo = await this.Raw.GetNodeInfoAsync();

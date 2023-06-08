@@ -44,4 +44,3 @@ public record AccountInfo
             AccountStakingInfo = Mapped.AccountStakingInfo.From(accountInfo.Stake)
         };
 }
-
