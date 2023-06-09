@@ -5,9 +5,9 @@ using Concordium.Sdk.Examples.Common;
 namespace RawClient.GetBlockTransactionEvents;
 
 /// <summary>
-/// Example demonstrating the use of <see cref="RawClient.GetBlockTransactionEvents"/>.
+/// Example demonstrating the use of <see cref="Concordium.Sdk.Client.RawClient.GetBlockTransactionEvents"/>.
 ///
-/// <see cref="RawClient"/> wraps methods of the Concordium Node gRPC API V2 that were generated
+/// <see cref="Concordium.Sdk.Client.RawClient"/> wraps methods of the Concordium Node gRPC API V2 that were generated
 /// from the protocol buffer schema by the <see cref="Grpc.Core"/> library.
 /// </summary>
 internal class Program
