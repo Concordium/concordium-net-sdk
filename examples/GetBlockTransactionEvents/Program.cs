@@ -2,10 +2,10 @@ using Concordium.Grpc.V2;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Examples.Common;
 
-namespace Concordium.Sdk.Examples.RawClient.GetBlockTransactionEvents;
+namespace RawClient.GetBlockTransactionEvents;
 
 /// <summary>
-/// Example demonstrating the use of <see cref="Client.RawClient.GetBlockTransactionEvents"/>.
+/// Example demonstrating the use of <see cref="RawClient.GetBlockTransactionEvents"/>.
 ///
 /// <see cref="RawClient"/> wraps methods of the Concordium Node gRPC API V2 that were generated
 /// from the protocol buffer schema by the <see cref="Grpc.Core"/> library.
@@ -26,7 +26,7 @@ internal class Program
         {
             "best" => new BlockHashInput() { Best = new Empty() },
             "lastfinal" => new BlockHashInput() { LastFinal = new Empty() },
-            _ => Types.BlockHash.From(options.BlockHash).ToBlockHashInput(),
+            _ => Concordium.Sdk.Types.BlockHash.From(options.BlockHash).ToBlockHashInput(),
         };
 
         // Invoke the raw call.
@@ -44,7 +44,7 @@ internal class Program
                 BlockItemSummary.DetailsOneofCase.None => throw new NotImplementedException(),
                 _ => "Block item summary did not contain any details",
             };
-            var txHash = Types.TransactionHash.From(e.Hash.Value.ToByteArray());
+            var txHash = Concordium.Sdk.Types.TransactionHash.From(e.Hash.Value.ToByteArray());
             Console.WriteLine(
                 $@"
                 Got event with index {e.Index.Value} for transaction hash {txHash}:
