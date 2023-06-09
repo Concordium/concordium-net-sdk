@@ -2,9 +2,9 @@ using Xunit.Abstractions;
 
 namespace Concordium.Sdk.Examples;
 
-public sealed class GetPeerVersionAsync : Tests
+public sealed class GetPeerVersion : Tests
 {
-    public GetPeerVersionAsync(ITestOutputHelper output) : base(output)
+    public GetPeerVersion(ITestOutputHelper output) : base(output)
     {
     }
 

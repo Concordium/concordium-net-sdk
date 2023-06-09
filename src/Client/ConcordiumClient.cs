@@ -210,12 +210,21 @@ public sealed class ConcordiumClient : IDisposable
         return PeerVersion.Parse(nodeInfo.PeerVersion);
     }
 
-    public async Task<BakerPoolStatus> GetPoolStatusForBakerAsync(ulong bakerId, BlockHash blockHash)
+    /// <summary>
+    /// Get information about a given pool at the end of a given block.
+    /// If the block does not exist or is prior to protocol version 4 then
+    /// exception is thrown.
+    /// TODO: Old name GetPoolStatusForBakerAsync
+    /// </summary>
+    /// <param name="bakerId">Id of baker</param>
+    /// <param name="blockHash">Block hash from where information will be fetched</param>
+    /// <returns></returns>
+    public async Task<BakerPoolStatus> GetPoolInfoAsync(ulong bakerId, BlockHash blockHash)
     {
         var poolInfoAsync = await this.Raw.GetPoolInfoAsync(new PoolInfoRequest
         {
             BlockHash = blockHash.ToBlockHashInput(),
-            Baker = new Concordium.Grpc.V2.BakerId
+            Baker = new Grpc.V2.BakerId
             {
                 Value = bakerId
             }

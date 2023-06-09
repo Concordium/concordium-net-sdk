@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using Concordium.Sdk.Types;
 using FluentAssertions;
 using Grpc.Core;
@@ -6,10 +5,9 @@ using Xunit.Abstractions;
 
 namespace Concordium.Sdk.Examples;
 
-[SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]
-public sealed class GetAccountListAsync : Tests
+public sealed class GetAccountList : Tests
 {
-    public GetAccountListAsync(ITestOutputHelper output) : base(output)
+    public GetAccountList(ITestOutputHelper output) : base(output)
     {
     }
 

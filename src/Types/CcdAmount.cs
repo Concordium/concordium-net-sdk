@@ -63,7 +63,7 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>, IComparable<CcdAmount>
         }
     }
 
-    internal static CcdAmount From(Concordium.Grpc.V2.Amount amount) => new(amount.Value);
+    internal static CcdAmount From(Grpc.V2.Amount amount) => new(amount.Value);
 
     /// <summary>
     /// Add CCD amounts.

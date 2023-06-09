@@ -4,9 +4,9 @@ using Xunit.Abstractions;
 
 namespace Concordium.Sdk.Examples;
 
-public sealed class GetAccountInfoAsync : Tests
+public sealed class GetAccountInfo : Tests
 {
-    public GetAccountInfoAsync(ITestOutputHelper output) : base(output)
+    public GetAccountInfo(ITestOutputHelper output) : base(output)
     {
     }
 

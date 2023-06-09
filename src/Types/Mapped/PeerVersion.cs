@@ -1,5 +1,8 @@
 ﻿namespace Concordium.Sdk.Types.Mapped;
 
+/// <summary>
+/// The version of the node in semantic format.
+/// </summary>
 public record PeerVersion(int Major, int Minor, int Revision)
 {
     public static PeerVersion Parse(string? value)
