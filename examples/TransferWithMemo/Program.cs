@@ -3,7 +3,7 @@ using Concordium.Sdk.Examples.Common;
 using Concordium.Sdk.Types;
 using Concordium.Sdk.Wallets;
 
-namespace Concordium.Sdk.Examples.Transactions.TransferWithMemo;
+namespace Transactions.TransferWithMemo;
 
 /// <summary>
 /// Example demonstrating how to submit a transfer with memo transaction.
@@ -37,7 +37,7 @@ internal class Program
         var receiver = AccountAddress.From(options.Receiver);
         // Encode a string as CBOR and use that as the memo data.
         var memo = OnChainData.FromTextEncodeAsCBOR(options.Memo);
-        var transferPayload = new Sdk.Transactions.TransferWithMemo(amount, receiver, memo);
+        var transferPayload = new Concordium.Sdk.Transactions.TransferWithMemo(amount, receiver, memo);
 
         // Prepare the transaction for signing.
         var sender = account.AccountAddress;
