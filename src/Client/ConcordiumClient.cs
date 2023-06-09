@@ -191,6 +191,7 @@ public sealed class ConcordiumClient : IDisposable
     /// </summary>
     /// <param name="input">A hash of block</param>
     /// <returns>Accounts at given block</returns>
+    /// <exception cref="RpcException">Block doesn't exists.</exception>
     public async IAsyncEnumerable<AccountAddress> GetAccountListAsync(BlockHash input)
     {
         var blockHash = input.ToBlockHashInput();
@@ -218,7 +219,7 @@ public sealed class ConcordiumClient : IDisposable
     /// </summary>
     /// <param name="bakerId">Id of baker</param>
     /// <param name="blockHash">Block hash from where information will be fetched</param>
-    /// <returns></returns>
+    /// <returns>The state of the baker currently registered on the account.</returns>
     public async Task<BakerPoolStatus> GetPoolInfoAsync(ulong bakerId, BlockHash blockHash)
     {
         var poolInfoAsync = await this.Raw.GetPoolInfoAsync(new PoolInfoRequest
@@ -232,10 +233,18 @@ public sealed class ConcordiumClient : IDisposable
         return BakerPoolStatus.From(poolInfoAsync);
     }
 
-    public async Task<RewardStatusBase> GetRewardStatusAsync(BlockHash blockHash)
+    /// <summary>
+    /// Get information about tokenomics at the end of a given block.
+    /// If the block does not exist [`QueryError::NotFound`] is returned.
+    /// TODO: Old GetRewardStatusAsync
+    /// </summary>
+    /// <param name="blockHash">Block from where state of tokenomics are returned.</param>
+    /// <returns>Tokenomics</returns>
+    /// /// <exception cref="RpcException">Block doesn't exists.</exception>
+    public async Task<RewardOverviewBase> GetTokenomicsInfoAsync(BlockHash blockHash)
     {
         var tokenomicsInfo = await this.Raw.GetTokenomicsInfoAsync(blockHash.ToBlockHashInput());
-        return RewardStatusBase.From(tokenomicsInfo);
+        return RewardOverviewBase.From(tokenomicsInfo);
     }
 
     public async Task<PoolStatusPassiveDelegation> GetPoolStatusForPassiveDelegation(BlockHash blockHash)
