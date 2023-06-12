@@ -7,7 +7,7 @@ namespace Concordium.Sdk.Types.Mapped;
 /// </summary>
 public interface IBlockHeight
 {
-    BlocksAtHeightRequest IntoRequest();
+    BlocksAtHeightRequest Into();
 }
 
 /// <summary>
@@ -16,7 +16,7 @@ public interface IBlockHeight
 /// <param name="Height">Height from the beginning of the chain.</param>
 public record AbsoluteBlockHeight(ulong Height) : IBlockHeight
 {
-    public BlocksAtHeightRequest IntoRequest() =>
+    public BlocksAtHeightRequest Into() =>
         new()
         {
             Absolute = new BlocksAtHeightRequest.Types.Absolute
@@ -38,7 +38,7 @@ public record AbsoluteBlockHeight(ulong Height) : IBlockHeight
 /// </param>
 public record RelativeBlockHeight(ulong Height, uint GenesisIndex, bool Restrict) : IBlockHeight
 {
-    public BlocksAtHeightRequest IntoRequest() =>
+    public BlocksAtHeightRequest Into() =>
         new()
         {
             Relative = new BlocksAtHeightRequest.Types.Relative

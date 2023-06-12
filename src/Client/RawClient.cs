@@ -286,8 +286,8 @@ public sealed class RawClient : IDisposable
     /// <summary>
     /// Spawn a task which returns information such as height, timings, and transaction counts for a given block.
     /// </summary>
-    public Task<BlockInfo> GetBlockInfoAsync(BlockHashInput input) =>
-        this.InternalClient.GetBlockInfoAsync(input, this.CreateCallOptions()).ResponseAsync;
+    public Task<BlockInfo> GetBlockInfoAsync(BlockHashInput input, CancellationToken token = default) =>
+        this.InternalClient.GetBlockInfoAsync(input, this.CreateCallOptions(token)).ResponseAsync;
 
     /// <summary>
     /// Get IDs of all bakers at the end of a given block.
@@ -332,8 +332,8 @@ public sealed class RawClient : IDisposable
     /// <summary>
     /// Spawn a task which returns a list of live blocks at a given height.
     /// </summary>
-    public Task<BlocksAtHeightResponse> GetBlocksAtHeightAsync(BlocksAtHeightRequest input) =>
-        this.InternalClient.GetBlocksAtHeightAsync(input, this.CreateCallOptions()).ResponseAsync;
+    public Task<BlocksAtHeightResponse> GetBlocksAtHeightAsync(BlocksAtHeightRequest input, CancellationToken token = default) =>
+        this.InternalClient.GetBlocksAtHeightAsync(input, this.CreateCallOptions(token)).ResponseAsync;
 
     /// <summary>
     /// Get information about tokenomics at the end of a given block.

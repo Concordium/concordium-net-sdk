@@ -8,7 +8,7 @@ using Grpc.Net.Client;
 using AccountAddress = Concordium.Sdk.Types.AccountAddress;
 using AccountInfo = Concordium.Sdk.Types.Mapped.AccountInfo;
 using BlockHash = Concordium.Sdk.Types.BlockHash;
-using BlockInfo = Concordium.Sdk.Types.New.BlockInfo;
+using BlockInfo = Concordium.Sdk.Types.Mapped.BlockInfo;
 using ConsensusInfo = Concordium.Sdk.Types.Mapped.ConsensusInfo;
 using TransactionHash = Concordium.Sdk.Types.TransactionHash;
 
@@ -284,14 +284,22 @@ public sealed class ConcordiumClient : IDisposable
     /// <returns>List of live blocks.</returns>
     public async Task<IList<BlockHash>> GetBlocksAtHeightAsync(IBlockHeight blockHeight, CancellationToken token)
     {
-        var blocksAtHeightResponse = await this.Raw.GetBlocksAtHeightAsync(blockHeight.IntoRequest());
+        var blocksAtHeightResponse = await this.Raw.GetBlocksAtHeightAsync(blockHeight.Into(), token);
 
         return blocksAtHeightResponse.Blocks.Select(BlockHash.From).ToList();
     }
 
-    public async Task<BlockInfo> GetBlockInfoAsync(BlockHash blockHash)
+    /// <summary>
+    /// Get information, such as height, timings, and transaction counts for the
+    /// given block. If the block does not exist [`QueryError::NotFound`] is
+    /// returned.
+    /// </summary>
+    /// <param name="blockHash">Block from where information will be returned.</param>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>Block information from requested block.</returns>
+    public async Task<BlockInfo> GetBlockInfoAsync(IBlockHashInput blockHash, CancellationToken token = default)
     {
-        var blockInfo = await this.Raw.GetBlockInfoAsync(blockHash.ToBlockHashInput());
+        var blockInfo = await this.Raw.GetBlockInfoAsync(blockHash.Into(), token);
         return BlockInfo.From(blockInfo);
     }
 
