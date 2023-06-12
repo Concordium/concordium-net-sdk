@@ -9,6 +9,7 @@ using AccountAddress = Concordium.Sdk.Types.AccountAddress;
 using AccountInfo = Concordium.Sdk.Types.Mapped.AccountInfo;
 using BlockHash = Concordium.Sdk.Types.BlockHash;
 using BlockInfo = Concordium.Sdk.Types.New.BlockInfo;
+using ConsensusInfo = Concordium.Sdk.Types.Mapped.ConsensusInfo;
 using TransactionHash = Concordium.Sdk.Types.TransactionHash;
 
 namespace Concordium.Sdk.Client;
@@ -261,11 +262,18 @@ public sealed class ConcordiumClient : IDisposable
         return PassiveDelegationStatus.From(passiveDelegationInfoAsync);
     }
 
-    public async Task<ConsensusStatus> GetConsensusStatusAsync(CancellationToken token = default)
+    /// <summary>
+    /// Get information about the current state of consensus. This is an
+    /// overview of the node's current view of the chain.
+    /// TODO: Old GetConsensusStatusAsync
+    /// </summary>
+    /// <param name="token">Cancellation token</param>
+    /// <returns></returns>
+    public async Task<ConsensusInfo> GetConsensusInfoAsync(CancellationToken token = default)
     {
         var consensusInfoAsync = await this.Raw.GetConsensusInfoAsync(token)
             .ConfigureAwait(false);
-        return ConsensusStatus.From(consensusInfoAsync);
+        return ConsensusInfo.From(consensusInfoAsync);
     }
 
     public async Task<IList<BlockHash>> GetBlocksAtHeightAsync(ulong blockHeight, CancellationToken token)

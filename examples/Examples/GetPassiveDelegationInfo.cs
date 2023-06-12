@@ -3,9 +3,9 @@ using Xunit.Abstractions;
 
 namespace Concordium.Sdk.Examples;
 
-public sealed class GetPassiveDelegationInfoAsync : Tests
+public sealed class GetPassiveDelegationInfo : Tests
 {
-    public GetPassiveDelegationInfoAsync(ITestOutputHelper output) : base(output)
+    public GetPassiveDelegationInfo(ITestOutputHelper output) : base(output)
     {
     }
 

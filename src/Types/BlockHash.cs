@@ -63,5 +63,5 @@ public record BlockHash : Hash
     /// </summary>
     public BlockHashInput ToBlockHashInput() => new() { Given = this.ToProto() };
 
-    internal static BlockHash From(Grpc.V2.BlockHash blockHash) => BlockHash.From(blockHash.Value);
+    internal static BlockHash From(Grpc.V2.BlockHash blockHash) => From(blockHash.Value);
 }
