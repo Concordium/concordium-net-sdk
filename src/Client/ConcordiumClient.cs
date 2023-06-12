@@ -268,7 +268,7 @@ public sealed class ConcordiumClient : IDisposable
     /// TODO: Old GetConsensusStatusAsync
     /// </summary>
     /// <param name="token">Cancellation token</param>
-    /// <returns></returns>
+    /// <returns>Current consensus information.</returns>
     public async Task<ConsensusInfo> GetConsensusInfoAsync(CancellationToken token = default)
     {
         var consensusInfoAsync = await this.Raw.GetConsensusInfoAsync(token)
@@ -276,19 +276,17 @@ public sealed class ConcordiumClient : IDisposable
         return ConsensusInfo.From(consensusInfoAsync);
     }
 
-    public async Task<IList<BlockHash>> GetBlocksAtHeightAsync(ulong blockHeight, CancellationToken token)
+    /// <summary>
+    /// Get a list of live blocks at a given height.
+    /// </summary>
+    /// <param name="blockHeight">Block height from where blocks should be returned.</param>
+    /// <param name="token">Cancellation Token.</param>
+    /// <returns>List of live blocks.</returns>
+    public async Task<IList<BlockHash>> GetBlocksAtHeightAsync(IBlockHeight blockHeight, CancellationToken token)
     {
-        // TODO: what are the difference between absolute and relative
-        var blocksAtHeightResponse = await this.Raw.GetBlocksAtHeightAsync(new BlocksAtHeightRequest {
-            Absolute = new BlocksAtHeightRequest.Types.Absolute
-            {
-                Height = new AbsoluteBlockHeight
-                {
-                    Value = blockHeight
-                }
-            }
-        });
-        return blocksAtHeightResponse.Blocks.Select(b => BlockHash.From(b)).ToList();
+        var blocksAtHeightResponse = await this.Raw.GetBlocksAtHeightAsync(blockHeight.IntoRequest());
+
+        return blocksAtHeightResponse.Blocks.Select(BlockHash.From).ToList();
     }
 
     public async Task<BlockInfo> GetBlockInfoAsync(BlockHash blockHash)
