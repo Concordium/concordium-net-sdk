@@ -13,7 +13,7 @@ public record CommissionRates(
     decimal FinalizationCommission,
     decimal BakingCommission)
 {
-    private const decimal MultiplicationFactor = 1 / 1000m;
+    private const decimal MultiplicationFactor = 1 / 100_000m;
     internal static CommissionRates From(Grpc.V2.CommissionRates commissionRates) =>
         new(
             ToDecimal(commissionRates.Transaction),

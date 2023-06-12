@@ -247,10 +247,18 @@ public sealed class ConcordiumClient : IDisposable
         return RewardOverviewBase.From(tokenomicsInfo);
     }
 
-    public async Task<PoolStatusPassiveDelegation> GetPoolStatusForPassiveDelegation(BlockHash blockHash)
+    /// <summary>
+    /// State of the passive delegation pool at block hash. Changes to delegation,
+    /// e.g., an account deciding to delegate are reflected in this structure at
+    /// first.
+    /// TODO: Old GetPoolStatusForPassiveDelegation
+    /// </summary>
+    /// <param name="blockHash">Block hash from where passive delegation status will be returned.</param>
+    /// <returns>State of the passive delegation pool</returns>
+    public async Task<PassiveDelegationStatus> GetPassiveDelegationInfoAsync(BlockHash blockHash)
     {
         var passiveDelegationInfoAsync = await this.Raw.GetPassiveDelegationInfoAsync(blockHash.ToBlockHashInput());
-        return PoolStatusPassiveDelegation.From(passiveDelegationInfoAsync);
+        return PassiveDelegationStatus.From(passiveDelegationInfoAsync);
     }
 
     public async Task<ConsensusStatus> GetConsensusStatusAsync(CancellationToken token = default)
