@@ -1,4 +1,5 @@
 ﻿using Concordium.Grpc.V2;
+using Concordium.Sdk.Types.Mapped;
 
 namespace Concordium.Sdk.Types.New;
 
@@ -6,7 +7,7 @@ public abstract class BlockSummaryBase
 {
     public int? ProtocolVersion { get; init; }
     public TransactionSummary[] TransactionSummaries { get; init; }
-    public SpecialEvent[] SpecialEvents { get; init; }
+    public ISpecialEvent[] SpecialEvents { get; init; }
     public FinalizationData? FinalizationData { get; init; }
 
     public IEnumerable<AccountBalanceUpdate> GetAccountBalanceUpdates()
