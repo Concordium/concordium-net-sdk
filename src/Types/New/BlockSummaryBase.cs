@@ -8,7 +8,7 @@ public abstract class BlockSummaryBase
     public int? ProtocolVersion { get; init; }
     public TransactionSummary[] TransactionSummaries { get; init; }
     public ISpecialEvent[] SpecialEvents { get; init; }
-    public FinalizationData? FinalizationData { get; init; }
+    public Grpc.V2.FinalizationSummary? FinalizationData { get; init; }
 
     public IEnumerable<AccountBalanceUpdate> GetAccountBalanceUpdates()
     {

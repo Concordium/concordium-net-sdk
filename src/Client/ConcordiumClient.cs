@@ -10,6 +10,7 @@ using AccountInfo = Concordium.Sdk.Types.Mapped.AccountInfo;
 using BlockHash = Concordium.Sdk.Types.BlockHash;
 using BlockInfo = Concordium.Sdk.Types.Mapped.BlockInfo;
 using ConsensusInfo = Concordium.Sdk.Types.Mapped.ConsensusInfo;
+using FinalizationSummary = Concordium.Sdk.Types.New.FinalizationSummary;
 using TransactionHash = Concordium.Sdk.Types.TransactionHash;
 
 namespace Concordium.Sdk.Client;
@@ -318,6 +319,21 @@ public sealed class ConcordiumClient : IDisposable
         {
             yield return specialEvent.Into();
         }
+    }
+
+    /// <summary>
+    /// Get the information about a finalization record in a block.
+    /// A block can contain zero or one finalization record. If a record is
+    /// contained then this query will return information about the finalization
+    /// session that produced it, including the finalizers eligible for the
+    /// session, their power, and whether they signed this particular record. If
+    /// the block does not exist an exception is thrown is returned.
+    /// </summary>
+    /// <param name="blockHashInput">Block from where finalization summary will be given.</param>
+    public async Task<FinalizationSummary?> GetBlockFinalizationSummaryAsync(IBlockHashInput blockHashInput)
+    {
+        var finalizationSummary = await this.Raw.GetBlockFinalizationSummaryAsync(blockHashInput.Into());
+        return FinalizationSummary.From(finalizationSummary);
     }
 
     public async Task<BlockSummaryBase> GetBlockSummaryAsync(BlockHash blockHash)
