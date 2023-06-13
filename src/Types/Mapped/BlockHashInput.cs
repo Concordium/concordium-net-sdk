@@ -13,13 +13,13 @@ public interface IBlockHashInput
 /// <summary>
 /// Query in the context of the best block.
 /// </summary>
-public record BestBlockHash : IBlockHashInput
+public record Best : IBlockHashInput
 {
     private static readonly Empty _empty = new Empty();
 
     public BlockHashInput Into() => new BlockHashInput
     {
-        Best = BestBlockHash._empty,
+        Best = Best._empty,
     };
 }
 
@@ -27,7 +27,7 @@ public record BestBlockHash : IBlockHashInput
 /// Query in the context of the last finalized block at the time of the
 /// query.
 /// </summary>
-public record LastFinalBlockHashInput : IBlockHashInput
+public record LastFinal : IBlockHashInput
 {
     private static readonly Empty _empty = new Empty();
 
@@ -40,7 +40,7 @@ public record LastFinalBlockHashInput : IBlockHashInput
 /// <summary>
 /// Query in the context of a specific block hash.
 /// </summary>
-public record GivenBlockHashInput(BlockHash BlockHash) : IBlockHashInput
+public record Given(BlockHash BlockHash) : IBlockHashInput
 {
     public BlockHashInput Into() => new BlockHashInput { Given = this.BlockHash.ToProto() };
 }

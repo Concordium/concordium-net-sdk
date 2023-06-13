@@ -16,7 +16,7 @@ public sealed class GetBlockInfo : Tests
         var block = BlockHash.From(this.GetString("blockHash"));
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
 
-        var info = await this.Client.GetBlockInfoAsync(new GivenBlockHashInput(block), cts.Token);
+        var info = await this.Client.GetBlockInfoAsync(new Given(block), cts.Token);
 
         this.Output.WriteLine($"Block: {info.BlockHash} has transaction energy cost: {info.TransactionEnergyCost}");
     }

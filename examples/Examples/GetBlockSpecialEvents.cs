@@ -13,7 +13,7 @@ public sealed class GetBlockSpecialEvents : Tests
     public async Task RunGetBlockSpecialEvents()
     {
         var block = BlockHash.From(this.GetString("blockHashWithEvents"));
-        await foreach(var specialEvent in this.Client.GetBlockSpecialEvents(new GivenBlockHashInput(block)))
+        await foreach(var specialEvent in this.Client.GetBlockSpecialEvents(new Given(block)))
         {
             foreach (var accountBalanceUpdate in specialEvent.GetAccountBalanceUpdates())
             {

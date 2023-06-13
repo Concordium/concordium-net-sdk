@@ -78,6 +78,10 @@ public class BlockInfo
     /// Hash of the block state at the end of the given block.
     /// </summary>
     public StateHash BlockStateHash { get; init; }
+    /// <summary>
+    /// Protocol version to which the block belongs.
+    /// </summary>
+    public ProtocolVersion ProtocolVersion { get; init; }
 
     internal static BlockInfo From(Grpc.V2.BlockInfo blockInfo) =>
         new()
@@ -98,5 +102,6 @@ public class BlockInfo
             TransactionEnergyCost = new EnergyAmount(blockInfo.TransactionsEnergyCost.Value),
             TransactionSize = blockInfo.TransactionsSize,
             BlockStateHash = new StateHash(blockInfo.StateHash.Value),
+            ProtocolVersion = blockInfo.ProtocolVersion.Into()
         };
 }

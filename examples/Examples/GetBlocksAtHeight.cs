@@ -14,7 +14,7 @@ public sealed class GetBlocksAtHeight : Tests
     {
         var info = await this.Client.GetConsensusInfoAsync();
 
-        var absoluteHeight = new AbsoluteBlockHeight(info.BestBlockHeight);
+        var absoluteHeight = new Absolute(info.BestBlockHeight);
 
         var blocks = await this.Client.GetBlocksAtHeightAsync(absoluteHeight, CancellationToken.None);
 
