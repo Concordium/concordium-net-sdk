@@ -11,6 +11,8 @@ namespace Concordium.Sdk.Client;
 /// <typeparam name="T">Return type</typeparam>
 public record QueryResponse<T>(BlockHash BlockHash, T Response)
 {
+    internal QueryResponse<TNew> NewWithSameBlockHash<TNew>(TNew response) => new(this.BlockHash, Response: response);
+
     internal static async Task<QueryResponse<T>> From(Task<Metadata> metadata, T response)
     {
         var blockHash = GetBlockHashFromMetadata(await metadata);

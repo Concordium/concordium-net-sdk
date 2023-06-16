@@ -292,10 +292,13 @@ public sealed class RawClient : IDisposable
     /// <summary>
     /// Get IDs of all bakers at the end of a given block.
     /// </summary>
-    public IAsyncEnumerable<BakerId> GetBakerList(BlockHashInput input) =>
-        this.InternalClient
-            .GetBakerList(input, this.CreateCallOptions())
-            .ResponseStream.ReadAllAsync();
+    public Task<QueryResponse<IAsyncEnumerable<BakerId>>> GetBakerList(BlockHashInput input)
+    {
+        var response = this.InternalClient.GetBakerList(input, this.CreateCallOptions());
+        return QueryResponse<IAsyncEnumerable<BakerId>>.From(
+            response.ResponseHeadersAsync,
+            response.ResponseStream.ReadAllAsync());
+    }
 
     /// <summary>
     /// Get information about a given pool at the end of a given block.

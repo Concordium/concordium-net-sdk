@@ -370,15 +370,26 @@ public sealed class ConcordiumClient : IDisposable
     /// </summary>
     /// <param name="blockHash">Block hash from where identity providers state will be returned</param>
     /// <returns>Identity providers info</returns>
+    /// <exception cref="RpcException">If the block does not exist</exception>
     public async Task<QueryResponse<IAsyncEnumerable<IpInfo>>> GetIdentityProvidersAsync(IBlockHashInput blockHash)
     {
-        var identityProviders = await this.Raw.GetIdentityProviders(blockHash.Into());
-        return new QueryResponse<IAsyncEnumerable<IpInfo>>(identityProviders.BlockHash,identityProviders.Response.Select(IpInfo.From));
+        var response = await this.Raw.GetIdentityProviders(blockHash.Into());
+        var returnEnumerable = response.Response.Select(IpInfo.From);
+        return response.NewWithSameBlockHash(returnEnumerable);
     }
 
-    public IAsyncEnumerable<ulong> GetBakerListAsync(BlockHash blockHash) =>
-        this.Raw.GetBakerList(blockHash.ToBlockHashInput())
-            .Select(b => b.Value);
+    /// <summary>
+    /// Get all the bakers at the end of the given block.
+    /// </summary>
+    /// <param name="blockHash">Block hash from where state of baker list will be returned.</param>
+    /// <returns>List of baker ids.</returns>
+    /// <exception cref="RpcException">If the block does not exist</exception>
+    public async Task<QueryResponse<IAsyncEnumerable<Types.BakerId>>> GetBakerListAsync(IBlockHashInput blockHash)
+    {
+        var response = await this.Raw.GetBakerList(blockHash.Into());
+        var returnEnumerable = response.Response.Select(Types.BakerId.From);
+        return response.NewWithSameBlockHash(returnEnumerable);
+    }
 
     public void Dispose() => this.Raw.Dispose();
 }
