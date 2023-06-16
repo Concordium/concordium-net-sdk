@@ -1,4 +1,4 @@
-﻿namespace Concordium.Sdk.Types.Mapped;
+﻿namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Details of a party in a finalization.

@@ -1,4 +1,4 @@
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Identity of the anonymity revoker on the chain. This defines their

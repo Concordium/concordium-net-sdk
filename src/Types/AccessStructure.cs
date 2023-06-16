@@ -1,6 +1,6 @@
 using System.Collections.Immutable;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// And access structure for performing chain updates. The access structure is

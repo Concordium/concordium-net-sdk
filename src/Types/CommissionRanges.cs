@@ -1,4 +1,4 @@
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Ranges of allowed commission values that pools may choose from.

@@ -1,7 +1,7 @@
 using Concordium.Grpc.V2;
 using Concordium.Sdk.Exceptions;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// An update with root keys of some other set of governance keys, or the root
@@ -61,7 +61,7 @@ public record Level1KeysUpdate(HigherLevelKeys Keys) : IRootUpdate, ILevel1
 /// </param>
 public record Level2KeysUpdate(AuthorizationsV0 AuthorizationsV0) : IRootUpdate, ILevel1
 {
-    internal static Level2KeysUpdate From(Grpc.V2.AuthorizationsV0 authorizationsV0) => new(Mapped.AuthorizationsV0.From(authorizationsV0));
+    internal static Level2KeysUpdate From(Grpc.V2.AuthorizationsV0 authorizationsV0) => new(AuthorizationsV0.From(authorizationsV0));
 }
 
 /// <summary>

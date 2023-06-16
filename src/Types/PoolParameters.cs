@@ -1,6 +1,6 @@
 using Concordium.Sdk.Helpers;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Parameters related to staking pools. This applies to protocol version 4 and

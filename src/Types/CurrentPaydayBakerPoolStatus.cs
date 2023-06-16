@@ -1,7 +1,7 @@
 ﻿using Concordium.Grpc.V2;
 using Concordium.Sdk.Helpers;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Status of the pool in the current reward period.

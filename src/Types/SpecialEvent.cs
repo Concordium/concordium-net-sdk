@@ -2,7 +2,7 @@
 using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Types.Views;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// In addition to the user initiated transactions the protocol generates some

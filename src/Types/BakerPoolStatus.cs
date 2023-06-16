@@ -1,4 +1,4 @@
-﻿namespace Concordium.Sdk.Types.Mapped;
+﻿namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// The state of the baker currently registered on the account.

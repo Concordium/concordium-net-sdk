@@ -1,4 +1,4 @@
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Information on a single anonymity revoker held by the IP.

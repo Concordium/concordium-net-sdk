@@ -1,4 +1,4 @@
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Rate of creation of new CCDs. For example, A value of `0.05` would mean an

@@ -1,7 +1,7 @@
 using Concordium.Grpc.V2;
 using Concordium.Sdk.Exceptions;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 
 /// <summary>

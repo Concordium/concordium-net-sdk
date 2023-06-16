@@ -1,16 +1,16 @@
 using Concordium.Grpc.V2;
 using Concordium.Sdk.Transactions;
 using Concordium.Sdk.Types;
-using Concordium.Sdk.Types.Mapped;
 using Grpc.Core;
 using Grpc.Net.Client;
 using AccountAddress = Concordium.Sdk.Types.AccountAddress;
-using AccountInfo = Concordium.Sdk.Types.Mapped.AccountInfo;
+using AccountInfo = Concordium.Sdk.Types.AccountInfo;
 using BlockHash = Concordium.Sdk.Types.BlockHash;
-using BlockInfo = Concordium.Sdk.Types.Mapped.BlockInfo;
+using BlockInfo = Concordium.Sdk.Types.BlockInfo;
 using BlockItemSummary = Concordium.Sdk.Types.BlockItemSummary;
-using ConsensusInfo = Concordium.Sdk.Types.Mapped.ConsensusInfo;
-using IpInfo = Concordium.Sdk.Types.Mapped.IpInfo;
+using ConsensusInfo = Concordium.Sdk.Types.ConsensusInfo;
+using FinalizationSummary = Concordium.Sdk.Types.FinalizationSummary;
+using IpInfo = Concordium.Sdk.Types.IpInfo;
 using TransactionHash = Concordium.Sdk.Types.TransactionHash;
 
 namespace Concordium.Sdk.Client;
@@ -331,10 +331,10 @@ public sealed class ConcordiumClient : IDisposable
     /// If the block does not exist an exception is thrown is returned.
     /// </summary>
     /// <param name="blockHashInput">Block from where finalization summary will be given.</param>
-    public async Task<Types.Mapped.FinalizationSummary?> GetBlockFinalizationSummaryAsync(IBlockHashInput blockHashInput)
+    public async Task<FinalizationSummary?> GetBlockFinalizationSummaryAsync(IBlockHashInput blockHashInput)
     {
         var finalizationSummary = await this.Raw.GetBlockFinalizationSummaryAsync(blockHashInput.Into());
-        return Types.Mapped.FinalizationSummary.From(finalizationSummary);
+        return FinalizationSummary.From(finalizationSummary);
     }
 
     /// <summary>

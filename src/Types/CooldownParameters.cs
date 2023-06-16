@@ -1,4 +1,4 @@
-﻿namespace Concordium.Sdk.Types.Mapped;
+﻿namespace Concordium.Sdk.Types;
 
 /// <param name="PoolOwnerCooldown">
 /// Duration that pool owners must cooldown

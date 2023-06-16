@@ -1,6 +1,6 @@
 ﻿using Concordium.Sdk.Exceptions;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Enumeration of the types of credentials.

@@ -1,4 +1,4 @@
-﻿namespace Concordium.Sdk.Types.Mapped;
+﻿namespace Concordium.Sdk.Types;
 
 public enum BakerPoolOpenStatus
 {

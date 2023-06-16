@@ -1,4 +1,4 @@
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Ed25519 public key of the identity provider.

@@ -1,7 +1,7 @@
 using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Helpers;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// A successful contract invocation produces a sequence of effects on smart

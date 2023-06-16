@@ -1,6 +1,6 @@
 using Concordium.Grpc.V2;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Interface which covers block heights and can be mapped into gRPC block height request types.

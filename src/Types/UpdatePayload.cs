@@ -2,7 +2,7 @@ using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Helpers;
 using UpdatePayload = Concordium.Grpc.V2.UpdatePayload;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// The type of an update payload.

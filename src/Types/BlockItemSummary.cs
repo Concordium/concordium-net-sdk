@@ -1,5 +1,4 @@
 using Concordium.Sdk.Exceptions;
-using Concordium.Sdk.Types.Mapped;
 
 namespace Concordium.Sdk.Types;
 
@@ -34,10 +33,10 @@ public sealed record BlockItemSummary(ulong Index, EnergyAmount EnergyCost, Tran
     public bool IsSuccess() =>
         this.Details switch
         {
-            Mapped.AccountTransactionDetails accountTransaction =>
+            AccountTransactionDetails accountTransaction =>
                 !accountTransaction.TryGetRejectedReason(out _),
-            Mapped.AccountCreationDetails => true,
-            Mapped.UpdateDetails => true,
+            AccountCreationDetails => true,
+            UpdateDetails => true,
             _ => throw new MissingTypeException<IBlockItemSummaryDetails>(this.Details)
         };
 
@@ -60,10 +59,10 @@ public sealed record BlockItemSummary(ulong Index, EnergyAmount EnergyCost, Tran
         rejectReason = null;
         return this.Details switch
         {
-            Mapped.AccountTransactionDetails accountTransaction =>
+            AccountTransactionDetails accountTransaction =>
                 accountTransaction.TryGetRejectedReason(out rejectReason),
-            Mapped.AccountCreationDetails => false,
-            Mapped.UpdateDetails => false,
+            AccountCreationDetails => false,
+            UpdateDetails => false,
             _ => throw new MissingTypeException<IBlockItemSummaryDetails>(this.Details)
         };
     }
@@ -79,11 +78,11 @@ public sealed record BlockItemSummary(ulong Index, EnergyAmount EnergyCost, Tran
         sender = null;
         switch (this.Details)
         {
-            case Mapped.AccountTransactionDetails accountTransaction:
+            case AccountTransactionDetails accountTransaction:
                 sender = accountTransaction.Sender;
                 return true;
-            case Mapped.AccountCreationDetails:
-            case Mapped.UpdateDetails:
+            case AccountCreationDetails:
+            case UpdateDetails:
                 return false;
             default:
                 throw new MissingTypeException<IBlockItemSummaryDetails>(this.Details);
@@ -100,7 +99,7 @@ public sealed record BlockItemSummary(ulong Index, EnergyAmount EnergyCost, Tran
     {
         var affectedContracts = new List<ContractAddress>();
 
-        if (this.Details is not Mapped.AccountTransactionDetails accountTransactionDetails)
+        if (this.Details is not AccountTransactionDetails accountTransactionDetails)
         {
             return affectedContracts;
         }
@@ -148,7 +147,7 @@ public sealed record BlockItemSummary(ulong Index, EnergyAmount EnergyCost, Tran
     public bool TryGetContractInit(out ContractInitializedEvent? contractInitializedEventEvent)
     {
         contractInitializedEventEvent = null;
-        if (this.Details is not Mapped.AccountTransactionDetails accountTransactionDetails)
+        if (this.Details is not AccountTransactionDetails accountTransactionDetails)
         {
             return false;
         }
@@ -175,7 +174,7 @@ public sealed record BlockItemSummary(ulong Index, EnergyAmount EnergyCost, Tran
     public bool TryGetContractUpdateLogs(out IList<(ContractAddress, IList<ContractEvent>)> items)
     {
         items = new List<(ContractAddress, IList<ContractEvent>)>();
-        if (this.Details is not Mapped.AccountTransactionDetails accountTransactionDetails)
+        if (this.Details is not AccountTransactionDetails accountTransactionDetails)
         {
             return false;
         }
@@ -198,7 +197,7 @@ public sealed record BlockItemSummary(ulong Index, EnergyAmount EnergyCost, Tran
     public IList<AccountAddress> AffectedAddresses()
     {
         var affectedAddresses = new List<AccountAddress>();
-        if (this.Details is not Mapped.AccountTransactionDetails accountTransactionDetails)
+        if (this.Details is not AccountTransactionDetails accountTransactionDetails)
         {
             return affectedAddresses;
         }

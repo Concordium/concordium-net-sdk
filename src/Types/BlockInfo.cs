@@ -1,6 +1,6 @@
 ﻿using Concordium.Sdk.Helpers;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Metadata about a given block.

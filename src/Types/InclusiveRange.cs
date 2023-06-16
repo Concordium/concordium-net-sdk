@@ -1,4 +1,4 @@
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Range where <see cref="InclusiveRange{T}.Min"/> and <see cref="InclusiveRange{T}.Max"/> is within.

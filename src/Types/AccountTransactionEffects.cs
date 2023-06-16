@@ -8,7 +8,7 @@ using EncryptedAmountRemovedEvent = Concordium.Sdk.Types.Events.EncryptedAmountR
 using EncryptedSelfAmountAddedEvent = Concordium.Sdk.Types.Events.EncryptedSelfAmountAddedEvent;
 using NewEncryptedAmountEvent = Concordium.Sdk.Types.Events.NewEncryptedAmountEvent;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Effects of an account transactions. All variants apart from

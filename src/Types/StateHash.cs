@@ -1,6 +1,6 @@
 using Google.Protobuf;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Hash of the block state that is included in a block.

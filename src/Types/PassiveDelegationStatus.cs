@@ -1,6 +1,6 @@
 ﻿using Concordium.Grpc.V2;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// State of the passive delegation pool. Changes to delegation,

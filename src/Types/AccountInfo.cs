@@ -1,4 +1,4 @@
-﻿namespace Concordium.Sdk.Types.Mapped;
+﻿namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Account information exposed via the node's API. This is always the state of
@@ -41,6 +41,6 @@ public record AccountInfo
             AccountAmount = CcdAmount.From(accountInfo.Amount),
             AccountIndex = accountInfo.Index.Value,
             AccountAddress = AccountAddress.From(accountInfo.Address),
-            AccountStakingInfo = Mapped.AccountStakingInfo.From(accountInfo.Stake)
+            AccountStakingInfo = Types.AccountStakingInfo.From(accountInfo.Stake)
         };
 }

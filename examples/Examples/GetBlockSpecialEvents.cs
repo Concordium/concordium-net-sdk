@@ -1,4 +1,4 @@
-using Concordium.Sdk.Types.Mapped;
+using Concordium.Sdk.Types;
 using Xunit.Abstractions;
 using BlockHash = Concordium.Sdk.Types.BlockHash;
 

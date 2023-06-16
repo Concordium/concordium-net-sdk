@@ -1,6 +1,6 @@
 using Concordium.Grpc.V2;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// A block identifier used in queries.

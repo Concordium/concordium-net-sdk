@@ -1,8 +1,8 @@
 using Concordium.Grpc.V2;
 using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Helpers;
-using DelegationTarget = Concordium.Sdk.Types.Mapped.DelegationTarget;
-using DelegatorId = Concordium.Sdk.Types.Mapped.DelegatorId;
+using DelegationTarget = Concordium.Sdk.Types.DelegationTarget;
+using DelegatorId = Concordium.Sdk.Types.DelegatorId;
 
 namespace Concordium.Sdk.Types.Events;
 

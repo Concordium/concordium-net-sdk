@@ -1,5 +1,5 @@
 using System.Text.Json;
-using Concordium.Sdk.Types.Mapped;
+using Concordium.Sdk.Types;
 using Xunit.Abstractions;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 

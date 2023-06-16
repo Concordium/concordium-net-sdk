@@ -1,6 +1,6 @@
 using Concordium.Sdk.Exceptions;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// An enumeration of the supported versions of the consensus protocol.

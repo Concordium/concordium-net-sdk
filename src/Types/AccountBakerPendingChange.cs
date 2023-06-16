@@ -2,7 +2,7 @@
 using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Helpers;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Pending change in the baker's stake.

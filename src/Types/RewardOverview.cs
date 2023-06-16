@@ -2,7 +2,7 @@
 using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Helpers;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Information about the state of the CCD distribution at a particular time.
@@ -17,7 +17,7 @@ namespace Concordium.Sdk.Types.Mapped;
 /// <param name="FinalizationRewardAccount">The amount in the finalization reward account.</param>
 /// <param name="GasAccount">The amount in the GAS account.</param>
 public abstract record RewardOverviewBase(
-    Mapped.ProtocolVersion ProtocolVersion,
+    ProtocolVersion ProtocolVersion,
     CcdAmount TotalAmount,
     CcdAmount TotalEncryptedAmount,
     CcdAmount BakingRewardAccount,
@@ -59,7 +59,7 @@ public abstract record RewardOverviewBase(
 /// Only exists for protocol versions 1, 2, and 3.
 /// </summary>
 public record RewardOverviewV0(
-    Mapped.ProtocolVersion ProtocolVersion,
+    ProtocolVersion ProtocolVersion,
     CcdAmount TotalAmount,
     CcdAmount TotalEncryptedAmount,
     CcdAmount BakingRewardAccount,

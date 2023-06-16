@@ -1,7 +1,7 @@
 using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Helpers;
 
-namespace Concordium.Sdk.Types.Mapped;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Details of a block item summary, split by the kind of block item it is for.

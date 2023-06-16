@@ -1,4 +1,4 @@
-﻿namespace Concordium.Sdk.Types.Mapped;
+﻿namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// An exchange rate between two quantities. This is never 0, and the exchange
