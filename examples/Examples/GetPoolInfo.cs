@@ -15,7 +15,7 @@ public sealed class GetPoolInfo : Tests
         var block = BlockHash.From(this.GetString("blockHash"));
         const ulong bakerId = 1;
 
-        var poolInfo = await this.Client.GetPoolInfoAsync(bakerId, block);
+        var poolInfo = await this.Client.GetPoolInfoAsync(bakerId, new Given(block));
 
         this.Output.WriteLine($"Baker {bakerId} has baker equity capital {poolInfo.BakerEquityCapital.GetFormattedCcd()}");
     }

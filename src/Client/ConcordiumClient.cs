@@ -175,11 +175,11 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="accountAddress">An address of the account.</param>
     /// <param name="blockHash">A hash of the block</param>
     /// <returns>Account information at the given block.</returns>
-    public async Task<AccountInfo> GetAccountInfoAsync(AccountAddress accountAddress, BlockHash blockHash)
+    public async Task<AccountInfo> GetAccountInfoAsync(AccountAddress accountAddress, IBlockHashInput blockHash)
     {
         var accountInfoRequest = new AccountInfoRequest
         {
-            BlockHash = blockHash.ToBlockHashInput(),
+            BlockHash = blockHash.Into(),
             AccountIdentifier = accountAddress.ToAccountIdentifierInput()
         };
         var accountInfoAsync = await this.Raw.GetAccountInfoAsync(accountInfoRequest);
@@ -194,9 +194,9 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="input">A hash of block</param>
     /// <returns>Accounts at given block</returns>
     /// <exception cref="RpcException">Block doesn't exists.</exception>
-    public async IAsyncEnumerable<AccountAddress> GetAccountListAsync(BlockHash input)
+    public async IAsyncEnumerable<AccountAddress> GetAccountListAsync(IBlockHashInput input)
     {
-        var blockHash = input.ToBlockHashInput();
+        var blockHash = input.Into();
         await foreach (var account in this.Raw.GetAccountList(blockHash).ConfigureAwait(false))
         {
             yield return AccountAddress.From(account);
@@ -222,11 +222,11 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="bakerId">Id of baker</param>
     /// <param name="blockHash">Block hash from where information will be fetched</param>
     /// <returns>The state of the baker currently registered on the account.</returns>
-    public async Task<BakerPoolStatus> GetPoolInfoAsync(ulong bakerId, BlockHash blockHash)
+    public async Task<BakerPoolStatus> GetPoolInfoAsync(ulong bakerId, IBlockHashInput blockHash)
     {
         var poolInfoAsync = await this.Raw.GetPoolInfoAsync(new PoolInfoRequest
         {
-            BlockHash = blockHash.ToBlockHashInput(),
+            BlockHash = blockHash.Into(),
             Baker = new Grpc.V2.BakerId
             {
                 Value = bakerId
@@ -243,9 +243,9 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHash">Block from where state of tokenomics are returned.</param>
     /// <returns>Tokenomics</returns>
     /// <exception cref="RpcException">Block doesn't exists.</exception>
-    public async Task<RewardOverviewBase> GetTokenomicsInfoAsync(BlockHash blockHash)
+    public async Task<RewardOverviewBase> GetTokenomicsInfoAsync(IBlockHashInput blockHash)
     {
-        var tokenomicsInfo = await this.Raw.GetTokenomicsInfoAsync(blockHash.ToBlockHashInput());
+        var tokenomicsInfo = await this.Raw.GetTokenomicsInfoAsync(blockHash.Into());
         return RewardOverviewBase.From(tokenomicsInfo);
     }
 
@@ -257,9 +257,9 @@ public sealed class ConcordiumClient : IDisposable
     /// </summary>
     /// <param name="blockHash">Block hash from where passive delegation status will be returned.</param>
     /// <returns>State of the passive delegation pool</returns>
-    public async Task<PassiveDelegationStatus> GetPassiveDelegationInfoAsync(BlockHash blockHash)
+    public async Task<PassiveDelegationStatus> GetPassiveDelegationInfoAsync(IBlockHashInput blockHash)
     {
-        var passiveDelegationInfoAsync = await this.Raw.GetPassiveDelegationInfoAsync(blockHash.ToBlockHashInput());
+        var passiveDelegationInfoAsync = await this.Raw.GetPassiveDelegationInfoAsync(blockHash.Into());
         return PassiveDelegationStatus.From(passiveDelegationInfoAsync);
     }
 

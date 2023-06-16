@@ -14,7 +14,7 @@ public sealed class GetTokenomicsInfo : Tests
     {
         var block = BlockHash.From(this.GetString("blockHash"));
 
-        var rewardOverview = await this.Client.GetTokenomicsInfoAsync(block);
+        var rewardOverview = await this.Client.GetTokenomicsInfoAsync(new Given(block));
 
         this.Output.WriteLine($"Protocol version: {rewardOverview.ProtocolVersion}");
 
