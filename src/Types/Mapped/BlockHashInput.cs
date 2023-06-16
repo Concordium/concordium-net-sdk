@@ -15,9 +15,9 @@ public interface IBlockHashInput
 /// </summary>
 public record Best : IBlockHashInput
 {
-    private static readonly Empty _empty = new Empty();
+    private static readonly Empty _empty = new();
 
-    public BlockHashInput Into() => new BlockHashInput
+    public BlockHashInput Into() => new()
     {
         Best = Best._empty,
     };
@@ -29,9 +29,9 @@ public record Best : IBlockHashInput
 /// </summary>
 public record LastFinal : IBlockHashInput
 {
-    private static readonly Empty _empty = new Empty();
+    private static readonly Empty _empty = new();
 
-    public BlockHashInput Into() => new BlockHashInput
+    public BlockHashInput Into() => new()
     {
         LastFinal = _empty
     };
@@ -42,5 +42,5 @@ public record LastFinal : IBlockHashInput
 /// </summary>
 public record Given(BlockHash BlockHash) : IBlockHashInput
 {
-    public BlockHashInput Into() => new BlockHashInput { Given = this.BlockHash.ToProto() };
+    public BlockHashInput Into() => new() { Given = this.BlockHash.ToProto() };
 }

@@ -430,10 +430,13 @@ public sealed class RawClient : IDisposable
     /// <summary>
     /// Get all identity providers registered at the end of a given block.
     /// </summary>
-    public IAsyncEnumerable<IpInfo> GetIdentityProviders(BlockHashInput input) =>
-        this.InternalClient
-            .GetIdentityProviders(input, this.CreateCallOptions())
-            .ResponseStream.ReadAllAsync();
+    public Task<QueryResponse<IAsyncEnumerable<IpInfo>>> GetIdentityProviders(BlockHashInput input)
+    {
+        var response = this.InternalClient.GetIdentityProviders(input, this.CreateCallOptions());
+        return QueryResponse<IAsyncEnumerable<IpInfo>>.From(
+            response.ResponseHeadersAsync,
+            response.ResponseStream.ReadAllAsync());
+    }
 
     /// <summary>
     /// Get all anonymity revokers registered at the end of a given block.

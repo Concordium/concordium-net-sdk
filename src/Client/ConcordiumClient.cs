@@ -12,6 +12,7 @@ using BlockInfo = Concordium.Sdk.Types.Mapped.BlockInfo;
 using BlockItemSummary = Concordium.Sdk.Types.BlockItemSummary;
 using ConsensusInfo = Concordium.Sdk.Types.Mapped.ConsensusInfo;
 using FinalizationSummary = Concordium.Sdk.Types.New.FinalizationSummary;
+using IpInfo = Concordium.Sdk.Types.Mapped.IpInfo;
 using TransactionHash = Concordium.Sdk.Types.TransactionHash;
 
 namespace Concordium.Sdk.Client;
@@ -363,10 +364,16 @@ public sealed class ConcordiumClient : IDisposable
         return BlockSummaryBase.From(events, finalization, blockTransactionEvents);
     }
 
-    public ValueTask<IdentityProviderInfo[]> GetIdentityProvidersAsync(BlockHash blockHash)
+    /// <summary>
+    /// Get the identity providers registered as of the end of a given block.
+    /// The stream will end when all the identity providers have been returned.
+    /// </summary>
+    /// <param name="blockHash">Block hash from where identity providers state will be returned</param>
+    /// <returns>Identity providers info</returns>
+    public async Task<QueryResponse<IAsyncEnumerable<IpInfo>>> GetIdentityProvidersAsync(IBlockHashInput blockHash)
     {
-        var identityProviders = this.Raw.GetIdentityProviders(blockHash.ToBlockHashInput());
-        return IdentityProviderInfo.From(identityProviders);
+        var identityProviders = await this.Raw.GetIdentityProviders(blockHash.Into());
+        return new QueryResponse<IAsyncEnumerable<IpInfo>>(identityProviders.BlockHash,identityProviders.Response.Select(IpInfo.From));
     }
 
     public IAsyncEnumerable<ulong> GetBakerListAsync(BlockHash blockHash) =>
