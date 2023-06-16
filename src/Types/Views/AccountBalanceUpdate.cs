@@ -1,4 +1,4 @@
-﻿namespace Concordium.Sdk.Types.New;
+﻿namespace Concordium.Sdk.Types.Views;
 
 public record AccountBalanceUpdate(
     AccountAddress AccountAddress,

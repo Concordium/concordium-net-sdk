@@ -1,6 +1,6 @@
 ﻿using Concordium.Grpc.V2;
 using Concordium.Sdk.Exceptions;
-using Concordium.Sdk.Types.New;
+using Concordium.Sdk.Types.Views;
 
 namespace Concordium.Sdk.Types.Mapped;
 

@@ -2,6 +2,9 @@
 
 namespace Concordium.Sdk.Types.Mapped;
 
+/// <summary>
+/// Metadata about a given block.
+/// </summary>
 public class BlockInfo
 {
     /// <summary>

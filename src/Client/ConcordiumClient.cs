@@ -2,7 +2,6 @@ using Concordium.Grpc.V2;
 using Concordium.Sdk.Transactions;
 using Concordium.Sdk.Types;
 using Concordium.Sdk.Types.Mapped;
-using Concordium.Sdk.Types.New;
 using Grpc.Core;
 using Grpc.Net.Client;
 using AccountAddress = Concordium.Sdk.Types.AccountAddress;
@@ -11,7 +10,6 @@ using BlockHash = Concordium.Sdk.Types.BlockHash;
 using BlockInfo = Concordium.Sdk.Types.Mapped.BlockInfo;
 using BlockItemSummary = Concordium.Sdk.Types.BlockItemSummary;
 using ConsensusInfo = Concordium.Sdk.Types.Mapped.ConsensusInfo;
-using FinalizationSummary = Concordium.Sdk.Types.New.FinalizationSummary;
 using IpInfo = Concordium.Sdk.Types.Mapped.IpInfo;
 using TransactionHash = Concordium.Sdk.Types.TransactionHash;
 
@@ -333,10 +331,10 @@ public sealed class ConcordiumClient : IDisposable
     /// If the block does not exist an exception is thrown is returned.
     /// </summary>
     /// <param name="blockHashInput">Block from where finalization summary will be given.</param>
-    public async Task<FinalizationSummary?> GetBlockFinalizationSummaryAsync(IBlockHashInput blockHashInput)
+    public async Task<Types.Mapped.FinalizationSummary?> GetBlockFinalizationSummaryAsync(IBlockHashInput blockHashInput)
     {
         var finalizationSummary = await this.Raw.GetBlockFinalizationSummaryAsync(blockHashInput.Into());
-        return FinalizationSummary.From(finalizationSummary);
+        return Types.Mapped.FinalizationSummary.From(finalizationSummary);
     }
 
     /// <summary>
@@ -353,15 +351,6 @@ public sealed class ConcordiumClient : IDisposable
         {
             yield return BlockItemSummary.From(blockItemSummary);
         }
-    }
-
-    public async Task<BlockSummaryBase> GetBlockSummaryAsync(BlockHash blockHash)
-    {
-        var blockHashInput = blockHash.ToBlockHashInput();
-        var events = this.Raw.GetBlockSpecialEvents(blockHashInput);
-        var finalization = await this.Raw.GetBlockFinalizationSummaryAsync(blockHashInput);
-        var blockTransactionEvents = this.Raw.GetBlockTransactionEvents(blockHashInput);
-        return BlockSummaryBase.From(events, finalization, blockTransactionEvents);
     }
 
     /// <summary>

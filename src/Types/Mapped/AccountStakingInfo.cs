@@ -1,5 +1,4 @@
 using Concordium.Sdk.Exceptions;
-using Concordium.Sdk.Types.New;
 
 namespace Concordium.Sdk.Types.Mapped;
 
