@@ -9,6 +9,7 @@ using AccountAddress = Concordium.Sdk.Types.AccountAddress;
 using AccountInfo = Concordium.Sdk.Types.Mapped.AccountInfo;
 using BlockHash = Concordium.Sdk.Types.BlockHash;
 using BlockInfo = Concordium.Sdk.Types.Mapped.BlockInfo;
+using BlockItemSummary = Concordium.Sdk.Types.BlockItemSummary;
 using ConsensusInfo = Concordium.Sdk.Types.Mapped.ConsensusInfo;
 using FinalizationSummary = Concordium.Sdk.Types.New.FinalizationSummary;
 using TransactionHash = Concordium.Sdk.Types.TransactionHash;
@@ -326,14 +327,31 @@ public sealed class ConcordiumClient : IDisposable
     /// A block can contain zero or one finalization record. If a record is
     /// contained then this query will return information about the finalization
     /// session that produced it, including the finalizers eligible for the
-    /// session, their power, and whether they signed this particular record. If
-    /// the block does not exist an exception is thrown is returned.
+    /// session, their power, and whether they signed this particular record.
+    /// If the block contains zero finalization record the finalization summary is null.
+    /// If the block does not exist an exception is thrown is returned.
     /// </summary>
     /// <param name="blockHashInput">Block from where finalization summary will be given.</param>
     public async Task<FinalizationSummary?> GetBlockFinalizationSummaryAsync(IBlockHashInput blockHashInput)
     {
         var finalizationSummary = await this.Raw.GetBlockFinalizationSummaryAsync(blockHashInput.Into());
         return FinalizationSummary.From(finalizationSummary);
+    }
+
+    /// <summary>
+    /// Get the transaction events in a given block. The stream will end when all the
+    /// transaction events for a given block have been returned.
+    /// </summary>
+    /// <param name="blockHashInput">Block from where transactions events will be returned.</param>
+    /// <returns>Summary of a block item with transactional meta data.</returns>
+    /// <exception cref="RpcException">If the block does not exist</exception>
+    public async IAsyncEnumerable<BlockItemSummary> GetBlockTransactionEvents(IBlockHashInput blockHashInput)
+    {
+        var blockTransactionEvents = this.Raw.GetBlockTransactionEvents(blockHashInput.Into());
+        await foreach (var blockItemSummary in blockTransactionEvents)
+        {
+            yield return BlockItemSummary.From(blockItemSummary);
+        }
     }
 
     public async Task<BlockSummaryBase> GetBlockSummaryAsync(BlockHash blockHash)

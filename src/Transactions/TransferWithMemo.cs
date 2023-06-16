@@ -13,7 +13,7 @@ public record TransferWithMemo : AccountTransactionPayload
     /// <summary>
     /// The account transaction type to be used in the serialized payload.
     /// </summary>
-    private const byte TransactionType = (byte)AccountTransactionType.SimpleTransferWithMemo;
+    private const byte TransactionType = (byte)Types.TransactionType.TransferWithMemo;
 
     /// <summary>
     /// Amount to send.
@@ -52,7 +52,7 @@ public record TransferWithMemo : AccountTransactionPayload
     private static byte[] Serialize(CcdAmount amount, AccountAddress receiver, OnChainData memo)
     {
         using var memoryStream = new MemoryStream((int)(
-            sizeof(AccountTransactionType) +
+            sizeof(TransactionType) +
             AccountAddress.BytesLength +
             OnChainData.MaxLength +
             CcdAmount.BytesLength));

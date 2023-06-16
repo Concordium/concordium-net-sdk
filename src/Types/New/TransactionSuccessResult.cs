@@ -40,9 +40,6 @@ public abstract record TransactionResultEvent
     }
 }
 
-public record ModuleDeployed(
-    ModuleReference Contents) : TransactionResultEvent;
-
 public record ContractInitialized(
     ModuleReference Ref,
     ContractAddress Address,

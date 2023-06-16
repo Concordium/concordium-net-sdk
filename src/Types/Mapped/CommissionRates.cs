@@ -1,6 +1,4 @@
-﻿using Concordium.Grpc.V2;
-
-namespace Concordium.Sdk.Types.Mapped;
+﻿namespace Concordium.Sdk.Types.Mapped;
 
 /// <summary>
 /// The commission rates charged by the pool owner.
@@ -9,16 +7,14 @@ namespace Concordium.Sdk.Types.Mapped;
 /// <param name="FinalizationCommission">Fraction of finalization rewards charged by the pool owner.</param>
 /// <param name="BakingCommission">Fraction of baking rewards charged by the pool owner.</param>
 public record CommissionRates(
-    decimal TransactionCommission,
-    decimal FinalizationCommission,
-    decimal BakingCommission)
+    AmountFraction TransactionCommission,
+    AmountFraction FinalizationCommission,
+    AmountFraction BakingCommission)
 {
-    private const decimal MultiplicationFactor = 1 / 100_000m;
     internal static CommissionRates From(Grpc.V2.CommissionRates commissionRates) =>
         new(
-            ToDecimal(commissionRates.Transaction),
-            ToDecimal(commissionRates.Finalization),
-            ToDecimal(commissionRates.Baking)
+            AmountFraction.From(commissionRates.Transaction),
+            AmountFraction.From(commissionRates.Finalization),
+            AmountFraction.From(commissionRates.Baking)
         );
-    private static decimal ToDecimal(AmountFraction amountFraction) => amountFraction.PartsPerHundredThousand * MultiplicationFactor;
 }

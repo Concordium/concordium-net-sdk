@@ -40,9 +40,8 @@ public class AccountBaker : IAccountStakingInfo
 
     private AccountBaker() { }
 
-    internal static AccountBaker From(Grpc.V2.AccountStakingInfo.Types.Baker stakeBaker)
-    {
-        return new AccountBaker
+    internal static AccountBaker From(Grpc.V2.AccountStakingInfo.Types.Baker stakeBaker) =>
+        new()
         {
             BakerId = stakeBaker.BakerInfo.BakerId.Value,
             PendingChange = AccountBakerPendingChange.From(stakeBaker.PendingChange),
@@ -50,7 +49,6 @@ public class AccountBaker : IAccountStakingInfo
             StakedAmount = CcdAmount.From(stakeBaker.StakedAmount),
             BakerPoolInfo = BakerPoolInfo.From(stakeBaker.PoolInfo),
         };
-    }
 }
 
 /// <summary>

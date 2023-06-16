@@ -21,4 +21,6 @@ public readonly struct EnergyAmount
     /// Copies the energy amount represented in big-endian format to byte array.
     /// </summary>
     public byte[] ToBytes() => Serialization.ToBytes(this.Value);
+
+    internal static EnergyAmount From(Grpc.V2.Energy energy) => new(energy.Value);
 }

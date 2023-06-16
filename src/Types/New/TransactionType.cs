@@ -1,4 +1,6 @@
 ﻿
+using Concordium.Sdk.Types.Mapped;
+
 namespace Concordium.Sdk.Types.New;
 
 public abstract class TransactionType
@@ -11,14 +13,14 @@ public abstract class TransactionType
         this.Type = type;
     }
 
-    public static TransactionType<AccountTransactionType> Get(AccountTransactionType? type)
+    public static TransactionType<Types.TransactionType> Get(Types.TransactionType? type)
     {
-        return new TransactionType<AccountTransactionType>(BlockItemKind.AccountTransactionKind, type);
+        return new TransactionType<Types.TransactionType>(BlockItemKind.AccountTransactionKind, type);
     }
 
-    public static TransactionType<CredentialDeploymentTransactionType> Get(CredentialDeploymentTransactionType? type)
+    public static TransactionType<CredentialType> Get(CredentialType? type)
     {
-        return new TransactionType<CredentialDeploymentTransactionType>(BlockItemKind.CredentialDeploymentKind, type);
+        return new TransactionType<CredentialType>(BlockItemKind.CredentialDeploymentKind, type);
     }
 
     public static TransactionType<UpdateTransactionType> Get(UpdateTransactionType? type)

@@ -3,4 +3,7 @@ namespace Concordium.Sdk.Types;
 /// <summary>
 /// Internal short id of the baker.
 /// </summary>
-public record struct BakerId(AccountIndex Id);
+public record struct BakerId(AccountIndex Id)
+{
+    internal static BakerId From(Grpc.V2.BakerId bakerId) => new(new AccountIndex(bakerId.Value));
+}

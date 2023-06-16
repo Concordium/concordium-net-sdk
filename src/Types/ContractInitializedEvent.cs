@@ -51,12 +51,7 @@ public class ContractInitializedEvent
     /// <exception cref="MissingEnumException{ContractVersion}">When contract version not known</exception>
     internal static ContractInitializedEvent From(Grpc.V2.ContractInitializedEvent initializedEvent)
     {
-        var contractVersion = initializedEvent.ContractVersion switch
-        {
-            Grpc.V2.ContractVersion.V0 => ContractVersion.V0,
-            Grpc.V2.ContractVersion.V1 => ContractVersion.V1,
-            _ => throw new MissingEnumException<Grpc.V2.ContractVersion>(initializedEvent.ContractVersion)
-        };
+        var contractVersion = initializedEvent.ContractVersion.Into();
         var moduleReference = new ModuleReference(initializedEvent.OriginRef.Value);
         var contractAddress = ContractAddress.From(initializedEvent.Address);
         var amount = CcdAmount.FromMicroCcd(initializedEvent.Amount.Value);

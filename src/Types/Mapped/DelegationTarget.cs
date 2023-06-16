@@ -10,7 +10,7 @@ public abstract record DelegationTarget
             Grpc.V2.DelegationTarget.TargetOneofCase.Passive =>
                 new PassiveDelegationTarget(),
             Grpc.V2.DelegationTarget.TargetOneofCase.Baker =>
-                new BakerDelegationTarget(stakeDelegatorTarget.Baker.Value),
+                new BakerDelegationTarget(new BakerId(new AccountIndex(stakeDelegatorTarget.Baker.Value))),
             Grpc.V2.DelegationTarget.TargetOneofCase.None =>
                 throw new MissingEnumException<Grpc.V2.DelegationTarget.TargetOneofCase>(
                     stakeDelegatorTarget.TargetCase),
@@ -19,6 +19,12 @@ public abstract record DelegationTarget
         };
 }
 
+/// <summary>
+/// Delegate passively, i.e., to no specific baker.
+/// </summary>
 public record PassiveDelegationTarget : DelegationTarget;
 
-public record BakerDelegationTarget(ulong BakerId) : DelegationTarget;
+/// <summary>
+/// Delegate to a specific baker.
+/// </summary>
+public record BakerDelegationTarget(BakerId BakerId) : DelegationTarget;

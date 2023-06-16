@@ -12,7 +12,7 @@ public record RegisterData : AccountTransactionPayload
     /// <summary>
     /// The account transaction type to be used in the serialized payload.
     /// </summary>
-    private const byte TransactionType = (byte)AccountTransactionType.RegisterData;
+    private const byte TransactionType = (byte)Types.TransactionType.RegisterData;
 
     /// <summary>
     /// The data to be registered on-chain.
@@ -34,7 +34,7 @@ public record RegisterData : AccountTransactionPayload
     private static byte[] Serialize(OnChainData data)
     {
         var buffer = data.ToBytes();
-        var size = sizeof(AccountTransactionType) + buffer.Length;
+        var size = sizeof(TransactionType) + buffer.Length;
         using var memoryStream = new MemoryStream(size);
         memoryStream.WriteByte(TransactionType);
         memoryStream.Write(buffer);

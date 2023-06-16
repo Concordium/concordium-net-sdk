@@ -1,4 +1,6 @@
-﻿namespace Concordium.Sdk.Types.New;
+﻿using Concordium.Sdk.Types.Mapped;
+
+namespace Concordium.Sdk.Types.New;
 
 public record ChainParametersV0(
     decimal ElectionDifficulty,
