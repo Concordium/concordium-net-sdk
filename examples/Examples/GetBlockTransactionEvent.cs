@@ -1,37 +1,50 @@
+using System.Text.Json;
 using Concordium.Sdk.Types.Mapped;
 using Xunit.Abstractions;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace Concordium.Sdk.Examples;
 
 public sealed class GetBlockTransactionEvents : Tests
 {
-    public GetBlockTransactionEvents(ITestOutputHelper output) : base(output)
-    {
-    }
+    private readonly JsonSerializerOptions _jsonSerializerOptions;
+
+    public GetBlockTransactionEvents(ITestOutputHelper output) : base(output) =>
+        this._jsonSerializerOptions = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            Converters = { new BlockItemSummaryDetailsConverter(), new UpdatePayloadConverter() }
+        };
 
     [Fact]
     public async Task RunGetBlockTransactionEvents()
     {
         var idx = 0UL;
-        var awaitResult = true;
-        while (awaitResult)
+        var transactionCount = 0;
+        while (transactionCount < 2)
         {
             var blockHeight = new Absolute(idx);
-            var finalizationSummary = this.Client.GetBlockTransactionEvents(blockHeight);
-            if (finalizationSummary == null)
+            await foreach (var transaction in this.Client.GetBlockTransactionEvents(blockHeight))
             {
-                idx++;
-                continue;
+                transactionCount++;
+                var serialized = JsonSerializer.Serialize(transaction, this._jsonSerializerOptions);
+                this.Output.WriteLine(serialized);
             }
-            awaitResult = false;
-            //
-            // this.Output.WriteLine($"At height {idx} block {finalizationSummary.BlockPointer} had finalization summary");
-            // this.Output.WriteLine($"Finalization round index: {finalizationSummary.Index}, finalization delay: {finalizationSummary.Delay}");
-            // this.Output.WriteLine($"With finalizers");
-            // foreach (var party in finalizationSummary.Finalizers)
-            // {
-            //     this.Output.WriteLine($"Baker: {party.BakerId}, weight in committee: {party.Weight}");
-            // }
+            idx++;
         }
     }
+}
+
+internal sealed class BlockItemSummaryDetailsConverter : System.Text.Json.Serialization.JsonConverter<IBlockItemSummaryDetails>
+{
+    public override IBlockItemSummaryDetails? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) => throw new NotImplementedException();
+
+    public override void Write(Utf8JsonWriter writer, IBlockItemSummaryDetails value, JsonSerializerOptions options) => JsonSerializer.Serialize(writer, value, value.GetType(), options);
+}
+
+internal sealed class UpdatePayloadConverter : System.Text.Json.Serialization.JsonConverter<IUpdatePayload>
+{
+    public override IUpdatePayload? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) => throw new NotImplementedException();
+
+    public override void Write(Utf8JsonWriter writer, IUpdatePayload value, JsonSerializerOptions options) => JsonSerializer.Serialize(writer, value, value.GetType(), options);
 }

@@ -34,11 +34,10 @@ internal static class RootUpdateFactory
 public record RootKeysUpdate(HigherLevelKeys Keys) : IRootUpdate
 {
     internal static RootKeysUpdate From(Grpc.V2.HigherLevelKeys keys) =>
-        new( new HigherLevelKeys(
+        new( new RootKeys(
             keys.Keys.Select(UpdatePublicKey.From).ToArray(),
-            UpdateKeysThreshold.From(keys.Threshold),
-            HigherLevelKeys.KeysKind.Root
-        ));
+            UpdateKeysThreshold.From(keys.Threshold)
+            ));
 }
 
 /// <summary>
@@ -47,11 +46,10 @@ public record RootKeysUpdate(HigherLevelKeys Keys) : IRootUpdate
 public record Level1KeysUpdate(HigherLevelKeys Keys) : IRootUpdate, ILevel1
 {
     internal static Level1KeysUpdate From(Grpc.V2.HigherLevelKeys keys) =>
-        new( new HigherLevelKeys(
+        new( new Level1Keys(
             keys.Keys.Select(UpdatePublicKey.From).ToArray(),
-            UpdateKeysThreshold.From(keys.Threshold),
-            HigherLevelKeys.KeysKind.Level1
-        ));
+            UpdateKeysThreshold.From(keys.Threshold)
+            ));
 }
 
 /// <summary>

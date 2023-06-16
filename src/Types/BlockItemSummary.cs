@@ -7,47 +7,23 @@ namespace Concordium.Sdk.Types;
 /// Summary of the outcome of a block item in structured form.
 /// The summary determines which transaction type it was.
 /// </summary>
-public sealed class BlockItemSummary
+/// <param name="Index">Index of the transaction in the block where it is included.</param>
+/// <param name="EnergyCost">The amount of NRG the transaction cost.</param>
+/// <param name="TransactionHash">Hash of the transaction.</param>
+/// <param name="Details">
+/// Details that are specific to different transaction types.
+/// For successful transactions there is a one to one mapping of transaction
+/// types and variants (together with subvariants) of this type.
+/// </param>
+public sealed record BlockItemSummary(ulong Index, EnergyAmount EnergyCost, TransactionHash TransactionHash, IBlockItemSummaryDetails Details)
 {
-    // private readonly Grpc.V2.BlockItemSummary _blockItemSummary;
-    //
-    // private BlockItemSummary() {}
-    //
-    // // TODO
-    // internal BlockItemSummary(Grpc.V2.BlockItemSummary blockItemSummary) => this._blockItemSummary = blockItemSummary;
-
-    /// <summary>
-    /// Index of the transaction in the block where it is included.
-    /// </summary>
-    public ulong Type { get; init; }
-
-    /// <summary>
-    /// The amount of NRG the transaction cost.
-    /// </summary>
-    public EnergyAmount EnergyCost { get; init; }
-
-    /// <summary>
-    /// Hash of the transaction.
-    /// </summary>
-    public TransactionHash TransactionHash { get; init; }
-
-    /// <summary>
-    /// Details that are specific to different transaction types.
-    /// For successful transactions there is a one to one mapping of transaction
-    /// types and variants (together with subvariants) of this type.
-    /// </summary>
-    public IBlockItemSummaryDetails Details { get; init; }
-
-    private BlockItemSummary() { }
-
     internal static BlockItemSummary From(Grpc.V2.BlockItemSummary blockItemSummary) =>
-        new()
-        {
-            Type = blockItemSummary.Index.Value,
-            EnergyCost = new EnergyAmount(blockItemSummary.EnergyCost.Value),
-            TransactionHash = TransactionHash.From(blockItemSummary.Hash.Value.ToByteArray()),
-            Details = BlockItemSummaryDetailsFactory.From(blockItemSummary)
-        };
+        new(
+            Index: blockItemSummary.Index.Value,
+            EnergyCost: new EnergyAmount(blockItemSummary.EnergyCost.Value),
+            TransactionHash: TransactionHash.From(blockItemSummary.Hash.Value.ToByteArray()),
+            Details: BlockItemSummaryDetailsFactory.From(blockItemSummary)
+        );
 
     /// <summary>
     /// Return whether the transaction was successful, i.e., the intended effect
