@@ -30,7 +30,7 @@ public class GetBlockFinalizationSummary : Tests
             this.Output.WriteLine($"With finalizers");
             foreach (var party in finalizationSummary.Finalizers)
             {
-                this.Output.WriteLine($"Baker: {party.BakerId}, weight in committee: {party.Weight}");
+                this.Output.WriteLine($"Baker: {party.BakerId}, weight in committee: {party.Weight} with signature present: {party.SignaturePresent}");
             }
         }
     }

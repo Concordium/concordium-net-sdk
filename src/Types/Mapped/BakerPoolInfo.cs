@@ -5,28 +5,19 @@
 /// This information is added with the introduction of delegation in protocol
 /// version 4.
 /// </summary>
-public class BakerPoolInfo
+/// <param name="CommissionRates">The commission rates charged by the pool owner.</param>
+/// <param name="OpenStatus">Whether the pool allows delegators.</param>
+/// <param name="MetadataUrl">The URL that links to the metadata about the pool.</param>
+public record BakerPoolInfo(
+    CommissionRates CommissionRates,
+    BakerPoolOpenStatus OpenStatus,
+    string MetadataUrl)
 {
-    /// <summary>
-    /// The commission rates charged by the pool owner.
-    /// </summary>
-    public CommissionRates CommissionRates { get; init; }
-    /// <summary>
-    /// Whether the pool allows delegators.
-    /// </summary>
-    public BakerPoolOpenStatus OpenStatus { get; init; }
-    /// <summary>
-    /// The URL that links to the metadata about the pool.
-    /// </summary>
-    public string MetadataUrl { get; init; }
-
-    private BakerPoolInfo() { }
-
     internal static BakerPoolInfo From(Concordium.Grpc.V2.BakerPoolInfo poolInfo) =>
-        new()
-        {
-            CommissionRates = CommissionRates.From(poolInfo.CommissionRates),
-            OpenStatus = BakerPoolOpenStatus.OpenForAll,
-            MetadataUrl = poolInfo.Url
-        };
+        new
+        (
+            CommissionRates: CommissionRates.From(poolInfo.CommissionRates),
+            OpenStatus: BakerPoolOpenStatus.OpenForAll,
+            MetadataUrl: poolInfo.Url
+        );
 }

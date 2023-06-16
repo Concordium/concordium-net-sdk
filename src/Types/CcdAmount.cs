@@ -9,7 +9,8 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public readonly struct CcdAmount : IEquatable<CcdAmount>, IComparable<CcdAmount>
 {
-    public static CcdAmount Zero = CcdAmount.FromCcd(0);
+    public static CcdAmount Zero { get; } = FromCcd(0);
+
     public const uint BytesLength = 8;
 
     /// <summary>
@@ -122,4 +123,8 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>, IComparable<CcdAmount>
     public static bool operator !=(CcdAmount? left, CcdAmount? right) => !Equals(left, right);
 
     public override int GetHashCode() => this.Value.GetHashCode();
+
+    public static bool operator <=(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) <= 0;
+
+    public static bool operator >=(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) >= 0;
 }
