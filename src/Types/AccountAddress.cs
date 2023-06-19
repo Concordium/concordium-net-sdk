@@ -9,7 +9,7 @@ namespace Concordium.Sdk.Types;
 ///
 /// The address of an account is a 32-byte value which uniquely identifies the account.
 /// </summary>
-public readonly struct AccountAddress : IEquatable<AccountAddress>, IAddress
+public sealed record  AccountAddress : IEquatable<AccountAddress>, IAddress
 {
     public const uint BytesLength = 32;
 
@@ -151,14 +151,7 @@ public readonly struct AccountAddress : IEquatable<AccountAddress>, IAddress
     public Grpc.V2.AccountIdentifierInput ToAccountIdentifierInput() =>
         new() { Address = this.ToProto() };
 
-    public bool Equals(AccountAddress other) => this._value.SequenceEqual(other._value);
-
-    public override bool Equals(object? obj) =>
-        obj is not null && obj is AccountAddress other && this.Equals(other);
+    public bool Equals(AccountAddress? other) => other is not null && this._value.SequenceEqual(other._value);
 
     public override int GetHashCode() => Helpers.HashCode.GetHashCodeByteArray(this._value);
-
-    public static bool operator ==(AccountAddress left, AccountAddress right) => left.Equals(right);
-
-    public static bool operator !=(AccountAddress left, AccountAddress right) => !(left == right);
 }

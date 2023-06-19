@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Concordium.Sdk.Crypto;
+using Concordium.Sdk.Types;
 using Concordium.Sdk.Wallets;
 using FluentAssertions;
 using Xunit;
@@ -25,14 +26,14 @@ public class WalletAccountTests
         var wallet = WalletAccount.FromWalletKeyExportFormat(json);
 
         // Get the sign key at the specified account credential index, key index pair.
-        wallet.GetSignerEntries().TryGetValue(credIndex, out var keys);
+        wallet.GetSignerEntries().TryGetValue(new AccountCredentialIndex(credIndex), out var keys);
 
         if (keys == null)
         {
             throw new ArgumentException($"No sign keys with account credential index {credIndex}.");
         }
 
-        keys.TryGetValue(keyIndex, out var key);
+        keys.TryGetValue(new AccountKeyIndex(keyIndex), out var key);
 
         if (key == null)
         {

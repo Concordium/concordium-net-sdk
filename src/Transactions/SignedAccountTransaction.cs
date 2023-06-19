@@ -12,40 +12,16 @@ namespace Concordium.Sdk.Transactions;
 /// <see cref="PreparedAccountTransaction.Sign"/> method with an implementer of
 /// <see cref="ITransactionSigner"/>.
 /// </summary>
-public record SignedAccountTransaction
-{
-    /// <summary>
-    /// Header of the signed account transaction.
-    /// </summary>
-    public AccountTransactionHeader Header { get; init; }
-
-    /// <summary>
-    /// Payload of the signed account transaction.
-    /// </summary>
-    public AccountTransactionPayload Payload { get; init; }
-
-    /// <summary>
-    /// Signature of the signed account transaction.
-    /// </summary>
-    public AccountTransactionSignature Signature { get; init; }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="SignedAccountTransaction"/> class.
-    /// </summary>
-    /// <param name="data">Header of the signed account transaction.</param>
-    /// <param name="payload">Payload of the signed account transaction.</param>
-    /// <param name="signature">Signature of the signed account transaction.</param>
-    public SignedAccountTransaction(
-        AccountTransactionHeader header,
-        AccountTransactionPayload payload,
-        AccountTransactionSignature signature
+/// <param name="Header">Header of the signed account transaction.</param>
+/// <param name="Payload">Payload of the signed account transaction.</param>
+/// <param name="Signature">Signature of the signed account transaction.</param>
+public record SignedAccountTransaction(
+    AccountTransactionHeader Header,
+    AccountTransactionPayload Payload,
+    AccountTransactionSignature Signature
     )
-    {
-        this.Header = header;
-        this.Payload = payload;
-        this.Signature = signature;
-    }
 
+{
     public AccountTransaction ToProto() =>
         new()
         {

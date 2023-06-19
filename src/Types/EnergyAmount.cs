@@ -5,17 +5,10 @@ namespace Concordium.Sdk.Types;
 /// <summary>
 /// Represents an amount of energy.
 /// </summary>
-public readonly struct EnergyAmount
+/// <param name="Value">Value of the energy amount.</param>
+public readonly record struct EnergyAmount(ulong Value)
 {
     public const uint BytesLength = sizeof(ulong);
-    public readonly ulong Value { get; init; }
-
-    public EnergyAmount(ulong value) => this.Value = value;
-
-    public static implicit operator EnergyAmount(ulong value) => new(value);
-
-    public static implicit operator ulong(EnergyAmount value) => value.Value;
-
 
     /// <summary>
     /// Copies the energy amount represented in big-endian format to byte array.

@@ -8,7 +8,7 @@ namespace Concordium.Sdk.Types;
 ///
 /// A transaction can not be included in a block if its expiration time is before the block (slot) time.
 /// </summary>
-public readonly struct Expiry : IEquatable<Expiry>
+public readonly record struct Expiry : IEquatable<Expiry>
 {
     public const int BytesLength = sizeof(ulong);
 
@@ -103,30 +103,6 @@ public readonly struct Expiry : IEquatable<Expiry>
     /// </summary>
     public Grpc.V2.TransactionTime ToProto() =>
         new() { Value = (ulong)this._timestamp.ToUnixTimeSeconds() };
-
-    public bool Equals(Expiry other) => this._timestamp.EqualsExact(other._timestamp);
-
-    public override bool Equals(object? obj)
-    {
-        if (obj is null)
-        {
-            return false;
-        }
-
-        if (obj.GetType() != this.GetType())
-        {
-            return false;
-        }
-
-        var other = (Expiry)obj;
-        return this.Equals(other);
-    }
-
-    public override int GetHashCode() => this._timestamp.GetHashCode();
-
-    public static bool operator ==(Expiry? left, Expiry? right) => Equals(left, right);
-
-    public static bool operator !=(Expiry? left, Expiry? right) => !Equals(left, right);
 
     public static bool operator <(Expiry left, Expiry right) => left._timestamp < right._timestamp;
 

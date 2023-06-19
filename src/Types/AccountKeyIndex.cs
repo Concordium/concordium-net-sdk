@@ -13,16 +13,9 @@ namespace Concordium.Sdk.Types;
 /// index of the account and the key index of a key belonging to the
 /// corresponding credential uniquely identifies that key.
 /// </summary>
-public readonly struct AccountKeyIndex
+/// <param name="Value">An account key index represented by a <see cref="byte"/>.</param>
+public readonly record struct AccountKeyIndex(byte Value)
 {
-    public readonly byte Value { get; init; }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="AccountKeyIndex"/> class.
-    /// </summary>
-    /// <param name="value">An account key index represented by a <see cref="byte"/>.</param>
-    public AccountKeyIndex(byte value) => this.Value = value;
-
     /// <summary>
     /// Creates an instance from a string representing a <see cref="byte"/> value.
     /// </summary>
@@ -36,8 +29,4 @@ public readonly struct AccountKeyIndex
         }
         throw new ArgumentException($"Could not parse '{index}' as a byte value.");
     }
-
-    public static implicit operator AccountKeyIndex(byte value) => new(value);
-
-    public static implicit operator byte(AccountKeyIndex accountKeyIndex) => accountKeyIndex.Value;
 }

@@ -6,8 +6,10 @@ namespace Concordium.Sdk.Crypto;
 /// Represents a (secret) sign key of an ed25519 keypair.
 ///
 /// Used for signing transactions.
+///
+/// Equality are by comparing elements of underlying byte array.
 /// </summary>
-public class Ed25519SignKey : ISigner
+public sealed record Ed25519SignKey : ISigner, IEquatable<Ed25519SignKey>
 {
     /// <summary>
     /// The length of an ed25519 (secret) sign key in bytes.
@@ -80,4 +82,21 @@ public class Ed25519SignKey : ISigner
         using var key = Key.Import(algorithm, this._value, KeyBlobFormat.RawPrivateKey);
         return algorithm.Sign(key, bytes);
     }
+
+    public bool Equals(Ed25519SignKey? other)
+    {
+        if (ReferenceEquals(null, other))
+        {
+            return false;
+        }
+
+        if (ReferenceEquals(this, other))
+        {
+            return true;
+        }
+
+        return this._value.SequenceEqual(other._value);
+    }
+
+    public override int GetHashCode() => Helpers.HashCode.GetHashCodeByteArray(this._value);
 }

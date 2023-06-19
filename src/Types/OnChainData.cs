@@ -10,7 +10,7 @@ namespace Concordium.Sdk.Types;
 /// This can be any data which is at most <see cref="MaxLength"/> bytes, but the convention is
 /// to use CBOR encoded data.
 /// </summary>
-public class OnChainData : IEquatable<OnChainData>
+public sealed record OnChainData : IEquatable<OnChainData>
 {
     public const uint MaxLength = 256;
 
@@ -126,31 +126,7 @@ public class OnChainData : IEquatable<OnChainData>
     /// </summary>
     public override string ToString() => Convert.ToHexString(this._value).ToLowerInvariant();
 
-    public override bool Equals(object? obj)
-    {
-        if (obj is null)
-        {
-            return false;
-        }
-
-        if (obj.GetType() != this.GetType())
-        {
-            return false;
-        }
-
-        var other = (OnChainData)obj;
-        return this.Equals(other);
-    }
-
-    public virtual bool Equals(OnChainData? other)
-    {
-        if (other is null)
-        {
-            return false;
-        }
-
-        return this._value.SequenceEqual(other._value);
-    }
+    public bool Equals(OnChainData? other) => other is not null && this._value.SequenceEqual(other._value);
 
     public override int GetHashCode() => Helpers.HashCode.GetHashCodeByteArray(this._value);
 }

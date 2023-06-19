@@ -12,7 +12,7 @@ namespace Concordium.Sdk.Types;
 ///
 /// The address is usually provided as a hex encoded string.
 /// </summary>
-public record BlockHash : Hash
+public sealed record BlockHash : Hash
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="BlockHash"/> class.

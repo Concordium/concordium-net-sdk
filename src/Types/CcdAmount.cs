@@ -7,7 +7,7 @@ namespace Concordium.Sdk.Types;
 ///
 /// Note that 1_000_000 µCCD is equal to 1 CCD.
 /// </summary>
-public readonly struct CcdAmount : IEquatable<CcdAmount>
+public readonly record struct CcdAmount
 {
     public const uint BytesLength = 8;
 
@@ -104,14 +104,4 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>
     /// Copies the CCD amuunt represented in big-endian format to  byte array.
     /// </summary>
     public byte[] ToBytes() => Serialization.ToBytes(this.Value);
-
-    public bool Equals(CcdAmount other) => this.Value == other.Value;
-
-    public override bool Equals(object? obj) => obj is CcdAmount other && this.Equals(other);
-
-    public static bool operator ==(CcdAmount? left, CcdAmount? right) => Equals(left, right);
-
-    public static bool operator !=(CcdAmount? left, CcdAmount? right) => !Equals(left, right);
-
-    public override int GetHashCode() => this.Value.GetHashCode();
 }

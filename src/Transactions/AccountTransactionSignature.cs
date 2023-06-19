@@ -21,16 +21,12 @@ namespace Concordium.Sdk.Transactions;
 /// Producers of <see cref="AccountTransactionSignature"/>s should implement
 /// <see cref="ITransactionSigner"/>.
 /// </summary>
-public class AccountTransactionSignature
+public sealed record AccountTransactionSignature
 {
     /// <summary>
     /// Internal representation of the signature. This is a map from account credential indices to account signature maps.
     /// </summary>
-    public ImmutableDictionary<
-        AccountCredentialIndex,
-        AccountSignatureMap
-    > SignatureMap
-    { get; init; }
+    public ImmutableDictionary<AccountCredentialIndex, AccountSignatureMap> SignatureMap { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountTransactionSignature"/> class.
@@ -73,7 +69,7 @@ public class AccountTransactionSignature
         var accountTransactionSignature = new Grpc.V2.AccountTransactionSignature();
         this.SignatureMap
             .ToList()
-            .ForEach(x => accountTransactionSignature.Signatures.Add(x.Key, x.Value.ToProto()));
+            .ForEach(x => accountTransactionSignature.Signatures.Add(x.Key.Value, x.Value.ToProto()));
         return accountTransactionSignature;
     }
 }
