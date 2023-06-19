@@ -70,7 +70,8 @@ public sealed class ConcordiumClient : IDisposable
     {
         // Send the transaction as a block item request.
         var txHash = await this.Raw
-            .SendBlockItemAsync(transaction.ToSendBlockItemRequest());
+            .SendBlockItemAsync(transaction.ToSendBlockItemRequest())
+            .ConfigureAwait(false);
 
         // Return the "native" SDK type.
         return TransactionHash.From(txHash.Value.ToByteArray());
@@ -129,7 +130,8 @@ public sealed class ConcordiumClient : IDisposable
     )
     {
         var next = await this.Raw
-            .GetNextAccountSequenceNumberAsync(accountAddress.ToProto());
+            .GetNextAccountSequenceNumberAsync(accountAddress.ToProto())
+            .ConfigureAwait(false);
 
         return (AccountSequenceNumber.From(next.SequenceNumber.Value), next.AllFinal);
     }
