@@ -85,7 +85,7 @@ public sealed record Ed25519SignKey : ISigner, IEquatable<Ed25519SignKey>
 
     public bool Equals(Ed25519SignKey? other)
     {
-        if (ReferenceEquals(null, other))
+        if (other is null)
         {
             return false;
         }
