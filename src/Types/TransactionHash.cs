@@ -3,7 +3,7 @@ namespace Concordium.Sdk.Types;
 /// <summary>
 /// Represents a transaction hash.
 /// </summary>
-public record TransactionHash : Hash
+public sealed record TransactionHash : Hash
 {
     private TransactionHash(string transactionHashAsBase16String)
         : base(transactionHashAsBase16String) { }

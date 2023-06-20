@@ -1,6 +1,6 @@
 ﻿namespace Concordium.Sdk.Types.Views;
 
-public record AccountBalanceUpdate(
+public sealed record AccountBalanceUpdate(
     AccountAddress AccountAddress,
     long AmountAdjustment,
     BalanceUpdateType BalanceUpdateType,

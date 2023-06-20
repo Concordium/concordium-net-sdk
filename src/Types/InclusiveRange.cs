@@ -6,7 +6,7 @@ namespace Concordium.Sdk.Types;
 /// <param name="Min">Min bound</param>
 /// <param name="Max">Max bound</param>
 /// <typeparam name="T"></typeparam>
-public record InclusiveRange<T>(T Min, T Max)
+public sealed record InclusiveRange<T>(T Min, T Max)
 {
     internal static InclusiveRange<AmountFraction> From(Grpc.V2.InclusiveRangeAmountFraction range) =>
         new InclusiveRange<AmountFraction>(

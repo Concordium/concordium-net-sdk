@@ -72,7 +72,7 @@ internal static class UpdatePayloadFactory
 /// way, and bakers will need to update their node software to support the
 /// update.
 /// </summary>
-public record Protocol(string Message, string SpecificationUrl, Sha256Hash SpecificationHash, byte[] SpecificationAuxiliaryData) : IUpdatePayload
+public sealed record Protocol(string Message, string SpecificationUrl, Sha256Hash SpecificationHash, byte[] SpecificationAuxiliaryData) : IUpdatePayload
 {
     internal static Protocol From(Grpc.V2.ProtocolUpdate update) =>
         new(
@@ -87,7 +87,7 @@ public record Protocol(string Message, string SpecificationUrl, Sha256Hash Speci
 /// Representation of the election difficulty as parts per `100_000`. The
 /// election difficulty is never more than `1`.
 /// </summary>
-public record ElectionDifficulty(AmountFraction PartsPerHundredThousands) : IUpdatePayload
+public sealed record ElectionDifficulty(AmountFraction PartsPerHundredThousands) : IUpdatePayload
 {
     internal static ElectionDifficulty From(Grpc.V2.ElectionDifficulty fraction) =>
         new(AmountFraction.From(fraction.Value));
@@ -97,7 +97,7 @@ public record ElectionDifficulty(AmountFraction PartsPerHundredThousands) : IUpd
 /// Exchange rate for euro pr. energy.
 /// </summary>
 /// <param name="ExchangeRate"></param>
-public record EuroPerEnergy(ExchangeRate ExchangeRate) : IUpdatePayload
+public sealed record EuroPerEnergy(ExchangeRate ExchangeRate) : IUpdatePayload
 {
     internal static EuroPerEnergy From(Grpc.V2.ExchangeRate rate) => new(ExchangeRate.From(rate));
 }
@@ -106,7 +106,7 @@ public record EuroPerEnergy(ExchangeRate ExchangeRate) : IUpdatePayload
 /// Exchange rate for micro ccd pr. euro.
 /// </summary>
 /// <param name="ExchangeRate"></param>
-public record MicroCcdPerEuro(ExchangeRate ExchangeRate) : IUpdatePayload
+public sealed record MicroCcdPerEuro(ExchangeRate ExchangeRate) : IUpdatePayload
 {
     internal static MicroCcdPerEuro From(Grpc.V2.ExchangeRate rate) => new(ExchangeRate.From(rate));
 }
@@ -114,7 +114,7 @@ public record MicroCcdPerEuro(ExchangeRate ExchangeRate) : IUpdatePayload
 /// <summary>
 /// Update of the foundation account.
 /// </summary>
-public record FoundationAccount(AccountAddress AccountAddress) : IUpdatePayload
+public sealed record FoundationAccount(AccountAddress AccountAddress) : IUpdatePayload
 {
     internal static FoundationAccount From(Grpc.V2.AccountAddress address) => new(AccountAddress.From(address));
 }
@@ -125,7 +125,7 @@ public record FoundationAccount(AccountAddress AccountAddress) : IUpdatePayload
 /// <param name="MintPerSlot">The increase in CCD amount per slot.</param>
 /// <param name="BakingReward">Fraction of newly minted CCD allocated to baker rewards.</param>
 /// <param name="FinalizationReward">Fraction of newly minted CCD allocated to finalization rewards.</param>
-public record MintDistributionCpv0(MintRate MintPerSlot, AmountFraction BakingReward, AmountFraction FinalizationReward) : IUpdatePayload
+public sealed record MintDistributionCpv0(MintRate MintPerSlot, AmountFraction BakingReward, AmountFraction FinalizationReward) : IUpdatePayload
 {
     internal static MintDistributionCpv0 From(Grpc.V2.MintDistributionCpv0 chainParameterVersion0) =>
         new(
@@ -143,7 +143,7 @@ public record MintDistributionCpv0(MintRate MintPerSlot, AmountFraction BakingRe
 /// The fraction that goes to the gas account. The remaining fraction will
 /// go to the foundation.
 /// </param>
-public record TransactionFeeDistribution(AmountFraction Baker, AmountFraction GasAccount) : IUpdatePayload
+public sealed record TransactionFeeDistribution(AmountFraction Baker, AmountFraction GasAccount) : IUpdatePayload
 {
     internal static TransactionFeeDistribution From(Grpc.V2.TransactionFeeDistribution distribution) =>
         new(
@@ -160,7 +160,7 @@ public record TransactionFeeDistribution(AmountFraction Baker, AmountFraction Ga
 /// <param name="FinalizationProof">Fraction paid for including a finalization proof in a block.</param>
 /// <param name="AccountCreation">Fraction paid for including each account creation transaction in a block.</param>
 /// <param name="ChainUpdate">Fraction paid for including an update transaction in a block.</param>
-public record GasRewards(AmountFraction Baker, AmountFraction FinalizationProof, AmountFraction AccountCreation, AmountFraction ChainUpdate) : IUpdatePayload
+public sealed record GasRewards(AmountFraction Baker, AmountFraction FinalizationProof, AmountFraction AccountCreation, AmountFraction ChainUpdate) : IUpdatePayload
 {
     internal static GasRewards From(Grpc.V2.GasRewards rewards) =>
         new(
@@ -175,7 +175,7 @@ public record GasRewards(AmountFraction Baker, AmountFraction FinalizationProof,
 /// Parameters related to becoming a baker that apply to protocol versions 1-3.
 /// </summary>
 /// <param name="MinimumThresholdForBaking">Minimum amount of CCD that an account must stake to become a baker.</param>
-public record BakerStakeThreshold(CcdAmount MinimumThresholdForBaking) : IUpdatePayload
+public sealed record BakerStakeThreshold(CcdAmount MinimumThresholdForBaking) : IUpdatePayload
 {
     internal static BakerStakeThreshold From(Grpc.V2.BakerStakeThreshold threshold) =>
         new(threshold.BakerStakeThreshold_.ToCcd());
@@ -185,7 +185,7 @@ public record BakerStakeThreshold(CcdAmount MinimumThresholdForBaking) : IUpdate
 /// An update with root keys of some other set of governance keys, or the root
 /// keys themselves.
 /// </summary>
-public record Root(IRootUpdate RootUpdate) : IUpdatePayload
+public sealed record Root(IRootUpdate RootUpdate) : IUpdatePayload
 {
     internal static Root From(Grpc.V2.RootUpdate root) => new(RootUpdateFactory.From(root));
 }
@@ -193,7 +193,7 @@ public record Root(IRootUpdate RootUpdate) : IUpdatePayload
 /// <summary>
 /// Update to anonymity revoker.
 /// </summary>
-public record AddAnonymityRevokerUpdate(ArInfo ArInfo) : IUpdatePayload
+public sealed record AddAnonymityRevokerUpdate(ArInfo ArInfo) : IUpdatePayload
 {
     internal static AddAnonymityRevokerUpdate From(Grpc.V2.ArInfo info) =>
         new(ArInfo.From(info));
@@ -202,7 +202,7 @@ public record AddAnonymityRevokerUpdate(ArInfo ArInfo) : IUpdatePayload
 /// <summary>
 /// Update to identity provider.
 /// </summary>
-public record AddIdentityProviderUpdate(IpInfo IpInfo) : IUpdatePayload
+public sealed record AddIdentityProviderUpdate(IpInfo IpInfo) : IUpdatePayload
 {
     internal static AddIdentityProviderUpdate From(Grpc.V2.IpInfo info) => new(IpInfo.From(info));
 }
@@ -210,7 +210,7 @@ public record AddIdentityProviderUpdate(IpInfo IpInfo) : IUpdatePayload
 /// <summary>
 /// Update to cooldown parameters with chain parameter version 1.
 /// </summary>
-public record CooldownParametersCpv1Update(CooldownParameters CooldownParameters) : IUpdatePayload
+public sealed record CooldownParametersCpv1Update(CooldownParameters CooldownParameters) : IUpdatePayload
 {
     internal static CooldownParametersCpv1Update From(Grpc.V2.CooldownParametersCpv1 cooldown) =>
         new(CooldownParameters.From(cooldown));
@@ -219,7 +219,7 @@ public record CooldownParametersCpv1Update(CooldownParameters CooldownParameters
 /// <summary>
 /// Update to pool- and delegation parameters.
 /// </summary>
-public record PoolParametersCpv1Update(PoolParameters PoolParameters) : IUpdatePayload
+public sealed record PoolParametersCpv1Update(PoolParameters PoolParameters) : IUpdatePayload
 {
     internal static PoolParametersCpv1Update From(Grpc.V2.PoolParametersCpv1 pool) =>
         new(PoolParameters.From(pool));
@@ -229,7 +229,7 @@ public record PoolParametersCpv1Update(PoolParameters PoolParameters) : IUpdateP
 /// Update to mint rate pr day and reward period length.
 /// </summary>
 /// <param name="TimeParameters"></param>
-public record TimeParametersCpv1(TimeParameters TimeParameters) : IUpdatePayload
+public sealed record TimeParametersCpv1(TimeParameters TimeParameters) : IUpdatePayload
 {
     internal static TimeParametersCpv1 From(Grpc.V2.TimeParametersCpv1 timeParametersCpv1) => new(TimeParameters.From(timeParametersCpv1));
 }
@@ -239,7 +239,7 @@ public record TimeParametersCpv1(TimeParameters TimeParameters) : IUpdatePayload
 /// </summary>
 /// <param name="BakingReward">Fraction of newly minted CCD allocated to baker rewards.</param>
 /// <param name="FinalizationReward">Fraction of newly minted CCD allocated to finalization rewards.</param>
-public record MintDistributionCpv1(AmountFraction BakingReward, AmountFraction FinalizationReward) : IUpdatePayload
+public sealed record MintDistributionCpv1(AmountFraction BakingReward, AmountFraction FinalizationReward) : IUpdatePayload
 {
     internal static MintDistributionCpv1 From(Grpc.V2.MintDistributionCpv1 info) =>
         new(
@@ -256,7 +256,7 @@ public record MintDistributionCpv1(AmountFraction BakingReward, AmountFraction F
 /// <param name="Baker">Fraction of the previous gas account paid to the baker.</param>
 /// <param name="AccountCreation">Fraction paid for including each account creation transaction in a block.</param>
 /// <param name="ChainUpdate">Fraction paid for including an update transaction in a block.</param>
-public record GasRewardsCpv2Update
+public sealed record GasRewardsCpv2Update
     (AmountFraction Baker, AmountFraction AccountCreation, AmountFraction ChainUpdate) : IUpdatePayload
 {
     internal static GasRewardsCpv2Update From(Grpc.V2.GasRewardsCpv2 update) =>
@@ -270,7 +270,7 @@ public record GasRewardsCpv2Update
 /// <summary>
 /// The consensus timeouts were updated (chain parameters version 2).
 /// </summary>
-public record TimeoutParametersUpdate(TimeoutParameters TimeoutParameters) : IUpdatePayload
+public sealed record TimeoutParametersUpdate(TimeoutParameters TimeoutParameters) : IUpdatePayload
 {
     internal static TimeoutParametersUpdate From(Grpc.V2.TimeoutParameters parameters) => new(TimeoutParameters.From(parameters));
 }
@@ -279,7 +279,7 @@ public record TimeoutParametersUpdate(TimeoutParameters TimeoutParameters) : IUp
 /// The minimum time between blocks was updated (chain parameters version 2).
 /// </summary>
 /// <param name="Duration">Min time between blocks.</param>
-public record MinBlockTimeUpdate(TimeSpan Duration) : IUpdatePayload
+public sealed record MinBlockTimeUpdate(TimeSpan Duration) : IUpdatePayload
 {
     internal static MinBlockTimeUpdate From(Grpc.V2.Duration duration) => new(TimeSpan.FromMilliseconds(duration.Value));
 }
@@ -288,7 +288,7 @@ public record MinBlockTimeUpdate(TimeSpan Duration) : IUpdatePayload
 /// The block energy limit was updated (chain parameters version 2).
 /// </summary>
 /// <param name="EnergyLimit">New Energy limit</param>
-public record BlockEnergyLimitUpdate(EnergyAmount EnergyLimit) : IUpdatePayload
+public sealed record BlockEnergyLimitUpdate(EnergyAmount EnergyLimit) : IUpdatePayload
 {
     internal static BlockEnergyLimitUpdate From(Grpc.V2.Energy energy) => new(EnergyAmount.From(energy));
 }
@@ -296,7 +296,7 @@ public record BlockEnergyLimitUpdate(EnergyAmount EnergyLimit) : IUpdatePayload
 /// <summary>
 /// Finalization committee parameters (chain parameters version 2).
 /// </summary>
-public record FinalizationCommitteeParametersUpdate
+public sealed record FinalizationCommitteeParametersUpdate
     (FinalizationCommitteeParameters FinalizationCommitteeParameters) : IUpdatePayload
 {
     internal static FinalizationCommitteeParametersUpdate From(Grpc.V2.FinalizationCommitteeParameters parameters) => new(FinalizationCommitteeParameters.From(parameters));

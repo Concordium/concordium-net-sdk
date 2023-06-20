@@ -7,7 +7,7 @@ namespace Concordium.Sdk.Types;
 /// <summary>
 /// An update with level 1 keys of either level 1 or level 2 keys.
 /// </summary>
-public record Level1(ILevel1 Level1Update) : IUpdatePayload
+public sealed record Level1(ILevel1 Level1Update) : IUpdatePayload
 {
     internal static Level1 From(Grpc.V2.Level1Update level1Update) => new(Level1Factory.From(level1Update));
 }

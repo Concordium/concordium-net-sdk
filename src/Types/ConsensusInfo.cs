@@ -99,7 +99,7 @@ namespace Concordium.Sdk.Types;
 /// finalizations. Will be `None` if there are no finalizations yet
 /// since the node start.
 /// </param>
-public record ConsensusInfo(
+public sealed record ConsensusInfo(
     BlockHash BestBlock,
     BlockHash GenesisBlock,
     DateTimeOffset GenesisTime,

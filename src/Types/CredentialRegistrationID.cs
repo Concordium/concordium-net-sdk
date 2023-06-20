@@ -6,7 +6,7 @@ namespace Concordium.Sdk.Types;
 /// the same PRF key, but different counter values cannot easily be linked
 /// together.
 /// </summary>
-public record CredentialRegistrationId(byte[] Id)
+public sealed record CredentialRegistrationId(byte[] Id)
 {
     internal static CredentialRegistrationId From(Grpc.V2.CredentialRegistrationId id) => new(id.Value.ToByteArray());
 }

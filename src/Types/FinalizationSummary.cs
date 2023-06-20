@@ -13,7 +13,7 @@ namespace Concordium.Sdk.Types;
 /// List of all finalizers with information about whether they signed the
 /// finalization record or not.
 /// </param>
-public record FinalizationSummary(
+public sealed record FinalizationSummary(
     BlockHash BlockPointer,
     ulong Index,
     ulong Delay,

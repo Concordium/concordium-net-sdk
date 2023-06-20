@@ -12,7 +12,7 @@ namespace Concordium.Sdk.Types.Baker;
 /// A boolean which indicates whether it increased
 /// (`true`) or decreased (`false`).
 /// </param>
-public record BakerStakeUpdatedData(BakerId BakerId, CcdAmount NewStake, bool Increased)
+public sealed record BakerStakeUpdatedData(BakerId BakerId, CcdAmount NewStake, bool Increased)
 {
     internal static BakerStakeUpdatedData? From(Grpc.V2.BakerStakeUpdatedData? data)
     {

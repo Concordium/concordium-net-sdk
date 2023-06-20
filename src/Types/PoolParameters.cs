@@ -19,7 +19,7 @@ namespace Concordium.Sdk.Types;
 /// The maximum leverage that a baker can have as a ratio of total stake
 /// to equity capital.
 /// </param>
-public record PoolParameters(
+public sealed record PoolParameters(
     AmountFraction PassiveFinalizationCommission,
     AmountFraction PassiveBakingCommission,
     AmountFraction PassiveTransactionCommission,

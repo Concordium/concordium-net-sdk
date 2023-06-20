@@ -37,7 +37,7 @@ internal static class DelegationEventFactory
 
 /// <param name="DelegatorId">Delegator's id</param>
 /// <param name="NewStake">New stake</param>
-public record DelegationStakeIncreased(DelegatorId DelegatorId, CcdAmount NewStake) : IDelegationEvent
+public sealed record DelegationStakeIncreased(DelegatorId DelegatorId, CcdAmount NewStake) : IDelegationEvent
 {
     internal static DelegationStakeIncreased From(Grpc.V2.DelegationEvent.Types.DelegationStakeIncreased delegation) =>
         new(
@@ -48,7 +48,7 @@ public record DelegationStakeIncreased(DelegatorId DelegatorId, CcdAmount NewSta
 
 /// <param name="DelegatorId">Delegator's id</param>
 /// <param name="NewStake">New stake</param>
-public record DelegationStakeDecreased(DelegatorId DelegatorId, CcdAmount NewStake) : IDelegationEvent
+public sealed record DelegationStakeDecreased(DelegatorId DelegatorId, CcdAmount NewStake) : IDelegationEvent
 {
     internal static DelegationStakeDecreased From(Grpc.V2.DelegationEvent.Types.DelegationStakeDecreased delegation) =>
         new(
@@ -59,7 +59,7 @@ public record DelegationStakeDecreased(DelegatorId DelegatorId, CcdAmount NewSta
 
 /// <param name="DelegatorId">Delegator's id</param>
 /// <param name="RestakeEarnings">Whether earnings will be restaked</param>
-public record DelegationSetRestakeEarnings(DelegatorId DelegatorId, bool RestakeEarnings) : IDelegationEvent
+public sealed record DelegationSetRestakeEarnings(DelegatorId DelegatorId, bool RestakeEarnings) : IDelegationEvent
 {
     internal static DelegationSetRestakeEarnings From(Grpc.V2.DelegationEvent.Types.DelegationSetRestakeEarnings delegation) =>
         new(
@@ -70,7 +70,7 @@ public record DelegationSetRestakeEarnings(DelegatorId DelegatorId, bool Restake
 
 /// <param name="DelegatorId">Delegator's id</param>
 /// <param name="DelegationTarget">New delegation target</param>
-public record DelegationSetDelegationTarget
+public sealed record DelegationSetDelegationTarget
     (DelegatorId DelegatorId, DelegationTarget DelegationTarget) : IDelegationEvent
 {
     internal static DelegationSetDelegationTarget From(Grpc.V2.DelegationEvent.Types.DelegationSetDelegationTarget delegation) =>
@@ -81,7 +81,7 @@ public record DelegationSetDelegationTarget
 }
 
 /// <param name="DelegatorId">Delegator's id</param>
-public record DelegationAdded(DelegatorId DelegatorId) : IDelegationEvent
+public sealed record DelegationAdded(DelegatorId DelegatorId) : IDelegationEvent
 {
     internal static DelegationAdded From(Grpc.V2.DelegatorId id) =>
         new(
@@ -90,7 +90,7 @@ public record DelegationAdded(DelegatorId DelegatorId) : IDelegationEvent
 }
 
 /// <param name="DelegatorId">Delegator's id</param>
-public record DelegationRemoved(DelegatorId DelegatorId) : IDelegationEvent
+public sealed record DelegationRemoved(DelegatorId DelegatorId) : IDelegationEvent
 {
     internal static DelegationRemoved From(Grpc.V2.DelegatorId id) =>
         new(

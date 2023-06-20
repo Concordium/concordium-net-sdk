@@ -6,7 +6,7 @@ namespace Concordium.Sdk.Types.Events;
 /// <param name="Receiver">The account onto which the amount was added.</param>
 /// <param name="NewIndex">The index the amount was assigned.</param>
 /// <param name="EncryptedAmount">The encrypted amount that was added.</param>
-public record NewEncryptedAmountEvent(AccountAddress Receiver, ulong NewIndex, byte[] EncryptedAmount)
+public sealed record NewEncryptedAmountEvent(AccountAddress Receiver, ulong NewIndex, byte[] EncryptedAmount)
 {
     internal static NewEncryptedAmountEvent From(Grpc.V2.NewEncryptedAmountEvent amountEvent) =>
         new(

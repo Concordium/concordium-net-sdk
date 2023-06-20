@@ -29,7 +29,7 @@ namespace Concordium.Sdk.Types;
 /// The effective delegated capital to the pool for the current reward
 /// period.
 /// </param>
-public record CurrentPaydayBakerPoolStatus(
+public sealed record CurrentPaydayBakerPoolStatus(
     ulong BlocksBaked,
     bool FinalizationLive,
     CcdAmount TransactionFeesEarned,

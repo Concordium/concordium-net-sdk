@@ -91,24 +91,24 @@ internal static class AccountTransactionEffectsFactory
 /// In case of serialization failure this will be null.
 /// </param>
 /// <param name="RejectReason">Reason for rejection of the transaction</param>
-public record None(TransactionType? TransactionType, IRejectReason RejectReason) : IAccountTransactionEffects;
+public sealed record None(TransactionType? TransactionType, IRejectReason RejectReason) : IAccountTransactionEffects;
 
 /// <summary>
 /// A module was deployed.
 /// </summary>
 /// <param name="ModuleReference">Reference to contract deployed module.</param>
-public record ModuleDeployed(ModuleReference ModuleReference) : IAccountTransactionEffects;
+public sealed record ModuleDeployed(ModuleReference ModuleReference) : IAccountTransactionEffects;
 
 /// <summary>
 /// A contract was initialized was deployed.
 /// </summary>
 /// <param name="Data">Contract initialization data.</param>
-public record ContractInitialized(ContractInitializedEvent Data) : IAccountTransactionEffects;
+public sealed record ContractInitialized(ContractInitializedEvent Data) : IAccountTransactionEffects;
 
 /// <summary>
 /// A contract update transaction was issued and produced the given traces.
 /// </summary>
-public record ContractUpdateIssued(IList<IContractTraceElement> Effects) : IAccountTransactionEffects
+public sealed record ContractUpdateIssued(IList<IContractTraceElement> Effects) : IAccountTransactionEffects
 {
     internal IList<(ContractAddress, IList<ContractEvent>)> GetAffectedAddressesWithLogs()
     {
@@ -187,7 +187,7 @@ public record ContractUpdateIssued(IList<IContractTraceElement> Effects) : IAcco
 /// <param name="Amount">Amount that was transferred.</param>
 /// <param name="To">Receiver account.</param>
 /// <param name="Memo">Included memo.</param>
-public record AccountTransfer(CcdAmount Amount, AccountAddress To, OnChainData? Memo) : IAccountTransactionEffects
+public sealed record AccountTransfer(CcdAmount Amount, AccountAddress To, OnChainData? Memo) : IAccountTransactionEffects
 {
     internal IEnumerable<AccountAddress> GetAffectedAccountAddresses()
     {
@@ -207,36 +207,36 @@ public record AccountTransfer(CcdAmount Amount, AccountAddress To, OnChainData? 
 /// Whether the baker will automatically add earnings to their stake or
 /// not.
 /// </param>
-public record BakerAdded(BakerKeysEvent KeysEvent, CcdAmount Stake, bool RestakeEarnings) : IAccountTransactionEffects;
+public sealed record BakerAdded(BakerKeysEvent KeysEvent, CcdAmount Stake, bool RestakeEarnings) : IAccountTransactionEffects;
 
 /// <summary>
 /// An account was deregistered as a baker.
 /// </summary>
-public record BakerRemoved(BakerId BakerId) : IAccountTransactionEffects;
+public sealed record BakerRemoved(BakerId BakerId) : IAccountTransactionEffects;
 
 /// <summary>
 /// If the stake was updated (that is, it changed and did not stay the
 /// same) then this is present, otherwise null.
 /// </summary>
-public record BakerStakeUpdated(BakerStakeUpdatedData? Data) : IAccountTransactionEffects;
+public sealed record BakerStakeUpdated(BakerStakeUpdatedData? Data) : IAccountTransactionEffects;
 
 /// <summary>
 /// An account changed its preference for restaking earnings.
 /// </summary>
 /// <param name="BakerId">Baker Id</param>
 /// <param name="RestakeEarnings">The new value of the flag.</param>
-public record BakerRestakeEarningsUpdated(BakerId BakerId, bool RestakeEarnings) : IAccountTransactionEffects;
+public sealed record BakerRestakeEarningsUpdated(BakerId BakerId, bool RestakeEarnings) : IAccountTransactionEffects;
 
 /// <summary>
 /// The baker's keys were updated.
 /// </summary>
 /// <param name="KeysEvent">Information regarding updated keys.</param>
-public record BakerKeysUpdated(BakerKeysEvent KeysEvent) : IAccountTransactionEffects;
+public sealed record BakerKeysUpdated(BakerKeysEvent KeysEvent) : IAccountTransactionEffects;
 
 /// <summary>
 /// An encrypted amount was transferred possible with memo.
 /// </summary>
-public record EncryptedAmountTransferred(EncryptedAmountRemovedEvent Removed, NewEncryptedAmountEvent Added,
+public sealed record EncryptedAmountTransferred(EncryptedAmountRemovedEvent Removed, NewEncryptedAmountEvent Added,
     OnChainData? Memo) : IAccountTransactionEffects
 {
     internal IEnumerable<AccountAddress> GetAffectedAccountAddresses()
@@ -250,7 +250,7 @@ public record EncryptedAmountTransferred(EncryptedAmountRemovedEvent Removed, Ne
 /// An account transferred part of its public balance to its encrypted
 /// balance.
 /// </summary>
-public record TransferredToEncrypted(EncryptedSelfAmountAddedEvent Data) : IAccountTransactionEffects
+public sealed record TransferredToEncrypted(EncryptedSelfAmountAddedEvent Data) : IAccountTransactionEffects
 {
     internal IEnumerable<AccountAddress> GetAffectedAccountAddresses()
     {
@@ -262,7 +262,7 @@ public record TransferredToEncrypted(EncryptedSelfAmountAddedEvent Data) : IAcco
 /// An account transferred part of its encrypted balance to its public
 /// balance.
 /// </summary>
-public record TransferredToPublic(EncryptedAmountRemovedEvent Removed, CcdAmount Amount) : IAccountTransactionEffects
+public sealed record TransferredToPublic(EncryptedAmountRemovedEvent Removed, CcdAmount Amount) : IAccountTransactionEffects
 {
     internal IEnumerable<AccountAddress> GetAffectedAccountAddresses()
     {
@@ -275,7 +275,7 @@ public record TransferredToPublic(EncryptedAmountRemovedEvent Removed, CcdAmount
 /// </summary>
 /// <param name="To">Receiver account.</param>
 /// <param name="Amount">The list of releases. Ordered by increasing timestamp.</param>
-public record TransferredWithSchedule
+public sealed record TransferredWithSchedule
     (AccountAddress To, IList<(DateTimeOffset, CcdAmount)> Amount, OnChainData? Memo) : IAccountTransactionEffects
 {
     internal IEnumerable<AccountAddress> GetAffectedAccountAddresses()
@@ -288,7 +288,7 @@ public record TransferredWithSchedule
 /// Keys of a specific credential were updated.
 /// </summary>
 /// <param name="CredId">ID of the credential whose keys were updated.</param>
-public record CredentialKeysUpdated(CredentialRegistrationId CredId) : IAccountTransactionEffects
+public sealed record CredentialKeysUpdated(CredentialRegistrationId CredId) : IAccountTransactionEffects
 {
     internal static CredentialKeysUpdated From(Grpc.V2.CredentialRegistrationId id) => new(CredentialRegistrationId.From(id));
 }
@@ -299,7 +299,7 @@ public record CredentialKeysUpdated(CredentialRegistrationId CredId) : IAccountT
 /// <param name="NewCredIds">The credential ids that were added.</param>
 /// <param name="RemovedCredIds">The credentials that were removed.</param>
 /// <param name="NewThreshold">The (possibly) updated account threshold.</param>
-public record CredentialsUpdated
+public sealed record CredentialsUpdated
 (IList<CredentialRegistrationId> NewCredIds, IList<CredentialRegistrationId> RemovedCredIds,
     AccountThreshold NewThreshold) : IAccountTransactionEffects
 {
@@ -315,16 +315,16 @@ public record CredentialsUpdated
 /// Some data was registered on the chain.
 /// </summary>
 /// <param name="Data">Data that was registered on the chain.</param>
-public record DataRegistered(byte[] Data) : IAccountTransactionEffects;
+public sealed record DataRegistered(byte[] Data) : IAccountTransactionEffects;
 
 /// <summary>
 /// A baker was configured.
 /// </summary>
 /// <param name="Data">The details of what happened</param>
-public record BakerConfigured(IList<IBakerEvent> Data) : IAccountTransactionEffects;
+public sealed record BakerConfigured(IList<IBakerEvent> Data) : IAccountTransactionEffects;
 
 /// <summary>
 /// An account configured delegation.
 /// </summary>
 /// <param name="Data">The details of what happened</param>
-public record DelegationConfigured(IList<IDelegationEvent> Data) : IAccountTransactionEffects;
+public sealed record DelegationConfigured(IList<IDelegationEvent> Data) : IAccountTransactionEffects;

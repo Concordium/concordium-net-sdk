@@ -7,7 +7,7 @@ namespace Concordium.Sdk.Types;
 /// <param name="Description">Free form description, e.g., how to contact them off-chain</param>
 /// <param name="IpVerifyKey">PS public key of the IP</param>
 /// <param name="IpCdiVerifyKey">Ed public key of the IP</param>
-public record IpInfo(IpIdentity IpIdentity, Description Description, IpVerifyKey IpVerifyKey, IpCdiVerifyKey IpCdiVerifyKey)
+public sealed record IpInfo(IpIdentity IpIdentity, Description Description, IpVerifyKey IpVerifyKey, IpCdiVerifyKey IpCdiVerifyKey)
 {
     internal static IpInfo From(Grpc.V2.IpInfo info) =>
         new(

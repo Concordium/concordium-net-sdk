@@ -8,7 +8,7 @@
 /// <param name="CommissionRates">The commission rates charged by the pool owner.</param>
 /// <param name="OpenStatus">Whether the pool allows delegators.</param>
 /// <param name="MetadataUrl">The URL that links to the metadata about the pool.</param>
-public record BakerPoolInfo(
+public sealed record BakerPoolInfo(
     CommissionRates CommissionRates,
     BakerPoolOpenStatus OpenStatus,
     string MetadataUrl)

@@ -30,6 +30,6 @@ public abstract record AccountDelegationPendingChange
     }
 }
 
-public record AccountDelegationRemovePending(DateTimeOffset EffectiveTime) : AccountDelegationPendingChange;
+public sealed record AccountDelegationRemovePending(DateTimeOffset EffectiveTime) : AccountDelegationPendingChange;
 
-public record AccountDelegationReduceStakePending(CcdAmount NewStake, DateTimeOffset EffectiveTime) : AccountDelegationPendingChange;
+public sealed record AccountDelegationReduceStakePending(CcdAmount NewStake, DateTimeOffset EffectiveTime) : AccountDelegationPendingChange;

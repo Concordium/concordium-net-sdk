@@ -34,7 +34,7 @@ internal static class BlockItemSummaryDetailsFactory
 /// </param>
 /// <param name="Sender">Sender of the transaction.</param>
 /// <param name="Effects">Effects of the account transaction, if any.</param>
-public record AccountTransactionDetails
+public sealed record AccountTransactionDetails
     (CcdAmount Cost, AccountAddress Sender, IAccountTransactionEffects Effects) : IBlockItemSummaryDetails
 {
     internal static AccountTransactionDetails From(Grpc.V2.AccountTransactionDetails accountTransactionDetails) =>
@@ -157,7 +157,7 @@ public record AccountTransactionDetails
 /// <param name="credentialType">Whether this is an initial or normal account.</param>
 /// <param name="address">Address of the newly created account.</param>
 /// <param name="RegId">Credential registration ID of the first credential.</param>
-public record AccountCreationDetails
+public sealed record AccountCreationDetails
     (CredentialType credentialType, AccountAddress address, CredentialRegistrationId RegId) : IBlockItemSummaryDetails
 {
     internal static AccountCreationDetails From(Grpc.V2.AccountCreationDetails details) =>
@@ -175,7 +175,7 @@ public record AccountCreationDetails
 /// </summary>
 /// <param name="EffectiveTime">Transaction time</param>
 /// <param name="Payload">Update information</param>
-public record UpdateDetails(DateTimeOffset EffectiveTime, IUpdatePayload Payload) : IBlockItemSummaryDetails
+public sealed record UpdateDetails(DateTimeOffset EffectiveTime, IUpdatePayload Payload) : IBlockItemSummaryDetails
 {
     internal static UpdateDetails From(Grpc.V2.UpdateDetails details) => new(
         details.EffectiveTime.ToDateTimeOffset(), UpdatePayloadFactory.From(details.Payload));

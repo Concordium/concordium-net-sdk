@@ -5,7 +5,7 @@ namespace Concordium.Sdk.Types;
 /// <summary>
 /// Hash of the block state that is included in a block.
 /// </summary>
-public record StateHash : Hash
+public sealed record StateHash : Hash
 {
     internal StateHash(ByteString bytes) : base(bytes.ToByteArray())
     {}

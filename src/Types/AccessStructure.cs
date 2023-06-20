@@ -9,7 +9,7 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 /// <param name="AuthorizedKeys"></param>
 /// <param name="Threshold"></param>
-public record AccessStructure(ImmutableHashSet<UpdateKeysIndex> AuthorizedKeys, UpdateKeysThreshold Threshold)
+public sealed record AccessStructure(ImmutableHashSet<UpdateKeysIndex> AuthorizedKeys, UpdateKeysThreshold Threshold)
 {
     internal static AccessStructure From(Grpc.V2.AccessStructure structure) =>
         new(

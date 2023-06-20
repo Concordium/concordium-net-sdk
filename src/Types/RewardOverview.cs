@@ -58,7 +58,7 @@ public abstract record RewardOverviewBase(
 /// Reward Overview version 0.
 /// Only exists for protocol versions 1, 2, and 3.
 /// </summary>
-public record RewardOverviewV0(
+public sealed record RewardOverviewV0(
     ProtocolVersion ProtocolVersion,
     CcdAmount TotalAmount,
     CcdAmount TotalEncryptedAmount,
@@ -84,7 +84,7 @@ public record RewardOverviewV0(
 /// <param name="TotalStakedCapital">
 /// The total capital put up as stake by bakers and delegators
 /// </param>
-public record RewardOverviewV1(
+public sealed record RewardOverviewV1(
     ProtocolVersion ProtocolVersion,
     CcdAmount TotalAmount,
     CcdAmount TotalEncryptedAmount,

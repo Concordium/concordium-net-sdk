@@ -44,7 +44,7 @@ namespace Concordium.Sdk.Types;
 /// <param name="TransactionSize">Size of all the transactions in the block in bytes.</param>
 /// <param name="BlockStateHash">Hash of the block state at the end of the given block.</param>
 /// <param name="ProtocolVersion">Protocol version to which the block belongs.</param>
-public record BlockInfo(
+public sealed record BlockInfo(
     BlockHash BlockHash,
     BlockHash BlockParent,
     BlockHash BlockLastFinalized,

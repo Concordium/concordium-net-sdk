@@ -31,7 +31,7 @@ internal static class RootUpdateFactory
 /// <summary>
 /// Root key update.
 /// </summary>
-public record RootKeysUpdate(HigherLevelKeys Keys) : IRootUpdate
+public sealed record RootKeysUpdate(HigherLevelKeys Keys) : IRootUpdate
 {
     internal static RootKeysUpdate From(Grpc.V2.HigherLevelKeys keys) =>
         new( new RootKeys(
@@ -43,7 +43,7 @@ public record RootKeysUpdate(HigherLevelKeys Keys) : IRootUpdate
 /// <summary>
 /// Level 1 key update.
 /// </summary>
-public record Level1KeysUpdate(HigherLevelKeys Keys) : IRootUpdate, ILevel1
+public sealed record Level1KeysUpdate(HigherLevelKeys Keys) : IRootUpdate, ILevel1
 {
     internal static Level1KeysUpdate From(Grpc.V2.HigherLevelKeys keys) =>
         new( new Level1Keys(
@@ -59,7 +59,7 @@ public record Level1KeysUpdate(HigherLevelKeys Keys) : IRootUpdate, ILevel1
 /// Access structures for each of the different possible chain updates, together
 /// with the context giving all the possible keys.
 /// </param>
-public record Level2KeysUpdate(AuthorizationsV0 AuthorizationsV0) : IRootUpdate, ILevel1
+public sealed record Level2KeysUpdate(AuthorizationsV0 AuthorizationsV0) : IRootUpdate, ILevel1
 {
     internal static Level2KeysUpdate From(Grpc.V2.AuthorizationsV0 authorizationsV0) => new(AuthorizationsV0.From(authorizationsV0));
 }
@@ -71,7 +71,7 @@ public record Level2KeysUpdate(AuthorizationsV0 AuthorizationsV0) : IRootUpdate,
 /// Access structures for each of the different possible chain updates, together
 /// with the context giving all the possible keys.
 /// </param>
-public record Level2KeysUpdateV1(AuthorizationsV1 AuthorizationsV1) : IRootUpdate, ILevel1
+public sealed record Level2KeysUpdateV1(AuthorizationsV1 AuthorizationsV1) : IRootUpdate, ILevel1
 {
     internal static Level2KeysUpdateV1 From(Grpc.V2.AuthorizationsV1 authorizationsV1) => new(AuthorizationsV1.From(authorizationsV1));
 }

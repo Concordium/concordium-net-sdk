@@ -20,7 +20,7 @@ namespace Concordium.Sdk.Types;
 /// </param>
 /// <param name="AddAnonymityRevoker">Access structure for adding new anonymity revokers.</param>
 /// <param name="AddIdentityProvider">Access structure for adding new identity providers.</param>
-public record AuthorizationsV0(
+public sealed record AuthorizationsV0(
     IList<UpdatePublicKey> Keys,
     AccessStructure Emergency,
     AccessStructure Protocol,
@@ -60,7 +60,7 @@ public record AuthorizationsV0(
 /// <param name="V0"><see cref="AuthorizationsV0"/></param>
 /// <param name="CooldownParameters">Keys for changing cooldown periods related to baking and delegating.</param>
 /// <param name="TimeParameters">Keys for changing the length of the reward period.</param>
-public record AuthorizationsV1(
+public sealed record AuthorizationsV1(
     AuthorizationsV0 V0,
     AccessStructure CooldownParameters,
     AccessStructure TimeParameters)

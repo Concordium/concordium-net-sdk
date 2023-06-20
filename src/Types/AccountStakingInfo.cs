@@ -29,7 +29,7 @@ internal static class AccountStakingInfo
 /// <summary>
 /// The account is a baker.
 /// </summary>
-public record AccountBaker(
+public sealed record AccountBaker(
     BakerId BakerId,
     AccountBakerPendingChange? PendingChange,
     bool RestakeEarnings,
@@ -50,7 +50,7 @@ public record AccountBaker(
 /// <summary>
 /// The account is delegating stake to a baker.
 /// </summary>
-public record AccountDelegation(
+public sealed record AccountDelegation(
     bool RestakeEarnings,
     CcdAmount StakedAmount,
     DelegationTarget DelegationTarget,

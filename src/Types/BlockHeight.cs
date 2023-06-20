@@ -14,7 +14,7 @@ public interface IBlockHeight
 /// Block Height from beginning of chain.
 /// </summary>
 /// <param name="Height">Height from the beginning of the chain.</param>
-public record Absolute(ulong Height) : IBlockHeight, IBlockHashInput
+public sealed record Absolute(ulong Height) : IBlockHeight, IBlockHashInput
 {
     public BlocksAtHeightRequest Into() =>
         new()
@@ -50,7 +50,7 @@ public record Absolute(ulong Height) : IBlockHeight, IBlockHashInput
 /// (`true`), or allow results from more recent genesis indices
 /// as well (`false`).
 /// </param>
-public record Relative(ulong Height, uint GenesisIndex, bool Restrict) : IBlockHeight, IBlockHashInput
+public sealed record Relative(ulong Height, uint GenesisIndex, bool Restrict) : IBlockHeight, IBlockHashInput
 {
     public BlocksAtHeightRequest Into() =>
         new()

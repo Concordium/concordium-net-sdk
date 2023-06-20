@@ -6,7 +6,7 @@
 /// <param name="TransactionCommission">Fraction of transaction rewards charged by the pool owner.</param>
 /// <param name="FinalizationCommission">Fraction of finalization rewards charged by the pool owner.</param>
 /// <param name="BakingCommission">Fraction of baking rewards charged by the pool owner.</param>
-public record CommissionRates(
+public sealed record CommissionRates(
     AmountFraction TransactionCommission,
     AmountFraction FinalizationCommission,
     AmountFraction BakingCommission)

@@ -11,7 +11,7 @@ namespace Concordium.Sdk.Types.Events;
 /// lottery.
 /// </param>
 /// <param name="AggregationKey">The new public key for verifying finalization records.</param>
-public record BakerKeysEvent(
+public sealed record BakerKeysEvent(
     BakerId BakerId,
     AccountAddress Account,
     byte[] SignKey,

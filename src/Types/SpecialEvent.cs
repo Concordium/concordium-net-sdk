@@ -46,7 +46,7 @@ internal static class SpecialEventExtensions
 /// </summary>
 /// <param name="Rewards">The amount awarded to each baker.</param>
 /// <param name="Remainder">The remaining balance of the baker reward account.</param>
-public record BakingRewards(IDictionary<AccountAddress, CcdAmount> Rewards, CcdAmount Remainder) : ISpecialEvent
+public sealed record BakingRewards(IDictionary<AccountAddress, CcdAmount> Rewards, CcdAmount Remainder) : ISpecialEvent
 {
     internal static BakingRewards From(Grpc.V2.BlockSpecialEvent.Types.BakingRewards bakingRewards) =>
         new(
@@ -75,7 +75,7 @@ public record BakingRewards(IDictionary<AccountAddress, CcdAmount> Rewards, CcdA
 /// The address of the foundation account that the newly minted CCD goes
 /// to.
 /// </param>
-public record Mint(
+public sealed record Mint(
         CcdAmount MintBakingReward,
         CcdAmount MintFinalizationReward,
         CcdAmount MintPlatformDevelopmentCharge,
@@ -107,7 +107,7 @@ public record Mint(
 /// since it is not possible to perfectly distribute the
 /// accumulated rewards since amounts are represented as integers.
 /// </param>
-public record FinalizationRewards(IDictionary<AccountAddress, CcdAmount> Rewards, CcdAmount Remainder) : ISpecialEvent
+public sealed record FinalizationRewards(IDictionary<AccountAddress, CcdAmount> Rewards, CcdAmount Remainder) : ISpecialEvent
 {
     internal static FinalizationRewards From(Grpc.V2.BlockSpecialEvent.Types.FinalizationRewards finalizationRewards) =>
         new(
@@ -133,7 +133,7 @@ public record FinalizationRewards(IDictionary<AccountAddress, CcdAmount> Rewards
 /// <param name="FoundationCharge">The amount of CCD that goes to the foundation.</param>
 /// <param name="Baker">The account address where the baker receives the reward.</param>
 /// <param name="FoundationAccount">The account address where the foundation receives the tax.</param>
-public record BlockReward(
+public sealed record BlockReward(
     CcdAmount TransactionFees,
     CcdAmount OldGasAccount,
     CcdAmount NewGasAccount,
@@ -175,7 +175,7 @@ public record BlockReward(
 /// </summary>
 /// <param name="FoundationAccount">Address of the foundation account.</param>
 /// <param name="DevelopmentCharge">Amount rewarded.</param>
-public record PaydayFoundationReward(AccountAddress FoundationAccount, CcdAmount DevelopmentCharge) : ISpecialEvent
+public sealed record PaydayFoundationReward(AccountAddress FoundationAccount, CcdAmount DevelopmentCharge) : ISpecialEvent
 {
     public IEnumerable<AccountBalanceUpdate> GetAccountBalanceUpdates()
     {
@@ -199,7 +199,7 @@ public record PaydayFoundationReward(AccountAddress FoundationAccount, CcdAmount
 /// <param name="TransactionFees">The transaction fee reward at payday to the account.</param>
 /// <param name="BakerReward">The baking reward at payday to the account.</param>
 /// <param name="FinalizationReward">The finalization reward at payday to the account.</param>
-public record PaydayAccountReward(
+public sealed record PaydayAccountReward(
     AccountAddress Account,
     CcdAmount TransactionFees,
     CcdAmount BakerReward,
@@ -232,7 +232,7 @@ public record PaydayAccountReward(
 /// <param name="PassiveReward">The amount awarded to the passive delegators.</param>
 /// <param name="FoundationCharge">The amount awarded to the foundation.</param>
 /// <param name="BakerId">The baker of the block, who will receive the award.</param>
-public record BlockAccrueReward(
+public sealed record BlockAccrueReward(
     CcdAmount TransactionFees,
     CcdAmount OldGasAccount,
     CcdAmount NewGasAccount,
@@ -263,7 +263,7 @@ public record BlockAccrueReward(
 /// <param name="TransactionFees">Accrued transaction fees for pool.</param>
 /// <param name="BakerReward">Accrued baking rewards for pool.</param>
 /// <param name="FinalizationReward">Accrued finalization rewards for pool.</param>
-public record PaydayPoolReward(
+public sealed record PaydayPoolReward(
     ulong? PoolOwner,
     CcdAmount TransactionFees,
     CcdAmount BakerReward,

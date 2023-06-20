@@ -8,7 +8,7 @@ namespace Concordium.Sdk.Types.Events;
 /// <param name="NewAmount">The new self encrypted amount on the affected account.</param>
 /// <param name="InputAmount">The input encrypted amount that was removed.</param>
 /// <param name="UpToIndex">The index indicating which amounts were used.</param>
-public record EncryptedAmountRemovedEvent(AccountAddress Account, byte[] NewAmount, byte[] InputAmount,
+public sealed record EncryptedAmountRemovedEvent(AccountAddress Account, byte[] NewAmount, byte[] InputAmount,
     ulong UpToIndex)
 {
     internal static EncryptedAmountRemovedEvent From(Grpc.V2.EncryptedAmountRemovedEvent removed) =>

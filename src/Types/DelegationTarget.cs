@@ -22,9 +22,9 @@ public abstract record DelegationTarget
 /// <summary>
 /// Delegate passively, i.e., to no specific baker.
 /// </summary>
-public record PassiveDelegationTarget : DelegationTarget;
+public sealed record PassiveDelegationTarget : DelegationTarget;
 
 /// <summary>
 /// Delegate to a specific baker.
 /// </summary>
-public record BakerDelegationTarget(BakerId BakerId) : DelegationTarget;
+public sealed record BakerDelegationTarget(BakerId BakerId) : DelegationTarget;

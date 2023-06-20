@@ -3,7 +3,7 @@ namespace Concordium.Sdk.Types;
 /// <summary>
 /// A single public key that can sign updates.
 /// </summary>
-public record UpdatePublicKey(byte[] Key)
+public sealed record UpdatePublicKey(byte[] Key)
 {
     internal static UpdatePublicKey From(Grpc.V2.UpdatePublicKey key) => new(key.Value.ToByteArray());
 }

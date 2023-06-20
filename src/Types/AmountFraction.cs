@@ -3,7 +3,7 @@ namespace Concordium.Sdk.Types;
 /// <summary>
 /// A fraction of an amount with a precision of `1/100_000`.
 /// </summary>
-public class AmountFraction
+public sealed class AmountFraction
 {
     private readonly uint _partsPerHundredThousands;
     private const decimal MultiplicationFactor = 1 / 100_000m;

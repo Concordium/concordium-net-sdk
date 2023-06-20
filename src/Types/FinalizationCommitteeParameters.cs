@@ -15,7 +15,7 @@ namespace Concordium.Sdk.Types;
 /// in pools * <see cref="FinalizationCommitteeParameters.FinalizersRelativeStakeThreshold"/>`.
 /// Accepted values are between a value of 0 and 1.
 /// </param>
-public record FinalizationCommitteeParameters(uint MinFinalizers, uint MaxFinalizers,
+public sealed record FinalizationCommitteeParameters(uint MinFinalizers, uint MaxFinalizers,
     AmountFraction FinalizersRelativeStakeThreshold)
 {
     internal static FinalizationCommitteeParameters From(Grpc.V2.FinalizationCommitteeParameters committee) =>

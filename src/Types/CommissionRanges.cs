@@ -6,7 +6,7 @@ namespace Concordium.Sdk.Types;
 /// <param name="Finalization">The range of allowed finalization commissions.</param>
 /// <param name="Baking">The range of allowed baker commissions.</param>
 /// <param name="Transaction">The range of allowed transaction commissions.</param>
-public record CommissionRanges(
+public sealed record CommissionRanges(
     InclusiveRange<AmountFraction> Finalization,
     InclusiveRange<AmountFraction> Baking,
     InclusiveRange<AmountFraction> Transaction

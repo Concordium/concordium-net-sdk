@@ -24,7 +24,7 @@
 /// registered and a new payday has not started yet).
 /// </param>
 /// <param name="AllPoolTotalCapital">Total capital staked across all pools.</param>
-public record BakerPoolStatus(ulong BakerId,
+public sealed record BakerPoolStatus(ulong BakerId,
         AccountAddress BakerAddress,
         CcdAmount BakerEquityCapital,
         CcdAmount DelegatedCapital,

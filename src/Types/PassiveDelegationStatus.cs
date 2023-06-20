@@ -12,7 +12,7 @@ namespace Concordium.Sdk.Types;
 /// <param name="CurrentPaydayTransactionFeesEarned">The transaction fees accruing to the passive delegators in the current reward period.</param>
 /// <param name="CurrentPaydayDelegatedCapital">The effective delegated capital to the passive delegators for the current reward period.</param>
 /// <param name="AllPoolTotalCapital">Total capital staked across all pools, including passive delegation.</param>
-public record PassiveDelegationStatus (
+public sealed record PassiveDelegationStatus (
     CcdAmount DelegatedCapital,
     CommissionRates CommissionRates,
     CcdAmount CurrentPaydayTransactionFeesEarned,

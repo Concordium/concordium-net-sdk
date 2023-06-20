@@ -5,7 +5,7 @@ namespace Concordium.Sdk.Types;
 /// the reward period length and the mint rate per payday. These are coupled as
 /// a change to either affects the overall rate of minting.
 /// </summary>
-public record TimeParameters(RewardPeriodLength rewardPeriodLength, MintRate MintPrPayDay)
+public sealed record TimeParameters(RewardPeriodLength rewardPeriodLength, MintRate MintPrPayDay)
 {
     internal static TimeParameters From(Grpc.V2.TimeParametersCpv1 timeParams) =>
         new(RewardPeriodLength.From(timeParams.RewardPeriodLength),

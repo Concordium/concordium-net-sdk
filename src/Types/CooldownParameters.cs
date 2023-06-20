@@ -8,7 +8,7 @@
 /// Duration that a delegator must cooldown
 /// when reducing their delegated stake.
 /// </param>
-public record CooldownParameters(TimeSpan PoolOwnerCooldown, TimeSpan DelegatorCooldown)
+public sealed record CooldownParameters(TimeSpan PoolOwnerCooldown, TimeSpan DelegatorCooldown)
 {
     internal static CooldownParameters From(Grpc.V2.CooldownParametersCpv1 coolDown) =>
         new(

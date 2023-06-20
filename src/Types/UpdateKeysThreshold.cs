@@ -5,7 +5,7 @@ namespace Concordium.Sdk.Types;
 /// message of a particular type. This is never 0.
 /// </summary>
 /// <param name="Threshold"></param>
-public record struct UpdateKeysThreshold(ushort Threshold)
+public readonly record struct UpdateKeysThreshold(ushort Threshold)
 {
     internal static UpdateKeysThreshold From(Grpc.V2.UpdateKeysThreshold threshold) => new((ushort)threshold.Value);
 }

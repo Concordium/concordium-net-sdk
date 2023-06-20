@@ -5,7 +5,7 @@ namespace Concordium.Sdk.Types;
 /// In credential deployments, and other interactions with the chain this is
 /// used to identify which identity provider is meant.
 /// </summary>
-public record struct IpIdentity(uint Id)
+public readonly record struct IpIdentity(uint Id)
 {
     internal static IpIdentity From(Grpc.V2.IpIdentity ipIdentity) => new(ipIdentity.Value);
 }

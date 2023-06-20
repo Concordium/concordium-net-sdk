@@ -6,7 +6,7 @@ namespace Concordium.Sdk.Types;
 /// <param name="Duration">The base value for triggering a timeout.</param>
 /// <param name="Increase">Factor for increasing the timeout. Must be greater than 1.</param>
 /// <param name="Decrease">Factor for decreasing the timeout. Must be between 0 and 1.</param>
-public record TimeoutParameters(TimeSpan Duration, Ratio Increase, Ratio Decrease)
+public sealed record TimeoutParameters(TimeSpan Duration, Ratio Increase, Ratio Decrease)
 {
     internal static TimeoutParameters From(Grpc.V2.TimeoutParameters parameters) =>
         new(

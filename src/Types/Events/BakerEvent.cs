@@ -69,53 +69,53 @@ internal static class BakerEventFactory
 /// Whether the baker will automatically add earnings to their stake or
 /// not.
 /// </param>
-public record BakerAdded(BakerKeysEvent KeysEvent, CcdAmount Stake, bool RestakeEarnings) : IBakerEvent;
+public sealed record BakerAdded(BakerKeysEvent KeysEvent, CcdAmount Stake, bool RestakeEarnings) : IBakerEvent;
 
-public record BakerRemoved(BakerId BakerId) : IBakerEvent;
+public sealed record BakerRemoved(BakerId BakerId) : IBakerEvent;
 
-public record BakerStakeIncreased(BakerId BakerId, CcdAmount NewStake) : IBakerEvent;
+public sealed record BakerStakeIncreased(BakerId BakerId, CcdAmount NewStake) : IBakerEvent;
 
-public record BakerStakeDecreased(BakerId BakerId, CcdAmount NewStake) : IBakerEvent;
+public sealed record BakerStakeDecreased(BakerId BakerId, CcdAmount NewStake) : IBakerEvent;
 
 /// <param name="RestakeEarnings">The new value of the flag.</param>
-public record BakerRestakeEarningsUpdated(BakerId BakerId, bool RestakeEarnings) : IBakerEvent;
+public sealed record BakerRestakeEarningsUpdated(BakerId BakerId, bool RestakeEarnings) : IBakerEvent;
 
 /// <summary>
 /// The baker's keys were updated.
 /// </summary>
-public record BakerKeysUpdated(BakerKeysEvent Data) : IBakerEvent;
+public sealed record BakerKeysUpdated(BakerKeysEvent Data) : IBakerEvent;
 
 /// <summary>
 /// Updated open status for a baker pool
 /// </summary>
 /// <param name="BakerId">Baker's id</param>
 /// <param name="OpenStatus">The open status.</param>
-public record BakerSetOpenStatus(BakerId BakerId, OpenStatus OpenStatus) : IBakerEvent;
+public sealed record BakerSetOpenStatus(BakerId BakerId, OpenStatus OpenStatus) : IBakerEvent;
 
 /// <summary>
 /// Updated metadata url for baker pool
 /// </summary>
 /// <param name="BakerId">Baker's id</param>
 /// <param name="MetadataUrl">The URL.</param>
-public record BakerSetMetadataUrl(BakerId BakerId, string MetadataUrl) : IBakerEvent;
+public sealed record BakerSetMetadataUrl(BakerId BakerId, string MetadataUrl) : IBakerEvent;
 
 /// <summary>
 /// Updated baking reward commission for baker pool
 /// </summary>
 /// <param name="BakerId">Baker's id</param>
 /// <param name="TransactionFeeCommission">The baking reward commission</param>
-public record BakerSetTransactionFeeCommission(BakerId BakerId, AmountFraction TransactionFeeCommission) : IBakerEvent;
+public sealed record BakerSetTransactionFeeCommission(BakerId BakerId, AmountFraction TransactionFeeCommission) : IBakerEvent;
 
 /// <summary>
 /// Updated baking reward commission for baker pool
 /// </summary>
 /// <param name="BakerId">Baker's id</param>
 /// <param name="BakingRewardCommission">The baking reward commission</param>
-public record BakerSetBakingRewardCommission(BakerId BakerId, AmountFraction BakingRewardCommission) : IBakerEvent;
+public sealed record BakerSetBakingRewardCommission(BakerId BakerId, AmountFraction BakingRewardCommission) : IBakerEvent;
 
 /// <summary>
 /// Updated finalization reward commission for baker pool
 /// </summary>
 /// <param name="BakerId">Baker's id</param>
 /// <param name="FinalizationRewardCommission">The finalization reward commission</param>
-public record BakerSetFinalizationRewardCommission(BakerId BakerId, AmountFraction FinalizationRewardCommission) : IBakerEvent;
+public sealed record BakerSetFinalizationRewardCommission(BakerId BakerId, AmountFraction FinalizationRewardCommission) : IBakerEvent;
