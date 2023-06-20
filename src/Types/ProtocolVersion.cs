@@ -10,7 +10,7 @@ public enum ProtocolVersion
     /// <summary>
     /// The initial protocol version at mainnet launch.
     /// </summary>
-    P1,
+    P1 = 1,
     /// <summary>
     /// Protocol `P2` introduces support for transfers with memos.
     /// </summary>

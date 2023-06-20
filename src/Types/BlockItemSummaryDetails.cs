@@ -154,11 +154,11 @@ public sealed record AccountTransactionDetails
 /// ever get a response for them if the account is created, hence no failure
 /// cases.
 /// </summary>
-/// <param name="credentialType">Whether this is an initial or normal account.</param>
-/// <param name="address">Address of the newly created account.</param>
+/// <param name="CredentialType">Whether this is an initial or normal account.</param>
+/// <param name="Address">Address of the newly created account.</param>
 /// <param name="RegId">Credential registration ID of the first credential.</param>
 public sealed record AccountCreationDetails
-    (CredentialType credentialType, AccountAddress address, CredentialRegistrationId RegId) : IBlockItemSummaryDetails
+    (CredentialType CredentialType, AccountAddress Address, CredentialRegistrationId RegId) : IBlockItemSummaryDetails
 {
     internal static AccountCreationDetails From(Grpc.V2.AccountCreationDetails details) =>
         new(

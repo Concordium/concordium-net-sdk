@@ -1,12 +1,11 @@
 using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Helpers;
-using Concordium.Sdk.Types.Events;
-using AccountThreshold = Concordium.Sdk.Types.Account.AccountThreshold;
-using BakerKeysEvent = Concordium.Sdk.Types.Events.BakerKeysEvent;
-using BakerStakeUpdatedData = Concordium.Sdk.Types.Baker.BakerStakeUpdatedData;
-using EncryptedAmountRemovedEvent = Concordium.Sdk.Types.Events.EncryptedAmountRemovedEvent;
-using EncryptedSelfAmountAddedEvent = Concordium.Sdk.Types.Events.EncryptedSelfAmountAddedEvent;
-using NewEncryptedAmountEvent = Concordium.Sdk.Types.Events.NewEncryptedAmountEvent;
+using AccountThreshold = Concordium.Sdk.Types.AccountThreshold;
+using BakerKeysEvent = Concordium.Sdk.Types.BakerKeysEvent;
+using BakerStakeUpdatedData = Concordium.Sdk.Types.BakerStakeUpdatedData;
+using EncryptedAmountRemovedEvent = Concordium.Sdk.Types.EncryptedAmountRemovedEvent;
+using EncryptedSelfAmountAddedEvent = Concordium.Sdk.Types.EncryptedSelfAmountAddedEvent;
+using NewEncryptedAmountEvent = Concordium.Sdk.Types.NewEncryptedAmountEvent;
 
 namespace Concordium.Sdk.Types;
 

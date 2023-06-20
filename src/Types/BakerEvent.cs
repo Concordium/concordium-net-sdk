@@ -1,10 +1,8 @@
 using Concordium.Grpc.V2;
 using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Helpers;
-using Concordium.Sdk.Types.Baker;
-using OpenStatus = Concordium.Sdk.Types.Baker.OpenStatus;
 
-namespace Concordium.Sdk.Types.Events;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Events that may result from the <see cref="TransactionType.ConfigureBaker"/>
@@ -20,34 +18,34 @@ internal static class BakerEventFactory
         bakerEvent.EventCase switch
         {
             BakerEvent.EventOneofCase.BakerAdded =>
-                new BakerAdded(BakerKeysEvent.From(bakerEvent.BakerAdded.KeysEvent), bakerEvent.BakerAdded.Stake.ToCcd(), bakerEvent.BakerAdded.RestakeEarnings),
+                new BakerAddedEvent(BakerKeysEvent.From(bakerEvent.BakerAdded.KeysEvent), bakerEvent.BakerAdded.Stake.ToCcd(), bakerEvent.BakerAdded.RestakeEarnings),
             BakerEvent.EventOneofCase.BakerRemoved =>
-                new BakerRemoved(BakerId.From(bakerEvent.BakerRemoved)),
+                new BakerRemovedEvent(BakerId.From(bakerEvent.BakerRemoved)),
             BakerEvent.EventOneofCase.BakerStakeIncreased =>
-                new BakerStakeIncreased(BakerId.From(bakerEvent.BakerStakeIncreased.BakerId), bakerEvent.BakerStakeIncreased.NewStake.ToCcd()),
+                new BakerStakeIncreasedEvent(BakerId.From(bakerEvent.BakerStakeIncreased.BakerId), bakerEvent.BakerStakeIncreased.NewStake.ToCcd()),
             BakerEvent.EventOneofCase.BakerStakeDecreased =>
-                new BakerStakeDecreased(BakerId.From(bakerEvent.BakerStakeDecreased.BakerId), bakerEvent.BakerStakeDecreased.NewStake.ToCcd()),
+                new BakerStakeDecreasedEvent(BakerId.From(bakerEvent.BakerStakeDecreased.BakerId), bakerEvent.BakerStakeDecreased.NewStake.ToCcd()),
             BakerEvent.EventOneofCase.BakerRestakeEarningsUpdated =>
-                new BakerRestakeEarningsUpdated(BakerId.From(bakerEvent.BakerRestakeEarningsUpdated.BakerId), bakerEvent.BakerRestakeEarningsUpdated.RestakeEarnings),
+                new BakerRestakeEarningsUpdatedEvent(BakerId.From(bakerEvent.BakerRestakeEarningsUpdated.BakerId), bakerEvent.BakerRestakeEarningsUpdated.RestakeEarnings),
             BakerEvent.EventOneofCase.BakerKeysUpdated =>
-                new BakerKeysUpdated(BakerKeysEvent.From(bakerEvent.BakerKeysUpdated)),
+                new BakerKeysUpdatedEvent(BakerKeysEvent.From(bakerEvent.BakerKeysUpdated)),
             BakerEvent.EventOneofCase.BakerSetOpenStatus =>
-                new BakerSetOpenStatus(BakerId.From(bakerEvent.BakerSetOpenStatus.BakerId),
+                new BakerSetOpenStatusEvent(BakerId.From(bakerEvent.BakerSetOpenStatus.BakerId),
                     bakerEvent.BakerSetOpenStatus.OpenStatus.Into()),
             BakerEvent.EventOneofCase.BakerSetMetadataUrl =>
-                new BakerSetMetadataUrl(BakerId.From(bakerEvent.BakerSetMetadataUrl.BakerId), bakerEvent.BakerSetMetadataUrl.Url),
+                new BakerSetMetadataUrlEvent(BakerId.From(bakerEvent.BakerSetMetadataUrl.BakerId), bakerEvent.BakerSetMetadataUrl.Url),
             BakerEvent.EventOneofCase.BakerSetTransactionFeeCommission =>
-                new BakerSetTransactionFeeCommission(
+                new BakerSetTransactionFeeCommissionEvent(
                     BakerId.From(bakerEvent.BakerSetTransactionFeeCommission.BakerId),
                     AmountFraction.From(bakerEvent.BakerSetTransactionFeeCommission.TransactionFeeCommission)
                     ),
             BakerEvent.EventOneofCase.BakerSetBakingRewardCommission =>
-                new BakerSetBakingRewardCommission(
+                new BakerSetBakingRewardCommissionEvent(
                     BakerId.From(bakerEvent.BakerSetBakingRewardCommission.BakerId),
                     AmountFraction.From(bakerEvent.BakerSetBakingRewardCommission.BakingRewardCommission)
                 ),
             BakerEvent.EventOneofCase.BakerSetFinalizationRewardCommission =>
-                new BakerSetFinalizationRewardCommission(
+                new BakerSetFinalizationRewardCommissionEvent(
                     BakerId.From(bakerEvent.BakerSetFinalizationRewardCommission.BakerId),
                     AmountFraction.From(bakerEvent.BakerSetFinalizationRewardCommission.FinalizationRewardCommission)
                 ),
@@ -69,53 +67,53 @@ internal static class BakerEventFactory
 /// Whether the baker will automatically add earnings to their stake or
 /// not.
 /// </param>
-public sealed record BakerAdded(BakerKeysEvent KeysEvent, CcdAmount Stake, bool RestakeEarnings) : IBakerEvent;
+public sealed record BakerAddedEvent(BakerKeysEvent KeysEvent, CcdAmount Stake, bool RestakeEarnings) : IBakerEvent;
 
-public sealed record BakerRemoved(BakerId BakerId) : IBakerEvent;
+public sealed record BakerRemovedEvent(BakerId BakerId) : IBakerEvent;
 
-public sealed record BakerStakeIncreased(BakerId BakerId, CcdAmount NewStake) : IBakerEvent;
+public sealed record BakerStakeIncreasedEvent(BakerId BakerId, CcdAmount NewStake) : IBakerEvent;
 
-public sealed record BakerStakeDecreased(BakerId BakerId, CcdAmount NewStake) : IBakerEvent;
+public sealed record BakerStakeDecreasedEvent(BakerId BakerId, CcdAmount NewStake) : IBakerEvent;
 
 /// <param name="RestakeEarnings">The new value of the flag.</param>
-public sealed record BakerRestakeEarningsUpdated(BakerId BakerId, bool RestakeEarnings) : IBakerEvent;
+public sealed record BakerRestakeEarningsUpdatedEvent(BakerId BakerId, bool RestakeEarnings) : IBakerEvent;
 
 /// <summary>
 /// The baker's keys were updated.
 /// </summary>
-public sealed record BakerKeysUpdated(BakerKeysEvent Data) : IBakerEvent;
+public sealed record BakerKeysUpdatedEvent(BakerKeysEvent Data) : IBakerEvent;
 
 /// <summary>
 /// Updated open status for a baker pool
 /// </summary>
 /// <param name="BakerId">Baker's id</param>
 /// <param name="OpenStatus">The open status.</param>
-public sealed record BakerSetOpenStatus(BakerId BakerId, OpenStatus OpenStatus) : IBakerEvent;
+public sealed record BakerSetOpenStatusEvent(BakerId BakerId, OpenStatus OpenStatus) : IBakerEvent;
 
 /// <summary>
 /// Updated metadata url for baker pool
 /// </summary>
 /// <param name="BakerId">Baker's id</param>
 /// <param name="MetadataUrl">The URL.</param>
-public sealed record BakerSetMetadataUrl(BakerId BakerId, string MetadataUrl) : IBakerEvent;
+public sealed record BakerSetMetadataUrlEvent(BakerId BakerId, string MetadataUrl) : IBakerEvent;
 
 /// <summary>
 /// Updated baking reward commission for baker pool
 /// </summary>
 /// <param name="BakerId">Baker's id</param>
 /// <param name="TransactionFeeCommission">The baking reward commission</param>
-public sealed record BakerSetTransactionFeeCommission(BakerId BakerId, AmountFraction TransactionFeeCommission) : IBakerEvent;
+public sealed record BakerSetTransactionFeeCommissionEvent(BakerId BakerId, AmountFraction TransactionFeeCommission) : IBakerEvent;
 
 /// <summary>
 /// Updated baking reward commission for baker pool
 /// </summary>
 /// <param name="BakerId">Baker's id</param>
 /// <param name="BakingRewardCommission">The baking reward commission</param>
-public sealed record BakerSetBakingRewardCommission(BakerId BakerId, AmountFraction BakingRewardCommission) : IBakerEvent;
+public sealed record BakerSetBakingRewardCommissionEvent(BakerId BakerId, AmountFraction BakingRewardCommission) : IBakerEvent;
 
 /// <summary>
 /// Updated finalization reward commission for baker pool
 /// </summary>
 /// <param name="BakerId">Baker's id</param>
 /// <param name="FinalizationRewardCommission">The finalization reward commission</param>
-public sealed record BakerSetFinalizationRewardCommission(BakerId BakerId, AmountFraction FinalizationRewardCommission) : IBakerEvent;
+public sealed record BakerSetFinalizationRewardCommissionEvent(BakerId BakerId, AmountFraction FinalizationRewardCommission) : IBakerEvent;

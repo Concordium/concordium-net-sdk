@@ -1,4 +1,4 @@
-namespace Concordium.Sdk.Types.Events;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Event generated when one or more encrypted amounts are consumed from the

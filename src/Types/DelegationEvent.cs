@@ -1,10 +1,8 @@
 using Concordium.Grpc.V2;
 using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Helpers;
-using DelegationTarget = Concordium.Sdk.Types.DelegationTarget;
-using DelegatorId = Concordium.Sdk.Types.DelegatorId;
 
-namespace Concordium.Sdk.Types.Events;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Events that may happen as a result of the

@@ -5,6 +5,7 @@ using Grpc.Core;
 using Grpc.Net.Client;
 using AccountAddress = Concordium.Sdk.Types.AccountAddress;
 using AccountInfo = Concordium.Sdk.Types.AccountInfo;
+using BakerId = Concordium.Sdk.Types.BakerId;
 using BlockHash = Concordium.Sdk.Types.BlockHash;
 using BlockInfo = Concordium.Sdk.Types.BlockInfo;
 using BlockItemSummary = Concordium.Sdk.Types.BlockItemSummary;
@@ -222,15 +223,12 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="bakerId">Id of baker</param>
     /// <param name="blockHash">Block hash from where information will be fetched</param>
     /// <returns>The state of the baker currently registered on the account.</returns>
-    public async Task<BakerPoolStatus> GetPoolInfoAsync(ulong bakerId, IBlockHashInput blockHash)
+    public async Task<BakerPoolStatus> GetPoolInfoAsync(BakerId bakerId, IBlockHashInput blockHash)
     {
         var poolInfoAsync = await this.Raw.GetPoolInfoAsync(new PoolInfoRequest
         {
             BlockHash = blockHash.Into(),
-            Baker = new Grpc.V2.BakerId
-            {
-                Value = bakerId
-            }
+            Baker = bakerId.ToProto()
         });
         return BakerPoolStatus.From(poolInfoAsync);
     }

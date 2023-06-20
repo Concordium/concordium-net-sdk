@@ -1,4 +1,4 @@
-namespace Concordium.Sdk.Types.Events;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Event generated when an account receives a new encrypted amount.

@@ -1,6 +1,6 @@
 using Concordium.Sdk.Exceptions;
 
-namespace Concordium.Sdk.Types.Baker;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// The status of whether a baking pool allows delegators to join.

@@ -1,6 +1,6 @@
 using Concordium.Sdk.Helpers;
 
-namespace Concordium.Sdk.Types.Baker;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Data contained in the transaction response in case a baker stake was updated

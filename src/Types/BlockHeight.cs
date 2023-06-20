@@ -21,7 +21,7 @@ public sealed record Absolute(ulong Height) : IBlockHeight, IBlockHashInput
         {
             Absolute = new BlocksAtHeightRequest.Types.Absolute
             {
-                Height = new Grpc.V2.AbsoluteBlockHeight { Value = this.Height }
+                Height = new AbsoluteBlockHeight { Value = this.Height }
             }
         };
 
@@ -33,7 +33,7 @@ public sealed record Absolute(ulong Height) : IBlockHeight, IBlockHashInput
     BlockHashInput IBlockHashInput.Into() =>
         new()
         {
-            AbsoluteHeight = new Grpc.V2.AbsoluteBlockHeight
+            AbsoluteHeight = new AbsoluteBlockHeight
             {
                 Value = this.Height
             }

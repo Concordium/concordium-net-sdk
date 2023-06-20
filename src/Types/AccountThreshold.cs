@@ -1,4 +1,4 @@
-namespace Concordium.Sdk.Types.Account;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// The minimum number of credentials that need to sign any transaction coming

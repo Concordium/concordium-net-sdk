@@ -1,4 +1,4 @@
-namespace Concordium.Sdk.Types.Events;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Result of a successful change of baker keys.

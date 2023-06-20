@@ -1,6 +1,6 @@
 using Concordium.Sdk.Helpers;
 
-namespace Concordium.Sdk.Types.Events;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// An account transferred part of its public balance to its encrypted
