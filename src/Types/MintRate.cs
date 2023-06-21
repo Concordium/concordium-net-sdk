@@ -8,7 +8,7 @@ namespace Concordium.Sdk.Types;
 /// The representation is base-10 floating point number representation.
 /// The value is `mantissa * 10^(-exponent)`.
 /// </summary>
-public readonly struct MintRate
+public readonly record struct MintRate
 {
     /// <summary>
     /// This will never exceed 255.

@@ -371,11 +371,25 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHash">Block hash from where state of baker list will be returned.</param>
     /// <returns>List of baker ids.</returns>
     /// <exception cref="RpcException">If the block does not exist</exception>
-    public async Task<QueryResponse<IAsyncEnumerable<Types.BakerId>>> GetBakerListAsync(IBlockHashInput blockHash)
+    public async Task<QueryResponse<IAsyncEnumerable<BakerId>>> GetBakerListAsync(IBlockHashInput blockHash)
     {
         var response = await this.Raw.GetBakerList(blockHash.Into());
-        var returnEnumerable = response.Response.Select(Types.BakerId.From);
+        var returnEnumerable = response.Response.Select(BakerId.From);
         return response.NewWithSameBlockHash(returnEnumerable);
+    }
+
+    /// <summary>
+    /// Get the chain parameters in effect after a given block.
+    /// </summary>
+    /// <param name="blockHash">Block hash from where chain parameters will be given.</param>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>Chain parameters at given block.</returns>
+    /// <exception cref="RpcException">If the block does not exist</exception>
+    public async Task<QueryResponse<IChainParameters>> GetBlockChainParametersAsync(IBlockHashInput blockHash, CancellationToken token = default)
+    {
+        var response = await this.Raw.GetBlockChainParametersAsync(blockHash.Into(), token);
+        var chainParameters = ChainParametersFactory.From(response.Response);
+        return response.NewWithSameBlockHash(chainParameters);
     }
 
     public void Dispose() => this.Raw.Dispose();

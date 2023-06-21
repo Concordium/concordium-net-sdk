@@ -15,7 +15,8 @@ public record QueryResponse<T>(BlockHash BlockHash, T Response)
 
     internal static async Task<QueryResponse<T>> From(Task<Metadata> metadata, T response)
     {
-        var blockHash = GetBlockHashFromMetadata(await metadata);
+        var meta = await metadata.ConfigureAwait(false);
+        var blockHash = GetBlockHashFromMetadata(meta);
         return new QueryResponse<T>(blockHash, response);
     }
 

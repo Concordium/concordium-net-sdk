@@ -674,10 +674,17 @@ public sealed class RawClient : IDisposable
     /// <summary>
     /// Spawn a task which returns values of block chain parameters in a given block.
     /// </summary>
-    public Task<ChainParameters> GetBlockChainParametersAsync(BlockHashInput input) =>
-        this.InternalClient
-            .GetBlockChainParametersAsync(input, this.CreateCallOptions())
-            .ResponseAsync;
+    public async Task<QueryResponse<ChainParameters>> GetBlockChainParametersAsync(BlockHashInput input, CancellationToken token = default)
+    {
+        var response = this.InternalClient
+            .GetBlockChainParametersAsync(input, this.CreateCallOptions(token));
+
+        var chainParameters = await response.ResponseAsync
+            .ConfigureAwait(false);
+
+        return await QueryResponse<ChainParameters>.From(response.ResponseHeadersAsync, chainParameters)
+            .ConfigureAwait(false);
+    }
 
     /// <summary>
     /// Get a summary of the finalization data in a given block.
