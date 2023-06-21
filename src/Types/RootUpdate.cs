@@ -14,17 +14,17 @@ internal static class RootUpdateFactory
     internal static IRootUpdate From(Grpc.V2.RootUpdate root) =>
         root.UpdateTypeCase switch
         {
-            RootUpdate.UpdateTypeOneofCase.RootKeysUpdate =>
+            Grpc.V2.RootUpdate.UpdateTypeOneofCase.RootKeysUpdate =>
                 RootKeysUpdate.From(root.RootKeysUpdate),
-            RootUpdate.UpdateTypeOneofCase.Level1KeysUpdate =>
+            Grpc.V2.RootUpdate.UpdateTypeOneofCase.Level1KeysUpdate =>
                 Level1KeysUpdate.From(root.Level1KeysUpdate),
-            RootUpdate.UpdateTypeOneofCase.Level2KeysUpdateV0 =>
+            Grpc.V2.RootUpdate.UpdateTypeOneofCase.Level2KeysUpdateV0 =>
                 Level2KeysUpdate.From(root.Level2KeysUpdateV0),
-            RootUpdate.UpdateTypeOneofCase.Level2KeysUpdateV1 =>
+            Grpc.V2.RootUpdate.UpdateTypeOneofCase.Level2KeysUpdateV1 =>
                 Level2KeysUpdateV1.From(root.Level2KeysUpdateV1),
-            RootUpdate.UpdateTypeOneofCase.None =>
-                throw new MissingEnumException<RootUpdate.UpdateTypeOneofCase>(root.UpdateTypeCase),
-            _ => throw new MissingEnumException<RootUpdate.UpdateTypeOneofCase>(root.UpdateTypeCase)
+            Grpc.V2.RootUpdate.UpdateTypeOneofCase.None =>
+                throw new MissingEnumException<Grpc.V2.RootUpdate.UpdateTypeOneofCase>(root.UpdateTypeCase),
+            _ => throw new MissingEnumException<Grpc.V2.RootUpdate.UpdateTypeOneofCase>(root.UpdateTypeCase)
         };
 }
 
@@ -34,10 +34,7 @@ internal static class RootUpdateFactory
 public sealed record RootKeysUpdate(HigherLevelKeys Keys) : IRootUpdate
 {
     internal static RootKeysUpdate From(Grpc.V2.HigherLevelKeys keys) =>
-        new( new RootKeys(
-            keys.Keys.Select(UpdatePublicKey.From).ToArray(),
-            UpdateKeysThreshold.From(keys.Threshold)
-            ));
+        new(RootKeys.From(keys));
 }
 
 /// <summary>
@@ -46,10 +43,7 @@ public sealed record RootKeysUpdate(HigherLevelKeys Keys) : IRootUpdate
 public sealed record Level1KeysUpdate(HigherLevelKeys Keys) : IRootUpdate, ILevel1
 {
     internal static Level1KeysUpdate From(Grpc.V2.HigherLevelKeys keys) =>
-        new( new Level1Keys(
-            keys.Keys.Select(UpdatePublicKey.From).ToArray(),
-            UpdateKeysThreshold.From(keys.Threshold)
-            ));
+        new(Level1Keys.From(keys));
 }
 
 /// <summary>
