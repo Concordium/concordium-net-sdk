@@ -15,7 +15,6 @@ public sealed class GetAccountInfo : Tests
         var accountAddress = AccountAddress.From(this.GetString("accountAddress"));
         var block = BlockHash.From(this.GetString("blockHash"));
 
-
         var accountInfo = await this.Client.GetAccountInfoAsync(accountAddress, new Given(block));
 
         if (accountInfo.AccountStakingInfo is null)

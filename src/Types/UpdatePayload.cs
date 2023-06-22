@@ -11,8 +11,71 @@ public interface IUpdatePayload
 {
 }
 
-internal static class UpdatePayloadFactory
+public enum UpdateType
 {
+    ProtocolUpdate,
+    ElectionDifficultyUpdate,
+    EuroPerEnergyUpdate,
+    MicroCcdPerEuroUpdate,
+    FoundationAccountUpdate,
+    MintDistributionUpdate,
+    TransactionFeeDistributionUpdate,
+    GasRewardsUpdate,
+    BakerStakeThresholdUpdate,
+    AddAnonymityRevokerUpdate,
+    AddIdentityProviderUpdate,
+    RootUpdate,
+    Level1Update,
+    Level2Update,
+    PoolParametersCpv1Update,
+    CooldownParametersCpv1Update,
+    TimeParametersCpv1Update,
+    MintDistributionCpv1Update,
+    GasRewardsCpv2Update,
+    TimeoutParametersUpdate,
+    MinBlockTimeUpdate,
+    BlockEnergyLimitUpdate,
+    FinalizationCommitteeParametersUpdate,
+}
+
+/// <summary>
+/// Helper for constructing update payload structures.
+/// </summary>
+public static class UpdatePayloadFactory
+{
+    /// <summary>
+    /// Get update payload enum type for update payload type.
+    /// </summary>
+    /// <exception cref="MissingTypeException{IUpdatePayload}">When type can't be matched to enum.</exception>
+    public static UpdateType From(IUpdatePayload payload) =>
+        payload switch
+        {
+            AddAnonymityRevokerUpdate => UpdateType.AddAnonymityRevokerUpdate,
+            AddIdentityProviderUpdate => UpdateType.AddIdentityProviderUpdate,
+            BakerStakeThresholdUpdate => UpdateType.BakerStakeThresholdUpdate,
+            BlockEnergyLimitUpdate => UpdateType.BlockEnergyLimitUpdate,
+            CooldownParametersCpv1Update => UpdateType.CooldownParametersCpv1Update,
+            ElectionDifficultyUpdate => UpdateType.ElectionDifficultyUpdate,
+            EuroPerEnergyUpdate => UpdateType.EuroPerEnergyUpdate,
+            FinalizationCommitteeParametersUpdate =>
+                UpdateType.FinalizationCommitteeParametersUpdate,
+            FoundationAccountUpdate => UpdateType.FoundationAccountUpdate,
+            GasRewardsCpv2Update => UpdateType.GasRewardsCpv2Update,
+            GasRewardsUpdate => UpdateType.GasRewardsUpdate,
+            RootUpdate => UpdateType.RootUpdate,
+            Level1 => UpdateType.Level1Update,
+            MicroCcdPerEuroUpdate => UpdateType.MicroCcdPerEuroUpdate,
+            MinBlockTimeUpdate => UpdateType.MinBlockTimeUpdate,
+            MintDistributionCpv0Update => UpdateType.MintDistributionUpdate,
+            MintDistributionCpv1Update => UpdateType.MintDistributionCpv1Update,
+            PoolParametersCpv1Update => UpdateType.PoolParametersCpv1Update,
+            ProtocolUpdate => UpdateType.ProtocolUpdate,
+            TimeoutParametersUpdate => UpdateType.TimeoutParametersUpdate,
+            TimeParametersCpv1Update => UpdateType.TimeParametersCpv1Update,
+            TransactionFeeDistributionUpdate => UpdateType.TransactionFeeDistributionUpdate,
+            _ => throw new MissingTypeException<IUpdatePayload>(payload)
+        };
+
     internal static IUpdatePayload From(Grpc.V2.UpdatePayload payload) =>
         payload.PayloadCase switch
         {

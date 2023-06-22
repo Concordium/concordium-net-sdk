@@ -7,7 +7,7 @@ namespace Concordium.Sdk.Types;
 /// An update with root keys of some other set of governance keys, or the root
 /// keys themselves. Each update is a separate transaction.
 /// </summary>
-public interface IRootUpdate : IUpdatePayload {}
+public interface IRootUpdate {}
 
 internal static class RootUpdateFactory
 {

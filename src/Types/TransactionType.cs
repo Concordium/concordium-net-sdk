@@ -93,8 +93,47 @@ public enum TransactionType : byte
     ConfigureDelegation = 26,
 }
 
-internal static class TransactionTypeFactory
+/// <summary>
+/// Helper for constructing transaction type structures.
+/// </summary>
+public static class TransactionTypeFactory
 {
+    /// <summary>
+    /// Get transaction enum from transaction type. The transaction needs to be succeeded hence type
+    /// <see cref="Concordium.Sdk.Types.None"/> will throw an exception.
+    /// </summary>
+    /// <exception cref="MissingTypeException{IAccountTransactionEffects}"></exception>
+    public static TransactionType From(IAccountTransactionEffects effects) =>
+        effects switch
+        {
+            AccountTransfer => TransactionType.Transfer,
+            BakerAdded => TransactionType.AddBaker,
+            BakerConfigured => TransactionType.ConfigureBaker,
+            BakerKeysUpdated => TransactionType.UpdateBakerKeys,
+            BakerRemoved => TransactionType.RemoveBaker,
+            BakerRestakeEarningsUpdated => TransactionType.UpdateBakerRestakeEarnings,
+            BakerStakeUpdated => TransactionType.UpdateBakerStake,
+            ContractInitialized => TransactionType.InitContract,
+            ContractUpdateIssued => TransactionType.Update,
+            CredentialKeysUpdated => TransactionType.UpdateCredentialKeys,
+            CredentialsUpdated => TransactionType.UpdateCredentials,
+            DataRegistered => TransactionType.RegisterData,
+            DelegationConfigured => TransactionType.ConfigureDelegation,
+            EncryptedAmountTransferred encryptedAmountTransferred =>
+                encryptedAmountTransferred.Memo == null ?
+                    TransactionType.EncryptedAmountTransfer :
+                    TransactionType.EncryptedAmountTransferWithMemo,
+            ModuleDeployed => TransactionType.DeployModule,
+            // None => throw new NotImplementedException(), // TODO follow up on this
+            TransferredToEncrypted => TransactionType.TransferToEncrypted,
+            TransferredToPublic => TransactionType.TransferToPublic,
+            TransferredWithSchedule transferredWithSchedule =>
+                transferredWithSchedule.Memo == null ?
+                    TransactionType.TransferWithSchedule :
+                    TransactionType.TransferWithScheduleAndMemo,
+            _ => throw new MissingTypeException<IAccountTransactionEffects>(effects)
+        };
+
     internal static TransactionType Into(this Grpc.V2.TransactionType transactionType) =>
         transactionType switch
         {

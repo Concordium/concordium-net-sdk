@@ -12,6 +12,6 @@ public sealed record CooldownParameters(TimeSpan PoolOwnerCooldown, TimeSpan Del
 {
     internal static CooldownParameters From(Grpc.V2.CooldownParametersCpv1 coolDown) =>
         new(
-            TimeSpan.FromSeconds((double)coolDown.PoolOwnerCooldown.Value),
-            TimeSpan.FromSeconds((double)coolDown.DelegatorCooldown.Value));
+            TimeSpan.FromSeconds(coolDown.PoolOwnerCooldown.Value),
+            TimeSpan.FromSeconds(coolDown.DelegatorCooldown.Value));
 }
