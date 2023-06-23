@@ -6,7 +6,7 @@
   - Structs are either records (and hence as default override) or override equality
   - Record structs has readonly where immutability is expected.
   - Implicit operators are removed, since standard in our Rust SDK and our gRPC protocol is to be explicit. This is a breaking change.
-- Added ConfigureAwait where tasks are awaited.
+- Add ConfigureAwait to enhance library uses from UI- or own syncronization context usages.
 
 ## 2.0.0
 - Rewrite the SDK to use the Concordium Node gRPC API version 2. This
