@@ -108,4 +108,11 @@ public readonly record struct CcdAmount
     /// Copies the CCD amuunt represented in big-endian format to  byte array.
     /// </summary>
     public byte[] ToBytes() => Serialization.ToBytes(this.Value);
+
+    public static bool operator <(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) < 0;
+    public static bool operator >(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) > 0;
+
+    public static bool operator <=(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) <= 0;
+
+    public static bool operator >=(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) >= 0;
 }

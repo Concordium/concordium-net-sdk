@@ -471,10 +471,10 @@ public sealed class RawClient : IDisposable
     /// Get all special events in a given block.
     /// A special event is protocol generated event that is not directly caused by a transaction, such as minting, paying out rewards, etc.
     /// </summary>
-    public IAsyncEnumerable<BlockSpecialEvent> GetBlockSpecialEvents(BlockHashInput input) =>
+    public IAsyncEnumerable<BlockSpecialEvent> GetBlockSpecialEvents(BlockHashInput input, CancellationToken token = default) =>
         this.InternalClient
-            .GetBlockSpecialEvents(input, this.CreateCallOptions())
-            .ResponseStream.ReadAllAsync();
+            .GetBlockSpecialEvents(input, this.CreateCallOptions(token))
+            .ResponseStream.ReadAllAsync(cancellationToken: token);
 
     /// <summary>
     /// Get all pending updates to chain parameters at the end of a given block.

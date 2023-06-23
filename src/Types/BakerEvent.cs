@@ -88,7 +88,7 @@ public sealed record BakerKeysUpdatedEvent(BakerKeysEvent Data) : IBakerEvent;
 /// </summary>
 /// <param name="BakerId">Baker's id</param>
 /// <param name="OpenStatus">The open status.</param>
-public sealed record BakerSetOpenStatusEvent(BakerId BakerId, OpenStatus OpenStatus) : IBakerEvent;
+public sealed record BakerSetOpenStatusEvent(BakerId BakerId, BakerPoolOpenStatus OpenStatus) : IBakerEvent;
 
 /// <summary>
 /// Updated metadata url for baker pool
