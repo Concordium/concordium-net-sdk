@@ -12,14 +12,14 @@ namespace Concordium.Sdk.Types;
 /// transaction. The next sequence number to be used in a transaction can be queried
 /// with <see cref="ConcordiumClient.GetNextAccountSequenceNumber"/>.
 /// </summary>
-public readonly struct AccountSequenceNumber : IEquatable<AccountSequenceNumber>
+public readonly record struct AccountSequenceNumber
 {
     public const uint BytesLength = sizeof(ulong);
 
     /// <summary>
     /// The value of the account sequence number.
     /// </summary>
-    public readonly ulong Value { get; init; }
+    public ulong Value { get; init; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountSequenceNumber"/> class.
@@ -67,18 +67,4 @@ public readonly struct AccountSequenceNumber : IEquatable<AccountSequenceNumber>
     /// This can be used as the input for class methods of <see cref="RawClient"/>.
     /// </summary>
     public Grpc.V2.SequenceNumber ToProto() => new() { Value = Value };
-
-    public static implicit operator AccountSequenceNumber(ulong value) => new(value);
-
-    public static implicit operator ulong(AccountSequenceNumber byteIndex) => byteIndex.Value;
-
-    public bool Equals(AccountSequenceNumber other) => this.Value == other.Value;
-
-    public override bool Equals(object? obj) => obj is AccountSequenceNumber other && this.Equals(other);
-
-    public override int GetHashCode() => this.Value.GetHashCode();
-
-    public static bool operator ==(AccountSequenceNumber left, AccountSequenceNumber right) => left.Equals(right);
-
-    public static bool operator !=(AccountSequenceNumber left, AccountSequenceNumber right) => !(left == right);
 }

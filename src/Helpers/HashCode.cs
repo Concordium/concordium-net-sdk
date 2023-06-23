@@ -3,7 +3,7 @@ namespace Concordium.Sdk.Helpers;
 /// <summary>
 /// Helpers for hash codes.
 /// </summary>
-public class HashCode
+public static class HashCode
 {
     public static int GetHashCodeByteArray(byte[] array)
     {

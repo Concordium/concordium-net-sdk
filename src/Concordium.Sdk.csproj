@@ -65,4 +65,8 @@
       <ProtoRoot>../concordium-grpc-api</ProtoRoot>
     </Protobuf>
   </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Concordium.Sdk.Tests.UnitTests"/>
+  </ItemGroup>
 </Project>

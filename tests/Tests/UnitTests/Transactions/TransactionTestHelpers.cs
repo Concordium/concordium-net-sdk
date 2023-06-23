@@ -57,9 +57,9 @@ public static class TransactionTestHelpers
             "ebaf15cfd4182c98fdb81882591c9e96cf459870ebd1a0dda84288a7f9ab9211"
         );
         var signer = new TransactionSigner();
-        signer.AddSignerEntry(0, 0, key00);
-        signer.AddSignerEntry(0, 1, key01);
-        signer.AddSignerEntry(1, 1, key11);
+        signer.AddSignerEntry(new AccountCredentialIndex(0), new AccountKeyIndex(0), key00);
+        signer.AddSignerEntry(new AccountCredentialIndex(0), new AccountKeyIndex(1), key01);
+        signer.AddSignerEntry(new AccountCredentialIndex(1), new AccountKeyIndex(1), key11);
 
         // Sign the transfer using the signer.
         return preparedTransaction.Sign(signer);
@@ -95,22 +95,22 @@ public static class TransactionTestHelpers
         {
             // Credential index 0.
             {
-                0,
+                new AccountCredentialIndex(0),
                 new Dictionary<AccountKeyIndex, byte[]>()
                 {
                     // Key index 0.
-                    { 0, expectedSignature00 },
+                    { new AccountKeyIndex(0), expectedSignature00 },
                     // Key index 1.
-                    { 1, expectedSignature01 }
+                    { new AccountKeyIndex(1), expectedSignature01 }
                 }
             },
             // Credential index 1.
             {
-                1,
+                new AccountCredentialIndex(1),
                 new Dictionary<AccountKeyIndex, byte[]>()
                 {
                     // Key index 1.
-                    { 1, expectedSignature11 }
+                    { new AccountKeyIndex(1), expectedSignature11 }
                 }
             },
         };

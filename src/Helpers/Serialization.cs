@@ -5,7 +5,7 @@ namespace Concordium.Sdk.Helpers;
 /// <summary>
 /// Helpers for serializing data.
 /// </summary>
-public class Serialization
+public static class Serialization
 {
     /// <summary>
     /// Copies the bytes representing the specified <see cref="ulong"/> in big-endian format to a byte array.

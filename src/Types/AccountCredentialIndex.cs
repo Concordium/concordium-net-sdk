@@ -6,16 +6,9 @@ namespace Concordium.Sdk.Types;
 /// An account has one or more credentials, each identified by a unique
 /// byte-value referred to as its credential index.
 /// </summary>
-public readonly struct AccountCredentialIndex
+/// <param name="Value">An account credential index represented by a <see cref="byte"/>.</param>
+public readonly record struct AccountCredentialIndex(byte Value)
 {
-    public readonly byte Value { get; init; }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="AccountCredentialIndex"/> class.
-    /// </summary>
-    /// <param name="value">An account credential index represented by a <see cref="byte"/>.</param>
-    public AccountCredentialIndex(byte value) => this.Value = value;
-
     /// <summary>
     /// Creates an instance from a string representing a <see cref="byte"/> value.
     /// </summary>
@@ -29,8 +22,4 @@ public readonly struct AccountCredentialIndex
         }
         throw new ArgumentException($"Could not parse '{index}' as a byte value.");
     }
-
-    public static implicit operator AccountCredentialIndex(byte value) => new(value);
-
-    public static implicit operator byte(AccountCredentialIndex accountCredentialIndex) => accountCredentialIndex.Value;
 }

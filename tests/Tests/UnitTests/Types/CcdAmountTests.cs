@@ -8,6 +8,28 @@ namespace Concordium.Sdk.Tests.UnitTests.Types;
 public class CcdAmountTests
 {
     [Fact]
+    public void GivenEqualOperator_WhenUsingSameAddress_ThenEquals()
+    {
+        // Arrange
+        var ccdAmountA = CcdAmount.FromCcd(1);
+        var ccdAmountB = CcdAmount.FromCcd(1);
+
+        // Act
+        var equals = ccdAmountA == ccdAmountB;
+
+        // Assert
+        equals.Should().BeTrue();
+    }
+
+    [Fact]
+    public void WhenSame_CcdAmounts_AreEqual()
+    {
+        var ccdAmountA = CcdAmount.FromCcd(1);
+        var ccdAmountB = CcdAmount.FromCcd(1);
+        Assert.Equal(ccdAmountA.GetHashCode(), ccdAmountB.GetHashCode());
+    }
+
+    [Fact]
     public void Same_CcdAmounts_AreEqual()
     {
         var ccdAmountA = CcdAmount.FromCcd(1);

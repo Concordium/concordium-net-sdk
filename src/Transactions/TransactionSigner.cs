@@ -11,27 +11,24 @@ namespace Concordium.Sdk.Transactions;
 /// and <see cref="AccountKeyIndex"/> to <see cref="ISigner"/>s corresponding
 /// to the sign keys of an account.
 /// </summary>
-public class TransactionSigner : ITransactionSigner
+public sealed class TransactionSigner : ITransactionSigner
 {
     /// <summary>
     /// Internal representation of the signer map.
     /// </summary>
-    private readonly Dictionary<
-        AccountCredentialIndex,
-        Dictionary<AccountKeyIndex, ISigner>
-    > _signers;
+    private readonly Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, ISigner>> _signers;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TransactionSigner"/> class.
     /// </summary>
-    public TransactionSigner() => this._signers = new Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, ISigner>>();
+    public TransactionSigner() =>
+        this._signers = new Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, ISigner>>();
 
-    public byte GetSignatureCount() => (byte)this._signers.Values.SelectMany(x => x.Values).Count();
+    public byte GetSignatureCount()
+        => (byte)this._signers.Values.SelectMany(x => x.Values).Count();
 
-    public ImmutableDictionary<
-        AccountCredentialIndex,
-        ImmutableDictionary<AccountKeyIndex, ISigner>
-    > GetSignerEntries() => this._signers
+    public ImmutableDictionary<AccountCredentialIndex, ImmutableDictionary<AccountKeyIndex, ISigner>>
+        GetSignerEntries() => this._signers
             .Select(
                 x =>
                     new KeyValuePair<
