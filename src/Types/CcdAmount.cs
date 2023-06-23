@@ -7,7 +7,7 @@ namespace Concordium.Sdk.Types;
 ///
 /// Note that 1_000_000 µCCD is equal to 1 CCD.
 /// </summary>
-public readonly struct CcdAmount : IEquatable<CcdAmount>, IComparable<CcdAmount>
+public readonly record struct CcdAmount
 {
     public static CcdAmount Zero { get; } = FromCcd(0);
 
@@ -108,23 +108,4 @@ public readonly struct CcdAmount : IEquatable<CcdAmount>, IComparable<CcdAmount>
     /// Copies the CCD amuunt represented in big-endian format to  byte array.
     /// </summary>
     public byte[] ToBytes() => Serialization.ToBytes(this.Value);
-
-    public bool Equals(CcdAmount other) => this.Value == other.Value;
-
-    public int CompareTo(CcdAmount other) => this.Value.CompareTo(other.Value);
-
-    public static bool operator <(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) < 0;
-    public static bool operator >(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) > 0;
-
-    public override bool Equals(object? obj) => obj is CcdAmount other && this.Equals(other);
-
-    public static bool operator ==(CcdAmount? left, CcdAmount? right) => Equals(left, right);
-
-    public static bool operator !=(CcdAmount? left, CcdAmount? right) => !Equals(left, right);
-
-    public override int GetHashCode() => this.Value.GetHashCode();
-
-    public static bool operator <=(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) <= 0;
-
-    public static bool operator >=(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) >= 0;
 }

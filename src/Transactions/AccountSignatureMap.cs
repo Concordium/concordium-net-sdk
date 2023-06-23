@@ -13,13 +13,12 @@ namespace Concordium.Sdk.Transactions;
 /// <see cref="AccountCredentialIndex"/>. Each signature is currently produced by
 /// signing with an <see cref="Ed25519SignKey"/> and therefore 64 bytes long.
 /// </summary>
-public class AccountSignatureMap
+public sealed record AccountSignatureMap
 {
     /// <summary>
     /// Internal representation of the map.
     /// </summary>
     public ImmutableDictionary<AccountKeyIndex, byte[]> Signatures { get; init; }
-
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AccountSignatureMap"/> class.
@@ -51,7 +50,7 @@ public class AccountSignatureMap
         foreach (var s in this.Signatures)
         {
             accountSignatureMap.Signatures.Add(
-                s.Key,
+                s.Key.Value,
                 new Grpc.V2.Signature() { Value = Google.Protobuf.ByteString.CopyFrom(s.Value) }
             );
         }

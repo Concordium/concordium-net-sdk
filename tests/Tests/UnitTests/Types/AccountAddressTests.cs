@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
-using Concordium.Sdk.Types;
 using FluentAssertions;
 using NBitcoin.DataEncoders;
 using Xunit;
+using AccountAddress = Concordium.Sdk.Types.AccountAddress;
 
 namespace Concordium.Sdk.Tests.UnitTests.Types;
 
@@ -12,6 +12,7 @@ public class AccountAddressTests
     [Fact]
     public void Same_Addresses_HaveSameHashCode()
     {
+
         var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
         var accountAddressA = AccountAddress.From(addressAsBase58String);
         var accountAddressB = AccountAddress.From(addressAsBase58String);
@@ -25,6 +26,21 @@ public class AccountAddressTests
         var accountAddressA = AccountAddress.From(addressAsBase58String);
         var accountAddressB = AccountAddress.From(addressAsBase58String);
         Assert.Equal(accountAddressA, accountAddressB);
+    }
+
+    [Fact]
+    public void GivenEqualOperator_WhenUsingSameAddress_ThenEquals()
+    {
+        // Arrange
+        var addressAsBase58String = "3XSLuJcXg6xEua6iBPnWacc3iWh93yEDMCqX8FbE3RDSbEnT9P";
+        var accountAddressA = AccountAddress.From(addressAsBase58String);
+        var accountAddressB = AccountAddress.From(addressAsBase58String);
+
+        // Act
+        var equals = accountAddressA == accountAddressB;
+
+        // Assert
+        Assert.True(equals);
     }
 
     [Fact]

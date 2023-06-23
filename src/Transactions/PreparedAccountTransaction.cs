@@ -11,52 +11,21 @@ namespace Concordium.Sdk.Transactions;
 /// when submitting the transaction as well as its <see cref="Types.Expiry"/>. These are also
 /// used when signing the transaction.
 /// </summary>
-public record PreparedAccountTransaction
-{
-    /// <summary>
-    /// Address of the sender of the transaction.
-    /// </summary>
-    public AccountAddress Sender { get; init; }
-
-    /// <summary>
-    /// Account sequence number to use for the transaction.
-    /// </summary>
-    public AccountSequenceNumber SequenceNumber { get; init; }
-
-    /// <summary>
-    /// Expiration time of the transaction.
-    /// </summary>
-    public Expiry Expiry { get; init; }
-
-    /// <summary>
-    /// Payload to send to the node.
-    /// </summary>
-    public AccountTransactionPayload Payload { get; init; }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="PreparedAccountTransaction"/> class.
-    /// </summary>
-    /// <param name="sender">Address of the sender of the transaction.</param>
-    /// <param name="sequenceNumber">Account sequence number to use for the transaction.</param>
-    /// <param name="expiry">Expiration time of the transaction.</param>
-    /// <param name="payload">Payload to be sent to the node.</param>
-    public PreparedAccountTransaction(
-        AccountAddress sender,
-        AccountSequenceNumber sequenceNumber,
-        Expiry expiry,
-        AccountTransactionPayload payload
+/// <param name="Sender">Address of the sender of the transaction.</param>
+/// <param name="SequenceNumber">Account sequence number to use for the transaction.</param>
+/// <param name="Expiry">Expiration time of the transaction.</param>
+/// <param name="Payload">Payload to send to the node.</param>
+public sealed record PreparedAccountTransaction(
+    AccountAddress Sender,
+    AccountSequenceNumber SequenceNumber,
+    Expiry Expiry,
+    AccountTransactionPayload Payload
     )
-    {
-        this.Sender = sender;
-        this.SequenceNumber = sequenceNumber;
-        this.Expiry = expiry;
-        this.Payload = payload;
-    }
-
+{
     /// <summary>
     /// Signs the prepared transaction using the provided signer.
     /// </summary>
-    /// <param name="signer">The signer to use for signing the transaction.</param>
+    /// <param name="transactionSigner">The signer to use for signing the transaction.</param>
     /// <exception cref="ArgumentException">A signature produced by the signing is not 64 bytes.</exception>
     public SignedAccountTransaction Sign(ITransactionSigner transactionSigner)
     {
@@ -79,7 +48,7 @@ public record PreparedAccountTransaction
             this.SequenceNumber,
             this.Expiry,
             energyCost,
-            serializedPayloadSize
+            new PayloadSize(serializedPayloadSize)
         );
 
         // Construct the serialized payload and its digest for signing.

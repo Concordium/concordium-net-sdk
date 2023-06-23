@@ -5,4 +5,4 @@ namespace Concordium.Sdk.Types;
 /// in the order of creation of accounts. The first account has index 0.
 /// </summary>
 /// <param name="Index">Index of account</param>
-public record struct AccountIndex(ulong Index);
+public readonly record struct AccountIndex(ulong Index);

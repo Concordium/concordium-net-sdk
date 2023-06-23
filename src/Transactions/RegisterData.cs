@@ -7,23 +7,13 @@ namespace Concordium.Sdk.Transactions;
 ///
 /// Used for registering data on-chain.
 /// </summary>
-public record RegisterData : AccountTransactionPayload
+/// <param name="Data">The data to be registered on-chain.</param>
+public sealed record RegisterData(OnChainData Data) : AccountTransactionPayload
 {
     /// <summary>
     /// The account transaction type to be used in the serialized payload.
     /// </summary>
     private const byte TransactionType = (byte)Types.TransactionType.RegisterData;
-
-    /// <summary>
-    /// The data to be registered on-chain.
-    /// </summary>
-    public OnChainData Data { get; init; }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="RegisterData"/> class.
-    /// </summary>
-    /// <param name="data">The data to be registered on-chain.</param>
-    public RegisterData(OnChainData data) => this.Data = data;
 
     public override ulong GetTransactionSpecificCost() => 300;
 

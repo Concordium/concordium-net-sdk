@@ -12,13 +12,13 @@ public interface ITransactionStatus
 /// <summary>
 /// Transaction is received, but not yet in any blocks.
 /// </summary>
-public sealed class TransactionStatusReceived : ITransactionStatus
+public sealed record TransactionStatusReceived : ITransactionStatus
 { }
 
 /// <summary>
 /// Transaction is finalized in the given block, with the given summary.
 /// </summary>
-public sealed class TransactionStatusFinalized : ITransactionStatus
+public sealed record TransactionStatusFinalized : ITransactionStatus
 {
     /// <summary>
     /// Record with the block hash and summary of the outcome of a block item.
@@ -41,7 +41,7 @@ public sealed class TransactionStatusFinalized : ITransactionStatus
 /// transaction should not be dependent on the block it is in, but this
 /// can in principle happen.
 /// </summary>
-public sealed class TransactionStatusCommitted : ITransactionStatus
+public sealed record TransactionStatusCommitted : ITransactionStatus
 {
     /// <summary>
     /// Map with records which each gives the block hash and summary of the outcome of a block item.
