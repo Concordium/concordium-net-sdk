@@ -24,7 +24,8 @@
 /// registered and a new payday has not started yet).
 /// </param>
 /// <param name="AllPoolTotalCapital">Total capital staked across all pools.</param>
-public sealed record BakerPoolStatus(ulong BakerId,
+public sealed record BakerPoolStatus(
+        BakerId BakerId,
         AccountAddress BakerAddress,
         CcdAmount BakerEquityCapital,
         CcdAmount DelegatedCapital,
@@ -35,7 +36,7 @@ public sealed record BakerPoolStatus(ulong BakerId,
 {
         internal static BakerPoolStatus From(Concordium.Grpc.V2.PoolInfoResponse poolInfoResponse) =>
             new(
-                poolInfoResponse.Baker.Value,
+                BakerId.From(poolInfoResponse.Baker),
                 AccountAddress.From(poolInfoResponse.Address),
                 CcdAmount.From(poolInfoResponse.EquityCapital),
                 CcdAmount.From(poolInfoResponse.DelegatedCapital),

@@ -14,11 +14,7 @@ public sealed class GetBlockSpecialEvents : Tests
         var block = BlockHash.From(this.GetString("blockHashWithEvents"));
         await foreach(var specialEvent in this.Client.GetBlockSpecialEvents(new Given(block)))
         {
-            foreach (var accountBalanceUpdate in specialEvent.GetAccountBalanceUpdates())
-            {
-                this.Output.WriteLine($"Type of special event: {specialEvent.GetType().Name}");
-                this.Output.WriteLine($"Account {accountBalanceUpdate.AccountAddress} with adjustment {accountBalanceUpdate.AmountAdjustment} and balance update type {accountBalanceUpdate.BalanceUpdateType.ToString()}");
-            }
+            this.Output.WriteLine($"Type of special event is: {specialEvent.GetType().Name}");
         }
     }
 }

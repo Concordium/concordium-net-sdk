@@ -1,6 +1,5 @@
 ﻿using Concordium.Grpc.V2;
 using Concordium.Sdk.Exceptions;
-using Concordium.Sdk.Types.Views;
 
 namespace Concordium.Sdk.Types;
 
@@ -10,9 +9,7 @@ namespace Concordium.Sdk.Types;
 /// the consensus and finalization protocols.
 /// </summary>
 public interface ISpecialEvent
-{
-    IEnumerable<AccountBalanceUpdate> GetAccountBalanceUpdates();
-}
+{}
 
 internal static class SpecialEventExtensions
 {
@@ -56,10 +53,6 @@ public sealed record BakingRewards(IDictionary<AccountAddress, CcdAmount> Reward
                 .ToDictionary(e => AccountAddress.From(e.Account), e => CcdAmount.From(e.Amount)),
             Remainder: CcdAmount.From(bakingRewards.Remainder)
         );
-
-    public IEnumerable<AccountBalanceUpdate> GetAccountBalanceUpdates() =>
-        this.Rewards.Select(kv =>
-            new AccountBalanceUpdate(kv.Key, (long)kv.Value.Value, BalanceUpdateType.BakerReward));
 }
 
 /// <summary>
@@ -90,12 +83,6 @@ public sealed record Mint(
             MintPlatformDevelopmentCharge: CcdAmount.From(mint.MintPlatformDevelopmentCharge),
             FoundationAccount: AccountAddress.From(mint.FoundationAccount)
         );
-
-    public IEnumerable<AccountBalanceUpdate> GetAccountBalanceUpdates()
-    {
-        yield return new AccountBalanceUpdate(this.FoundationAccount, (long)this.MintPlatformDevelopmentCharge.Value,
-            BalanceUpdateType.FoundationReward);
-    }
 }
 
 /// <summary>
@@ -117,10 +104,6 @@ public sealed record FinalizationRewards(IDictionary<AccountAddress, CcdAmount> 
                 .ToDictionary(e => AccountAddress.From(e.Account), e => CcdAmount.From(e.Amount)),
             Remainder: CcdAmount.From(finalizationRewards.Remainder)
         );
-
-    public IEnumerable<AccountBalanceUpdate> GetAccountBalanceUpdates() =>
-        this.Rewards.Select(kv =>
-            new AccountBalanceUpdate(kv.Key, (long)kv.Value.Value, BalanceUpdateType.FinalizationReward));
 }
 
 /// <summary>
@@ -143,20 +126,6 @@ public sealed record BlockReward(
     AccountAddress FoundationAccount
     ) : ISpecialEvent
 {
-    public IEnumerable<AccountBalanceUpdate> GetAccountBalanceUpdates()
-    {
-        if (this.FoundationCharge > CcdAmount.Zero)
-        {
-            yield return new AccountBalanceUpdate(this.FoundationAccount, (long)this.FoundationCharge.Value,
-                BalanceUpdateType.FoundationReward);
-        }
-        if (this.BakerReward > CcdAmount.Zero)
-        {
-            yield return new AccountBalanceUpdate(this.Baker, (long)this.BakerReward.Value,
-                BalanceUpdateType.TransactionFeeReward);
-        }
-    }
-
     internal static BlockReward From(Grpc.V2.BlockSpecialEvent.Types.BlockReward blockReward) =>
         new(
             TransactionFees: CcdAmount.From(blockReward.TransactionFees),
@@ -177,12 +146,6 @@ public sealed record BlockReward(
 /// <param name="DevelopmentCharge">Amount rewarded.</param>
 public sealed record PaydayFoundationReward(AccountAddress FoundationAccount, CcdAmount DevelopmentCharge) : ISpecialEvent
 {
-    public IEnumerable<AccountBalanceUpdate> GetAccountBalanceUpdates()
-    {
-        yield return new AccountBalanceUpdate(this.FoundationAccount, (long)this.DevelopmentCharge.Value,
-            BalanceUpdateType.FoundationReward);
-    }
-
     internal static PaydayFoundationReward From(Grpc.V2.BlockSpecialEvent.Types.PaydayFoundationReward paydayFoundationReward) =>
         new(
             FoundationAccount: AccountAddress.From(paydayFoundationReward.FoundationAccount),
@@ -206,13 +169,6 @@ public sealed record PaydayAccountReward(
     CcdAmount FinalizationReward
     ) : ISpecialEvent
 {
-    public IEnumerable<AccountBalanceUpdate> GetAccountBalanceUpdates()
-    {
-        yield return new AccountBalanceUpdate(this.Account, (long)this.TransactionFees.Value, BalanceUpdateType.TransactionFeeReward);
-        yield return new AccountBalanceUpdate(this.Account, (long)this.BakerReward.Value, BalanceUpdateType.BakerReward);
-        yield return new AccountBalanceUpdate(this.Account, (long)this.FinalizationReward.Value, BalanceUpdateType.FinalizationReward);
-    }
-
     internal static PaydayAccountReward From(Grpc.V2.BlockSpecialEvent.Types.PaydayAccountReward paydayAccountReward) =>
         new(
             Account: AccountAddress.From(paydayAccountReward.Account),
@@ -242,8 +198,6 @@ public sealed record BlockAccrueReward(
     BakerId BakerId
 ) : ISpecialEvent
 {
-    public IEnumerable<AccountBalanceUpdate> GetAccountBalanceUpdates() => ArraySegment<AccountBalanceUpdate>.Empty;
-
     internal static BlockAccrueReward From(Grpc.V2.BlockSpecialEvent.Types.BlockAccrueReward blockAccrueReward) =>
         new(
             TransactionFees: CcdAmount.From(blockAccrueReward.TransactionFees),
@@ -270,8 +224,6 @@ public sealed record PaydayPoolReward(
     CcdAmount FinalizationReward
 ) : ISpecialEvent
 {
-    public IEnumerable<AccountBalanceUpdate> GetAccountBalanceUpdates() => ArraySegment<AccountBalanceUpdate>.Empty;
-
     internal static PaydayPoolReward From(Grpc.V2.BlockSpecialEvent.Types.PaydayPoolReward paydayPoolReward) =>
         new(
             PoolOwner: paydayPoolReward.PoolOwner?.Value,

@@ -221,7 +221,6 @@ public sealed class ConcordiumClient : IDisposable
     /// Get information about a given pool at the end of a given block.
     /// If the block does not exist or is prior to protocol version 4 then
     /// exception is thrown.
-    /// TODO: Old name GetPoolStatusForBakerAsync
     /// </summary>
     /// <param name="bakerId">Id of baker</param>
     /// <param name="blockHash">Block hash from where information will be fetched</param>
@@ -238,8 +237,6 @@ public sealed class ConcordiumClient : IDisposable
 
     /// <summary>
     /// Get information about tokenomics at the end of a given block.
-    /// If the block does not exist [`QueryError::NotFound`] is returned.
-    /// TODO: Old GetRewardStatusAsync
     /// </summary>
     /// <param name="blockHash">Block from where state of tokenomics are returned.</param>
     /// <returns>Tokenomics</returns>
@@ -254,7 +251,6 @@ public sealed class ConcordiumClient : IDisposable
     /// State of the passive delegation pool at block hash. Changes to delegation,
     /// e.g., an account deciding to delegate are reflected in this structure at
     /// first.
-    /// TODO: Old GetPoolStatusForPassiveDelegation
     /// </summary>
     /// <param name="blockHash">Block hash from where passive delegation status will be returned.</param>
     /// <returns>State of the passive delegation pool</returns>
@@ -293,8 +289,7 @@ public sealed class ConcordiumClient : IDisposable
 
     /// <summary>
     /// Get information, such as height, timings, and transaction counts for the
-    /// given block. If the block does not exist [`QueryError::NotFound`] is
-    /// returned.
+    /// given block.
     /// </summary>
     /// <param name="blockHash">Block from where information will be returned.</param>
     /// <param name="token">Cancellation token</param>

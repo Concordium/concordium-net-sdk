@@ -326,7 +326,55 @@ public sealed record DataRegistered(byte[] Data) : IAccountTransactionEffects
 /// A baker was configured.
 /// </summary>
 /// <param name="Data">The details of what happened</param>
-public sealed record BakerConfigured(IList<IBakerEvent> Data) : IAccountTransactionEffects;
+public sealed record BakerConfigured(IList<IBakerEvent> Data) : IAccountTransactionEffects
+{
+
+    /// <summary>
+    /// Get baker id's affected.
+    /// </summary>
+    public IEnumerable<BakerId> GetBakerIds()
+    {
+        foreach (var bakerEvent in this.Data)
+        {
+            switch (bakerEvent)
+            {
+                case BakerAddedEvent bakerAddedEvent:
+                    yield return bakerAddedEvent.KeysEvent.BakerId;
+                    break;
+                case BakerKeysUpdatedEvent bakerKeysUpdatedEvent:
+                    yield return bakerKeysUpdatedEvent.Data.BakerId;
+                    break;
+                case BakerRemovedEvent bakerRemovedEvent:
+                    yield return bakerRemovedEvent.BakerId;
+                    break;
+                case BakerRestakeEarningsUpdatedEvent bakerRestakeEarningsUpdatedEvent:
+                    yield return bakerRestakeEarningsUpdatedEvent.BakerId;
+                    break;
+                case BakerSetBakingRewardCommissionEvent bakerSetBakingRewardCommissionEvent:
+                    yield return bakerSetBakingRewardCommissionEvent.BakerId;
+                    break;
+                case BakerSetFinalizationRewardCommissionEvent bakerSetFinalizationRewardCommissionEvent:
+                    yield return bakerSetFinalizationRewardCommissionEvent.BakerId;
+                    break;
+                case BakerSetMetadataUrlEvent bakerSetMetadataUrlEvent:
+                    yield return bakerSetMetadataUrlEvent.BakerId;
+                    break;
+                case BakerSetOpenStatusEvent bakerSetOpenStatusEvent:
+                    yield return bakerSetOpenStatusEvent.BakerId;
+                    break;
+                case BakerSetTransactionFeeCommissionEvent bakerSetTransactionFeeCommissionEvent:
+                    yield return bakerSetTransactionFeeCommissionEvent.BakerId;
+                    break;
+                case BakerStakeDecreasedEvent bakerStakeDecreasedEvent:
+                    yield return bakerStakeDecreasedEvent.BakerId;
+                    break;
+                case BakerStakeIncreasedEvent bakerStakeIncreasedEvent:
+                    yield return bakerStakeIncreasedEvent.BakerId;
+                    break;
+            }
+        }
+    }
+}
 
 /// <summary>
 /// An account configured delegation.
