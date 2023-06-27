@@ -30,7 +30,7 @@ public sealed class ConcordiumClient : IDisposable
     /// <summary>
     /// Initializes a new instance of the <see cref="Client"/> class.
     ///
-    /// Optionally use <paramref name="channelOptions"/> to specify connection settings
+    /// Optionally use <paramref name="rawChannelOptions"/> to specify connection settings
     /// such as the retry policy or keepalive ping.
     ///
     /// By default the policy is not to retry if a connection could not be established.
@@ -47,7 +47,7 @@ public sealed class ConcordiumClient : IDisposable
     /// specified in <paramref name="endpoint"/>.
     /// </param>
     /// <param name="timeout">The maximum permitted duration of a call made by this client, in seconds. <c>null</c> allows the call to run indefinitely.</param>
-    /// <param name="channelOptions">The options for the channel that is used to communicate with the node.</param>
+    /// <param name="rawChannelOptions">The options for the channel that is used to communicate with the node.</param>
     public ConcordiumClient(Uri endpoint, ushort port, ulong? timeout = 30, GrpcChannelOptions? rawChannelOptions = null)
     => this.Raw = new(endpoint, port, timeout, rawChannelOptions);
 
@@ -333,9 +333,10 @@ public sealed class ConcordiumClient : IDisposable
     /// If the block does not exist an exception is thrown is returned.
     /// </summary>
     /// <param name="blockHashInput">Block from where finalization summary will be given.</param>
-    public async Task<FinalizationSummary?> GetBlockFinalizationSummaryAsync(IBlockHashInput blockHashInput)
+    /// <param name="token">Cancellation token</param>
+    public async Task<FinalizationSummary?> GetBlockFinalizationSummaryAsync(IBlockHashInput blockHashInput, CancellationToken token = default)
     {
-        var finalizationSummary = await this.Raw.GetBlockFinalizationSummaryAsync(blockHashInput.Into());
+        var finalizationSummary = await this.Raw.GetBlockFinalizationSummaryAsync(blockHashInput.Into(), token);
         return FinalizationSummary.From(finalizationSummary);
     }
 

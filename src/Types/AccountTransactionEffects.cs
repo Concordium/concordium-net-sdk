@@ -314,7 +314,13 @@ public sealed record CredentialsUpdated
 /// Some data was registered on the chain.
 /// </summary>
 /// <param name="Data">Data that was registered on the chain.</param>
-public sealed record DataRegistered(byte[] Data) : IAccountTransactionEffects;
+public sealed record DataRegistered(byte[] Data) : IAccountTransactionEffects
+{
+    /// <summary>
+    /// Returns hex representation of data.
+    /// </summary>
+    public string ToHex() => Convert.ToHexString(this.Data);
+}
 
 /// <summary>
 /// A baker was configured.

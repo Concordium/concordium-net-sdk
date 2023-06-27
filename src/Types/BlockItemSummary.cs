@@ -48,6 +48,27 @@ public sealed record BlockItemSummary(ulong Index, EnergyAmount EnergyCost, Tran
     public bool IsReject() => this.TryGetRejectedAccountTransaction(out _);
 
     /// <summary>
+    /// Returns transaction cost. These are only present when details is type
+    /// account transaction.
+    /// </summary>
+    /// <param name="amount">CcdAmount of transaction.</param>
+    /// <returns>Try of block item has had cost.</returns>
+    public bool TryGetCost(out CcdAmount? amount)
+    {
+        amount = null;
+        switch (this.Details)
+        {
+            case AccountTransactionDetails accountTransactionDetails:
+                amount = accountTransactionDetails.Cost;
+                return true;
+            case AccountCreationDetails:
+            case UpdateDetails:
+            default:
+                return false;
+        }
+    }
+
+    /// <summary>
     /// When transaction is rejected this method will return true and rejected reason
     /// will be return in out param.
     /// </summary>

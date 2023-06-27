@@ -695,9 +695,9 @@ public sealed class RawClient : IDisposable
     /// <summary>
     /// Spawn a task which returns a summary of the finalization data in a given block.
     /// </summary>
-    public Task<BlockFinalizationSummary> GetBlockFinalizationSummaryAsync(BlockHashInput input) =>
+    public Task<BlockFinalizationSummary> GetBlockFinalizationSummaryAsync(BlockHashInput input, CancellationToken token = default) =>
         this.InternalClient
-            .GetBlockFinalizationSummaryAsync(input, this.CreateCallOptions())
+            .GetBlockFinalizationSummaryAsync(input, this.CreateCallOptions(token))
             .ResponseAsync;
 
     /// <summary>

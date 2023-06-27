@@ -8,4 +8,9 @@ namespace Concordium.Sdk.Types;
 public sealed record Sha256Hash : Hash
 {
     internal Sha256Hash(ByteString byteString) : base(byteString.ToByteArray()){}
+
+    /// <summary>
+    /// Return hex representation of data.
+    /// </summary>
+    public string ToHex() => Convert.ToHexString(this.AsSpan());
 }

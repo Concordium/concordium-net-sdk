@@ -37,6 +37,18 @@ public enum ProtocolVersion
     P6
 }
 
+
+/// <summary>
+/// Extension methods for Protocol Version
+/// </summary>
+public static class ProtocolVersionExtension
+{
+    /// <summary>
+    /// Parse to integer.
+    /// </summary>>
+    public static int AsInt(this ProtocolVersion protocolVersion) => (int)protocolVersion;
+}
+
 internal static class ProtocolVersionFactory
 {
     internal static ProtocolVersion Into(this Concordium.Grpc.V2.ProtocolVersion protocolVersion) =>
