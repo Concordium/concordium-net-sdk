@@ -213,6 +213,7 @@ public sealed record BlockItemSummary(ulong Index, EnergyAmount EnergyCost, Tran
         {
             return affectedAddresses;
         }
+        // TODO isn't it affected address when creating a account?
 
         return accountTransactionDetails.GetAffectedAccountAddresses().ToList();
     }

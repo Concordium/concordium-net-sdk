@@ -25,8 +25,29 @@ public readonly record struct MintRate
     internal static MintRate From(Grpc.V2.MintRate mintRate) => new(mintRate.Exponent, mintRate.Mantissa);
 
     /// <summary>
+    /// Construct mint rate from decimal.
+    /// </summary>
+    /// <param name="number">decimal one want a mint rate representation of.</param>
+    public static MintRate From(decimal number)
+    {
+        var exponent = 0u;
+        while (number != Math.Floor(number))
+        {
+            number *= 10.0m;
+            exponent++;
+        }
+
+        return new MintRate(exponent, (uint)number);
+    }
+
+    /// <summary>
     /// The value is `mantissa * 10^(-exponent)`.
     /// </summary>
     /// <returns></returns>
-    public decimal GetValue() => this._mantissa * (decimal)Math.Pow(10, -1* this._exponent);
+    public decimal AsDecimal() => this._mantissa * (decimal)Math.Pow(10, -1* this._exponent);
+
+    /// <summary>
+    /// Get Exponent and Mantissa
+    /// </summary>
+    public (uint Exponent, uint Mantissa) GetValues() => (this._exponent, this._mantissa);
 }

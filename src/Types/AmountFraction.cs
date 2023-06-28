@@ -15,5 +15,10 @@ public sealed class AmountFraction
     /// </summary>
     public decimal AsDecimal() => this._partsPerHundredThousands * MultiplicationFactor;
 
+    /// <summary>
+    /// Constructs amount fraction from decimal.
+    /// </summary>
+    public static AmountFraction From(decimal number) => new((uint)Math.Floor(number / MultiplicationFactor));
+
     internal static AmountFraction From(Grpc.V2.AmountFraction fraction) => new(fraction.PartsPerHundredThousand);
 }

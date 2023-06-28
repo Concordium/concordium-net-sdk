@@ -1,11 +1,5 @@
 using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Helpers;
-using AccountThreshold = Concordium.Sdk.Types.AccountThreshold;
-using BakerKeysEvent = Concordium.Sdk.Types.BakerKeysEvent;
-using BakerStakeUpdatedData = Concordium.Sdk.Types.BakerStakeUpdatedData;
-using EncryptedAmountRemovedEvent = Concordium.Sdk.Types.EncryptedAmountRemovedEvent;
-using EncryptedSelfAmountAddedEvent = Concordium.Sdk.Types.EncryptedSelfAmountAddedEvent;
-using NewEncryptedAmountEvent = Concordium.Sdk.Types.NewEncryptedAmountEvent;
 
 namespace Concordium.Sdk.Types;
 
@@ -125,7 +119,6 @@ public sealed record ContractUpdateIssued(IList<IContractTraceElement> Effects) 
                 case Transferred:
                 case Resumed:
                 case Upgraded:
-                default:
                     continue;
             }
         }
@@ -149,7 +142,6 @@ public sealed record ContractUpdateIssued(IList<IContractTraceElement> Effects) 
                 case Interrupted:
                 case Resumed:
                 case Upgraded:
-                default:
                     continue;
             }
         }
@@ -173,7 +165,6 @@ public sealed record ContractUpdateIssued(IList<IContractTraceElement> Effects) 
                 case Interrupted:
                 case Resumed:
                 case Upgraded:
-                default:
                     continue;
             }
         }

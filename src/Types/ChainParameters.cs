@@ -175,8 +175,8 @@ public sealed record ChainParametersV0(
     GasRewards GasRewards,
     AccountAddress FoundationAccount,
     CcdAmount MinimumThresholdForBaking,
-    HigherLevelKeys RootKeys,
-    HigherLevelKeys Level1Keys,
+    RootKeys RootKeys,
+    Level1Keys Level1Keys,
     AuthorizationsV0 Level2Keys
 ) : IChainParameters
 {
