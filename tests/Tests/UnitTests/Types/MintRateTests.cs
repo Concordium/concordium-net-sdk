@@ -20,7 +20,7 @@ public class MintRateTests
             Exponent = exponent
         };
         var mintRate = Concordium.Sdk.Types.MintRate.From(mintRateGrpc);
-        var calculated = mintRate.GetDecimal();
+        var calculated = mintRate.AsDecimal();
 
         // Act
         var mintRateActual = Concordium.Sdk.Types.MintRate.From(calculated);

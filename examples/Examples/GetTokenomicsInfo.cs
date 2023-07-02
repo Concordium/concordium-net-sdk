@@ -26,7 +26,7 @@ public sealed class GetTokenomicsInfo : Tests
                 break;
             case RewardOverviewV1 rewardOverviewV1:
                 this.Output.WriteLine("This is reward version 1 return type.");
-                this.Output.WriteLine($"Next payday mint rate: {rewardOverviewV1.NextPaydayMintRate.GetDecimal()}");
+                this.Output.WriteLine($"Next payday mint rate: {rewardOverviewV1.NextPaydayMintRate.AsDecimal()}");
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(rewardOverview));
