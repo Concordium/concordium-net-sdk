@@ -17,11 +17,12 @@ internal class Program
     )
     {
         // Construct the client.
-        using var client = new ConcordiumClient(
-            new Uri(options.Endpoint),
-            options.Port,
-            options.Timeout
-        );
+        var clientOptions = new ConcordiumClientOptions {
+            Endpoint = new Uri($"{options!.Endpoint}:{options.Port}"),
+            Timeout = TimeSpan.FromSeconds(options.Timeout)
+        };
+        using var client = new ConcordiumClient(clientOptions);        
+
         var blockHashInput = options.BlockHash.ToLowerInvariant() switch
         {
             "best" => new BlockHashInput() { Best = new Empty() },

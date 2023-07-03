@@ -27,7 +27,7 @@ public sealed class ConcordiumClient : IDisposable
     public RawClient Raw { get; init; }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Client"/> class.
+    /// Initializes a new instance of the <see cref="ConcordiumClient"/> class.
     ///
     /// Optionally use <paramref name="rawChannelOptions"/> to specify connection settings
     /// such as the retry policy or keepalive ping.
@@ -47,8 +47,16 @@ public sealed class ConcordiumClient : IDisposable
     /// </param>
     /// <param name="timeout">The maximum permitted duration of a call made by this client, in seconds. <c>null</c> allows the call to run indefinitely.</param>
     /// <param name="rawChannelOptions">The options for the channel that is used to communicate with the node.</param>
+    [Obsolete($"Use {nameof(ConcordiumClient)} with overloads which accepts ${nameof(ConcordiumClientOptions)}")]
     public ConcordiumClient(Uri endpoint, ushort port, ulong? timeout = 30, GrpcChannelOptions? rawChannelOptions = null)
     => this.Raw = new(endpoint, port, timeout, rawChannelOptions);
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ConcordiumClient"/> class.
+    /// </summary>
+    /// <param name="options">Options needed for initialization of client.</param>
+    public ConcordiumClient(ConcordiumClientOptions options)
+    => this.Raw = new(options);
 
     /// <summary>
     /// Send an account transaction to the node.

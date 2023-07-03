@@ -46,11 +46,13 @@ public static class Program
     public static async Task Main(string[] args)
     {
         var options = ExampleHelpers.Parse<GetBlockItemSummaryOptions>(args);
-        var endpoint = new Uri(options!.Endpoint);
-        var transactionHash = TransactionHash.From(options.TransactionHash);
-        var port = options.Port;
+        
+        var clientOptions = new ConcordiumClientOptions {
+            Endpoint = new Uri($"{options!.Endpoint}:{options.Port}")
+        };
+        using var client = new ConcordiumClient(clientOptions);
 
-        using var client = new ConcordiumClient(endpoint, port);
+        var transactionHash = TransactionHash.From(options.TransactionHash);
 
         Console.WriteLine("Query node...");
         var transactionStatus = await client.GetBlockItemStatusAsync(transactionHash);

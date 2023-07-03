@@ -14,9 +14,12 @@ namespace Concordium.Sdk.Client;
 public sealed class RawClient : IDisposable
 {
     /// <summary>
-    /// The maximum permitted duration for a call made by this client, in seconds.
+    /// Options used by the client at initialization.
+    /// Some parameters, like <see cref="GrpcChannelOptions.Credentials"/>, may be set if null when given to constructor.
+    /// Hence properties in this are not neccessary equal to those given to constructor, but they equals those used for 
+    /// client initialization.
     /// </summary>
-    public ulong? Timeout { get; init; }
+    public ConcordiumClientOptions Options { get; init; }
 
     /// <summary>
     /// The "internal" client instance generated from the Concordium gRPC API V2 protocol buffer definition.
@@ -29,6 +32,8 @@ public sealed class RawClient : IDisposable
     /// This reference is needed to implement <see cref="IDisposable"/>.
     /// </summary>
     private readonly GrpcChannel _grpcChannel;
+
+    private readonly Metadata defaultMetadata;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="RawClient"/> class.
@@ -51,31 +56,12 @@ public sealed class RawClient : IDisposable
     /// </param>
     /// <param name="timeout">The maximum permitted duration of a call made by this client, in seconds. <c>null</c> allows the call to run indefinitely.</param>
     /// <param name="channelOptions">The options for the channel that is used to communicate with the node.</param>
+    [Obsolete($"Use {nameof(RawClient)} with overloads which accepts ${nameof(ConcordiumClientOptions)}")]
     internal RawClient(Uri endpoint, ushort port, ulong? timeout, GrpcChannelOptions? channelOptions)
     {
-        // Check the scheme provided in the URI.
-        if (!(endpoint.Scheme == Uri.UriSchemeHttp || endpoint.Scheme == Uri.UriSchemeHttps))
-        {
-            throw new ArgumentException(
-                $"Unsupported protocol scheme \"{endpoint.Scheme}\" in URL. Expected either \"http\" or \"https\"."
-            );
-        }
-
-        var scheme = endpoint.Scheme == Uri.UriSchemeHttps
-                    ? ChannelCredentials.SecureSsl
-                    : ChannelCredentials.Insecure;
-
-        if (channelOptions is null)
-        {
-            channelOptions = new GrpcChannelOptions
-            {
-                Credentials = scheme
-            };
-        }
-        else
-        {
-            channelOptions.Credentials = scheme;
-        };
+        var scheme = GetEndpointScheme(endpoint);
+        
+        channelOptions = SetSchemeIfNotSet(null, scheme);
 
         var grpcChannel = GrpcChannel.ForAddress(
             endpoint.Scheme
@@ -86,7 +72,31 @@ public sealed class RawClient : IDisposable
                 + endpoint.AbsolutePath,
             channelOptions
         );
-        this.Timeout = timeout;
+
+        this.Options = new ConcordiumClientOptions {
+            Endpoint = endpoint,
+            Timeout = timeout.HasValue ? TimeSpan.FromSeconds((double)timeout) : null,
+            ChannelOptions = channelOptions
+        };
+        this.defaultMetadata = CreateMetadata(this.Options);
+        this.InternalClient = new Queries.QueriesClient(grpcChannel);
+        this._grpcChannel = grpcChannel;
+    }
+    
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RawClient"/> class.
+    /// </summary>
+    /// <param name="options">Options needed for initialization of client.</param>
+    internal RawClient(ConcordiumClientOptions options)
+    {
+        var scheme = GetEndpointScheme(options.Endpoint);
+        
+        var channelOptions = SetSchemeIfNotSet(options.ChannelOptions, scheme);
+        
+        var grpcChannel = GrpcChannel.ForAddress(options.Endpoint, channelOptions);
+
+        this.Options = options;
+        this.defaultMetadata = CreateMetadata(options);
         this.InternalClient = new Queries.QueriesClient(grpcChannel);
         this._grpcChannel = grpcChannel;
     }
@@ -664,16 +674,55 @@ public sealed class RawClient : IDisposable
     /// </summary>
     private CallOptions CreateCallOptions(CancellationToken token)
     {
-        DateTime? deadline;
-        if (this.Timeout is null)
+        DateTime? deadline = this.Options.Timeout.HasValue ?
+            DateTime.UtcNow.Add(this.Options.Timeout.Value) : 
+            null;
+        
+        return new CallOptions(defaultMetadata, deadline, token);
+    }
+
+    /// <summary>
+    /// Get credentials from uri scheme.
+    /// </summary>
+    /// <exception cref="ArgumentException">When scheme not supported..</exception>
+    private static ChannelCredentials GetEndpointScheme(Uri endpoint) {
+        if (!(endpoint.Scheme == Uri.UriSchemeHttp || endpoint.Scheme == Uri.UriSchemeHttps))
         {
-            deadline = null;
+            throw new ArgumentException(
+                $"Unsupported protocol scheme \"{endpoint.Scheme}\" in URL. Expected either \"http\" or \"https\"."
+            );
+        }
+        return endpoint.Scheme == Uri.UriSchemeHttps
+                    ? ChannelCredentials.SecureSsl
+                    : ChannelCredentials.Insecure;
+    }    
+
+    private static Metadata CreateMetadata(ConcordiumClientOptions options) {
+        var meta = new Metadata();
+        
+        if (options.AuthenticationToken != null) {
+            const string authenticationKey = "authentication";
+
+            meta.Add(authenticationKey, options.AuthenticationToken);
+        }
+
+        return meta;
+    }
+
+    private static GrpcChannelOptions SetSchemeIfNotSet(GrpcChannelOptions? channelOptions, ChannelCredentials scheme) {
+        if (channelOptions is null)
+        {
+            channelOptions = new GrpcChannelOptions
+            {
+                Credentials = scheme
+            };
         }
         else
         {
-            deadline = DateTime.UtcNow.AddSeconds((double)this.Timeout);
-        }
-        return new CallOptions(null, deadline, token);
+            channelOptions.Credentials ??= scheme;
+        };
+
+        return channelOptions;
     }
 
     public void Dispose() => this._grpcChannel.Dispose();

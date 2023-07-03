@@ -10,6 +10,8 @@
 - Added optional cancellation token parameter to all client calls.
 - `RawClient` asynchronous calls have been changed to return either `AsyncUnaryCall<T>` or `AsyncServerStreamingCall` such that header is available in `ConcordiumClient`. 
   One can get the response be calling `.ResponseAsync` on `AsyncUnaryCall<T>` and `ResponseStream` on `AsyncServerStreamingCall`.
+- Property `Timeout` moved into `Options` in class `RawClient`.
+- Made former constructors on `ConcordiumClient` and `RawClient` obsolete in favor of new overload which takes `ConcordiumClientOptions`. Using this makes it easier to used from configurations and extending with additional properties in the future.
 
 ## 2.0.0
 - Rewrite the SDK to use the Concordium Node gRPC API version 2. This
