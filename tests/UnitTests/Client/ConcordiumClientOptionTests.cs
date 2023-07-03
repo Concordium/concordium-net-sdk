@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Concordium.Sdk.Tests.UnitTests.Client;
 
-public class ConcordiumClientOptionsTests
+public sealed class ConcordiumClientOptionsTests
 {
 
     [Fact]

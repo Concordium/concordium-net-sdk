@@ -3,7 +3,7 @@ using Common;
 
 namespace RawClient.GetAccountInfo;
 
-public class GetAccountInfoExampleOptions : ExampleOptions
+public sealed class GetAccountInfoExampleOptions : ExampleOptions
 {
     private const string DefaultBlockHash = "lastfinal";
 

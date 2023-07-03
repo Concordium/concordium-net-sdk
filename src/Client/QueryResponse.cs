@@ -9,7 +9,7 @@ namespace Concordium.Sdk.Client;
 /// <param name="BlockHash">Block hash for which the query applies.</param>
 /// <param name="Response">The result of the query.</param>
 /// <typeparam name="T">Return type</typeparam>
-public record QueryResponse<T>(BlockHash BlockHash, T Response)
+public sealed record QueryResponse<T>(BlockHash BlockHash, T Response)
 {
     internal static async Task<QueryResponse<T>> From(Task<Metadata> metadata, T response)
     {

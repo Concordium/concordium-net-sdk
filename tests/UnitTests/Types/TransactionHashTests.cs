@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Concordium.Sdk.Tests.UnitTests.Types;
 
-public class TransactionHashTests
+public sealed class TransactionHashTests
 {
     [Fact]
     public void Same_TransactionHashes_HaveSameHashCode()

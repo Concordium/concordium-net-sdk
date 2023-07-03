@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Concordium.Sdk.Tests.UnitTests.Transactions;
 
-public class RegisterDataTests
+public sealed class RegisterDataTests
 {
     /// <summary>
     /// Creates a new instance of the <see cref="RegisterData"/>

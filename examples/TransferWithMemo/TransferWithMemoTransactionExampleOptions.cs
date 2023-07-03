@@ -3,7 +3,7 @@ using Common;
 
 namespace Transactions.TransferWithMemo;
 
-public class TransferWithMemoTransactionExampleOptions : ExampleOptionsWithKeys
+public sealed class TransferWithMemoTransactionExampleOptions : ExampleOptionsWithKeys
 {
     [Option('a', "amount", HelpText = "Amount of CCD to transfer.", Required = true)]
     public ulong Amount { get; set; } = default!;

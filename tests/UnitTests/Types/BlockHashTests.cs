@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Concordium.Sdk.Tests.UnitTests.Types;
 
-public class BlockHashTests
+public sealed class BlockHashTests
 {
     [Fact]
     public void Same_BlockHashes_HaveSameHashCode()

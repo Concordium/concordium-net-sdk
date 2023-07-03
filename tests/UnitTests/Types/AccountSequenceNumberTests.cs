@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Concordium.Sdk.Tests.UnitTests.Types;
 
-public class AccountSequenceNumberTests
+public sealed class AccountSequenceNumberTests
 {
     [Fact]
     public void Same_SequenceNumbers_HaveSameHashCode()

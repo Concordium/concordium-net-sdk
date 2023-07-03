@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Concordium.Sdk.Tests.UnitTests.SignKey;
 
-public class Ed25519SignKeyTests
+public sealed class Ed25519SignKeyTests
 {
     [Fact]
     public void From_OnValidString_ToString_AreEqual()

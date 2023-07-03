@@ -7,7 +7,7 @@ using AccountAddress = Concordium.Sdk.Types.AccountAddress;
 
 namespace Concordium.Sdk.Tests.UnitTests.Types;
 
-public class AccountAddressTests
+public sealed class AccountAddressTests
 {
     [Fact]
     public void Same_Addresses_HaveSameHashCode()

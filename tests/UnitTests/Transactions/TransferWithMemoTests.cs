@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Concordium.Sdk.Tests.UnitTests.Transactions;
 
-public class SimpleTransferWithMemoPayloadTests
+public sealed class SimpleTransferWithMemoPayloadTests
 {
     /// <summary>
     /// Creates a new instance of the <see cref="TransferWithMemo"/>

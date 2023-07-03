@@ -8,7 +8,7 @@ using Xunit;
 
 namespace Concordium.Sdk.Tests.UnitTests.Wallets;
 
-public class WalletAccountTests
+public sealed class WalletAccountTests
 {
     [Theory]
     [InlineData("./Wallets/Data/GenesisWalletKeyExportFormatValid.json", 0, 0, "443c20439711361b6870c1679be33860d10cf7cded240e4a567e31ec3a56ecf5")]

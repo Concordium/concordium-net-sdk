@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Concordium.Sdk.Tests.UnitTests.Types;
 
-public class ExpiryTests
+public sealed class ExpiryTests
 {
     [Fact]
     public void WhenGivenSameTime_ThenEquals()

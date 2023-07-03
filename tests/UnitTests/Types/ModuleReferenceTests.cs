@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Concordium.Sdk.Tests.UnitTests.Types;
 
-public class ModuleReferenceTests
+public sealed class ModuleReferenceTests
 {
     [Fact]
     public void WhenUsingSameModuleReference_ThenEquals()

@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Concordium.Sdk.Tests.UnitTests.Types;
 
-public class CcdAmountTests
+public sealed class CcdAmountTests
 {
     [Fact]
     public void GivenEqualOperator_WhenUsingSameAddress_ThenEquals()

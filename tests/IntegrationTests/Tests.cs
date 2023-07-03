@@ -7,7 +7,7 @@ using Xunit.Abstractions;
 namespace Concordium.Sdk.Tests.IntegrationTests;
 
 [SuppressMessage("Usage", "CA1816:Dispose methods should call SuppressFinalize")]
-public class Tests : IDisposable
+public abstract class Tests : IDisposable
 {
     private readonly JsonDocument _json;
 

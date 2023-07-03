@@ -3,7 +3,7 @@ using Common;
 
 namespace RawClient.GetBlockTransactionEvents;
 
-public class GetBlockTransactionEventsExampleOptions : ExampleOptions
+public sealed class GetBlockTransactionEventsExampleOptions : ExampleOptions
 {
     private const string DefaultBlockHash = "lastfinal";
 

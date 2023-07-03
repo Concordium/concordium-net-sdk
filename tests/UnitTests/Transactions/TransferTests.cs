@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Concordium.Sdk.Tests.UnitTests.Transactions;
 
-public class TransferTests
+public sealed class TransferTests
 {
     /// <summary>
     /// Creates a new instance of the <see cref="Transfer"/>

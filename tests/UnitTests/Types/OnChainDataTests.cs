@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Concordium.Sdk.Tests.UnitTests.Types;
 
-public class OnChainDataTests
+public sealed class OnChainDataTests
 {
     [Fact]
     public void Same_Datas_HaveSameHashCode()

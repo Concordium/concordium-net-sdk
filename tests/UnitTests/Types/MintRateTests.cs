@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Concordium.Sdk.Tests.UnitTests.Types;
 
-public class MintRateTests
+public sealed class MintRateTests
 {
     [Theory]
     [InlineData(2506, 0)]

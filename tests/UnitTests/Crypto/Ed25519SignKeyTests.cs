@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Concordium.Sdk.Tests.UnitTests.Crypto;
 
-public class Ed25519SignKeyTests
+public sealed class Ed25519SignKeyTests
 {
     [Fact]
     public void WhenUsingSameKey_ThenEquals()
