@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using CommandLine;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
@@ -25,7 +25,8 @@ public static class Program
             .ParseArguments<GetBlockTransactionEventsOptions>(args)
             .WithParsedAsync(Run);
 
-    private static async Task Run(GetBlockTransactionEventsOptions options) {
+    private static async Task Run(GetBlockTransactionEventsOptions options)
+    {
         var clientOptions = new ConcordiumClientOptions
         {
             Endpoint = options.Uri

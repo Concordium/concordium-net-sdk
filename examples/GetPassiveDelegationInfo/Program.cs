@@ -1,4 +1,4 @@
-﻿using CommandLine;
+using CommandLine;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
 
@@ -32,7 +32,8 @@ public static class Program
             .ParseArguments<GetPassiveDelegationInfoOptions>(args)
             .WithParsedAsync(Run);
 
-    private static async Task Run(GetPassiveDelegationInfoOptions options) {
+    private static async Task Run(GetPassiveDelegationInfoOptions options)
+    {
         var clientOptions = new ConcordiumClientOptions
         {
             Endpoint = options.Uri

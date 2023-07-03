@@ -35,8 +35,6 @@ public abstract class Tests : IDisposable
 
     protected string GetString(string name) => this.GetConfiguration(name).GetString()!;
 
-    private ushort GetUInt16(string name) => this.GetConfiguration(name).GetUInt16();
-
     private JsonElement GetConfiguration(string name)
     {
         var jsonElement = this._json.RootElement.GetProperty(name);

@@ -1,4 +1,4 @@
-﻿using CommandLine;
+using CommandLine;
 using Concordium.Sdk.Client;
 
 #pragma warning disable CS8618
@@ -23,7 +23,8 @@ public static class Program
             .ParseArguments<GetPeerVersionOptions>(args)
             .WithParsedAsync(Run);
 
-    private static async Task Run(GetPeerVersionOptions options) {
+    private static async Task Run(GetPeerVersionOptions options)
+    {
         var clientOptions = new ConcordiumClientOptions
         {
             Endpoint = options.Uri

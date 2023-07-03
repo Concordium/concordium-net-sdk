@@ -1,4 +1,4 @@
-﻿using CommandLine;
+using CommandLine;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
 
@@ -39,7 +39,8 @@ public static class Program
             .ParseArguments<GetPoolInfoOptions>(args)
             .WithParsedAsync(Run);
 
-    private static async Task Run(GetPoolInfoOptions options) {
+    private static async Task Run(GetPoolInfoOptions options)
+    {
         var clientOptions = new ConcordiumClientOptions
         {
             Endpoint = options.Uri

@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using CommandLine;
 using Concordium.Sdk.Client;
@@ -26,7 +26,8 @@ public static class Program
             .ParseArguments<GetBlockChainParametersOptions>(args)
             .WithParsedAsync(Run);
 
-    private static async Task Run(GetBlockChainParametersOptions options) {
+    private static async Task Run(GetBlockChainParametersOptions options)
+    {
         var clientOptions = new ConcordiumClientOptions
         {
             Endpoint = options.Uri

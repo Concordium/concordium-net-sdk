@@ -201,7 +201,8 @@ public sealed class ConcordiumClient : IDisposable
     {
         var accountInfoRequest = new AccountInfoRequest
         {
-            BlockHash = blockHash.Into(), AccountIdentifier = accountAddress.ToAccountIdentifierInput()
+            BlockHash = blockHash.Into(),
+            AccountIdentifier = accountAddress.ToAccountIdentifierInput()
         };
         var response = this.Raw.GetAccountInfoAsync(accountInfoRequest, token);
 
@@ -238,7 +239,7 @@ public sealed class ConcordiumClient : IDisposable
                     response.ResponseStream.ReadAllAsync(token).Select(AccountAddress.From))
                 .ConfigureAwait(false);
         }
-        catch(MissingMemberException)
+        catch (MissingMemberException)
         {
             // Try propagate any original error
             await response.ResponseStream.MoveNext();
@@ -401,7 +402,7 @@ public sealed class ConcordiumClient : IDisposable
                     response.ResponseStream.ReadAllAsync(token).Select(SpecialEventFactory.From))
                 .ConfigureAwait(false);
         }
-        catch(MissingMemberException)
+        catch (MissingMemberException)
         {
             // Try propagate any original error
             await response.ResponseStream.MoveNext();
@@ -457,7 +458,7 @@ public sealed class ConcordiumClient : IDisposable
                     response.ResponseStream.ReadAllAsync(token).Select(BlockItemSummary.From))
                 .ConfigureAwait(false);
         }
-        catch(MissingMemberException)
+        catch (MissingMemberException)
         {
             // Try propagate any original error
             await response.ResponseStream.MoveNext();
@@ -487,7 +488,7 @@ public sealed class ConcordiumClient : IDisposable
                     response.ResponseStream.ReadAllAsync(token).Select(IpInfo.From))
                 .ConfigureAwait(false);
         }
-        catch(MissingMemberException)
+        catch (MissingMemberException)
         {
             // Try propagate any original error
             await response.ResponseStream.MoveNext();
@@ -516,7 +517,7 @@ public sealed class ConcordiumClient : IDisposable
                     response.ResponseStream.ReadAllAsync(token).Select(BakerId.From))
                 .ConfigureAwait(false);
         }
-        catch(MissingMemberException)
+        catch (MissingMemberException)
         {
             // Try propagate any original error
             await response.ResponseStream.MoveNext();

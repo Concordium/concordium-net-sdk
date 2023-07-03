@@ -1,4 +1,4 @@
-﻿using CommandLine;
+using CommandLine;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
 
@@ -32,7 +32,8 @@ public static class Program
             .ParseArguments<GetTokenomicsInfoOptions>(args)
             .WithParsedAsync(Run);
 
-    private static async Task Run(GetTokenomicsInfoOptions options) {
+    private static async Task Run(GetTokenomicsInfoOptions options)
+    {
         var clientOptions = new ConcordiumClientOptions
         {
             Endpoint = options.Uri

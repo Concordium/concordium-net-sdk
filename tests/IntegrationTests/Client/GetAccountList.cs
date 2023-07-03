@@ -5,7 +5,7 @@ using Xunit.Abstractions;
 
 namespace Concordium.Sdk.Tests.IntegrationTests.Client;
 
-[Trait( "Category", "IntegrationTests")]
+[Trait("Category", "IntegrationTests")]
 public sealed class GetAccountList : Tests
 {
     public GetAccountList(ITestOutputHelper output) : base(output)

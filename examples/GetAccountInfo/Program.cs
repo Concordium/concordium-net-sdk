@@ -1,4 +1,4 @@
-﻿using CommandLine;
+using CommandLine;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
 
@@ -40,7 +40,8 @@ public static class Program
             .ParseArguments<GetAccountInfoOptions>(args)
             .WithParsedAsync(Run);
 
-    private static async Task Run(GetAccountInfoOptions options) {
+    private static async Task Run(GetAccountInfoOptions options)
+    {
         var accountAddress = AccountAddress.From(options.AccountAddress);
         var block = BlockHash.From(options.BlockHash);
 

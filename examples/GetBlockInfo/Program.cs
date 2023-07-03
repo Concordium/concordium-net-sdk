@@ -1,4 +1,4 @@
-﻿using CommandLine;
+using CommandLine;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
 
@@ -32,7 +32,8 @@ public static class Program
             .ParseArguments<GetBlockInfoOptions>(args)
             .WithParsedAsync(Run);
 
-    private static async Task Run(GetBlockInfoOptions options) {
+    private static async Task Run(GetBlockInfoOptions options)
+    {
         var block = BlockHash.From(options.BlockHash);
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
 

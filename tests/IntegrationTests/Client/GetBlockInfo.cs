@@ -5,7 +5,7 @@ using Xunit.Abstractions;
 
 namespace Concordium.Sdk.Tests.IntegrationTests.Client;
 
-[Trait( "Category", "IntegrationTests")]
+[Trait("Category", "IntegrationTests")]
 public sealed class GetBlockInfo : Tests
 {
     public GetBlockInfo(ITestOutputHelper output) : base(output)

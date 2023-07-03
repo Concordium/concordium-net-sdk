@@ -1,4 +1,4 @@
-﻿using CommandLine;
+using CommandLine;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
 
@@ -24,7 +24,8 @@ public static class Program
             .ParseArguments<GetBakerListOptions>(args)
             .WithParsedAsync(Run);
 
-    private static async Task Run(GetBakerListOptions options) {
+    private static async Task Run(GetBakerListOptions options)
+    {
         var clientOptions = new ConcordiumClientOptions
         {
             Endpoint = options.Uri
