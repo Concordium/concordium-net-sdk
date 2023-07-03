@@ -11,7 +11,7 @@ namespace GetConsensusInfo;
 internal sealed class GetConsensusInfoOptions
 {
     [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Required = true,
-        Default = "http://node.testnet.concordium.com/:20000")]
+        Default = "http://node.testnet.concordium.com:20000/")]
     public Uri Uri { get; set; }
 }
 
@@ -24,9 +24,9 @@ public static class Program
     public static async Task Main(string[] args) =>
         await Parser.Default
             .ParseArguments<GetConsensusInfoOptions>(args)
-            .WithParsedAsync(options => Run(options));
+            .WithParsedAsync(Run);
 
-    static async Task Run(GetConsensusInfoOptions options) {
+    private static async Task Run(GetConsensusInfoOptions options) {
         var clientOptions = new ConcordiumClientOptions
         {
             Endpoint = options.Uri

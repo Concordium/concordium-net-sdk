@@ -48,25 +48,27 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="timeout">The maximum permitted duration of a call made by this client, in seconds. <c>null</c> allows the call to run indefinitely.</param>
     /// <param name="rawChannelOptions">The options for the channel that is used to communicate with the node.</param>
     [Obsolete($"Use {nameof(ConcordiumClient)} with overloads which accepts ${nameof(ConcordiumClientOptions)}")]
-    public ConcordiumClient(Uri endpoint, ushort port, ulong? timeout = 30, GrpcChannelOptions? rawChannelOptions = null)
-    => this.Raw = new(endpoint, port, timeout, rawChannelOptions);
+    public ConcordiumClient(Uri endpoint, ushort port, ulong? timeout = 30,
+        GrpcChannelOptions? rawChannelOptions = null)
+        => this.Raw = new(endpoint, port, timeout, rawChannelOptions);
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ConcordiumClient"/> class.
     /// </summary>
     /// <param name="options">Options needed for initialization of client.</param>
     public ConcordiumClient(ConcordiumClientOptions options)
-    => this.Raw = new(options);
+        => this.Raw = new(options);
 
     /// <summary>
     /// Send an account transaction to the node.
     /// </summary>
     /// <param name="transaction">The account transaction to send.</param>
-    /// <param name="token">Cancellation token</param>    
+    /// <param name="token">Cancellation token</param>
     /// <returns>Hash of the transaction if it was accepted by the node.</returns>
     /// <exception cref="RpcException">The call failed, e.g. due to the node not accepting the transaction.</exception>
     /// <exception cref="FormatException">The returned transaction hash has an invalid number of bytes.</exception>
-    public TransactionHash SendAccountTransaction(SignedAccountTransaction transaction, CancellationToken token = default)
+    public TransactionHash SendAccountTransaction(SignedAccountTransaction transaction,
+        CancellationToken token = default)
     {
         // Send the transaction as a block item request.
         var txHash = this.Raw.SendBlockItem(transaction.ToSendBlockItemRequest(), token);
@@ -82,7 +84,7 @@ public sealed class ConcordiumClient : IDisposable
     /// has an invalid number of bytes.
     /// </summary>
     /// <param name="transaction">The account transaction to send.</param>
-    /// <param name="token">Cancellation token</param>    
+    /// <param name="token">Cancellation token</param>
     /// <returns>Task which returns the hash of the transaction if it was accepted by the node.</returns>
     /// <exception cref="RpcException">The call failed, e.g. due to the node not accepting the transaction.</exception>
     public async Task<TransactionHash> SendAccountTransactionAsync(
@@ -111,7 +113,7 @@ public sealed class ConcordiumClient : IDisposable
     /// committed to blocks and eventually finalized.
     /// </summary>
     /// <param name="accountAddress">An address of the account to get the next sequence number of.</param>
-    /// <param name="token">Cancellation token</param>    
+    /// <param name="token">Cancellation token</param>
     /// <returns>
     /// A tuple containing the best guess of the next sequence number for the supplied account and a boolean
     /// indicating whether all transactions associated with the account are finalized. If the latter is the
@@ -141,7 +143,7 @@ public sealed class ConcordiumClient : IDisposable
     /// committed to blocks and eventually finalized.
     /// </summary>
     /// <param name="accountAddress">An address of the account to get the next sequence number of.</param>
-    /// <param name="token">Cancellation token</param>    
+    /// <param name="token">Cancellation token</param>
     /// <returns>
     /// A task which returns a tuple containing the best guess of the next sequence number for the supplied
     /// account and a boolean indicating whether all transactions associated with the account are finalized.
@@ -176,9 +178,10 @@ public sealed class ConcordiumClient : IDisposable
     /// Get the status of and information about a specific block item given a transaction hash.
     /// </summary>
     /// <param name="transactionHash">Transaction Hash which is included in blocks returned.</param>
-    /// <param name="token">Cancellation token</param>    
+    /// <param name="token">Cancellation token</param>
     /// <returns>Task which wraps a common return type for TransactionStatus.</returns>
-    public async Task<ITransactionStatus> GetBlockItemStatusAsync(TransactionHash transactionHash, CancellationToken token = default)
+    public async Task<ITransactionStatus> GetBlockItemStatusAsync(TransactionHash transactionHash,
+        CancellationToken token = default)
     {
         var blockItemStatus = await this.Raw.GetBlockItemStatusAsync(transactionHash.ToProto(), token)
             .ConfigureAwait(false);
@@ -191,14 +194,14 @@ public sealed class ConcordiumClient : IDisposable
     /// </summary>
     /// <param name="accountAddress">An address of the account.</param>
     /// <param name="blockHash">A hash of the block</param>
-    /// <param name="token">Cancellation token</param>    
+    /// <param name="token">Cancellation token</param>
     /// <returns>Account information at the given block.</returns>
-    public async Task<QueryResponse<AccountInfo>> GetAccountInfoAsync(AccountAddress accountAddress, IBlockHashInput blockHash, CancellationToken token = default)
+    public async Task<QueryResponse<AccountInfo>> GetAccountInfoAsync(AccountAddress accountAddress,
+        IBlockHashInput blockHash, CancellationToken token = default)
     {
         var accountInfoRequest = new AccountInfoRequest
         {
-            BlockHash = blockHash.Into(),
-            AccountIdentifier = accountAddress.ToAccountIdentifierInput()
+            BlockHash = blockHash.Into(), AccountIdentifier = accountAddress.ToAccountIdentifierInput()
         };
         var response = this.Raw.GetAccountInfoAsync(accountInfoRequest, token);
 
@@ -220,23 +223,35 @@ public sealed class ConcordiumClient : IDisposable
     /// of the given block have been returned.
     /// </summary>
     /// <param name="input">A hash of block</param>
-    /// <param name="token">Cancellation token</param>    
+    /// <param name="token">Cancellation token</param>
     /// <returns>Accounts at given block</returns>
     /// <exception cref="RpcException">Block doesn't exists.</exception>
-    public async Task<QueryResponse<IAsyncEnumerable<AccountAddress>>> GetAccountListAsync(IBlockHashInput input, CancellationToken token = default)
+    public async Task<QueryResponse<IAsyncEnumerable<AccountAddress>>> GetAccountListAsync(IBlockHashInput input,
+        CancellationToken token = default)
     {
         var response = this.Raw.GetAccountList(input.Into(), token);
 
-        return await QueryResponse<IAsyncEnumerable<AccountAddress>>.From(
-                response.ResponseHeadersAsync,
-                response.ResponseStream.ReadAllAsync(token).Select(AccountAddress.From))
-            .ConfigureAwait(false);
+        try
+        {
+            return await QueryResponse<IAsyncEnumerable<AccountAddress>>.From(
+                    response.ResponseHeadersAsync,
+                    response.ResponseStream.ReadAllAsync(token).Select(AccountAddress.From))
+                .ConfigureAwait(false);
+        }
+        catch(MissingMemberException)
+        {
+            // Try propagate any original error
+            await response.ResponseStream.MoveNext();
+
+            // if none then throw caught
+            throw;
+        }
     }
 
     /// <summary>
     /// Retrieve version of the software on the node.
     /// </summary>
-    /// <param name="token">Cancellation token</param>    
+    /// <param name="token">Cancellation token</param>
     /// <returns>Version of the node in semantic format</returns>
     public async Task<PeerVersion> GetPeerVersionAsync(CancellationToken token = default)
     {
@@ -253,13 +268,10 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHash">Block hash from where information will be fetched</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>The state of the baker currently registered on the account.</returns>
-    public async Task<QueryResponse<BakerPoolStatus>> GetPoolInfoAsync(BakerId bakerId, IBlockHashInput blockHash, CancellationToken token = default)
+    public async Task<QueryResponse<BakerPoolStatus>> GetPoolInfoAsync(BakerId bakerId, IBlockHashInput blockHash,
+        CancellationToken token = default)
     {
-        var input = new PoolInfoRequest
-        {
-            BlockHash = blockHash.Into(),
-            Baker = bakerId.ToProto()
-        };
+        var input = new PoolInfoRequest { BlockHash = blockHash.Into(), Baker = bakerId.ToProto() };
         var response = this.Raw.GetPoolInfoAsync(input, token);
 
         await Task.WhenAll(response.ResponseHeadersAsync, response.ResponseAsync)
@@ -276,10 +288,11 @@ public sealed class ConcordiumClient : IDisposable
     /// Get information about tokenomics at the end of a given block.
     /// </summary>
     /// <param name="blockHash">Block from where state of tokenomics are returned.</param>
-    /// <param name="token">Cancellation token</param>    
+    /// <param name="token">Cancellation token</param>
     /// <returns>Tokenomics</returns>
     /// <exception cref="RpcException">Block doesn't exists.</exception>
-    public async Task<QueryResponse<RewardOverviewBase>> GetTokenomicsInfoAsync(IBlockHashInput blockHash, CancellationToken token = default)
+    public async Task<QueryResponse<RewardOverviewBase>> GetTokenomicsInfoAsync(IBlockHashInput blockHash,
+        CancellationToken token = default)
     {
         var response = this.Raw.GetTokenomicsInfoAsync(blockHash.Into(), token);
 
@@ -301,7 +314,8 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHash">Block hash from where passive delegation status will be returned.</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>State of the passive delegation pool</returns>
-    public async Task<QueryResponse<PassiveDelegationStatus>> GetPassiveDelegationInfoAsync(IBlockHashInput blockHash, CancellationToken token = default)
+    public async Task<QueryResponse<PassiveDelegationStatus>> GetPassiveDelegationInfoAsync(IBlockHashInput blockHash,
+        CancellationToken token = default)
     {
         var response = this.Raw.GetPassiveDelegationInfoAsync(blockHash.Into(), token);
 
@@ -318,7 +332,6 @@ public sealed class ConcordiumClient : IDisposable
     /// <summary>
     /// Get information about the current state of consensus. This is an
     /// overview of the node's current view of the chain.
-    /// TODO: Old GetConsensusStatusAsync
     /// </summary>
     /// <param name="token">Cancellation token</param>
     /// <returns>Current consensus information.</returns>
@@ -334,9 +347,11 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHeight">Block height from where blocks should be returned.</param>
     /// <param name="token">Cancellation Token.</param>
     /// <returns>List of live blocks.</returns>
-    public async Task<IList<BlockHash>> GetBlocksAtHeightAsync(IBlockHeight blockHeight, CancellationToken token = default)
+    public async Task<IList<BlockHash>> GetBlocksAtHeightAsync(IBlockHeight blockHeight,
+        CancellationToken token = default)
     {
-        var blocksAtHeightResponse = await this.Raw.GetBlocksAtHeightAsync(blockHeight.Into(), token).ConfigureAwait(false);
+        var blocksAtHeightResponse =
+            await this.Raw.GetBlocksAtHeightAsync(blockHeight.Into(), token).ConfigureAwait(false);
 
         return blocksAtHeightResponse.Blocks.Select(BlockHash.From).ToList();
     }
@@ -348,7 +363,9 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHash">Block from where information will be returned.</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>Block information from requested block.</returns>
-    public async Task<QueryResponse<BlockInfo>> GetBlockInfoAsync(IBlockHashInput blockHash, CancellationToken token = default)
+    /// <exception cref="RpcException">If the block does not exist</exception>
+    public async Task<QueryResponse<BlockInfo>> GetBlockInfoAsync(IBlockHashInput blockHash,
+        CancellationToken token = default)
     {
         var response = this.Raw.GetBlockInfoAsync(blockHash.Into(), token);
 
@@ -372,14 +389,26 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="token">Cancellation token</param>
     /// <returns>Special events at given block</returns>
     /// <exception cref="RpcException">If the block does not exist</exception>
-    public async Task<QueryResponse<IAsyncEnumerable<ISpecialEvent>>> GetBlockSpecialEvents(IBlockHashInput blockHashInput, CancellationToken token = default)
+    public async Task<QueryResponse<IAsyncEnumerable<ISpecialEvent>>> GetBlockSpecialEvents(
+        IBlockHashInput blockHashInput, CancellationToken token = default)
     {
         var response = this.Raw.GetBlockSpecialEvents(blockHashInput.Into(), token);
 
-        return await QueryResponse<IAsyncEnumerable<ISpecialEvent>>.From(
-                response.ResponseHeadersAsync,
-                response.ResponseStream.ReadAllAsync(token).Select(SpecialEventFactory.From))
-            .ConfigureAwait(false);
+        try
+        {
+            return await QueryResponse<IAsyncEnumerable<ISpecialEvent>>.From(
+                    response.ResponseHeadersAsync,
+                    response.ResponseStream.ReadAllAsync(token).Select(SpecialEventFactory.From))
+                .ConfigureAwait(false);
+        }
+        catch(MissingMemberException)
+        {
+            // Try propagate any original error
+            await response.ResponseStream.MoveNext();
+
+            // if none then throw caught
+            throw;
+        }
     }
 
     /// <summary>
@@ -393,7 +422,8 @@ public sealed class ConcordiumClient : IDisposable
     /// </summary>
     /// <param name="blockHashInput">Block from where finalization summary will be given.</param>
     /// <param name="token">Cancellation token</param>
-    public async Task<QueryResponse<FinalizationSummary?>> GetBlockFinalizationSummaryAsync(IBlockHashInput blockHash, CancellationToken token = default)
+    public async Task<QueryResponse<FinalizationSummary?>> GetBlockFinalizationSummaryAsync(IBlockHashInput blockHash,
+        CancellationToken token = default)
     {
         var response = this.Raw.GetBlockFinalizationSummaryAsync(blockHash.Into(), token);
 
@@ -412,17 +442,29 @@ public sealed class ConcordiumClient : IDisposable
     /// transaction events for a given block have been returned.
     /// </summary>
     /// <param name="blockHashInput">Block from where transactions events will be returned.</param>
-    /// <param name="token">Cancellation token</param>    
+    /// <param name="token">Cancellation token</param>
     /// <returns>Summary of a block item with transactional meta data.</returns>
     /// <exception cref="RpcException">If the block does not exist</exception>
-    public async Task<QueryResponse<IAsyncEnumerable<BlockItemSummary>>> GetBlockTransactionEvents(IBlockHashInput blockHashInput, CancellationToken token = default)
+    public async Task<QueryResponse<IAsyncEnumerable<BlockItemSummary>>> GetBlockTransactionEvents(
+        IBlockHashInput blockHashInput, CancellationToken token = default)
     {
         var response = this.Raw.GetBlockTransactionEvents(blockHashInput.Into(), token);
 
-        return await QueryResponse<IAsyncEnumerable<BlockItemSummary>>.From(
-                response.ResponseHeadersAsync,
-                response.ResponseStream.ReadAllAsync(token).Select(BlockItemSummary.From))
-            .ConfigureAwait(false);
+        try
+        {
+            return await QueryResponse<IAsyncEnumerable<BlockItemSummary>>.From(
+                    response.ResponseHeadersAsync,
+                    response.ResponseStream.ReadAllAsync(token).Select(BlockItemSummary.From))
+                .ConfigureAwait(false);
+        }
+        catch(MissingMemberException)
+        {
+            // Try propagate any original error
+            await response.ResponseStream.MoveNext();
+
+            // if none then throw caught
+            throw;
+        }
     }
 
     /// <summary>
@@ -430,17 +472,29 @@ public sealed class ConcordiumClient : IDisposable
     /// The stream will end when all the identity providers have been returned.
     /// </summary>
     /// <param name="blockHash">Block hash from where identity providers state will be returned</param>
-    /// <param name="token">Cancellation token</param>    
+    /// <param name="token">Cancellation token</param>
     /// <returns>Identity providers info</returns>
     /// <exception cref="RpcException">If the block does not exist</exception>
-    public async Task<QueryResponse<IAsyncEnumerable<IpInfo>>> GetIdentityProvidersAsync(IBlockHashInput blockHash, CancellationToken token = default)
+    public async Task<QueryResponse<IAsyncEnumerable<IpInfo>>> GetIdentityProvidersAsync(IBlockHashInput blockHash,
+        CancellationToken token = default)
     {
         var response = this.Raw.GetIdentityProviders(blockHash.Into(), token);
 
-        return await QueryResponse<IAsyncEnumerable<IpInfo>>.From(
-                response.ResponseHeadersAsync,
-                response.ResponseStream.ReadAllAsync(token).Select(IpInfo.From))
-            .ConfigureAwait(false);
+        try
+        {
+            return await QueryResponse<IAsyncEnumerable<IpInfo>>.From(
+                    response.ResponseHeadersAsync,
+                    response.ResponseStream.ReadAllAsync(token).Select(IpInfo.From))
+                .ConfigureAwait(false);
+        }
+        catch(MissingMemberException)
+        {
+            // Try propagate any original error
+            await response.ResponseStream.MoveNext();
+
+            // if none then throw caught
+            throw;
+        }
     }
 
     /// <summary>
@@ -450,14 +504,26 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="token">Cancellation token</param>
     /// <returns>List of baker ids.</returns>
     /// <exception cref="RpcException">If the block does not exist</exception>
-    public async Task<QueryResponse<IAsyncEnumerable<BakerId>>> GetBakerListAsync(IBlockHashInput blockHash, CancellationToken token = default)
+    public async Task<QueryResponse<IAsyncEnumerable<BakerId>>> GetBakerListAsync(IBlockHashInput blockHash,
+        CancellationToken token = default)
     {
         var response = this.Raw.GetBakerList(blockHash.Into(), token);
 
-        return await QueryResponse<IAsyncEnumerable<BakerId>>.From(
-                response.ResponseHeadersAsync,
-                response.ResponseStream.ReadAllAsync(token).Select(BakerId.From))
-            .ConfigureAwait(false);
+        try
+        {
+            return await QueryResponse<IAsyncEnumerable<BakerId>>.From(
+                    response.ResponseHeadersAsync,
+                    response.ResponseStream.ReadAllAsync(token).Select(BakerId.From))
+                .ConfigureAwait(false);
+        }
+        catch(MissingMemberException)
+        {
+            // Try propagate any original error
+            await response.ResponseStream.MoveNext();
+
+            // if none then throw caught
+            throw;
+        }
     }
 
     /// <summary>
@@ -467,7 +533,8 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="token">Cancellation token</param>
     /// <returns>Chain parameters at given block.</returns>
     /// <exception cref="RpcException">If the block does not exist</exception>
-    public async Task<QueryResponse<IChainParameters>> GetBlockChainParametersAsync(IBlockHashInput blockHash, CancellationToken token = default)
+    public async Task<QueryResponse<IChainParameters>> GetBlockChainParametersAsync(IBlockHashInput blockHash,
+        CancellationToken token = default)
     {
         var response = this.Raw.GetBlockChainParametersAsync(blockHash.Into(), token);
 
@@ -482,15 +549,4 @@ public sealed class ConcordiumClient : IDisposable
     }
 
     public void Dispose() => this.Raw.Dispose();
-}
-
-/// <summary>
-/// Helper extensions for types returned by Raw- or Concordium Client.
-/// </summary>
-public static class ConcordiumClientExtensions
-{
-    /// <summary>
-    /// Returns a async enumrable.
-    /// </summary>
-    public static IAsyncEnumerable<T> ReadAllAsync<T>(this IAsyncStreamReader<T> reader) => reader.ReadAllAsync();
 }

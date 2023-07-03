@@ -14,7 +14,7 @@ public interface IBlockHeight
 /// Block Height from beginning of chain.
 /// </summary>
 /// <param name="Height">Height from the beginning of the chain.</param>
-public sealed record Absolute(ulong Height) : IBlockHeight, IBlockHashInput
+public sealed record AbsoluteHeight(ulong Height) : IBlockHeight
 {
     public BlocksAtHeightRequest Into() =>
         new()
@@ -22,20 +22,6 @@ public sealed record Absolute(ulong Height) : IBlockHeight, IBlockHashInput
             Absolute = new BlocksAtHeightRequest.Types.Absolute
             {
                 Height = new AbsoluteBlockHeight { Value = this.Height }
-            }
-        };
-
-    /// <summary>
-    /// Query for a block at absolute height. If a unique
-    /// block can not be identified at that height the query will
-    /// throw an exception.
-    /// </summary>
-    BlockHashInput IBlockHashInput.Into() =>
-        new()
-        {
-            AbsoluteHeight = new AbsoluteBlockHeight
-            {
-                Value = this.Height
             }
         };
 }
@@ -50,7 +36,7 @@ public sealed record Absolute(ulong Height) : IBlockHeight, IBlockHashInput
 /// (`true`), or allow results from more recent genesis indices
 /// as well (`false`).
 /// </param>
-public sealed record Relative(ulong Height, uint GenesisIndex, bool Restrict) : IBlockHeight, IBlockHashInput
+public sealed record RelativeHeight(ulong Height, uint GenesisIndex, bool Restrict) : IBlockHeight
 {
     public BlocksAtHeightRequest Into() =>
         new()
@@ -62,19 +48,4 @@ public sealed record Relative(ulong Height, uint GenesisIndex, bool Restrict) : 
                 Restrict = this.Restrict,
             }
         };
-
-    /// <summary>
-    /// Query for a block at a height relative to genesis index. If a unique
-    /// block can not be identified at that height the query will
-    /// throw an exception.
-    /// </summary>
-    BlockHashInput IBlockHashInput.Into() => new()
-    {
-        RelativeHeight = new BlockHashInput.Types.RelativeHeight
-        {
-            GenesisIndex = new GenesisIndex { Value = this.GenesisIndex },
-            Height = new BlockHeight { Value = this.Height },
-            Restrict = this.Restrict,
-        }
-    };
 }

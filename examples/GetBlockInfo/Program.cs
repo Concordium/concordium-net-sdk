@@ -9,7 +9,7 @@ namespace GetBlockInfo;
 internal sealed class GetBlockInfoOptions
 {
     [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Required = true,
-        Default = "http://node.testnet.concordium.com/:20000")]
+        Default = "http://node.testnet.concordium.com:20000/")]
     public Uri Uri { get; set; }
 
     [Option(
@@ -30,9 +30,9 @@ public static class Program
     public static async Task Main(string[] args) =>
         await Parser.Default
             .ParseArguments<GetBlockInfoOptions>(args)
-            .WithParsedAsync(options => Run(options));
+            .WithParsedAsync(Run);
 
-    static async Task Run(GetBlockInfoOptions options) {
+    private static async Task Run(GetBlockInfoOptions options) {
         var block = BlockHash.From(options.BlockHash);
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
 
@@ -42,7 +42,9 @@ public static class Program
         };
         using var client = new ConcordiumClient(clientOptions);
 
-        var response = await client.GetBlockInfoAsync(new Given(block), cts.Token);
+        var blockInput = new Given(block);
+
+        var response = await client.GetBlockInfoAsync(blockInput, cts.Token);
 
         Console.WriteLine($"Block: {response.BlockHash} has transaction energy cost: {response.Response.TransactionEnergyCost}");
     }

@@ -16,7 +16,7 @@ public sealed class RawClient : IDisposable
     /// <summary>
     /// Options used by the client at initialization.
     /// Some parameters, like <see cref="GrpcChannelOptions.Credentials"/>, may be set if null when given to constructor.
-    /// Hence properties in this are not neccessary equal to those given to constructor, but they equals those used for 
+    /// Hence properties in this are not neccessary equal to those given to constructor, but they equals those used for
     /// client initialization.
     /// </summary>
     public ConcordiumClientOptions Options { get; init; }
@@ -33,7 +33,7 @@ public sealed class RawClient : IDisposable
     /// </summary>
     private readonly GrpcChannel _grpcChannel;
 
-    private readonly Metadata defaultMetadata;
+    private readonly Metadata _defaultMetadata;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="RawClient"/> class.
@@ -61,15 +61,15 @@ public sealed class RawClient : IDisposable
     {
         var scheme = GetEndpointScheme(endpoint);
 
-        channelOptions = SetSchemeIfNotSet(null, scheme);
+        channelOptions = SetSchemeIfNotSet(channelOptions, scheme);
 
         var grpcChannel = GrpcChannel.ForAddress(
             endpoint.Scheme
-                + "://"
-                + endpoint.Host
-                + ":"
-                + port.ToString(CultureInfo.InvariantCulture)
-                + endpoint.AbsolutePath,
+            + "://"
+            + endpoint.Host
+            + ":"
+            + port.ToString(CultureInfo.InvariantCulture)
+            + endpoint.AbsolutePath,
             channelOptions
         );
 
@@ -79,7 +79,7 @@ public sealed class RawClient : IDisposable
             Timeout = timeout.HasValue ? TimeSpan.FromSeconds((double)timeout) : null,
             ChannelOptions = channelOptions
         };
-        this.defaultMetadata = CreateMetadata(this.Options);
+        this._defaultMetadata = CreateMetadata(this.Options);
         this.InternalClient = new Queries.QueriesClient(grpcChannel);
         this._grpcChannel = grpcChannel;
     }
@@ -97,7 +97,7 @@ public sealed class RawClient : IDisposable
         var grpcChannel = GrpcChannel.ForAddress(options.Endpoint, channelOptions);
 
         this.Options = options;
-        this.defaultMetadata = CreateMetadata(options);
+        this._defaultMetadata = CreateMetadata(options);
         this.InternalClient = new Queries.QueriesClient(grpcChannel);
         this._grpcChannel = grpcChannel;
     }
@@ -679,7 +679,7 @@ public sealed class RawClient : IDisposable
             DateTime.UtcNow.Add(this.Options.Timeout.Value) :
             null;
 
-        return new CallOptions(this.defaultMetadata, deadline, token);
+        return new CallOptions(this._defaultMetadata, deadline, token);
     }
 
     /// <summary>

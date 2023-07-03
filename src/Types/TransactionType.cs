@@ -124,7 +124,6 @@ public static class TransactionTypeFactory
                     TransactionType.EncryptedAmountTransfer :
                     TransactionType.EncryptedAmountTransferWithMemo,
             ModuleDeployed => TransactionType.DeployModule,
-            // None => throw new NotImplementedException(), // TODO follow up on this
             TransferredToEncrypted => TransactionType.TransferToEncrypted,
             TransferredToPublic => TransactionType.TransferToPublic,
             TransferredWithSchedule transferredWithSchedule =>

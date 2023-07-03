@@ -9,7 +9,7 @@ namespace GetAccountInfo;
 internal sealed class GetAccountInfoOptions
 {
     [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Required = true,
-        Default = "http://node.testnet.concordium.com/:20000")]
+        Default = "http://node.testnet.concordium.com:20000/")]
     public Uri Uri { get; set; }
 
     [Option(
@@ -38,7 +38,7 @@ public static class Program
     public static async Task Main(string[] args) =>
         await Parser.Default
             .ParseArguments<GetAccountInfoOptions>(args)
-            .WithParsedAsync(options => Run(options));
+            .WithParsedAsync(Run);
 
     private static async Task Run(GetAccountInfoOptions options) {
         var accountAddress = AccountAddress.From(options.AccountAddress);

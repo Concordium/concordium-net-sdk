@@ -23,12 +23,11 @@ public abstract class Tests : IDisposable
         var jsonPath = Path.Combine(assemblyDirectory!, "test_configuration.json");
         this._json = JsonDocument.Parse(File.ReadAllText(jsonPath));
 
-        var endpoint = this.GetString("endpoint");
-        var port = this.GetUInt16("port");
+        var uri = this.GetString("uri");
 
         var clientOptions = new ConcordiumClientOptions
         {
-            Endpoint = new Uri($"{endpoint}:{port}")
+            Endpoint = new Uri(uri)
         };
 
         this.Client = new ConcordiumClient(clientOptions);

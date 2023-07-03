@@ -9,7 +9,7 @@ namespace GetBlocksAtHeight;
 internal sealed class GetBlocksAtHeightOptions
 {
     [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Required = true,
-        Default = "http://node.testnet.concordium.com/:20000")]
+        Default = "http://node.testnet.concordium.com:20000/")]
     public Uri Uri { get; set; }
 }
 
@@ -22,9 +22,9 @@ public static class Program
     public static async Task Main(string[] args) =>
         await Parser.Default
             .ParseArguments<GetBlocksAtHeightOptions>(args)
-            .WithParsedAsync(options => Run(options));
+            .WithParsedAsync(Run);
 
-    static async Task Run(GetBlocksAtHeightOptions options) {
+    private static async Task Run(GetBlocksAtHeightOptions options) {
         var clientOptions = new ConcordiumClientOptions
         {
             Endpoint = options.Uri
@@ -33,7 +33,7 @@ public static class Program
 
         var info = await client.GetConsensusInfoAsync();
 
-        var absoluteHeight = new Absolute(info.BestBlockHeight);
+        var absoluteHeight = new AbsoluteHeight(info.BestBlockHeight);
 
         var blocks = await client.GetBlocksAtHeightAsync(absoluteHeight, CancellationToken.None);
 
