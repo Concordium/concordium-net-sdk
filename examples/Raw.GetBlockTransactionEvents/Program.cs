@@ -1,6 +1,6 @@
+using Common;
 using Concordium.Grpc.V2;
 using Concordium.Sdk.Client;
-using Concordium.Sdk.Examples.Common;
 
 namespace RawClient.GetBlockTransactionEvents;
 

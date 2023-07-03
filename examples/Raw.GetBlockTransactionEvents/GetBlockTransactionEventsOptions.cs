@@ -1,6 +1,5 @@
 using CommandLine;
-
-using Concordium.Sdk.Examples.Common;
+using Common;
 
 namespace RawClient.GetBlockTransactionEvents;
 

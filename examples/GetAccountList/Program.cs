@@ -4,7 +4,7 @@ using Concordium.Sdk.Types;
 
 #pragma warning disable CS8618
 
-namespace Example;
+namespace GetAccountList;
 
 internal sealed class GetAccountListOptions
 {
@@ -27,12 +27,10 @@ public static class Program
     /// <summary>
     /// Example how to use <see cref="ConcordiumClient.GetAccountListAsync"/>
     /// </summary>s
-    public static async Task Main(string[] args)
-    {
+    public static async Task Main(string[] args) =>
         await Parser.Default
             .ParseArguments<GetAccountListOptions>(args)
             .WithParsedAsync(options => Run(options));
-    }
 
     static async Task Run(GetAccountListOptions options) {
         var block = BlockHash.From(options.BlockHash);

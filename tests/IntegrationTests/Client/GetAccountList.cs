@@ -1,13 +1,10 @@
-using System.Diagnostics.CodeAnalysis;
 using Concordium.Sdk.Types;
 using FluentAssertions;
 using Grpc.Core;
 using Xunit.Abstractions;
-using Xunit;
 
 namespace Concordium.Sdk.Tests.IntegrationTests.Client;
 
-[SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]
 [Trait( "Category", "IntegrationTests")]
 public sealed class GetAccountList : Tests
 {

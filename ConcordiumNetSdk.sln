@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk", "src\Concordium.Sdk.csproj", "{5926362D-5379-4F12-8F1A-F3FA29EDA00F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk.Tests.UnitTests", "tests\UnitTests\Concordium.Sdk.Tests.UnitTests.csproj", "{FA99FA9D-C722-4BD4-BB6E-C83843EC5BA0}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{FD2CDD9F-4650-4705-9CA2-98CC81F8891D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "examples\Common\Common.csproj", "{38823790-1187-4B72-800E-95DE365D585D}"
@@ -59,6 +57,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetPoolInfo", "examples\Get
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetTokenomicsInfo", "examples\GetTokenomicsInfo\GetTokenomicsInfo.csproj", "{487C7464-BD80-4D65-96DB-C7A3A096D3CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk.Tests.UnitTests", "tests\UnitTests\Concordium.Sdk.Tests.UnitTests.csproj", "{184F72F3-AF74-40FE-ACA5-EC2D2C68BD6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,10 +73,6 @@ Global
 		{5926362D-5379-4F12-8F1A-F3FA29EDA00F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5926362D-5379-4F12-8F1A-F3FA29EDA00F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5926362D-5379-4F12-8F1A-F3FA29EDA00F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FA99FA9D-C722-4BD4-BB6E-C83843EC5BA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FA99FA9D-C722-4BD4-BB6E-C83843EC5BA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FA99FA9D-C722-4BD4-BB6E-C83843EC5BA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FA99FA9D-C722-4BD4-BB6E-C83843EC5BA0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{38823790-1187-4B72-800E-95DE365D585D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{38823790-1187-4B72-800E-95DE365D585D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38823790-1187-4B72-800E-95DE365D585D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -177,6 +173,10 @@ Global
 		{487C7464-BD80-4D65-96DB-C7A3A096D3CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{487C7464-BD80-4D65-96DB-C7A3A096D3CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{487C7464-BD80-4D65-96DB-C7A3A096D3CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{184F72F3-AF74-40FE-ACA5-EC2D2C68BD6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{184F72F3-AF74-40FE-ACA5-EC2D2C68BD6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{184F72F3-AF74-40FE-ACA5-EC2D2C68BD6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{184F72F3-AF74-40FE-ACA5-EC2D2C68BD6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -210,5 +210,6 @@ Global
 		{CFDE7154-B61F-4445-9C82-DC1317E4314D} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
 		{718D2EE5-F73A-451D-AF6B-D806FC6347BA} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
 		{487C7464-BD80-4D65-96DB-C7A3A096D3CE} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
+		{184F72F3-AF74-40FE-ACA5-EC2D2C68BD6E} = {84CCB1D5-4617-4BE9-BB56-5D4FB4A0A452}
 	EndGlobalSection
 EndGlobal

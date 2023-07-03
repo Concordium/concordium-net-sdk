@@ -4,7 +4,7 @@ using Concordium.Sdk.Types;
 
 #pragma warning disable CS8618
 
-namespace Example;
+namespace GetAccountInfo;
 
 internal sealed class GetAccountInfoOptions
 {
@@ -18,7 +18,7 @@ internal sealed class GetAccountInfoOptions
         HelpText = "Address of the account to retrieve the info of.",
         Required = true
     )]
-    public string AccountAddress { get; set; } 
+    public string AccountAddress { get; set; }
 
     [Option(
         'b',
@@ -35,14 +35,12 @@ public static class Program
     /// <summary>
     /// Example how to use <see cref="ConcordiumClient.GetAccountInfoAsync"/>
     /// </summary>s
-    public static async Task Main(string[] args)
-    {
+    public static async Task Main(string[] args) =>
         await Parser.Default
             .ParseArguments<GetAccountInfoOptions>(args)
             .WithParsedAsync(options => Run(options));
-    }
 
-    static async Task Run(GetAccountInfoOptions options) {
+    private static async Task Run(GetAccountInfoOptions options) {
         var accountAddress = AccountAddress.From(options.AccountAddress);
         var block = BlockHash.From(options.BlockHash);
 

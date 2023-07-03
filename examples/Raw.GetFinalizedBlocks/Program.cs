@@ -1,8 +1,8 @@
+using Common;
 using Concordium.Grpc.V2;
 using Concordium.Sdk.Client;
-using Concordium.Sdk.Examples.Common;
 
-namespace Concordium.Sdk.Examples.RawClient.GetFinalizedBlocks;
+namespace RawClient.GetFinalizedBlocks;
 
 /// <summary>
 /// Example demonstrating the use of <see cref="Client.RawClient.GetFinalizedBlocks"/>.

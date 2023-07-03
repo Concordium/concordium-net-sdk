@@ -1,10 +1,9 @@
 ﻿using CommandLine;
 using Concordium.Sdk.Client;
-using Concordium.Sdk.Types;
 
 #pragma warning disable CS8618
 
-namespace Example;
+namespace GetPeerVersion;
 
 internal sealed class GetPeerVersionOptions
 {
@@ -19,12 +18,10 @@ public static class Program
     /// <summary>
     /// Example how to use <see cref="ConcordiumClient.GetPeerVersionAsync"/>
     /// </summary>s
-    public static async Task Main(string[] args)
-    {
+    public static async Task Main(string[] args) =>
         await Parser.Default
             .ParseArguments<GetPeerVersionOptions>(args)
             .WithParsedAsync(options => Run(options));
-    }
 
     static async Task Run(GetPeerVersionOptions options) {
         var clientOptions = new ConcordiumClientOptions

@@ -44,8 +44,6 @@ public class Tests : IDisposable
         return jsonElement;
     }
 
-    protected static ArgumentOutOfRangeException CreateArgumentOutOfRangeException<T>(T missing) => new($"unknown type: {missing!.GetType()}");
-
     public void Dispose()
     {
         this._json.Dispose();

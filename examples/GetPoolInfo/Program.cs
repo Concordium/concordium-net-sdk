@@ -4,7 +4,7 @@ using Concordium.Sdk.Types;
 
 #pragma warning disable CS8618
 
-namespace Example;
+namespace GetPoolInfo;
 
 internal sealed class GetPoolInfoOptions
 {
@@ -34,12 +34,10 @@ public static class Program
     /// <summary>
     /// Example how to use <see cref="ConcordiumClient.GetPoolInfoAsync"/>
     /// </summary>s
-    public static async Task Main(string[] args)
-    {
+    public static async Task Main(string[] args) =>
         await Parser.Default
             .ParseArguments<GetPoolInfoOptions>(args)
             .WithParsedAsync(options => Run(options));
-    }
 
     static async Task Run(GetPoolInfoOptions options) {
         var clientOptions = new ConcordiumClientOptions

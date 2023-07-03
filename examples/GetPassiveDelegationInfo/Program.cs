@@ -4,7 +4,7 @@ using Concordium.Sdk.Types;
 
 #pragma warning disable CS8618
 
-namespace Example;
+namespace GetPassiveDelegationInfo;
 
 internal sealed class GetPassiveDelegationInfoOptions
 {
@@ -27,12 +27,10 @@ public static class Program
     /// <summary>
     /// Example how to use <see cref="ConcordiumClient.GetPassiveDelegationInfoAsync"/>
     /// </summary>s
-    public static async Task Main(string[] args)
-    {
+    public static async Task Main(string[] args) =>
         await Parser.Default
             .ParseArguments<GetPassiveDelegationInfoOptions>(args)
             .WithParsedAsync(options => Run(options));
-    }
 
     static async Task Run(GetPassiveDelegationInfoOptions options) {
         var clientOptions = new ConcordiumClientOptions

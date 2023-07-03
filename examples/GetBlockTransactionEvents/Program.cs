@@ -1,11 +1,11 @@
-﻿using CommandLine;
+﻿using System.Text.Json;
+using CommandLine;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
-using System.Text.Json;
 
 #pragma warning disable CS8618
 
-namespace Example;
+namespace GetBlockTransactionEvents;
 
 internal sealed class GetBlockTransactionEventsOptions
 {
@@ -20,12 +20,10 @@ public static class Program
     /// <summary>
     /// Example how to use <see cref="ConcordiumClient.GetBlockTransactionEvents"/>
     /// </summary>s
-    public static async Task Main(string[] args)
-    {
+    public static async Task Main(string[] args) =>
         await Parser.Default
             .ParseArguments<GetBlockTransactionEventsOptions>(args)
             .WithParsedAsync(options => Run(options));
-    }
 
     static async Task Run(GetBlockTransactionEventsOptions options) {
         var clientOptions = new ConcordiumClientOptions

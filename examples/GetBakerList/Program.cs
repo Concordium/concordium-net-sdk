@@ -4,7 +4,7 @@ using Concordium.Sdk.Types;
 
 #pragma warning disable CS8618
 
-namespace Example;
+namespace GetBakerList;
 
 internal sealed class GetBakerListOptions
 {
@@ -19,12 +19,10 @@ public static class Program
     /// <summary>
     /// Example how to use <see cref="ConcordiumClient.GetBakerListAsync"/>
     /// </summary>s
-    public static async Task Main(string[] args)
-    {
+    public static async Task Main(string[] args) =>
         await Parser.Default
             .ParseArguments<GetBakerListOptions>(args)
             .WithParsedAsync(options => Run(options));
-    }
 
     static async Task Run(GetBakerListOptions options) {
         var clientOptions = new ConcordiumClientOptions

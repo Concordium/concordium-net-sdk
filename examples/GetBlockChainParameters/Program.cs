@@ -1,12 +1,12 @@
-﻿using CommandLine;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
+using CommandLine;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 #pragma warning disable CS8618
 
-namespace Example;
+namespace GetBlockChainParameters;
 
 internal sealed class GetBlockChainParametersOptions
 {
@@ -21,12 +21,10 @@ public static class Program
     /// <summary>
     /// Example how to use <see cref="ConcordiumClient.GetBlockChainParametersAsync"/>
     /// </summary>s
-    public static async Task Main(string[] args)
-    {
+    public static async Task Main(string[] args) =>
         await Parser.Default
             .ParseArguments<GetBlockChainParametersOptions>(args)
             .WithParsedAsync(options => Run(options));
-    }
 
     static async Task Run(GetBlockChainParametersOptions options) {
         var clientOptions = new ConcordiumClientOptions

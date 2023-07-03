@@ -1,8 +1,8 @@
+using Common;
 using Concordium.Grpc.V2;
 using Concordium.Sdk.Client;
-using Concordium.Sdk.Examples.Common;
 
-namespace Concordium.Sdk.Examples.RawClient.GetAccountInfo;
+namespace RawClient.GetAccountInfo;
 
 /// <summary>
 /// Example demonstrating the use of <see cref="Client.RawClient.GetAccountInfo"/>.
@@ -27,7 +27,7 @@ internal class Program
         {
             "best" => new BlockHashInput() { Best = new Empty() },
             "lastfinal" => new BlockHashInput() { LastFinal = new Empty() },
-            _ => Types.BlockHash.From(options.BlockHash).ToBlockHashInput(),
+            _ => Concordium.Sdk.Types.BlockHash.From(options.BlockHash).ToBlockHashInput(),
         };
 
         // Construct the input for the raw method.
@@ -38,7 +38,7 @@ internal class Program
             BlockHash = blockHashInput,
             /// Convert command line parameter to a <see cref="Types.AccountAddress"/>
             /// and then to a <see cref="AccountIdentifierInput"/> which is needed for the <see cref="AccountInfoRequest"/>.
-            AccountIdentifier = Types.AccountAddress
+            AccountIdentifier = Concordium.Sdk.Types.AccountAddress
                 .From(options.AccountAddress)
                 .ToAccountIdentifierInput()
         };
@@ -53,7 +53,7 @@ internal class Program
     private static void PrintAccountInfo(AccountInfo accountInfo) =>
         Console.WriteLine(
             $@"
-            Address:          {Types.AccountAddress.From(accountInfo.Address.Value.ToArray())}
+            Address:          {Concordium.Sdk.Types.AccountAddress.From(accountInfo.Address.Value.ToArray())}
             Balance:          {accountInfo.Amount.Value} CCD
             Sequence number:  {accountInfo.SequenceNumber.Value}
         "

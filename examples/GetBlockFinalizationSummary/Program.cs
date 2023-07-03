@@ -4,7 +4,7 @@ using Concordium.Sdk.Types;
 
 #pragma warning disable CS8618
 
-namespace Example;
+namespace GetBlockFinalizationSummary;
 
 internal sealed class GetBlockFinalizationSummaryOptions
 {
@@ -19,12 +19,10 @@ public static class Program
     /// <summary>
     /// Example how to use <see cref="ConcordiumClient.GetBlockFinalizationSummary"/>
     /// </summary>s
-    public static async Task Main(string[] args)
-    {
+    public static async Task Main(string[] args) =>
         await Parser.Default
             .ParseArguments<GetBlockFinalizationSummaryOptions>(args)
             .WithParsedAsync(options => Run(options));
-    }
 
     static async Task Run(GetBlockFinalizationSummaryOptions options) {
         var clientOptions = new ConcordiumClientOptions

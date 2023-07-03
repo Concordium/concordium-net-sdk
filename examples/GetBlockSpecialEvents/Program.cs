@@ -4,7 +4,7 @@ using Concordium.Sdk.Types;
 
 #pragma warning disable CS8618
 
-namespace Example;
+namespace GetBlockSpecialEvents;
 
 internal sealed class GetBlockSpecialEventsOptions
 {
@@ -27,12 +27,10 @@ public static class Program
     /// <summary>
     /// Example how to use <see cref="ConcordiumClient.GetBlockSpecialEvents"/>
     /// </summary>s
-    public static async Task Main(string[] args)
-    {
+    public static async Task Main(string[] args) =>
         await Parser.Default
             .ParseArguments<GetBlockSpecialEventsOptions>(args)
             .WithParsedAsync(options => Run(options));
-    }
 
     static async Task Run(GetBlockSpecialEventsOptions options) {
         var clientOptions = new ConcordiumClientOptions
