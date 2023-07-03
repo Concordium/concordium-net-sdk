@@ -6,7 +6,7 @@ using Concordium.Sdk.Types;
 // ReSharper disable ParameterTypeCanBeEnumerable.Global
 #pragma warning disable CS8618
 
-namespace Concordium.Sdk.Examples.Transactions.GetBlockItemStatus;
+namespace Example;
 
 internal sealed class GetBlockItemSummaryOptions
 {

@@ -6,43 +6,48 @@ using Concordium.Sdk.Types;
 
 namespace Example;
 
-internal sealed class GetBlocksAtHeightOptions
+internal sealed class GetBlockSpecialEventsOptions
 {
     [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Required = true,
         Default = "http://node.testnet.concordium.com/:20000")]
     public Uri Uri { get; set; }
+
+    [Option(
+        'b',
+        "block-hash",
+        HelpText = "Block hash of the block.",
+        Required = true
+    )]
+    public string BlockHash { get; set; }
 }
 
 
 public static class Program
 {
     /// <summary>
-    /// Example how to use <see cref="ConcordiumClient.GetBlocksAtHeightAsync"/>
+    /// Example how to use <see cref="ConcordiumClient.GetBlockSpecialEvents"/>
     /// </summary>s
     public static async Task Main(string[] args)
     {
         await Parser.Default
-            .ParseArguments<GetBlocksAtHeightOptions>(args)
+            .ParseArguments<GetBlockSpecialEventsOptions>(args)
             .WithParsedAsync(options => Run(options));
     }
 
-    static async Task Run(GetBlocksAtHeightOptions options) {
+    static async Task Run(GetBlockSpecialEventsOptions options) {
         var clientOptions = new ConcordiumClientOptions
         {
             Endpoint = options.Uri
         };
         using var client = new ConcordiumClient(clientOptions);
 
-        var info = await client.GetConsensusInfoAsync();
+        var block = BlockHash.From(options.BlockHash);
+        var response = await client.GetBlockSpecialEvents(new Given(block));
 
-        var absoluteHeight = new Absolute(info.BestBlockHeight);
-
-        var blocks = await client.GetBlocksAtHeightAsync(absoluteHeight, CancellationToken.None);
-
-        Console.WriteLine($"Blocks live at height: {info.BestBlockHeight}");
-        foreach (var block in blocks)
+        Console.WriteLine($"BlockHash: {response.BlockHash}");
+        await foreach (var specialEvent in response.Response)
         {
-            Console.WriteLine(block.ToString());
+            Console.WriteLine($"Type of special event is: {specialEvent.GetType().Name}");
         }
     }
 }

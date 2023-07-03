@@ -4,7 +4,7 @@ using Concordium.Sdk.Types;
 
 #pragma warning disable CS8618
 
-namespace AccountInfo;
+namespace Example;
 
 internal sealed class GetBlockInfoOptions
 {

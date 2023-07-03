@@ -6,7 +6,7 @@ using Concordium.Sdk.Types;
 
 namespace Example;
 
-internal sealed class GetAccountListOptions
+internal sealed class GetPassiveDelegationInfoOptions
 {
     [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Required = true,
         Default = "http://node.testnet.concordium.com/:20000")]
@@ -25,29 +25,32 @@ internal sealed class GetAccountListOptions
 public static class Program
 {
     /// <summary>
-    /// Example how to use <see cref="ConcordiumClient.GetAccountListAsync"/>
+    /// Example how to use <see cref="ConcordiumClient.GetPassiveDelegationInfoAsync"/>
     /// </summary>s
     public static async Task Main(string[] args)
     {
         await Parser.Default
-            .ParseArguments<GetAccountListOptions>(args)
+            .ParseArguments<GetPassiveDelegationInfoOptions>(args)
             .WithParsedAsync(options => Run(options));
     }
 
-    static async Task Run(GetAccountListOptions options) {
-        var block = BlockHash.From(options.BlockHash);
+    static async Task Run(GetPassiveDelegationInfoOptions options) {
         var clientOptions = new ConcordiumClientOptions
         {
             Endpoint = options.Uri
         };
         using var client = new ConcordiumClient(clientOptions);
 
-        var response = await client.GetAccountListAsync(new Given(block));
+        var block = BlockHash.From(options.BlockHash);
+
+        var response = await client.GetPassiveDelegationInfoAsync(new Given(block));
 
         Console.WriteLine($"BlockHash: {response.BlockHash}");
-        await foreach (var account in response.Response)
-        {
-            Console.WriteLine($"Account: {account}");
-        }
+
+        var poolStatus = response.Response;
+        Console.WriteLine("The current commission rates are:");
+        Console.WriteLine($"Baking Commission: {poolStatus.CommissionRates.BakingCommission}");
+        Console.WriteLine($"Finalization Commission: {poolStatus.CommissionRates.FinalizationCommission}");
+        Console.WriteLine($"Transaction Commission: {poolStatus.CommissionRates.TransactionCommission}");
     }
 }

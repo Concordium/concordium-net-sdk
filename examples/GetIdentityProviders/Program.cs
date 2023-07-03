@@ -6,7 +6,7 @@ using Concordium.Sdk.Types;
 
 namespace Example;
 
-internal sealed class GetBlocksAtHeightOptions
+internal sealed class GetIdentityProvidersOptions
 {
     [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Required = true,
         Default = "http://node.testnet.concordium.com/:20000")]
@@ -17,32 +17,31 @@ internal sealed class GetBlocksAtHeightOptions
 public static class Program
 {
     /// <summary>
-    /// Example how to use <see cref="ConcordiumClient.GetBlocksAtHeightAsync"/>
+    /// Example how to use <see cref="ConcordiumClient.GetIdentityProvidersAsync"/>
     /// </summary>s
     public static async Task Main(string[] args)
     {
         await Parser.Default
-            .ParseArguments<GetBlocksAtHeightOptions>(args)
+            .ParseArguments<GetIdentityProvidersOptions>(args)
             .WithParsedAsync(options => Run(options));
     }
 
-    static async Task Run(GetBlocksAtHeightOptions options) {
+    static async Task Run(GetIdentityProvidersOptions options) {
         var clientOptions = new ConcordiumClientOptions
         {
             Endpoint = options.Uri
         };
         using var client = new ConcordiumClient(clientOptions);
 
-        var info = await client.GetConsensusInfoAsync();
+        var identityProviders = await client.GetIdentityProvidersAsync(new LastFinal());
 
-        var absoluteHeight = new Absolute(info.BestBlockHeight);
-
-        var blocks = await client.GetBlocksAtHeightAsync(absoluteHeight, CancellationToken.None);
-
-        Console.WriteLine($"Blocks live at height: {info.BestBlockHeight}");
-        foreach (var block in blocks)
+        Console.WriteLine($"BlockHash: {identityProviders.BlockHash}");
+        await foreach (var info in identityProviders.Response)
         {
-            Console.WriteLine(block.ToString());
+            Console.WriteLine($"Id: {info.IpIdentity.Id}");
+            Console.WriteLine($"Description info: {info.Description.Info}");
+            Console.WriteLine($"Description name: {info.Description.Name}");
+            Console.WriteLine($"Description url: {info.Description.Url}");
         }
     }
 }

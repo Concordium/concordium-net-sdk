@@ -1,0 +1,74 @@
+﻿using CommandLine;
+using Concordium.Sdk.Client;
+using Concordium.Sdk.Types;
+using System.Text.Json;
+
+#pragma warning disable CS8618
+
+namespace Example;
+
+internal sealed class GetBlockTransactionEventsOptions
+{
+    [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Required = true,
+        Default = "http://node.testnet.concordium.com/:20000")]
+    public Uri Uri { get; set; }
+}
+
+
+public static class Program
+{
+    /// <summary>
+    /// Example how to use <see cref="ConcordiumClient.GetBlockTransactionEvents"/>
+    /// </summary>s
+    public static async Task Main(string[] args)
+    {
+        await Parser.Default
+            .ParseArguments<GetBlockTransactionEventsOptions>(args)
+            .WithParsedAsync(options => Run(options));
+    }
+
+    static async Task Run(GetBlockTransactionEventsOptions options) {
+        var clientOptions = new ConcordiumClientOptions
+        {
+            Endpoint = options.Uri
+        };
+        using var client = new ConcordiumClient(clientOptions);
+
+        var jsonSerializerOptions = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            Converters = { new BlockItemSummaryDetailsConverter(), new UpdatePayloadConverter() }
+        };
+
+        var idx = 0UL;
+        var transactionCount = 0;
+        while (transactionCount < 2)
+        {
+            var blockHeight = new Absolute(idx);
+            var response = await client.GetBlockTransactionEvents(blockHeight);
+
+            Console.WriteLine($"BlockHash: {response.BlockHash}");
+            await foreach (var transaction in response.Response)
+            {
+                transactionCount++;
+                var serialized = JsonSerializer.Serialize(transaction, jsonSerializerOptions);
+                Console.WriteLine(serialized);
+            }
+            idx++;
+        }
+    }
+}
+
+internal sealed class BlockItemSummaryDetailsConverter : System.Text.Json.Serialization.JsonConverter<IBlockItemSummaryDetails>
+{
+    public override IBlockItemSummaryDetails? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) => throw new NotImplementedException();
+
+    public override void Write(Utf8JsonWriter writer, IBlockItemSummaryDetails value, JsonSerializerOptions options) => JsonSerializer.Serialize(writer, value, value.GetType(), options);
+}
+
+internal sealed class UpdatePayloadConverter : System.Text.Json.Serialization.JsonConverter<IUpdatePayload>
+{
+    public override IUpdatePayload? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) => throw new NotImplementedException();
+
+    public override void Write(Utf8JsonWriter writer, IUpdatePayload value, JsonSerializerOptions options) => JsonSerializer.Serialize(writer, value, value.GetType(), options);
+}

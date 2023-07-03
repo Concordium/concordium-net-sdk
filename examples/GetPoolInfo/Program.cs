@@ -6,7 +6,7 @@ using Concordium.Sdk.Types;
 
 namespace Example;
 
-internal sealed class GetAccountListOptions
+internal sealed class GetPoolInfoOptions
 {
     [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Required = true,
         Default = "http://node.testnet.concordium.com/:20000")]
@@ -19,35 +19,42 @@ internal sealed class GetAccountListOptions
         Required = true
     )]
     public string BlockHash { get; set; }
+
+    [Option(
+        "baker-id",
+        HelpText = "Baker Id",
+        Required = true
+    )]
+    public ulong BakerId { get; set; }    
 }
 
 
 public static class Program
 {
     /// <summary>
-    /// Example how to use <see cref="ConcordiumClient.GetAccountListAsync"/>
+    /// Example how to use <see cref="ConcordiumClient.GetPoolInfoAsync"/>
     /// </summary>s
     public static async Task Main(string[] args)
     {
         await Parser.Default
-            .ParseArguments<GetAccountListOptions>(args)
+            .ParseArguments<GetPoolInfoOptions>(args)
             .WithParsedAsync(options => Run(options));
     }
 
-    static async Task Run(GetAccountListOptions options) {
-        var block = BlockHash.From(options.BlockHash);
+    static async Task Run(GetPoolInfoOptions options) {
         var clientOptions = new ConcordiumClientOptions
         {
             Endpoint = options.Uri
         };
         using var client = new ConcordiumClient(clientOptions);
 
-        var response = await client.GetAccountListAsync(new Given(block));
+        var block = BlockHash.From(options.BlockHash);
+        var bakerId = new BakerId(new AccountIndex(options.BakerId));
+
+        var response = await client.GetPoolInfoAsync(bakerId, new Given(block));
 
         Console.WriteLine($"BlockHash: {response.BlockHash}");
-        await foreach (var account in response.Response)
-        {
-            Console.WriteLine($"Account: {account}");
-        }
+
+        Console.WriteLine($"Baker {bakerId} has baker equity capital {response.Response.BakerEquityCapital.GetFormattedCcd()}");
     }
 }
