@@ -5,17 +5,17 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk", "src\Concordium.Sdk.csproj", "{5926362D-5379-4F12-8F1A-F3FA29EDA00F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk.Tests.UnitTests", "tests\Tests\UnitTests\Concordium.Sdk.Tests.UnitTests.csproj", "{FA99FA9D-C722-4BD4-BB6E-C83843EC5BA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk.Tests.UnitTests", "tests\UnitTests\Concordium.Sdk.Tests.UnitTests.csproj", "{FA99FA9D-C722-4BD4-BB6E-C83843EC5BA0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{FD2CDD9F-4650-4705-9CA2-98CC81F8891D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "examples\Common\Common.csproj", "{38823790-1187-4B72-800E-95DE365D585D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RawClient.GetAccountInfo", "examples\GetAccountInfo\RawClient.GetAccountInfo.csproj", "{112E3E12-E82A-4105-8980-B6B6BCA36774}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raw.GetAccountInfo", "examples\Raw.GetAccountInfo\RawClient.GetAccountInfo.csproj", "{112E3E12-E82A-4105-8980-B6B6BCA36774}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RawClient.GetBlockTransactionEvents", "examples\GetBlockTransactionEvents\RawClient.GetBlockTransactionEvents.csproj", "{B330214B-B273-4DB3-8E11-8B8A6959E3CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raw.GetBlockTransactionEvents", "examples\Raw.GetBlockTransactionEvents\RawClient.GetBlockTransactionEvents.csproj", "{B330214B-B273-4DB3-8E11-8B8A6959E3CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RawClient.GetFinalizedBlocks", "examples\GetFinalizedBlocks\RawClient.GetFinalizedBlocks.csproj", "{26819297-705C-4CAB-AEC9-3ABB13D25625}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raw.GetFinalizedBlocks", "examples\Raw.GetFinalizedBlocks\RawClient.GetFinalizedBlocks.csproj", "{26819297-705C-4CAB-AEC9-3ABB13D25625}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transactions.RegisterData", "examples\RegisterData\Transactions.RegisterData.csproj", "{06E08F6C-32E2-4AEF-8934-EEA9D5DB38F3}"
 EndProject
@@ -26,6 +26,22 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transactions.GetBlockItemStatus", "examples\GetBlockItemStatus\Transactions.GetBlockItemStatus.csproj", "{C6D1F6C7-8621-42C5-8585-896C77DB3210}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "examples\Examples\Examples.csproj", "{400B8656-F2E1-46D5-A9D5-3ED7C7F32F31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetAccountInfo", "examples\GetAccountInfo\GetAccountInfo.csproj", "{1A8D6B8A-2856-4843-BE5F-BC045952E08C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetBlockInfo", "examples\GetBlockInfo\GetBlockInfo.csproj", "{45DB2119-DF18-4159-BAA1-D37FB0492A5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetAccountList", "examples\GetAccountList\GetAccountList.csproj", "{EAA0BC89-6B47-436A-A0D1-FCC685828F21}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{84CCB1D5-4617-4BE9-BB56-5D4FB4A0A452}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordium.Sdk.Tests.IntegrationTests", "tests\IntegrationTests\Concordium.Sdk.Tests.IntegrationTests.csproj", "{26BEAD27-78C9-4A9C-8A2B-FB4376F9068B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetBakerList", "examples\GetBakerList\GetBakerList.csproj", "{70AB78DD-E262-49EA-9044-C85E23573AA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetBlockFinalizationSummary", "examples\GetBlockFinalizationSummary\GetBlockFinalizationSummary.csproj", "{9B994A74-8EE8-4CB1-A721-5C86A1CDDF4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetBlocksAtHeight", "examples\GetBlocksAtHeight\GetBlocksAtHeight.csproj", "{B07C4EA4-FE2D-410A-88C9-3C5F96A709D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +97,34 @@ Global
 		{400B8656-F2E1-46D5-A9D5-3ED7C7F32F31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{400B8656-F2E1-46D5-A9D5-3ED7C7F32F31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{400B8656-F2E1-46D5-A9D5-3ED7C7F32F31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A8D6B8A-2856-4843-BE5F-BC045952E08C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A8D6B8A-2856-4843-BE5F-BC045952E08C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A8D6B8A-2856-4843-BE5F-BC045952E08C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A8D6B8A-2856-4843-BE5F-BC045952E08C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45DB2119-DF18-4159-BAA1-D37FB0492A5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45DB2119-DF18-4159-BAA1-D37FB0492A5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45DB2119-DF18-4159-BAA1-D37FB0492A5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45DB2119-DF18-4159-BAA1-D37FB0492A5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAA0BC89-6B47-436A-A0D1-FCC685828F21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAA0BC89-6B47-436A-A0D1-FCC685828F21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAA0BC89-6B47-436A-A0D1-FCC685828F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAA0BC89-6B47-436A-A0D1-FCC685828F21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26BEAD27-78C9-4A9C-8A2B-FB4376F9068B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26BEAD27-78C9-4A9C-8A2B-FB4376F9068B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26BEAD27-78C9-4A9C-8A2B-FB4376F9068B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26BEAD27-78C9-4A9C-8A2B-FB4376F9068B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70AB78DD-E262-49EA-9044-C85E23573AA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70AB78DD-E262-49EA-9044-C85E23573AA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70AB78DD-E262-49EA-9044-C85E23573AA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70AB78DD-E262-49EA-9044-C85E23573AA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B994A74-8EE8-4CB1-A721-5C86A1CDDF4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B994A74-8EE8-4CB1-A721-5C86A1CDDF4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B994A74-8EE8-4CB1-A721-5C86A1CDDF4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B994A74-8EE8-4CB1-A721-5C86A1CDDF4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B07C4EA4-FE2D-410A-88C9-3C5F96A709D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B07C4EA4-FE2D-410A-88C9-3C5F96A709D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B07C4EA4-FE2D-410A-88C9-3C5F96A709D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B07C4EA4-FE2D-410A-88C9-3C5F96A709D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,5 +142,12 @@ Global
 		{04325801-3936-425D-A44B-D82E43C25E0D} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
 		{C6D1F6C7-8621-42C5-8585-896C77DB3210} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
 		{400B8656-F2E1-46D5-A9D5-3ED7C7F32F31} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
+		{1A8D6B8A-2856-4843-BE5F-BC045952E08C} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
+		{45DB2119-DF18-4159-BAA1-D37FB0492A5B} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
+		{EAA0BC89-6B47-436A-A0D1-FCC685828F21} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
+		{26BEAD27-78C9-4A9C-8A2B-FB4376F9068B} = {84CCB1D5-4617-4BE9-BB56-5D4FB4A0A452}
+		{70AB78DD-E262-49EA-9044-C85E23573AA8} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
+		{9B994A74-8EE8-4CB1-A721-5C86A1CDDF4C} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
+		{B07C4EA4-FE2D-410A-88C9-3C5F96A709D1} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
 	EndGlobalSection
 EndGlobal

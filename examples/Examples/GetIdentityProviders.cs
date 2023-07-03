@@ -1,4 +1,5 @@
 using Concordium.Sdk.Types;
+using Xunit;
 using Xunit.Abstractions;
 
 namespace Concordium.Sdk.Examples;

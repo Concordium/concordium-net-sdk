@@ -3,29 +3,16 @@ using Concordium.Sdk.Types;
 using FluentAssertions;
 using Grpc.Core;
 using Xunit.Abstractions;
+using Xunit;
 
-namespace Concordium.Sdk.Examples;
+namespace Concordium.Sdk.Tests.IntegrationTests.Client;
 
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]
+[Trait( "Category", "IntegrationTests")]
 public sealed class GetAccountList : Tests
 {
     public GetAccountList(ITestOutputHelper output) : base(output)
     {
-    }
-
-    [Fact]
-    public async Task RunGetAccountListAsync()
-    {
-        var block = BlockHash.From(this.GetString("blockHash"));
-
-        var response = await this.Client.GetAccountListAsync(new Given(block));
-
-        this.Output.WriteLine($"BlockHash: {response.BlockHash}");
-
-        await foreach (var account in response.Response)
-        {
-            this.Output.WriteLine($"Account: {account}");
-        }
     }
 
     [Fact]

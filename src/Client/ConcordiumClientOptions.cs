@@ -1,6 +1,8 @@
 
 using Grpc.Net.Client;
 
+#pragma warning disable CS8618
+
 namespace Concordium.Sdk.Client;
 
 /// <summary>
