@@ -96,10 +96,9 @@ public sealed class RawClient : IDisposable
     /// This can be used to listen for incoming blocks. Note that this is non-terminating,
     /// and that blocks may be skipped if the client is unable to keep up with the stream.
     /// </summary>
-    public IAsyncEnumerable<ArrivedBlockInfo> GetBlocks(CancellationToken token = default) =>
+    public AsyncServerStreamingCall<ArrivedBlockInfo> GetBlocks(CancellationToken token = default) =>
         this.InternalClient
-            .GetBlocks(new Empty(), this.CreateCallOptions(token))
-            .ResponseStream.ReadAllAsync();
+            .GetBlocks(new Empty(), this.CreateCallOptions(token));
 
     /// <summary>
     /// Process a stream of blocks that are finalized from the time the query is made onward.
@@ -107,10 +106,9 @@ public sealed class RawClient : IDisposable
     /// and that blocks may be skipped if the client is unable to keep up with the stream,
     /// however blocks are guaranteed to arrive in order of increasing block height.
     /// </summary>
-    public IAsyncEnumerable<FinalizedBlockInfo> GetFinalizedBlocks(CancellationToken token = default) =>
+    public AsyncServerStreamingCall<FinalizedBlockInfo> GetFinalizedBlocks(CancellationToken token = default) =>
         this.InternalClient
-            .GetFinalizedBlocks(new Empty(), this.CreateCallOptions(token))
-            .ResponseStream.ReadAllAsync();
+            .GetFinalizedBlocks(new Empty(), this.CreateCallOptions(token));
 
     /// <summary>
     /// Get information about an account.
@@ -119,26 +117,24 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetAccountInfo(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns information about an account.
+    /// Returns information about an account.
     /// </summary>
-    public Task<AccountInfo> GetAccountInfoAsync(AccountInfoRequest input, CancellationToken token = default) =>
-        this.InternalClient.GetAccountInfoAsync(input, this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<AccountInfo> GetAccountInfoAsync(AccountInfoRequest input, CancellationToken token = default) =>
+        this.InternalClient.GetAccountInfoAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get all accounts that exist at the end of a given block.
     /// </summary>
-    public IAsyncEnumerable<AccountAddress> GetAccountList(BlockHashInput input, CancellationToken token = default) =>
+    public AsyncServerStreamingCall<AccountAddress> GetAccountList(BlockHashInput input, CancellationToken token = default) =>
         this.InternalClient
-            .GetAccountList(input, this.CreateCallOptions(token))
-            .ResponseStream.ReadAllAsync();
+            .GetAccountList(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get all smart contract modules that exist at the end of a given block.
     /// </summary>
-    public IAsyncEnumerable<ModuleRef> GetModuleList(BlockHashInput input, CancellationToken token = default) =>
+    public AsyncServerStreamingCall<ModuleRef> GetModuleList(BlockHashInput input, CancellationToken token = default) =>
         this.InternalClient
-            .GetModuleList(input, this.CreateCallOptions(token))
-            .ResponseStream.ReadAllAsync();
+            .GetModuleList(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get ancestors of a given block.
@@ -147,10 +143,9 @@ public sealed class RawClient : IDisposable
     /// The sequence contains at most @limit@ blocks, and if the sequence is
     /// strictly shorter, the last block in the list is the genesis block.
     /// </summary>
-    public IAsyncEnumerable<BlockHash> GetAncestors(AncestorsRequest input, CancellationToken token = default) =>
+    public AsyncServerStreamingCall<BlockHash> GetAncestors(AncestorsRequest input, CancellationToken token = default) =>
         this.InternalClient
-            .GetAncestors(input, this.CreateCallOptions(token))
-            .ResponseStream.ReadAllAsync();
+            .GetAncestors(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get the source of a smart contract module.
@@ -159,18 +154,17 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetModuleSource(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns the source of a smart contract module.
+    /// Returns the source of a smart contract module.
     /// </summary>
-    public Task<VersionedModuleSource> GetModuleSourceAsync(ModuleSourceRequest input, CancellationToken token = default) =>
-        this.InternalClient.GetModuleSourceAsync(input, this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<VersionedModuleSource> GetModuleSourceAsync(ModuleSourceRequest input, CancellationToken token = default) =>
+        this.InternalClient.GetModuleSourceAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get the addresses of all smart contract instances in a given block.
     /// </summary>
-    public IAsyncEnumerable<ContractAddress> GetInstanceList(BlockHashInput input, CancellationToken token = default) =>
+    public AsyncServerStreamingCall<ContractAddress> GetInstanceList(BlockHashInput input, CancellationToken token = default) =>
         this.InternalClient
-            .GetInstanceList(input, this.CreateCallOptions(token))
-            .ResponseStream.ReadAllAsync();
+            .GetInstanceList(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get information about a smart contract instance as it appears at the end of a
@@ -180,20 +174,19 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetInstanceInfo(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns information about a smart contract instance as it
+    /// Returns information about a smart contract instance as it
     /// appears at the end of a given block.
     /// </summary>
-    public Task<InstanceInfo> GetInstanceInfoAsync(InstanceInfoRequest input, CancellationToken token = default) =>
-        this.InternalClient.GetInstanceInfoAsync(input, this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<InstanceInfo> GetInstanceInfoAsync(InstanceInfoRequest input, CancellationToken token = default) =>
+        this.InternalClient.GetInstanceInfoAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get key-value pairs representing the entire state of a specific contract instance in a given block.
     /// The resulting sequence consists of key-value pairs ordered lexicographically according to the keys.
     /// </summary>
-    public IAsyncEnumerable<InstanceStateKVPair> GetInstanceState(InstanceInfoRequest input, CancellationToken token = default) =>
+    public AsyncServerStreamingCall<InstanceStateKVPair> GetInstanceState(InstanceInfoRequest input, CancellationToken token = default) =>
         this.InternalClient
-            .GetInstanceState(input, this.CreateCallOptions(token))
-            .ResponseStream.ReadAllAsync();
+            .GetInstanceState(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get the value at a specific key of a contract state. In contrast to
@@ -204,14 +197,14 @@ public sealed class RawClient : IDisposable
         this.InternalClient.InstanceStateLookup(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns the value at a specific key of a contract state. In contrast to
+    /// Returns the value at a specific key of a contract state. In contrast to
     /// <see cref="GetInstanceState"/> this is more efficient, but requires the user to know
     /// the specific key to look up in advance.
     /// </summary>
-    public Task<InstanceStateValueAtKey> InstanceStateLookupAsync(
+    public AsyncUnaryCall<InstanceStateValueAtKey> InstanceStateLookupAsync(
         InstanceStateLookupRequest input, CancellationToken token = default
     ) =>
-        this.InternalClient.InstanceStateLookupAsync(input, this.CreateCallOptions(token)).ResponseAsync;
+        this.InternalClient.InstanceStateLookupAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get the best guess as to what the next account sequence number (nonce) should be
@@ -224,18 +217,17 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetNextAccountSequenceNumber(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns the best guess as to what the next account sequence number (nonce)
+    /// Returns the best guess as to what the next account sequence number (nonce)
     /// should be for the given account.
     /// If all account transactions are finalized then this information is reliable.
     /// Otherwise this is the best guess, assuming all other transactions will be
     /// committed to blocks and eventually finalized.
     /// </summary>
-    public Task<NextAccountSequenceNumber> GetNextAccountSequenceNumberAsync(
+    public AsyncUnaryCall<NextAccountSequenceNumber> GetNextAccountSequenceNumberAsync(
         AccountAddress input, CancellationToken token = default
     ) =>
         this.InternalClient
-            .GetNextAccountSequenceNumberAsync(input, this.CreateCallOptions(token))
-            .ResponseAsync;
+            .GetNextAccountSequenceNumberAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get information about the current state of consensus.
@@ -244,12 +236,11 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetConsensusInfo(new Empty(), this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns information about the current state of consensus.
+    /// Returns information about the current state of consensus.
     /// </summary>
-    public Task<ConsensusInfo> GetConsensusInfoAsync(CancellationToken token = default) =>
+    public AsyncUnaryCall<ConsensusInfo> GetConsensusInfoAsync(CancellationToken token = default) =>
         this.InternalClient
-            .GetConsensusInfoAsync(new Empty(), this.CreateCallOptions(token))
-            .ResponseAsync;
+            .GetConsensusInfoAsync(new Empty(), this.CreateCallOptions(token));
 
     /// <summary>
     /// Get the status of and information about a specific block item (transaction).
@@ -258,10 +249,10 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetBlockItemStatus(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns the status of and information about a specific block item (transaction).
+    /// Returns the status of and information about a specific block item (transaction).
     /// </summary>
-    public Task<BlockItemStatus> GetBlockItemStatusAsync(TransactionHash input, CancellationToken token = default) =>
-        this.InternalClient.GetBlockItemStatusAsync(input, this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<BlockItemStatus> GetBlockItemStatusAsync(TransactionHash input, CancellationToken token = default) =>
+        this.InternalClient.GetBlockItemStatusAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get cryptographic parameters in a given block.
@@ -270,12 +261,11 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetCryptographicParameters(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns the cryptographic parameters in a given block.
+    /// Returns the cryptographic parameters in a given block.
     /// </summary>
-    public Task<CryptographicParameters> GetCryptographicParametersAsync(BlockHashInput input, CancellationToken token = default) =>
+    public AsyncUnaryCall<CryptographicParameters> GetCryptographicParametersAsync(BlockHashInput input, CancellationToken token = default) =>
         this.InternalClient
-            .GetCryptographicParametersAsync(input, this.CreateCallOptions(token))
-            .ResponseAsync;
+            .GetCryptographicParametersAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get information such as height, timings, and transaction counts for a given block.
@@ -284,21 +274,16 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetBlockInfo(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns information such as height, timings, and transaction counts for a given block.
+    /// Returns information such as height, timings, and transaction counts for a given block.
     /// </summary>
-    public Task<BlockInfo> GetBlockInfoAsync(BlockHashInput input, CancellationToken token = default) =>
-        this.InternalClient.GetBlockInfoAsync(input, this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<BlockInfo> GetBlockInfoAsync(BlockHashInput input, CancellationToken token = default) =>
+        this.InternalClient.GetBlockInfoAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get IDs of all bakers at the end of a given block.
     /// </summary>
-    public Task<QueryResponse<IAsyncEnumerable<BakerId>>> GetBakerList(BlockHashInput input, CancellationToken token = default)
-    {
-        var response = this.InternalClient.GetBakerList(input, this.CreateCallOptions(token));
-        return QueryResponse<IAsyncEnumerable<BakerId>>.From(
-            response.ResponseHeadersAsync,
-            response.ResponseStream.ReadAllAsync());
-    }
+    public AsyncServerStreamingCall<BakerId> GetBakerList(BlockHashInput input, CancellationToken token = default)
+        => this.InternalClient.GetBakerList(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get information about a given pool at the end of a given block.
@@ -307,10 +292,10 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetPoolInfo(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns information about a given pool at the end of a given block.
+    /// Returns information about a given pool at the end of a given block.
     /// </summary>
-    public Task<PoolInfoResponse> GetPoolInfoAsync(PoolInfoRequest input, CancellationToken token = default) =>
-        this.InternalClient.GetPoolInfoAsync(input, this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<PoolInfoResponse> GetPoolInfoAsync(PoolInfoRequest input, CancellationToken token = default) =>
+        this.InternalClient.GetPoolInfoAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get information about the passive delegators at the end of a given block.
@@ -319,12 +304,11 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetPassiveDelegationInfo(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns information about the passive delegators at the end of a given block.
+    /// Returns information about the passive delegators at the end of a given block.
     /// </summary>
-    public Task<PassiveDelegationInfo> GetPassiveDelegationInfoAsync(BlockHashInput input, CancellationToken token = default) =>
+    public AsyncUnaryCall<PassiveDelegationInfo> GetPassiveDelegationInfoAsync(BlockHashInput input, CancellationToken token = default) =>
         this.InternalClient
-            .GetPassiveDelegationInfoAsync(input, this.CreateCallOptions(token))
-            .ResponseAsync;
+            .GetPassiveDelegationInfoAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get a list of live blocks at a given height.
@@ -333,10 +317,10 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetBlocksAtHeight(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns a list of live blocks at a given height.
+    /// Returns a list of live blocks at a given height.
     /// </summary>
-    public Task<BlocksAtHeightResponse> GetBlocksAtHeightAsync(BlocksAtHeightRequest input, CancellationToken token = default) =>
-        this.InternalClient.GetBlocksAtHeightAsync(input, this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<BlocksAtHeightResponse> GetBlocksAtHeightAsync(BlocksAtHeightRequest input, CancellationToken token = default) =>
+        this.InternalClient.GetBlocksAtHeightAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get information about tokenomics at the end of a given block.
@@ -345,10 +329,10 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetTokenomicsInfo(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns information about tokenomics at the end of a given block.
+    /// Returns information about tokenomics at the end of a given block.
     /// </summary>
-    public Task<TokenomicsInfo> GetTokenomicsInfoAsync(BlockHashInput input, CancellationToken token = default) =>
-        this.InternalClient.GetTokenomicsInfoAsync(input, this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<TokenomicsInfo> GetTokenomicsInfoAsync(BlockHashInput input, CancellationToken token = default) =>
+        this.InternalClient.GetTokenomicsInfoAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Instructs the node to run a smart contract entrypoint in the given context and
@@ -358,19 +342,18 @@ public sealed class RawClient : IDisposable
         this.InternalClient.InvokeInstance(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which instructs the node to run a smart contract entrypoint in the given context and
+    /// Instructs the node to run a smart contract entrypoint in the given context and
     /// state at the end of a given block.
     /// </summary>
-    public Task<InvokeInstanceResponse> InvokeInstanceAsync(InvokeInstanceRequest input, CancellationToken token = default) =>
-        this.InternalClient.InvokeInstanceAsync(input, this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<InvokeInstanceResponse> InvokeInstanceAsync(InvokeInstanceRequest input, CancellationToken token = default) =>
+        this.InternalClient.InvokeInstanceAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get all registered delegators of a given pool at the end of a given block.
     /// </summary>
-    public IAsyncEnumerable<DelegatorInfo> GetPoolDelegators(GetPoolDelegatorsRequest input, CancellationToken token = default) =>
+    public AsyncServerStreamingCall<DelegatorInfo> GetPoolDelegators(GetPoolDelegatorsRequest input, CancellationToken token = default) =>
         this.InternalClient
-            .GetPoolDelegators(input, this.CreateCallOptions(token))
-            .ResponseStream.ReadAllAsync();
+            .GetPoolDelegators(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get all fixed delegators of a given pool for the reward period of a given block.
@@ -378,20 +361,18 @@ public sealed class RawClient : IDisposable
     /// for the given block, this returns all the active fixed delegators contributing stake
     /// in the reward period containing the given block.
     /// </summary>
-    public IAsyncEnumerable<DelegatorRewardPeriodInfo> GetPoolDelegatorsRewardPeriod(
+    public AsyncServerStreamingCall<DelegatorRewardPeriodInfo> GetPoolDelegatorsRewardPeriod(
         GetPoolDelegatorsRequest input, CancellationToken token = default
     ) =>
         this.InternalClient
-            .GetPoolDelegatorsRewardPeriod(input, this.CreateCallOptions(token))
-            .ResponseStream.ReadAllAsync();
+            .GetPoolDelegatorsRewardPeriod(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get all registered passive delegators at the end of a given block.
     /// </summary>
-    public IAsyncEnumerable<DelegatorInfo> GetPassiveDelegators(BlockHashInput input, CancellationToken token = default) =>
+    public AsyncServerStreamingCall<DelegatorInfo> GetPassiveDelegators(BlockHashInput input, CancellationToken token = default) =>
         this.InternalClient
-            .GetPassiveDelegators(input, this.CreateCallOptions(token))
-            .ResponseStream.ReadAllAsync();
+            .GetPassiveDelegators(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get all fixed passive delegators for the reward period of a given block.
@@ -399,12 +380,11 @@ public sealed class RawClient : IDisposable
     /// at the end of a given block, this returns all fixed delegators contributing
     /// stake in the reward period containing the given block.
     /// </summary>
-    public IAsyncEnumerable<DelegatorRewardPeriodInfo> GetPassiveDelegatorsRewardPeriod(
+    public AsyncServerStreamingCall<DelegatorRewardPeriodInfo> GetPassiveDelegatorsRewardPeriod(
         BlockHashInput input, CancellationToken token = default
     ) =>
         this.InternalClient
-            .GetPassiveDelegatorsRewardPeriod(input, this.CreateCallOptions(token))
-            .ResponseStream.ReadAllAsync();
+            .GetPassiveDelegatorsRewardPeriod(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get the current branches of blocks starting from and including the last finalized block.
@@ -413,10 +393,10 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetBranches(new Empty(), this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns the current branches of blocks starting from and including the last finalized block.
+    /// Returns the current branches of blocks starting from and including the last finalized block.
     /// </summary>
-    public Task<Branch> GetBranchesAsync(CancellationToken token = default) =>
-        this.InternalClient.GetBranchesAsync(new Empty(), this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<Branch> GetBranchesAsync(CancellationToken token = default) =>
+        this.InternalClient.GetBranchesAsync(new Empty(), this.CreateCallOptions(token));
 
     /// <summary>
     /// Get information related to the baker election for a particular block.
@@ -425,64 +405,48 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetElectionInfo(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns information related to the baker election for a particular block.
+    /// Returns information related to the baker election for a particular block.
     /// </summary>
-    public Task<ElectionInfo> GetElectionInfoAsync(BlockHashInput input, CancellationToken token = default) =>
-        this.InternalClient.GetElectionInfoAsync(input, this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<ElectionInfo> GetElectionInfoAsync(BlockHashInput input, CancellationToken token = default) =>
+        this.InternalClient.GetElectionInfoAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get all identity providers registered at the end of a given block.
     /// </summary>
-    public Task<QueryResponse<IAsyncEnumerable<IpInfo>>> GetIdentityProviders(BlockHashInput input, CancellationToken token = default)
-    {
-        var response = this.InternalClient.GetIdentityProviders(input, this.CreateCallOptions(token));
-        return QueryResponse<IAsyncEnumerable<IpInfo>>.From(
-            response.ResponseHeadersAsync,
-            response.ResponseStream.ReadAllAsync());
-    }
+    public AsyncServerStreamingCall<IpInfo> GetIdentityProviders(BlockHashInput input, CancellationToken token = default) => 
+        this.InternalClient.GetIdentityProviders(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get all anonymity revokers registered at the end of a given block.
     /// </summary>
-    public IAsyncEnumerable<ArInfo> GetAnonymityRevokers(BlockHashInput input, CancellationToken token = default) =>
+    public AsyncServerStreamingCall<ArInfo> GetAnonymityRevokers(BlockHashInput input, CancellationToken token = default) =>
         this.InternalClient
-            .GetAnonymityRevokers(input, this.CreateCallOptions(token))
-            .ResponseStream.ReadAllAsync();
+            .GetAnonymityRevokers(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get all hashes of non-finalized transactions for a given account.
     /// </summary>
-    public IAsyncEnumerable<TransactionHash> GetAccountNonFinalizedTransactions(
-        AccountAddress input, CancellationToken token = default
-    ) =>
-        this.InternalClient
-            .GetAccountNonFinalizedTransactions(input, this.CreateCallOptions(token))
-            .ResponseStream.ReadAllAsync();
+    public AsyncServerStreamingCall<TransactionHash> GetAccountNonFinalizedTransactions(AccountAddress input, CancellationToken token = default) =>
+        this.InternalClient.GetAccountNonFinalizedTransactions(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get all transaction events in a given block.
     /// </summary>
-    public IAsyncEnumerable<BlockItemSummary> GetBlockTransactionEvents(BlockHashInput input, CancellationToken token = default) =>
-        this.InternalClient
-            .GetBlockTransactionEvents(input, this.CreateCallOptions(token))
-            .ResponseStream.ReadAllAsync();
+    public AsyncServerStreamingCall<BlockItemSummary> GetBlockTransactionEvents(BlockHashInput input, CancellationToken token = default) =>
+        this.InternalClient.GetBlockTransactionEvents(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get all special events in a given block.
     /// A special event is protocol generated event that is not directly caused by a transaction, such as minting, paying out rewards, etc.
     /// </summary>
-    public IAsyncEnumerable<BlockSpecialEvent> GetBlockSpecialEvents(BlockHashInput input, CancellationToken token = default) =>
-        this.InternalClient
-            .GetBlockSpecialEvents(input, this.CreateCallOptions(token))
-            .ResponseStream.ReadAllAsync(cancellationToken: token);
+    public AsyncServerStreamingCall<BlockSpecialEvent> GetBlockSpecialEvents(BlockHashInput input, CancellationToken token = default) =>
+        this.InternalClient.GetBlockSpecialEvents(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get all pending updates to chain parameters at the end of a given block.
     /// </summary>
-    public IAsyncEnumerable<PendingUpdate> GetBlockPendingUpdates(BlockHashInput input, CancellationToken token = default) =>
-        this.InternalClient
-            .GetBlockPendingUpdates(input, this.CreateCallOptions(token))
-            .ResponseStream.ReadAllAsync();
+    public AsyncServerStreamingCall<PendingUpdate> GetBlockPendingUpdates(BlockHashInput input, CancellationToken token = default) =>
+        this.InternalClient.GetBlockPendingUpdates(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get next available sequence numbers for updating chain parameters after a given block.
@@ -491,14 +455,13 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetNextUpdateSequenceNumbers(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task that returns the next available sequence numbers for updating chain parameters after a given block.
+    /// Returns the next available sequence numbers for updating chain parameters after a given block.
     /// </summary>
-    public Task<NextUpdateSequenceNumbers> GetNextUpdateSequenceNumbersAsync(
+    public AsyncUnaryCall<NextUpdateSequenceNumbers> GetNextUpdateSequenceNumbersAsync(
         BlockHashInput input, CancellationToken token = default
     ) =>
         this.InternalClient
-            .GetNextUpdateSequenceNumbersAsync(input, this.CreateCallOptions(token))
-            .ResponseAsync;
+            .GetNextUpdateSequenceNumbersAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Request that the node shut down. Throws an exception if the shutdown failed.
@@ -506,10 +469,10 @@ public sealed class RawClient : IDisposable
     public Empty Shutdown(CancellationToken token = default) => this.InternalClient.Shutdown(new Empty(), this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task that requests that the node shut down. Throws an exception if the shutdown failed.
+    /// Requests that the node shut down. Throws an exception if the shutdown failed.
     /// </summary>
-    public Task<Empty> ShutdownAsync(CancellationToken token = default) =>
-        this.InternalClient.ShutdownAsync(new Empty(), this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<Empty> ShutdownAsync(CancellationToken token = default) =>
+        this.InternalClient.ShutdownAsync(new Empty(), this.CreateCallOptions(token));
 
     /// <summary>
     /// Request that the node connect to the peer with the specified details.
@@ -521,14 +484,14 @@ public sealed class RawClient : IDisposable
         this.InternalClient.PeerConnect(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which requests that the node connect to the peer with
+    /// Requests that the node connect to the peer with
     /// the specified details.
     /// If the request succeeds, the peer is added to the peer-list of the node.
     /// Otherwise a gRPC exception is thrown. Note that the peer may not be connected
     /// instantly, in which case the call will still succeed.
     /// </summary>
-    public Task<Empty> PeerConnectAsync(IpSocketAddress input, CancellationToken token = default) =>
-        this.InternalClient.PeerConnectAsync(input, this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<Empty> PeerConnectAsync(IpSocketAddress input, CancellationToken token = default) =>
+        this.InternalClient.PeerConnectAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Request the node to disconnect from the peer with the specified details.
@@ -539,12 +502,12 @@ public sealed class RawClient : IDisposable
         this.InternalClient.PeerDisconnect(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which requests the node to disconnect from the peer with the specified
+    /// Requests the node to disconnect from the peer with the specified
     /// details. If the request was succesfully processed, the peer is removed from the peer-list.
     /// Otherwise a gRPC exception is returned.
     /// </summary>
-    public Task<Empty> PeerDisconnectAsync(IpSocketAddress input, CancellationToken token = default) =>
-        this.InternalClient.PeerDisconnectAsync(input, this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<Empty> PeerDisconnectAsync(IpSocketAddress input, CancellationToken token = default) =>
+        this.InternalClient.PeerDisconnectAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get a list of peers banned by the node.
@@ -553,12 +516,12 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetBannedPeers(new Empty(), this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns a list of peers banned by the node.
+    /// Returns a list of peers banned by the node.
     /// </summary>
-    public Task<BannedPeers> GetBannedPeersAsync(CancellationToken token = default) =>
+    public AsyncUnaryCall<BannedPeers> GetBannedPeersAsync(CancellationToken token = default) =>
         this.InternalClient
             .GetBannedPeersAsync(new Empty(), this.CreateCallOptions(token))
-            .ResponseAsync;
+            ;
 
     /// <summary>
     /// Request the node to ban the specified peer. Throws a gRPC exception if the action failed.
@@ -567,10 +530,10 @@ public sealed class RawClient : IDisposable
         this.InternalClient.BanPeer(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which requests the node to ban the specified peer. Throws a gRPC exception if the action failed.
+    /// Requests the node to ban the specified peer. Throws a gRPC exception if the action failed.
     /// </summary>
-    public Task<Empty> BanPeerAsync(PeerToBan input, CancellationToken token = default) =>
-        this.InternalClient.BanPeerAsync(input, this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<Empty> BanPeerAsync(PeerToBan input, CancellationToken token = default) =>
+        this.InternalClient.BanPeerAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Request the node to unban the specified peer. Throws a gRPC error if the action failed.
@@ -579,10 +542,10 @@ public sealed class RawClient : IDisposable
         this.InternalClient.UnbanPeer(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which requests the node to unban the specified peer. Throws a gRPC error if the action failed.
+    /// Requests the node to unban the specified peer. Throws a gRPC error if the action failed.
     /// </summary>
-    public Task<Empty> UnbanPeerAsync(BannedPeer input, CancellationToken token = default) =>
-        this.InternalClient.UnbanPeerAsync(input, this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<Empty> UnbanPeerAsync(BannedPeer input, CancellationToken token = default) =>
+        this.InternalClient.UnbanPeerAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Request the node to start dumping network packets into the specified file.
@@ -593,12 +556,12 @@ public sealed class RawClient : IDisposable
         this.InternalClient.DumpStart(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which requests the node to start dumping network packets into the specified file.
+    /// Requests the node to start dumping network packets into the specified file.
     /// This feature is enabled if the node was built with the <c>network_dump</c> feature.
     /// Returns a gRPC error if the network dump failed to start.
     /// </summary>
-    public Task<Empty> DumpStartAsync(DumpRequest input, CancellationToken token = default) =>
-        this.InternalClient.DumpStartAsync(input, this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<Empty> DumpStartAsync(DumpRequest input, CancellationToken token = default) =>
+        this.InternalClient.DumpStartAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Request the node to stop dumping packets, if configured to do so.
@@ -608,12 +571,12 @@ public sealed class RawClient : IDisposable
     public Empty DumpStop(CancellationToken token = default) => this.InternalClient.DumpStop(new Empty(), this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which requests the node to stop dumping packets, if configured to do so.
+    /// Requests the node to stop dumping packets, if configured to do so.
     /// This feature is enabled if the node was built with the <c>network_dump</c> feature.
     /// Throws a gRPC error if the network dump could not be stopped.
     /// </summary>
-    public Task<Empty> DumpStopAsync(CancellationToken token = default) =>
-        this.InternalClient.DumpStopAsync(new Empty(), this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<Empty> DumpStopAsync(CancellationToken token = default) =>
+        this.InternalClient.DumpStopAsync(new Empty(), this.CreateCallOptions(token));
 
     /// <summary>
     /// Get a list of the peers that the node is connected to as well as network-related information for each such peer.
@@ -622,10 +585,10 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetPeersInfo(new Empty(), this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns a list of the peers that the node is connected to as well as network-related information for each such peer.
+    /// Returns a list of the peers that the node is connected to as well as network-related information for each such peer.
     /// </summary>
-    public Task<PeersInfo> GetPeersInfoAsync(CancellationToken token = default) =>
-        this.InternalClient.GetPeersInfoAsync(new Empty(), this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<PeersInfo> GetPeersInfoAsync(CancellationToken token = default) =>
+        this.InternalClient.GetPeersInfoAsync(new Empty(), this.CreateCallOptions(token));
 
     /// <summary>
     /// Get information about the node.
@@ -634,10 +597,10 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetNodeInfo(new Empty(), this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns information about the node.
+    /// Returns information about the node.
     /// </summary>
-    public Task<NodeInfo> GetNodeInfoAsync(CancellationToken token = default) =>
-        this.InternalClient.GetNodeInfoAsync(new Empty(), this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<NodeInfo> GetNodeInfoAsync(CancellationToken token = default) =>
+        this.InternalClient.GetNodeInfoAsync(new Empty(), this.CreateCallOptions(token));
 
     /// <summary>
     /// Send a block item to the node. A block item is either an account transaction,
@@ -653,7 +616,7 @@ public sealed class RawClient : IDisposable
         this.InternalClient.SendBlockItem(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which send a block item to the node. A block item is either an
+    /// Send a block item to the node. A block item is either an
     /// account transaction, which is a transaction signed and paid for by an account,
     /// a credential deployment, which creates a new account, or an update instruction,
     /// which is an instruction to change some parameters of the chain. Update instructions
@@ -662,8 +625,8 @@ public sealed class RawClient : IDisposable
     /// Returns a hash of the sent block item, which can be used with
     /// <see cref="GetBlockItemStatus"/>.
     /// </summary>
-    public Task<TransactionHash> SendBlockItemAsync(SendBlockItemRequest input, CancellationToken token = default) =>
-        this.InternalClient.SendBlockItemAsync(input, this.CreateCallOptions(token)).ResponseAsync;
+    public AsyncUnaryCall<TransactionHash> SendBlockItemAsync(SendBlockItemRequest input, CancellationToken token = default) =>
+        this.InternalClient.SendBlockItemAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get values of block chain parameters in a given block.
@@ -672,19 +635,10 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetBlockChainParameters(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns values of block chain parameters in a given block.
+    /// Returns values of block chain parameters in a given block.
     /// </summary>
-    public async Task<QueryResponse<ChainParameters>> GetBlockChainParametersAsync(BlockHashInput input, CancellationToken token = default)
-    {
-        var response = this.InternalClient
-            .GetBlockChainParametersAsync(input, this.CreateCallOptions(token));
-
-        var chainParameters = await response.ResponseAsync
-            .ConfigureAwait(false);
-
-        return await QueryResponse<ChainParameters>.From(response.ResponseHeadersAsync, chainParameters)
-            .ConfigureAwait(false);
-    }
+    public AsyncUnaryCall<ChainParameters> GetBlockChainParametersAsync(BlockHashInput input, CancellationToken token = default) => 
+        this.InternalClient.GetBlockChainParametersAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get a summary of the finalization data in a given block.
@@ -693,20 +647,17 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetBlockFinalizationSummary(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Spawn a task which returns a summary of the finalization data in a given block.
+    /// Returns a summary of the finalization data in a given block.
     /// </summary>
-    public Task<BlockFinalizationSummary> GetBlockFinalizationSummaryAsync(BlockHashInput input, CancellationToken token = default) =>
+    public AsyncUnaryCall<BlockFinalizationSummary> GetBlockFinalizationSummaryAsync(BlockHashInput input, CancellationToken token = default) =>
         this.InternalClient
-            .GetBlockFinalizationSummaryAsync(input, this.CreateCallOptions(token))
-            .ResponseAsync;
+            .GetBlockFinalizationSummaryAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Get the items of a block.
     /// </summary>
-    public IAsyncEnumerable<BlockItem> GetBlockItems(BlockHashInput input, CancellationToken token = default) =>
-        this.InternalClient
-            .GetBlockItems(input, this.CreateCallOptions(token))
-            .ResponseStream.ReadAllAsync();
+    public AsyncServerStreamingCall<BlockItem> GetBlockItems(BlockHashInput input, CancellationToken token = default) =>
+        this.InternalClient.GetBlockItems(input, this.CreateCallOptions(token));
 
     /// <summary>
     /// Create the call options for invoking the <see cref="InternalClient">.

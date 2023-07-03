@@ -11,9 +11,9 @@ namespace Concordium.Sdk.Types;
 public interface ISpecialEvent
 {}
 
-internal static class SpecialEventExtensions
+internal static class SpecialEventFactory
 {
-    internal static ISpecialEvent Into(this BlockSpecialEvent specialEvent) =>
+    internal static ISpecialEvent From(BlockSpecialEvent specialEvent) =>
             specialEvent.EventCase switch
             {
                 BlockSpecialEvent.EventOneofCase.BakingRewards =>

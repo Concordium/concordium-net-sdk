@@ -23,7 +23,7 @@ internal class Program
         );
 
         // Invoke the raw call.
-        var blocks = client.Raw.GetFinalizedBlocks();
+        var blocks = client.Raw.GetFinalizedBlocks().ResponseStream.ReadAllAsync();
 
         Console.WriteLine("Listening for finalized blocks:");
         await foreach (var blockInfo in blocks)

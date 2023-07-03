@@ -24,7 +24,10 @@ public sealed class GetBlockTransactionEvents : Tests
         while (transactionCount < 2)
         {
             var blockHeight = new Absolute(idx);
-            await foreach (var transaction in this.Client.GetBlockTransactionEvents(blockHeight))
+            var response = await this.Client.GetBlockTransactionEvents(blockHeight);
+
+            this.Output.WriteLine($"BlockHash: {response.BlockHash}");
+            await foreach (var transaction in response.Response)
             {
                 transactionCount++;
                 var serialized = JsonSerializer.Serialize(transaction, this._jsonSerializerOptions);

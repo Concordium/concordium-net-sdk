@@ -17,7 +17,8 @@ public class GetBlockFinalizationSummary : Tests
         while (awaitResult)
         {
             var blockHeight = new Absolute(idx);
-            var finalizationSummary = await this.Client.GetBlockFinalizationSummaryAsync(blockHeight);
+            var response = await this.Client.GetBlockFinalizationSummaryAsync(blockHeight);
+            var finalizationSummary = response.Response;
             if (finalizationSummary == null)
             {
                 idx++;

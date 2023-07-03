@@ -14,8 +14,11 @@ public sealed class GetPassiveDelegationInfo : Tests
     {
         var block = BlockHash.From(this.GetString("blockHash"));
 
-        var poolStatus = await this.Client.GetPassiveDelegationInfoAsync(new Given(block));
-
+        var response = await this.Client.GetPassiveDelegationInfoAsync(new Given(block));
+        
+        this.Output.WriteLine($"BlockHash: {response.BlockHash}");
+        
+        var poolStatus = response.Response;
         this.Output.WriteLine("The current commission rates are:");
         this.Output.WriteLine($"Baking Commission: {poolStatus.CommissionRates.BakingCommission}");
         this.Output.WriteLine($"Finalization Commission: {poolStatus.CommissionRates.FinalizationCommission}");

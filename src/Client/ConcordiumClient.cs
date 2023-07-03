@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using Concordium.Grpc.V2;
 using Concordium.Sdk.Transactions;
 using Concordium.Sdk.Types;
@@ -186,15 +185,25 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHash">A hash of the block</param>
     /// <param name="token">Cancellation token</param>    
     /// <returns>Account information at the given block.</returns>
-    public async Task<AccountInfo> GetAccountInfoAsync(AccountAddress accountAddress, IBlockHashInput blockHash, CancellationToken token = default)
+    public async Task<QueryResponse<AccountInfo>> GetAccountInfoAsync(AccountAddress accountAddress, IBlockHashInput blockHash, CancellationToken token = default)
     {
         var accountInfoRequest = new AccountInfoRequest
         {
             BlockHash = blockHash.Into(),
             AccountIdentifier = accountAddress.ToAccountIdentifierInput()
         };
-        var accountInfoAsync = await this.Raw.GetAccountInfoAsync(accountInfoRequest, token).ConfigureAwait(false);
-        return AccountInfo.From(accountInfoAsync);
+        var response = this.Raw.GetAccountInfoAsync(accountInfoRequest, token);
+
+        await Task.WhenAll(response.ResponseHeadersAsync, response.ResponseAsync)
+            .ConfigureAwait(false);
+
+        var accountInfoAsync = await response.ResponseAsync
+            .ConfigureAwait(false);
+        
+        return await QueryResponse<AccountInfo>.From(
+                response.ResponseHeadersAsync, 
+                AccountInfo.From(accountInfoAsync))
+            .ConfigureAwait(false);
     }
 
     /// <summary>
@@ -206,13 +215,14 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="token">Cancellation token</param>    
     /// <returns>Accounts at given block</returns>
     /// <exception cref="RpcException">Block doesn't exists.</exception>
-    public async IAsyncEnumerable<AccountAddress> GetAccountListAsync(IBlockHashInput input, [EnumeratorCancellation]CancellationToken token = default)
+    public async Task<QueryResponse<IAsyncEnumerable<AccountAddress>>> GetAccountListAsync(IBlockHashInput input, CancellationToken token = default)
     {
-        var blockHash = input.Into();
-        await foreach (var account in this.Raw.GetAccountList(blockHash, token).WithCancellation(token).ConfigureAwait(false))
-        {
-            yield return AccountAddress.From(account);
-        }
+        var response = this.Raw.GetAccountList(input.Into(), token);
+        
+        return await QueryResponse<IAsyncEnumerable<AccountAddress>>.From(
+                response.ResponseHeadersAsync,
+                response.ResponseStream.ReadAllAsync(token).Select(AccountAddress.From))
+            .ConfigureAwait(false);
     }
 
     /// <summary>
@@ -235,15 +245,23 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHash">Block hash from where information will be fetched</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>The state of the baker currently registered on the account.</returns>
-    public async Task<BakerPoolStatus> GetPoolInfoAsync(BakerId bakerId, IBlockHashInput blockHash, CancellationToken token = default)
+    public async Task<QueryResponse<BakerPoolStatus>> GetPoolInfoAsync(BakerId bakerId, IBlockHashInput blockHash, CancellationToken token = default)
     {
-        var poolInfoAsync = await this.Raw.GetPoolInfoAsync(new PoolInfoRequest
+        var input = new PoolInfoRequest
             {
                 BlockHash = blockHash.Into(),
                 Baker = bakerId.ToProto()
-            }, token)
+            };
+        var response = this.Raw.GetPoolInfoAsync(input, token);
+
+        await Task.WhenAll(response.ResponseHeadersAsync, response.ResponseAsync)
             .ConfigureAwait(false);
-        return BakerPoolStatus.From(poolInfoAsync);
+        var poolInfoAsync = await response.ResponseAsync;
+
+        return await QueryResponse<BakerPoolStatus>.From(
+                response.ResponseHeadersAsync,
+                BakerPoolStatus.From(poolInfoAsync))
+            .ConfigureAwait(false);
     }
 
     /// <summary>
@@ -253,10 +271,18 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="token">Cancellation token</param>    
     /// <returns>Tokenomics</returns>
     /// <exception cref="RpcException">Block doesn't exists.</exception>
-    public async Task<RewardOverviewBase> GetTokenomicsInfoAsync(IBlockHashInput blockHash, CancellationToken token = default)
+    public async Task<QueryResponse<RewardOverviewBase>> GetTokenomicsInfoAsync(IBlockHashInput blockHash, CancellationToken token = default)
     {
-        var tokenomicsInfo = await this.Raw.GetTokenomicsInfoAsync(blockHash.Into(), token).ConfigureAwait(false);
-        return RewardOverviewBase.From(tokenomicsInfo);
+        var response = this.Raw.GetTokenomicsInfoAsync(blockHash.Into(), token);
+
+        await Task.WhenAll(response.ResponseHeadersAsync, response.ResponseAsync)
+            .ConfigureAwait(false);
+        var tokenomicsInfo = await response.ResponseAsync;
+
+        return await QueryResponse<RewardOverviewBase>.From(
+                response.ResponseHeadersAsync,
+                RewardOverviewBase.From(tokenomicsInfo))
+            .ConfigureAwait(false);
     }
 
     /// <summary>
@@ -267,10 +293,18 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHash">Block hash from where passive delegation status will be returned.</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>State of the passive delegation pool</returns>
-    public async Task<PassiveDelegationStatus> GetPassiveDelegationInfoAsync(IBlockHashInput blockHash, CancellationToken token = default)
+    public async Task<QueryResponse<PassiveDelegationStatus>> GetPassiveDelegationInfoAsync(IBlockHashInput blockHash, CancellationToken token = default)
     {
-        var passiveDelegationInfoAsync = await this.Raw.GetPassiveDelegationInfoAsync(blockHash.Into(), token).ConfigureAwait(false);
-        return PassiveDelegationStatus.From(passiveDelegationInfoAsync);
+        var response = this.Raw.GetPassiveDelegationInfoAsync(blockHash.Into(), token);
+
+        await Task.WhenAll(response.ResponseHeadersAsync, response.ResponseAsync)
+            .ConfigureAwait(false);
+        var passiveDelegationInfoAsync = await response.ResponseAsync;
+
+        return await QueryResponse<PassiveDelegationStatus>.From(
+                response.ResponseHeadersAsync,
+                PassiveDelegationStatus.From(passiveDelegationInfoAsync))
+            .ConfigureAwait(false);
     }
 
     /// <summary>
@@ -306,10 +340,18 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHash">Block from where information will be returned.</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>Block information from requested block.</returns>
-    public async Task<BlockInfo> GetBlockInfoAsync(IBlockHashInput blockHash, CancellationToken token = default)
+    public async Task<QueryResponse<BlockInfo>> GetBlockInfoAsync(IBlockHashInput blockHash, CancellationToken token = default)
     {
-        var blockInfo = await this.Raw.GetBlockInfoAsync(blockHash.Into(), token).ConfigureAwait(false);
-        return BlockInfo.From(blockInfo);
+        var response = this.Raw.GetBlockInfoAsync(blockHash.Into(), token);
+
+        await Task.WhenAll(response.ResponseHeadersAsync, response.ResponseAsync)
+            .ConfigureAwait(false);
+        var blockInfo = await response.ResponseAsync;
+
+        return await QueryResponse<BlockInfo>.From(
+                response.ResponseHeadersAsync,
+                BlockInfo.From(blockInfo))
+            .ConfigureAwait(false);
     }
 
     /// <summary>
@@ -322,12 +364,14 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="token">Cancellation token</param>
     /// <returns>Special events at given block</returns>
     /// <exception cref="RpcException">If the block does not exist</exception>
-    public async IAsyncEnumerable<ISpecialEvent> GetBlockSpecialEvents(IBlockHashInput blockHashInput, [EnumeratorCancellation]CancellationToken token = default)
+    public async Task<QueryResponse<IAsyncEnumerable<ISpecialEvent>>> GetBlockSpecialEvents(IBlockHashInput blockHashInput, CancellationToken token = default)
     {
-        await foreach(var specialEvent in this.Raw.GetBlockSpecialEvents(blockHashInput.Into(), token).ConfigureAwait(false))
-        {
-            yield return specialEvent.Into();
-        }
+        var response = this.Raw.GetBlockSpecialEvents(blockHashInput.Into(), token);
+
+        return await QueryResponse<IAsyncEnumerable<ISpecialEvent>>.From(
+                response.ResponseHeadersAsync,
+                response.ResponseStream.ReadAllAsync(token).Select(SpecialEventFactory.From))
+            .ConfigureAwait(false);
     }
 
     /// <summary>
@@ -341,10 +385,18 @@ public sealed class ConcordiumClient : IDisposable
     /// </summary>
     /// <param name="blockHashInput">Block from where finalization summary will be given.</param>
     /// <param name="token">Cancellation token</param>
-    public async Task<FinalizationSummary?> GetBlockFinalizationSummaryAsync(IBlockHashInput blockHashInput, CancellationToken token = default)
+    public async Task<QueryResponse<FinalizationSummary?>> GetBlockFinalizationSummaryAsync(IBlockHashInput blockHash, CancellationToken token = default)
     {
-        var finalizationSummary = await this.Raw.GetBlockFinalizationSummaryAsync(blockHashInput.Into(), token).ConfigureAwait(false);
-        return FinalizationSummary.From(finalizationSummary);
+        var response = this.Raw.GetBlockFinalizationSummaryAsync(blockHash.Into(), token);
+
+        await Task.WhenAll(response.ResponseHeadersAsync, response.ResponseAsync)
+            .ConfigureAwait(false);
+        var finalizationSummary = await response.ResponseAsync;
+
+        return await QueryResponse<FinalizationSummary?>.From(
+                response.ResponseHeadersAsync,
+                FinalizationSummary.From(finalizationSummary))
+            .ConfigureAwait(false);
     }
 
     /// <summary>
@@ -355,13 +407,14 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="token">Cancellation token</param>    
     /// <returns>Summary of a block item with transactional meta data.</returns>
     /// <exception cref="RpcException">If the block does not exist</exception>
-    public async IAsyncEnumerable<BlockItemSummary> GetBlockTransactionEvents(IBlockHashInput blockHashInput, [EnumeratorCancellation]CancellationToken token = default)
+    public async Task<QueryResponse<IAsyncEnumerable<BlockItemSummary>>> GetBlockTransactionEvents(IBlockHashInput blockHashInput, CancellationToken token = default)
     {
-        var blockTransactionEvents = this.Raw.GetBlockTransactionEvents(blockHashInput.Into(), token).WithCancellation(token).ConfigureAwait(false);
-        await foreach (var blockItemSummary in blockTransactionEvents)
-        {
-            yield return BlockItemSummary.From(blockItemSummary);
-        }
+        var response = this.Raw.GetBlockTransactionEvents(blockHashInput.Into(), token);
+
+        return await QueryResponse<IAsyncEnumerable<BlockItemSummary>>.From(
+                response.ResponseHeadersAsync,
+                response.ResponseStream.ReadAllAsync(token).Select(BlockItemSummary.From))
+            .ConfigureAwait(false);
     }
 
     /// <summary>
@@ -374,10 +427,12 @@ public sealed class ConcordiumClient : IDisposable
     /// <exception cref="RpcException">If the block does not exist</exception>
     public async Task<QueryResponse<IAsyncEnumerable<IpInfo>>> GetIdentityProvidersAsync(IBlockHashInput blockHash, CancellationToken token = default)
     {
-        var response = await this.Raw.GetIdentityProviders(blockHash.Into(), token)
+        var response = this.Raw.GetIdentityProviders(blockHash.Into(), token);
+
+        return await QueryResponse<IAsyncEnumerable<IpInfo>>.From(
+                response.ResponseHeadersAsync,
+                response.ResponseStream.ReadAllAsync(token).Select(IpInfo.From))
             .ConfigureAwait(false);
-        var returnEnumerable = response.Response.Select(IpInfo.From);
-        return response.NewWithSameBlockHash(returnEnumerable);
     }
 
     /// <summary>
@@ -389,10 +444,12 @@ public sealed class ConcordiumClient : IDisposable
     /// <exception cref="RpcException">If the block does not exist</exception>
     public async Task<QueryResponse<IAsyncEnumerable<BakerId>>> GetBakerListAsync(IBlockHashInput blockHash, CancellationToken token = default)
     {
-        var response = await this.Raw.GetBakerList(blockHash.Into(), token)
+        var response = this.Raw.GetBakerList(blockHash.Into(), token);
+
+        return await QueryResponse<IAsyncEnumerable<BakerId>>.From(
+                response.ResponseHeadersAsync,
+                response.ResponseStream.ReadAllAsync(token).Select(BakerId.From))
             .ConfigureAwait(false);
-        var returnEnumerable = response.Response.Select(BakerId.From);
-        return response.NewWithSameBlockHash(returnEnumerable);
     }
 
     /// <summary>
@@ -404,11 +461,30 @@ public sealed class ConcordiumClient : IDisposable
     /// <exception cref="RpcException">If the block does not exist</exception>
     public async Task<QueryResponse<IChainParameters>> GetBlockChainParametersAsync(IBlockHashInput blockHash, CancellationToken token = default)
     {
-        var response = await this.Raw.GetBlockChainParametersAsync(blockHash.Into(), token)
+        var response = this.Raw.GetBlockChainParametersAsync(blockHash.Into(), token);
+
+        await Task.WhenAll(response.ResponseHeadersAsync, response.ResponseAsync)
             .ConfigureAwait(false);
-        var chainParameters = ChainParametersFactory.From(response.Response);
-        return response.NewWithSameBlockHash(chainParameters);
+        var chainParameters = await response.ResponseAsync;
+
+        return await QueryResponse<IChainParameters>.From(
+                response.ResponseHeadersAsync,
+                ChainParametersFactory.From(chainParameters))
+            .ConfigureAwait(false);
     }
 
     public void Dispose() => this.Raw.Dispose();
+}
+
+/// <summary>
+/// Helper extensions for types returned by Raw- or Concordium Client.
+/// </summary>
+public static class ConcordiumClientExtensions 
+{
+    /// <summary>
+    /// Returns a async enumrable.
+    /// </summary>
+    public static IAsyncEnumerable<T> ReadAllAsync<T>(this IAsyncStreamReader<T> reader) {
+        return reader.ReadAllAsync();
+    }
 }

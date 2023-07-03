@@ -30,7 +30,7 @@ internal class Program
         };
 
         // Invoke the raw call.
-        var events = client.Raw.GetBlockTransactionEvents(blockHashInput);
+        var events = client.Raw.GetBlockTransactionEvents(blockHashInput).ResponseStream.ReadAllAsync();
 
         // Print the stream elements as they arrive.
         await foreach (var e in events)

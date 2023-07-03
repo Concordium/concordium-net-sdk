@@ -18,11 +18,11 @@ public sealed class GetAccountList : Tests
     {
         var block = BlockHash.From(this.GetString("blockHash"));
 
-        var accountListAsync = this.Client.GetAccountListAsync(new Given(block));
+        var response = await this.Client.GetAccountListAsync(new Given(block));
 
-        this.Output.WriteLine($"BlockHash: {block}");
+        this.Output.WriteLine($"BlockHash: {response.BlockHash}");
 
-        await foreach (var account in accountListAsync)
+        await foreach (var account in response.Response)
         {
             this.Output.WriteLine($"Account: {account}");
         }
@@ -33,11 +33,11 @@ public sealed class GetAccountList : Tests
     {
         var block = BlockHash.From("e0d3935527e313c3e5e6bd40afd062918a89215038273c27781bc2d71ca1de34");
 
-        var accountListAsync = this.Client.GetAccountListAsync(new Given(block));
+        var response = await this.Client.GetAccountListAsync(new Given(block));
 
-        this.Output.WriteLine($"BlockHash: {block}");
+        this.Output.WriteLine($"BlockHash: {response.BlockHash}");
 
-        Func<Task> action = async () => await accountListAsync.GetAsyncEnumerator().MoveNextAsync();
+        Func<Task> action = async () => await response.Response.GetAsyncEnumerator().MoveNextAsync();
         await action.Should().ThrowAsync<RpcException>()
             .WithMessage("Status(StatusCode=\"NotFound\", Detail=\"block not found.\")");
     }
