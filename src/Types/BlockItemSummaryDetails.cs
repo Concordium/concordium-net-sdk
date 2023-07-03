@@ -6,7 +6,7 @@ namespace Concordium.Sdk.Types;
 /// <summary>
 /// Details of a block item summary, split by the kind of block item it is for.
 /// </summary>
-public interface IBlockItemSummaryDetails{}
+public interface IBlockItemSummaryDetails { }
 
 internal static class BlockItemSummaryDetailsFactory
 {

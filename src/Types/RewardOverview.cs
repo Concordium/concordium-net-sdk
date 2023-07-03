@@ -1,4 +1,4 @@
-﻿using Concordium.Grpc.V2;
+using Concordium.Grpc.V2;
 using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Helpers;
 

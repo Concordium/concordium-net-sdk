@@ -1,4 +1,4 @@
-﻿using Concordium.Sdk.Helpers;
+using Concordium.Sdk.Helpers;
 
 namespace Concordium.Sdk.Types;
 

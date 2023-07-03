@@ -8,7 +8,7 @@ namespace Concordium.Sdk.Types;
 /// <see cref="None"/> correspond to a unique transaction that
 /// was successful.
 /// </summary>
-public interface IAccountTransactionEffects{}
+public interface IAccountTransactionEffects { }
 
 internal static class AccountTransactionEffectsFactory
 {
@@ -120,6 +120,8 @@ public sealed record ContractUpdateIssued(IList<IContractTraceElement> Effects) 
                 case Resumed:
                 case Upgraded:
                     continue;
+                default:
+                    break;
             }
         }
         return items;
@@ -143,6 +145,8 @@ public sealed record ContractUpdateIssued(IList<IContractTraceElement> Effects) 
                 case Resumed:
                 case Upgraded:
                     continue;
+                default:
+                    break;
             }
         }
     }
@@ -166,6 +170,8 @@ public sealed record ContractUpdateIssued(IList<IContractTraceElement> Effects) 
                 case Resumed:
                 case Upgraded:
                     continue;
+                default:
+                    break;
             }
         }
     }
@@ -361,6 +367,8 @@ public sealed record BakerConfigured(IList<IBakerEvent> Data) : IAccountTransact
                     break;
                 case BakerStakeIncreasedEvent bakerStakeIncreasedEvent:
                     yield return bakerStakeIncreasedEvent.BakerId;
+                    break;
+                default:
                     break;
             }
         }

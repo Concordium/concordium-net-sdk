@@ -100,7 +100,7 @@ public static class TransactionTypeFactory
 {
     /// <summary>
     /// Get transaction enum from transaction type. The transaction needs to be succeeded hence type
-    /// <see cref="Concordium.Sdk.Types.None"/> will throw an exception.
+    /// <see cref="None"/> will throw an exception.
     /// </summary>
     /// <exception cref="MissingTypeException{IAccountTransactionEffects}"></exception>
     public static TransactionType From(IAccountTransactionEffects effects) =>

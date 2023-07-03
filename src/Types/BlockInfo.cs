@@ -1,4 +1,4 @@
-﻿using Concordium.Sdk.Helpers;
+using Concordium.Sdk.Helpers;
 
 namespace Concordium.Sdk.Types;
 
@@ -58,7 +58,7 @@ public sealed record BlockInfo(
     BakerId? BlockBaker,
     bool Finalized,
     uint TransactionCount,
-    EnergyAmount TransactionEnergyCost ,
+    EnergyAmount TransactionEnergyCost,
     uint TransactionSize,
     StateHash BlockStateHash,
     ProtocolVersion ProtocolVersion

@@ -9,7 +9,7 @@ namespace Concordium.Sdk.Types;
 public sealed record InclusiveRange<T>(T Min, T Max)
 {
     internal static InclusiveRange<AmountFraction> From(Grpc.V2.InclusiveRangeAmountFraction range) =>
-        new InclusiveRange<AmountFraction>(
+        new(
             AmountFraction.From(range.Min),
             AmountFraction.From(range.Max));
 }

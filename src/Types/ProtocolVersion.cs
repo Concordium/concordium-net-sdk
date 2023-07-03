@@ -51,7 +51,7 @@ public static class ProtocolVersionExtension
 
 internal static class ProtocolVersionFactory
 {
-    internal static ProtocolVersion Into(this Concordium.Grpc.V2.ProtocolVersion protocolVersion) =>
+    internal static ProtocolVersion Into(this Grpc.V2.ProtocolVersion protocolVersion) =>
         protocolVersion switch
         {
             Grpc.V2.ProtocolVersion._1 => ProtocolVersion.P1,
@@ -60,6 +60,6 @@ internal static class ProtocolVersionFactory
             Grpc.V2.ProtocolVersion._4 => ProtocolVersion.P4,
             Grpc.V2.ProtocolVersion._5 => ProtocolVersion.P5,
             Grpc.V2.ProtocolVersion._6 => ProtocolVersion.P6,
-            _ => throw new MissingEnumException<Concordium.Grpc.V2.ProtocolVersion>(protocolVersion)
+            _ => throw new MissingEnumException<Grpc.V2.ProtocolVersion>(protocolVersion)
         };
 }

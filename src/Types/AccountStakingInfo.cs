@@ -2,7 +2,7 @@ using Concordium.Sdk.Exceptions;
 
 namespace Concordium.Sdk.Types;
 
-public interface IAccountStakingInfo {}
+public interface IAccountStakingInfo { }
 
 internal static class AccountStakingInfo
 {

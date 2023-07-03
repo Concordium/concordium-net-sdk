@@ -1,62 +1,96 @@
-using Concordium.Grpc.V2;
+﻿using CommandLine;
 using Concordium.Sdk.Client;
-using Concordium.Sdk.Examples.Common;
+using Concordium.Sdk.Types;
 
-namespace Concordium.Sdk.Examples.RawClient.GetAccountInfo;
+#pragma warning disable CS8618
 
-/// <summary>
-/// Example demonstrating the use of <see cref="Client.RawClient.GetAccountInfo"/>.
-///
-/// <see cref="RawClient"/> wraps methods of the Concordium Node gRPC API V2 that were generated
-/// from the protocol buffer schema by the <see cref="Grpc.Core"/> library. Creating an instance
-/// of the generated <see cref="AccountInfoRequest"/> class used for the method input is given below.
-/// </summary>
-internal class Program
+namespace Example;
+
+internal sealed class GetAccountInfoOptions
 {
-    private static void GetAccountInfo(GetAccountInfoExampleOptions options)
+    [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Required = true,
+        Default = "http://node.testnet.concordium.com/:20000")]
+    public Uri Uri { get; set; }
+
+    [Option(
+        'a',
+        "account-address",
+        HelpText = "Address of the account to retrieve the info of.",
+        Required = true
+    )]
+    public string AccountAddress { get; set; } 
+
+    [Option(
+        'b',
+        "block-hash",
+        HelpText = "Block hash of the block.",
+        Required = true
+    )]
+    public string BlockHash { get; set; }
+}
+
+
+public static class Program
+{
+    /// <summary>
+    /// Example how to use <see cref="ConcordiumClient.GetAccountInfoAsync"/>
+    /// </summary>s
+    public static async Task Main(string[] args)
     {
-        // Construct the client.
-        using var client = new ConcordiumClient(
-            new Uri(options.Endpoint),
-            options.Port,
-            options.Timeout
-        );
-        var blockHashInput = options.BlockHash.ToLowerInvariant() switch
-        {
-            "best" => new BlockHashInput() { Best = new Empty() },
-            "lastfinal" => new BlockHashInput() { LastFinal = new Empty() },
-            _ => Types.BlockHash.From(options.BlockHash).ToBlockHashInput(),
-        };
-
-        // Construct the input for the raw method.
-        var request = new AccountInfoRequest
-        {
-            /// Convert command line parameter to a <see cref="Types.BlockHash"/>
-            /// and then to a <see cref="BlockHashInput"/> which is needed for the <see cref="AccountInfoRequest"/>.
-            BlockHash = blockHashInput,
-            /// Convert command line parameter to a <see cref="Types.AccountAddress"/>
-            /// and then to a <see cref="AccountIdentifierInput"/> which is needed for the <see cref="AccountInfoRequest"/>.
-            AccountIdentifier = Types.AccountAddress
-                .From(options.AccountAddress)
-                .ToAccountIdentifierInput()
-        };
-
-        // Invoke the raw call.
-        var accountInfo = client.Raw.GetAccountInfo(request);
-
-        // Print account info.
-        PrintAccountInfo(accountInfo);
+        await Parser.Default
+            .ParseArguments<GetAccountInfoOptions>(args)
+            .WithParsedAsync(options => Run(options));
     }
 
-    private static void PrintAccountInfo(AccountInfo accountInfo) =>
-        Console.WriteLine(
-            $@"
-            Address:          {Types.AccountAddress.From(accountInfo.Address.Value.ToArray())}
-            Balance:          {accountInfo.Amount.Value} CCD
-            Sequence number:  {accountInfo.SequenceNumber.Value}
-        "
-        );
+    static async Task Run(GetAccountInfoOptions options) {
+        var accountAddress = AccountAddress.From(options.AccountAddress);
+        var block = BlockHash.From(options.BlockHash);
 
-    private static void Main(string[] args) =>
-        Example.Run<GetAccountInfoExampleOptions>(args, GetAccountInfo);
+        var clientOptions = new ConcordiumClientOptions
+        {
+            Endpoint = options.Uri
+        };
+        using var client = new ConcordiumClient(clientOptions);
+
+        var response = await client.GetAccountInfoAsync(accountAddress, new Given(block));
+        var accountInfo = response.Response;
+
+        Console.WriteLine($"Blockhash: {response.BlockHash}");
+
+        if (accountInfo.AccountStakingInfo is null)
+        {
+            Console.WriteLine($"Address: {accountInfo.AccountAddress} doesn't stake");
+            return;
+        }
+
+        switch (accountInfo.AccountStakingInfo)
+        {
+            case AccountBaker accountBaker:
+                Console.WriteLine($"Account is baker with staked CCD amount: {accountBaker.StakedAmount.GetFormattedCcd()}.");
+                break;
+            case AccountDelegation accountDelegation:
+                Console.WriteLine($"Account is delegating CCD amount: {accountDelegation.StakedAmount.GetFormattedCcd()}.");
+
+                if (accountDelegation.PendingChange is null)
+                {
+                    break;
+                }
+
+                switch (accountDelegation.PendingChange)
+                {
+                    case AccountDelegationReduceStakePending reduce:
+                        Console.WriteLine($"At {reduce.EffectiveTime} new stake wil be {reduce.NewStake.GetFormattedCcd()}.");
+                        break;
+                    case AccountDelegationRemovePending remove:
+                        Console.WriteLine($"At {remove.EffectiveTime} stake will be removed.");
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(new($"unknown type: {accountDelegation.PendingChange!.GetType()}"));
+                }
+
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(new($"unknown type: {accountInfo.AccountStakingInfo!.GetType()}"));
+        }
+    }
 }

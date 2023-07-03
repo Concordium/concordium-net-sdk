@@ -9,14 +9,14 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public sealed record Level1(ILevel1 Level1Update) : IUpdatePayload
 {
-    internal static Level1 From(Grpc.V2.Level1Update level1Update) => new(Level1Factory.From(level1Update));
+    internal static Level1 From(Level1Update level1Update) => new(Level1Factory.From(level1Update));
 }
 
 /// <summary>
 /// An update with level 1 keys of either level 1 or level 2 keys. Each of the
 /// updates must be a separate transaction.
 /// </summary>
-public interface ILevel1{}
+public interface ILevel1 { }
 
 internal static class Level1Factory
 {

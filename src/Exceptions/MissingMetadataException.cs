@@ -7,5 +7,5 @@ public class MissingMetadataException : Exception
 {
     internal MissingMetadataException(string metadataKey) :
         base($"{metadataKey} entry was missing from metadata response")
-    {}
+    { }
 }

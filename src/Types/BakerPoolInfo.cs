@@ -1,4 +1,4 @@
-﻿namespace Concordium.Sdk.Types;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Additional information about a baking pool.
@@ -13,7 +13,7 @@ public sealed record BakerPoolInfo(
     BakerPoolOpenStatus OpenStatus,
     string MetadataUrl)
 {
-    internal static BakerPoolInfo From(Concordium.Grpc.V2.BakerPoolInfo poolInfo) =>
+    internal static BakerPoolInfo From(Grpc.V2.BakerPoolInfo poolInfo) =>
         new
         (
             CommissionRates: CommissionRates.From(poolInfo.CommissionRates),

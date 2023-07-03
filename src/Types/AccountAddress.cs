@@ -162,7 +162,7 @@ public sealed record AccountAddress : IEquatable<AccountAddress>, IAddress
         address = null;
         try
         {
-            address = AccountAddress.From(base58EncodedAddress);
+            address = From(base58EncodedAddress);
             return true;
         }
         catch (ArgumentException)

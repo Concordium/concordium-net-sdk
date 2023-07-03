@@ -19,7 +19,7 @@ public sealed record Best : IBlockHashInput
 
     public BlockHashInput Into() => new()
     {
-        Best = Best._empty,
+        Best = _empty,
     };
 }
 

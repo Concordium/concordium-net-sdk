@@ -44,7 +44,7 @@ public readonly record struct MintRate
     /// The value is `mantissa * 10^(-exponent)`.
     /// </summary>
     /// <returns></returns>
-    public decimal AsDecimal() => this._mantissa * (decimal)Math.Pow(10, -1* this._exponent);
+    public decimal AsDecimal() => this._mantissa * (decimal)Math.Pow(10, -1 * this._exponent);
 
     /// <summary>
     /// Get Exponent and Mantissa

@@ -1,59 +1,74 @@
-using Concordium.Grpc.V2;
+﻿using CommandLine;
 using Concordium.Sdk.Client;
-using Concordium.Sdk.Examples.Common;
+using Concordium.Sdk.Types;
+using System.Text.Json;
 
-namespace RawClient.GetBlockTransactionEvents;
+#pragma warning disable CS8618
 
-/// <summary>
-/// Example demonstrating the use of <see cref="Concordium.Sdk.Client.RawClient.GetBlockTransactionEvents"/>.
-///
-/// <see cref="Concordium.Sdk.Client.RawClient"/> wraps methods of the Concordium Node gRPC API V2 that were generated
-/// from the protocol buffer schema by the <see cref="Grpc.Core"/> library.
-/// </summary>
-internal class Program
+namespace Example;
+
+internal sealed class GetBlockTransactionEventsOptions
 {
-    private static async Task GetBlockTransactionEvents(
-        GetBlockTransactionEventsExampleOptions options
-    )
+    [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Required = true,
+        Default = "http://node.testnet.concordium.com/:20000")]
+    public Uri Uri { get; set; }
+}
+
+
+public static class Program
+{
+    /// <summary>
+    /// Example how to use <see cref="ConcordiumClient.GetBlockTransactionEvents"/>
+    /// </summary>s
+    public static async Task Main(string[] args)
     {
-        // Construct the client.
-        using var client = new ConcordiumClient(
-            new Uri(options.Endpoint),
-            options.Port,
-            options.Timeout
-        );
-        var blockHashInput = options.BlockHash.ToLowerInvariant() switch
-        {
-            "best" => new BlockHashInput() { Best = new Empty() },
-            "lastfinal" => new BlockHashInput() { LastFinal = new Empty() },
-            _ => Concordium.Sdk.Types.BlockHash.From(options.BlockHash).ToBlockHashInput(),
-        };
-
-        // Invoke the raw call.
-        var events = client.Raw.GetBlockTransactionEvents(blockHashInput);
-
-        // Print the stream elements as they arrive.
-        await foreach (var e in events)
-        {
-            var details = e.DetailsCase switch
-            {
-                BlockItemSummary.DetailsOneofCase.AccountTransaction
-                    => e.AccountTransaction.ToString(),
-                BlockItemSummary.DetailsOneofCase.Update => e.Update.ToString(),
-                BlockItemSummary.DetailsOneofCase.AccountCreation => e.AccountCreation.ToString(),
-                BlockItemSummary.DetailsOneofCase.None => throw new NotImplementedException(),
-                _ => "Block item summary did not contain any details",
-            };
-            var txHash = Concordium.Sdk.Types.TransactionHash.From(e.Hash.Value.ToByteArray());
-            Console.WriteLine(
-                $@"
-                Got event with index {e.Index.Value} for transaction hash {txHash}:
-                {details}
-            "
-            );
-        }
+        await Parser.Default
+            .ParseArguments<GetBlockTransactionEventsOptions>(args)
+            .WithParsedAsync(options => Run(options));
     }
 
-    private static async Task Main(string[] args) =>
-        await Example.RunAsync<GetBlockTransactionEventsExampleOptions>(args, GetBlockTransactionEvents);
+    static async Task Run(GetBlockTransactionEventsOptions options) {
+        var clientOptions = new ConcordiumClientOptions
+        {
+            Endpoint = options.Uri
+        };
+        using var client = new ConcordiumClient(clientOptions);
+
+        var jsonSerializerOptions = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            Converters = { new BlockItemSummaryDetailsConverter(), new UpdatePayloadConverter() }
+        };
+
+        var idx = 0UL;
+        var transactionCount = 0;
+        while (transactionCount < 2)
+        {
+            var blockHeight = new Absolute(idx);
+            var response = await client.GetBlockTransactionEvents(blockHeight);
+
+            Console.WriteLine($"BlockHash: {response.BlockHash}");
+            await foreach (var transaction in response.Response)
+            {
+                transactionCount++;
+                var serialized = JsonSerializer.Serialize(transaction, jsonSerializerOptions);
+                Console.WriteLine(serialized);
+            }
+            idx++;
+        }
+    }
+}
+
+internal sealed class BlockItemSummaryDetailsConverter : System.Text.Json.Serialization.JsonConverter<IBlockItemSummaryDetails>
+{
+    public override IBlockItemSummaryDetails? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) => throw new NotImplementedException();
+
+    public override void Write(Utf8JsonWriter writer, IBlockItemSummaryDetails value, JsonSerializerOptions options) => JsonSerializer.Serialize(writer, value, value.GetType(), options);
+}
+
+internal sealed class UpdatePayloadConverter : System.Text.Json.Serialization.JsonConverter<IUpdatePayload>
+{
+    public override IUpdatePayload? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) => throw new NotImplementedException();
+
+    public override void Write(Utf8JsonWriter writer, IUpdatePayload value, JsonSerializerOptions options) => JsonSerializer.Serialize(writer, value, value.GetType(), options);
 }
