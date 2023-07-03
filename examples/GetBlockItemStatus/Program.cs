@@ -41,7 +41,7 @@ public static class Program
     /// An example showing how one can query transaction status from a node.
     /// </summary>
     /// <param name="args">GetBlockItemSummaryOptions
-    /// Example: --endpoint http://node.testnet.concordium.com/ --transactionhash 143ca4183d0bb204000ad08e0fd5792985c808861b97f3b81cb9016ad39d09d2 --port 20000
+    /// Example: --endpoint http://node.testnet.concordium.com --transactionhash 143ca4183d0bb204000ad08e0fd5792985c808861b97f3b81cb9016ad39d09d2 --port 20000
     /// </param>
     public static async Task Main(string[] args)
     {
@@ -49,7 +49,7 @@ public static class Program
 
         var clientOptions = new ConcordiumClientOptions
         {
-            Endpoint = new Uri($"{options!.Endpoint}:{options.Port}")
+            Endpoint = new Uri($"{options!.Endpoint}:{options.Port}/")
         };
         using var client = new ConcordiumClient(clientOptions);
 

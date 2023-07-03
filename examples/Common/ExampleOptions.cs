@@ -15,7 +15,7 @@ public class ExampleOptions
     /// <summary>
     /// URL representing the endpoint where the gRPC V2 API is served.
     /// </summary>
-    public const string DefaultEndpoint = "https://localhost/";
+    public const string DefaultEndpoint = "https://localhost";
 
     /// <summary>
     /// Default port at the endpoint where the gRPC V2 API is served.
