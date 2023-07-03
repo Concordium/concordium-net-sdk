@@ -30,7 +30,7 @@ public sealed class GetChainParameters : Tests
         {
             case ChainParametersV0 v0:
                 this.Output.WriteLine(JsonSerializer.Serialize(v0));
-            break;
+                break;
             case ChainParametersV1 chainParametersV1:
                 break;
             case ChainParametersV2 chainParametersV2:

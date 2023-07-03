@@ -24,7 +24,8 @@ internal class Program
         var account = WalletAccount.FromWalletKeyExportFormat(walletData);
 
         // Construct the client.
-        var clientOptions = new ConcordiumClientOptions {
+        var clientOptions = new ConcordiumClientOptions
+        {
             Endpoint = new Uri($"{options!.Endpoint}:{options.Port}"),
             Timeout = TimeSpan.FromSeconds(options.Timeout)
         };

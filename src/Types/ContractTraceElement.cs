@@ -8,7 +8,7 @@ namespace Concordium.Sdk.Types;
 /// contracts and possibly accounts (if any contract transfers CCD to an
 /// account).
 /// </summary>
-public interface IContractTraceElement {}
+public interface IContractTraceElement { }
 
 internal static class ContractTraceElementFactory
 {

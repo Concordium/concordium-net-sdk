@@ -57,8 +57,8 @@ public sealed record Relative(ulong Height, uint GenesisIndex, bool Restrict) : 
         {
             Relative = new BlocksAtHeightRequest.Types.Relative
             {
-                GenesisIndex = new GenesisIndex{Value = this.GenesisIndex},
-                Height = new BlockHeight{Value = this.Height},
+                GenesisIndex = new GenesisIndex { Value = this.GenesisIndex },
+                Height = new BlockHeight { Value = this.Height },
                 Restrict = this.Restrict,
             }
         };
@@ -68,12 +68,12 @@ public sealed record Relative(ulong Height, uint GenesisIndex, bool Restrict) : 
     /// block can not be identified at that height the query will
     /// throw an exception.
     /// </summary>
-    BlockHashInput IBlockHashInput.Into() => new BlockHashInput
+    BlockHashInput IBlockHashInput.Into() => new()
     {
         RelativeHeight = new BlockHashInput.Types.RelativeHeight
         {
-            GenesisIndex = new GenesisIndex{Value = this.GenesisIndex},
-            Height = new BlockHeight{Value = this.Height},
+            GenesisIndex = new GenesisIndex { Value = this.GenesisIndex },
+            Height = new BlockHeight { Value = this.Height },
             Restrict = this.Restrict,
         }
     };

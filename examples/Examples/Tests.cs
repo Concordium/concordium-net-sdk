@@ -26,10 +26,11 @@ public class Tests : IDisposable
         var endpoint = this.GetString("endpoint");
         var port = this.GetUInt16("port");
 
-        var clientOptions = new ConcordiumClientOptions {
+        var clientOptions = new ConcordiumClientOptions
+        {
             Endpoint = new Uri($"{endpoint}:{port}")
         };
-        
+
         this.Client = new ConcordiumClient(clientOptions);
     }
 

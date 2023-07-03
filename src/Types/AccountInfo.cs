@@ -1,4 +1,4 @@
-﻿namespace Concordium.Sdk.Types;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// Account information exposed via the node's API. This is always the state of

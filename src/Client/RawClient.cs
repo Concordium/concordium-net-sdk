@@ -60,7 +60,7 @@ public sealed class RawClient : IDisposable
     internal RawClient(Uri endpoint, ushort port, ulong? timeout, GrpcChannelOptions? channelOptions)
     {
         var scheme = GetEndpointScheme(endpoint);
-        
+
         channelOptions = SetSchemeIfNotSet(null, scheme);
 
         var grpcChannel = GrpcChannel.ForAddress(
@@ -73,7 +73,8 @@ public sealed class RawClient : IDisposable
             channelOptions
         );
 
-        this.Options = new ConcordiumClientOptions {
+        this.Options = new ConcordiumClientOptions
+        {
             Endpoint = endpoint,
             Timeout = timeout.HasValue ? TimeSpan.FromSeconds((double)timeout) : null,
             ChannelOptions = channelOptions
@@ -82,7 +83,7 @@ public sealed class RawClient : IDisposable
         this.InternalClient = new Queries.QueriesClient(grpcChannel);
         this._grpcChannel = grpcChannel;
     }
-    
+
     /// <summary>
     /// Initializes a new instance of the <see cref="RawClient"/> class.
     /// </summary>
@@ -90,9 +91,9 @@ public sealed class RawClient : IDisposable
     internal RawClient(ConcordiumClientOptions options)
     {
         var scheme = GetEndpointScheme(options.Endpoint);
-        
+
         var channelOptions = SetSchemeIfNotSet(options.ChannelOptions, scheme);
-        
+
         var grpcChannel = GrpcChannel.ForAddress(options.Endpoint, channelOptions);
 
         this.Options = options;
@@ -423,7 +424,7 @@ public sealed class RawClient : IDisposable
     /// <summary>
     /// Get all identity providers registered at the end of a given block.
     /// </summary>
-    public AsyncServerStreamingCall<IpInfo> GetIdentityProviders(BlockHashInput input, CancellationToken token = default) => 
+    public AsyncServerStreamingCall<IpInfo> GetIdentityProviders(BlockHashInput input, CancellationToken token = default) =>
         this.InternalClient.GetIdentityProviders(input, this.CreateCallOptions(token));
 
     /// <summary>
@@ -647,7 +648,7 @@ public sealed class RawClient : IDisposable
     /// <summary>
     /// Returns values of block chain parameters in a given block.
     /// </summary>
-    public AsyncUnaryCall<ChainParameters> GetBlockChainParametersAsync(BlockHashInput input, CancellationToken token = default) => 
+    public AsyncUnaryCall<ChainParameters> GetBlockChainParametersAsync(BlockHashInput input, CancellationToken token = default) =>
         this.InternalClient.GetBlockChainParametersAsync(input, this.CreateCallOptions(token));
 
     /// <summary>
@@ -675,17 +676,18 @@ public sealed class RawClient : IDisposable
     private CallOptions CreateCallOptions(CancellationToken token)
     {
         DateTime? deadline = this.Options.Timeout.HasValue ?
-            DateTime.UtcNow.Add(this.Options.Timeout.Value) : 
+            DateTime.UtcNow.Add(this.Options.Timeout.Value) :
             null;
-        
-        return new CallOptions(defaultMetadata, deadline, token);
+
+        return new CallOptions(this.defaultMetadata, deadline, token);
     }
 
     /// <summary>
     /// Get credentials from uri scheme.
     /// </summary>
     /// <exception cref="ArgumentException">When scheme not supported..</exception>
-    private static ChannelCredentials GetEndpointScheme(Uri endpoint) {
+    private static ChannelCredentials GetEndpointScheme(Uri endpoint)
+    {
         if (!(endpoint.Scheme == Uri.UriSchemeHttp || endpoint.Scheme == Uri.UriSchemeHttps))
         {
             throw new ArgumentException(
@@ -695,12 +697,14 @@ public sealed class RawClient : IDisposable
         return endpoint.Scheme == Uri.UriSchemeHttps
                     ? ChannelCredentials.SecureSsl
                     : ChannelCredentials.Insecure;
-    }    
+    }
 
-    private static Metadata CreateMetadata(ConcordiumClientOptions options) {
+    private static Metadata CreateMetadata(ConcordiumClientOptions options)
+    {
         var meta = new Metadata();
-        
-        if (options.AuthenticationToken != null) {
+
+        if (options.AuthenticationToken != null)
+        {
             const string authenticationKey = "authentication";
 
             meta.Add(authenticationKey, options.AuthenticationToken);
@@ -709,7 +713,8 @@ public sealed class RawClient : IDisposable
         return meta;
     }
 
-    private static GrpcChannelOptions SetSchemeIfNotSet(GrpcChannelOptions? channelOptions, ChannelCredentials scheme) {
+    private static GrpcChannelOptions SetSchemeIfNotSet(GrpcChannelOptions? channelOptions, ChannelCredentials scheme)
+    {
         if (channelOptions is null)
         {
             channelOptions = new GrpcChannelOptions

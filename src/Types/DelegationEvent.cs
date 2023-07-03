@@ -8,7 +8,7 @@ namespace Concordium.Sdk.Types;
 /// Events that may happen as a result of the
 /// <see cref="TransactionType.ConfigureDelegation"/> transaction.
 /// </summary>
-public interface IDelegationEvent {}
+public interface IDelegationEvent { }
 
 internal static class DelegationEventFactory
 {
@@ -37,7 +37,7 @@ internal static class DelegationEventFactory
 /// <param name="NewStake">New stake</param>
 public sealed record DelegationStakeIncreased(DelegatorId DelegatorId, CcdAmount NewStake) : IDelegationEvent
 {
-    internal static DelegationStakeIncreased From(Grpc.V2.DelegationEvent.Types.DelegationStakeIncreased delegation) =>
+    internal static DelegationStakeIncreased From(DelegationEvent.Types.DelegationStakeIncreased delegation) =>
         new(
             DelegatorId.From(delegation.DelegatorId),
             delegation.NewStake.ToCcd()
@@ -48,7 +48,7 @@ public sealed record DelegationStakeIncreased(DelegatorId DelegatorId, CcdAmount
 /// <param name="NewStake">New stake</param>
 public sealed record DelegationStakeDecreased(DelegatorId DelegatorId, CcdAmount NewStake) : IDelegationEvent
 {
-    internal static DelegationStakeDecreased From(Grpc.V2.DelegationEvent.Types.DelegationStakeDecreased delegation) =>
+    internal static DelegationStakeDecreased From(DelegationEvent.Types.DelegationStakeDecreased delegation) =>
         new(
             DelegatorId.From(delegation.DelegatorId),
             delegation.NewStake.ToCcd()
@@ -59,7 +59,7 @@ public sealed record DelegationStakeDecreased(DelegatorId DelegatorId, CcdAmount
 /// <param name="RestakeEarnings">Whether earnings will be restaked</param>
 public sealed record DelegationSetRestakeEarnings(DelegatorId DelegatorId, bool RestakeEarnings) : IDelegationEvent
 {
-    internal static DelegationSetRestakeEarnings From(Grpc.V2.DelegationEvent.Types.DelegationSetRestakeEarnings delegation) =>
+    internal static DelegationSetRestakeEarnings From(DelegationEvent.Types.DelegationSetRestakeEarnings delegation) =>
         new(
             DelegatorId.From(delegation.DelegatorId),
             delegation.RestakeEarnings
@@ -71,7 +71,7 @@ public sealed record DelegationSetRestakeEarnings(DelegatorId DelegatorId, bool 
 public sealed record DelegationSetDelegationTarget
     (DelegatorId DelegatorId, DelegationTarget DelegationTarget) : IDelegationEvent
 {
-    internal static DelegationSetDelegationTarget From(Grpc.V2.DelegationEvent.Types.DelegationSetDelegationTarget delegation) =>
+    internal static DelegationSetDelegationTarget From(DelegationEvent.Types.DelegationSetDelegationTarget delegation) =>
         new(
             DelegatorId.From(delegation.DelegatorId),
             DelegationTarget.From(delegation.DelegationTarget)

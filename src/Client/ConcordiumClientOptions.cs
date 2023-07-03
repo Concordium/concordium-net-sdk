@@ -6,7 +6,8 @@ namespace Concordium.Sdk.Client;
 /// <summary>
 /// Configurations to Concordium Client.
 /// </summary>
-public sealed class ConcordiumClientOptions {
+public sealed class ConcordiumClientOptions
+{
     /// <summary>
     /// Endpoint of a resource where the V2 API is served.
     /// </summary>
@@ -14,7 +15,7 @@ public sealed class ConcordiumClientOptions {
     /// <summary>
     /// Node authentication token.
     /// </summary>
-    public string? AuthenticationToken { get; init; }    
+    public string? AuthenticationToken { get; init; }
     /// <summary>
     /// The maximum permitted duration of a call made by this client.
     /// <c>null</c> allows the call to run indefinitely.

@@ -1,4 +1,4 @@
-﻿using Concordium.Grpc.V2;
+using Concordium.Grpc.V2;
 using Concordium.Sdk.Exceptions;
 
 namespace Concordium.Sdk.Types;
@@ -9,7 +9,7 @@ namespace Concordium.Sdk.Types;
 /// the consensus and finalization protocols.
 /// </summary>
 public interface ISpecialEvent
-{}
+{ }
 
 internal static class SpecialEventFactory
 {
@@ -45,7 +45,7 @@ internal static class SpecialEventFactory
 /// <param name="Remainder">The remaining balance of the baker reward account.</param>
 public sealed record BakingRewards(IDictionary<AccountAddress, CcdAmount> Rewards, CcdAmount Remainder) : ISpecialEvent
 {
-    internal static BakingRewards From(Grpc.V2.BlockSpecialEvent.Types.BakingRewards bakingRewards) =>
+    internal static BakingRewards From(BlockSpecialEvent.Types.BakingRewards bakingRewards) =>
         new(
             Rewards: bakingRewards
                 .BakerRewards
@@ -76,7 +76,7 @@ public sealed record Mint(
         )
     : ISpecialEvent
 {
-    internal static Mint From(Grpc.V2.BlockSpecialEvent.Types.Mint mint) =>
+    internal static Mint From(BlockSpecialEvent.Types.Mint mint) =>
         new(
             MintBakingReward: CcdAmount.From(mint.MintBakingReward),
             MintFinalizationReward: CcdAmount.From(mint.MintFinalizationReward),
@@ -96,7 +96,7 @@ public sealed record Mint(
 /// </param>
 public sealed record FinalizationRewards(IDictionary<AccountAddress, CcdAmount> Rewards, CcdAmount Remainder) : ISpecialEvent
 {
-    internal static FinalizationRewards From(Grpc.V2.BlockSpecialEvent.Types.FinalizationRewards finalizationRewards) =>
+    internal static FinalizationRewards From(BlockSpecialEvent.Types.FinalizationRewards finalizationRewards) =>
         new(
             Rewards: finalizationRewards
                 .FinalizationRewards_
@@ -126,7 +126,7 @@ public sealed record BlockReward(
     AccountAddress FoundationAccount
     ) : ISpecialEvent
 {
-    internal static BlockReward From(Grpc.V2.BlockSpecialEvent.Types.BlockReward blockReward) =>
+    internal static BlockReward From(BlockSpecialEvent.Types.BlockReward blockReward) =>
         new(
             TransactionFees: CcdAmount.From(blockReward.TransactionFees),
             OldGasAccount: CcdAmount.From(blockReward.OldGasAccount),
@@ -146,7 +146,7 @@ public sealed record BlockReward(
 /// <param name="DevelopmentCharge">Amount rewarded.</param>
 public sealed record PaydayFoundationReward(AccountAddress FoundationAccount, CcdAmount DevelopmentCharge) : ISpecialEvent
 {
-    internal static PaydayFoundationReward From(Grpc.V2.BlockSpecialEvent.Types.PaydayFoundationReward paydayFoundationReward) =>
+    internal static PaydayFoundationReward From(BlockSpecialEvent.Types.PaydayFoundationReward paydayFoundationReward) =>
         new(
             FoundationAccount: AccountAddress.From(paydayFoundationReward.FoundationAccount),
             DevelopmentCharge: CcdAmount.From(paydayFoundationReward.DevelopmentCharge)
@@ -169,7 +169,7 @@ public sealed record PaydayAccountReward(
     CcdAmount FinalizationReward
     ) : ISpecialEvent
 {
-    internal static PaydayAccountReward From(Grpc.V2.BlockSpecialEvent.Types.PaydayAccountReward paydayAccountReward) =>
+    internal static PaydayAccountReward From(BlockSpecialEvent.Types.PaydayAccountReward paydayAccountReward) =>
         new(
             Account: AccountAddress.From(paydayAccountReward.Account),
             TransactionFees: CcdAmount.From(paydayAccountReward.TransactionFees),
@@ -198,7 +198,7 @@ public sealed record BlockAccrueReward(
     BakerId BakerId
 ) : ISpecialEvent
 {
-    internal static BlockAccrueReward From(Grpc.V2.BlockSpecialEvent.Types.BlockAccrueReward blockAccrueReward) =>
+    internal static BlockAccrueReward From(BlockSpecialEvent.Types.BlockAccrueReward blockAccrueReward) =>
         new(
             TransactionFees: CcdAmount.From(blockAccrueReward.TransactionFees),
             OldGasAccount: CcdAmount.From(blockAccrueReward.OldGasAccount),
@@ -224,7 +224,7 @@ public sealed record PaydayPoolReward(
     CcdAmount FinalizationReward
 ) : ISpecialEvent
 {
-    internal static PaydayPoolReward From(Grpc.V2.BlockSpecialEvent.Types.PaydayPoolReward paydayPoolReward) =>
+    internal static PaydayPoolReward From(BlockSpecialEvent.Types.PaydayPoolReward paydayPoolReward) =>
         new(
             PoolOwner: paydayPoolReward.PoolOwner?.Value,
             TransactionFees: CcdAmount.From(paydayPoolReward.TransactionFees),

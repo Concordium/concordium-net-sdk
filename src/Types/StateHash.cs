@@ -11,8 +11,8 @@ public sealed record StateHash : Hash
     /// Create state hash from hex string.
     /// </summary>
     public StateHash(string hexString) : base(hexString)
-    {}
+    { }
 
     internal StateHash(ByteString bytes) : base(bytes.ToByteArray())
-    {}
+    { }
 }

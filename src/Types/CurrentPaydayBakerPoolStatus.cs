@@ -1,4 +1,4 @@
-﻿using Concordium.Grpc.V2;
+using Concordium.Grpc.V2;
 using Concordium.Sdk.Helpers;
 
 namespace Concordium.Sdk.Types;

@@ -8,11 +8,11 @@ namespace Concordium.Sdk.Types;
 /// Chain parameters.
 /// </summary>
 public interface IChainParameters
-{}
+{ }
 
 internal static class ChainParametersFactory
 {
-    internal static IChainParameters From(Grpc.V2.ChainParameters chainParameters) =>
+    internal static IChainParameters From(ChainParameters chainParameters) =>
         chainParameters.ParametersCase switch
         {
             ChainParameters.ParametersOneofCase.V0 =>
@@ -192,7 +192,7 @@ public sealed record ChainParametersV0(
             GasRewards.From(chainParametersV0.GasRewards),
             AccountAddress.From(chainParametersV0.FoundationAccount),
             chainParametersV0.MinimumThresholdForBaking.ToCcd(),
-            Types.RootKeys.From(chainParametersV0.RootKeys),
-            Types.Level1Keys.From(chainParametersV0.Level1Keys),
+            RootKeys.From(chainParametersV0.RootKeys),
+            Level1Keys.From(chainParametersV0.Level1Keys),
             AuthorizationsV0.From(chainParametersV0.Level2Keys));
 }

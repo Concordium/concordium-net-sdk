@@ -6,13 +6,13 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 /// <param name="MinFinalizers">
 /// Minimum number of bakers to include in the finalization committee before
-/// the <see cref="FinalizationCommitteeParameters.FinalizersRelativeStakeThreshold"/> takes effect.
+/// the <see cref="FinalizersRelativeStakeThreshold"/> takes effect.
 /// </param>
 /// <param name="MaxFinalizers">Maximum number of bakers to include in the finalization committee.</param>
 /// <param name="FinalizersRelativeStakeThreshold">
 /// Determining the staking threshold required for being eligible the
 /// finalization committee. The required amount is given by `total stake
-/// in pools * <see cref="FinalizationCommitteeParameters.FinalizersRelativeStakeThreshold"/>`.
+/// in pools * <see cref="FinalizersRelativeStakeThreshold"/>`.
 /// Accepted values are between a value of 0 and 1.
 /// </param>
 public sealed record FinalizationCommitteeParameters(uint MinFinalizers, uint MaxFinalizers,

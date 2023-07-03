@@ -76,7 +76,7 @@ public static class UpdatePayloadFactory
             _ => throw new MissingTypeException<IUpdatePayload>(payload)
         };
 
-    internal static IUpdatePayload From(Grpc.V2.UpdatePayload payload) =>
+    internal static IUpdatePayload From(UpdatePayload payload) =>
         payload.PayloadCase switch
         {
             UpdatePayload.PayloadOneofCase.ProtocolUpdate =>

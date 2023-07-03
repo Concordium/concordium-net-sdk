@@ -1,4 +1,4 @@
-﻿namespace Concordium.Sdk.Types;
+namespace Concordium.Sdk.Types;
 
 /// <summary>
 /// The state of the baker currently registered on the account.
@@ -34,16 +34,16 @@ public sealed record BakerPoolStatus(
         CurrentPaydayBakerPoolStatus? CurrentPaydayStatus,
         CcdAmount AllPoolTotalCapital)
 {
-        internal static BakerPoolStatus From(Concordium.Grpc.V2.PoolInfoResponse poolInfoResponse) =>
-            new(
-                BakerId.From(poolInfoResponse.Baker),
-                AccountAddress.From(poolInfoResponse.Address),
-                CcdAmount.From(poolInfoResponse.EquityCapital),
-                CcdAmount.From(poolInfoResponse.DelegatedCapital),
-                CcdAmount.From(poolInfoResponse.DelegatedCapitalCap),
-                BakerPoolInfo.From(poolInfoResponse.PoolInfo),
-                CurrentPaydayBakerPoolStatus.From(poolInfoResponse.CurrentPaydayInfo),
-                CcdAmount.From(poolInfoResponse.AllPoolTotalCapital));
+    internal static BakerPoolStatus From(Grpc.V2.PoolInfoResponse poolInfoResponse) =>
+        new(
+            BakerId.From(poolInfoResponse.Baker),
+            AccountAddress.From(poolInfoResponse.Address),
+            CcdAmount.From(poolInfoResponse.EquityCapital),
+            CcdAmount.From(poolInfoResponse.DelegatedCapital),
+            CcdAmount.From(poolInfoResponse.DelegatedCapitalCap),
+            BakerPoolInfo.From(poolInfoResponse.PoolInfo),
+            CurrentPaydayBakerPoolStatus.From(poolInfoResponse.CurrentPaydayInfo),
+            CcdAmount.From(poolInfoResponse.AllPoolTotalCapital));
 }
 
 

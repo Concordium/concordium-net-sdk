@@ -16,7 +16,8 @@ internal class Program
     private static async Task GetFinalizedBlocks(ExampleOptions options)
     {
         // Construct the client.
-        var clientOptions = new ConcordiumClientOptions {
+        var clientOptions = new ConcordiumClientOptions
+        {
             Endpoint = new Uri($"{options!.Endpoint}:{options.Port}"),
             Timeout = TimeSpan.FromSeconds(options.Timeout)
         };

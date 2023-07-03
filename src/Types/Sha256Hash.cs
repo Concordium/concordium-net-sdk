@@ -7,7 +7,7 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public sealed record Sha256Hash : Hash
 {
-    internal Sha256Hash(ByteString byteString) : base(byteString.ToByteArray()){}
+    internal Sha256Hash(ByteString byteString) : base(byteString.ToByteArray()) { }
 
     /// <summary>
     /// Return hex representation of data.

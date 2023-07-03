@@ -46,8 +46,9 @@ public static class Program
     public static async Task Main(string[] args)
     {
         var options = ExampleHelpers.Parse<GetBlockItemSummaryOptions>(args);
-        
-        var clientOptions = new ConcordiumClientOptions {
+
+        var clientOptions = new ConcordiumClientOptions
+        {
             Endpoint = new Uri($"{options!.Endpoint}:{options.Port}")
         };
         using var client = new ConcordiumClient(clientOptions);

@@ -69,5 +69,5 @@ public readonly record struct AccountSequenceNumber
     ///
     /// This can be used as the input for class methods of <see cref="RawClient"/>.
     /// </summary>
-    public Grpc.V2.SequenceNumber ToProto() => new() { Value = Value };
+    public SequenceNumber ToProto() => new() { Value = Value };
 }

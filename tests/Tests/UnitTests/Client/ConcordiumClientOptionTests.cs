@@ -1,14 +1,16 @@
-using Xunit;
-using Microsoft.Extensions.Configuration;
-using FluentAssertions;
 using System;
+using FluentAssertions;
+using Microsoft.Extensions.Configuration;
+using Xunit;
 
 namespace Concordium.Sdk.Tests.UnitTests.Client;
 
-public class ConcordiumClientOptionsTests {
-    
+public class ConcordiumClientOptionsTests
+{
+
     [Fact]
-    public void GivenUri_WhenAddAppSettings_ThenParse() {
+    public void GivenUri_WhenAddAppSettings_ThenParse()
+    {
         // Arrange
         var configuration = new ConfigurationBuilder()
             .AddJsonFile("./Data/appsettingsEndpoint.json")
@@ -16,14 +18,15 @@ public class ConcordiumClientOptionsTests {
 
         // Act
         var options = configuration.GetSection("ConcordiumClientOptions")
-            .Get<Concordium.Sdk.Client.ConcordiumClientOptions>();
+            .Get<Sdk.Client.ConcordiumClientOptions>();
 
         // Assert
         options.Endpoint.Should().NotBeNull();
     }
 
     [Fact]
-    public void GivenTimeout_WhenAddAppSettings_ThenParse() {
+    public void GivenTimeout_WhenAddAppSettings_ThenParse()
+    {
         // Arrange
         var configuration = new ConfigurationBuilder()
             .AddJsonFile("./Data/appsettingsTimeout.json")
@@ -32,7 +35,7 @@ public class ConcordiumClientOptionsTests {
 
         // Act
         var options = configuration.GetSection("ConcordiumClientOptions")
-            .Get<Concordium.Sdk.Client.ConcordiumClientOptions>();
+            .Get<Sdk.Client.ConcordiumClientOptions>();
 
         // Assert
         options.Timeout.Should().NotBeNull();

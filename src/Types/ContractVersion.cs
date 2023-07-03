@@ -13,7 +13,7 @@ public enum ContractVersion
 
 internal static class ContractVersionFactory
 {
-    internal static ContractVersion Into(this Concordium.Grpc.V2.ContractVersion contractVersion) =>
+    internal static ContractVersion Into(this Grpc.V2.ContractVersion contractVersion) =>
         contractVersion switch
         {
             Grpc.V2.ContractVersion.V0 => ContractVersion.V0,

@@ -207,9 +207,9 @@ public sealed class ConcordiumClient : IDisposable
 
         var accountInfoAsync = await response.ResponseAsync
             .ConfigureAwait(false);
-        
+
         return await QueryResponse<AccountInfo>.From(
-                response.ResponseHeadersAsync, 
+                response.ResponseHeadersAsync,
                 AccountInfo.From(accountInfoAsync))
             .ConfigureAwait(false);
     }
@@ -226,7 +226,7 @@ public sealed class ConcordiumClient : IDisposable
     public async Task<QueryResponse<IAsyncEnumerable<AccountAddress>>> GetAccountListAsync(IBlockHashInput input, CancellationToken token = default)
     {
         var response = this.Raw.GetAccountList(input.Into(), token);
-        
+
         return await QueryResponse<IAsyncEnumerable<AccountAddress>>.From(
                 response.ResponseHeadersAsync,
                 response.ResponseStream.ReadAllAsync(token).Select(AccountAddress.From))
@@ -256,10 +256,10 @@ public sealed class ConcordiumClient : IDisposable
     public async Task<QueryResponse<BakerPoolStatus>> GetPoolInfoAsync(BakerId bakerId, IBlockHashInput blockHash, CancellationToken token = default)
     {
         var input = new PoolInfoRequest
-            {
-                BlockHash = blockHash.Into(),
-                Baker = bakerId.ToProto()
-            };
+        {
+            BlockHash = blockHash.Into(),
+            Baker = bakerId.ToProto()
+        };
         var response = this.Raw.GetPoolInfoAsync(input, token);
 
         await Task.WhenAll(response.ResponseHeadersAsync, response.ResponseAsync)
@@ -487,12 +487,10 @@ public sealed class ConcordiumClient : IDisposable
 /// <summary>
 /// Helper extensions for types returned by Raw- or Concordium Client.
 /// </summary>
-public static class ConcordiumClientExtensions 
+public static class ConcordiumClientExtensions
 {
     /// <summary>
     /// Returns a async enumrable.
     /// </summary>
-    public static IAsyncEnumerable<T> ReadAllAsync<T>(this IAsyncStreamReader<T> reader) {
-        return reader.ReadAllAsync();
-    }
+    public static IAsyncEnumerable<T> ReadAllAsync<T>(this IAsyncStreamReader<T> reader) => reader.ReadAllAsync();
 }
