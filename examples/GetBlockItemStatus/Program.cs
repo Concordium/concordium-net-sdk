@@ -6,7 +6,7 @@ using Concordium.Sdk.Types;
 // ReSharper disable ParameterTypeCanBeEnumerable.Global
 #pragma warning disable CS8618
 
-namespace Transactions.GetBlockItemStatus;
+namespace GetBlockItemStatus;
 
 internal sealed class GetBlockItemSummaryOptions
 {
@@ -14,7 +14,7 @@ internal sealed class GetBlockItemSummaryOptions
     public string TransactionHash { get; set; }
 
     [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Required = true,
-        Default = "http://node.testnet.concordium.com/")]
+        Default = "http://node.testnet.concordium.com")]
     public string Endpoint { get; set; }
 
     [Option(HelpText = "Port for the gRPC V2 API.", Required = true, Default = 20_000)]
@@ -49,7 +49,7 @@ public static class Program
 
         var clientOptions = new ConcordiumClientOptions
         {
-            Endpoint = new Uri($"{options!.Endpoint}:{options.Port}/")
+            Endpoint = new Uri($"{options!.Endpoint}:{options.Port}")
         };
         using var client = new ConcordiumClient(clientOptions);
 

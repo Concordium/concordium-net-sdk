@@ -17,7 +17,7 @@ internal sealed class GetBlockFinalizationSummaryOptions
 public static class Program
 {
     /// <summary>
-    /// Example how to use <see cref="ConcordiumClient.GetBlockFinalizationSummary"/>
+    /// Example how to use <see cref="ConcordiumClient.GetBlockFinalizationSummaryAsync"/>
     /// </summary>s
     public static async Task Main(string[] args) =>
         await Parser.Default

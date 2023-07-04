@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transactions.TransferWithMe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transactions.Transfer", "examples\Transfer\Transactions.Transfer.csproj", "{04325801-3936-425D-A44B-D82E43C25E0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transactions.GetBlockItemStatus", "examples\GetBlockItemStatus\Transactions.GetBlockItemStatus.csproj", "{C6D1F6C7-8621-42C5-8585-896C77DB3210}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetBlockItemStatus", "examples\GetBlockItemStatus\GetBlockItemStatus.csproj", "{C6D1F6C7-8621-42C5-8585-896C77DB3210}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetAccountInfo", "examples\GetAccountInfo\GetAccountInfo.csproj", "{1A8D6B8A-2856-4843-BE5F-BC045952E08C}"
 EndProject
