@@ -18,6 +18,36 @@ public sealed record QueryResponse<T>(BlockHash BlockHash, T Response)
         return new QueryResponse<T>(blockHash, response);
     }
 
+    /// <summary>
+    /// Maps incoming stream to output. If there was an error getting the
+    /// result block hash will not be present and hence we will have a exception when trying to access
+    /// it.
+    /// We want however the original exception to be thrown, which is what is triggered in the catch
+    /// block.
+    /// </summary>
+    internal static async Task<QueryResponse<IAsyncEnumerable<TResult>>>
+        From<TSource, TResult>(
+            AsyncServerStreamingCall<TSource> response,
+            Func<TSource, TResult> mapping,
+            CancellationToken token) where TSource : class
+    {
+        try
+        {
+            var meta = await response.ResponseHeadersAsync.ConfigureAwait(false);
+            var blockHash = GetBlockHashFromMetadata(meta);
+            var result = response.ResponseStream.ReadAllAsync(token).Select(mapping);
+            return new QueryResponse<IAsyncEnumerable<TResult>>(blockHash, result);
+        }
+        catch (MissingMemberException)
+        {
+            // Try propagate any original error
+            await response.ResponseStream.MoveNext();
+
+            // if none then throw caught
+            throw;
+        }
+    }
+
     private static BlockHash GetBlockHashFromMetadata(Metadata metadata)
     {
         const string blockHashEntry = "blockhash";

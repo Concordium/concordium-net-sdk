@@ -227,26 +227,12 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="token">Cancellation token</param>
     /// <returns>Accounts at given block</returns>
     /// <exception cref="RpcException">Block doesn't exists.</exception>
-    public async Task<QueryResponse<IAsyncEnumerable<AccountAddress>>> GetAccountListAsync(IBlockHashInput input,
+    public Task<QueryResponse<IAsyncEnumerable<AccountAddress>>> GetAccountListAsync(IBlockHashInput input,
         CancellationToken token = default)
     {
         var response = this.Raw.GetAccountList(input.Into(), token);
 
-        try
-        {
-            return await QueryResponse<IAsyncEnumerable<AccountAddress>>.From(
-                    response.ResponseHeadersAsync,
-                    response.ResponseStream.ReadAllAsync(token).Select(AccountAddress.From))
-                .ConfigureAwait(false);
-        }
-        catch (MissingMemberException)
-        {
-            // Try propagate any original error
-            await response.ResponseStream.MoveNext();
-
-            // if none then throw caught
-            throw;
-        }
+        return QueryResponse<IAsyncEnumerable<AccountAddress>>.From(response, AccountAddress.From, token);
     }
 
     /// <summary>
@@ -390,26 +376,12 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="token">Cancellation token</param>
     /// <returns>Special events at given block</returns>
     /// <exception cref="RpcException">If the block does not exist</exception>
-    public async Task<QueryResponse<IAsyncEnumerable<ISpecialEvent>>> GetBlockSpecialEvents(
+    public Task<QueryResponse<IAsyncEnumerable<ISpecialEvent>>> GetBlockSpecialEvents(
         IBlockHashInput blockHashInput, CancellationToken token = default)
     {
         var response = this.Raw.GetBlockSpecialEvents(blockHashInput.Into(), token);
 
-        try
-        {
-            return await QueryResponse<IAsyncEnumerable<ISpecialEvent>>.From(
-                    response.ResponseHeadersAsync,
-                    response.ResponseStream.ReadAllAsync(token).Select(SpecialEventFactory.From))
-                .ConfigureAwait(false);
-        }
-        catch (MissingMemberException)
-        {
-            // Try propagate any original error
-            await response.ResponseStream.MoveNext();
-
-            // if none then throw caught
-            throw;
-        }
+        return QueryResponse<IAsyncEnumerable<ISpecialEvent>>.From(response, SpecialEventFactory.From, token);
     }
 
     /// <summary>
@@ -423,10 +395,10 @@ public sealed class ConcordiumClient : IDisposable
     /// </summary>
     /// <param name="blockHashInput">Block from where finalization summary will be given.</param>
     /// <param name="token">Cancellation token</param>
-    public async Task<QueryResponse<FinalizationSummary?>> GetBlockFinalizationSummaryAsync(IBlockHashInput blockHash,
+    public async Task<QueryResponse<FinalizationSummary?>> GetBlockFinalizationSummaryAsync(IBlockHashInput blockHashInput,
         CancellationToken token = default)
     {
-        var response = this.Raw.GetBlockFinalizationSummaryAsync(blockHash.Into(), token);
+        var response = this.Raw.GetBlockFinalizationSummaryAsync(blockHashInput.Into(), token);
 
         await Task.WhenAll(response.ResponseHeadersAsync, response.ResponseAsync)
             .ConfigureAwait(false);
@@ -446,26 +418,12 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="token">Cancellation token</param>
     /// <returns>Summary of a block item with transactional meta data.</returns>
     /// <exception cref="RpcException">If the block does not exist</exception>
-    public async Task<QueryResponse<IAsyncEnumerable<BlockItemSummary>>> GetBlockTransactionEvents(
+    public Task<QueryResponse<IAsyncEnumerable<BlockItemSummary>>> GetBlockTransactionEvents(
         IBlockHashInput blockHashInput, CancellationToken token = default)
     {
         var response = this.Raw.GetBlockTransactionEvents(blockHashInput.Into(), token);
 
-        try
-        {
-            return await QueryResponse<IAsyncEnumerable<BlockItemSummary>>.From(
-                    response.ResponseHeadersAsync,
-                    response.ResponseStream.ReadAllAsync(token).Select(BlockItemSummary.From))
-                .ConfigureAwait(false);
-        }
-        catch (MissingMemberException)
-        {
-            // Try propagate any original error
-            await response.ResponseStream.MoveNext();
-
-            // if none then throw caught
-            throw;
-        }
+        return QueryResponse<IAsyncEnumerable<BlockItemSummary>>.From(response, BlockItemSummary.From, token);
     }
 
     /// <summary>
@@ -476,26 +434,12 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="token">Cancellation token</param>
     /// <returns>Identity providers info</returns>
     /// <exception cref="RpcException">If the block does not exist</exception>
-    public async Task<QueryResponse<IAsyncEnumerable<IpInfo>>> GetIdentityProvidersAsync(IBlockHashInput blockHash,
+    public Task<QueryResponse<IAsyncEnumerable<IpInfo>>> GetIdentityProvidersAsync(IBlockHashInput blockHash,
         CancellationToken token = default)
     {
         var response = this.Raw.GetIdentityProviders(blockHash.Into(), token);
 
-        try
-        {
-            return await QueryResponse<IAsyncEnumerable<IpInfo>>.From(
-                    response.ResponseHeadersAsync,
-                    response.ResponseStream.ReadAllAsync(token).Select(IpInfo.From))
-                .ConfigureAwait(false);
-        }
-        catch (MissingMemberException)
-        {
-            // Try propagate any original error
-            await response.ResponseStream.MoveNext();
-
-            // if none then throw caught
-            throw;
-        }
+        return QueryResponse<IAsyncEnumerable<IpInfo>>.From(response, IpInfo.From, token);
     }
 
     /// <summary>
@@ -505,26 +449,12 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="token">Cancellation token</param>
     /// <returns>List of baker ids.</returns>
     /// <exception cref="RpcException">If the block does not exist</exception>
-    public async Task<QueryResponse<IAsyncEnumerable<BakerId>>> GetBakerListAsync(IBlockHashInput blockHash,
+    public Task<QueryResponse<IAsyncEnumerable<BakerId>>> GetBakerListAsync(IBlockHashInput blockHash,
         CancellationToken token = default)
     {
         var response = this.Raw.GetBakerList(blockHash.Into(), token);
 
-        try
-        {
-            return await QueryResponse<IAsyncEnumerable<BakerId>>.From(
-                    response.ResponseHeadersAsync,
-                    response.ResponseStream.ReadAllAsync(token).Select(BakerId.From))
-                .ConfigureAwait(false);
-        }
-        catch (MissingMemberException)
-        {
-            // Try propagate any original error
-            await response.ResponseStream.MoveNext();
-
-            // if none then throw caught
-            throw;
-        }
+        return QueryResponse<IAsyncEnumerable<BakerId>>.From(response, BakerId.From, token);
     }
 
     /// <summary>
