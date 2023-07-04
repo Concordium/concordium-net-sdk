@@ -98,9 +98,10 @@ public sealed class OnChainDataTests : Tests
             {
                 case TransactionStatusFinalized transactionStatusFinalized:
                     return transactionStatusFinalized;
+                default:
+                    await Task.Delay(TimeSpan.FromSeconds(1), token);
+                    break;
             }
-
-            await Task.Delay(TimeSpan.FromSeconds(1), token);
         }
     }
 
