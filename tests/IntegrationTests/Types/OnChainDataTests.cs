@@ -22,7 +22,7 @@ public sealed class OnChainDataTests : Tests
     {
         using var cts = new CancellationTokenSource(30_000);
 
-        var filePath  = this.GetString("walletPath");
+        var filePath = this.GetString("walletPath");
         var walletData = await File.ReadAllTextAsync(filePath, cts.Token);
         var account = WalletAccount.FromWalletKeyExportFormat(walletData);
         var sender = account.AccountAddress;
@@ -33,7 +33,7 @@ public sealed class OnChainDataTests : Tests
         var transferPayload = new Transfer(CcdAmount.FromCcd(1), receiver);
 
         // Act
-        var txHash = await this.Transfer(account, sender, receiver, transferPayload, cts.Token);
+        var txHash = await this.Transfer(account, sender, transferPayload, cts.Token);
         var finalized = await this.AwaitFinalization(txHash, cts.Token);
         var transfer = ValidateArrangementOutcome(finalized);
 
@@ -48,7 +48,7 @@ public sealed class OnChainDataTests : Tests
         // Arrange
         using var cts = new CancellationTokenSource(30_000);
 
-        var filePath  = this.GetString("walletPath");
+        var filePath = this.GetString("walletPath");
         var walletData = await File.ReadAllTextAsync(filePath, cts.Token);
         var account = WalletAccount.FromWalletKeyExportFormat(walletData);
         var sender = account.AccountAddress;
@@ -61,7 +61,7 @@ public sealed class OnChainDataTests : Tests
         var memo = OnChainData.FromTextEncodeAsCBOR(expected);
         var transferPayload = new TransferWithMemo(CcdAmount.FromCcd(1), receiver, memo);
 
-        var txHash = await this.Transfer(account, sender, receiver, transferPayload, cts.Token);
+        var txHash = await this.Transfer(account, sender, transferPayload, cts.Token);
         var finalized = await this.AwaitFinalization(txHash, cts.Token);
         var transfer = ValidateArrangementOutcome(finalized);
         transfer!.Memo.Should().NotBeNull();
@@ -98,16 +98,13 @@ public sealed class OnChainDataTests : Tests
             {
                 case TransactionStatusFinalized transactionStatusFinalized:
                     return transactionStatusFinalized;
-                case TransactionStatusCommitted:
-                case TransactionStatusReceived:
-                    break;
             }
 
             await Task.Delay(TimeSpan.FromSeconds(1), token);
         }
     }
 
-    private async Task<TransactionHash> Transfer(ITransactionSigner account, AccountAddress sender, AccountAddress receiver, AccountTransactionPayload transactionPayload, CancellationToken token)
+    private async Task<TransactionHash> Transfer(ITransactionSigner account, AccountAddress sender, AccountTransactionPayload transactionPayload, CancellationToken token)
     {
         var (accountSequenceNumber, _) = await this.Client.GetNextAccountSequenceNumberAsync(sender, token);
         var preparedAccountTransaction = transactionPayload.Prepare(sender, accountSequenceNumber, Expiry.AtMinutesFromNow(30));
