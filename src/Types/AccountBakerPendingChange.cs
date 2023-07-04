@@ -30,14 +30,13 @@ public abstract record AccountBakerPendingChange
 }
 
 /// <summary>
-/// The baker will be removed at the end of the given epoch.
+/// The baker will be removed at the given time.
 /// </summary>
-/// <param name="Epoch">Epoch where baker will be removed.</param>
+/// <param name="EffectiveTime">Time when the baker will be removed.</param>
 public sealed record AccountBakerRemovePending(DateTimeOffset EffectiveTime) : AccountBakerPendingChange;
 /// <summary>
-/// The stake is being reduced. The new stake will take affect in the given
-/// epoch.
+/// The stake is being reduced. The new stake will take affect at the given time.
 /// </summary>
 /// <param name="NewStake">New stake which will take effect.</param>
-/// <param name="Epoch">Epoch where reduction will take place.</param>
+/// <param name="EffectiveTime">Time when the baker will be removed.</param>
 public sealed record AccountBakerReduceStakePending(CcdAmount NewStake, DateTimeOffset EffectiveTime) : AccountBakerPendingChange;
