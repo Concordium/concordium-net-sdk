@@ -2,6 +2,9 @@ using CommandLine;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
 
+// We disable these warnings since CommandLine needs to set properties in options
+// but we don't want to give default values.
+#pragma warning disable CS8618
 
 namespace GetBlockSpecialEvents;
 

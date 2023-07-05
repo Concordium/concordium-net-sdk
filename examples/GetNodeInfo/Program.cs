@@ -1,6 +1,9 @@
 using CommandLine;
 using Concordium.Sdk.Client;
 
+// We disable these warnings since CommandLine needs to set properties in options
+// but we don't want to give default values.
+#pragma warning disable CS8618
 
 namespace GetNodeInfo;
 
