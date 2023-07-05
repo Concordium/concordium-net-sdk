@@ -103,6 +103,14 @@ public sealed record ContractInitialized(ContractInitializedEvent Data) : IAccou
 /// </summary>
 public sealed record ContractUpdateIssued(IList<IContractTraceElement> Effects) : IAccountTransactionEffects
 {
+    /// <summary>
+    /// Iterate through all effects and return pairs of emitted contract events for a contract address.
+    /// As an example if a contract following the CIS-2 standard was invoked to mint, the a mint event would
+    /// be emitted for the given contract.
+    /// The final list may have the same contract address in multiple pairs. This could happen if one contract called
+    /// another contract multiple times. In this case several <code>Interrupted</code> events would be present in
+    /// multiple <see cref="IContractTraceElement"/>.
+    /// </summary>
     internal IList<(ContractAddress, IList<ContractEvent>)> GetAffectedAddressesWithLogs()
     {
         var items = new List<(ContractAddress, IList<ContractEvent>)>();
@@ -121,7 +129,7 @@ public sealed record ContractUpdateIssued(IList<IContractTraceElement> Effects) 
                 case Upgraded:
                     continue;
                 default:
-                    break;
+                    throw new MissingTypeException<IContractTraceElement>(contractTraceElement);
             }
         }
         return items;
@@ -146,7 +154,7 @@ public sealed record ContractUpdateIssued(IList<IContractTraceElement> Effects) 
                 case Upgraded:
                     continue;
                 default:
-                    break;
+                    throw new MissingTypeException<IContractTraceElement>(contractTraceElement);
             }
         }
     }
@@ -171,7 +179,7 @@ public sealed record ContractUpdateIssued(IList<IContractTraceElement> Effects) 
                 case Upgraded:
                     continue;
                 default:
-                    break;
+                    throw new MissingTypeException<IContractTraceElement>(contractTraceElement);
             }
         }
     }
@@ -369,7 +377,7 @@ public sealed record BakerConfigured(IList<IBakerEvent> Data) : IAccountTransact
                     yield return bakerStakeIncreasedEvent.BakerId;
                     break;
                 default:
-                    break;
+                    throw new MissingTypeException<IBakerEvent>(bakerEvent);
             }
         }
     }

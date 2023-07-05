@@ -81,8 +81,18 @@ public sealed record Updated(
 /// <param name="To">Receiver account.</param>
 public sealed record Transferred(ContractAddress From, CcdAmount Amount, AccountAddress To) : IContractTraceElement;
 
+/// <summary>
+/// A contract was interrupted. This occurs when a contract invokes another contract or makes a transfer to an account.
+/// </summary>
+/// <param name="Address">The contract interrupted.</param>
+/// <param name="Events">The events generated up until the interruption.</param>
 public sealed record Interrupted(ContractAddress Address, IList<ContractEvent> Events) : IContractTraceElement;
 
+/// <summary>
+/// A previously interrupted contract was resumed.
+/// </summary>
+/// <param name="Address">The contract resumed.</param>
+/// <param name="Success">Whether the action that caused the interruption (invoke contract or make transfer) was successful or not.</param>
 public sealed record Resumed(ContractAddress Address, bool Success) : IContractTraceElement;
 
 /// <summary>

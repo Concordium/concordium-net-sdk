@@ -69,12 +69,30 @@ internal static class BakerEventFactory
 /// </param>
 public sealed record BakerAddedEvent(BakerKeysEvent KeysEvent, CcdAmount Stake, bool RestakeEarnings) : IBakerEvent;
 
+/// <summary>
+/// Baker was removed.
+/// </summary>
+/// <param name="BakerId">Baker Id of removed baker</param>
 public sealed record BakerRemovedEvent(BakerId BakerId) : IBakerEvent;
 
+/// <summary>
+/// Stake increased on baker.
+/// </summary>
+/// <param name="BakerId">Baker Id</param>
+/// <param name="NewStake">Stake after increase.</param>
 public sealed record BakerStakeIncreasedEvent(BakerId BakerId, CcdAmount NewStake) : IBakerEvent;
 
+/// <summary>
+/// Stake decreased on baker.
+/// </summary>
+/// <param name="BakerId">Baker Id</param>
+/// <param name="NewStake">Stake after decrease.</param>
 public sealed record BakerStakeDecreasedEvent(BakerId BakerId, CcdAmount NewStake) : IBakerEvent;
 
+/// <summary>
+/// Changed if earnings should be restaked.
+/// </summary>
+/// <param name="BakerId">Baker Id</param>
 /// <param name="RestakeEarnings">The new value of the flag.</param>
 public sealed record BakerRestakeEarningsUpdatedEvent(BakerId BakerId, bool RestakeEarnings) : IBakerEvent;
 

@@ -9,8 +9,14 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public readonly record struct CcdAmount
 {
+    /// <summary>
+    /// Zero amount.
+    /// </summary>
     public static CcdAmount Zero { get; } = FromCcd(0);
 
+    /// <summary>
+    /// Byte length of <see cref="CcdAmount"/> integral numeric type.
+    /// </summary>
     public const uint BytesLength = 8;
 
     /// <summary>

@@ -33,6 +33,9 @@ internal static class DelegationEventFactory
         };
 }
 
+/// <summary>
+/// The delegator's stake increased.
+/// </summary>
 /// <param name="DelegatorId">Delegator's id</param>
 /// <param name="NewStake">New stake</param>
 public sealed record DelegationStakeIncreased(DelegatorId DelegatorId, CcdAmount NewStake) : IDelegationEvent
@@ -44,6 +47,9 @@ public sealed record DelegationStakeIncreased(DelegatorId DelegatorId, CcdAmount
         );
 }
 
+/// <summary>
+/// The delegator's stake decreased.
+/// </summary>
 /// <param name="DelegatorId">Delegator's id</param>
 /// <param name="NewStake">New stake</param>
 public sealed record DelegationStakeDecreased(DelegatorId DelegatorId, CcdAmount NewStake) : IDelegationEvent
@@ -55,6 +61,9 @@ public sealed record DelegationStakeDecreased(DelegatorId DelegatorId, CcdAmount
         );
 }
 
+/// <summary>
+/// The delegator's restaking setting was updated.
+/// </summary>
 /// <param name="DelegatorId">Delegator's id</param>
 /// <param name="RestakeEarnings">Whether earnings will be restaked</param>
 public sealed record DelegationSetRestakeEarnings(DelegatorId DelegatorId, bool RestakeEarnings) : IDelegationEvent
@@ -66,6 +75,9 @@ public sealed record DelegationSetRestakeEarnings(DelegatorId DelegatorId, bool 
         );
 }
 
+/// <summary>
+/// The delegator's delegation target was updated.
+/// </summary>
 /// <param name="DelegatorId">Delegator's id</param>
 /// <param name="DelegationTarget">New delegation target</param>
 public sealed record DelegationSetDelegationTarget
@@ -78,6 +90,9 @@ public sealed record DelegationSetDelegationTarget
         );
 }
 
+/// <summary>
+/// A delegator was added.
+/// </summary>
 /// <param name="DelegatorId">Delegator's id</param>
 public sealed record DelegationAdded(DelegatorId DelegatorId) : IDelegationEvent
 {
@@ -87,6 +102,9 @@ public sealed record DelegationAdded(DelegatorId DelegatorId) : IDelegationEvent
         );
 }
 
+/// <summary>
+/// A delegator was removed.
+/// </summary>
 /// <param name="DelegatorId">Delegator's id</param>
 public sealed record DelegationRemoved(DelegatorId DelegatorId) : IDelegationEvent
 {
