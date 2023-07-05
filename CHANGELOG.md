@@ -7,7 +7,7 @@
   - Record structs has readonly where immutability is expected.
   - Implicit operators are removed, since standard in our Rust SDK and our gRPC protocol is to be explicit. This is a breaking change.
 - Add ConfigureAwait to enhance library uses from UI- or own syncronization context usages.
-- Added optional cancellation token parameter to all client calls.
+- Add optional cancellation token parameter to all client calls.
 - `RawClient` asynchronous calls have been changed to return either `AsyncUnaryCall<T>` or `AsyncServerStreamingCall` such that header is available in `ConcordiumClient`. 
   One can get the response be calling `.ResponseAsync` on `AsyncUnaryCall<T>` and `ResponseStream` on `AsyncServerStreamingCall`.
 - Property `Timeout` moved into `Options` in class `RawClient`.
