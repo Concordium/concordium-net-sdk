@@ -1,3 +1,6 @@
+using Concordium.Grpc.V2;
+using Google.Protobuf;
+
 namespace Concordium.Sdk.Types;
 
 /// <summary>
@@ -6,7 +9,7 @@ namespace Concordium.Sdk.Types;
 /// the same PRF key, but different counter values cannot easily be linked
 /// together.
 /// </summary>
-public sealed record CredentialRegistrationId(byte[] Id)
+public sealed record CredentialRegistrationId(byte[] Id) : IAccountIdentifier
 {
     /// <summary>
     /// Return hex string representation.
@@ -15,4 +18,14 @@ public sealed record CredentialRegistrationId(byte[] Id)
     public string ToHex() => Convert.ToHexString(this.Id);
 
     internal static CredentialRegistrationId From(Grpc.V2.CredentialRegistrationId id) => new(id.Value.ToByteArray());
+
+    /// <inheritdoc/>
+    public AccountIdentifierInput ToAccountIdentifierInput() =>
+    new()
+    {
+        CredId = new Grpc.V2.CredentialRegistrationId
+        {
+            Value = ByteString.CopyFrom(this.Id)
+        }
+    };
 }

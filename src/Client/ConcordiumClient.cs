@@ -192,17 +192,17 @@ public sealed class ConcordiumClient : IDisposable
     /// <summary>
     /// Get the information for the given account in the given block.
     /// </summary>
-    /// <param name="accountAddress">An address of the account.</param>
+    /// <param name="accountIdentifier">Identifier of the account.</param>
     /// <param name="blockHash">A hash of the block</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>Account information at the given block.</returns>
-    public async Task<QueryResponse<AccountInfo>> GetAccountInfoAsync(AccountAddress accountAddress,
+    public async Task<QueryResponse<AccountInfo>> GetAccountInfoAsync(IAccountIdentifier accountIdentifier,
         IBlockHashInput blockHash, CancellationToken token = default)
     {
         var accountInfoRequest = new AccountInfoRequest
         {
             BlockHash = blockHash.Into(),
-            AccountIdentifier = accountAddress.ToAccountIdentifierInput()
+            AccountIdentifier = accountIdentifier.ToAccountIdentifierInput()
         };
         var response = this.Raw.GetAccountInfoAsync(accountInfoRequest, token);
 

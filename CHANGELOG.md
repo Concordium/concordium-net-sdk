@@ -1,6 +1,7 @@
 ## Unreleased changes
 - Added
   - Add optional cancellation token parameter to all client calls.
+
 - Obsolete
   - Made former constructors on `ConcordiumClient` and `RawClient` obsolete in favor of   new overload which takes `ConcordiumClientOptions`. Using this makes it easier to used  from configurations and extending with additional properties in the future.
 - Breaking changes
@@ -14,7 +15,8 @@
   - Add ConfigureAwait to enhance library uses from UI- or own syncronization context   usages.
   - `RawClient` asynchronous calls have been changed to return either `AsyncUnaryCall<T>`   or `AsyncServerStreamingCall` such that response header is available in   `ConcordiumClient`. 
     One can get the response be calling `.ResponseAsync` on `AsyncUnaryCall<T>` and   `ResponseStream` on `AsyncServerStreamingCall`.
-  - Property `Timeout` moved into `Options` in class `RawClient`.
+  - Property `Timeout` moved into `Options` in class `RawClient`. `Timeout` now defaults to 'indefinitely' compared to 30 seconds in obsolete constructor of `ConcordiumClient`.
+  - `AccountTransactionType` is renamed to `TransactionType`.
 
 
 ## 2.0.0
