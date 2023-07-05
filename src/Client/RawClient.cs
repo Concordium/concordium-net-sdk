@@ -33,8 +33,6 @@ public sealed class RawClient : IDisposable
     /// </summary>
     private readonly GrpcChannel _grpcChannel;
 
-    private readonly Metadata _defaultMetadata;
-
     /// <summary>
     /// Initializes a new instance of the <see cref="RawClient"/> class.
     ///
@@ -79,7 +77,6 @@ public sealed class RawClient : IDisposable
             Timeout = timeout.HasValue ? TimeSpan.FromSeconds((double)timeout) : null,
             ChannelOptions = channelOptions
         };
-        this._defaultMetadata = CreateMetadata(this.Options);
         this.InternalClient = new Queries.QueriesClient(grpcChannel);
         this._grpcChannel = grpcChannel;
     }
@@ -97,7 +94,6 @@ public sealed class RawClient : IDisposable
         var grpcChannel = GrpcChannel.ForAddress(options.Endpoint, channelOptions);
 
         this.Options = options;
-        this._defaultMetadata = CreateMetadata(options);
         this.InternalClient = new Queries.QueriesClient(grpcChannel);
         this._grpcChannel = grpcChannel;
     }
@@ -671,7 +667,7 @@ public sealed class RawClient : IDisposable
         this.InternalClient.GetBlockItems(input, this.CreateCallOptions(token));
 
     /// <summary>
-    /// Create the call options for invoking the <see cref="InternalClient">.
+    /// Create the call options for invoking the <see cref="InternalClient"/>.
     /// </summary>
     private CallOptions CreateCallOptions(CancellationToken token)
     {
@@ -679,7 +675,7 @@ public sealed class RawClient : IDisposable
             DateTime.UtcNow.Add(this.Options.Timeout.Value) :
             null;
 
-        return new CallOptions(this._defaultMetadata, deadline, token);
+        return new CallOptions(null, deadline, token);
     }
 
     /// <summary>
@@ -697,20 +693,6 @@ public sealed class RawClient : IDisposable
         return endpoint.Scheme == Uri.UriSchemeHttps
                     ? ChannelCredentials.SecureSsl
                     : ChannelCredentials.Insecure;
-    }
-
-    private static Metadata CreateMetadata(ConcordiumClientOptions options)
-    {
-        var meta = new Metadata();
-
-        if (options.AuthenticationToken != null)
-        {
-            const string authenticationKey = "authentication";
-
-            meta.Add(authenticationKey, options.AuthenticationToken);
-        }
-
-        return meta;
     }
 
     private static GrpcChannelOptions SetSchemeIfNotSet(GrpcChannelOptions? channelOptions, ChannelCredentials scheme)

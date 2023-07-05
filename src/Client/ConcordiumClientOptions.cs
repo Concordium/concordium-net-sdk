@@ -1,7 +1,4 @@
-
 using Grpc.Net.Client;
-
-#pragma warning disable CS8618
 
 namespace Concordium.Sdk.Client;
 
@@ -10,14 +7,13 @@ namespace Concordium.Sdk.Client;
 /// </summary>
 public sealed class ConcordiumClientOptions
 {
+    private const string DefaultEndpoint = "http://localhost:20000";
+
     /// <summary>
     /// Endpoint of a resource where the V2 API is served.
+    /// Defaults to <see cref="DefaultEndpoint"/>.
     /// </summary>
     public Uri Endpoint { get; init; }
-    /// <summary>
-    /// Node authentication token.
-    /// </summary>
-    public string? AuthenticationToken { get; init; }
     /// <summary>
     /// The maximum permitted duration of a call made by this client.
     /// <c>null</c> allows the call to run indefinitely.
@@ -33,4 +29,5 @@ public sealed class ConcordiumClientOptions
     /// </summary>
     public GrpcChannelOptions? ChannelOptions { get; init; }
 
+    public ConcordiumClientOptions() => this.Endpoint = new Uri(DefaultEndpoint);
 }
