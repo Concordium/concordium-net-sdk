@@ -10,7 +10,7 @@ namespace Concordium.Sdk.Types;
 public readonly record struct AccountIndex(ulong Index) : IAccountIdentifier
 {
     /// <inheritdoc/>
-    public AccountIdentifierInput ToAccountIdentifierInput() => new AccountIdentifierInput
+    public AccountIdentifierInput ToAccountIdentifierInput() => new()
     {
         AccountIndex = new Grpc.V2.AccountIndex
         {
