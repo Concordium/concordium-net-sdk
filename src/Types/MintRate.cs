@@ -26,6 +26,8 @@ public readonly record struct MintRate
 
     /// <summary>
     /// Construct mint rate from decimal.
+    ///
+    /// Due to the range of decimal (±1.0 x 10^-28 to ±7.9 x 10^28) the exponent can't exceed limit of 255.
     /// </summary>
     /// <param name="number">decimal one want a mint rate representation of.</param>
     public static MintRate From(decimal number)

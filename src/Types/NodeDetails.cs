@@ -11,15 +11,13 @@ public interface INodeDetails
 
 internal static class NodeDetailsFactory
 {
-    internal static INodeDetails From(Grpc.V2.NodeInfo nodeInfo)
+    internal static INodeDetails From(Grpc.V2.NodeInfo nodeInfo) => nodeInfo.DetailsCase switch
     {
-        return nodeInfo.DetailsCase switch
-        {
-            Grpc.V2.NodeInfo.DetailsOneofCase.Bootstrapper => new Bootstrapper(),
-            Grpc.V2.NodeInfo.DetailsOneofCase.Node => Node.From(nodeInfo.Node),
-            _ => throw new MissingEnumException<Grpc.V2.NodeInfo.DetailsOneofCase>(nodeInfo.DetailsCase),
-        };
-    }
+        Grpc.V2.NodeInfo.DetailsOneofCase.Bootstrapper => new Bootstrapper(),
+        Grpc.V2.NodeInfo.DetailsOneofCase.Node => Node.From(nodeInfo.Node),
+        Grpc.V2.NodeInfo.DetailsOneofCase.None => throw new NotImplementedException(),
+        _ => throw new MissingEnumException<Grpc.V2.NodeInfo.DetailsOneofCase>(nodeInfo.DetailsCase),
+    };
 }
 
 /// <summary>

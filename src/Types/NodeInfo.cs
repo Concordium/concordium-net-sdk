@@ -19,7 +19,7 @@ public sealed record NodeInfo(
 {
     internal static NodeInfo From(Grpc.V2.NodeInfo nodeInfo) =>
         new(
-            PeerVersion.Parse(nodeInfo.PeerVersion),
+            PeerVersion.From(nodeInfo.PeerVersion),
             nodeInfo.LocalTime.ToDateTimeOffset(),
             TimeSpan.FromMilliseconds(nodeInfo.PeerUptime.Value),
             NetworkInfo.From(nodeInfo.NetworkInfo),

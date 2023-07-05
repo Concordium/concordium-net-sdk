@@ -34,10 +34,13 @@ internal static class NodeConsensusStatusFactory
                                 Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.PassiveCommitteeInfo>(node.Active
                                 .PassiveCommitteeInfo)
                     },
-                    Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase.ActiveBakerCommitteeInfo => new Baker(bakerId),
-                    Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase.ActiveFinalizerCommitteeInfo => new Finalizer(bakerId),
-                    _ => throw new MissingEnumException<Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase>(
+                    Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase.ActiveBakerCommitteeInfo => new ActiveBaker(bakerId),
+                    Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase.ActiveFinalizerCommitteeInfo => new ActiveFinalizer(bakerId),
+                    Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase.None =>
+                        throw new MissingEnumException<Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase>(
                         node.Active.StatusCase),
+                    _ => throw new MissingEnumException<Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase>(
+                                            node.Active.StatusCase),
                 };
             case Grpc.V2.NodeInfo.Types.Node.ConsensusStatusOneofCase.None:
             default:
@@ -85,9 +88,9 @@ public sealed record AddedButWrongKeys(BakerId BakerId) : INodeConsensusStatus;
 /// <summary>
 /// The node is member of the baking committee.
 /// </summary>
-public sealed record Baker(BakerId BakerId) : INodeConsensusStatus;
+public sealed record ActiveBaker(BakerId BakerId) : INodeConsensusStatus;
 
 /// <summary>
 /// The node is member of the baking and finalization committee.
 /// </summary>
-public sealed record Finalizer(BakerId BakerId) : INodeConsensusStatus;
+public sealed record ActiveFinalizer(BakerId BakerId) : INodeConsensusStatus;

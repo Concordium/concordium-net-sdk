@@ -5,7 +5,7 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public sealed record PeerVersion(int Major, int Minor, int Revision)
 {
-    public static PeerVersion Parse(string? value)
+    internal static PeerVersion From(string? value)
     {
         if (value == null)
         {
