@@ -51,7 +51,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetIdentityProviders", "exa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetPassiveDelegationInfo", "examples\GetPassiveDelegationInfo\GetPassiveDelegationInfo.csproj", "{33A51DA9-756E-4EE4-BB82-95C645DD5CA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetPeerVersion", "examples\GetPeerVersion\GetPeerVersion.csproj", "{CFDE7154-B61F-4445-9C82-DC1317E4314D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetNodeInfo", "examples\GetNodeInfo\GetNodeInfo.csproj", "{CFDE7154-B61F-4445-9C82-DC1317E4314D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetPoolInfo", "examples\GetPoolInfo\GetPoolInfo.csproj", "{718D2EE5-F73A-451D-AF6B-D806FC6347BA}"
 EndProject

@@ -12,6 +12,7 @@ using BlockItemSummary = Concordium.Sdk.Types.BlockItemSummary;
 using ConsensusInfo = Concordium.Sdk.Types.ConsensusInfo;
 using FinalizationSummary = Concordium.Sdk.Types.FinalizationSummary;
 using IpInfo = Concordium.Sdk.Types.IpInfo;
+using NodeInfo = Concordium.Sdk.Types.NodeInfo;
 using TransactionHash = Concordium.Sdk.Types.TransactionHash;
 
 namespace Concordium.Sdk.Client;
@@ -242,15 +243,27 @@ public sealed class ConcordiumClient : IDisposable
     }
 
     /// <summary>
-    /// Retrieve version of the software on the node.
+    /// Retrieve information about the node.
+    /// The response contains meta information about the node
+    /// such as the version of the software, the local time of the node etc.
+    ///
+    /// The response also yields network related information such as the node
+    /// ID, bytes sent/received etc.
+    ///
+    /// Finally depending on the type of the node (regular node or
+    /// 'bootstrapper') the response also yields baking information if
+    /// the node is configured with baker credentials.
+    ///
+    /// Bootstrappers do no reveal any consensus information as they do not run
+    /// the consensus protocol.
     /// </summary>
     /// <param name="token">Cancellation token</param>
-    /// <returns>Version of the node in semantic format</returns>
+    /// <returns>Information about the node.</returns>
     /// <exception cref="RpcException">RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.</exception>
-    public async Task<PeerVersion> GetPeerVersionAsync(CancellationToken token = default)
+    public async Task<NodeInfo> GetNodeInfoAsync(CancellationToken token = default)
     {
         var nodeInfo = await this.Raw.GetNodeInfoAsync(token).ConfigureAwait(false);
-        return PeerVersion.Parse(nodeInfo.PeerVersion);
+        return NodeInfo.From(nodeInfo);
     }
 
     /// <summary>
