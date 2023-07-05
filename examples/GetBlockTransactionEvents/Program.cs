@@ -3,7 +3,6 @@ using CommandLine;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
 
-#pragma warning disable CS8618
 
 namespace GetBlockTransactionEvents;
 

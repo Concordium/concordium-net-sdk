@@ -1,7 +1,6 @@
 using CommandLine;
 using Concordium.Sdk.Client;
 
-#pragma warning disable CS8618
 
 namespace GetNodeInfo;
 

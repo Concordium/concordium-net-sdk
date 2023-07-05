@@ -17,6 +17,7 @@
     One can get the response be calling `.ResponseAsync` on `AsyncUnaryCall<T>` and   `ResponseStream` on `AsyncServerStreamingCall`.
   - Property `Timeout` moved into `Options` in class `RawClient`. `Timeout` now defaults to 'indefinitely' compared to 30 seconds in obsolete constructor of `ConcordiumClient`.
   - `AccountTransactionType` is renamed to `TransactionType`.
+  - Bugfix: Record `InvalidInitMethod` had parameter change from `ContractName` to `InitName`.
 
 
 ## 2.0.0

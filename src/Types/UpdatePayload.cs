@@ -11,6 +11,9 @@ public interface IUpdatePayload
 {
 }
 
+/// <summary>
+/// The type of an update.
+/// </summary>
 public enum UpdateType
 {
     ProtocolUpdate,

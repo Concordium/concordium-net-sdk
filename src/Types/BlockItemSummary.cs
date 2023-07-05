@@ -203,16 +203,15 @@ public sealed record BlockItemSummary(ulong Index, EnergyAmount EnergyCost, Tran
 
     /// <summary>
     /// Return the list of addresses affected by a account transaction. OBS! this doesn't include account creation
-    /// transaction. Use <see cref="AllAffectedAddressesIncludedCreated"/> if these should be included.
+    /// transaction. Use <see cref="AffectedAndCreatedAddresses"/> if these should be included.
     /// </summary>
     /// <returns>list of affected addresses in block</returns>
     /// <exception cref="MissingEnumException{ElementOneofCase}">Throws exception when returned type not known</exception>
     public IList<AccountAddress> AffectedAddresses()
     {
-        var affectedAddresses = new List<AccountAddress>();
         if (this.Details is not AccountTransactionDetails accountTransactionDetails)
         {
-            return affectedAddresses;
+            return new List<AccountAddress>();
         }
 
         return accountTransactionDetails.GetAffectedAccountAddresses().ToList();
@@ -223,7 +222,7 @@ public sealed record BlockItemSummary(ulong Index, EnergyAmount EnergyCost, Tran
     /// </summary>
     /// <returns>List of affected addresses included created accounts.</returns>
     /// <exception cref="MissingEnumException{ElementOneofCase}">Throws exception when returned type not known</exception>
-    public IList<AccountAddress> AllAffectedAddressesIncludedCreated() =>
+    public IList<AccountAddress> AffectedAndCreatedAddresses() =>
         this.Details switch
         {
             AccountCreationDetails accountCreationDetails =>
