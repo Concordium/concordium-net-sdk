@@ -175,7 +175,7 @@ public sealed class AccountAddressTests
         var accountAddress = AccountAddress.From(input);
 
         // Act
-        var aliasAddress = accountAddress.CreateAliasAddress(2,3,4);
+        var aliasAddress = accountAddress.CreateAliasAddress(2, 3, 4);
 
         // Assert
         var span = aliasAddress.ToBytes();

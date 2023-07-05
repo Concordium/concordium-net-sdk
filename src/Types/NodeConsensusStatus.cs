@@ -5,7 +5,7 @@ namespace Concordium.Sdk.Types;
 /// <summary>
 /// Details of the consensus protocol running on the node.
 /// </summary>
-public interface INodeConsensusStatus {}
+public interface INodeConsensusStatus { }
 
 internal static class NodeConsensusStatusFactory
 {
@@ -19,31 +19,26 @@ internal static class NodeConsensusStatusFactory
                 return new ConsensusPassive();
             case Grpc.V2.NodeInfo.Types.Node.ConsensusStatusOneofCase.Active:
                 var bakerId = BakerId.From(node.Active.BakerId);
-                switch (node.Active.StatusCase)
+                return node.Active.StatusCase switch
                 {
-                    case Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase.PassiveCommitteeInfo:
-                        return node.Active.PassiveCommitteeInfo switch
-                        {
-                            Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.PassiveCommitteeInfo.NotInCommittee =>
-                                new NotInCommittee(bakerId),
-                            Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.PassiveCommitteeInfo
-                                .AddedButNotActiveInCommittee => new AddedButNotActiveInCommittee(bakerId),
-                            Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.PassiveCommitteeInfo.AddedButWrongKeys =>
-                                new AddedButWrongKeys(bakerId),
-                            _ => throw new
-                                MissingEnumException<
-                                    Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.PassiveCommitteeInfo>(node.Active
-                                    .PassiveCommitteeInfo)
-                        };
-                    case Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase.ActiveBakerCommitteeInfo:
-                        return new Baker(bakerId);
-                    case Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase.ActiveFinalizerCommitteeInfo:
-                        return new Finalizer(bakerId);
-                    case Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase.None:
-                    default:
-                        throw new MissingEnumException<Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase>(
-                            node.Active.StatusCase);
-                }
+                    Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase.PassiveCommitteeInfo => node.Active.PassiveCommitteeInfo switch
+                    {
+                        Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.PassiveCommitteeInfo.NotInCommittee =>
+                            new NotInCommittee(bakerId),
+                        Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.PassiveCommitteeInfo
+                            .AddedButNotActiveInCommittee => new AddedButNotActiveInCommittee(bakerId),
+                        Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.PassiveCommitteeInfo.AddedButWrongKeys =>
+                            new AddedButWrongKeys(bakerId),
+                        _ => throw new
+                            MissingEnumException<
+                                Grpc.V2.NodeInfo.Types.BakerConsensusInfo.Types.PassiveCommitteeInfo>(node.Active
+                                .PassiveCommitteeInfo)
+                    },
+                    Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase.ActiveBakerCommitteeInfo => new Baker(bakerId),
+                    Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase.ActiveFinalizerCommitteeInfo => new Finalizer(bakerId),
+                    _ => throw new MissingEnumException<Grpc.V2.NodeInfo.Types.BakerConsensusInfo.StatusOneofCase>(
+                        node.Active.StatusCase),
+                };
             case Grpc.V2.NodeInfo.Types.Node.ConsensusStatusOneofCase.None:
             default:
                 throw new MissingEnumException<Grpc.V2.NodeInfo.Types.Node.ConsensusStatusOneofCase>(

@@ -7,7 +7,7 @@ namespace Concordium.Sdk.Types;
 /// <summary>
 /// Interface covering account delegation pending changes.
 /// </summary>
-public interface IAccountDelegationPendingChange{}
+public interface IAccountDelegationPendingChange { }
 
 internal static class AccountDelegationPendingChangeFactory
 {

@@ -13,17 +13,12 @@ internal static class NodeDetailsFactory
 {
     internal static INodeDetails From(Grpc.V2.NodeInfo nodeInfo)
     {
-        switch (nodeInfo.DetailsCase)
+        return nodeInfo.DetailsCase switch
         {
-            case Grpc.V2.NodeInfo.DetailsOneofCase.Bootstrapper:
-                return new Bootstrapper();
-            case Grpc.V2.NodeInfo.DetailsOneofCase.Node:
-                return Node.From(nodeInfo.Node);
-            case Grpc.V2.NodeInfo.DetailsOneofCase.None:
-            default:
-                throw new MissingEnumException<Grpc.V2.NodeInfo.DetailsOneofCase>(nodeInfo.DetailsCase);
-        }
-
+            Grpc.V2.NodeInfo.DetailsOneofCase.Bootstrapper => new Bootstrapper(),
+            Grpc.V2.NodeInfo.DetailsOneofCase.Node => Node.From(nodeInfo.Node),
+            _ => throw new MissingEnumException<Grpc.V2.NodeInfo.DetailsOneofCase>(nodeInfo.DetailsCase),
+        };
     }
 }
 
