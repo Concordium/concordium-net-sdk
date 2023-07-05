@@ -35,7 +35,7 @@ public sealed class MintRateTests
 
     /// <summary>
     /// This validates exponent above 255 (which would never be returned) would resolve in decimal of value zero
-    /// when calling <see cref="Sdk.Types.MintRate.From"/>
+    /// when calling <see cref="MintRate.From"/>
     /// </summary>
     [Fact]
     public void GivenExponentAbove255_WhenGettingDecimal_ThenDecimalZero()
