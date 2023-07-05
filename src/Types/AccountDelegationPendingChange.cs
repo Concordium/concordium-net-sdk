@@ -4,9 +4,14 @@ using Concordium.Sdk.Helpers;
 
 namespace Concordium.Sdk.Types;
 
-public abstract record AccountDelegationPendingChange
+/// <summary>
+/// Interface covering account delegation pending changes.
+/// </summary>
+public interface IAccountDelegationPendingChange{}
+
+internal static class AccountDelegationPendingChangeFactory
 {
-    public static AccountDelegationPendingChange? From(StakePendingChange? stakeDelegatorPendingChange)
+    internal static IAccountDelegationPendingChange? From(StakePendingChange? stakeDelegatorPendingChange)
     {
         if (stakeDelegatorPendingChange == null)
         {
@@ -16,11 +21,11 @@ public abstract record AccountDelegationPendingChange
         return stakeDelegatorPendingChange.ChangeCase switch
         {
             StakePendingChange.ChangeOneofCase.Reduce =>
-                new AccountDelegationReduceStakePending(
+                new ReduceStakePending(
                     CcdAmount.From(stakeDelegatorPendingChange.Reduce.NewStake),
                     stakeDelegatorPendingChange.Reduce.EffectiveTime.ToDateTimeOffset()),
             StakePendingChange.ChangeOneofCase.Remove =>
-                new AccountDelegationRemovePending(stakeDelegatorPendingChange.Remove.ToDateTimeOffset()),
+                new RemoveStakePending(stakeDelegatorPendingChange.Remove.ToDateTimeOffset()),
             StakePendingChange.ChangeOneofCase.None =>
                 throw new MissingEnumException<StakePendingChange.ChangeOneofCase>(stakeDelegatorPendingChange
                     .ChangeCase),
@@ -30,6 +35,15 @@ public abstract record AccountDelegationPendingChange
     }
 }
 
-public sealed record AccountDelegationRemovePending(DateTimeOffset EffectiveTime) : AccountDelegationPendingChange;
+/// <summary>
+/// The stake is being reduced. The new stake will take affect in the given time.
+/// </summary>
+/// <param name="EffectiveTime">Time when stake will be removed.</param>
+public sealed record RemoveStakePending(DateTimeOffset EffectiveTime) : IAccountDelegationPendingChange;
 
-public sealed record AccountDelegationReduceStakePending(CcdAmount NewStake, DateTimeOffset EffectiveTime) : AccountDelegationPendingChange;
+/// <summary>
+/// The baker will be removed at the end of the given time.
+/// </summary>
+/// <param name="NewStake">New stake after reduction.</param>
+/// <param name="EffectiveTime">Time when new stake will take effect.</param>
+public sealed record ReduceStakePending(CcdAmount NewStake, DateTimeOffset EffectiveTime) : IAccountDelegationPendingChange;

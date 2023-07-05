@@ -77,10 +77,10 @@ public static class Program
 
                 switch (accountDelegation.PendingChange)
                 {
-                    case AccountDelegationReduceStakePending reduce:
+                    case ReduceStakePending reduce:
                         Console.WriteLine($"At {reduce.EffectiveTime} new stake wil be {reduce.NewStake.GetFormattedCcd()}.");
                         break;
-                    case AccountDelegationRemovePending remove:
+                    case RemoveStakePending remove:
                         Console.WriteLine($"At {remove.EffectiveTime} stake will be removed.");
                         break;
                     default:

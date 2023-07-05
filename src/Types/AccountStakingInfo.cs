@@ -54,7 +54,7 @@ public sealed record AccountDelegation(
     bool RestakeEarnings,
     CcdAmount StakedAmount,
     DelegationTarget DelegationTarget,
-    AccountDelegationPendingChange? PendingChange) : IAccountStakingInfo
+    IAccountDelegationPendingChange? PendingChange) : IAccountStakingInfo
 {
     internal static AccountDelegation From(Grpc.V2.AccountStakingInfo.Types.Delegator stakeDelegator) =>
         new
@@ -62,6 +62,6 @@ public sealed record AccountDelegation(
             RestakeEarnings: stakeDelegator.RestakeEarnings,
             StakedAmount: CcdAmount.From(stakeDelegator.StakedAmount),
             DelegationTarget: DelegationTarget.From(stakeDelegator.Target),
-            PendingChange: AccountDelegationPendingChange.From(stakeDelegator.PendingChange)
+            PendingChange: AccountDelegationPendingChangeFactory.From(stakeDelegator.PendingChange)
         );
 }

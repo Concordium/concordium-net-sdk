@@ -164,4 +164,22 @@ public sealed class AccountAddressTests
         var aliasB = address.GetNthAlias(0);
         Assert.True(aliasA.IsAliasOf(aliasB));
     }
+
+    [Fact]
+    public void WhenCreatingAlias_ThenOnlyLastThreeSubstituted()
+    {
+        // Arrange
+        var input = Enumerable.Repeat((byte)1, 32).ToArray();
+        var expectedStart = Enumerable.Repeat((byte)1, 29).ToArray();
+        var expectedEnd = new byte[] { 2, 3, 4 };
+        var accountAddress = AccountAddress.From(input);
+
+        // Act
+        var aliasAddress = accountAddress.CreateAliasAddress(2,3,4);
+
+        // Assert
+        var span = aliasAddress.ToBytes();
+        span[..29].Should().BeEquivalentTo(expectedStart);
+        span[29..].Should().BeEquivalentTo(expectedEnd);
+    }
 }

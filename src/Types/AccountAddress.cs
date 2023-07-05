@@ -144,12 +144,30 @@ public sealed record AccountAddress : IEquatable<AccountAddress>, IAddress, IAcc
         return From(address);
     }
 
+
+    /// <summary>
+    /// Gets a alias of this account address with the given input bytes.
+    ///
+    /// The first 29 bytes of an address identifies a unique account with the
+    /// remaining 3 bytes representing aliases of that account
+    /// </summary>
+    /// <param name="byte1">Position 30</param>
+    /// <param name="byte2">Position 31</param>
+    /// <param name="byte3">Position 32</param>
+    /// <returns>Alias of the account address with the given bytes.</returns>
     public AccountAddress CreateAliasAddress(byte byte1, byte byte2, byte byte3)
     {
-        var aliasBytes = this._value.Take(29).Concat(new[] { byte1, byte2, byte3 }).ToArray();
-        return new AccountAddress(aliasBytes);
+        Span<byte> span = stackalloc byte[32];
+        this._value.AsSpan()[..29].CopyTo(span);
+        span[29] = byte1;
+        span[30] = byte2;
+        span[31] = byte3;
+        return new AccountAddress(span.ToArray());
     }
 
+    /// <summary>
+    /// Returns base address which is the first 29 bytes of an address.
+    /// </summary>
     public AccountAddress GetBaseAddress()
     {
         Span<byte> span = stackalloc byte[32];
@@ -157,6 +175,17 @@ public sealed record AccountAddress : IEquatable<AccountAddress>, IAddress, IAcc
         return From(span.ToArray());
     }
 
+    /// <summary>
+    /// Returns a read only span of underlying byte array.
+    /// </summary>
+    public ReadOnlySpan<byte> AsSpan() => this._value.AsSpan();
+
+    /// <summary>
+    /// Try parse account address from a base 58 encoded string.
+    /// </summary>
+    /// <param name="base58EncodedAddress">Base 58 encoded string of address</param>
+    /// <param name="address">If parsed returns Account Address.</param>
+    /// <returns>True if Account Address could be parsed.</returns>
     public static bool TryParse(string base58EncodedAddress, out AccountAddress? address)
     {
         address = null;
