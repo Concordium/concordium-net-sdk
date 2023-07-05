@@ -34,6 +34,8 @@ public sealed class RawClient : IDisposable
     private readonly GrpcChannel _grpcChannel;
 
     /// <summary>
+    /// DEPRECATED - Use overload which accepts <see cref="ConcordiumClientOptions"/>
+    ///
     /// Initializes a new instance of the <see cref="RawClient"/> class.
     ///
     /// Optionally use <paramref name="channelOptions"/> to specify connection settings
@@ -54,7 +56,7 @@ public sealed class RawClient : IDisposable
     /// </param>
     /// <param name="timeout">The maximum permitted duration of a call made by this client, in seconds. <c>null</c> allows the call to run indefinitely.</param>
     /// <param name="channelOptions">The options for the channel that is used to communicate with the node.</param>
-    [Obsolete($"Use {nameof(RawClient)} with overloads which accepts ${nameof(ConcordiumClientOptions)}")]
+    [Obsolete($"Use {nameof(RawClient)} with overloads which accepts {nameof(ConcordiumClientOptions)}")]
     internal RawClient(Uri endpoint, ushort port, ulong? timeout, GrpcChannelOptions? channelOptions)
     {
         var scheme = GetEndpointScheme(endpoint);

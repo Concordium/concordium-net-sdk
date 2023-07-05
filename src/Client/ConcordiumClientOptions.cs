@@ -11,7 +11,7 @@ public sealed class ConcordiumClientOptions
 
     /// <summary>
     /// Endpoint of a resource where the V2 API is served.
-    /// Defaults to <see cref="DefaultEndpoint"/>.
+    /// Defaults to <code>http://localhost:20000</code>.
     /// </summary>
     public Uri Endpoint { get; init; }
     /// <summary>

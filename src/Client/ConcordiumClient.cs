@@ -28,6 +28,8 @@ public sealed class ConcordiumClient : IDisposable
     public RawClient Raw { get; init; }
 
     /// <summary>
+    /// DEPRECATED - Use overload which accepts <see cref="ConcordiumClientOptions"/>
+    ///
     /// Initializes a new instance of the <see cref="ConcordiumClient"/> class.
     ///
     /// Optionally use <paramref name="rawChannelOptions"/> to specify connection settings
@@ -48,7 +50,7 @@ public sealed class ConcordiumClient : IDisposable
     /// </param>
     /// <param name="timeout">The maximum permitted duration of a call made by this client, in seconds. <c>null</c> allows the call to run indefinitely.</param>
     /// <param name="rawChannelOptions">The options for the channel that is used to communicate with the node.</param>
-    [Obsolete($"Use {nameof(ConcordiumClient)} with overloads which accepts ${nameof(ConcordiumClientOptions)}")]
+    [Obsolete($"Use {nameof(ConcordiumClient)} with overload which accepts {nameof(ConcordiumClientOptions)}")]
     public ConcordiumClient(Uri endpoint, ushort port, ulong? timeout = 30,
         GrpcChannelOptions? rawChannelOptions = null)
         => this.Raw = new(endpoint, port, timeout, rawChannelOptions);
