@@ -204,7 +204,10 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHash">A hash of the block</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>Account information at the given block.</returns>
-    /// <exception cref="RpcException">RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.</exception>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.NotFound"/> indicates either block or account was not found.
+    /// </exception>
     public async Task<QueryResponse<AccountInfo>> GetAccountInfoAsync(IAccountIdentifier accountIdentifier,
         IBlockHashInput blockHash, CancellationToken token = default)
     {
@@ -235,7 +238,10 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="input">A hash of block</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>Accounts at given block</returns>
-    /// <exception cref="RpcException">RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.</exception>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.NotFound"/> indicates block account was not found.
+    /// </exception>
     public Task<QueryResponse<IAsyncEnumerable<AccountAddress>>> GetAccountListAsync(IBlockHashInput input,
         CancellationToken token = default)
     {
@@ -277,7 +283,10 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHash">Block hash from where information will be fetched</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>The state of the baker currently registered on the account.</returns>
-    /// <exception cref="RpcException">RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.</exception>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.NotFound"/> indicates block was not found.
+    /// </exception>
     public async Task<QueryResponse<BakerPoolStatus>> GetPoolInfoAsync(BakerId bakerId, IBlockHashInput blockHash,
         CancellationToken token = default)
     {
@@ -300,7 +309,10 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHash">Block from where state of tokenomics are returned.</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>Tokenomics</returns>
-    /// <exception cref="RpcException">RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.</exception>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.NotFound"/> indicates block was not found.
+    /// </exception>
     public async Task<QueryResponse<RewardOverviewBase>> GetTokenomicsInfoAsync(IBlockHashInput blockHash,
         CancellationToken token = default)
     {
@@ -324,7 +336,10 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHash">Block hash from where passive delegation status will be returned.</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>State of the passive delegation pool</returns>
-    /// <exception cref="RpcException">RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.</exception>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.NotFound"/> indicates block was not found.
+    /// </exception>
     public async Task<QueryResponse<PassiveDelegationStatus>> GetPassiveDelegationInfoAsync(IBlockHashInput blockHash,
         CancellationToken token = default)
     {
@@ -376,7 +391,10 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHash">Block from where information will be returned.</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>Block information from requested block.</returns>
-    /// <exception cref="RpcException">RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.</exception>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.NotFound"/> indicates block was not found.
+    /// </exception>
     public async Task<QueryResponse<BlockInfo>> GetBlockInfoAsync(IBlockHashInput blockHash,
         CancellationToken token = default)
     {
@@ -401,7 +419,10 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHashInput"></param>
     /// <param name="token">Cancellation token</param>
     /// <returns>Special events at given block</returns>
-    /// <exception cref="RpcException">RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.</exception>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.NotFound"/> indicates block was not found.
+    /// </exception>
     public Task<QueryResponse<IAsyncEnumerable<ISpecialEvent>>> GetBlockSpecialEvents(
         IBlockHashInput blockHashInput, CancellationToken token = default)
     {
@@ -421,7 +442,10 @@ public sealed class ConcordiumClient : IDisposable
     /// </summary>
     /// <param name="blockHashInput">Block from where finalization summary will be given.</param>
     /// <param name="token">Cancellation token</param>
-    /// <exception cref="RpcException">RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.</exception>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.NotFound"/> indicates block was not found.
+    /// </exception>
     public async Task<QueryResponse<FinalizationSummary?>> GetBlockFinalizationSummaryAsync(IBlockHashInput blockHashInput,
         CancellationToken token = default)
     {
@@ -444,7 +468,10 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHashInput">Block from where transactions events will be returned.</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>Summary of a block item with transactional meta data.</returns>
-    /// <exception cref="RpcException">RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.</exception>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.NotFound"/> indicates block was not found.
+    /// </exception>
     public Task<QueryResponse<IAsyncEnumerable<BlockItemSummary>>> GetBlockTransactionEvents(
         IBlockHashInput blockHashInput, CancellationToken token = default)
     {
@@ -460,7 +487,10 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHash">Block hash from where identity providers state will be returned</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>Identity providers info</returns>
-    /// <exception cref="RpcException">RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.</exception>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.NotFound"/> indicates block was not found.
+    /// </exception>
     public Task<QueryResponse<IAsyncEnumerable<IpInfo>>> GetIdentityProvidersAsync(IBlockHashInput blockHash,
         CancellationToken token = default)
     {
@@ -475,7 +505,10 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHash">Block hash from where state of baker list will be returned.</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>List of baker ids.</returns>
-    /// <exception cref="RpcException">RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.</exception>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.NotFound"/> indicates block was not found.
+    /// </exception>
     public Task<QueryResponse<IAsyncEnumerable<BakerId>>> GetBakerListAsync(IBlockHashInput blockHash,
         CancellationToken token = default)
     {
@@ -490,7 +523,10 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHash">Block hash from where chain parameters will be given.</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>Chain parameters at given block.</returns>
-    /// <exception cref="RpcException">RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.</exception>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.NotFound"/> indicates block was not found.
+    /// </exception>
     public async Task<QueryResponse<IChainParameters>> GetBlockChainParametersAsync(IBlockHashInput blockHash,
         CancellationToken token = default)
     {
