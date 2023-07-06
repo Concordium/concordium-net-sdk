@@ -86,9 +86,18 @@ public sealed class RawClient : IDisposable
     /// <summary>
     /// Initializes a new instance of the <see cref="RawClient"/> class.
     /// </summary>
-    /// <param name="options">Options needed for initialization of client.</param>
+    /// <param name="options">
+    /// Options needed for initialization of client.
+    ///
+    /// Required properties are <see cref="ConcordiumClientOptions.Endpoint"/>
+    /// </param>
     internal RawClient(ConcordiumClientOptions options)
     {
+        if (options.Endpoint == null)
+        {
+            throw new ArgumentException("nameof(options.Endpoint) is required");
+        }
+
         var scheme = GetEndpointScheme(options.Endpoint);
 
         var channelOptions = SetSchemeIfNotSet(options.ChannelOptions, scheme);

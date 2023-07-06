@@ -7,6 +7,22 @@ namespace Concordium.Sdk.Tests.UnitTests.Client;
 
 public sealed class ConcordiumClientOptionsTests
 {
+    [Fact]
+    public void WhenUriIsNull_ThenParseAsNull()
+    {
+        // Arrange
+        var configuration = new ConfigurationBuilder()
+            .AddJsonFile("./Data/appsettingsTimeout.json")
+            .Build();
+
+        // Act
+        var options = configuration.GetSection("ConcordiumClientOptions")
+            .Get<Sdk.Client.ConcordiumClientOptions>();
+
+        // Assert
+        options.Endpoint.Should().BeNull();
+    }
+
 
     [Fact]
     public void GivenUri_WhenAddAppSettings_ThenParse()
@@ -22,6 +38,7 @@ public sealed class ConcordiumClientOptionsTests
 
         // Assert
         options.Endpoint.Should().NotBeNull();
+        options.Endpoint.Host.Should().Be("foobar.com");
     }
 
     [Fact]

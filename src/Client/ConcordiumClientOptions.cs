@@ -7,11 +7,8 @@ namespace Concordium.Sdk.Client;
 /// </summary>
 public sealed class ConcordiumClientOptions
 {
-    private const string DefaultEndpoint = "http://localhost:20000";
-
     /// <summary>
     /// Endpoint of a resource where the V2 API is served.
-    /// Defaults to <code>http://localhost:20000</code>.
     /// </summary>
     public Uri Endpoint { get; init; }
     /// <summary>
@@ -28,6 +25,4 @@ public sealed class ConcordiumClientOptions
     /// for the keepalive ping parameters.
     /// </summary>
     public GrpcChannelOptions? ChannelOptions { get; init; }
-
-    public ConcordiumClientOptions() => this.Endpoint = new Uri(DefaultEndpoint);
 }
