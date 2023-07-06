@@ -5,7 +5,7 @@
 - Obsolete
   - Made former constructors on `ConcordiumClient` and `RawClient` obsolete in favor of   new overload which takes `ConcordiumClientOptions`. Using this makes it easier to used  from configurations and extending with additional properties in the future.
 - Breaking changes
-  - Data structures have been aligned throughout the SDK which has resulted in some major   changes. Changes are:
+  - Data structures have been aligned throughout the SDK which has resulted in some major changes. Changes are:
     - Records are used when structures need immutability and equality by value.
     - Struct are used when data structures is below 16 bytes, and when they are not used  through any interfaces.
     - Sealed are added where inheritance isn't expected.
