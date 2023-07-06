@@ -25,6 +25,25 @@ public readonly record struct MintRate
     internal static MintRate From(Grpc.V2.MintRate mintRate) => new(mintRate.Exponent, mintRate.Mantissa);
 
     /// <summary>
+    /// Creates a new mint rate if exponent doesn't exceed 255.
+    /// </summary>
+    /// <param name="exponent">Exponent represented as a byte since max value is 255.</param>
+    /// <param name="mantissa">Mantissa</param>
+    /// <param name="mintRate">Parsed Mint Rate.</param>
+    /// <returns>True if exponent doesn't exceed 255.</returns>
+    public static bool TryParse(uint exponent, uint mantissa, out MintRate? mintRate)
+    {
+        if (exponent > 255)
+        {
+            mintRate = null;
+            return false;
+        }
+
+        mintRate = new MintRate(exponent, mantissa);
+        return true;
+    }
+
+    /// <summary>
     /// Get Exponent and Mantissa
     /// </summary>
     public (uint Exponent, uint Mantissa) GetValues() => (this._exponent, this._mantissa);
