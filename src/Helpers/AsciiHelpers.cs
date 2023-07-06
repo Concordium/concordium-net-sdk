@@ -14,33 +14,9 @@ internal static class AsciiHelpers
 
     internal static bool IsAsciiPunctuation(char c)
     {
-        for (var i = '!'; i <= '/'; i++)
+        if (c is (>= '!' and <= '/') or (>= ':' and <= '@') or (>= '[' and <= '`') or (>= '{' and <= '~'))
         {
-            if (c == i)
-            {
-                return true;
-            }
-        }
-        for (var i = ':'; i <= '@'; i++)
-        {
-            if (c == i)
-            {
-                return true;
-            }
-        }
-        for (var i = '['; i <= '`'; i++)
-        {
-            if (c == i)
-            {
-                return true;
-            }
-        }
-        for (var i = '{'; i <= '~'; i++)
-        {
-            if (c == i)
-            {
-                return true;
-            }
+            return true;
         }
 
         return false;
