@@ -3,7 +3,7 @@
   - Add optional cancellation token parameter to all client calls.
 
 - Obsolete
-  - Made former constructors on `ConcordiumClient` and `RawClient` obsolete in favor of   new overload which takes `ConcordiumClientOptions`. Using this makes it easier to used  from configurations and extending with additional properties in the future.
+  - Made former constructors on `ConcordiumClient` and `RawClient` obsolete in favor of new overload which takes `ConcordiumClientOptions`. Using this makes it easier to used from configurations and extending with additional properties in the future.
 - Breaking changes
   - Data structures have been aligned throughout the SDK which has resulted in some major changes. Changes are:
     - Records are used when structures need immutability and equality by value.
