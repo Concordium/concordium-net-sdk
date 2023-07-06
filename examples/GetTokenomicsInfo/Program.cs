@@ -54,7 +54,7 @@ public static class Program
                 break;
             case RewardOverviewV1 rewardOverviewV1:
                 Console.WriteLine("This is reward version 1 return type.");
-                Console.WriteLine($"Next payday mint rate: {rewardOverviewV1.NextPaydayMintRate.AsDecimal()}");
+                Console.WriteLine($"Next payday mint rate: {rewardOverviewV1.NextPaydayMintRate.GetValues()}");
                 break;
             default:
                 throw new ArgumentOutOfRangeException(new($"unknown type: {rewardOverview.GetType()}"));
