@@ -1,3 +1,5 @@
+using Concordium.Sdk.Helpers;
+
 namespace Concordium.Sdk.Types;
 
 /// <summary>
@@ -38,7 +40,7 @@ public sealed record ReceiveName
         {
             return false;
         }
-        if (!name.All(c => char.IsLetterOrDigit(c) || char.IsPunctuation(c)))
+        if (!name.All(c => AsciiHelpers.IsAsciiAlphaNumeric(c) || AsciiHelpers.IsAsciiPunctuation(c)))
         {
             return false;
         }

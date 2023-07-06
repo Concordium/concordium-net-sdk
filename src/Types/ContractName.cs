@@ -1,3 +1,5 @@
+using Concordium.Sdk.Helpers;
+
 namespace Concordium.Sdk.Types;
 
 /// <summary>
@@ -46,45 +48,11 @@ public sealed record ContractName
         {
             return false;
         }
-        if (!name.All(c => char.IsLetterOrDigit(c) || IsAsciiPunctuation(c)))
+        if (!name.All(c => AsciiHelpers.IsAsciiAlphaNumeric(c) || AsciiHelpers.IsAsciiPunctuation(c)))
         {
             return false;
         }
 
         return true;
-    }
-
-    private static bool IsAsciiPunctuation(char c)
-    {
-        for (var i = '!'; i <= '/'; i++)
-        {
-            if (c == i)
-            {
-                return true;
-            }
-        }
-        for (var i = ':'; i <= '@'; i++)
-        {
-            if (c == i)
-            {
-                return true;
-            }
-        }
-        for (var i = '['; i <= '`'; i++)
-        {
-            if (c == i)
-            {
-                return true;
-            }
-        }
-        for (var i = '{'; i <= '~'; i++)
-        {
-            if (c == i)
-            {
-                return true;
-            }
-        }
-
-        return false;
     }
 }
