@@ -9,9 +9,9 @@ namespace GetTokenomicsInfo;
 
 internal sealed class GetTokenomicsInfoOptions
 {
-    [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Required = true,
+    [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.",
         Default = "http://node.testnet.concordium.com:20000/")]
-    public Uri Uri { get; set; }
+    public string Endpoint { get; set; }
 
     [Option(
         'b',
@@ -37,7 +37,7 @@ public static class Program
     {
         var clientOptions = new ConcordiumClientOptions
         {
-            Endpoint = options.Uri
+            Endpoint = new Uri(options.Endpoint)
         };
         using var client = new ConcordiumClient(clientOptions);
 

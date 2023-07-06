@@ -13,12 +13,11 @@ internal sealed class GetBlockItemSummaryOptions
     [Option(HelpText = "Transaction hash to lookup", Required = true)]
     public string TransactionHash { get; set; }
 
-    [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Required = true,
-        Default = "http://node.testnet.concordium.com")]
+    [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Default = "http://node.testnet.concordium.com")]
     public string Endpoint { get; set; }
 
-    [Option(HelpText = "Port for the gRPC V2 API.", Required = true, Default = 20_000)]
-    public ushort Port { get; set; }
+    [Option(HelpText = "Port for the gRPC V2 API.", Default = 20000)]
+    public int Port { get; set; }
 }
 
 internal static class ExampleHelpers
