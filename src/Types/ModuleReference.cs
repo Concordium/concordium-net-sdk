@@ -14,5 +14,5 @@ public sealed record ModuleReference : Hash
     /// </summary>
     /// <param name="hexString">A hash represented as a length-64 hex encoded string.</param>
     /// <exception cref="ArgumentException">The supplied string is not a 64-character hex encoded string.</exception>
-    public ModuleReference(string hexString) : base(hexString) {}
+    public ModuleReference(string hexString) : base(hexString) { }
 }
