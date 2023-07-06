@@ -30,11 +30,7 @@ public static class Program
 
     private static async Task Run(GetBlockChainParametersOptions options)
     {
-        var clientOptions = new ConcordiumClientOptions
-        {
-            Endpoint = new Uri(options.Endpoint)
-        };
-        using var client = new ConcordiumClient(clientOptions);
+        using var client = new ConcordiumClient(new Uri(options.Endpoint), new ConcordiumClientOptions());
 
         var jsonSerializerOptions = new JsonSerializerOptions
         {

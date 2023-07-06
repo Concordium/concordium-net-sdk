@@ -25,12 +25,7 @@ public abstract class Tests : IDisposable
 
         var uri = this.GetString("uri");
 
-        var clientOptions = new ConcordiumClientOptions
-        {
-            Endpoint = new Uri(uri)
-        };
-
-        this.Client = new ConcordiumClient(clientOptions);
+        this.Client = new ConcordiumClient(new Uri(uri), new ConcordiumClientOptions());
     }
 
     protected string GetString(string name) => this.GetConfiguration(name).GetString()!;

@@ -26,10 +26,9 @@ internal class Program
         // Construct the client.
         var clientOptions = new ConcordiumClientOptions
         {
-            Endpoint = new Uri($"{options!.Endpoint}:{options.Port}"),
             Timeout = TimeSpan.FromSeconds(options.Timeout)
         };
-        using var client = new ConcordiumClient(clientOptions);
+        using var client = new ConcordiumClient(new Uri($"{options!.Endpoint}:{options.Port}"), clientOptions);
 
         // Encode a string as CBOR and use that as the data to register.
         var data = OnChainData.FromTextEncodeAsCBOR(options.Data);

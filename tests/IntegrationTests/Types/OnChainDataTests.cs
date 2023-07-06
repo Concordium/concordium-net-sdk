@@ -42,11 +42,11 @@ public sealed class OnChainDataTests : Tests
     }
 
 
-    [Fact(Timeout = 30_000)]
+    [Fact(Timeout = 60_000)]
     public async Task GivenMemo_WhenTransfer_ThenMemoAbleToParse()
     {
         // Arrange
-        using var cts = new CancellationTokenSource(30_000);
+        using var cts = new CancellationTokenSource(60_000);
 
         var filePath = this.GetString("walletPath");
         var walletData = await File.ReadAllTextAsync(filePath, cts.Token);

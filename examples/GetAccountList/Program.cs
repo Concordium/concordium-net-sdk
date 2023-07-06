@@ -37,11 +37,7 @@ public static class Program
     private static async Task Run(GetAccountListOptions options)
     {
         var block = BlockHash.From(options.BlockHash);
-        var clientOptions = new ConcordiumClientOptions
-        {
-            Endpoint = new Uri(options.Endpoint)
-        };
-        using var client = new ConcordiumClient(clientOptions);
+        using var client = new ConcordiumClient(new Uri(options.Endpoint), new ConcordiumClientOptions());
 
         var response = await client.GetAccountListAsync(new Given(block));
 

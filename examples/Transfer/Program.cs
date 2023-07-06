@@ -26,10 +26,9 @@ internal class Program
         // Construct the client.
         var clientOptions = new ConcordiumClientOptions
         {
-            Endpoint = new Uri($"{options!.Endpoint}:{options.Port}"),
             Timeout = TimeSpan.FromSeconds(options.Timeout)
         };
-        using var client = new ConcordiumClient(clientOptions);
+        using var client = new ConcordiumClient(new Uri($"{options!.Endpoint}:{options.Port}"), clientOptions);
 
         // Create the transfer transaction.
         var amount = CcdAmount.FromCcd(options.Amount);

@@ -75,7 +75,6 @@ public sealed class RawClient : IDisposable
 
         this.Options = new ConcordiumClientOptions
         {
-            Endpoint = endpoint,
             Timeout = timeout.HasValue ? TimeSpan.FromSeconds((double)timeout) : null,
             ChannelOptions = channelOptions
         };
@@ -86,23 +85,15 @@ public sealed class RawClient : IDisposable
     /// <summary>
     /// Initializes a new instance of the <see cref="RawClient"/> class.
     /// </summary>
-    /// <param name="options">
-    /// Options needed for initialization of client.
-    ///
-    /// Required properties are <see cref="ConcordiumClientOptions.Endpoint"/>
-    /// </param>
-    internal RawClient(ConcordiumClientOptions options)
+    /// <param name="endpoint">Endpoint required by the client.</param>
+    /// <param name="options">Options needed for initialization of client.</param>
+    internal RawClient(Uri endpoint, ConcordiumClientOptions options)
     {
-        if (options.Endpoint == null)
-        {
-            throw new ArgumentException("nameof(options.Endpoint) is required");
-        }
-
-        var scheme = GetEndpointScheme(options.Endpoint);
+        var scheme = GetEndpointScheme(endpoint);
 
         var channelOptions = SetSchemeIfNotSet(options.ChannelOptions, scheme);
 
-        var grpcChannel = GrpcChannel.ForAddress(options.Endpoint, channelOptions);
+        var grpcChannel = GrpcChannel.ForAddress(endpoint, channelOptions);
 
         this.Options = options;
         this.InternalClient = new Queries.QueriesClient(grpcChannel);

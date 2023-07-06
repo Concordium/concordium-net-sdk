@@ -39,11 +39,7 @@ public static class Program
         var block = BlockHash.From(options.BlockHash);
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
 
-        var clientOptions = new ConcordiumClientOptions
-        {
-            Endpoint = new Uri(options.Endpoint)
-        };
-        using var client = new ConcordiumClient(clientOptions);
+        using var client = new ConcordiumClient(new Uri(options.Endpoint), new ConcordiumClientOptions());
 
         var blockInput = new Given(block);
 

@@ -8,10 +8,6 @@ namespace Concordium.Sdk.Client;
 public sealed class ConcordiumClientOptions
 {
     /// <summary>
-    /// Endpoint of a resource where the V2 API is served.
-    /// </summary>
-    public Uri Endpoint { get; init; }
-    /// <summary>
     /// The maximum permitted duration of a call made by this client.
     /// <c>null</c> allows the call to run indefinitely.
     /// </summary>

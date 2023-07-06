@@ -47,11 +47,7 @@ public static class Program
         var accountAddress = AccountAddress.From(options.AccountAddress);
         var block = BlockHash.From(options.BlockHash);
 
-        var clientOptions = new ConcordiumClientOptions
-        {
-            Endpoint = new Uri(options.Endpoint)
-        };
-        using var client = new ConcordiumClient(clientOptions);
+        using var client = new ConcordiumClient(new Uri(options.Endpoint), new ConcordiumClientOptions());
 
         var response = await client.GetAccountInfoAsync(accountAddress, new Given(block));
         var accountInfo = response.Response;

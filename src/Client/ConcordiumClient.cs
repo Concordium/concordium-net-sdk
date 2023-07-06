@@ -58,9 +58,10 @@ public sealed class ConcordiumClient : IDisposable
     /// <summary>
     /// Initializes a new instance of the <see cref="ConcordiumClient"/> class.
     /// </summary>
+    /// <param name="endpoint">Endpoint required by the client.</param>
     /// <param name="options">Options needed for initialization of client.</param>
-    public ConcordiumClient(ConcordiumClientOptions options)
-        => this.Raw = new(options);
+    public ConcordiumClient(Uri endpoint, ConcordiumClientOptions options)
+        => this.Raw = new(endpoint, options);
 
     /// <summary>
     /// Send an account transaction to the node.

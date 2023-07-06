@@ -36,11 +36,7 @@ public static class Program
 
     private static async Task Run(GetPassiveDelegationInfoOptions options)
     {
-        var clientOptions = new ConcordiumClientOptions
-        {
-            Endpoint = new Uri(options.Endpoint)
-        };
-        using var client = new ConcordiumClient(clientOptions);
+        using var client = new ConcordiumClient(new Uri(options.Endpoint), new ConcordiumClientOptions());
 
         var block = BlockHash.From(options.BlockHash);
 
