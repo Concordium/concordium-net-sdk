@@ -23,7 +23,7 @@ internal static class RejectReasonFactory
                 AccountAddress.From(other.InvalidAccountReference.Value.ToByteArray())),
             Grpc.V2.RejectReason.ReasonOneofCase.InvalidInitMethod => new InvalidInitMethod(
                 new ModuleReference(other.InvalidInitMethod.ModuleRef.Value),
-                InitName.From(other.InvalidInitMethod.InitName)),
+                ContractName.From(other.InvalidInitMethod.InitName)),
             Grpc.V2.RejectReason.ReasonOneofCase.InvalidReceiveMethod => new InvalidReceiveMethod(
                 new ModuleReference(other.InvalidReceiveMethod.ModuleRef.Value),
                 new ReceiveName(other.InvalidReceiveMethod.ReceiveName.Value)),
@@ -147,7 +147,7 @@ public sealed record InvalidAccountReference(AccountAddress AccountAddress) : IR
 /// <summary>
 /// Reference to a non-existing contract init method.
 /// </summary>
-public sealed record InvalidInitMethod(ModuleReference ModuleReference, InitName InitName) : IRejectReason;
+public sealed record InvalidInitMethod(ModuleReference ModuleReference, ContractName ContractName) : IRejectReason;
 /// <summary>
 /// Reference to a non-existing contract receive method.
 /// </summary>

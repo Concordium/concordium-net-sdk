@@ -32,7 +32,7 @@ public sealed record ContractInitializedEvent(
         var moduleReference = new ModuleReference(initializedEvent.OriginRef.Value);
         var contractAddress = ContractAddress.From(initializedEvent.Address);
         var amount = CcdAmount.FromMicroCcd(initializedEvent.Amount.Value);
-        var initName = new ContractName(initializedEvent.InitName.Value);
+        var initName = ContractName.From(initializedEvent.InitName);
         var events = initializedEvent.Events
             .Select(e => new ContractEvent(e.Value.ToByteArray()))
             .ToList();

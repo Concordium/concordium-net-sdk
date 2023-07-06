@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Concordium.Sdk.Tests.UnitTests.Types;
 
-public class InitNameTests
+public class ContractNameTests
 {
     [Theory]
     [InlineData("init_contract", true)] // Valid name
@@ -18,7 +18,7 @@ public class InitNameTests
     public void WhenCallingTryParse_ValidatesAndParsesReceiveName(string name, bool expectedResult)
     {
         // Act
-        var result = InitName.TryParse(name, out var initName);
+        var result = ContractName.TryParse(name, out var initName);
 
         // Assert
         result.Should().Be(expectedResult);
