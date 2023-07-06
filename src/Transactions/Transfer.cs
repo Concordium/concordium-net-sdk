@@ -14,7 +14,7 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
     /// <summary>
     /// The account transaction type to be used in the serialized payload.
     /// </summary>
-    private const byte TransactionType = (byte)AccountTransactionType.SimpleTransfer;
+    private const byte TransactionType = (byte)Types.TransactionType.Transfer;
 
     /// <summary>
     /// Copies the "transfer" account transaction in the binary format expected by the node to a byte array.
@@ -24,7 +24,7 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
     private static byte[] Serialize(CcdAmount amount, AccountAddress receiver)
     {
         using var memoryStream = new MemoryStream((int)(
-            sizeof(AccountTransactionType) +
+            sizeof(TransactionType) +
             AccountAddress.BytesLength +
             CcdAmount.BytesLength));
         memoryStream.WriteByte(TransactionType);

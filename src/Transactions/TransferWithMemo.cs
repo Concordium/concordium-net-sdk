@@ -16,7 +16,7 @@ public sealed record TransferWithMemo(CcdAmount Amount, AccountAddress Receiver,
     /// <summary>
     /// The account transaction type to be used in the serialized payload.
     /// </summary>
-    private const byte TransactionType = (byte)AccountTransactionType.SimpleTransferWithMemo;
+    private const byte TransactionType = (byte)Types.TransactionType.TransferWithMemo;
 
     /// <summary>
     /// Copies the "transfer with memo" account transaction in the binary format expected by the node to a byte array.
@@ -27,7 +27,7 @@ public sealed record TransferWithMemo(CcdAmount Amount, AccountAddress Receiver,
     private static byte[] Serialize(CcdAmount amount, AccountAddress receiver, OnChainData memo)
     {
         using var memoryStream = new MemoryStream((int)(
-            sizeof(AccountTransactionType) +
+            sizeof(TransactionType) +
             AccountAddress.BytesLength +
             OnChainData.MaxLength +
             CcdAmount.BytesLength));

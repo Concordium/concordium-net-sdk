@@ -9,7 +9,7 @@ namespace Concordium.Sdk.Types;
 ///
 /// The address of an account is a 32-byte value which uniquely identifies the account.
 /// </summary>
-public sealed record AccountAddress : IEquatable<AccountAddress>, IAddress
+public sealed record AccountAddress : IEquatable<AccountAddress>, IAddress, IAccountIdentifier
 {
     public const uint BytesLength = 32;
 
@@ -77,6 +77,15 @@ public sealed record AccountAddress : IEquatable<AccountAddress>, IAddress
         return new AccountAddress(addressAsBytes.ToArray());
     }
 
+    internal static AccountAddress From(Grpc.V2.AccountAddress accountAddress)
+    {
+        if (accountAddress.Value.Length != BytesLength)
+        {
+            throw new ArgumentException($"The account address bytes length must be {BytesLength}.");
+        }
+        return new AccountAddress(accountAddress.Value.ToByteArray());
+    }
+
     /// <summary>
     /// Checks if passed string is a base58 encoded address.
     /// </summary>
@@ -135,6 +144,62 @@ public sealed record AccountAddress : IEquatable<AccountAddress>, IAddress
         return From(address);
     }
 
+
+    /// <summary>
+    /// Gets a alias of this account address with the given input bytes.
+    ///
+    /// The first 29 bytes of an address identifies a unique account with the
+    /// remaining 3 bytes representing aliases of that account
+    /// </summary>
+    /// <param name="byte1">Position 30</param>
+    /// <param name="byte2">Position 31</param>
+    /// <param name="byte3">Position 32</param>
+    /// <returns>Alias of the account address with the given bytes.</returns>
+    public AccountAddress CreateAliasAddress(byte byte1, byte byte2, byte byte3)
+    {
+        Span<byte> span = stackalloc byte[32];
+        this._value.AsSpan()[..29].CopyTo(span);
+        span[29] = byte1;
+        span[30] = byte2;
+        span[31] = byte3;
+        return new AccountAddress(span.ToArray());
+    }
+
+    /// <summary>
+    /// Returns base address which is the first 29 bytes of an address.
+    /// </summary>
+    public AccountAddress GetBaseAddress()
+    {
+        Span<byte> span = stackalloc byte[32];
+        this._value.AsSpan()[..29].CopyTo(span);
+        return From(span.ToArray());
+    }
+
+    /// <summary>
+    /// Returns a read only span of underlying byte array.
+    /// </summary>
+    public ReadOnlySpan<byte> AsSpan() => this._value.AsSpan();
+
+    /// <summary>
+    /// Try parse account address from a base 58 encoded string.
+    /// </summary>
+    /// <param name="base58EncodedAddress">Base 58 encoded string of address</param>
+    /// <param name="address">If parsed returns Account Address.</param>
+    /// <returns>True if Account Address could be parsed.</returns>
+    public static bool TryParse(string base58EncodedAddress, out AccountAddress? address)
+    {
+        address = null;
+        try
+        {
+            address = From(base58EncodedAddress);
+            return true;
+        }
+        catch (ArgumentException)
+        {
+            return false;
+        }
+    }
+
     /// <summary>
     /// Converts the account address to its corresponding protocol buffer message instance.
     ///
@@ -144,7 +209,7 @@ public sealed record AccountAddress : IEquatable<AccountAddress>, IAddress
         new() { Value = Google.Protobuf.ByteString.CopyFrom(this._value) };
 
     /// <summary>
-    /// Converts the block hash to a corresponding <see cref="Grpc.V2.AccountIdentifierInput"/>
+    /// Converts the account address to a corresponding <see cref="Grpc.V2.AccountIdentifierInput"/>
     ///
     /// This can be used as the input for class methods of <see cref="RawClient"/>.
     /// </summary>

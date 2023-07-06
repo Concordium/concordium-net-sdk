@@ -1,12 +1,13 @@
 using CommandLine;
+using Concordium.Sdk.Client;
 
-namespace Concordium.Sdk.Examples.Common;
+namespace Common;
 
 /// <summary>
 /// Command line options for the runnable SDK examples.
 ///
 /// This class can be used to specify options for the
-/// <see cref="Client.ConcordiumClient"/>
+/// <see cref="ConcordiumClient"/>
 /// at the command-line.
 /// </summary>
 public class ExampleOptions
@@ -14,7 +15,7 @@ public class ExampleOptions
     /// <summary>
     /// URL representing the endpoint where the gRPC V2 API is served.
     /// </summary>
-    public const string DefaultEndpoint = "https://localhost/";
+    public const string DefaultEndpoint = "https://localhost";
 
     /// <summary>
     /// Default port at the endpoint where the gRPC V2 API is served.

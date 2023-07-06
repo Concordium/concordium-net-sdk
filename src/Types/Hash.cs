@@ -59,6 +59,11 @@ public abstract record Hash : IEquatable<Hash>
     public byte[] ToBytes() => this._value.ToArray();
 
     /// <summary>
+    /// Returns read only span of underlying data.
+    /// </summary>
+    public ReadOnlySpan<byte> AsSpan() => this._value.AsSpan();
+
+    /// <summary>
     /// Get the hash as a length-64 hex encoded string.
     /// </summary>
     public sealed override string ToString() => Convert.ToHexString(this._value).ToLowerInvariant();

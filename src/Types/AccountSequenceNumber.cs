@@ -1,3 +1,4 @@
+using Concordium.Grpc.V2;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Helpers;
 
@@ -41,6 +42,8 @@ public readonly record struct AccountSequenceNumber
         return new AccountSequenceNumber(sequenceNumber);
     }
 
+    internal static AccountSequenceNumber From(SequenceNumber sequenceNumber) => From(sequenceNumber.Value);
+
     /// <summary>
     /// Returns a new sequence number whose value is increased by 1 relative to the current one.
     /// </summary>
@@ -66,5 +69,5 @@ public readonly record struct AccountSequenceNumber
     ///
     /// This can be used as the input for class methods of <see cref="RawClient"/>.
     /// </summary>
-    public Grpc.V2.SequenceNumber ToProto() => new() { Value = Value };
+    public SequenceNumber ToProto() => new() { Value = Value };
 }

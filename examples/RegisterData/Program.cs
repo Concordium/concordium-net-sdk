@@ -1,5 +1,5 @@
+using Common;
 using Concordium.Sdk.Client;
-using Concordium.Sdk.Examples.Common;
 using Concordium.Sdk.Types;
 using Concordium.Sdk.Wallets;
 
@@ -24,11 +24,11 @@ internal class Program
         var account = WalletAccount.FromWalletKeyExportFormat(walletData);
 
         // Construct the client.
-        using var client = new ConcordiumClient(
-            new Uri(options.Endpoint),
-            options.Port,
-            options.Timeout
-        );
+        var clientOptions = new ConcordiumClientOptions
+        {
+            Timeout = TimeSpan.FromSeconds(options.Timeout)
+        };
+        using var client = new ConcordiumClient(new Uri($"{options!.Endpoint}:{options.Port}"), clientOptions);
 
         // Encode a string as CBOR and use that as the data to register.
         var data = OnChainData.FromTextEncodeAsCBOR(options.Data);

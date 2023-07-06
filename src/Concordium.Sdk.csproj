@@ -43,6 +43,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="System.Linq.Async" Version="6.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -67,6 +68,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="Concordium.Sdk.Tests.UnitTests"/>
+    <InternalsVisibleTo Include="Concordium.Sdk.Tests.UnitTests" />
   </ItemGroup>
 </Project>

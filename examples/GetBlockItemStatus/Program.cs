@@ -2,23 +2,22 @@ using CommandLine;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
 
-// ReSharper disable ClassNeverInstantiated.Global
-// ReSharper disable ParameterTypeCanBeEnumerable.Global
+// We disable these warnings since CommandLine needs to set properties in options
+// but we don't want to give default values.
 #pragma warning disable CS8618
 
-namespace Concordium.Sdk.Examples.Transactions.GetBlockItemStatus;
+namespace GetBlockItemStatus;
 
 internal sealed class GetBlockItemSummaryOptions
 {
     [Option(HelpText = "Transaction hash to lookup", Required = true)]
     public string TransactionHash { get; set; }
 
-    [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Required = true,
-        Default = "http://node.testnet.concordium.com/")]
+    [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Default = "http://node.testnet.concordium.com")]
     public string Endpoint { get; set; }
 
-    [Option(HelpText = "Port for the gRPC V2 API.", Required = true, Default = 20_000)]
-    public ushort Port { get; set; }
+    [Option(HelpText = "Port for the gRPC V2 API.", Default = 20000)]
+    public int Port { get; set; }
 }
 
 internal static class ExampleHelpers
@@ -41,16 +40,15 @@ public static class Program
     /// An example showing how one can query transaction status from a node.
     /// </summary>
     /// <param name="args">GetBlockItemSummaryOptions
-    /// Example: --endpoint http://node.testnet.concordium.com/ --transactionhash 143ca4183d0bb204000ad08e0fd5792985c808861b97f3b81cb9016ad39d09d2 --port 20000
+    /// Example: --endpoint http://node.testnet.concordium.com --transactionhash 143ca4183d0bb204000ad08e0fd5792985c808861b97f3b81cb9016ad39d09d2 --port 20000
     /// </param>
     public static async Task Main(string[] args)
     {
         var options = ExampleHelpers.Parse<GetBlockItemSummaryOptions>(args);
-        var endpoint = new Uri(options!.Endpoint);
-        var transactionHash = TransactionHash.From(options.TransactionHash);
-        var port = options.Port;
 
-        using var client = new ConcordiumClient(endpoint, port);
+        using var client = new ConcordiumClient(new Uri(options.Endpoint), new ConcordiumClientOptions());
+
+        var transactionHash = TransactionHash.From(options.TransactionHash);
 
         Console.WriteLine("Query node...");
         var transactionStatus = await client.GetBlockItemStatusAsync(transactionHash);

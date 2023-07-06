@@ -62,4 +62,6 @@ public sealed record BlockHash : Hash
     /// This can be used as the input for class methods of <see cref="RawClient"/>.
     /// </summary>
     public BlockHashInput ToBlockHashInput() => new() { Given = this.ToProto() };
+
+    internal static BlockHash From(Grpc.V2.BlockHash blockHash) => From(blockHash.Value);
 }

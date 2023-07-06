@@ -9,6 +9,14 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public readonly record struct CcdAmount
 {
+    /// <summary>
+    /// Zero amount.
+    /// </summary>
+    public static CcdAmount Zero { get; } = FromCcd(0);
+
+    /// <summary>
+    /// Byte length of <see cref="CcdAmount"/> integral numeric type.
+    /// </summary>
     public const uint BytesLength = 8;
 
     /// <summary>
@@ -62,6 +70,8 @@ public readonly record struct CcdAmount
         }
     }
 
+    internal static CcdAmount From(Grpc.V2.Amount amount) => new(amount.Value);
+
     /// <summary>
     /// Add CCD amounts.
     /// </summary>
@@ -104,4 +114,11 @@ public readonly record struct CcdAmount
     /// Copies the CCD amuunt represented in big-endian format to  byte array.
     /// </summary>
     public byte[] ToBytes() => Serialization.ToBytes(this.Value);
+
+    public static bool operator <(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) < 0;
+    public static bool operator >(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) > 0;
+
+    public static bool operator <=(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) <= 0;
+
+    public static bool operator >=(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) >= 0;
 }

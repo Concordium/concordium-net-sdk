@@ -23,7 +23,7 @@ internal static class RejectReasonFactory
                 AccountAddress.From(other.InvalidAccountReference.Value.ToByteArray())),
             Grpc.V2.RejectReason.ReasonOneofCase.InvalidInitMethod => new InvalidInitMethod(
                 new ModuleReference(other.InvalidInitMethod.ModuleRef.Value),
-                new ContractName(other.InvalidInitMethod.InitName.Value)),
+                ContractName.From(other.InvalidInitMethod.InitName)),
             Grpc.V2.RejectReason.ReasonOneofCase.InvalidReceiveMethod => new InvalidReceiveMethod(
                 new ModuleReference(other.InvalidReceiveMethod.ModuleRef.Value),
                 new ReceiveName(other.InvalidReceiveMethod.ReceiveName.Value)),
@@ -275,15 +275,29 @@ public sealed record ScheduledSelfTransfer(AccountAddress AccountAddress) : IRej
 /// incorrect.
 /// </summary>
 public sealed record InvalidCredentials : IRejectReason;
+
 /// <summary>
 /// Some of the credential IDs already exist or are duplicated in the
 /// transaction.
 /// </summary>
-public sealed record DuplicateCredIds(IList<byte[]> CredIds) : IRejectReason;
+public sealed record DuplicateCredIds(IList<byte[]> CredIds) : IRejectReason
+{
+    /// <summary>
+    /// Return keys in hex representations.
+    /// </summary>
+    public IEnumerable<string> ToHexStrings() => this.CredIds.Select(Convert.ToHexString);
+}
+
 /// <summary>
 /// A credential id that was to be removed is not part of the account.
 /// </summary>
-public sealed record NonExistentCredIds(IList<byte[]> CredIds) : IRejectReason;
+public sealed record NonExistentCredIds(IList<byte[]> CredIds) : IRejectReason
+{
+    /// <summary>
+    /// Return keys in hex representations.
+    /// </summary>
+    public IEnumerable<string> ToHexStrings() => this.CredIds.Select(Convert.ToHexString);
+}
 /// <summary>
 /// Attempt to remove the first credential
 /// </summary>

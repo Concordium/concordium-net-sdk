@@ -30,7 +30,7 @@ public sealed record TransactionStatusFinalized : ITransactionStatus
         var blockItemSummaryInBlock = blockItemStatus.Finalized.Outcome;
         var itemSummary = blockItemSummaryInBlock.Outcome;
 
-        var blockItemSummary = new BlockItemSummary(itemSummary);
+        var blockItemSummary = BlockItemSummary.From(itemSummary);
         this.State = (BlockHash.From(blockItemSummaryInBlock.BlockHash.Value), blockItemSummary);
     }
 }
@@ -54,7 +54,7 @@ public sealed record TransactionStatusCommitted : ITransactionStatus
         foreach (var blockItemSummaryInBlock in blockItemStatus.Committed.Outcomes)
         {
             var itemSummary = blockItemSummaryInBlock.Outcome;
-            var blockItemSummary = new BlockItemSummary(itemSummary);
+            var blockItemSummary = BlockItemSummary.From(itemSummary);
             var hash = BlockHash.From(blockItemSummaryInBlock.BlockHash.Value);
             var state = (hash, blockItemSummary);
 

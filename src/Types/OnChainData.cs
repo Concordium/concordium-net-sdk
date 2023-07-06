@@ -69,7 +69,7 @@ public sealed record OnChainData : IEquatable<OnChainData>
     /// <summary>
     /// Creates an instance from byte array.
     /// </summary>
-    /// <param name="data">The data to be registered on-chain represented as a byte array.</param>
+    /// <param name="dataAsBytes">The data to be registered on-chain represented as a byte array.</param>
     /// <exception cref="ArgumentException">The length of the supplied data exceeds <see cref="MaxLength"/>.</exception>
     public static OnChainData From(byte[] dataAsBytes)
     {
@@ -82,6 +82,12 @@ public sealed record OnChainData : IEquatable<OnChainData>
 
         return new OnChainData(dataAsBytes.ToArray());
     }
+
+    /// <summary>
+    /// Returns span of underlying data.
+    /// </summary>
+    /// <returns></returns>
+    public ReadOnlySpan<byte> AsSpan() => this._value.AsSpan();
 
     /// <summary>
     /// Try to decode the data to be registered on-chain as a single CBOR encoded string.
@@ -129,4 +135,14 @@ public sealed record OnChainData : IEquatable<OnChainData>
     public bool Equals(OnChainData? other) => other is not null && this._value.SequenceEqual(other._value);
 
     public override int GetHashCode() => Helpers.HashCode.GetHashCodeByteArray(this._value);
+
+    internal static OnChainData? From(Grpc.V2.Memo? memo)
+    {
+        if (memo == null || memo.Value.Length == 0)
+        {
+            return null;
+        }
+
+        return From(memo.Value.ToByteArray());
+    }
 }
