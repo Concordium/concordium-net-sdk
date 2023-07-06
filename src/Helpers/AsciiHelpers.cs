@@ -4,7 +4,7 @@ internal static class AsciiHelpers
 {
     internal static bool IsAsciiAlphaNumeric(char c)
     {
-        if (c is >= 'A' and <= 'Z' || c is >= 'a' and <= 'z' || c is >= '0' and <= '9')
+        if (c is >= 'A' and <= 'Z' or >= 'a' and <= 'z' or >= '0' and <= '9')
         {
             return true;
         }
