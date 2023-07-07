@@ -18,6 +18,7 @@
   - Property `Timeout` moved into `Options` in class `RawClient`. `Timeout` now defaults to 'indefinitely' compared to 30 seconds in obsolete constructor of `ConcordiumClient`.
   - `AccountTransactionType` is renamed to `TransactionType`.
   - Bugfix: Record `InvalidInitMethod` had parameter change from `ContractName` to `InitName`.
+  - Bugfix: Renamed `MissingDelegationAddParameter` to `MissingDelegationAddParameters`.
 
 
 ## 2.0.0

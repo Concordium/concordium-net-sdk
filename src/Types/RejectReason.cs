@@ -93,7 +93,7 @@ internal static class RejectReasonFactory
             Grpc.V2.RejectReason.ReasonOneofCase.AlreadyADelegator => new AlreadyADelegator(),
             Grpc.V2.RejectReason.ReasonOneofCase.InsufficientBalanceForDelegationStake =>
                 new InsufficientBalanceForDelegationStake(),
-            Grpc.V2.RejectReason.ReasonOneofCase.MissingDelegationAddParameters => new MissingDelegationAddParameter(),
+            Grpc.V2.RejectReason.ReasonOneofCase.MissingDelegationAddParameters => new MissingDelegationAddParameters(),
             Grpc.V2.RejectReason.ReasonOneofCase.InsufficientDelegationStake => new InsufficientDelegationStake(),
             Grpc.V2.RejectReason.ReasonOneofCase.DelegatorInCooldown => new DelegatorInCooldown(),
             Grpc.V2.RejectReason.ReasonOneofCase.NotADelegator => new NotADelegator(
@@ -351,7 +351,7 @@ public sealed record InsufficientBalanceForDelegationStake : IRejectReason;
 /// A configure delegation transaction is missing one or more arguments in
 /// order to add a delegator.
 /// </summary>
-public sealed record MissingDelegationAddParameter : IRejectReason;
+public sealed record MissingDelegationAddParameters : IRejectReason;
 /// <summary>
 /// Delegation stake when adding a delegator was 0.
 /// </summary>
