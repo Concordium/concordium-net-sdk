@@ -7,17 +7,19 @@ using Xunit.Abstractions;
 namespace Concordium.Sdk.Tests.IntegrationTests.Types;
 
 [Trait("Category", "IntegrationTests")]
+[Collection("Using Wallet")]
 public sealed class RejectReasonTests : Tests
 {
+    private const int Timeout = 120_000;
     public RejectReasonTests(ITestOutputHelper output) : base(output)
     {
     }
 
-    [Fact(Timeout = 60_000)]
+    [Fact(Timeout = Timeout)]
     public async Task WhenTransferWithInsufficientAmount_ThenReject()
     {
         // Arrange
-        using var cts = new CancellationTokenSource(60_000);
+        using var cts = new CancellationTokenSource(Timeout);
 
         var filePath = this.GetString("walletPath");
         var walletData = await File.ReadAllTextAsync(filePath, cts.Token);

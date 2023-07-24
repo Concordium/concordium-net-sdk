@@ -9,17 +9,19 @@ using AccountTransactionDetails = Concordium.Sdk.Types.AccountTransactionDetails
 namespace Concordium.Sdk.Tests.IntegrationTests.Types;
 
 [Trait("Category", "IntegrationTests")]
+[Collection("Using Wallet")]
 public sealed class OnChainDataTests : Tests
 {
+    private const int Timeout = 120_000;
     public OnChainDataTests(ITestOutputHelper output) : base(output)
     {
     }
 
-    [Fact(Timeout = 30_000)]
+    [Fact(Timeout = Timeout)]
     public async Task WhenTransferWithoutMemo_ThenNull()
     {
         // Arrange
-        using var cts = new CancellationTokenSource(30_000);
+        using var cts = new CancellationTokenSource(Timeout);
 
         var filePath = this.GetString("walletPath");
         var walletData = await File.ReadAllTextAsync(filePath, cts.Token);
@@ -41,11 +43,11 @@ public sealed class OnChainDataTests : Tests
     }
 
 
-    [Fact(Timeout = 60_000)]
+    [Fact(Timeout = Timeout)]
     public async Task GivenMemo_WhenTransfer_ThenMemoAbleToParse()
     {
         // Arrange
-        using var cts = new CancellationTokenSource(60_000);
+        using var cts = new CancellationTokenSource(Timeout);
 
         var filePath = this.GetString("walletPath");
         var walletData = await File.ReadAllTextAsync(filePath, cts.Token);
