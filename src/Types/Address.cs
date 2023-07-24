@@ -1,5 +1,4 @@
 using Concordium.Sdk.Exceptions;
-using Google.Protobuf;
 
 namespace Concordium.Sdk.Types;
 
@@ -40,7 +39,7 @@ internal static class AddressFactory
     internal static IAddress From(Grpc.V2.Address address) =>
         address.TypeCase switch
         {
-            Grpc.V2.Address.TypeOneofCase.Account => AccountAddress.From(address.Account.ToByteArray()),
+            Grpc.V2.Address.TypeOneofCase.Account => AccountAddress.From(address.Account),
             Grpc.V2.Address.TypeOneofCase.Contract => ContractAddress.From(address.Contract),
             Grpc.V2.Address.TypeOneofCase.None => throw new MissingEnumException<Grpc.V2.Address.TypeOneofCase>(
                 address.TypeCase),

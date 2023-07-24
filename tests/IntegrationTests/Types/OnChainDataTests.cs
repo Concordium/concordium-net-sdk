@@ -5,22 +5,23 @@ using FluentAssertions;
 using Xunit.Abstractions;
 using AccountAddress = Concordium.Sdk.Types.AccountAddress;
 using AccountTransactionDetails = Concordium.Sdk.Types.AccountTransactionDetails;
-using AccountTransactionPayload = Concordium.Sdk.Transactions.AccountTransactionPayload;
-using TransactionHash = Concordium.Sdk.Types.TransactionHash;
 
 namespace Concordium.Sdk.Tests.IntegrationTests.Types;
 
 [Trait("Category", "IntegrationTests")]
+[Collection("Using Wallet")]
 public sealed class OnChainDataTests : Tests
 {
+    private const int Timeout = 120_000;
     public OnChainDataTests(ITestOutputHelper output) : base(output)
     {
     }
 
-    [Fact(Timeout = 30_000)]
+    [Fact(Timeout = Timeout)]
     public async Task WhenTransferWithoutMemo_ThenNull()
     {
-        using var cts = new CancellationTokenSource(30_000);
+        // Arrange
+        using var cts = new CancellationTokenSource(Timeout);
 
         var filePath = this.GetString("walletPath");
         var walletData = await File.ReadAllTextAsync(filePath, cts.Token);
@@ -42,11 +43,11 @@ public sealed class OnChainDataTests : Tests
     }
 
 
-    [Fact(Timeout = 60_000)]
+    [Fact(Timeout = Timeout)]
     public async Task GivenMemo_WhenTransfer_ThenMemoAbleToParse()
     {
         // Arrange
-        using var cts = new CancellationTokenSource(60_000);
+        using var cts = new CancellationTokenSource(Timeout);
 
         var filePath = this.GetString("walletPath");
         var walletData = await File.ReadAllTextAsync(filePath, cts.Token);
@@ -79,38 +80,7 @@ public sealed class OnChainDataTests : Tests
         finalized.State.Summary.Details.Should().BeOfType<AccountTransactionDetails>();
         var details = finalized.State.Summary.Details as AccountTransactionDetails;
         details!.Effects.Should().BeOfType<AccountTransfer>();
-        var transfer = details!.Effects as AccountTransfer;
+        var transfer = details.Effects as AccountTransfer;
         return transfer!;
-    }
-
-    private async Task<TransactionStatusFinalized> AwaitFinalization(TransactionHash txHash, CancellationToken token)
-    {
-        while (true)
-        {
-            if (!token.IsCancellationRequested)
-            {
-                token.ThrowIfCancellationRequested();
-            }
-
-            var transactionStatus = await this.Client.GetBlockItemStatusAsync(txHash, token);
-
-            switch (transactionStatus)
-            {
-                case TransactionStatusFinalized transactionStatusFinalized:
-                    return transactionStatusFinalized;
-                default:
-                    await Task.Delay(TimeSpan.FromSeconds(1), token);
-                    break;
-            }
-        }
-    }
-
-    private async Task<TransactionHash> Transfer(ITransactionSigner account, AccountAddress sender, AccountTransactionPayload transactionPayload, CancellationToken token)
-    {
-        var (accountSequenceNumber, _) = await this.Client.GetNextAccountSequenceNumberAsync(sender, token);
-        var preparedAccountTransaction = transactionPayload.Prepare(sender, accountSequenceNumber, Expiry.AtMinutesFromNow(30));
-        var signedTransfer = preparedAccountTransaction.Sign(account);
-        var txHash = await this.Client.SendAccountTransactionAsync(signedTransfer, token);
-        return txHash;
     }
 }
