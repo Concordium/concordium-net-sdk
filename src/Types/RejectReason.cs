@@ -1,5 +1,4 @@
 using Concordium.Sdk.Exceptions;
-using Google.Protobuf;
 
 namespace Concordium.Sdk.Types;
 
@@ -20,7 +19,7 @@ internal static class RejectReasonFactory
             Grpc.V2.RejectReason.ReasonOneofCase.ModuleHashAlreadyExists => new ModuleHashAlreadyExists(
                 new ModuleReference(other.ModuleHashAlreadyExists.Value)),
             Grpc.V2.RejectReason.ReasonOneofCase.InvalidAccountReference => new InvalidAccountReference(
-                AccountAddress.From(other.InvalidAccountReference.Value.ToByteArray())),
+                AccountAddress.From(other.InvalidAccountReference)),
             Grpc.V2.RejectReason.ReasonOneofCase.InvalidInitMethod => new InvalidInitMethod(
                 new ModuleReference(other.InvalidInitMethod.ModuleRef.Value),
                 ContractName.From(other.InvalidInitMethod.InitName)),
@@ -46,7 +45,7 @@ internal static class RejectReasonFactory
             Grpc.V2.RejectReason.ReasonOneofCase.AlreadyABaker => new AlreadyABaker(
                 new BakerId(new AccountIndex(other.AlreadyABaker.Value))),
             Grpc.V2.RejectReason.ReasonOneofCase.NotABaker => new NotABaker(
-                AccountAddress.From(other.NotABaker.ToByteArray())),
+                AccountAddress.From(other.NotABaker)),
             Grpc.V2.RejectReason.ReasonOneofCase.InsufficientBalanceForBakerStake =>
                 new InsufficientBalanceForBakerStake(),
             Grpc.V2.RejectReason.ReasonOneofCase.StakeUnderMinimumThresholdForBaking =>
@@ -63,20 +62,20 @@ internal static class RejectReasonFactory
                 new InvalidEncryptedAmountTransferProof(),
             Grpc.V2.RejectReason.ReasonOneofCase.InvalidTransferToPublicProof => new InvalidTransferToPublicProof(),
             Grpc.V2.RejectReason.ReasonOneofCase.EncryptedAmountSelfTransfer => new EncryptedAmountSelfTransfer(
-                AccountAddress.From(other.EncryptedAmountSelfTransfer.ToByteArray())),
+                AccountAddress.From(other.EncryptedAmountSelfTransfer)),
             Grpc.V2.RejectReason.ReasonOneofCase.InvalidIndexOnEncryptedTransfer =>
                 new InvalidIndexOnEncryptedTransfer(),
             Grpc.V2.RejectReason.ReasonOneofCase.ZeroScheduledAmount => new ZeroScheduledAmount(),
             Grpc.V2.RejectReason.ReasonOneofCase.NonIncreasingSchedule => new NonIncreasingSchedule(),
             Grpc.V2.RejectReason.ReasonOneofCase.FirstScheduledReleaseExpired => new FirstScheduledReleaseExpired(),
             Grpc.V2.RejectReason.ReasonOneofCase.ScheduledSelfTransfer => new ScheduledSelfTransfer(
-                AccountAddress.From(other.ScheduledSelfTransfer.ToByteArray())),
+                AccountAddress.From(other.ScheduledSelfTransfer)),
             Grpc.V2.RejectReason.ReasonOneofCase.InvalidCredentials => new InvalidCredentials(),
             Grpc.V2.RejectReason.ReasonOneofCase.DuplicateCredIds => new DuplicateCredIds(other.DuplicateCredIds.Ids
-                .Select(id => id.ToByteArray())
+                .Select(id => id.Value.ToByteArray())
                 .ToList()),
             Grpc.V2.RejectReason.ReasonOneofCase.NonExistentCredIds => new NonExistentCredIds(other.NonExistentCredIds
-                .Ids.Select(id => id.ToByteArray())
+                .Ids.Select(id => id.Value.ToByteArray())
                 .ToList()),
             Grpc.V2.RejectReason.ReasonOneofCase.RemoveFirstCredential => new RemoveFirstCredential(),
             Grpc.V2.RejectReason.ReasonOneofCase.CredentialHolderDidNotSign => new CredentialHolderDidNotSign(),
@@ -97,7 +96,7 @@ internal static class RejectReasonFactory
             Grpc.V2.RejectReason.ReasonOneofCase.InsufficientDelegationStake => new InsufficientDelegationStake(),
             Grpc.V2.RejectReason.ReasonOneofCase.DelegatorInCooldown => new DelegatorInCooldown(),
             Grpc.V2.RejectReason.ReasonOneofCase.NotADelegator => new NotADelegator(
-                AccountAddress.From(other.NotADelegator.Value.ToByteArray())),
+                AccountAddress.From(other.NotADelegator)),
             Grpc.V2.RejectReason.ReasonOneofCase.DelegationTargetNotABaker => new DelegationTargetNotABaker(
                 new BakerId(new AccountIndex(other.DelegationTargetNotABaker.Value))),
             Grpc.V2.RejectReason.ReasonOneofCase.StakeOverMaximumThresholdForPool =>

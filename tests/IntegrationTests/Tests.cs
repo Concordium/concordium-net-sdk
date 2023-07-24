@@ -2,6 +2,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Text.Json;
 using Concordium.Sdk.Client;
+using Concordium.Sdk.Transactions;
+using Concordium.Sdk.Types;
 using Xunit.Abstractions;
 
 namespace Concordium.Sdk.Tests.IntegrationTests;
@@ -26,6 +28,37 @@ public abstract class Tests : IDisposable
         var uri = this.GetString("uri");
 
         this.Client = new ConcordiumClient(new Uri(uri), new ConcordiumClientOptions());
+    }
+
+    protected async Task<TransactionStatusFinalized> AwaitFinalization(TransactionHash txHash, CancellationToken token)
+    {
+        while (true)
+        {
+            if (!token.IsCancellationRequested)
+            {
+                token.ThrowIfCancellationRequested();
+            }
+
+            var transactionStatus = await this.Client.GetBlockItemStatusAsync(txHash, token);
+
+            switch (transactionStatus)
+            {
+                case TransactionStatusFinalized transactionStatusFinalized:
+                    return transactionStatusFinalized;
+                default:
+                    await Task.Delay(TimeSpan.FromSeconds(1), token);
+                    break;
+            }
+        }
+    }
+
+    protected async Task<TransactionHash> Transfer(ITransactionSigner account, AccountAddress sender, AccountTransactionPayload transactionPayload, CancellationToken token)
+    {
+        var (accountSequenceNumber, _) = await this.Client.GetNextAccountSequenceNumberAsync(sender, token);
+        var preparedAccountTransaction = transactionPayload.Prepare(sender, accountSequenceNumber, Expiry.AtMinutesFromNow(30));
+        var signedTransfer = preparedAccountTransaction.Sign(account);
+        var txHash = await this.Client.SendAccountTransactionAsync(signedTransfer, token);
+        return txHash;
     }
 
     protected string GetString(string name) => this.GetConfiguration(name).GetString()!;
