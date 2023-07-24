@@ -7,7 +7,7 @@ using Xunit.Abstractions;
 namespace Concordium.Sdk.Tests.IntegrationTests.Types;
 
 [Trait("Category", "IntegrationTests")]
-public class RejectReasonTests : Tests
+public sealed class RejectReasonTests : Tests
 {
     public RejectReasonTests(ITestOutputHelper output) : base(output)
     {
