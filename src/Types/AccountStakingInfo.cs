@@ -30,16 +30,16 @@ internal static class AccountStakingInfo
 /// The account is a baker.
 /// </summary>
 public sealed record AccountBaker(
-    BakerId BakerId,
-    AccountBakerPendingChange? PendingChange,
     bool RestakeEarnings,
     CcdAmount StakedAmount,
+    BakerInfo BakerInfo,
+    AccountBakerPendingChange? PendingChange,
     BakerPoolInfo? BakerPoolInfo
     ) : IAccountStakingInfo
 {
     internal static AccountBaker From(Grpc.V2.AccountStakingInfo.Types.Baker stakeBaker) =>
         new(
-            BakerId: BakerId.From(stakeBaker.BakerInfo.BakerId),
+            BakerInfo: BakerInfo.From(stakeBaker.BakerInfo),
             PendingChange: AccountBakerPendingChange.From(stakeBaker.PendingChange),
             RestakeEarnings: stakeBaker.RestakeEarnings,
             StakedAmount: CcdAmount.From(stakeBaker.StakedAmount),
