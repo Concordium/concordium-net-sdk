@@ -12,5 +12,5 @@ public sealed record Sha256Hash : Hash
     /// <summary>
     /// Return hex representation of data.
     /// </summary>
-    public string ToHex() => Convert.ToHexString(this.AsSpan()).ToLowerInvariant();
+    public string ToHexString() => Convert.ToHexString(this.AsSpan()).ToLowerInvariant();
 }

@@ -15,7 +15,7 @@ public sealed record CredentialRegistrationId(byte[] Id) : IAccountIdentifier
     /// Return hex string representation.
     /// </summary>
     /// <returns></returns>
-    public string ToHex() => Convert.ToHexString(this.Id).ToLowerInvariant();
+    public string ToHexString() => Convert.ToHexString(this.Id).ToLowerInvariant();
 
     internal static CredentialRegistrationId From(Grpc.V2.CredentialRegistrationId id) => new(id.Value.ToByteArray());
 

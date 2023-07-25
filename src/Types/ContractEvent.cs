@@ -8,5 +8,5 @@ public sealed record ContractEvent(byte[] Bytes)
     /// <summary>
     /// Return hex representation.
     /// </summary>
-    public string ToHex() => Convert.ToHexString(this.Bytes).ToLowerInvariant();
+    public string ToHexString() => Convert.ToHexString(this.Bytes).ToLowerInvariant();
 }

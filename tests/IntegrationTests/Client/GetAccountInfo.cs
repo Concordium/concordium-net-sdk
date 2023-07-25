@@ -8,7 +8,7 @@ namespace Concordium.Sdk.Tests.IntegrationTests.Client;
 public class GetAccountInfo : Tests
 {
     public GetAccountInfo(ITestOutputHelper output) : base(output)
-    {}
+    { }
 
     [Fact]
     public async Task GivenBakerZero_AtGenesisBlock_WhenGetAccountInfo_ThenReturnBakerZeroId()

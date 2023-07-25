@@ -8,5 +8,5 @@ public sealed record Parameter(byte[] Param)
     /// <summary>
     /// Convert parameters to hex string.
     /// </summary>
-    public string ToHex() => Convert.ToHexString(this.Param).ToLowerInvariant();
+    public string ToHexString() => Convert.ToHexString(this.Param).ToLowerInvariant();
 }
