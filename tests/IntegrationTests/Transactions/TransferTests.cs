@@ -1,23 +1,24 @@
-using Concordium.Sdk.Client;
+using Concordium.Sdk.Tests.IntegrationTests.Utils.LocalNode;
 using Concordium.Sdk.Types;
 using Concordium.Sdk.Wallets;
 using FluentAssertions;
 
 namespace Concordium.Sdk.Tests.IntegrationTests.Transactions;
 
-public sealed class TransferTests : IDisposable
+[Collection(LocalNodeCollectionFixture.LocalNodes)]
+public sealed class TransferTests
 {
-    private readonly ConcordiumClient _client;
+    private readonly LocalNodeFixture _fixture;
     private readonly WalletAccount _account2;
     private readonly WalletAccount _account1;
 
     private const int Timeout = 120_000;
 
-    public TransferTests()
+    public TransferTests(LocalNodeFixture fixture)
     {
-        this._account1 = CreateWalletAccount(1);
-        this._account2 = CreateWalletAccount(2);
-        this._client = new ConcordiumClient(new Uri("http://localhost:20100"), new ConcordiumClientOptions());
+        this._fixture = fixture;
+        this._account1 = LocalNodeFixture.CreateWalletAccount(1);
+        this._account2 = LocalNodeFixture.CreateWalletAccount(2);
     }
 
     [Fact(Timeout = Timeout)]
@@ -26,38 +27,29 @@ public sealed class TransferTests : IDisposable
         // Arrange
         using var cts = new CancellationTokenSource(Timeout);
 
-        var accountInfoBefore_1 = await this._client.GetAccountInfoAsync(this._account1.AccountAddress, new LastFinal(), cts.Token);
-        var accountInfoBefore_2 = await this._client.GetAccountInfoAsync(this._account2.AccountAddress, new LastFinal(), cts.Token);
+        var accountInfoBefore_1 = await this._fixture.Client.GetAccountInfoAsync(this._account1.AccountAddress, new LastFinal(), cts.Token);
+        var accountInfoBefore_2 = await this._fixture.Client.GetAccountInfoAsync(this._account2.AccountAddress, new LastFinal(), cts.Token);
         var amount = CcdAmount.FromCcd(42);
 
         var transfer = new Sdk.Transactions.Transfer(amount, this._account2.AccountAddress);
-        var (sequenceNumber, _) = await this._client.GetNextAccountSequenceNumberAsync(this._account1.AccountAddress, cts.Token);
+        var (sequenceNumber, _) = await this._fixture.Client.GetNextAccountSequenceNumberAsync(this._account1.AccountAddress, cts.Token);
         var preparedTransaction =
             transfer.Prepare(this._account1.AccountAddress, sequenceNumber, Expiry.AtMinutesFromNow(30));
         var signedTransfer = preparedTransaction.Sign(this._account1);
-        var txHash = await this._client.SendAccountTransactionAsync(signedTransfer, cts.Token);
+        var txHash = await this._fixture.Client.SendAccountTransactionAsync(signedTransfer, cts.Token);
 
         // Act
-        var finalization = await TransactionTestHelpers.AwaitFinalization(txHash, this._client, cts.Token);
+        var finalization = await TransactionTestHelpers.AwaitFinalization(txHash, this._fixture.Client, cts.Token);
 
         // Assert
         var accountTransfer = TransactionTestHelpers.ValidateAccountTransactionOutcome<AccountTransfer>(finalization);
         accountTransfer.Amount.Should().Be(amount);
 
-        var accountInfoAfter_1 = await this._client.GetAccountInfoAsync(this._account1.AccountAddress, new LastFinal(), cts.Token);
-        var accountInfoAfter_2 = await this._client.GetAccountInfoAsync(this._account2.AccountAddress, new LastFinal(), cts.Token);
+        var accountInfoAfter_1 = await this._fixture.Client.GetAccountInfoAsync(this._account1.AccountAddress, new LastFinal(), cts.Token);
+        var accountInfoAfter_2 = await this._fixture.Client.GetAccountInfoAsync(this._account2.AccountAddress, new LastFinal(), cts.Token);
         var details = finalization.State.Summary.Details as AccountTransactionDetails;
 
         (accountInfoBefore_1.Response.AccountAmount - amount - details!.Cost).Should().Be(accountInfoAfter_1.Response.AccountAmount);
         (accountInfoBefore_2.Response.AccountAmount + amount).Should().Be(accountInfoAfter_2.Response.AccountAmount);
     }
-
-    private static WalletAccount CreateWalletAccount(int id)
-    {
-        var path = File.ReadAllText($"./local/accounts/stagenet-{id+1}.json");
-        var account = WalletAccount.FromWalletKeyExportFormat(path);
-        return account!;
-    }
-
-    public void Dispose() => this._client.Dispose();
 }

@@ -1,0 +1,23 @@
+version: '3'
+services:
+    local-node:
+        platform: linux/amd64
+        container_name: local-test-node
+        image: concordium/mainnet-node:6.0.3-rc0
+        pull_policy: if_not_present
+        environment:
+        - CONCORDIUM_NODE_BAKER_CREDENTIALS_FILE=/mnt/baker-0-credentials.json
+        - CONCORDIUM_NODE_DATA_DIR=/mnt/data
+        - CONCORDIUM_NODE_CONFIG_DIR=/mnt/data
+        - CONCORDIUM_NODE_LISTEN_PORT=8169
+        - CONCORDIUM_NODE_GRPC2_LISTEN_PORT=20100
+        - CONCORDIUM_NODE_GRPC2_LISTEN_ADDRESS=0.0.0.0
+        # Do not bootstrap via DNS
+        - CONCORDIUM_NODE_CONNECTION_NO_BOOTSTRAP_DNS=true
+        entrypoint: ["/concordium-node"]
+        ports:
+        - "8142:8169"
+        - "20042:20100"
+        volumes:
+        - ./genesis.dat:/mnt/data/genesis.dat
+        - ./bakers/baker-0-credentials.json:/mnt/baker-0-credentials.json

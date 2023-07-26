@@ -1,0 +1,12 @@
+{
+  "arInfo": {
+    "arIdentity": 3,
+    "arDescription": {
+      "name": "Generated AR 3",
+      "url": "",
+      "description": ""
+    },
+    "arPublicKey": "b14cbfe44a02c6b1f78711176d5f437295367aa4f2a8c2551ee10d25a03adc69d61a332a058971919dad7312e1fc94c598811ea20abc32be9ea8211be452fb32e7cc147b8bc964de8b313d5661af4da164f977b7fed35835c227332928f8af1d"
+  },
+  "arSecretKey": "b14cbfe44a02c6b1f78711176d5f437295367aa4f2a8c2551ee10d25a03adc69d61a332a058971919dad7312e1fc94c56ad97af496c8c18d7f0facca9a11098a30a53d63f2d4bd27e3825a8cdbc670d4"
+}

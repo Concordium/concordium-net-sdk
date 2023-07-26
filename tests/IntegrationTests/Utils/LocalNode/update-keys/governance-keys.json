@@ -1,0 +1,300 @@
+{
+  "rootKeys": {
+    "keys": [
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "371c173b7a024b6f44dde79562e7a94cda2c4fa8b7ab0cfeefac565fedbb0e50"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "518653840fe05d8bbb32ecc4028dfd305d6f490d24a1bc777447f510c91ec179"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "91cc1d8d311b0e55c590bf76e0c981a837faf029c4ab610b630c987ce2b481be"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "fa4c70d30e22222fd7967d1d7a8d637661df5671287dfaf91076430ee3a44df7"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "a21a21895ef0614a13aa0698cecda59377f5fd031ed15d00ba04517bb0df2ca0"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "9a23b3d948f771089ffac5400ee83f129a8714bbc3c01357a347e9273815086b"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "f6fe98c2ba2d3ba328fd60cf7fd7b2e434559c3e9fe8b7e2f32679062d4c1bfa"
+      }
+    ],
+    "threshold": 5
+  },
+  "level1Keys": {
+    "keys": [
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "eb9f375fca8ca96c730ade4f6c9b2725de29c28a0e0c5461185f533da855a951"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "3248f182c1656e9a057eb244b94576b5d7ebc5f9cfaac1c6b5fe0a07fe772e3c"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "2d18bd0f0f083e385a844530f92e7186b5141a3c85c417db81a78e0822ebc430"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "7e73341d06d4a90d5c9fd42afc7e41d12444c75623acbcbee0a6745efc3959be"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "50db996185527e4ff07c7046070ebaa1b30fd7977a9b800b0578b93b2f232e71"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "c3bc3d4ac0ed9770550526621b59590a167be3ba284927886a53a28efb927c96"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "4090cc852e1387ebb7b37908281fe5fa067e5ab9cc96d1fa57d49563fd0c0e99"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "7866ae2d6842a4b62a71614bbac5485418d6d479bb9a826d3c68b5e84242fdf3"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "af969103ec412d60bde3c7048db6437e0f7834d704c0065d427aa09f1372fcb1"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "41d9b1f969526490bcfdb06833a302dcbcaeda41bf154698e266cc212a12b217"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "59800638d08af4b94bce020d8094846abcd95c6029f4535aa736f01a04906365"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "f4c3a2ccc69c95d04a88ea36e17b5fa4c4890c22b9eb2456042f51df55f4defc"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "c2f80ae538bbf4ee2eabc3c33f48c5cbb356c0019c434597d11852ddcf36c804"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "e0a5ace29f108774663114bfc86f9c7acebb97ea14a4318f271fe5a7c6ac3e10"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "0edef781c1a59c0add01ee553060c38ac371e99d403e0b093584cbc1d95651d3"
+      }
+    ],
+    "threshold": 7
+  },
+  "level2Keys": {
+    "keys": [
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "8e935ffda34e9df04d28b463b4f96339d515b64d68a5712f19151e396a1985c2"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "50869fae530bbe3cf5a56b46e0e7e0b9c32ee82eeb1b5a2500339c749fdcac85"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "f56e063cb4db009cf37bfa106ca481a2b7bd0c50cd28167939b168148a5486bb"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "3dc88d14effc7849fc8ffacb49dcd49bc98d842aaf9af8c342b79d445a854f06"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "b19d1590b29f35d6675c74fa10aeb5dfd94a75215de57b7d9e7132d85ef6d8b1"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "74e72d3a4c35404b43242bbb3068dcb95571cdc974e2f959a6f79eeb4993bf4f"
+      },
+      {
+        "schemeId": "Ed25519",
+        "verifyKey": "c1e1d0aa1602720726ac4826d16e5f2add370dccbadbbbada65dc31840ccc9af"
+      }
+    ],
+    "emergency": {
+      "authorizedKeys": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "threshold": 7
+    },
+    "protocol": {
+      "authorizedKeys": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "threshold": 7
+    },
+    "electionDifficulty": {
+      "authorizedKeys": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "threshold": 7
+    },
+    "euroPerEnergy": {
+      "authorizedKeys": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "threshold": 7
+    },
+    "microGTUPerEuro": {
+      "authorizedKeys": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "threshold": 7
+    },
+    "foundationAccount": {
+      "authorizedKeys": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "threshold": 7
+    },
+    "mintDistribution": {
+      "authorizedKeys": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "threshold": 7
+    },
+    "transactionFeeDistribution": {
+      "authorizedKeys": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "threshold": 7
+    },
+    "paramGASRewards": {
+      "authorizedKeys": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "threshold": 7
+    },
+    "poolParameters": {
+      "authorizedKeys": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "threshold": 7
+    },
+    "addAnonymityRevoker": {
+      "authorizedKeys": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "threshold": 7
+    },
+    "addIdentityProvider": {
+      "authorizedKeys": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "threshold": 7
+    },
+    "cooldownParameters": {
+      "authorizedKeys": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "threshold": 7
+    },
+    "timeParameters": {
+      "authorizedKeys": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "threshold": 7
+    }
+  }
+}
