@@ -5,6 +5,7 @@ using FluentAssertions;
 
 namespace Concordium.Sdk.Tests.IntegrationTests.Transactions;
 
+[Trait("Category", "IntegrationLocalNodeTests")]
 [Collection(LocalNodeCollectionFixture.LocalNodes)]
 public sealed class TransferTests
 {

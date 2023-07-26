@@ -23,6 +23,6 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --filter FullyQualifiedName!~IntegrationTests --no-build --verbosity normal
+      run: dotnet test --filter Category!=IntegrationTests&Category!=IntegrationLocalNodeTests --no-build --verbosity normal
     - name: Check formatting
       run: dotnet format --verify-no-changes

@@ -56,7 +56,7 @@ public sealed class LocalNodeFixture : IDisposable
 
     public static WalletAccount CreateWalletAccount(int id)
     {
-        var path = File.ReadAllText($"./Utils/LocalNode/accounts/stagenet-{id+1}.json");
+        var path = File.ReadAllText($"./Utils/LocalNode/accounts/stagenet-{id + 1}.json");
         var account = WalletAccount.FromWalletKeyExportFormat(path);
         return account!;
     }
