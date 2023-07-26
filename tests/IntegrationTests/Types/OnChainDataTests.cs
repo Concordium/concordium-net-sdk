@@ -1,10 +1,11 @@
+using System.Text;
 using Concordium.Sdk.Transactions;
 using Concordium.Sdk.Types;
 using Concordium.Sdk.Wallets;
 using FluentAssertions;
 using Xunit.Abstractions;
+using static Concordium.Sdk.Tests.IntegrationTests.Transactions.TransactionTestHelpers;
 using AccountAddress = Concordium.Sdk.Types.AccountAddress;
-using AccountTransactionDetails = Concordium.Sdk.Types.AccountTransactionDetails;
 
 namespace Concordium.Sdk.Tests.IntegrationTests.Types;
 
@@ -12,7 +13,6 @@ namespace Concordium.Sdk.Tests.IntegrationTests.Types;
 [Collection("Using Wallet")]
 public sealed class OnChainDataTests : Tests
 {
-    private const int Timeout = 120_000;
     public OnChainDataTests(ITestOutputHelper output) : base(output)
     {
     }
@@ -36,12 +36,11 @@ public sealed class OnChainDataTests : Tests
         // Act
         var txHash = await this.Transfer(account, sender, transferPayload, cts.Token);
         var finalized = await this.AwaitFinalization(txHash, cts.Token);
-        var transfer = ValidateArrangementOutcome(finalized);
+        var transfer = ValidateAccountTransactionOutcome<AccountTransfer>(finalized);
 
         // Assert
         transfer.Memo.Should().BeNull();
     }
-
 
     [Fact(Timeout = Timeout)]
     public async Task GivenMemo_WhenTransfer_ThenMemoAbleToParse()
@@ -64,7 +63,7 @@ public sealed class OnChainDataTests : Tests
 
         var txHash = await this.Transfer(account, sender, transferPayload, cts.Token);
         var finalized = await this.AwaitFinalization(txHash, cts.Token);
-        var transfer = ValidateArrangementOutcome(finalized);
+        var transfer = ValidateAccountTransactionOutcome<AccountTransfer>(finalized);
         transfer!.Memo.Should().NotBeNull();
 
         // Act
@@ -75,12 +74,33 @@ public sealed class OnChainDataTests : Tests
         cborDecodeToString.Should().Be(expected);
     }
 
-    private static AccountTransfer ValidateArrangementOutcome(TransactionStatusFinalized finalized)
+    [Fact(Timeout = Timeout)]
+    public async Task GivenUtf8Memo_WhenTransfer_ThenMemoPresent()
     {
-        finalized.State.Summary.Details.Should().BeOfType<AccountTransactionDetails>();
-        var details = finalized.State.Summary.Details as AccountTransactionDetails;
-        details!.Effects.Should().BeOfType<AccountTransfer>();
-        var transfer = details.Effects as AccountTransfer;
-        return transfer!;
+        // Arrange
+        using var cts = new CancellationTokenSource(Timeout);
+        var filePath = this.GetString("walletPath");
+        var walletData = await File.ReadAllTextAsync(filePath, cts.Token);
+        var account = WalletAccount.FromWalletKeyExportFormat(walletData);
+        var sender = account.AccountAddress;
+
+        var to = this.GetString("transferTo");
+        var receiver = AccountAddress.From(to);
+
+        const string expected = "foobar";
+
+        var memo = OnChainData.From(Encoding.UTF8.GetBytes(expected));
+        var transferPayload = new TransferWithMemo(CcdAmount.FromCcd(1), receiver, memo);
+
+        var txHash = await this.Transfer(account, sender, transferPayload, cts.Token);
+        var finalized = await this.AwaitFinalization(txHash, cts.Token);
+        var transfer = ValidateAccountTransactionOutcome<AccountTransfer>(finalized);
+        transfer!.Memo.Should().NotBeNull();
+
+        // Act
+        var utf8 = Encoding.UTF8.GetString(transfer.Memo!.AsSpan());
+
+        // Assert
+        utf8.Should().Be(expected);
     }
 }

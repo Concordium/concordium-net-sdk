@@ -10,7 +10,6 @@ namespace Concordium.Sdk.Tests.IntegrationTests.Types;
 [Collection("Using Wallet")]
 public sealed class RejectReasonTests : Tests
 {
-    private const int Timeout = 120_000;
     public RejectReasonTests(ITestOutputHelper output) : base(output)
     {
     }
