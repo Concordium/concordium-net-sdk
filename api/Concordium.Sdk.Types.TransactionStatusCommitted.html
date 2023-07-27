@@ -95,7 +95,7 @@ can in principle happen.</p>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class TransactionStatusCommitted : ITransactionStatus</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed record TransactionStatusCommitted : ITransactionStatus, IEquatable&lt;TransactionStatusCommitted&gt;</code></pre>
   </div>
 
 
@@ -113,6 +113,7 @@ can in principle happen.</p>
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="Concordium.Sdk.Types.ITransactionStatus.html">ITransactionStatus</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Sdk.Types.TransactionStatusCommitted.html">TransactionStatusCommitted</a>&gt;</div>
     </dd>
   </dl>
 

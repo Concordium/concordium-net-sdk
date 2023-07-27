@@ -1,0 +1,822 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class BlockInfo
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class BlockInfo
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/main/apiSpec/new?filename=Concordium_Sdk_Types_BlockInfo.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Types.BlockInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+  </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Concordium.Sdk.Types.BlockInfo">
+
+
+
+  <h1 id="Concordium_Sdk_Types_BlockInfo" data-uid="Concordium.Sdk.Types.BlockInfo" class="text-break">
+    Class BlockInfo
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Concordium.html">Concordium</a>.<a class="xref" href="Concordium.Sdk.html">Sdk</a>.<a class="xref" href="Concordium.Sdk.Types.html">Types</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Concordium.Sdk.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Metadata about a given block.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed record BlockInfo : IEquatable&lt;BlockInfo&gt;</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">BlockInfo</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Sdk.Types.BlockInfo.html">BlockInfo</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Concordium_Sdk_Types_BlockInfo__ctor_" data-uid="Concordium.Sdk.Types.BlockInfo.#ctor*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockInfo__ctor_Concordium_Sdk_Types_BlockHash_Concordium_Sdk_Types_BlockHash_Concordium_Sdk_Types_BlockHash_System_UInt64_System_UInt32_System_UInt64_System_DateTimeOffset_System_DateTimeOffset_System_UInt64_System_DateTimeOffset_System_Nullable_Concordium_Sdk_Types_BakerId__System_Boolean_System_UInt32_Concordium_Sdk_Types_EnergyAmount_System_UInt32_Concordium_Sdk_Types_StateHash_Concordium_Sdk_Types_ProtocolVersion_" data-uid="Concordium.Sdk.Types.BlockInfo.#ctor(Concordium.Sdk.Types.BlockHash,Concordium.Sdk.Types.BlockHash,Concordium.Sdk.Types.BlockHash,System.UInt64,System.UInt32,System.UInt64,System.DateTimeOffset,System.DateTimeOffset,System.UInt64,System.DateTimeOffset,System.Nullable{Concordium.Sdk.Types.BakerId},System.Boolean,System.UInt32,Concordium.Sdk.Types.EnergyAmount,System.UInt32,Concordium.Sdk.Types.StateHash,Concordium.Sdk.Types.ProtocolVersion)">
+  BlockInfo(BlockHash, BlockHash, BlockHash, ulong, uint, ulong, DateTimeOffset, DateTimeOffset, ulong, DateTimeOffset, BakerId?, bool, uint, EnergyAmount, uint, StateHash, ProtocolVersion)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Metadata about a given block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockInfo(BlockHash BlockHash, BlockHash BlockParent, BlockHash BlockLastFinalized, ulong BlockHeight, uint GenesisIndex, ulong EraBlockHeight, DateTimeOffset BlockReceiveTime, DateTimeOffset BlockArriveTime, ulong BlockSlot, DateTimeOffset BlockSlotTime, BakerId? BlockBaker, bool Finalized, uint TransactionCount, EnergyAmount TransactionEnergyCost, uint TransactionSize, StateHash BlockStateHash, ProtocolVersion ProtocolVersion)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>BlockHash</code> <a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a></dt>
+    <dd><p>Hash of the block.</p>
+</dd>
+    <dt><code>BlockParent</code> <a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a></dt>
+    <dd><p>Parent block pointer.</p>
+</dd>
+    <dt><code>BlockLastFinalized</code> <a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a></dt>
+    <dd><p>Pointer to the last finalized block. Each block has a pointer to a
+specific finalized block that existed at the time the block was
+produced.</p>
+</dd>
+    <dt><code>BlockHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Height of the block from genesis.</p>
+</dd>
+    <dt><code>GenesisIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The genesis index for this block. This counts the number of protocol
+updates that have preceded this block, and defines the era of the
+block.</p>
+</dd>
+    <dt><code>EraBlockHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>The height of this block relative to the (re)genesis block of its era.</p>
+</dd>
+    <dt><code>BlockReceiveTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></dt>
+    <dd><p>Time when the block was first received by the node. This can be in
+principle quite different from the arrive time if, e.g., block execution
+takes a long time, or the block must wait for the arrival of its parent.</p>
+</dd>
+    <dt><code>BlockArriveTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></dt>
+    <dd><p>Time when the block was added to the node's tree. This is a subjective
+(i.e., node specific) value.</p>
+</dd>
+    <dt><code>BlockSlot</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Slot number of the slot the block is in.</p>
+</dd>
+    <dt><code>BlockSlotTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></dt>
+    <dd><p>Slot time of the slot the block is in. In contrast to
+<a class="xref" href="Concordium.Sdk.Types.BlockInfo.html#Concordium_Sdk_Types_BlockInfo_BlockArriveTime">BlockArriveTime</a> this is an objective value, all nodes
+agree on it.</p>
+</dd>
+    <dt><code>BlockBaker</code> <a class="xref" href="Concordium.Sdk.Types.BakerId.html">BakerId</a>?</dt>
+    <dd><p>Identity of the baker of the block. For non-genesis blocks the value is
+going to always be not null;</p>
+</dd>
+    <dt><code>Finalized</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Whether the block is finalized or not.</p>
+</dd>
+    <dt><code>TransactionCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The number of transactions in the block.</p>
+</dd>
+    <dt><code>TransactionEnergyCost</code> <a class="xref" href="Concordium.Sdk.Types.EnergyAmount.html">EnergyAmount</a></dt>
+    <dd><p>The total energy consumption of transactions in the block.</p>
+</dd>
+    <dt><code>TransactionSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>Size of all the transactions in the block in bytes.</p>
+</dd>
+    <dt><code>BlockStateHash</code> <a class="xref" href="Concordium.Sdk.Types.StateHash.html">StateHash</a></dt>
+    <dd><p>Hash of the block state at the end of the given block.</p>
+</dd>
+    <dt><code>ProtocolVersion</code> <a class="xref" href="Concordium.Sdk.Types.ProtocolVersion.html">ProtocolVersion</a></dt>
+    <dd><p>Protocol version to which the block belongs.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Concordium_Sdk_Types_BlockInfo_BlockArriveTime_" data-uid="Concordium.Sdk.Types.BlockInfo.BlockArriveTime*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockInfo_BlockArriveTime" data-uid="Concordium.Sdk.Types.BlockInfo.BlockArriveTime">
+  BlockArriveTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Time when the block was added to the node's tree. This is a subjective
+(i.e., node specific) value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimeOffset BlockArriveTime { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockInfo_BlockBaker_" data-uid="Concordium.Sdk.Types.BlockInfo.BlockBaker*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockInfo_BlockBaker" data-uid="Concordium.Sdk.Types.BlockInfo.BlockBaker">
+  BlockBaker
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identity of the baker of the block. For non-genesis blocks the value is
+going to always be not null;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BakerId? BlockBaker { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.BakerId.html">BakerId</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockInfo_BlockHash_" data-uid="Concordium.Sdk.Types.BlockInfo.BlockHash*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockInfo_BlockHash" data-uid="Concordium.Sdk.Types.BlockInfo.BlockHash">
+  BlockHash
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hash of the block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockHash BlockHash { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockInfo_BlockHeight_" data-uid="Concordium.Sdk.Types.BlockInfo.BlockHeight*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockInfo_BlockHeight" data-uid="Concordium.Sdk.Types.BlockInfo.BlockHeight">
+  BlockHeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Height of the block from genesis.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong BlockHeight { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockInfo_BlockLastFinalized_" data-uid="Concordium.Sdk.Types.BlockInfo.BlockLastFinalized*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockInfo_BlockLastFinalized" data-uid="Concordium.Sdk.Types.BlockInfo.BlockLastFinalized">
+  BlockLastFinalized
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pointer to the last finalized block. Each block has a pointer to a
+specific finalized block that existed at the time the block was
+produced.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockHash BlockLastFinalized { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockInfo_BlockParent_" data-uid="Concordium.Sdk.Types.BlockInfo.BlockParent*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockInfo_BlockParent" data-uid="Concordium.Sdk.Types.BlockInfo.BlockParent">
+  BlockParent
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Parent block pointer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockHash BlockParent { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockInfo_BlockReceiveTime_" data-uid="Concordium.Sdk.Types.BlockInfo.BlockReceiveTime*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockInfo_BlockReceiveTime" data-uid="Concordium.Sdk.Types.BlockInfo.BlockReceiveTime">
+  BlockReceiveTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Time when the block was first received by the node. This can be in
+principle quite different from the arrive time if, e.g., block execution
+takes a long time, or the block must wait for the arrival of its parent.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimeOffset BlockReceiveTime { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockInfo_BlockSlot_" data-uid="Concordium.Sdk.Types.BlockInfo.BlockSlot*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockInfo_BlockSlot" data-uid="Concordium.Sdk.Types.BlockInfo.BlockSlot">
+  BlockSlot
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Slot number of the slot the block is in.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong BlockSlot { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockInfo_BlockSlotTime_" data-uid="Concordium.Sdk.Types.BlockInfo.BlockSlotTime*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockInfo_BlockSlotTime" data-uid="Concordium.Sdk.Types.BlockInfo.BlockSlotTime">
+  BlockSlotTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Slot time of the slot the block is in. In contrast to
+<a class="xref" href="Concordium.Sdk.Types.BlockInfo.html#Concordium_Sdk_Types_BlockInfo_BlockArriveTime">BlockArriveTime</a> this is an objective value, all nodes
+agree on it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimeOffset BlockSlotTime { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockInfo_BlockStateHash_" data-uid="Concordium.Sdk.Types.BlockInfo.BlockStateHash*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockInfo_BlockStateHash" data-uid="Concordium.Sdk.Types.BlockInfo.BlockStateHash">
+  BlockStateHash
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hash of the block state at the end of the given block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StateHash BlockStateHash { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.StateHash.html">StateHash</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockInfo_EraBlockHeight_" data-uid="Concordium.Sdk.Types.BlockInfo.EraBlockHeight*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockInfo_EraBlockHeight" data-uid="Concordium.Sdk.Types.BlockInfo.EraBlockHeight">
+  EraBlockHeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The height of this block relative to the (re)genesis block of its era.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong EraBlockHeight { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockInfo_Finalized_" data-uid="Concordium.Sdk.Types.BlockInfo.Finalized*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockInfo_Finalized" data-uid="Concordium.Sdk.Types.BlockInfo.Finalized">
+  Finalized
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether the block is finalized or not.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Finalized { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockInfo_GenesisIndex_" data-uid="Concordium.Sdk.Types.BlockInfo.GenesisIndex*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockInfo_GenesisIndex" data-uid="Concordium.Sdk.Types.BlockInfo.GenesisIndex">
+  GenesisIndex
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The genesis index for this block. This counts the number of protocol
+updates that have preceded this block, and defines the era of the
+block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint GenesisIndex { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockInfo_ProtocolVersion_" data-uid="Concordium.Sdk.Types.BlockInfo.ProtocolVersion*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockInfo_ProtocolVersion" data-uid="Concordium.Sdk.Types.BlockInfo.ProtocolVersion">
+  ProtocolVersion
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Protocol version to which the block belongs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProtocolVersion ProtocolVersion { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.ProtocolVersion.html">ProtocolVersion</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockInfo_TransactionCount_" data-uid="Concordium.Sdk.Types.BlockInfo.TransactionCount*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockInfo_TransactionCount" data-uid="Concordium.Sdk.Types.BlockInfo.TransactionCount">
+  TransactionCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The number of transactions in the block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint TransactionCount { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockInfo_TransactionEnergyCost_" data-uid="Concordium.Sdk.Types.BlockInfo.TransactionEnergyCost*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockInfo_TransactionEnergyCost" data-uid="Concordium.Sdk.Types.BlockInfo.TransactionEnergyCost">
+  TransactionEnergyCost
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The total energy consumption of transactions in the block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnergyAmount TransactionEnergyCost { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.EnergyAmount.html">EnergyAmount</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockInfo_TransactionSize_" data-uid="Concordium.Sdk.Types.BlockInfo.TransactionSize*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockInfo_TransactionSize" data-uid="Concordium.Sdk.Types.BlockInfo.TransactionSize">
+  TransactionSize
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Size of all the transactions in the block in bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint TransactionSize { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockInfo.cs/#L47" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

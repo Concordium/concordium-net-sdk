@@ -1,0 +1,1313 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ConsensusInfo
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ConsensusInfo
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/main/apiSpec/new?filename=Concordium_Sdk_Types_ConsensusInfo.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Types.ConsensusInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+  </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Concordium.Sdk.Types.ConsensusInfo">
+
+
+
+  <h1 id="Concordium_Sdk_Types_ConsensusInfo" data-uid="Concordium.Sdk.Types.ConsensusInfo" class="text-break">
+    Class ConsensusInfo
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Concordium.html">Concordium</a>.<a class="xref" href="Concordium.Sdk.html">Sdk</a>.<a class="xref" href="Concordium.Sdk.Types.html">Types</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Concordium.Sdk.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Summary of the current state of consensus.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed record ConsensusInfo : IEquatable&lt;ConsensusInfo&gt;</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ConsensusInfo</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Sdk.Types.ConsensusInfo.html">ConsensusInfo</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo__ctor_" data-uid="Concordium.Sdk.Types.ConsensusInfo.#ctor*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo__ctor_Concordium_Sdk_Types_BlockHash_Concordium_Sdk_Types_BlockHash_System_DateTimeOffset_Concordium_Sdk_Types_BlockHash_System_UInt64_System_UInt64_Concordium_Sdk_Types_ProtocolVersion_Concordium_Sdk_Types_BlockHash_System_DateTimeOffset_System_TimeSpan_System_TimeSpan_System_UInt32_System_UInt32_System_Nullable_System_DateTimeOffset__System_Double_System_Double_System_Nullable_System_Double__System_Nullable_System_Double__System_UInt32_System_Nullable_System_DateTimeOffset__System_Double_System_Double_System_Nullable_System_Double__System_Nullable_System_Double__System_Double_System_Double_System_UInt64_System_Nullable_System_DateTimeOffset__System_Nullable_System_Double__System_Nullable_System_Double__" data-uid="Concordium.Sdk.Types.ConsensusInfo.#ctor(Concordium.Sdk.Types.BlockHash,Concordium.Sdk.Types.BlockHash,System.DateTimeOffset,Concordium.Sdk.Types.BlockHash,System.UInt64,System.UInt64,Concordium.Sdk.Types.ProtocolVersion,Concordium.Sdk.Types.BlockHash,System.DateTimeOffset,System.TimeSpan,System.TimeSpan,System.UInt32,System.UInt32,System.Nullable{System.DateTimeOffset},System.Double,System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.UInt32,System.Nullable{System.DateTimeOffset},System.Double,System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Double,System.Double,System.UInt64,System.Nullable{System.DateTimeOffset},System.Nullable{System.Double},System.Nullable{System.Double})">
+  ConsensusInfo(BlockHash, BlockHash, DateTimeOffset, BlockHash, ulong, ulong, ProtocolVersion, BlockHash, DateTimeOffset, TimeSpan, TimeSpan, uint, uint, DateTimeOffset?, double, double, double?, double?, uint, DateTimeOffset?, double, double, double?, double?, double, double, ulong, DateTimeOffset?, double?, double?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Summary of the current state of consensus.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ConsensusInfo(BlockHash BestBlock, BlockHash GenesisBlock, DateTimeOffset GenesisTime, BlockHash LastFinalizedBlock, ulong BestBlockHeight, ulong LastFinalizedBlockHeight, ProtocolVersion ProtocolVersion, BlockHash CurrentEraGenesisBlock, DateTimeOffset CurrentEraGenesisTime, TimeSpan SlotDuration, TimeSpan EpochDuration, uint GenesisIndex, uint BlocksReceivedCount, DateTimeOffset? BlockLastReceivedTime, double BlockReceiveLatencyEma, double BlockReceiveLatencyEmsd, double? BlockReceivePeriodEma, double? BlockReceivePeriodEmsd, uint BlocksVerifiedCount, DateTimeOffset? BlockLastArrivedTime, double BlockArriveLatencyEma, double BlockArriveLatencyEmsd, double? BlockArrivePeriodEma, double? BlockArrivePeriodEmsd, double TransactionsPerBlockEma, double TransactionsPerBlockEmsd, ulong FinalizationCount, DateTimeOffset? LastFinalizedTime, double? FinalizationPeriodEma, double? FinalizationPeriodEmsd)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>BestBlock</code> <a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a></dt>
+    <dd><p>Hash of the current best block. The best block is a protocol defined
+block that the node must use as parent block to build the chain on.
+Note that this is subjective, in the sense that it is only the best
+block among the blocks the node knows about.</p>
+</dd>
+    <dt><code>GenesisBlock</code> <a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a></dt>
+    <dd><p>Hash of the genesis block.</p>
+</dd>
+    <dt><code>GenesisTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></dt>
+    <dd><p>Slot time of the genesis block.</p>
+</dd>
+    <dt><code>LastFinalizedBlock</code> <a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a></dt>
+    <dd><p>Hash of the last, i.e., most recent, finalized block.</p>
+</dd>
+    <dt><code>BestBlockHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Height of the best block. See <a class="xref" href="Concordium.Sdk.Types.ConsensusInfo.html#Concordium_Sdk_Types_ConsensusInfo_BestBlock">BestBlock</a>.</p>
+</dd>
+    <dt><code>LastFinalizedBlockHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Height of the last finalized block. Genesis block has height 0.</p>
+</dd>
+    <dt><code>ProtocolVersion</code> <a class="xref" href="Concordium.Sdk.Types.ProtocolVersion.html">ProtocolVersion</a></dt>
+    <dd><p>Currently active protocol version.</p>
+</dd>
+    <dt><code>CurrentEraGenesisBlock</code> <a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a></dt>
+    <dd><p>Block hash of the genesis block of current era, i.e., since the last
+protocol update. Initially this is equal to
+<a class="xref" href="Concordium.Sdk.Types.ConsensusInfo.html#Concordium_Sdk_Types_ConsensusInfo_GenesisBlock">GenesisBlock</a>.</p>
+</dd>
+    <dt><code>CurrentEraGenesisTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></dt>
+    <dd><p>Time when the current era started.</p>
+</dd>
+    <dt><code>SlotDuration</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></dt>
+    <dd><p>Duration of a slot.</p>
+</dd>
+    <dt><code>EpochDuration</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></dt>
+    <dd><p>Duration of an epoch.</p>
+</dd>
+    <dt><code>GenesisIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The number of chain restarts via a protocol update. An effected
+protocol update instruction might not change the protocol version
+specified in <a class="xref" href="Concordium.Sdk.Types.ConsensusInfo.html#Concordium_Sdk_Types_ConsensusInfo_ProtocolVersion">ProtocolVersion</a>, but it always increments the genesis
+index.</p>
+</dd>
+    <dt><code>BlocksReceivedCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The number of blocks that have been received.</p>
+</dd>
+    <dt><code>BlockLastReceivedTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
+    <dd><p>The time (local time of the node) that a block was last received.</p>
+</dd>
+    <dt><code>BlockReceiveLatencyEma</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Exponential moving average of block receive latency (in seconds), i.e.
+the time between a block's nominal slot time, and the time at which is
+received.</p>
+</dd>
+    <dt><code>BlockReceiveLatencyEmsd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Exponential moving average standard deviation of block receive latency
+(in seconds), i.e. the time between a block's nominal slot time, and
+the time at which is received.</p>
+</dd>
+    <dt><code>BlockReceivePeriodEma</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Exponential moving average of the time between receiving blocks (in
+seconds).</p>
+</dd>
+    <dt><code>BlockReceivePeriodEmsd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Exponential moving average standard deviation of the time between
+receiving blocks (in seconds).</p>
+</dd>
+    <dt><code>BlocksVerifiedCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>Number of blocks that arrived, i.e., were added to the tree. Note that
+in some cases this can be more than <a class="xref" href="Concordium.Sdk.Types.ConsensusInfo.html#Concordium_Sdk_Types_ConsensusInfo_BlocksReceivedCount">BlocksReceivedCount</a>
+since blocks that the node itself produces count towards this,
+but are not received.</p>
+</dd>
+    <dt><code>BlockLastArrivedTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
+    <dd><p>The time (local time of the node) that a block last arrived, i.e., was
+verified and added to the node's tree.</p>
+</dd>
+    <dt><code>BlockArriveLatencyEma</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The exponential moving average of the time between a block's nominal
+slot time, and the time at which it is verified.</p>
+</dd>
+    <dt><code>BlockArriveLatencyEmsd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The exponential moving average standard deviation of the time between a
+block's nominal slot time, and the time at which it is verified.</p>
+</dd>
+    <dt><code>BlockArrivePeriodEma</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Exponential moving average of the time between receiving blocks (in
+seconds).</p>
+</dd>
+    <dt><code>BlockArrivePeriodEmsd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Exponential moving average standard deviation of the time between blocks
+being verified.</p>
+</dd>
+    <dt><code>TransactionsPerBlockEma</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Exponential moving average of the number of
+transactions per block.</p>
+</dd>
+    <dt><code>TransactionsPerBlockEmsd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Exponential moving average standard deviation of the number of
+transactions per block.</p>
+</dd>
+    <dt><code>FinalizationCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>The number of completed finalizations.</p>
+</dd>
+    <dt><code>LastFinalizedTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
+    <dd><p>Time at which a block last became finalized. Note that this is the local
+time of the node at the time the block was finalized.</p>
+</dd>
+    <dt><code>FinalizationPeriodEma</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Exponential moving average of the time between finalizations. Will be
+null if there are no finalizations yet since the node start.</p>
+</dd>
+    <dt><code>FinalizationPeriodEmsd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Exponential moving average standard deviation of the time between
+finalizations. Will be <code>None</code> if there are no finalizations yet
+since the node start.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_BestBlock_" data-uid="Concordium.Sdk.Types.ConsensusInfo.BestBlock*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_BestBlock" data-uid="Concordium.Sdk.Types.ConsensusInfo.BestBlock">
+  BestBlock
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hash of the current best block. The best block is a protocol defined
+block that the node must use as parent block to build the chain on.
+Note that this is subjective, in the sense that it is only the best
+block among the blocks the node knows about.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockHash BestBlock { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_BestBlockHeight_" data-uid="Concordium.Sdk.Types.ConsensusInfo.BestBlockHeight*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_BestBlockHeight" data-uid="Concordium.Sdk.Types.ConsensusInfo.BestBlockHeight">
+  BestBlockHeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Height of the best block. See <a class="xref" href="Concordium.Sdk.Types.ConsensusInfo.html#Concordium_Sdk_Types_ConsensusInfo_BestBlock">BestBlock</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong BestBlockHeight { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_BlockArriveLatencyEma_" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockArriveLatencyEma*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_BlockArriveLatencyEma" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockArriveLatencyEma">
+  BlockArriveLatencyEma
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The exponential moving average of the time between a block's nominal
+slot time, and the time at which it is verified.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double BlockArriveLatencyEma { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_BlockArriveLatencyEmsd_" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockArriveLatencyEmsd*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_BlockArriveLatencyEmsd" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockArriveLatencyEmsd">
+  BlockArriveLatencyEmsd
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The exponential moving average standard deviation of the time between a
+block's nominal slot time, and the time at which it is verified.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double BlockArriveLatencyEmsd { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_BlockArrivePeriodEma_" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockArrivePeriodEma*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_BlockArrivePeriodEma" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockArrivePeriodEma">
+  BlockArrivePeriodEma
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Exponential moving average of the time between receiving blocks (in
+seconds).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double? BlockArrivePeriodEma { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_BlockArrivePeriodEmsd_" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockArrivePeriodEmsd*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_BlockArrivePeriodEmsd" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockArrivePeriodEmsd">
+  BlockArrivePeriodEmsd
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Exponential moving average standard deviation of the time between blocks
+being verified.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double? BlockArrivePeriodEmsd { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_BlockLastArrivedTime_" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockLastArrivedTime*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_BlockLastArrivedTime" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockLastArrivedTime">
+  BlockLastArrivedTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The time (local time of the node) that a block last arrived, i.e., was
+verified and added to the node's tree.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimeOffset? BlockLastArrivedTime { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_BlockLastReceivedTime_" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockLastReceivedTime*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_BlockLastReceivedTime" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockLastReceivedTime">
+  BlockLastReceivedTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The time (local time of the node) that a block was last received.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimeOffset? BlockLastReceivedTime { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_BlockReceiveLatencyEma_" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockReceiveLatencyEma*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_BlockReceiveLatencyEma" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockReceiveLatencyEma">
+  BlockReceiveLatencyEma
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L117"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Exponential moving average of block receive latency (in seconds), i.e.
+the time between a block's nominal slot time, and the time at which is
+received.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double BlockReceiveLatencyEma { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_BlockReceiveLatencyEmsd_" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockReceiveLatencyEmsd*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_BlockReceiveLatencyEmsd" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockReceiveLatencyEmsd">
+  BlockReceiveLatencyEmsd
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Exponential moving average standard deviation of block receive latency
+(in seconds), i.e. the time between a block's nominal slot time, and
+the time at which is received.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double BlockReceiveLatencyEmsd { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_BlockReceivePeriodEma_" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockReceivePeriodEma*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_BlockReceivePeriodEma" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockReceivePeriodEma">
+  BlockReceivePeriodEma
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Exponential moving average of the time between receiving blocks (in
+seconds).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double? BlockReceivePeriodEma { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_BlockReceivePeriodEmsd_" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockReceivePeriodEmsd*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_BlockReceivePeriodEmsd" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlockReceivePeriodEmsd">
+  BlockReceivePeriodEmsd
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L120"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Exponential moving average standard deviation of the time between
+receiving blocks (in seconds).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double? BlockReceivePeriodEmsd { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_BlocksReceivedCount_" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlocksReceivedCount*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_BlocksReceivedCount" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlocksReceivedCount">
+  BlocksReceivedCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The number of blocks that have been received.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint BlocksReceivedCount { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_BlocksVerifiedCount_" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlocksVerifiedCount*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_BlocksVerifiedCount" data-uid="Concordium.Sdk.Types.ConsensusInfo.BlocksVerifiedCount">
+  BlocksVerifiedCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Number of blocks that arrived, i.e., were added to the tree. Note that
+in some cases this can be more than <a class="xref" href="Concordium.Sdk.Types.ConsensusInfo.html#Concordium_Sdk_Types_ConsensusInfo_BlocksReceivedCount">BlocksReceivedCount</a>
+since blocks that the node itself produces count towards this,
+but are not received.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint BlocksVerifiedCount { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_CurrentEraGenesisBlock_" data-uid="Concordium.Sdk.Types.ConsensusInfo.CurrentEraGenesisBlock*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_CurrentEraGenesisBlock" data-uid="Concordium.Sdk.Types.ConsensusInfo.CurrentEraGenesisBlock">
+  CurrentEraGenesisBlock
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Block hash of the genesis block of current era, i.e., since the last
+protocol update. Initially this is equal to
+<a class="xref" href="Concordium.Sdk.Types.ConsensusInfo.html#Concordium_Sdk_Types_ConsensusInfo_GenesisBlock">GenesisBlock</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockHash CurrentEraGenesisBlock { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_CurrentEraGenesisTime_" data-uid="Concordium.Sdk.Types.ConsensusInfo.CurrentEraGenesisTime*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_CurrentEraGenesisTime" data-uid="Concordium.Sdk.Types.ConsensusInfo.CurrentEraGenesisTime">
+  CurrentEraGenesisTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Time when the current era started.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimeOffset CurrentEraGenesisTime { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_EpochDuration_" data-uid="Concordium.Sdk.Types.ConsensusInfo.EpochDuration*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_EpochDuration" data-uid="Concordium.Sdk.Types.ConsensusInfo.EpochDuration">
+  EpochDuration
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Duration of an epoch.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan EpochDuration { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_FinalizationCount_" data-uid="Concordium.Sdk.Types.ConsensusInfo.FinalizationCount*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_FinalizationCount" data-uid="Concordium.Sdk.Types.ConsensusInfo.FinalizationCount">
+  FinalizationCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The number of completed finalizations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong FinalizationCount { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_FinalizationPeriodEma_" data-uid="Concordium.Sdk.Types.ConsensusInfo.FinalizationPeriodEma*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_FinalizationPeriodEma" data-uid="Concordium.Sdk.Types.ConsensusInfo.FinalizationPeriodEma">
+  FinalizationPeriodEma
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L131"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Exponential moving average of the time between finalizations. Will be
+null if there are no finalizations yet since the node start.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double? FinalizationPeriodEma { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_FinalizationPeriodEmsd_" data-uid="Concordium.Sdk.Types.ConsensusInfo.FinalizationPeriodEmsd*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_FinalizationPeriodEmsd" data-uid="Concordium.Sdk.Types.ConsensusInfo.FinalizationPeriodEmsd">
+  FinalizationPeriodEmsd
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Exponential moving average standard deviation of the time between
+finalizations. Will be <code>None</code> if there are no finalizations yet
+since the node start.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double? FinalizationPeriodEmsd { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_GenesisBlock_" data-uid="Concordium.Sdk.Types.ConsensusInfo.GenesisBlock*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_GenesisBlock" data-uid="Concordium.Sdk.Types.ConsensusInfo.GenesisBlock">
+  GenesisBlock
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hash of the genesis block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockHash GenesisBlock { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_GenesisIndex_" data-uid="Concordium.Sdk.Types.ConsensusInfo.GenesisIndex*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_GenesisIndex" data-uid="Concordium.Sdk.Types.ConsensusInfo.GenesisIndex">
+  GenesisIndex
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The number of chain restarts via a protocol update. An effected
+protocol update instruction might not change the protocol version
+specified in <a class="xref" href="Concordium.Sdk.Types.ConsensusInfo.html#Concordium_Sdk_Types_ConsensusInfo_ProtocolVersion">ProtocolVersion</a>, but it always increments the genesis
+index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint GenesisIndex { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_GenesisTime_" data-uid="Concordium.Sdk.Types.ConsensusInfo.GenesisTime*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_GenesisTime" data-uid="Concordium.Sdk.Types.ConsensusInfo.GenesisTime">
+  GenesisTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Slot time of the genesis block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimeOffset GenesisTime { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_LastFinalizedBlock_" data-uid="Concordium.Sdk.Types.ConsensusInfo.LastFinalizedBlock*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_LastFinalizedBlock" data-uid="Concordium.Sdk.Types.ConsensusInfo.LastFinalizedBlock">
+  LastFinalizedBlock
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hash of the last, i.e., most recent, finalized block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockHash LastFinalizedBlock { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_LastFinalizedBlockHeight_" data-uid="Concordium.Sdk.Types.ConsensusInfo.LastFinalizedBlockHeight*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_LastFinalizedBlockHeight" data-uid="Concordium.Sdk.Types.ConsensusInfo.LastFinalizedBlockHeight">
+  LastFinalizedBlockHeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Height of the last finalized block. Genesis block has height 0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong LastFinalizedBlockHeight { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_LastFinalizedTime_" data-uid="Concordium.Sdk.Types.ConsensusInfo.LastFinalizedTime*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_LastFinalizedTime" data-uid="Concordium.Sdk.Types.ConsensusInfo.LastFinalizedTime">
+  LastFinalizedTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Time at which a block last became finalized. Note that this is the local
+time of the node at the time the block was finalized.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimeOffset? LastFinalizedTime { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_ProtocolVersion_" data-uid="Concordium.Sdk.Types.ConsensusInfo.ProtocolVersion*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_ProtocolVersion" data-uid="Concordium.Sdk.Types.ConsensusInfo.ProtocolVersion">
+  ProtocolVersion
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Currently active protocol version.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProtocolVersion ProtocolVersion { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.ProtocolVersion.html">ProtocolVersion</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_SlotDuration_" data-uid="Concordium.Sdk.Types.ConsensusInfo.SlotDuration*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_SlotDuration" data-uid="Concordium.Sdk.Types.ConsensusInfo.SlotDuration">
+  SlotDuration
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Duration of a slot.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan SlotDuration { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_TransactionsPerBlockEma_" data-uid="Concordium.Sdk.Types.ConsensusInfo.TransactionsPerBlockEma*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_TransactionsPerBlockEma" data-uid="Concordium.Sdk.Types.ConsensusInfo.TransactionsPerBlockEma">
+  TransactionsPerBlockEma
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L127"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Exponential moving average of the number of
+transactions per block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double TransactionsPerBlockEma { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ConsensusInfo_TransactionsPerBlockEmsd_" data-uid="Concordium.Sdk.Types.ConsensusInfo.TransactionsPerBlockEmsd*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ConsensusInfo_TransactionsPerBlockEmsd" data-uid="Concordium.Sdk.Types.ConsensusInfo.TransactionsPerBlockEmsd">
+  TransactionsPerBlockEmsd
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L128"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Exponential moving average standard deviation of the number of
+transactions per block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double TransactionsPerBlockEmsd { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ConsensusInfo.cs/#L102" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

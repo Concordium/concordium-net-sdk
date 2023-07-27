@@ -79,7 +79,7 @@
 
   <h1 id="Concordium_Sdk_Transactions_TransferWithMemo" data-uid="Concordium.Sdk.Transactions.TransferWithMemo" class="text-break">
     Class TransferWithMemo
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -94,7 +94,7 @@ but additionally stores a memo associated with the transfer on-chain.</p>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public record TransferWithMemo : AccountTransactionPayload, IEquatable&lt;AccountTransactionPayload&gt;, IEquatable&lt;TransferWithMemo&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed record TransferWithMemo : AccountTransactionPayload, IEquatable&lt;AccountTransactionPayload&gt;, IEquatable&lt;TransferWithMemo&gt;</code></pre>
   </div>
 
 
@@ -140,9 +140,6 @@ but additionally stores a memo associated with the transfer on-chain.</p>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
-    </div>
-    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
     </div>
     <div>
@@ -163,26 +160,28 @@ but additionally stores a memo associated with the transfer on-chain.</p>
 
   <h3 id="Concordium_Sdk_Transactions_TransferWithMemo__ctor_Concordium_Sdk_Types_CcdAmount_Concordium_Sdk_Types_AccountAddress_Concordium_Sdk_Types_OnChainData_" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.#ctor(Concordium.Sdk.Types.CcdAmount,Concordium.Sdk.Types.AccountAddress,Concordium.Sdk.Types.OnChainData)">
   TransferWithMemo(CcdAmount, AccountAddress, OnChainData)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Concordium.Sdk.Transactions.TransferWithMemo.html">TransferWithMemo</a> class.</p>
+  <div class="markdown level1 summary"><p>Represents a &quot;transfer with memo&quot; account transaction.</p>
+<p>Used for transferring CCD from one account to another. Like <a class="xref" href="Concordium.Sdk.Transactions.Transfer.html">Transfer</a>,
+but additionally stores a memo associated with the transfer on-chain.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TransferWithMemo(CcdAmount amount, AccountAddress receiver, OnChainData memo)</code></pre>
+    <pre><code class="lang-csharp hljs">public TransferWithMemo(CcdAmount Amount, AccountAddress Receiver, OnChainData Memo)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>amount</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
+    <dt><code>Amount</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
     <dd><p>Amount to send.</p>
 </dd>
-    <dt><code>receiver</code> <a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
+    <dt><code>Receiver</code> <a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
     <dd><p>Address of the receiver account to which the amount will be sent.</p>
 </dd>
-    <dt><code>memo</code> <a class="xref" href="Concordium.Sdk.Types.OnChainData.html">OnChainData</a></dt>
+    <dt><code>Memo</code> <a class="xref" href="Concordium.Sdk.Types.OnChainData.html">OnChainData</a></dt>
     <dd><p>Memo to include with the transaction.</p>
 </dd>
   </dl>
@@ -206,7 +205,7 @@ but additionally stores a memo associated with the transfer on-chain.</p>
 
   <h3 id="Concordium_Sdk_Transactions_TransferWithMemo_Amount" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.Amount">
   Amount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Amount to send.</p>
@@ -238,7 +237,7 @@ but additionally stores a memo associated with the transfer on-chain.</p>
 
   <h3 id="Concordium_Sdk_Transactions_TransferWithMemo_Memo" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.Memo">
   Memo
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Memo to include with the transaction.</p>
@@ -270,7 +269,7 @@ but additionally stores a memo associated with the transfer on-chain.</p>
 
   <h3 id="Concordium_Sdk_Transactions_TransferWithMemo_Receiver" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.Receiver">
   Receiver
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Address of the receiver account to which the amount will be sent.</p>
@@ -306,7 +305,7 @@ but additionally stores a memo associated with the transfer on-chain.</p>
 
   <h3 id="Concordium_Sdk_Transactions_TransferWithMemo_GetTransactionSpecificCost" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.GetTransactionSpecificCost">
   GetTransactionSpecificCost()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the transaction specific cost for submitting this type of
@@ -345,7 +344,7 @@ when initializing or updating a smart contract.</p>
 
   <h3 id="Concordium_Sdk_Transactions_TransferWithMemo_ToBytes" data-uid="Concordium.Sdk.Transactions.TransferWithMemo.ToBytes">
   ToBytes()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Copies the on-chain data in the binary format expected by the node to a byte array.</p>
@@ -377,7 +376,7 @@ when initializing or updating a smart contract.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L11" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/TransferWithMemo.cs/#L14" class="edit-link">Edit this page</a>
         </div>
 
         

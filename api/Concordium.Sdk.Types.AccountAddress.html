@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Struct AccountAddress
+      <title>Class AccountAddress
  </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Struct AccountAddress
+      <meta name="title" content="Class AccountAddress
  ">
       
       <link rel="icon" href="../favicon.ico">
@@ -78,7 +78,7 @@
 
 
   <h1 id="Concordium_Sdk_Types_AccountAddress" data-uid="Concordium.Sdk.Types.AccountAddress" class="text-break">
-    Struct AccountAddress
+    Class AccountAddress
   <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h1>
 
@@ -93,18 +93,26 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly struct AccountAddress : IEquatable&lt;AccountAddress&gt;, IAddress</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed record AccountAddress : IEquatable&lt;AccountAddress&gt;, IAddress, IAccountIdentifier</code></pre>
   </div>
 
 
 
 
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AccountAddress</span></div>
+    </dd>
+  </dl>
 
   <dl class="typelist implements">
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a>&gt;</div>
       <div><a class="xref" href="Concordium.Sdk.Types.IAddress.html">IAddress</a></div>
+      <div><a class="xref" href="Concordium.Sdk.Types.IAccountIdentifier.html">IAccountIdentifier</a></div>
     </dd>
   </dl>
 
@@ -112,6 +120,9 @@
   <dl class="typelist derived">
     <dt>Inherited Members</dt>
     <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
     </div>
@@ -166,11 +177,90 @@
 </h2>
 
 
+  <a id="Concordium_Sdk_Types_AccountAddress_AsSpan_" data-uid="Concordium.Sdk.Types.AccountAddress.AsSpan*"></a>
+
+  <h3 id="Concordium_Sdk_Types_AccountAddress_AsSpan" data-uid="Concordium.Sdk.Types.AccountAddress.AsSpan">
+  AsSpan()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L181"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns a read only span of underlying byte array.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReadOnlySpan&lt;byte&gt; AsSpan()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_AccountAddress_CreateAliasAddress_" data-uid="Concordium.Sdk.Types.AccountAddress.CreateAliasAddress*"></a>
+
+  <h3 id="Concordium_Sdk_Types_AccountAddress_CreateAliasAddress_System_Byte_System_Byte_System_Byte_" data-uid="Concordium.Sdk.Types.AccountAddress.CreateAliasAddress(System.Byte,System.Byte,System.Byte)">
+  CreateAliasAddress(byte, byte, byte)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L158"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a alias of this account address with the given input bytes.</p>
+<p>The first 29 bytes of an address identifies a unique account with the
+remaining 3 bytes representing aliases of that account</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountAddress CreateAliasAddress(byte byte1, byte byte2, byte byte3)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>byte1</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd><p>Position 30</p>
+</dd>
+    <dt><code>byte2</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd><p>Position 31</p>
+</dd>
+    <dt><code>byte3</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd><p>Position 32</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
+    <dd><p>Alias of the account address with the given bytes.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Concordium_Sdk_Types_AccountAddress_Equals_" data-uid="Concordium.Sdk.Types.AccountAddress.Equals*"></a>
 
   <h3 id="Concordium_Sdk_Types_AccountAddress_Equals_Concordium_Sdk_Types_AccountAddress_" data-uid="Concordium.Sdk.Types.AccountAddress.Equals(Concordium.Sdk.Types.AccountAddress)">
-  Equals(AccountAddress)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L154"><i class="bi bi-code-slash"></i></a>
+  Equals(AccountAddress?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L219"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
@@ -178,7 +268,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Equals(AccountAddress other)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool Equals(AccountAddress? other)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -192,45 +282,6 @@
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Concordium_Sdk_Types_AccountAddress_Equals_" data-uid="Concordium.Sdk.Types.AccountAddress.Equals*"></a>
-
-  <h3 id="Concordium_Sdk_Types_AccountAddress_Equals_System_Object_" data-uid="Concordium.Sdk.Types.AccountAddress.Equals(System.Object)">
-  Equals(object?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L156"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Indicates whether this instance and a specified object are equal.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool Equals(object? obj)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd><p>The object to compare with the current instance.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
 </dd>
   </dl>
 
@@ -332,14 +383,46 @@
 
 
 
+  <a id="Concordium_Sdk_Types_AccountAddress_GetBaseAddress_" data-uid="Concordium.Sdk.Types.AccountAddress.GetBaseAddress*"></a>
+
+  <h3 id="Concordium_Sdk_Types_AccountAddress_GetBaseAddress" data-uid="Concordium.Sdk.Types.AccountAddress.GetBaseAddress">
+  GetBaseAddress()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L171"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns base address which is the first 29 bytes of an address.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountAddress GetBaseAddress()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Concordium_Sdk_Types_AccountAddress_GetHashCode_" data-uid="Concordium.Sdk.Types.AccountAddress.GetHashCode*"></a>
 
   <h3 id="Concordium_Sdk_Types_AccountAddress_GetHashCode" data-uid="Concordium.Sdk.Types.AccountAddress.GetHashCode">
   GetHashCode()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L159"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L221"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Returns the hash code for this instance.</p>
+  <div class="markdown level1 summary"><p>Serves as the default hash function.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -351,7 +434,7 @@
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>A 32-bit signed integer that is the hash code for this instance.</p>
+    <dd><p>A hash code for the current object.</p>
 </dd>
   </dl>
 
@@ -369,7 +452,7 @@
 
   <h3 id="Concordium_Sdk_Types_AccountAddress_GetNthAlias_System_UInt32_" data-uid="Concordium.Sdk.Types.AccountAddress.GetNthAlias(System.UInt32)">
   GetNthAlias(uint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L134"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the <code>n</code>th alias of this account address.</p>
@@ -419,7 +502,7 @@ to the value <code>n</code> in big endian format as the <code>n</code>th alias o
 
   <h3 id="Concordium_Sdk_Types_AccountAddress_IsAliasOf_Concordium_Sdk_Types_AccountAddress_" data-uid="Concordium.Sdk.Types.AccountAddress.IsAliasOf(Concordium.Sdk.Types.AccountAddress)">
   IsAliasOf(AccountAddress)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L119"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Check whether the account address is an alias of another.</p>
@@ -459,7 +542,7 @@ defined to be when the addresses agree on the first 29 bytes.</p>
 
   <h3 id="Concordium_Sdk_Types_AccountAddress_IsValid_System_String_" data-uid="Concordium.Sdk.Types.AccountAddress.IsValid(System.String)">
   IsValid(string?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L94"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if passed string is a base58 encoded address.</p>
@@ -498,10 +581,10 @@ defined to be when the addresses agree on the first 29 bytes.</p>
 
   <h3 id="Concordium_Sdk_Types_AccountAddress_ToAccountIdentifierInput" data-uid="Concordium.Sdk.Types.AccountAddress.ToAccountIdentifierInput">
   ToAccountIdentifierInput()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L151"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L216"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Converts the block hash to a corresponding <a class="xref" href="Concordium.Grpc.V2.AccountIdentifierInput.html">AccountIdentifierInput</a></p>
+  <div class="markdown level1 summary"><p>Converts the account address to a corresponding <a class="xref" href="Concordium.Grpc.V2.AccountIdentifierInput.html">AccountIdentifierInput</a></p>
 <p>This can be used as the input for class methods of <a class="xref" href="Concordium.Sdk.Client.RawClient.html">RawClient</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -563,7 +646,7 @@ defined to be when the addresses agree on the first 29 bytes.</p>
 
   <h3 id="Concordium_Sdk_Types_AccountAddress_ToProto" data-uid="Concordium.Sdk.Types.AccountAddress.ToProto">
   ToProto()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L208"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts the account address to its corresponding protocol buffer message instance.</p>
@@ -624,74 +707,36 @@ defined to be when the addresses agree on the first 29 bytes.</p>
 
 
 
-  <h2 class="section" id="operators">Operators
-</h2>
+  <a id="Concordium_Sdk_Types_AccountAddress_TryParse_" data-uid="Concordium.Sdk.Types.AccountAddress.TryParse*"></a>
 
-
-  <a id="Concordium_Sdk_Types_AccountAddress_op_Equality_" data-uid="Concordium.Sdk.Types.AccountAddress.op_Equality*"></a>
-
-  <h3 id="Concordium_Sdk_Types_AccountAddress_op_Equality_Concordium_Sdk_Types_AccountAddress_Concordium_Sdk_Types_AccountAddress_" data-uid="Concordium.Sdk.Types.AccountAddress.op_Equality(Concordium.Sdk.Types.AccountAddress,Concordium.Sdk.Types.AccountAddress)">
-  operator ==(AccountAddress, AccountAddress)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L161"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Concordium_Sdk_Types_AccountAddress_TryParse_System_String_Concordium_Sdk_Types_AccountAddress__" data-uid="Concordium.Sdk.Types.AccountAddress.TryParse(System.String,Concordium.Sdk.Types.AccountAddress@)">
+  TryParse(string, out AccountAddress?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L189"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Try parse account address from a base 58 encoded string.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator ==(AccountAddress left, AccountAddress right)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool TryParse(string base58EncodedAddress, out AccountAddress? address)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>left</code> <a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
-    <dd></dd>
-    <dt><code>right</code> <a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
-    <dd></dd>
+    <dt><code>base58EncodedAddress</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Base 58 encoded string of address</p>
+</dd>
+    <dt><code>address</code> <a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
+    <dd><p>If parsed returns Account Address.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Concordium_Sdk_Types_AccountAddress_op_Inequality_" data-uid="Concordium.Sdk.Types.AccountAddress.op_Inequality*"></a>
-
-  <h3 id="Concordium_Sdk_Types_AccountAddress_op_Inequality_Concordium_Sdk_Types_AccountAddress_Concordium_Sdk_Types_AccountAddress_" data-uid="Concordium.Sdk.Types.AccountAddress.op_Inequality(Concordium.Sdk.Types.AccountAddress,Concordium.Sdk.Types.AccountAddress)">
-  operator !=(AccountAddress, AccountAddress)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountAddress.cs/#L163"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator !=(AccountAddress left, AccountAddress right)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>left</code> <a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
-    <dd></dd>
-    <dt><code>right</code> <a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p>True if Account Address could be parsed.</p>
+</dd>
   </dl>
 
 

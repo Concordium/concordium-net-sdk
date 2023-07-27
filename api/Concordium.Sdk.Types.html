@@ -85,6 +85,110 @@
 Classes
 </h3>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Absolute.html">Absolute</a></dt>
+      <dd><p>Block Height from beginning of chain.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AbsoluteHeight.html">AbsoluteHeight</a></dt>
+      <dd><p>Block Height from beginning of chain.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AccessStructure.html">AccessStructure</a></dt>
+      <dd><p>And access structure for performing chain updates. The access structure is
+only meaningful in the context of a list of update keys to which the indices
+refer to.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
+      <dd><p>Represents an account address.</p>
+<p>The address of an account is a 32-byte value which uniquely identifies the account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AccountBaker.html">AccountBaker</a></dt>
+      <dd><p>The account is a baker.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AccountBakerPendingChange.html">AccountBakerPendingChange</a></dt>
+      <dd><p>Pending change in the baker's stake.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AccountBakerReduceStakePending.html">AccountBakerReduceStakePending</a></dt>
+      <dd><p>The stake is being reduced. The new stake will take affect at the given time.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AccountBakerRemovePending.html">AccountBakerRemovePending</a></dt>
+      <dd><p>The baker will be removed at the given time.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AccountCreationDetails.html">AccountCreationDetails</a></dt>
+      <dd><p>Details of an account creation. These transactions are free, and we only
+ever get a response for them if the account is created, hence no failure
+cases.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AccountDelegation.html">AccountDelegation</a></dt>
+      <dd><p>The account is delegating stake to a baker.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AccountInfo.html">AccountInfo</a></dt>
+      <dd><p>Account information exposed via the node's API. This is always the state of
+an account in a specific block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AccountTransactionDetails.html">AccountTransactionDetails</a></dt>
+      <dd><p>Details of an account transaction. This always has a sender and is paid for,
+and it might have some other effects on the state of the chain.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AccountTransfer.html">AccountTransfer</a></dt>
+      <dd><p>A simple account to account transfer occurred possible with a memo.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ActiveBaker.html">ActiveBaker</a></dt>
+      <dd><p>The node is member of the baking committee.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ActiveFinalizer.html">ActiveFinalizer</a></dt>
+      <dd><p>The node is member of the baking and finalization committee.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AddAnonymityRevokerUpdate.html">AddAnonymityRevokerUpdate</a></dt>
+      <dd><p>Update to anonymity revoker.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AddIdentityProviderUpdate.html">AddIdentityProviderUpdate</a></dt>
+      <dd><p>Update to identity provider.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AddedButNotActiveInCommittee.html">AddedButNotActiveInCommittee</a></dt>
+      <dd><p>The baker keys are registered however the baker is not in the committee
+for the current 'Epoch'.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AddedButWrongKeys.html">AddedButWrongKeys</a></dt>
+      <dd><p>The node has been configured with baker keys that does not match the
+account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.AlreadyABaker.html">AlreadyABaker</a></dt>
       <dd><p>Tried to add baker for an account that already has a baker</p>
 </dd>
@@ -95,10 +199,58 @@ Classes
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AmountFraction.html">AmountFraction</a></dt>
+      <dd><p>A fraction of an amount with a precision of <code>1/100_000</code>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.AmountTooLarge.html">AmountTooLarge</a></dt>
       <dd><p>When one wishes to transfer an amount from A to B but there
 are not enough funds on account/contract A to make this
 possible. The data are the from address and the amount to transfer.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ArInfo.html">ArInfo</a></dt>
+      <dd><p>Information on a single anonymity revoker held by the IP.
+Typically an IP will hold a more than one.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ArPublicKey.html">ArPublicKey</a></dt>
+      <dd><p>Public key of an anonymity revoker.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AuthorizationsV0.html">AuthorizationsV0</a></dt>
+      <dd><p>Access structures for each of the different possible chain updates, together
+with the context giving all the possible keys.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AuthorizationsV1.html">AuthorizationsV1</a></dt>
+      <dd><p>Access structures for each of the different possible chain updates, together
+with the context giving all the possible keys.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerAdded.html">BakerAdded</a></dt>
+      <dd><p>An account was registered as a baker.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerAddedEvent.html">BakerAddedEvent</a></dt>
+      <dd><p>Event created when baker was added.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerConfigured.html">BakerConfigured</a></dt>
+      <dd><p>A baker was configured.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerDelegationTarget.html">BakerDelegationTarget</a></dt>
+      <dd><p>Delegate to a specific baker.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -108,8 +260,136 @@ another change</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerInfo.html">BakerInfo</a></dt>
+      <dd><p>Information about a baker.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerKeysEvent.html">BakerKeysEvent</a></dt>
+      <dd><p>Result of a successful change of baker keys.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerKeysUpdated.html">BakerKeysUpdated</a></dt>
+      <dd><p>The baker's keys were updated.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerKeysUpdatedEvent.html">BakerKeysUpdatedEvent</a></dt>
+      <dd><p>The baker's keys were updated.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerPoolInfo.html">BakerPoolInfo</a></dt>
+      <dd><p>Additional information about a baking pool.
+This information is added with the introduction of delegation in protocol
+version 4.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerPoolStatus.html">BakerPoolStatus</a></dt>
+      <dd><p>The state of the baker currently registered on the account.
+Current here means &quot;present&quot;. This is the information that is being updated
+by transactions (and rewards). This is in contrast to &quot;epoch baker&quot; which is
+the state of the baker that is currently eligible for baking.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerRemoved.html">BakerRemoved</a></dt>
+      <dd><p>An account was deregistered as a baker.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerRemovedEvent.html">BakerRemovedEvent</a></dt>
+      <dd><p>Baker was removed.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerRestakeEarningsUpdated.html">BakerRestakeEarningsUpdated</a></dt>
+      <dd><p>An account changed its preference for restaking earnings.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerRestakeEarningsUpdatedEvent.html">BakerRestakeEarningsUpdatedEvent</a></dt>
+      <dd><p>Changed if earnings should be restaked.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerSetBakingRewardCommissionEvent.html">BakerSetBakingRewardCommissionEvent</a></dt>
+      <dd><p>Updated baking reward commission for baker pool</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerSetFinalizationRewardCommissionEvent.html">BakerSetFinalizationRewardCommissionEvent</a></dt>
+      <dd><p>Updated finalization reward commission for baker pool</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerSetMetadataUrlEvent.html">BakerSetMetadataUrlEvent</a></dt>
+      <dd><p>Updated metadata url for baker pool</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerSetOpenStatusEvent.html">BakerSetOpenStatusEvent</a></dt>
+      <dd><p>Updated open status for a baker pool</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerSetTransactionFeeCommissionEvent.html">BakerSetTransactionFeeCommissionEvent</a></dt>
+      <dd><p>Updated baking reward commission for baker pool</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerStakeDecreasedEvent.html">BakerStakeDecreasedEvent</a></dt>
+      <dd><p>Stake decreased on baker.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerStakeIncreasedEvent.html">BakerStakeIncreasedEvent</a></dt>
+      <dd><p>Stake increased on baker.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerStakeThresholdUpdate.html">BakerStakeThresholdUpdate</a></dt>
+      <dd><p>Parameters related to becoming a baker that apply to protocol versions 1-3.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerStakeUpdated.html">BakerStakeUpdated</a></dt>
+      <dd><p>If the stake was updated (that is, it changed and did not stay the
+same) then this is present, otherwise null.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerStakeUpdatedData.html">BakerStakeUpdatedData</a></dt>
+      <dd><p>Data contained in the transaction response in case a baker stake was updated
+(either increased or decreased.)</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.BakingRewardCommissionNotInRange.html">BakingRewardCommissionNotInRange</a></dt>
       <dd><p>Baking reward commission is not in the valid range for a baker</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakingRewards.html">BakingRewards</a></dt>
+      <dd><p>Reward issued to all the bakers at the end of an epoch for baking blocks
+in the epoch.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Best.html">Best</a></dt>
+      <dd><p>Query in the context of the best block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BlockAccrueReward.html">BlockAccrueReward</a></dt>
+      <dd><p>Amounts accrued to accounts for each baked block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BlockEnergyLimitUpdate.html">BlockEnergyLimitUpdate</a></dt>
+      <dd><p>The block energy limit was updated (chain parameters version 2).</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -121,14 +401,127 @@ the canonical way of identifying it.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BlockInfo.html">BlockInfo</a></dt>
+      <dd><p>Metadata about a given block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.BlockItemSummary.html">BlockItemSummary</a></dt>
       <dd><p>Summary of the outcome of a block item in structured form.
 The summary determines which transaction type it was.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.BlockReward.html">BlockReward</a></dt>
+      <dd><p>Reward for including transactions in a block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Bootstrapper.html">Bootstrapper</a></dt>
+      <dd><p>The node is a bootstrapper and does not
+run the consensus protocol.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.CapitalBound.html">CapitalBound</a></dt>
+      <dd><p>A bound on the relative share of the total staked capital that a baker can
+have as its stake. This is required to be greater than 0.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ChainParametersV0.html">ChainParametersV0</a></dt>
+      <dd><p>Values of chain parameters that can be updated via chain updates.
+This applies to protocol version 1-3.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ChainParametersV1.html">ChainParametersV1</a></dt>
+      <dd><p>Values of chain parameters that can be updated via chain updates.
+This applies to protocol version 4 and 5.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ChainParametersV2.html">ChainParametersV2</a></dt>
+      <dd><p>Values of chain parameters that can be updated via chain updates.
+This applies to protocol version 6 and up.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.CommissionRanges.html">CommissionRanges</a></dt>
+      <dd><p>Ranges of allowed commission values that pools may choose from.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.CommissionRates.html">CommissionRates</a></dt>
+      <dd><p>The commission rates charged by the pool owner.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ConsensusInfo.html">ConsensusInfo</a></dt>
+      <dd><p>Summary of the current state of consensus.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ConsensusNotRunning.html">ConsensusNotRunning</a></dt>
+      <dd><p>The consensus protocol is not running on the node.
+This only occurs when the node does not support the protocol on the
+chain or the node is a 'Bootstrapper'.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ConsensusPassive.html">ConsensusPassive</a></dt>
+      <dd><p>The node is a passive member of the consensus. This means:</p>
+<ul>
+<li>The node is processing blocks.</li>
+<li>The node is relaying transactions and blocks onto the network.</li>
+<li>The node is responding to catch up messages from its peers.</li>
+<li>In particular this means that the node is <strong>not</strong> baking blocks.</li>
+</ul>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ContractAddress.html">ContractAddress</a></dt>
+      <dd><p>Represents a contract address.</p>
+<p>A contract is identified by its unique <a class="xref" href="Concordium.Sdk.Types.ContractAddress.html">ContractAddress</a>.
+A contract address consists of a contract index and a contact sub-index
+both represented as 64-bit unsigned integers.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ContractEvent.html">ContractEvent</a></dt>
+      <dd><p>An event generated by a smart contract.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ContractInitialized.html">ContractInitialized</a></dt>
+      <dd><p>A contract was initialized was deployed.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.ContractInitializedEvent.html">ContractInitializedEvent</a></dt>
       <dd><p>Data generated as part of initializing a single contract instance.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ContractName.html">ContractName</a></dt>
+      <dd><p>The init name of a smart contract function. Expected format:
+&quot;init_&lt;contract_name&gt;&quot;. It must only consist of at most 100 ASCII
+alphanumeric or punctuation characters, must not contain a '.' and must
+start with 'init_'.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ContractUpdateIssued.html">ContractUpdateIssued</a></dt>
+      <dd><p>A contract update transaction was issued and produced the given traces.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.CooldownParameters.html">CooldownParameters</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.CooldownParametersCpv1Update.html">CooldownParametersCpv1Update</a></dt>
+      <dd><p>Update to cooldown parameters with chain parameter version 1.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -138,6 +531,73 @@ transaction</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.CredentialKeysUpdated.html">CredentialKeysUpdated</a></dt>
+      <dd><p>Keys of a specific credential were updated.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.CredentialRegistrationId.html">CredentialRegistrationId</a></dt>
+      <dd><p>A registration ID of a credential. This ID is generated from the user's PRF
+key and a sequential counter. CredentialRegistrationIDs generated from
+the same PRF key, but different counter values cannot easily be linked
+together.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.CredentialsUpdated.html">CredentialsUpdated</a></dt>
+      <dd><p>Account's credentials were updated.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.CurrentPaydayBakerPoolStatus.html">CurrentPaydayBakerPoolStatus</a></dt>
+      <dd><p>Status of the pool in the current reward period.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.DataRegistered.html">DataRegistered</a></dt>
+      <dd><p>Some data was registered on the chain.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.DelegationAdded.html">DelegationAdded</a></dt>
+      <dd><p>A delegator was added.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.DelegationConfigured.html">DelegationConfigured</a></dt>
+      <dd><p>An account configured delegation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.DelegationRemoved.html">DelegationRemoved</a></dt>
+      <dd><p>A delegator was removed.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.DelegationSetDelegationTarget.html">DelegationSetDelegationTarget</a></dt>
+      <dd><p>The delegator's delegation target was updated.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.DelegationSetRestakeEarnings.html">DelegationSetRestakeEarnings</a></dt>
+      <dd><p>The delegator's restaking setting was updated.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.DelegationStakeDecreased.html">DelegationStakeDecreased</a></dt>
+      <dd><p>The delegator's stake decreased.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.DelegationStakeIncreased.html">DelegationStakeIncreased</a></dt>
+      <dd><p>The delegator's stake increased.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.DelegationTarget.html">DelegationTarget</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.DelegationTargetNotABaker.html">DelegationTargetNotABaker</a></dt>
       <dd><p>Delegation target is not a baker.</p>
 </dd>
@@ -145,6 +605,12 @@ transaction</p>
     <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.DelegatorInCooldown.html">DelegatorInCooldown</a></dt>
       <dd><p>Account is not a delegation account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Description.html">Description</a></dt>
+      <dd><p>Description either of an anonymity revoker or identity provider.
+Metadata that should be visible on the chain.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -159,14 +625,68 @@ transaction.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ElectionDifficultyUpdate.html">ElectionDifficultyUpdate</a></dt>
+      <dd><p>Representation of the election difficulty as parts per <code>100_000</code>. The
+election difficulty is never more than <code>1</code>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.EncryptedAmountRemovedEvent.html">EncryptedAmountRemovedEvent</a></dt>
+      <dd><p>Event generated when one or more encrypted amounts are consumed from the
+account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.EncryptedAmountSelfTransfer.html">EncryptedAmountSelfTransfer</a></dt>
       <dd><p>Account tried to transfer an encrypted amount to itself, that's not
 allowed.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.EncryptedAmountTransferred.html">EncryptedAmountTransferred</a></dt>
+      <dd><p>An encrypted amount was transferred possible with memo.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.EncryptedSelfAmountAddedEvent.html">EncryptedSelfAmountAddedEvent</a></dt>
+      <dd><p>An account transferred part of its public balance to its encrypted
+balance.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.EuroPerEnergyUpdate.html">EuroPerEnergyUpdate</a></dt>
+      <dd><p>Exchange rate for euro pr. energy.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.FinalizationCommitteeParameters.html">FinalizationCommitteeParameters</a></dt>
+      <dd><p>Finalization committee parameters. These parameters control which bakers are
+in the finalization committee.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.FinalizationCommitteeParametersUpdate.html">FinalizationCommitteeParametersUpdate</a></dt>
+      <dd><p>Finalization committee parameters (chain parameters version 2).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.FinalizationRewardCommissionNotInRange.html">FinalizationRewardCommissionNotInRange</a></dt>
       <dd><p>Finalization reward commission is not in the valid range for a baker</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.FinalizationRewards.html">FinalizationRewards</a></dt>
+      <dd><p>Distribution of finalization rewards.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.FinalizationSummary.html">FinalizationSummary</a></dt>
+      <dd><p>Summary of the finalization record in a block, if any.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.FinalizationSummaryParty.html">FinalizationSummaryParty</a></dt>
+      <dd><p>Details of a party in a finalization.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -176,8 +696,56 @@ expired</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.FoundationAccountUpdate.html">FoundationAccountUpdate</a></dt>
+      <dd><p>Update of the foundation account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.GasRewards.html">GasRewards</a></dt>
+      <dd><p>The reward fractions related to the gas account and inclusion of special
+transactions for chain parameters version 0 and 1.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.GasRewardsCpv2.html">GasRewardsCpv2</a></dt>
+      <dd><p>The reward fractions related to the gas account and inclusion of special
+transactions.
+Introduce for protocol version 6.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.GasRewardsCpv2Update.html">GasRewardsCpv2Update</a></dt>
+      <dd><p>The reward fractions related to the gas account and inclusion of special
+transactions.
+Introduce for protocol version 6.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.GasRewardsUpdate.html">GasRewardsUpdate</a></dt>
+      <dd><p>The reward fractions related to the gas account and  inclusion of special
+transactions.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Given.html">Given</a></dt>
+      <dd><p>Query in the context of a specific block hash.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.Hash.html">Hash</a></dt>
       <dd><p>Represents a 32-byte hash.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.HigherLevelKeys.html">HigherLevelKeys</a></dt>
+      <dd><p>Either root or level1 access structure. They all have the same
+structure, keys and a threshold. The enum type parameter is used for
+to distinguish different access structures in different contexts.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.InclusiveRange-1.html">InclusiveRange&lt;T&gt;</a></dt>
+      <dd><p>Range where <a class="xref" href="Concordium.Sdk.Types.InclusiveRange-1.html#Concordium_Sdk_Types_InclusiveRange_1_Min">Min</a> and <a class="xref" href="Concordium.Sdk.Types.InclusiveRange-1.html#Concordium_Sdk_Types_InclusiveRange_1_Max">Max</a> is within.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -193,6 +761,11 @@ expired</p>
     <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.InsufficientDelegationStake.html">InsufficientDelegationStake</a></dt>
       <dd><p>Delegation stake when adding a delegator was 0.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Interrupted.html">Interrupted</a></dt>
+      <dd><p>A contract was interrupted. This occurs when a contract invokes another contract or makes a transfer to an account.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -259,8 +832,89 @@ incorrect.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.IpCdiVerifyKey.html">IpCdiVerifyKey</a></dt>
+      <dd><p>Ed25519 public key of the identity provider.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.IpInfo.html">IpInfo</a></dt>
+      <dd><p>Public information about an identity provider.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.IpVerifyKey.html">IpVerifyKey</a></dt>
+      <dd><p>Pointcheval-Sanders public key of the identity provider.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.KeyIndexAlreadyInUse.html">KeyIndexAlreadyInUse</a></dt>
       <dd><p>Attempted to add an account key to a key index already in use</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.LastFinal.html">LastFinal</a></dt>
+      <dd><p>Query in the context of the last finalized block at the time of the
+query.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Level1.html">Level1</a></dt>
+      <dd><p>An update with level 1 keys of either level 1 or level 2 keys.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Level1Keys.html">Level1Keys</a></dt>
+      <dd><p>Level1 Keys</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Level1KeysUpdate.html">Level1KeysUpdate</a></dt>
+      <dd><p>Level 1 key update.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Level2KeysUpdate.html">Level2KeysUpdate</a></dt>
+      <dd><p>Level 2 keys update with chain parameter version 0.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Level2KeysUpdateV1.html">Level2KeysUpdateV1</a></dt>
+      <dd><p>Level 2 keys update with chain parameter version 1.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.MicroCcdPerEuroUpdate.html">MicroCcdPerEuroUpdate</a></dt>
+      <dd><p>Exchange rate for micro ccd pr. euro.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.MinBlockTimeUpdate.html">MinBlockTimeUpdate</a></dt>
+      <dd><p>The minimum time between blocks was updated (chain parameters version 2).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Mint.html">Mint</a></dt>
+      <dd><p>Distribution of newly minted CCD.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.MintDistributionCpv0.html">MintDistributionCpv0</a></dt>
+      <dd><p>Mint distribution that applies to protocol versions 1-3 with chain parameters version 0.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.MintDistributionCpv0Update.html">MintDistributionCpv0Update</a></dt>
+      <dd><p>Mint distribution that applies to protocol versions 1-3 with chain parameters version 0.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.MintDistributionCpv1.html">MintDistributionCpv1</a></dt>
+      <dd><p>Mint distribution parameters that apply to protocol version 4 and up.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.MintDistributionCpv1Update.html">MintDistributionCpv1Update</a></dt>
+      <dd><p>Mint distribution parameters that apply to protocol version 4 and up. with chain parameters version 1.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -270,9 +924,14 @@ to add a baker.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Concordium.Sdk.Types.MissingDelegationAddParameter.html">MissingDelegationAddParameter</a></dt>
+      <dt><a class="xref" href="Concordium.Sdk.Types.MissingDelegationAddParameters.html">MissingDelegationAddParameters</a></dt>
       <dd><p>A configure delegation transaction is missing one or more arguments in
 order to add a delegator.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ModuleDeployed.html">ModuleDeployed</a></dt>
+      <dd><p>A module was deployed.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -291,6 +950,27 @@ order to add a delegator.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.NetworkInfo.html">NetworkInfo</a></dt>
+      <dd><p>The network information of a node.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.NewEncryptedAmountEvent.html">NewEncryptedAmountEvent</a></dt>
+      <dd><p>Event generated when an account receives a new encrypted amount.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Node.html">Node</a></dt>
+      <dd><p>The node is a regular node and is eligible for
+running the consensus protocol.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.NodeInfo.html">NodeInfo</a></dt>
+      <dd><p>The status of the requested node.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.NonExistentCredIds.html">NonExistentCredIds</a></dt>
       <dd><p>A credential id that was to be removed is not part of the account.</p>
 </dd>
@@ -303,6 +983,12 @@ order to add a delegator.</p>
     <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.NonIncreasingSchedule.html">NonIncreasingSchedule</a></dt>
       <dd><p>The transfer with schedule has a non strictly increasing schedule</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.None.html">None</a></dt>
+      <dd><p>No effects other than payment from this transaction.
+The rejection reason indicates why the transaction failed.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -334,6 +1020,12 @@ multiple credentials.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.NotInCommittee.html">NotInCommittee</a></dt>
+      <dd><p>The node has been configured with baker keys however it is not currently
+baking and possilby never will.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.OnChainData.html">OnChainData</a></dt>
       <dd><p>Represents data to be stored or that was stored on-chain as part of a transaction.</p>
 <p>This can be any data which is at most <a class="xref" href="Concordium.Sdk.Types.OnChainData.html#Concordium_Sdk_Types_OnChainData_MaxLength">MaxLength</a> bytes, but the convention is
@@ -346,14 +1038,88 @@ to use CBOR encoded data.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Parameter.html">Parameter</a></dt>
+      <dd><p>Parameter to the init function or entrypoint.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.PassiveDelegationStatus.html">PassiveDelegationStatus</a></dt>
+      <dd><p>State of the passive delegation pool. Changes to delegation,
+e.g., an account deciding to delegate are reflected in this structure at
+first.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.PassiveDelegationTarget.html">PassiveDelegationTarget</a></dt>
+      <dd><p>Delegate passively, i.e., to no specific baker.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.PaydayAccountReward.html">PaydayAccountReward</a></dt>
+      <dd><p>Payment for a particular account.
+When listed in a block summary, the delegated pool of the account is
+given by the last PaydayPoolReward outcome included before this outcome.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.PaydayFoundationReward.html">PaydayFoundationReward</a></dt>
+      <dd><p>Payment for the foundation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.PaydayPoolReward.html">PaydayPoolReward</a></dt>
+      <dd><p>Payment distributed to a pool or passive delegators.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.PeerVersion.html">PeerVersion</a></dt>
+      <dd><p>The version of the node in semantic format.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.PoolClosed.html">PoolClosed</a></dt>
       <dd><p>The pool is not open to delegators.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.PoolParameters.html">PoolParameters</a></dt>
+      <dd><p>Parameters related to staking pools. This applies to protocol version 4 and
+up.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.PoolParametersCpv1Update.html">PoolParametersCpv1Update</a></dt>
+      <dd><p>Update to pool- and delegation parameters.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.PoolWouldBecomeOverDelegated.html">PoolWouldBecomeOverDelegated</a></dt>
       <dd><p>The amount would result in pool with a too high fraction of delegated
 capital.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ProtocolUpdate.html">ProtocolUpdate</a></dt>
+      <dd><p>A generic protocol update. This is essentially an announcement of the
+update. The details of the update will be communicated in some off-chain
+way, and bakers will need to update their node software to support the
+update.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ProtocolVersionExtension.html">ProtocolVersionExtension</a></dt>
+      <dd><p>Extension methods for Protocol Version</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ReceiveName.html">ReceiveName</a></dt>
+      <dd><p>A receive name of the contract function called. Expected format: &quot;&lt;contract_name&gt;.&lt;func_name&gt;&quot;.
+The name must not exceed 100 bytes and all characters are ascii alphanumeric or punctuation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ReduceStakePending.html">ReduceStakePending</a></dt>
+      <dd><p>The baker will be removed at the end of the given time.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -367,8 +1133,61 @@ capital.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Relative.html">Relative</a></dt>
+      <dd><p>Query relative to an explicit genesis index.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.RelativeHeight.html">RelativeHeight</a></dt>
+      <dd><p>Query relative to an explicit genesis index.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.RemoveFirstCredential.html">RemoveFirstCredential</a></dt>
       <dd><p>Attempt to remove the first credential</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.RemoveStakePending.html">RemoveStakePending</a></dt>
+      <dd><p>The stake is being reduced. The new stake will take affect in the given time.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Resumed.html">Resumed</a></dt>
+      <dd><p>A previously interrupted contract was resumed.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.RewardOverviewBase.html">RewardOverviewBase</a></dt>
+      <dd><p>Information about the state of the CCD distribution at a particular time.
+Reward data common to both V0 and V1 rewards.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.RewardOverviewV0.html">RewardOverviewV0</a></dt>
+      <dd><p>Reward Overview version 0.
+Only exists for protocol versions 1, 2, and 3.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.RewardOverviewV1.html">RewardOverviewV1</a></dt>
+      <dd><p>Reward Overview version 1.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.RootKeys.html">RootKeys</a></dt>
+      <dd><p>Root Keys</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.RootKeysUpdate.html">RootKeysUpdate</a></dt>
+      <dd><p>Root key update.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.RootUpdate.html">RootUpdate</a></dt>
+      <dd><p>An update with root keys of some other set of governance keys, or the root
+keys themselves.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -388,6 +1207,11 @@ method.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Sha256Hash.html">Sha256Hash</a></dt>
+      <dd><p>A Sha256 with no specific meaning.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.StakeOverMaximumThresholdForPool.html">StakeOverMaximumThresholdForPool</a></dt>
       <dd><p>The amount would result in pool capital higher than the maximum
 threshold.</p>
@@ -399,8 +1223,45 @@ threshold.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.StateHash.html">StateHash</a></dt>
+      <dd><p>Hash of the block state that is included in a block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.TimeParameters.html">TimeParameters</a></dt>
+      <dd><p>The time parameters are introduced as of protocol version 4, and consist of
+the reward period length and the mint rate per payday. These are coupled as
+a change to either affects the overall rate of minting.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.TimeParametersCpv1Update.html">TimeParametersCpv1Update</a></dt>
+      <dd><p>Update to mint rate pr day and reward period length.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.TimeoutParameters.html">TimeoutParameters</a></dt>
+      <dd><p>Parameters that determine timeouts in the consensus protocol used from protocol version 6.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.TimeoutParametersUpdate.html">TimeoutParametersUpdate</a></dt>
+      <dd><p>The consensus timeouts were updated (chain parameters version 2).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.TransactionFeeCommissionNotInRange.html">TransactionFeeCommissionNotInRange</a></dt>
       <dd><p>Transaction fee commission is not in the valid range for a baker</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.TransactionFeeDistribution.html">TransactionFeeDistribution</a></dt>
+      <dd><p>Update the transaction fee distribution to the specified value.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.TransactionFeeDistributionUpdate.html">TransactionFeeDistributionUpdate</a></dt>
+      <dd><p>Update the transaction fee distribution to the specified value.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -427,6 +1288,60 @@ can in principle happen.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.TransactionTypeFactory.html">TransactionTypeFactory</a></dt>
+      <dd><p>Helper for constructing transaction type structures.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Transferred.html">Transferred</a></dt>
+      <dd><p>A contract transferred an amount to the account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.TransferredToEncrypted.html">TransferredToEncrypted</a></dt>
+      <dd><p>An account transferred part of its public balance to its encrypted
+balance.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.TransferredToPublic.html">TransferredToPublic</a></dt>
+      <dd><p>An account transferred part of its encrypted balance to its public
+balance.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.TransferredWithSchedule.html">TransferredWithSchedule</a></dt>
+      <dd><p>A transfer with schedule was performed possible with a memo.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.UpdateDetails.html">UpdateDetails</a></dt>
+      <dd><p>Details of an update instruction. These are free, and we only ever get a
+response for them if the update is successfully enqueued, hence no failure
+cases.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.UpdatePayloadFactory.html">UpdatePayloadFactory</a></dt>
+      <dd><p>Helper for constructing update payload structures.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.UpdatePublicKey.html">UpdatePublicKey</a></dt>
+      <dd><p>A single public key that can sign updates.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Updated.html">Updated</a></dt>
+      <dd><p>A contract instance was updated.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Upgraded.html">Upgraded</a></dt>
+      <dd><p>Contract was upgraded.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.ZeroScheduledAmount.html">ZeroScheduledAmount</a></dt>
       <dd><p>The transfer with schedule is going to send 0 tokens</p>
 </dd>
@@ -434,12 +1349,6 @@ can in principle happen.</p>
     <h3 id="structs">
 Structs
 </h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
-      <dd><p>Represents an account address.</p>
-<p>The address of an account is a 32-byte value which uniquely identifies the account.</p>
-</dd>
-    </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.AccountCredentialIndex.html">AccountCredentialIndex</a></dt>
       <dd><p>Represents an account credential index.</p>
@@ -449,7 +1358,9 @@ byte-value referred to as its credential index.</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.AccountIndex.html">AccountIndex</a></dt>
-      <dd></dd>
+      <dd><p>Index of the account in the account table. These are assigned sequentially
+in the order of creation of accounts. The first account has index 0.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.AccountKeyIndex.html">AccountKeyIndex</a></dt>
@@ -471,7 +1382,19 @@ corresponding credential uniquely identifies that key.</p>
 and used when submitting account transactions for that account to the node. The account
 sequence number is maintained as on-chain state and is incremented with each finalized
 transaction. The next sequence number to be used in a transaction can be queried
-with <a class="xref" href="Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_GetNextAccountSequenceNumber_Concordium_Sdk_Types_AccountAddress_">GetNextAccountSequenceNumber(AccountAddress)</a>.</p>
+with <a class="xref" href="Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_GetNextAccountSequenceNumber_Concordium_Sdk_Types_AccountAddress_System_Threading_CancellationToken_">GetNextAccountSequenceNumber(AccountAddress, CancellationToken)</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.AccountThreshold.html">AccountThreshold</a></dt>
+      <dd><p>The minimum number of credentials that need to sign any transaction coming
+from an associated account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ArIdentity.html">ArIdentity</a></dt>
+      <dd><p>Identity of the anonymity revoker on the chain. This defines their
+evaluation point for secret sharing, and thus it cannot be 0.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -486,26 +1409,31 @@ with <a class="xref" href="Concordium.Sdk.Client.ConcordiumClient.html#Concordiu
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Concordium.Sdk.Types.ContractAddress.html">ContractAddress</a></dt>
-      <dd><p>Represents a contract address.</p>
-<p>A contract is identified by its unique <a class="xref" href="Concordium.Sdk.Types.ContractAddress.html">ContractAddress</a>.
-A contract address consists of a contract index and a contact sub-index
-both represented as 64-bit unsigned integers.</p>
+      <dt><a class="xref" href="Concordium.Sdk.Types.CredentialsPerBlockLimit.html">CredentialsPerBlockLimit</a></dt>
+      <dd><p>Limit on the number of credential deployments in a block. Since credential
+deployments create accounts, this is in effect a limit on the number of
+accounts that can be created in a block.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Concordium.Sdk.Types.ContractEvent.html">ContractEvent</a></dt>
-      <dd><p>An event generated by a smart contract.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Concordium.Sdk.Types.ContractName.html">ContractName</a></dt>
-      <dd><p>A contract name. Expected format: &quot;init_&lt;contract_name&gt;&quot;.</p>
+      <dt><a class="xref" href="Concordium.Sdk.Types.DelegatorId.html">DelegatorId</a></dt>
+      <dd><p>Internal short id of the delegator.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.EnergyAmount.html">EnergyAmount</a></dt>
       <dd><p>Represents an amount of energy.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.Epoch.html">Epoch</a></dt>
+      <dd><p>Epoch number</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ExchangeRate.html">ExchangeRate</a></dt>
+      <dd><p>An exchange rate between two quantities. This is never 0, and the exchange
+rate should also never be infinite.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -515,8 +1443,25 @@ both represented as 64-bit unsigned integers.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Concordium.Sdk.Types.Parameter.html">Parameter</a></dt>
-      <dd><p>Parameter to the init function or entrypoint.</p>
+      <dt><a class="xref" href="Concordium.Sdk.Types.IpIdentity.html">IpIdentity</a></dt>
+      <dd><p>A succinct identifier of an identity provider on the chain.
+In credential deployments, and other interactions with the chain this is
+used to identify which identity provider is meant.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.LeverageFactor.html">LeverageFactor</a></dt>
+      <dd><p>The amount of leverage that a baker can get from delegation. A leverage
+factor of 1 means that a baker does not gain anything from delegation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.MintRate.html">MintRate</a></dt>
+      <dd><p>Rate of creation of new CCDs. For example, A value of <code>0.05</code> would mean an
+increase of 5 percent per unit of time. This value does not specify the time
+unit, and this differs based on the protocol version.</p>
+<p>The representation is base-10 floating point number representation.
+The value is <code>mantissa * 10^(-exponent)</code>.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -525,16 +1470,113 @@ both represented as 64-bit unsigned integers.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Concordium.Sdk.Types.ReceiveName.html">ReceiveName</a></dt>
-      <dd><p>A receive name of the contract function called. Expected format: &quot;&lt;contract_name&gt;.&lt;func_name&gt;&quot;.</p>
+      <dt><a class="xref" href="Concordium.Sdk.Types.Ratio.html">Ratio</a></dt>
+      <dd><p>A ratio between two <code>ulong</code> integers.</p>
+<p>It should be safe to assume the denominator is not zero and that numerator
+and denominator are coprime.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.RewardPeriodLength.html">RewardPeriodLength</a></dt>
+      <dd><p>Length of a reward period in epochs.
+Must always be a strictly positive integer.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.UpdateKeysIndex.html">UpdateKeysIndex</a></dt>
+      <dd><p>An identifier of a key that can sign update instructions. A signature of an
+update instruction is a collection of signatures. An <a class="xref" href="Concordium.Sdk.Types.UpdateKeysIndex.html">UpdateKeysIndex</a>
+identifies keys that correspond to the signatures.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.UpdateKeysThreshold.html">UpdateKeysThreshold</a></dt>
+      <dd><p>A lower bound on the number of signatures needed to sign a valid update
+message of a particular type. This is never 0.</p>
 </dd>
     </dl>
     <h3 id="interfaces">
 Interfaces
 </h3>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.IAccountDelegationPendingChange.html">IAccountDelegationPendingChange</a></dt>
+      <dd><p>Interface covering account delegation pending changes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.IAccountIdentifier.html">IAccountIdentifier</a></dt>
+      <dd><p>An account identifier used in queries.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.IAccountStakingInfo.html">IAccountStakingInfo</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.IAccountTransactionEffects.html">IAccountTransactionEffects</a></dt>
+      <dd><p>Effects of an account transactions. All variants apart from
+<a class="xref" href="Concordium.Sdk.Types.None.html">None</a> correspond to a unique transaction that
+was successful.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.IAddress.html">IAddress</a></dt>
       <dd><p>A interface implemented by addresses like Account- and Contract address.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.IBakerEvent.html">IBakerEvent</a></dt>
+      <dd><p>Events that may result from the <a class="xref" href="Concordium.Sdk.Types.TransactionType.html#Concordium_Sdk_Types_TransactionType_ConfigureBaker">ConfigureBaker</a>
+transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.IBlockHashInput.html">IBlockHashInput</a></dt>
+      <dd><p>A block identifier used in queries.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.IBlockHeight.html">IBlockHeight</a></dt>
+      <dd><p>Interface which covers block heights and can be mapped into gRPC block height request types.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.IBlockItemSummaryDetails.html">IBlockItemSummaryDetails</a></dt>
+      <dd><p>Details of a block item summary, split by the kind of block item it is for.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.IChainParameters.html">IChainParameters</a></dt>
+      <dd><p>Chain parameters.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.IContractTraceElement.html">IContractTraceElement</a></dt>
+      <dd><p>A successful contract invocation produces a sequence of effects on smart
+contracts and possibly accounts (if any contract transfers CCD to an
+account).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.IDelegationEvent.html">IDelegationEvent</a></dt>
+      <dd><p>Events that may happen as a result of the
+<a class="xref" href="Concordium.Sdk.Types.TransactionType.html#Concordium_Sdk_Types_TransactionType_ConfigureDelegation">ConfigureDelegation</a> transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ILevel1.html">ILevel1</a></dt>
+      <dd><p>An update with level 1 keys of either level 1 or level 2 keys. Each of the
+updates must be a separate transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.INodeConsensusStatus.html">INodeConsensusStatus</a></dt>
+      <dd><p>Details of the consensus protocol running on the node.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.INodeDetails.html">INodeDetails</a></dt>
+      <dd><p>Consensus related information for a node.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -544,21 +1586,68 @@ and act on it. See example.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.IRootUpdate.html">IRootUpdate</a></dt>
+      <dd><p>An update with root keys of some other set of governance keys, or the root
+keys themselves. Each update is a separate transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ISpecialEvent.html">ISpecialEvent</a></dt>
+      <dd><p>In addition to the user initiated transactions the protocol generates some
+events which are deemed &quot;Special outcomes&quot;. These are rewards for running
+the consensus and finalization protocols.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.ITransactionStatus.html">ITransactionStatus</a></dt>
       <dd><p>A common return type for TransactionStatus.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.IUpdatePayload.html">IUpdatePayload</a></dt>
+      <dd><p>The type of an update payload.</p>
 </dd>
     </dl>
     <h3 id="enums">
 Enums
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="Concordium.Sdk.Types.AccountTransactionType.html">AccountTransactionType</a></dt>
-      <dd><p>Values used for binary serialization of transactions.</p>
+      <dt><a class="xref" href="Concordium.Sdk.Types.BakerPoolOpenStatus.html">BakerPoolOpenStatus</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ContractName.ValidationError.html">ContractName.ValidationError</a></dt>
+      <dd><p>Validation error of contract name.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Types.ContractVersion.html">ContractVersion</a></dt>
       <dd><p>Contract version.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.CredentialType.html">CredentialType</a></dt>
+      <dd><p>Enumeration of the types of credentials.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ProtocolVersion.html">ProtocolVersion</a></dt>
+      <dd><p>An enumeration of the supported versions of the consensus protocol.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.ReceiveName.ValidationError.html">ReceiveName.ValidationError</a></dt>
+      <dd><p>Validation error of receive name.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.TransactionType.html">TransactionType</a></dt>
+      <dd><p>Types of account transactions.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Types.UpdateType.html">UpdateType</a></dt>
+      <dd><p>The type of an update.</p>
 </dd>
     </dl>
 

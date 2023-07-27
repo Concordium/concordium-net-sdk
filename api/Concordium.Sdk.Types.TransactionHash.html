@@ -92,7 +92,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public record TransactionHash : Hash, IEquatable&lt;Hash&gt;, IEquatable&lt;TransactionHash&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed record TransactionHash : Hash, IEquatable&lt;Hash&gt;, IEquatable&lt;TransactionHash&gt;</code></pre>
   </div>
 
 
@@ -126,6 +126,9 @@
       <a class="xref" href="Concordium.Sdk.Types.Hash.html#Concordium_Sdk_Types_Hash_ToBytes">Hash.ToBytes()</a>
     </div>
     <div>
+      <a class="xref" href="Concordium.Sdk.Types.Hash.html#Concordium_Sdk_Types_Hash_AsSpan">Hash.AsSpan()</a>
+    </div>
+    <div>
       <a class="xref" href="Concordium.Sdk.Types.Hash.html#Concordium_Sdk_Types_Hash_ToString">Hash.ToString()</a>
     </div>
     <div>
@@ -142,9 +145,6 @@
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>

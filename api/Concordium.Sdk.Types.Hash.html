@@ -118,6 +118,8 @@
     <dd>
       <div><a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a></div>
       <div><a class="xref" href="Concordium.Sdk.Types.ModuleReference.html">ModuleReference</a></div>
+      <div><a class="xref" href="Concordium.Sdk.Types.Sha256Hash.html">Sha256Hash</a></div>
+      <div><a class="xref" href="Concordium.Sdk.Types.StateHash.html">StateHash</a></div>
       <div><a class="xref" href="Concordium.Sdk.Types.TransactionHash.html">TransactionHash</a></div>
     </dd>
   </dl>
@@ -267,11 +269,43 @@
 </h2>
 
 
+  <a id="Concordium_Sdk_Types_Hash_AsSpan_" data-uid="Concordium.Sdk.Types.Hash.AsSpan*"></a>
+
+  <h3 id="Concordium_Sdk_Types_Hash_AsSpan" data-uid="Concordium.Sdk.Types.Hash.AsSpan">
+  AsSpan()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Hash.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns read only span of underlying data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReadOnlySpan&lt;byte&gt; AsSpan()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Concordium_Sdk_Types_Hash_Equals_" data-uid="Concordium.Sdk.Types.Hash.Equals*"></a>
 
   <h3 id="Concordium_Sdk_Types_Hash_Equals_Concordium_Sdk_Types_Hash_" data-uid="Concordium.Sdk.Types.Hash.Equals(Concordium.Sdk.Types.Hash)">
   Equals(Hash?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Hash.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Hash.cs/#L71"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
@@ -310,7 +344,7 @@
 
   <h3 id="Concordium_Sdk_Types_Hash_GetHashCode" data-uid="Concordium.Sdk.Types.Hash.GetHashCode">
   GetHashCode()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Hash.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Hash.cs/#L91"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Serves as the default hash function.</p>
@@ -375,7 +409,7 @@
 
   <h3 id="Concordium_Sdk_Types_Hash_ToString" data-uid="Concordium.Sdk.Types.Hash.ToString">
   ToString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Hash.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Hash.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the hash as a length-64 hex encoded string.</p>

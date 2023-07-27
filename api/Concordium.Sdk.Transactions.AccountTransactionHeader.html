@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Struct AccountTransactionHeader
+      <title>Class AccountTransactionHeader
  </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Struct AccountTransactionHeader
+      <meta name="title" content="Class AccountTransactionHeader
  ">
       
       <link rel="icon" href="../favicon.ico">
@@ -78,8 +78,8 @@
 
 
   <h1 id="Concordium_Sdk_Transactions_AccountTransactionHeader" data-uid="Concordium.Sdk.Transactions.AccountTransactionHeader" class="text-break">
-    Struct AccountTransactionHeader
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L18"><i class="bi bi-code-slash"></i></a>
+    Class AccountTransactionHeader
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -99,35 +99,48 @@ the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.h
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public struct AccountTransactionHeader</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed record AccountTransactionHeader : IEquatable&lt;AccountTransactionHeader&gt;</code></pre>
   </div>
 
 
 
 
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AccountTransactionHeader</span></div>
+    </dd>
+  </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.html">AccountTransactionHeader</a>&gt;</div>
+    </dd>
+  </dl>
 
 
   <dl class="typelist derived">
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals">ValueType.Equals(object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode">ValueType.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.tostring">ValueType.ToString()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
   </dd></dl>
 
@@ -144,32 +157,39 @@ the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.h
 
   <h3 id="Concordium_Sdk_Transactions_AccountTransactionHeader__ctor_Concordium_Sdk_Types_AccountAddress_Concordium_Sdk_Types_AccountSequenceNumber_Concordium_Sdk_Types_Expiry_Concordium_Sdk_Types_EnergyAmount_Concordium_Sdk_Types_PayloadSize_" data-uid="Concordium.Sdk.Transactions.AccountTransactionHeader.#ctor(Concordium.Sdk.Types.AccountAddress,Concordium.Sdk.Types.AccountSequenceNumber,Concordium.Sdk.Types.Expiry,Concordium.Sdk.Types.EnergyAmount,Concordium.Sdk.Types.PayloadSize)">
   AccountTransactionHeader(AccountAddress, AccountSequenceNumber, Expiry, EnergyAmount, PayloadSize)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.html">AccountTransactionHeader</a> class.</p>
+  <div class="markdown level1 summary"><p>Represents the header of an account transaction.</p>
+<p>Transactions sent to the node include an account transaction header with
+the following information that is used when processing the transaction:</p>
+<p>The <a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a> of the sender,
+the <a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a> to use,
+the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.html#Concordium_Sdk_Transactions_AccountTransactionHeader_Expiry">Expiry</a> time of the transaction,
+the maximum <a class="xref" href="Concordium.Sdk.Types.EnergyAmount.html">EnergyAmount</a> to spend on the transaction as well as
+the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.html#Concordium_Sdk_Transactions_AccountTransactionHeader_PayloadSize">PayloadSize</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AccountTransactionHeader(AccountAddress sender, AccountSequenceNumber sequenceNumber, Expiry expiry, EnergyAmount maxEnergyCost, PayloadSize payloadSize)</code></pre>
+    <pre><code class="lang-csharp hljs">public AccountTransactionHeader(AccountAddress Sender, AccountSequenceNumber SequenceNumber, Expiry Expiry, EnergyAmount MaxEnergyCost, PayloadSize PayloadSize)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>sender</code> <a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
+    <dt><code>Sender</code> <a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
     <dd><p>Address of the sender of the transaction.</p>
 </dd>
-    <dt><code>sequenceNumber</code> <a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a></dt>
+    <dt><code>SequenceNumber</code> <a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a></dt>
     <dd><p>Account sequence number to use for the transaction.</p>
 </dd>
-    <dt><code>expiry</code> <a class="xref" href="Concordium.Sdk.Types.Expiry.html">Expiry</a></dt>
+    <dt><code>Expiry</code> <a class="xref" href="Concordium.Sdk.Types.Expiry.html">Expiry</a></dt>
     <dd><p>Expiration time of the transaction.</p>
 </dd>
-    <dt><code>maxEnergyCost</code> <a class="xref" href="Concordium.Sdk.Types.EnergyAmount.html">EnergyAmount</a></dt>
+    <dt><code>MaxEnergyCost</code> <a class="xref" href="Concordium.Sdk.Types.EnergyAmount.html">EnergyAmount</a></dt>
     <dd><p>Maximum amount of energy to spend on this transaction.</p>
 </dd>
-    <dt><code>payloadSize</code> <a class="xref" href="Concordium.Sdk.Types.PayloadSize.html">PayloadSize</a></dt>
+    <dt><code>PayloadSize</code> <a class="xref" href="Concordium.Sdk.Types.PayloadSize.html">PayloadSize</a></dt>
     <dd><p>Size of the transaction payload.</p>
 </dd>
   </dl>
@@ -192,7 +212,7 @@ the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.h
 
   <h3 id="Concordium_Sdk_Transactions_AccountTransactionHeader_BytesLength" data-uid="Concordium.Sdk.Transactions.AccountTransactionHeader.BytesLength">
   BytesLength
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The length of the serialized account transaction header in bytes.</p>
@@ -228,7 +248,7 @@ the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.h
 
   <h3 id="Concordium_Sdk_Transactions_AccountTransactionHeader_Expiry" data-uid="Concordium.Sdk.Transactions.AccountTransactionHeader.Expiry">
   Expiry
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Expiration time of the transaction.</p>
@@ -236,7 +256,7 @@ the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.h
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Expiry Expiry { readonly get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Expiry Expiry { get; init; }</code></pre>
   </div>
 
 
@@ -260,7 +280,7 @@ the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.h
 
   <h3 id="Concordium_Sdk_Transactions_AccountTransactionHeader_MaxEnergyCost" data-uid="Concordium.Sdk.Transactions.AccountTransactionHeader.MaxEnergyCost">
   MaxEnergyCost
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Maximum amount of energy to spend on this transaction.</p>
@@ -268,7 +288,7 @@ the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.h
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EnergyAmount MaxEnergyCost { readonly get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public EnergyAmount MaxEnergyCost { get; init; }</code></pre>
   </div>
 
 
@@ -292,7 +312,7 @@ the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.h
 
   <h3 id="Concordium_Sdk_Transactions_AccountTransactionHeader_PayloadSize" data-uid="Concordium.Sdk.Transactions.AccountTransactionHeader.PayloadSize">
   PayloadSize
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Size of the transaction payload.</p>
@@ -300,7 +320,7 @@ the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.h
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PayloadSize PayloadSize { readonly get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public PayloadSize PayloadSize { get; init; }</code></pre>
   </div>
 
 
@@ -324,7 +344,7 @@ the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.h
 
   <h3 id="Concordium_Sdk_Transactions_AccountTransactionHeader_Sender" data-uid="Concordium.Sdk.Transactions.AccountTransactionHeader.Sender">
   Sender
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Address of the sender of the transaction.</p>
@@ -332,7 +352,7 @@ the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.h
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AccountAddress Sender { readonly get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AccountAddress Sender { get; init; }</code></pre>
   </div>
 
 
@@ -356,7 +376,7 @@ the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.h
 
   <h3 id="Concordium_Sdk_Transactions_AccountTransactionHeader_SequenceNumber" data-uid="Concordium.Sdk.Transactions.AccountTransactionHeader.SequenceNumber">
   SequenceNumber
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Account sequence number to use for the transaction.</p>
@@ -364,7 +384,7 @@ the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.h
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AccountSequenceNumber SequenceNumber { readonly get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AccountSequenceNumber SequenceNumber { get; init; }</code></pre>
   </div>
 
 
@@ -392,7 +412,7 @@ the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.h
 
   <h3 id="Concordium_Sdk_Transactions_AccountTransactionHeader_ToBytes" data-uid="Concordium.Sdk.Transactions.AccountTransactionHeader.ToBytes">
   ToBytes()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L70"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Copies the transaction header in the binary format expected by the node to a byte array.</p>
@@ -400,7 +420,7 @@ the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.h
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly byte[] ToBytes()</code></pre>
+    <pre><code class="lang-csharp hljs">public byte[] ToBytes()</code></pre>
   </div>
 
 
@@ -424,7 +444,7 @@ the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.h
 
   <h3 id="Concordium_Sdk_Transactions_AccountTransactionHeader_ToProto" data-uid="Concordium.Sdk.Transactions.AccountTransactionHeader.ToProto">
   ToProto()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L82"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts the account transaction header to its corresponding protocol buffer message instance.</p>
@@ -432,7 +452,7 @@ the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.h
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly AccountTransactionHeader ToProto()</code></pre>
+    <pre><code class="lang-csharp hljs">public AccountTransactionHeader ToProto()</code></pre>
   </div>
 
 
@@ -456,7 +476,7 @@ the <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.h
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L18" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountTransactionHeader.cs/#L23" class="edit-link">Edit this page</a>
         </div>
 
         

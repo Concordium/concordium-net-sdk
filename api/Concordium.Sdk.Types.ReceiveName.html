@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Struct ReceiveName
+      <title>Class ReceiveName
  </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Struct ReceiveName
+      <meta name="title" content="Class ReceiveName
  ">
       
       <link rel="icon" href="../favicon.ico">
@@ -78,8 +78,8 @@
 
 
   <h1 id="Concordium_Sdk_Types_ReceiveName" data-uid="Concordium.Sdk.Types.ReceiveName" class="text-break">
-    Struct ReceiveName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ReceiveName.cs/#L6"><i class="bi bi-code-slash"></i></a>
+    Class ReceiveName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ReceiveName.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -87,17 +87,25 @@
   <dl><dt>Assembly</dt><dd>Concordium.Sdk.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>A receive name of the contract function called. Expected format: &quot;&lt;contract_name&gt;.&lt;func_name&gt;&quot;.</p>
+  <div class="markdown summary"><p>A receive name of the contract function called. Expected format: &quot;&lt;contract_name&gt;.&lt;func_name&gt;&quot;.
+The name must not exceed 100 bytes and all characters are ascii alphanumeric or punctuation.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public record struct ReceiveName : IEquatable&lt;ReceiveName&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed record ReceiveName : IEquatable&lt;ReceiveName&gt;</code></pre>
   </div>
 
 
 
 
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ReceiveName</span></div>
+    </dd>
+  </dl>
 
   <dl class="typelist implements">
     <dt>Implements</dt>
@@ -111,16 +119,13 @@
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals">ValueType.Equals(object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode">ValueType.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.tostring">ValueType.ToString()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
@@ -128,43 +133,10 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
     </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
   </dd></dl>
-
-
-
-
-
-
-  <h2 class="section" id="constructors">Constructors
-</h2>
-
-
-  <a id="Concordium_Sdk_Types_ReceiveName__ctor_" data-uid="Concordium.Sdk.Types.ReceiveName.#ctor*"></a>
-
-  <h3 id="Concordium_Sdk_Types_ReceiveName__ctor_System_String_" data-uid="Concordium.Sdk.Types.ReceiveName.#ctor(System.String)">
-  ReceiveName(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ReceiveName.cs/#L6"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>A receive name of the contract function called. Expected format: &quot;&lt;contract_name&gt;.&lt;func_name&gt;&quot;.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ReceiveName(string Receive)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>Receive</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
 
 
 
@@ -179,14 +151,15 @@
 
   <h3 id="Concordium_Sdk_Types_ReceiveName_Receive" data-uid="Concordium.Sdk.Types.ReceiveName.Receive">
   Receive
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ReceiveName.cs/#L6"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ReceiveName.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Name with format &quot;&lt;contract_name&gt;.&lt;func_name&gt;&quot;.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Receive { readonly get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string Receive { get; init; }</code></pre>
   </div>
 
 
@@ -206,11 +179,58 @@
 
 
 
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Concordium_Sdk_Types_ReceiveName_TryParse_" data-uid="Concordium.Sdk.Types.ReceiveName.TryParse*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ReceiveName_TryParse_System_String_System_ValueTuple_Concordium_Sdk_Types_ReceiveName_System_Nullable_Concordium_Sdk_Types_ReceiveName_ValidationError____" data-uid="Concordium.Sdk.Types.ReceiveName.TryParse(System.String,System.ValueTuple{Concordium.Sdk.Types.ReceiveName,System.Nullable{Concordium.Sdk.Types.ReceiveName.ValidationError}}@)">
+  TryParse(string, out (ReceiveName? ReceiveName, ValidationError? Error))
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ReceiveName.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Try parse input name against expected format.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryParse(string name, out (ReceiveName? ReceiveName, ReceiveName.ValidationError? Error) output)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Input receive name.</p>
+</dd>
+    <dt><code>output</code> (<a class="xref" href="Concordium.Sdk.Types.ReceiveName.html">ReceiveName</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-concordium.sdk.types.receivename,system.nullable-concordium.sdk.types.receivename.validationerror--.receivename">ReceiveName</a>, <a class="xref" href="Concordium.Sdk.Types.ReceiveName.html">ReceiveName</a>.<a class="xref" href="Concordium.Sdk.Types.ReceiveName.ValidationError.html">ValidationError</a>? <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-concordium.sdk.types.receivename,system.nullable-concordium.sdk.types.receivename.validationerror--.error">Error</a>)</dt>
+    <dd><p>If parsing succeeded then ReceiveName will be not null.
+If parsing failed Error will be not null with first error seen.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if name satisfied expected format.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ReceiveName.cs/#L6" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ReceiveName.cs/#L9" class="edit-link">Edit this page</a>
         </div>
 
         

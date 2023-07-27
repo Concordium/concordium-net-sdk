@@ -1,0 +1,665 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ChainParametersV0
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ChainParametersV0
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/main/apiSpec/new?filename=Concordium_Sdk_Types_ChainParametersV0.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Types.ChainParametersV0%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+  </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Concordium.Sdk.Types.ChainParametersV0">
+
+
+
+  <h1 id="Concordium_Sdk_Types_ChainParametersV0" data-uid="Concordium.Sdk.Types.ChainParametersV0" class="text-break">
+    Class ChainParametersV0
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ChainParameters.cs/#L167"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Concordium.html">Concordium</a>.<a class="xref" href="Concordium.Sdk.html">Sdk</a>.<a class="xref" href="Concordium.Sdk.Types.html">Types</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Concordium.Sdk.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Values of chain parameters that can be updated via chain updates.
+This applies to protocol version 1-3.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed record ChainParametersV0 : IChainParameters, IEquatable&lt;ChainParametersV0&gt;</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ChainParametersV0</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Concordium.Sdk.Types.IChainParameters.html">IChainParameters</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Sdk.Types.ChainParametersV0.html">ChainParametersV0</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Concordium_Sdk_Types_ChainParametersV0__ctor_" data-uid="Concordium.Sdk.Types.ChainParametersV0.#ctor*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ChainParametersV0__ctor_Concordium_Sdk_Types_AmountFraction_Concordium_Sdk_Types_ExchangeRate_Concordium_Sdk_Types_ExchangeRate_Concordium_Sdk_Types_Epoch_Concordium_Sdk_Types_CredentialsPerBlockLimit_Concordium_Sdk_Types_MintDistributionCpv0_Concordium_Sdk_Types_TransactionFeeDistribution_Concordium_Sdk_Types_GasRewards_Concordium_Sdk_Types_AccountAddress_Concordium_Sdk_Types_CcdAmount_Concordium_Sdk_Types_RootKeys_Concordium_Sdk_Types_Level1Keys_Concordium_Sdk_Types_AuthorizationsV0_" data-uid="Concordium.Sdk.Types.ChainParametersV0.#ctor(Concordium.Sdk.Types.AmountFraction,Concordium.Sdk.Types.ExchangeRate,Concordium.Sdk.Types.ExchangeRate,Concordium.Sdk.Types.Epoch,Concordium.Sdk.Types.CredentialsPerBlockLimit,Concordium.Sdk.Types.MintDistributionCpv0,Concordium.Sdk.Types.TransactionFeeDistribution,Concordium.Sdk.Types.GasRewards,Concordium.Sdk.Types.AccountAddress,Concordium.Sdk.Types.CcdAmount,Concordium.Sdk.Types.RootKeys,Concordium.Sdk.Types.Level1Keys,Concordium.Sdk.Types.AuthorizationsV0)">
+  ChainParametersV0(AmountFraction, ExchangeRate, ExchangeRate, Epoch, CredentialsPerBlockLimit, MintDistributionCpv0, TransactionFeeDistribution, GasRewards, AccountAddress, CcdAmount, RootKeys, Level1Keys, AuthorizationsV0)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ChainParameters.cs/#L167"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Values of chain parameters that can be updated via chain updates.
+This applies to protocol version 1-3.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ChainParametersV0(AmountFraction ElectionDifficulty, ExchangeRate EuroPerEnergy, ExchangeRate MicroCcdPerEuro, Epoch BakerCooldownEpochs, CredentialsPerBlockLimit AccountCreationLimit, MintDistributionCpv0 MintDistribution, TransactionFeeDistribution TransactionFeeDistribution, GasRewards GasRewards, AccountAddress FoundationAccount, CcdAmount MinimumThresholdForBaking, RootKeys RootKeys, Level1Keys Level1Keys, AuthorizationsV0 Level2Keys)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ElectionDifficulty</code> <a class="xref" href="Concordium.Sdk.Types.AmountFraction.html">AmountFraction</a></dt>
+    <dd><p>Election difficulty for consensus lottery.</p>
+</dd>
+    <dt><code>EuroPerEnergy</code> <a class="xref" href="Concordium.Sdk.Types.ExchangeRate.html">ExchangeRate</a></dt>
+    <dd><p>Euro per energy exchange rate.</p>
+</dd>
+    <dt><code>MicroCcdPerEuro</code> <a class="xref" href="Concordium.Sdk.Types.ExchangeRate.html">ExchangeRate</a></dt>
+    <dd><p>Micro ccd per euro exchange rate.</p>
+</dd>
+    <dt><code>BakerCooldownEpochs</code> <a class="xref" href="Concordium.Sdk.Types.Epoch.html">Epoch</a></dt>
+    <dd><p>Extra number of epochs before reduction in stake, or baker
+deregistration is completed.</p>
+</dd>
+    <dt><code>AccountCreationLimit</code> <a class="xref" href="Concordium.Sdk.Types.CredentialsPerBlockLimit.html">CredentialsPerBlockLimit</a></dt>
+    <dd><p>The limit for the number of account creations in a block.</p>
+</dd>
+    <dt><code>MintDistribution</code> <a class="xref" href="Concordium.Sdk.Types.MintDistributionCpv0.html">MintDistributionCpv0</a></dt>
+    <dd><p>Parameters related to the distribution of newly minted CCD.</p>
+</dd>
+    <dt><code>TransactionFeeDistribution</code> <a class="xref" href="Concordium.Sdk.Types.TransactionFeeDistribution.html">TransactionFeeDistribution</a></dt>
+    <dd><p>Parameters related to the distribution of transaction fees.</p>
+</dd>
+    <dt><code>GasRewards</code> <a class="xref" href="Concordium.Sdk.Types.GasRewards.html">GasRewards</a></dt>
+    <dd><p>Parameters related to the distribution of the GAS account.</p>
+</dd>
+    <dt><code>FoundationAccount</code> <a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
+    <dd></dd>
+    <dt><code>MinimumThresholdForBaking</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
+    <dd><p>Address of the foundation account.</p>
+</dd>
+    <dt><code>RootKeys</code> <a class="xref" href="Concordium.Sdk.Types.RootKeys.html">RootKeys</a></dt>
+    <dd><p>Root Keys</p>
+</dd>
+    <dt><code>Level1Keys</code> <a class="xref" href="Concordium.Sdk.Types.Level1Keys.html">Level1Keys</a></dt>
+    <dd><p>Level 1 Keys</p>
+</dd>
+    <dt><code>Level2Keys</code> <a class="xref" href="Concordium.Sdk.Types.AuthorizationsV0.html">AuthorizationsV0</a></dt>
+    <dd><p>Level 2 Keys</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Concordium_Sdk_Types_ChainParametersV0_AccountCreationLimit_" data-uid="Concordium.Sdk.Types.ChainParametersV0.AccountCreationLimit*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ChainParametersV0_AccountCreationLimit" data-uid="Concordium.Sdk.Types.ChainParametersV0.AccountCreationLimit">
+  AccountCreationLimit
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ChainParameters.cs/#L172"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The limit for the number of account creations in a block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CredentialsPerBlockLimit AccountCreationLimit { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.CredentialsPerBlockLimit.html">CredentialsPerBlockLimit</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ChainParametersV0_BakerCooldownEpochs_" data-uid="Concordium.Sdk.Types.ChainParametersV0.BakerCooldownEpochs*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ChainParametersV0_BakerCooldownEpochs" data-uid="Concordium.Sdk.Types.ChainParametersV0.BakerCooldownEpochs">
+  BakerCooldownEpochs
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ChainParameters.cs/#L171"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Extra number of epochs before reduction in stake, or baker
+deregistration is completed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Epoch BakerCooldownEpochs { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.Epoch.html">Epoch</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ChainParametersV0_ElectionDifficulty_" data-uid="Concordium.Sdk.Types.ChainParametersV0.ElectionDifficulty*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ChainParametersV0_ElectionDifficulty" data-uid="Concordium.Sdk.Types.ChainParametersV0.ElectionDifficulty">
+  ElectionDifficulty
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ChainParameters.cs/#L168"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Election difficulty for consensus lottery.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AmountFraction ElectionDifficulty { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.AmountFraction.html">AmountFraction</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ChainParametersV0_EuroPerEnergy_" data-uid="Concordium.Sdk.Types.ChainParametersV0.EuroPerEnergy*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ChainParametersV0_EuroPerEnergy" data-uid="Concordium.Sdk.Types.ChainParametersV0.EuroPerEnergy">
+  EuroPerEnergy
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ChainParameters.cs/#L169"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Euro per energy exchange rate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ExchangeRate EuroPerEnergy { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.ExchangeRate.html">ExchangeRate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ChainParametersV0_FoundationAccount_" data-uid="Concordium.Sdk.Types.ChainParametersV0.FoundationAccount*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ChainParametersV0_FoundationAccount" data-uid="Concordium.Sdk.Types.ChainParametersV0.FoundationAccount">
+  FoundationAccount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ChainParameters.cs/#L176"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AccountAddress FoundationAccount { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ChainParametersV0_GasRewards_" data-uid="Concordium.Sdk.Types.ChainParametersV0.GasRewards*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ChainParametersV0_GasRewards" data-uid="Concordium.Sdk.Types.ChainParametersV0.GasRewards">
+  GasRewards
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ChainParameters.cs/#L175"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Parameters related to the distribution of the GAS account.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GasRewards GasRewards { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.GasRewards.html">GasRewards</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ChainParametersV0_Level1Keys_" data-uid="Concordium.Sdk.Types.ChainParametersV0.Level1Keys*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ChainParametersV0_Level1Keys" data-uid="Concordium.Sdk.Types.ChainParametersV0.Level1Keys">
+  Level1Keys
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ChainParameters.cs/#L179"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Level 1 Keys</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Level1Keys Level1Keys { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.Level1Keys.html">Level1Keys</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ChainParametersV0_Level2Keys_" data-uid="Concordium.Sdk.Types.ChainParametersV0.Level2Keys*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ChainParametersV0_Level2Keys" data-uid="Concordium.Sdk.Types.ChainParametersV0.Level2Keys">
+  Level2Keys
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ChainParameters.cs/#L180"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Level 2 Keys</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AuthorizationsV0 Level2Keys { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.AuthorizationsV0.html">AuthorizationsV0</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ChainParametersV0_MicroCcdPerEuro_" data-uid="Concordium.Sdk.Types.ChainParametersV0.MicroCcdPerEuro*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ChainParametersV0_MicroCcdPerEuro" data-uid="Concordium.Sdk.Types.ChainParametersV0.MicroCcdPerEuro">
+  MicroCcdPerEuro
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ChainParameters.cs/#L170"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Micro ccd per euro exchange rate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ExchangeRate MicroCcdPerEuro { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.ExchangeRate.html">ExchangeRate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ChainParametersV0_MinimumThresholdForBaking_" data-uid="Concordium.Sdk.Types.ChainParametersV0.MinimumThresholdForBaking*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ChainParametersV0_MinimumThresholdForBaking" data-uid="Concordium.Sdk.Types.ChainParametersV0.MinimumThresholdForBaking">
+  MinimumThresholdForBaking
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ChainParameters.cs/#L177"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Address of the foundation account.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CcdAmount MinimumThresholdForBaking { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ChainParametersV0_MintDistribution_" data-uid="Concordium.Sdk.Types.ChainParametersV0.MintDistribution*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ChainParametersV0_MintDistribution" data-uid="Concordium.Sdk.Types.ChainParametersV0.MintDistribution">
+  MintDistribution
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ChainParameters.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Parameters related to the distribution of newly minted CCD.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MintDistributionCpv0 MintDistribution { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.MintDistributionCpv0.html">MintDistributionCpv0</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ChainParametersV0_RootKeys_" data-uid="Concordium.Sdk.Types.ChainParametersV0.RootKeys*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ChainParametersV0_RootKeys" data-uid="Concordium.Sdk.Types.ChainParametersV0.RootKeys">
+  RootKeys
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ChainParameters.cs/#L178"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Root Keys</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RootKeys RootKeys { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.RootKeys.html">RootKeys</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ChainParametersV0_TransactionFeeDistribution_" data-uid="Concordium.Sdk.Types.ChainParametersV0.TransactionFeeDistribution*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ChainParametersV0_TransactionFeeDistribution" data-uid="Concordium.Sdk.Types.ChainParametersV0.TransactionFeeDistribution">
+  TransactionFeeDistribution
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ChainParameters.cs/#L174"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Parameters related to the distribution of transaction fees.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TransactionFeeDistribution TransactionFeeDistribution { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.TransactionFeeDistribution.html">TransactionFeeDistribution</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ChainParameters.cs/#L167" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

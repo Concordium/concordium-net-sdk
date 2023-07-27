@@ -94,7 +94,7 @@ to use CBOR encoded data.</p>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class OnChainData : IEquatable&lt;OnChainData&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed record OnChainData : IEquatable&lt;OnChainData&gt;</code></pre>
   </div>
 
 
@@ -120,13 +120,13 @@ to use CBOR encoded data.</p>
     <dt>Inherited Members</dt>
     <dd>
     <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
@@ -176,11 +176,43 @@ to use CBOR encoded data.</p>
 </h2>
 
 
+  <a id="Concordium_Sdk_Types_OnChainData_AsSpan_" data-uid="Concordium.Sdk.Types.OnChainData.AsSpan*"></a>
+
+  <h3 id="Concordium_Sdk_Types_OnChainData_AsSpan" data-uid="Concordium.Sdk.Types.OnChainData.AsSpan">
+  AsSpan()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns span of underlying data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReadOnlySpan&lt;byte&gt; AsSpan()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Concordium_Sdk_Types_OnChainData_Equals_" data-uid="Concordium.Sdk.Types.OnChainData.Equals*"></a>
 
   <h3 id="Concordium_Sdk_Types_OnChainData_Equals_Concordium_Sdk_Types_OnChainData_" data-uid="Concordium.Sdk.Types.OnChainData.Equals(Concordium.Sdk.Types.OnChainData)">
   Equals(OnChainData?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L145"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L135"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
@@ -188,7 +220,7 @@ to use CBOR encoded data.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool Equals(OnChainData? other)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool Equals(OnChainData? other)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -202,45 +234,6 @@ to use CBOR encoded data.</p>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Concordium_Sdk_Types_OnChainData_Equals_" data-uid="Concordium.Sdk.Types.OnChainData.Equals*"></a>
-
-  <h3 id="Concordium_Sdk_Types_OnChainData_Equals_System_Object_" data-uid="Concordium.Sdk.Types.OnChainData.Equals(System.Object)">
-  Equals(object?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L129"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Determines whether the specified object is equal to the current object.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool Equals(object? obj)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd><p>The object to compare with the current object.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the specified object  is equal to the current object; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
 </dd>
   </dl>
 
@@ -272,7 +265,8 @@ to use CBOR encoded data.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>dataAsBytes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
-    <dd></dd>
+    <dd><p>The data to be registered on-chain represented as a byte array.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
@@ -398,7 +392,7 @@ to use CBOR encoded data.</p>
 
   <h3 id="Concordium_Sdk_Types_OnChainData_GetHashCode" data-uid="Concordium.Sdk.Types.OnChainData.GetHashCode">
   GetHashCode()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L155"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L137"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Serves as the default hash function.</p>
@@ -431,7 +425,7 @@ to use CBOR encoded data.</p>
 
   <h3 id="Concordium_Sdk_Types_OnChainData_ToBytes" data-uid="Concordium.Sdk.Types.OnChainData.ToBytes">
   ToBytes()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L122"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Copies the on-chain data in the binary format expected by the node
@@ -466,7 +460,7 @@ prepended as a 16-bit unsigned integer in big-endian format.</p>
 
   <h3 id="Concordium_Sdk_Types_OnChainData_ToString" data-uid="Concordium.Sdk.Types.OnChainData.ToString">
   ToString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L127"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L133"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the data to register on-chain as a hex-encoded string.</p>
@@ -498,7 +492,7 @@ prepended as a 16-bit unsigned integer in big-endian format.</p>
 
   <h3 id="Concordium_Sdk_Types_OnChainData_TryCborDecodeToString" data-uid="Concordium.Sdk.Types.OnChainData.TryCborDecodeToString">
   TryCborDecodeToString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L99"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Try to decode the data to be registered on-chain as a single CBOR encoded string.</p>

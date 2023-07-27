@@ -79,7 +79,7 @@
 
   <h1 id="Concordium_Sdk_Transactions_SignedAccountTransaction" data-uid="Concordium.Sdk.Transactions.SignedAccountTransaction" class="text-break">
     Class SignedAccountTransaction
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/SignedAccountTransaction.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/SignedAccountTransaction.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -158,25 +158,31 @@
 
   <h3 id="Concordium_Sdk_Transactions_SignedAccountTransaction__ctor_Concordium_Sdk_Transactions_AccountTransactionHeader_Concordium_Sdk_Transactions_AccountTransactionPayload_Concordium_Sdk_Transactions_AccountTransactionSignature_" data-uid="Concordium.Sdk.Transactions.SignedAccountTransaction.#ctor(Concordium.Sdk.Transactions.AccountTransactionHeader,Concordium.Sdk.Transactions.AccountTransactionPayload,Concordium.Sdk.Transactions.AccountTransactionSignature)">
   SignedAccountTransaction(AccountTransactionHeader, AccountTransactionPayload, AccountTransactionSignature)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/SignedAccountTransaction.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/SignedAccountTransaction.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Concordium.Sdk.Transactions.SignedAccountTransaction.html">SignedAccountTransaction</a> class.</p>
+  <div class="markdown level1 summary"><p>Represents a signed account transaction which is ready to be sent to the node.</p>
+<p>A signed account transaction constitutes an <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.html">AccountTransactionHeader</a>, an
+<a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionPayload.html">AccountTransactionPayload</a> as well as an <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionSignature.html">AccountTransactionSignature</a>.</p>
+<p>A <a class="xref" href="Concordium.Sdk.Transactions.SignedAccountTransaction.html">SignedAccountTransaction</a> can be created with the
+<a class="xref" href="Concordium.Sdk.Transactions.PreparedAccountTransaction.html#Concordium_Sdk_Transactions_PreparedAccountTransaction_Sign_Concordium_Sdk_Transactions_ITransactionSigner_">Sign(ITransactionSigner)</a> method with an implementer of
+<a class="xref" href="Concordium.Sdk.Transactions.ITransactionSigner.html">ITransactionSigner</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SignedAccountTransaction(AccountTransactionHeader header, AccountTransactionPayload payload, AccountTransactionSignature signature)</code></pre>
+    <pre><code class="lang-csharp hljs">public SignedAccountTransaction(AccountTransactionHeader Header, AccountTransactionPayload Payload, AccountTransactionSignature Signature)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>header</code> <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.html">AccountTransactionHeader</a></dt>
-    <dd></dd>
-    <dt><code>payload</code> <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionPayload.html">AccountTransactionPayload</a></dt>
+    <dt><code>Header</code> <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionHeader.html">AccountTransactionHeader</a></dt>
+    <dd><p>Header of the signed account transaction.</p>
+</dd>
+    <dt><code>Payload</code> <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionPayload.html">AccountTransactionPayload</a></dt>
     <dd><p>Payload of the signed account transaction.</p>
 </dd>
-    <dt><code>signature</code> <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionSignature.html">AccountTransactionSignature</a></dt>
+    <dt><code>Signature</code> <a class="xref" href="Concordium.Sdk.Transactions.AccountTransactionSignature.html">AccountTransactionSignature</a></dt>
     <dd><p>Signature of the signed account transaction.</p>
 </dd>
   </dl>
@@ -200,7 +206,7 @@
 
   <h3 id="Concordium_Sdk_Transactions_SignedAccountTransaction_Header" data-uid="Concordium.Sdk.Transactions.SignedAccountTransaction.Header">
   Header
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/SignedAccountTransaction.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/SignedAccountTransaction.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Header of the signed account transaction.</p>
@@ -232,7 +238,7 @@
 
   <h3 id="Concordium_Sdk_Transactions_SignedAccountTransaction_Payload" data-uid="Concordium.Sdk.Transactions.SignedAccountTransaction.Payload">
   Payload
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/SignedAccountTransaction.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/SignedAccountTransaction.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Payload of the signed account transaction.</p>
@@ -264,7 +270,7 @@
 
   <h3 id="Concordium_Sdk_Transactions_SignedAccountTransaction_Signature" data-uid="Concordium.Sdk.Transactions.SignedAccountTransaction.Signature">
   Signature
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/SignedAccountTransaction.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/SignedAccountTransaction.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Signature of the signed account transaction.</p>
@@ -300,7 +306,7 @@
 
   <h3 id="Concordium_Sdk_Transactions_SignedAccountTransaction_ToProto" data-uid="Concordium.Sdk.Transactions.SignedAccountTransaction.ToProto">
   ToProto()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/SignedAccountTransaction.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/SignedAccountTransaction.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -331,12 +337,12 @@
 
   <h3 id="Concordium_Sdk_Transactions_SignedAccountTransaction_ToSendBlockItemRequest" data-uid="Concordium.Sdk.Transactions.SignedAccountTransaction.ToSendBlockItemRequest">
   ToSendBlockItemRequest()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/SignedAccountTransaction.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/SignedAccountTransaction.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts the signed account transaction to a protocol buffer
 message instance which is compatible with
-<a class="xref" href="Concordium.Sdk.Client.RawClient.html#Concordium_Sdk_Client_RawClient_SendBlockItem_Concordium_Grpc_V2_SendBlockItemRequest_">SendBlockItem(SendBlockItemRequest)</a>.</p>
+<a class="xref" href="Concordium.Sdk.Client.RawClient.html#Concordium_Sdk_Client_RawClient_SendBlockItem_Concordium_Grpc_V2_SendBlockItemRequest_System_Threading_CancellationToken_">SendBlockItem(SendBlockItemRequest, CancellationToken)</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -365,7 +371,7 @@ message instance which is compatible with
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/SignedAccountTransaction.cs/#L15" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/SignedAccountTransaction.cs/#L18" class="edit-link">Edit this page</a>
         </div>
 
         

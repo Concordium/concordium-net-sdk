@@ -79,7 +79,7 @@
 
   <h1 id="Concordium_Sdk_Types_BlockItemSummary" data-uid="Concordium.Sdk.Types.BlockItemSummary" class="text-break">
     Class BlockItemSummary
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -93,7 +93,7 @@ The summary determines which transaction type it was.</p>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class BlockItemSummary</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed record BlockItemSummary : IEquatable&lt;BlockItemSummary&gt;</code></pre>
   </div>
 
 
@@ -107,6 +107,12 @@ The summary determines which transaction type it was.</p>
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Sdk.Types.BlockItemSummary.html">BlockItemSummary</a>&gt;</div>
+    </dd>
+  </dl>
 
 
   <dl class="typelist derived">
@@ -137,6 +143,189 @@ The summary determines which transaction type it was.</p>
 
 
 
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Concordium_Sdk_Types_BlockItemSummary__ctor_" data-uid="Concordium.Sdk.Types.BlockItemSummary.#ctor*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockItemSummary__ctor_System_UInt64_Concordium_Sdk_Types_EnergyAmount_Concordium_Sdk_Types_TransactionHash_Concordium_Sdk_Types_IBlockItemSummaryDetails_" data-uid="Concordium.Sdk.Types.BlockItemSummary.#ctor(System.UInt64,Concordium.Sdk.Types.EnergyAmount,Concordium.Sdk.Types.TransactionHash,Concordium.Sdk.Types.IBlockItemSummaryDetails)">
+  BlockItemSummary(ulong, EnergyAmount, TransactionHash, IBlockItemSummaryDetails)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Summary of the outcome of a block item in structured form.
+The summary determines which transaction type it was.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockItemSummary(ulong Index, EnergyAmount EnergyCost, TransactionHash TransactionHash, IBlockItemSummaryDetails Details)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>Index of the transaction in the block where it is included.</p>
+</dd>
+    <dt><code>EnergyCost</code> <a class="xref" href="Concordium.Sdk.Types.EnergyAmount.html">EnergyAmount</a></dt>
+    <dd><p>The amount of NRG the transaction cost.</p>
+</dd>
+    <dt><code>TransactionHash</code> <a class="xref" href="Concordium.Sdk.Types.TransactionHash.html">TransactionHash</a></dt>
+    <dd><p>Hash of the transaction.</p>
+</dd>
+    <dt><code>Details</code> <a class="xref" href="Concordium.Sdk.Types.IBlockItemSummaryDetails.html">IBlockItemSummaryDetails</a></dt>
+    <dd><p>Details that are specific to different transaction types.
+For successful transactions there is a one to one mapping of transaction
+types and variants (together with subvariants) of this type.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Concordium_Sdk_Types_BlockItemSummary_Details_" data-uid="Concordium.Sdk.Types.BlockItemSummary.Details*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockItemSummary_Details" data-uid="Concordium.Sdk.Types.BlockItemSummary.Details">
+  Details
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Details that are specific to different transaction types.
+For successful transactions there is a one to one mapping of transaction
+types and variants (together with subvariants) of this type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IBlockItemSummaryDetails Details { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.IBlockItemSummaryDetails.html">IBlockItemSummaryDetails</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockItemSummary_EnergyCost_" data-uid="Concordium.Sdk.Types.BlockItemSummary.EnergyCost*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockItemSummary_EnergyCost" data-uid="Concordium.Sdk.Types.BlockItemSummary.EnergyCost">
+  EnergyCost
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The amount of NRG the transaction cost.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnergyAmount EnergyCost { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.EnergyAmount.html">EnergyAmount</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockItemSummary_Index_" data-uid="Concordium.Sdk.Types.BlockItemSummary.Index*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockItemSummary_Index" data-uid="Concordium.Sdk.Types.BlockItemSummary.Index">
+  Index
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Index of the transaction in the block where it is included.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong Index { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_BlockItemSummary_TransactionHash_" data-uid="Concordium.Sdk.Types.BlockItemSummary.TransactionHash*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockItemSummary_TransactionHash" data-uid="Concordium.Sdk.Types.BlockItemSummary.TransactionHash">
+  TransactionHash
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hash of the transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TransactionHash TransactionHash { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.TransactionHash.html">TransactionHash</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -145,10 +334,11 @@ The summary determines which transaction type it was.</p>
 
   <h3 id="Concordium_Sdk_Types_BlockItemSummary_AffectedAddresses" data-uid="Concordium.Sdk.Types.BlockItemSummary.AffectedAddresses">
   AffectedAddresses()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L248"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L210"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Return the list of addresses affected by the block summary.</p>
+  <div class="markdown level1 summary"><p>Return the list of addresses affected by a account transaction. OBS! this doesn't include account creation
+transaction. Use <a class="xref" href="Concordium.Sdk.Types.BlockItemSummary.html#Concordium_Sdk_Types_BlockItemSummary_AffectedAndCreatedAddresses">AffectedAndCreatedAddresses()</a> if these should be included.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -180,11 +370,50 @@ The summary determines which transaction type it was.</p>
 
 
 
+  <a id="Concordium_Sdk_Types_BlockItemSummary_AffectedAndCreatedAddresses_" data-uid="Concordium.Sdk.Types.BlockItemSummary.AffectedAndCreatedAddresses*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockItemSummary_AffectedAndCreatedAddresses" data-uid="Concordium.Sdk.Types.BlockItemSummary.AffectedAndCreatedAddresses">
+  AffectedAndCreatedAddresses()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L225"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return the list of affected addresses included account creation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;AccountAddress&gt; AffectedAndCreatedAddresses()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a>&gt;</dt>
+    <dd><p>List of affected addresses included created accounts.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Exceptions.MissingEnumException-1.html">MissingEnumException</a>&lt;T&gt;</dt>
+    <dd><p>Throws exception when returned type not known</p>
+</dd>
+  </dl>
+
+
+
   <a id="Concordium_Sdk_Types_BlockItemSummary_AffectedContracts_" data-uid="Concordium.Sdk.Types.BlockItemSummary.AffectedContracts*"></a>
 
   <h3 id="Concordium_Sdk_Types_BlockItemSummary_AffectedContracts" data-uid="Concordium.Sdk.Types.BlockItemSummary.AffectedContracts">
   AffectedContracts()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L110"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns affected contracts. Only relevant if transaction is a account transaction and effect of the
@@ -220,11 +449,43 @@ transaction was contract initialization or contract update.</p>
 
 
 
+  <a id="Concordium_Sdk_Types_BlockItemSummary_GetCost_" data-uid="Concordium.Sdk.Types.BlockItemSummary.GetCost*"></a>
+
+  <h3 id="Concordium_Sdk_Types_BlockItemSummary_GetCost" data-uid="Concordium.Sdk.Types.BlockItemSummary.GetCost">
+  GetCost()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns transaction cost.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CcdAmount GetCost()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Concordium_Sdk_Types_BlockItemSummary_IsReject_" data-uid="Concordium.Sdk.Types.BlockItemSummary.IsReject*"></a>
 
   <h3 id="Concordium_Sdk_Types_BlockItemSummary_IsReject" data-uid="Concordium.Sdk.Types.BlockItemSummary.IsReject">
   IsReject()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L48"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Return whether the transaction has failed to achieve the intended
@@ -258,7 +519,7 @@ effects.</p>
 
   <h3 id="Concordium_Sdk_Types_BlockItemSummary_IsSuccess" data-uid="Concordium.Sdk.Types.BlockItemSummary.IsSuccess">
   IsSuccess()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Return whether the transaction was successful, i.e., the intended effect
@@ -298,7 +559,7 @@ happened.</p>
 
   <h3 id="Concordium_Sdk_Types_BlockItemSummary_TryGetContractInit_Concordium_Sdk_Types_ContractInitializedEvent__" data-uid="Concordium.Sdk.Types.BlockItemSummary.TryGetContractInit(Concordium.Sdk.Types.ContractInitializedEvent@)">
   TryGetContractInit(out ContractInitializedEvent?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L168"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L159"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>If the block item is a smart contract init transaction then
@@ -339,7 +600,7 @@ was of type contract initialization.</p>
 
   <h3 id="Concordium_Sdk_Types_BlockItemSummary_TryGetContractUpdateLogs_System_Collections_Generic_IList_System_ValueTuple_Concordium_Sdk_Types_ContractAddress_System_Collections_Generic_IList_Concordium_Sdk_Types_ContractEvent_____" data-uid="Concordium.Sdk.Types.BlockItemSummary.TryGetContractUpdateLogs(System.Collections.Generic.IList{System.ValueTuple{Concordium.Sdk.Types.ContractAddress,System.Collections.Generic.IList{Concordium.Sdk.Types.ContractEvent}}}@)">
   TryGetContractUpdateLogs(out IList&lt;(ContractAddress, IList&lt;ContractEvent&gt;)&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L196"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L186"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>If the block item is a smart contract update transaction then return
@@ -387,7 +648,7 @@ transaction of type contract update.</p>
 
   <h3 id="Concordium_Sdk_Types_BlockItemSummary_TryGetRejectedAccountTransaction_Concordium_Sdk_Types_IRejectReason__" data-uid="Concordium.Sdk.Types.BlockItemSummary.TryGetRejectedAccountTransaction(Concordium.Sdk.Types.IRejectReason@)">
   TryGetRejectedAccountTransaction(out IRejectReason?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>When transaction is rejected this method will return true and rejected reason
@@ -431,9 +692,9 @@ will be return in out param.</p>
 
   <a id="Concordium_Sdk_Types_BlockItemSummary_TryGetSenderAccount_" data-uid="Concordium.Sdk.Types.BlockItemSummary.TryGetSenderAccount*"></a>
 
-  <h3 id="Concordium_Sdk_Types_BlockItemSummary_TryGetSenderAccount_System_Nullable_Concordium_Sdk_Types_AccountAddress___" data-uid="Concordium.Sdk.Types.BlockItemSummary.TryGetSenderAccount(System.Nullable{Concordium.Sdk.Types.AccountAddress}@)">
+  <h3 id="Concordium_Sdk_Types_BlockItemSummary_TryGetSenderAccount_Concordium_Sdk_Types_AccountAddress__" data-uid="Concordium.Sdk.Types.BlockItemSummary.TryGetSenderAccount(Concordium.Sdk.Types.AccountAddress@)">
   TryGetSenderAccount(out AccountAddress?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L88"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns true and set sender account if of account transaction type.</p>
@@ -446,7 +707,7 @@ will be return in out param.</p>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>sender</code> <a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a>?</dt>
+    <dt><code>sender</code> <a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
     <dd><p>Output given when sender present.</p>
 </dd>
   </dl>
@@ -478,7 +739,7 @@ will be return in out param.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L10" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BlockItemSummary.cs/#L17" class="edit-link">Edit this page</a>
         </div>
 
         

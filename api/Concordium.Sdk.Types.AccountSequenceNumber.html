@@ -79,7 +79,7 @@
 
   <h1 id="Concordium_Sdk_Types_AccountSequenceNumber" data-uid="Concordium.Sdk.Types.AccountSequenceNumber" class="text-break">
     Struct AccountSequenceNumber
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -92,12 +92,12 @@
 and used when submitting account transactions for that account to the node. The account
 sequence number is maintained as on-chain state and is incremented with each finalized
 transaction. The next sequence number to be used in a transaction can be queried
-with <a class="xref" href="Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_GetNextAccountSequenceNumber_Concordium_Sdk_Types_AccountAddress_">GetNextAccountSequenceNumber(AccountAddress)</a>.</p>
+with <a class="xref" href="Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_GetNextAccountSequenceNumber_Concordium_Sdk_Types_AccountAddress_System_Threading_CancellationToken_">GetNextAccountSequenceNumber(AccountAddress, CancellationToken)</a>.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly struct AccountSequenceNumber : IEquatable&lt;AccountSequenceNumber&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly record struct AccountSequenceNumber : IEquatable&lt;AccountSequenceNumber&gt;</code></pre>
   </div>
 
 
@@ -115,6 +115,12 @@ with <a class="xref" href="Concordium.Sdk.Client.ConcordiumClient.html#Concordiu
   <dl class="typelist derived">
     <dt>Inherited Members</dt>
     <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals">ValueType.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode">ValueType.GetHashCode()</a>
+    </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.tostring">ValueType.ToString()</a>
     </div>
@@ -141,7 +147,7 @@ with <a class="xref" href="Concordium.Sdk.Client.ConcordiumClient.html#Concordiu
 
   <h3 id="Concordium_Sdk_Types_AccountSequenceNumber_BytesLength" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.BytesLength">
   BytesLength
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -176,7 +182,7 @@ with <a class="xref" href="Concordium.Sdk.Client.ConcordiumClient.html#Concordiu
 
   <h3 id="Concordium_Sdk_Types_AccountSequenceNumber_Value" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.Value">
   Value
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The value of the account sequence number.</p>
@@ -208,89 +214,11 @@ with <a class="xref" href="Concordium.Sdk.Client.ConcordiumClient.html#Concordiu
 </h2>
 
 
-  <a id="Concordium_Sdk_Types_AccountSequenceNumber_Equals_" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.Equals*"></a>
-
-  <h3 id="Concordium_Sdk_Types_AccountSequenceNumber_Equals_Concordium_Sdk_Types_AccountSequenceNumber_" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.Equals(Concordium.Sdk.Types.AccountSequenceNumber)">
-  Equals(AccountSequenceNumber)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L75"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Equals(AccountSequenceNumber other)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>other</code> <a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a></dt>
-    <dd><p>An object to compare with this object.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Concordium_Sdk_Types_AccountSequenceNumber_Equals_" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.Equals*"></a>
-
-  <h3 id="Concordium_Sdk_Types_AccountSequenceNumber_Equals_System_Object_" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.Equals(System.Object)">
-  Equals(object?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L77"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Indicates whether this instance and a specified object are equal.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool Equals(object? obj)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd><p>The object to compare with the current instance.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
   <a id="Concordium_Sdk_Types_AccountSequenceNumber_From_" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.From*"></a>
 
   <h3 id="Concordium_Sdk_Types_AccountSequenceNumber_From_System_UInt64_" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.From(System.UInt64)">
   From(ulong)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates a new instance of the <a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a> class from an integer.</p>
@@ -330,44 +258,11 @@ with <a class="xref" href="Concordium.Sdk.Client.ConcordiumClient.html#Concordiu
 
 
 
-  <a id="Concordium_Sdk_Types_AccountSequenceNumber_GetHashCode_" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.GetHashCode*"></a>
-
-  <h3 id="Concordium_Sdk_Types_AccountSequenceNumber_GetHashCode" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.GetHashCode">
-  GetHashCode()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L79"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Returns the hash code for this instance.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>A 32-bit signed integer that is the hash code for this instance.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
   <a id="Concordium_Sdk_Types_AccountSequenceNumber_GetIncrementedSequenceNumber_" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.GetIncrementedSequenceNumber*"></a>
 
   <h3 id="Concordium_Sdk_Types_AccountSequenceNumber_GetIncrementedSequenceNumber" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.GetIncrementedSequenceNumber">
   GetIncrementedSequenceNumber()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L51"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns a new sequence number whose value is increased by 1 relative to the current one.</p>
@@ -405,7 +300,7 @@ with <a class="xref" href="Concordium.Sdk.Client.ConcordiumClient.html#Concordiu
 
   <h3 id="Concordium_Sdk_Types_AccountSequenceNumber_ToBytes" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.ToBytes">
   ToBytes()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L65"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Copies the account sequence represented in big-endian format to a byte array.</p>
@@ -437,7 +332,7 @@ with <a class="xref" href="Concordium.Sdk.Client.ConcordiumClient.html#Concordiu
 
   <h3 id="Concordium_Sdk_Types_AccountSequenceNumber_ToProto" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.ToProto">
   ToProto()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L72"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts the account sequence number to its corresponding protocol buffer message instance.</p>
@@ -466,163 +361,11 @@ with <a class="xref" href="Concordium.Sdk.Client.ConcordiumClient.html#Concordiu
 
 
 
-  <h2 class="section" id="operators">Operators
-</h2>
-
-
-  <a id="Concordium_Sdk_Types_AccountSequenceNumber_op_Equality_" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.op_Equality*"></a>
-
-  <h3 id="Concordium_Sdk_Types_AccountSequenceNumber_op_Equality_Concordium_Sdk_Types_AccountSequenceNumber_Concordium_Sdk_Types_AccountSequenceNumber_" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.op_Equality(Concordium.Sdk.Types.AccountSequenceNumber,Concordium.Sdk.Types.AccountSequenceNumber)">
-  operator ==(AccountSequenceNumber, AccountSequenceNumber)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L81"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator ==(AccountSequenceNumber left, AccountSequenceNumber right)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>left</code> <a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a></dt>
-    <dd></dd>
-    <dt><code>right</code> <a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Concordium_Sdk_Types_AccountSequenceNumber_op_Implicit_" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.op_Implicit*"></a>
-
-  <h3 id="Concordium_Sdk_Types_AccountSequenceNumber_op_Implicit_Concordium_Sdk_Types_AccountSequenceNumber__System_UInt64" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.op_Implicit(Concordium.Sdk.Types.AccountSequenceNumber)~System.UInt64">
-  implicit operator ulong(AccountSequenceNumber)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L73"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static implicit operator ulong(AccountSequenceNumber byteIndex)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>byteIndex</code> <a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Concordium_Sdk_Types_AccountSequenceNumber_op_Implicit_" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.op_Implicit*"></a>
-
-  <h3 id="Concordium_Sdk_Types_AccountSequenceNumber_op_Implicit_System_UInt64__Concordium_Sdk_Types_AccountSequenceNumber" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.op_Implicit(System.UInt64)~Concordium.Sdk.Types.AccountSequenceNumber">
-  implicit operator AccountSequenceNumber(ulong)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L71"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static implicit operator AccountSequenceNumber(ulong value)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Concordium_Sdk_Types_AccountSequenceNumber_op_Inequality_" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.op_Inequality*"></a>
-
-  <h3 id="Concordium_Sdk_Types_AccountSequenceNumber_op_Inequality_Concordium_Sdk_Types_AccountSequenceNumber_Concordium_Sdk_Types_AccountSequenceNumber_" data-uid="Concordium.Sdk.Types.AccountSequenceNumber.op_Inequality(Concordium.Sdk.Types.AccountSequenceNumber,Concordium.Sdk.Types.AccountSequenceNumber)">
-  operator !=(AccountSequenceNumber, AccountSequenceNumber)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L83"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator !=(AccountSequenceNumber left, AccountSequenceNumber right)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>left</code> <a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a></dt>
-    <dd></dd>
-    <dt><code>right</code> <a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L15" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountSequenceNumber.cs/#L16" class="edit-link">Edit this page</a>
         </div>
 
         

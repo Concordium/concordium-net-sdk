@@ -93,7 +93,7 @@ transaction.</p>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public record DuplicateCredIds : IRejectReason, IEquatable&lt;DuplicateCredIds&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed record DuplicateCredIds : IRejectReason, IEquatable&lt;DuplicateCredIds&gt;</code></pre>
   </div>
 
 
@@ -130,9 +130,6 @@ transaction.</p>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
@@ -211,6 +208,42 @@ transaction.</p>
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]&gt;</dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Concordium_Sdk_Types_DuplicateCredIds_ToHexStrings_" data-uid="Concordium.Sdk.Types.DuplicateCredIds.ToHexStrings*"></a>
+
+  <h3 id="Concordium_Sdk_Types_DuplicateCredIds_ToHexStrings" data-uid="Concordium.Sdk.Types.DuplicateCredIds.ToHexStrings">
+  ToHexStrings()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/RejectReason.cs/#L287"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return keys in hex representations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; ToHexStrings()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
 
 
 

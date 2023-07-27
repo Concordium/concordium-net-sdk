@@ -79,7 +79,7 @@
 
   <h1 id="Concordium_Sdk_Crypto_Ed25519SignKey" data-uid="Concordium.Sdk.Crypto.Ed25519SignKey" class="text-break">
     Class Ed25519SignKey
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Crypto/Ed25519SignKey.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Crypto/Ed25519SignKey.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -89,11 +89,12 @@
 
   <div class="markdown summary"><p>Represents a (secret) sign key of an ed25519 keypair.</p>
 <p>Used for signing transactions.</p>
+<p>Equality are by comparing elements of underlying byte array.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Ed25519SignKey : ISigner</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed record Ed25519SignKey : ISigner, IEquatable&lt;Ed25519SignKey&gt;</code></pre>
   </div>
 
 
@@ -111,6 +112,7 @@
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="Concordium.Sdk.Crypto.ISigner.html">ISigner</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Sdk.Crypto.Ed25519SignKey.html">Ed25519SignKey</a>&gt;</div>
     </dd>
   </dl>
 
@@ -125,13 +127,7 @@
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
-    </div>
-    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
@@ -150,7 +146,7 @@
 
   <h3 id="Concordium_Sdk_Crypto_Ed25519SignKey_SignKeyBytesLength" data-uid="Concordium.Sdk.Crypto.Ed25519SignKey.SignKeyBytesLength">
   SignKeyBytesLength
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Crypto/Ed25519SignKey.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Crypto/Ed25519SignKey.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The length of an ed25519 (secret) sign key in bytes.</p>
@@ -182,11 +178,50 @@
 </h2>
 
 
+  <a id="Concordium_Sdk_Crypto_Ed25519SignKey_Equals_" data-uid="Concordium.Sdk.Crypto.Ed25519SignKey.Equals*"></a>
+
+  <h3 id="Concordium_Sdk_Crypto_Ed25519SignKey_Equals_Concordium_Sdk_Crypto_Ed25519SignKey_" data-uid="Concordium.Sdk.Crypto.Ed25519SignKey.Equals(Concordium.Sdk.Crypto.Ed25519SignKey)">
+  Equals(Ed25519SignKey?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Crypto/Ed25519SignKey.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(Ed25519SignKey? other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Sdk.Crypto.Ed25519SignKey.html">Ed25519SignKey</a></dt>
+    <dd><p>An object to compare with this object.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Concordium_Sdk_Crypto_Ed25519SignKey_From_" data-uid="Concordium.Sdk.Crypto.Ed25519SignKey.From*"></a>
 
   <h3 id="Concordium_Sdk_Crypto_Ed25519SignKey_From_System_Byte___" data-uid="Concordium.Sdk.Crypto.Ed25519SignKey.From(System.Byte[])">
   From(byte[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Crypto/Ed25519SignKey.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Crypto/Ed25519SignKey.cs/#L64"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Concordium.Sdk.Crypto.Ed25519SignKey.html">Ed25519SignKey</a> class.</p>
@@ -230,7 +265,7 @@
 
   <h3 id="Concordium_Sdk_Crypto_Ed25519SignKey_From_System_String_" data-uid="Concordium.Sdk.Crypto.Ed25519SignKey.From(System.String)">
   From(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Crypto/Ed25519SignKey.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Crypto/Ed25519SignKey.cs/#L45"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Concordium.Sdk.Crypto.Ed25519SignKey.html">Ed25519SignKey</a> class.</p>
@@ -270,11 +305,44 @@
 
 
 
+  <a id="Concordium_Sdk_Crypto_Ed25519SignKey_GetHashCode_" data-uid="Concordium.Sdk.Crypto.Ed25519SignKey.GetHashCode*"></a>
+
+  <h3 id="Concordium_Sdk_Crypto_Ed25519SignKey_GetHashCode" data-uid="Concordium.Sdk.Crypto.Ed25519SignKey.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Crypto/Ed25519SignKey.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Serves as the default hash function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>A hash code for the current object.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Concordium_Sdk_Crypto_Ed25519SignKey_Sign_" data-uid="Concordium.Sdk.Crypto.Ed25519SignKey.Sign*"></a>
 
   <h3 id="Concordium_Sdk_Crypto_Ed25519SignKey_Sign_System_Byte___" data-uid="Concordium.Sdk.Crypto.Ed25519SignKey.Sign(System.Byte[])">
   Sign(byte[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Crypto/Ed25519SignKey.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Crypto/Ed25519SignKey.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Signs the provided data using the ed25519 (secret) sign key.</p>
@@ -312,7 +380,7 @@
 
   <h3 id="Concordium_Sdk_Crypto_Ed25519SignKey_ToBytes" data-uid="Concordium.Sdk.Crypto.Ed25519SignKey.ToBytes">
   ToBytes()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Crypto/Ed25519SignKey.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Crypto/Ed25519SignKey.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Copies the ed25519 (secret) sign to length-32 byte array.</p>
@@ -344,7 +412,7 @@
 
   <h3 id="Concordium_Sdk_Crypto_Ed25519SignKey_ToString" data-uid="Concordium.Sdk.Crypto.Ed25519SignKey.ToString">
   ToString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Crypto/Ed25519SignKey.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Crypto/Ed25519SignKey.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the ed25519 (secret) sign key represented as a length-64 hex encoded string.</p>
@@ -376,7 +444,7 @@
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Crypto/Ed25519SignKey.cs/#L10" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Crypto/Ed25519SignKey.cs/#L12" class="edit-link">Edit this page</a>
         </div>
 
         

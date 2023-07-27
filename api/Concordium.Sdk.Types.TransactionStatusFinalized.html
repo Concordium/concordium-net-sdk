@@ -92,7 +92,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class TransactionStatusFinalized : ITransactionStatus</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed record TransactionStatusFinalized : ITransactionStatus, IEquatable&lt;TransactionStatusFinalized&gt;</code></pre>
   </div>
 
 
@@ -110,6 +110,7 @@
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="Concordium.Sdk.Types.ITransactionStatus.html">ITransactionStatus</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Sdk.Types.TransactionStatusFinalized.html">TransactionStatusFinalized</a>&gt;</div>
     </dd>
   </dl>
 

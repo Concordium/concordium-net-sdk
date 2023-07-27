@@ -805,6 +805,26 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockHashInput.Types.RelativeHeight.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockHashInput.Types.RelativeHeight.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BlockHashInput.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BlockHashInput.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Grpc.V2.BlockHashInput.yml",
       "output": {
         ".html": {
@@ -3435,6 +3455,26 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Client.ConcordiumClientOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Client.ConcordiumClientOptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Client.QueryResponse-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Client.QueryResponse-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Client.RawClient.yml",
       "output": {
         ".html": {
@@ -3489,6 +3529,16 @@
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Exceptions.MissingEnumException-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Exceptions.MissingTypeException-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Exceptions.MissingTypeException-1.html"
         }
       },
       "version": ""
@@ -3655,10 +3705,90 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Absolute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Absolute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AbsoluteHeight.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AbsoluteHeight.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AccessStructure.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AccessStructure.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.AccountAddress.yml",
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.AccountAddress.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AccountBaker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AccountBaker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AccountBakerPendingChange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AccountBakerPendingChange.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AccountBakerReduceStakePending.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AccountBakerReduceStakePending.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AccountBakerRemovePending.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AccountBakerRemovePending.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AccountCreationDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AccountCreationDetails.html"
         }
       },
       "version": ""
@@ -3675,10 +3805,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AccountDelegation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AccountDelegation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.AccountIndex.yml",
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.AccountIndex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AccountInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AccountInfo.html"
         }
       },
       "version": ""
@@ -3705,10 +3855,90 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Concordium.Sdk.Types.AccountTransactionType.yml",
+      "source_relative_path": "api/Concordium.Sdk.Types.AccountThreshold.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Concordium.Sdk.Types.AccountTransactionType.html"
+          "relative_path": "api/Concordium.Sdk.Types.AccountThreshold.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AccountTransactionDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AccountTransactionDetails.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AccountTransfer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AccountTransfer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ActiveBaker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ActiveBaker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ActiveFinalizer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ActiveFinalizer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AddAnonymityRevokerUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AddAnonymityRevokerUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AddIdentityProviderUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AddIdentityProviderUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AddedButNotActiveInCommittee.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AddedButNotActiveInCommittee.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AddedButWrongKeys.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AddedButWrongKeys.html"
         }
       },
       "version": ""
@@ -3735,10 +3965,110 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AmountFraction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AmountFraction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.AmountTooLarge.yml",
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.AmountTooLarge.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ArIdentity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ArIdentity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ArInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ArInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ArPublicKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ArPublicKey.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AuthorizationsV0.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AuthorizationsV0.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.AuthorizationsV1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.AuthorizationsV1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerAdded.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerAdded.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerAddedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerAddedEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerConfigured.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerConfigured.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerDelegationTarget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerDelegationTarget.html"
         }
       },
       "version": ""
@@ -3765,10 +4095,260 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerKeysEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerKeysEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerKeysUpdated.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerKeysUpdated.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerKeysUpdatedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerKeysUpdatedEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerPoolInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerPoolInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerPoolOpenStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerPoolOpenStatus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerPoolStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerPoolStatus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerRemoved.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerRemoved.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerRemovedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerRemovedEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerRestakeEarningsUpdated.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerRestakeEarningsUpdated.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerRestakeEarningsUpdatedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerRestakeEarningsUpdatedEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerSetBakingRewardCommissionEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerSetBakingRewardCommissionEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerSetFinalizationRewardCommissionEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerSetFinalizationRewardCommissionEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerSetMetadataUrlEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerSetMetadataUrlEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerSetOpenStatusEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerSetOpenStatusEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerSetTransactionFeeCommissionEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerSetTransactionFeeCommissionEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerStakeDecreasedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerStakeDecreasedEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerStakeIncreasedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerStakeIncreasedEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerStakeThresholdUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerStakeThresholdUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerStakeUpdated.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerStakeUpdated.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerStakeUpdatedData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerStakeUpdatedData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.BakingRewardCommissionNotInRange.yml",
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.BakingRewardCommissionNotInRange.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakingRewards.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakingRewards.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Best.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Best.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BlockAccrueReward.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BlockAccrueReward.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BlockEnergyLimitUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BlockEnergyLimitUpdate.html"
         }
       },
       "version": ""
@@ -3785,6 +4365,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BlockInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BlockInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.BlockItemSummary.yml",
       "output": {
         ".html": {
@@ -3795,10 +4385,120 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BlockReward.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BlockReward.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Bootstrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Bootstrapper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.CapitalBound.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.CapitalBound.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.CcdAmount.yml",
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.CcdAmount.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ChainParametersV0.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ChainParametersV0.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ChainParametersV1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ChainParametersV1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ChainParametersV2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ChainParametersV2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.CommissionRanges.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.CommissionRanges.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.CommissionRates.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.CommissionRates.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ConsensusInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ConsensusInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ConsensusNotRunning.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ConsensusNotRunning.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ConsensusPassive.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ConsensusPassive.html"
         }
       },
       "version": ""
@@ -3825,10 +4525,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ContractInitialized.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ContractInitialized.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.ContractInitializedEvent.yml",
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.ContractInitializedEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ContractName.ValidationError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ContractName.ValidationError.html"
         }
       },
       "version": ""
@@ -3845,10 +4565,40 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ContractUpdateIssued.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ContractUpdateIssued.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.ContractVersion.yml",
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.ContractVersion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.CooldownParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.CooldownParameters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.CooldownParametersCpv1Update.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.CooldownParametersCpv1Update.html"
         }
       },
       "version": ""
@@ -3865,6 +4615,156 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.CredentialKeysUpdated.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.CredentialKeysUpdated.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.CredentialRegistrationId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.CredentialRegistrationId.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.CredentialType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.CredentialType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.CredentialsPerBlockLimit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.CredentialsPerBlockLimit.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.CredentialsUpdated.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.CredentialsUpdated.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.CurrentPaydayBakerPoolStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.CurrentPaydayBakerPoolStatus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.DataRegistered.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.DataRegistered.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.DelegationAdded.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.DelegationAdded.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.DelegationConfigured.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.DelegationConfigured.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.DelegationRemoved.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.DelegationRemoved.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.DelegationSetDelegationTarget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.DelegationSetDelegationTarget.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.DelegationSetRestakeEarnings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.DelegationSetRestakeEarnings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.DelegationStakeDecreased.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.DelegationStakeDecreased.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.DelegationStakeIncreased.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.DelegationStakeIncreased.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.DelegationTarget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.DelegationTarget.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.DelegationTargetNotABaker.yml",
       "output": {
         ".html": {
@@ -3875,10 +4775,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.DelegatorId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.DelegatorId.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.DelegatorInCooldown.yml",
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.DelegatorInCooldown.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Description.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Description.html"
         }
       },
       "version": ""
@@ -3905,10 +4825,50 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ElectionDifficultyUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ElectionDifficultyUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.EncryptedAmountRemovedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.EncryptedAmountRemovedEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.EncryptedAmountSelfTransfer.yml",
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.EncryptedAmountSelfTransfer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.EncryptedAmountTransferred.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.EncryptedAmountTransferred.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.EncryptedSelfAmountAddedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.EncryptedSelfAmountAddedEvent.html"
         }
       },
       "version": ""
@@ -3925,10 +4885,60 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Epoch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Epoch.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.EuroPerEnergyUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.EuroPerEnergyUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ExchangeRate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ExchangeRate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.Expiry.yml",
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.Expiry.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.FinalizationCommitteeParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.FinalizationCommitteeParameters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.FinalizationCommitteeParametersUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.FinalizationCommitteeParametersUpdate.html"
         }
       },
       "version": ""
@@ -3945,10 +4955,100 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.FinalizationRewards.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.FinalizationRewards.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.FinalizationSummary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.FinalizationSummary.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.FinalizationSummaryParty.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.FinalizationSummaryParty.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.FirstScheduledReleaseExpired.yml",
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.FirstScheduledReleaseExpired.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.FoundationAccountUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.FoundationAccountUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.GasRewards.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.GasRewards.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.GasRewardsCpv2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.GasRewardsCpv2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.GasRewardsCpv2Update.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.GasRewardsCpv2Update.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.GasRewardsUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.GasRewardsUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Given.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Given.html"
         }
       },
       "version": ""
@@ -3965,10 +5065,160 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.HigherLevelKeys.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.HigherLevelKeys.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.IAccountDelegationPendingChange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.IAccountDelegationPendingChange.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.IAccountIdentifier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.IAccountIdentifier.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.IAccountStakingInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.IAccountStakingInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.IAccountTransactionEffects.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.IAccountTransactionEffects.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.IAddress.yml",
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.IAddress.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.IBakerEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.IBakerEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.IBlockHashInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.IBlockHashInput.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.IBlockHeight.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.IBlockHeight.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.IBlockItemSummaryDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.IBlockItemSummaryDetails.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.IChainParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.IChainParameters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.IContractTraceElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.IContractTraceElement.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.IDelegationEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.IDelegationEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ILevel1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ILevel1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.INodeConsensusStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.INodeConsensusStatus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.INodeDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.INodeDetails.html"
         }
       },
       "version": ""
@@ -3985,10 +5235,50 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.IRootUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.IRootUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ISpecialEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ISpecialEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.ITransactionStatus.yml",
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.ITransactionStatus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.IUpdatePayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.IUpdatePayload.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.InclusiveRange-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.InclusiveRange-1.html"
         }
       },
       "version": ""
@@ -4019,6 +5309,16 @@
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.InsufficientDelegationStake.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Interrupted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Interrupted.html"
         }
       },
       "version": ""
@@ -4145,10 +5445,200 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.IpCdiVerifyKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.IpCdiVerifyKey.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.IpIdentity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.IpIdentity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.IpInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.IpInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.IpVerifyKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.IpVerifyKey.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.KeyIndexAlreadyInUse.yml",
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.KeyIndexAlreadyInUse.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.LastFinal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.LastFinal.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Level1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Level1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Level1Keys.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Level1Keys.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Level1KeysUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Level1KeysUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Level2KeysUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Level2KeysUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Level2KeysUpdateV1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Level2KeysUpdateV1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.LeverageFactor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.LeverageFactor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.MicroCcdPerEuroUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.MicroCcdPerEuroUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.MinBlockTimeUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.MinBlockTimeUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Mint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Mint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.MintDistributionCpv0.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.MintDistributionCpv0.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.MintDistributionCpv0Update.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.MintDistributionCpv0Update.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.MintDistributionCpv1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.MintDistributionCpv1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.MintDistributionCpv1Update.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.MintDistributionCpv1Update.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.MintRate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.MintRate.html"
         }
       },
       "version": ""
@@ -4165,10 +5655,20 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Concordium.Sdk.Types.MissingDelegationAddParameter.yml",
+      "source_relative_path": "api/Concordium.Sdk.Types.MissingDelegationAddParameters.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Concordium.Sdk.Types.MissingDelegationAddParameter.html"
+          "relative_path": "api/Concordium.Sdk.Types.MissingDelegationAddParameters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ModuleDeployed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ModuleDeployed.html"
         }
       },
       "version": ""
@@ -4205,6 +5705,46 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.NetworkInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.NetworkInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.NewEncryptedAmountEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.NewEncryptedAmountEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Node.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Node.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.NodeInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.NodeInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.NonExistentCredIds.yml",
       "output": {
         ".html": {
@@ -4229,6 +5769,16 @@
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.NonIncreasingSchedule.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.None.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.None.html"
         }
       },
       "version": ""
@@ -4285,6 +5835,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.NotInCommittee.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.NotInCommittee.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.OnChainData.yml",
       "output": {
         ".html": {
@@ -4315,10 +5875,70 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.PassiveDelegationStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.PassiveDelegationStatus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.PassiveDelegationTarget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.PassiveDelegationTarget.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.PaydayAccountReward.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.PaydayAccountReward.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.PaydayFoundationReward.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.PaydayFoundationReward.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.PaydayPoolReward.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.PaydayPoolReward.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.PayloadSize.yml",
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.PayloadSize.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.PeerVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.PeerVersion.html"
         }
       },
       "version": ""
@@ -4335,6 +5955,26 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.PoolParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.PoolParameters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.PoolParametersCpv1Update.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.PoolParametersCpv1Update.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.PoolWouldBecomeOverDelegated.yml",
       "output": {
         ".html": {
@@ -4345,10 +5985,70 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ProtocolUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ProtocolUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ProtocolVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ProtocolVersion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ProtocolVersionExtension.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ProtocolVersionExtension.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Ratio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Ratio.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ReceiveName.ValidationError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ReceiveName.ValidationError.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.ReceiveName.yml",
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.ReceiveName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ReduceStakePending.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ReduceStakePending.html"
         }
       },
       "version": ""
@@ -4375,10 +6075,120 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Relative.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Relative.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.RelativeHeight.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.RelativeHeight.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.RemoveFirstCredential.yml",
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.RemoveFirstCredential.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.RemoveStakePending.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.RemoveStakePending.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Resumed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Resumed.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.RewardOverviewBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.RewardOverviewBase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.RewardOverviewV0.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.RewardOverviewV0.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.RewardOverviewV1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.RewardOverviewV1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.RewardPeriodLength.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.RewardPeriodLength.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.RootKeys.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.RootKeys.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.RootKeysUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.RootKeysUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.RootUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.RootUpdate.html"
         }
       },
       "version": ""
@@ -4415,6 +6225,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Sha256Hash.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Sha256Hash.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.StakeOverMaximumThresholdForPool.yml",
       "output": {
         ".html": {
@@ -4435,10 +6255,80 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.StateHash.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.StateHash.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.TimeParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.TimeParameters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.TimeParametersCpv1Update.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.TimeParametersCpv1Update.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.TimeoutParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.TimeoutParameters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.TimeoutParametersUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.TimeoutParametersUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.TransactionFeeCommissionNotInRange.yml",
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.TransactionFeeCommissionNotInRange.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.TransactionFeeDistribution.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.TransactionFeeDistribution.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.TransactionFeeDistributionUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.TransactionFeeDistributionUpdate.html"
         }
       },
       "version": ""
@@ -4479,6 +6369,146 @@
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.TransactionStatusReceived.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.TransactionType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.TransactionType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.TransactionTypeFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.TransactionTypeFactory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Transferred.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Transferred.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.TransferredToEncrypted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.TransferredToEncrypted.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.TransferredToPublic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.TransferredToPublic.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.TransferredWithSchedule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.TransferredWithSchedule.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.UpdateDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.UpdateDetails.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.UpdateKeysIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.UpdateKeysIndex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.UpdateKeysThreshold.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.UpdateKeysThreshold.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.UpdatePayloadFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.UpdatePayloadFactory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.UpdatePublicKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.UpdatePublicKey.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.UpdateType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.UpdateType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Updated.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Updated.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Upgraded.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Upgraded.html"
         }
       },
       "version": ""

@@ -92,7 +92,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public record struct BakerId : IEquatable&lt;BakerId&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly record struct BakerId : IEquatable&lt;BakerId&gt;</code></pre>
   </div>
 
 
@@ -186,7 +186,7 @@
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AccountIndex Id { readonly get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public AccountIndex Id { get; init; }</code></pre>
   </div>
 
 

@@ -93,7 +93,7 @@
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly struct CcdAmount : IEquatable&lt;CcdAmount&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly record struct CcdAmount : IEquatable&lt;CcdAmount&gt;</code></pre>
   </div>
 
 
@@ -111,6 +111,12 @@
   <dl class="typelist derived">
     <dt>Inherited Members</dt>
     <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals">ValueType.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode">ValueType.GetHashCode()</a>
+    </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.tostring">ValueType.ToString()</a>
     </div>
@@ -137,10 +143,11 @@
 
   <h3 id="Concordium_Sdk_Types_CcdAmount_BytesLength" data-uid="Concordium.Sdk.Types.CcdAmount.BytesLength">
   BytesLength
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Byte length of <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a> integral numeric type.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -167,7 +174,7 @@
 
   <h3 id="Concordium_Sdk_Types_CcdAmount_MicroCcdPerCcd" data-uid="Concordium.Sdk.Types.CcdAmount.MicroCcdPerCcd">
   MicroCcdPerCcd
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Conversion factor, 1_000_000 µCCD = 1 CCD.</p>
@@ -203,7 +210,7 @@
 
   <h3 id="Concordium_Sdk_Types_CcdAmount_Value" data-uid="Concordium.Sdk.Types.CcdAmount.Value">
   Value
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The amount in µCCD.</p>
@@ -231,93 +238,47 @@
 
 
 
+  <a id="Concordium_Sdk_Types_CcdAmount_Zero_" data-uid="Concordium.Sdk.Types.CcdAmount.Zero*"></a>
+
+  <h3 id="Concordium_Sdk_Types_CcdAmount_Zero" data-uid="Concordium.Sdk.Types.CcdAmount.Zero">
+  Zero
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Zero amount.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static CcdAmount Zero { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
-
-
-  <a id="Concordium_Sdk_Types_CcdAmount_Equals_" data-uid="Concordium.Sdk.Types.CcdAmount.Equals*"></a>
-
-  <h3 id="Concordium_Sdk_Types_CcdAmount_Equals_Concordium_Sdk_Types_CcdAmount_" data-uid="Concordium.Sdk.Types.CcdAmount.Equals(Concordium.Sdk.Types.CcdAmount)">
-  Equals(CcdAmount)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L108"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Equals(CcdAmount other)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>other</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
-    <dd><p>An object to compare with this object.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Concordium_Sdk_Types_CcdAmount_Equals_" data-uid="Concordium.Sdk.Types.CcdAmount.Equals*"></a>
-
-  <h3 id="Concordium_Sdk_Types_CcdAmount_Equals_System_Object_" data-uid="Concordium.Sdk.Types.CcdAmount.Equals(System.Object)">
-  Equals(object?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L110"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Indicates whether this instance and a specified object are equal.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool Equals(object? obj)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd><p>The object to compare with the current instance.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
 
 
   <a id="Concordium_Sdk_Types_CcdAmount_FromCcd_" data-uid="Concordium.Sdk.Types.CcdAmount.FromCcd*"></a>
 
   <h3 id="Concordium_Sdk_Types_CcdAmount_FromCcd_System_UInt64_" data-uid="Concordium.Sdk.Types.CcdAmount.FromCcd(System.UInt64)">
   FromCcd(ulong)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates an instance from a CCD amount represented by an integer.</p>
@@ -361,7 +322,7 @@
 
   <h3 id="Concordium_Sdk_Types_CcdAmount_FromMicroCcd_System_UInt64_" data-uid="Concordium.Sdk.Types.CcdAmount.FromMicroCcd(System.UInt64)">
   FromMicroCcd(ulong)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L52"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates an instance from a µCCD amount represented as an integer.</p>
@@ -399,7 +360,7 @@
 
   <h3 id="Concordium_Sdk_Types_CcdAmount_GetFormattedCcd" data-uid="Concordium.Sdk.Types.CcdAmount.GetFormattedCcd">
   GetFormattedCcd()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a formatted string representing the amount in CCD.</p>
@@ -431,7 +392,7 @@
 
   <h3 id="Concordium_Sdk_Types_CcdAmount_GetFormattedMicroCcd" data-uid="Concordium.Sdk.Types.CcdAmount.GetFormattedMicroCcd">
   GetFormattedMicroCcd()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a formatted string representing the amount in µCCD.</p>
@@ -459,44 +420,11 @@
 
 
 
-  <a id="Concordium_Sdk_Types_CcdAmount_GetHashCode_" data-uid="Concordium.Sdk.Types.CcdAmount.GetHashCode*"></a>
-
-  <h3 id="Concordium_Sdk_Types_CcdAmount_GetHashCode" data-uid="Concordium.Sdk.Types.CcdAmount.GetHashCode">
-  GetHashCode()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L116"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Returns the hash code for this instance.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>A 32-bit signed integer that is the hash code for this instance.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
   <a id="Concordium_Sdk_Types_CcdAmount_ToBytes_" data-uid="Concordium.Sdk.Types.CcdAmount.ToBytes*"></a>
 
   <h3 id="Concordium_Sdk_Types_CcdAmount_ToBytes" data-uid="Concordium.Sdk.Types.CcdAmount.ToBytes">
   ToBytes()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L116"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Copies the CCD amuunt represented in big-endian format to  byte array.</p>
@@ -532,7 +460,7 @@
 
   <h3 id="Concordium_Sdk_Types_CcdAmount_op_Addition_Concordium_Sdk_Types_CcdAmount_Concordium_Sdk_Types_CcdAmount_" data-uid="Concordium.Sdk.Types.CcdAmount.op_Addition(Concordium.Sdk.Types.CcdAmount,Concordium.Sdk.Types.CcdAmount)">
   operator +(CcdAmount, CcdAmount)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Add CCD amounts.</p>
@@ -573,25 +501,25 @@
 
 
 
-  <a id="Concordium_Sdk_Types_CcdAmount_op_Equality_" data-uid="Concordium.Sdk.Types.CcdAmount.op_Equality*"></a>
+  <a id="Concordium_Sdk_Types_CcdAmount_op_GreaterThan_" data-uid="Concordium.Sdk.Types.CcdAmount.op_GreaterThan*"></a>
 
-  <h3 id="Concordium_Sdk_Types_CcdAmount_op_Equality_System_Nullable_Concordium_Sdk_Types_CcdAmount__System_Nullable_Concordium_Sdk_Types_CcdAmount__" data-uid="Concordium.Sdk.Types.CcdAmount.op_Equality(System.Nullable{Concordium.Sdk.Types.CcdAmount},System.Nullable{Concordium.Sdk.Types.CcdAmount})">
-  operator ==(CcdAmount?, CcdAmount?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Concordium_Sdk_Types_CcdAmount_op_GreaterThan_Concordium_Sdk_Types_CcdAmount_Concordium_Sdk_Types_CcdAmount_" data-uid="Concordium.Sdk.Types.CcdAmount.op_GreaterThan(Concordium.Sdk.Types.CcdAmount,Concordium.Sdk.Types.CcdAmount)">
+  operator &gt;(CcdAmount, CcdAmount)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L119"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator ==(CcdAmount? left, CcdAmount? right)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool operator &gt;(CcdAmount left, CcdAmount right)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>left</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a>?</dt>
+    <dt><code>left</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
     <dd></dd>
-    <dt><code>right</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a>?</dt>
+    <dt><code>right</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
     <dd></dd>
   </dl>
 
@@ -611,25 +539,101 @@
 
 
 
-  <a id="Concordium_Sdk_Types_CcdAmount_op_Inequality_" data-uid="Concordium.Sdk.Types.CcdAmount.op_Inequality*"></a>
+  <a id="Concordium_Sdk_Types_CcdAmount_op_GreaterThanOrEqual_" data-uid="Concordium.Sdk.Types.CcdAmount.op_GreaterThanOrEqual*"></a>
 
-  <h3 id="Concordium_Sdk_Types_CcdAmount_op_Inequality_System_Nullable_Concordium_Sdk_Types_CcdAmount__System_Nullable_Concordium_Sdk_Types_CcdAmount__" data-uid="Concordium.Sdk.Types.CcdAmount.op_Inequality(System.Nullable{Concordium.Sdk.Types.CcdAmount},System.Nullable{Concordium.Sdk.Types.CcdAmount})">
-  operator !=(CcdAmount?, CcdAmount?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Concordium_Sdk_Types_CcdAmount_op_GreaterThanOrEqual_Concordium_Sdk_Types_CcdAmount_Concordium_Sdk_Types_CcdAmount_" data-uid="Concordium.Sdk.Types.CcdAmount.op_GreaterThanOrEqual(Concordium.Sdk.Types.CcdAmount,Concordium.Sdk.Types.CcdAmount)">
+  operator &gt;=(CcdAmount, CcdAmount)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L123"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator !=(CcdAmount? left, CcdAmount? right)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool operator &gt;=(CcdAmount left, CcdAmount right)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>left</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a>?</dt>
+    <dt><code>left</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
     <dd></dd>
-    <dt><code>right</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a>?</dt>
+    <dt><code>right</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_CcdAmount_op_LessThan_" data-uid="Concordium.Sdk.Types.CcdAmount.op_LessThan*"></a>
+
+  <h3 id="Concordium_Sdk_Types_CcdAmount_op_LessThan_Concordium_Sdk_Types_CcdAmount_Concordium_Sdk_Types_CcdAmount_" data-uid="Concordium.Sdk.Types.CcdAmount.op_LessThan(Concordium.Sdk.Types.CcdAmount,Concordium.Sdk.Types.CcdAmount)">
+  operator &lt;(CcdAmount, CcdAmount)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator &lt;(CcdAmount left, CcdAmount right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_CcdAmount_op_LessThanOrEqual_" data-uid="Concordium.Sdk.Types.CcdAmount.op_LessThanOrEqual*"></a>
+
+  <h3 id="Concordium_Sdk_Types_CcdAmount_op_LessThanOrEqual_Concordium_Sdk_Types_CcdAmount_Concordium_Sdk_Types_CcdAmount_" data-uid="Concordium.Sdk.Types.CcdAmount.op_LessThanOrEqual(Concordium.Sdk.Types.CcdAmount,Concordium.Sdk.Types.CcdAmount)">
+  operator &lt;=(CcdAmount, CcdAmount)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator &lt;=(CcdAmount left, CcdAmount right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
     <dd></dd>
   </dl>
 
@@ -653,7 +657,7 @@
 
   <h3 id="Concordium_Sdk_Types_CcdAmount_op_Subtraction_Concordium_Sdk_Types_CcdAmount_Concordium_Sdk_Types_CcdAmount_" data-uid="Concordium.Sdk.Types.CcdAmount.op_Subtraction(Concordium.Sdk.Types.CcdAmount,Concordium.Sdk.Types.CcdAmount)">
   operator -(CcdAmount, CcdAmount)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/CcdAmount.cs/#L98"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Subtract CCD amounts.</p>
