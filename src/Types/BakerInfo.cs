@@ -3,10 +3,7 @@ namespace Concordium.Sdk.Types;
 /// <summary>
 /// Information about a baker.
 /// </summary>
-/// <param name="BakerId">
-/// Identity of the baker. This is actually the account index of
-/// the account controlling the baker.
-/// </param>
+/// <param name="BakerId">Account index of the account controlling the baker.</param>
 /// <param name="BakerElectionVerifyKey">
 /// Baker's public key used to check whether they won the lottery or not.
 /// </param>
