@@ -41,7 +41,7 @@ public sealed record BakerPoolStatus(
             CcdAmount.From(poolInfoResponse.EquityCapital),
             CcdAmount.From(poolInfoResponse.DelegatedCapital),
             CcdAmount.From(poolInfoResponse.DelegatedCapitalCap),
-            BakerPoolInfo.From(poolInfoResponse.PoolInfo),
+            BakerPoolInfo.From(poolInfoResponse.PoolInfo)!,
             CurrentPaydayBakerPoolStatus.From(poolInfoResponse.CurrentPaydayInfo),
             CcdAmount.From(poolInfoResponse.AllPoolTotalCapital));
 }

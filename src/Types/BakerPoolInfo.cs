@@ -13,11 +13,17 @@ public sealed record BakerPoolInfo(
     BakerPoolOpenStatus OpenStatus,
     string MetadataUrl)
 {
-    internal static BakerPoolInfo From(Grpc.V2.BakerPoolInfo poolInfo) =>
-        new
-        (
+    internal static BakerPoolInfo? From(Grpc.V2.BakerPoolInfo? poolInfo)
+    {
+        if (poolInfo is null)
+        {
+            return null;
+        }
+
+        return new BakerPoolInfo(
             CommissionRates: CommissionRates.From(poolInfo.CommissionRates),
             OpenStatus: BakerPoolOpenStatus.OpenForAll,
             MetadataUrl: poolInfo.Url
         );
+    }
 }

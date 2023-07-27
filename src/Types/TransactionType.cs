@@ -99,14 +99,16 @@ public enum TransactionType : byte
 public static class TransactionTypeFactory
 {
     /// <summary>
-    /// Get transaction enum from transaction type. The transaction needs to be succeeded hence type
-    /// <see cref="None"/> will throw an exception.
+    /// Get transaction enum from transaction type.
     /// </summary>
     /// <exception cref="MissingTypeException{IAccountTransactionEffects}"></exception>
-    public static TransactionType From(IAccountTransactionEffects effects) =>
-        effects switch
+    public static bool TryFrom(IAccountTransactionEffects effects, out TransactionType? transactionType)
+    {
+        transactionType = effects switch
         {
-            AccountTransfer => TransactionType.Transfer,
+            AccountTransfer accountTransactionEffects => accountTransactionEffects.Memo == null
+                ? TransactionType.Transfer
+                : TransactionType.TransferWithMemo,
             BakerAdded => TransactionType.AddBaker,
             BakerConfigured => TransactionType.ConfigureBaker,
             BakerKeysUpdated => TransactionType.UpdateBakerKeys,
@@ -120,18 +122,21 @@ public static class TransactionTypeFactory
             DataRegistered => TransactionType.RegisterData,
             DelegationConfigured => TransactionType.ConfigureDelegation,
             EncryptedAmountTransferred encryptedAmountTransferred =>
-                encryptedAmountTransferred.Memo == null ?
-                    TransactionType.EncryptedAmountTransfer :
-                    TransactionType.EncryptedAmountTransferWithMemo,
+                encryptedAmountTransferred.Memo == null
+                    ? TransactionType.EncryptedAmountTransfer
+                    : TransactionType.EncryptedAmountTransferWithMemo,
             ModuleDeployed => TransactionType.DeployModule,
             TransferredToEncrypted => TransactionType.TransferToEncrypted,
             TransferredToPublic => TransactionType.TransferToPublic,
             TransferredWithSchedule transferredWithSchedule =>
-                transferredWithSchedule.Memo == null ?
-                    TransactionType.TransferWithSchedule :
-                    TransactionType.TransferWithScheduleAndMemo,
+                transferredWithSchedule.Memo == null
+                    ? TransactionType.TransferWithSchedule
+                    : TransactionType.TransferWithScheduleAndMemo,
+            None none => none.TransactionType,
             _ => throw new MissingTypeException<IAccountTransactionEffects>(effects)
         };
+        return transactionType != null;
+    }
 
     internal static TransactionType Into(this Grpc.V2.TransactionType transactionType) =>
         transactionType switch

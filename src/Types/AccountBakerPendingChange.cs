@@ -19,7 +19,7 @@ public abstract record AccountBakerPendingChange
         return stakeBakerPendingChange.ChangeCase switch
         {
             StakePendingChange.ChangeOneofCase.Reduce =>
-                new AccountBakerReduceStakePending(CcdAmount.From(stakeBakerPendingChange.Reduce.NewStake), stakeBakerPendingChange.Remove.ToDateTimeOffset()),
+                new AccountBakerReduceStakePending(CcdAmount.From(stakeBakerPendingChange.Reduce.NewStake), stakeBakerPendingChange.Reduce.EffectiveTime.ToDateTimeOffset()),
             StakePendingChange.ChangeOneofCase.Remove =>
                 new AccountBakerRemovePending(stakeBakerPendingChange.Remove.ToDateTimeOffset())
             ,

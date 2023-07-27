@@ -324,7 +324,7 @@ public sealed record DataRegistered(byte[] Data) : IAccountTransactionEffects
     /// <summary>
     /// Returns hex representation of data.
     /// </summary>
-    public string ToHex() => Convert.ToHexString(this.Data);
+    public string ToHexString() => Convert.ToHexString(this.Data).ToLowerInvariant();
 }
 
 /// <summary>

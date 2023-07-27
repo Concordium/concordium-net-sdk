@@ -284,7 +284,7 @@ public sealed record DuplicateCredIds(IList<byte[]> CredIds) : IRejectReason
     /// <summary>
     /// Return keys in hex representations.
     /// </summary>
-    public IEnumerable<string> ToHexStrings() => this.CredIds.Select(Convert.ToHexString);
+    public IEnumerable<string> ToHexStrings() => this.CredIds.Select(k => Convert.ToHexString(k).ToLowerInvariant());
 }
 
 /// <summary>
@@ -295,7 +295,7 @@ public sealed record NonExistentCredIds(IList<byte[]> CredIds) : IRejectReason
     /// <summary>
     /// Return keys in hex representations.
     /// </summary>
-    public IEnumerable<string> ToHexStrings() => this.CredIds.Select(Convert.ToHexString);
+    public IEnumerable<string> ToHexStrings() => this.CredIds.Select(k => Convert.ToHexString(k).ToLowerInvariant());
 }
 /// <summary>
 /// Attempt to remove the first credential
