@@ -1,4 +1,6 @@
 ## Unreleased changes
+
+## 3.0.0
 - Added
   - Add optional cancellation token parameter to all client calls.
 

@@ -29,7 +29,7 @@ Currently, helpers for working with transactions of the [`Transfer`](http://deve
 The SDK is published on [nuget.org](https://www.nuget.org/packages/ConcordiumNetSdk). Depending on your setup, it can be added to your project as a dependency by running either
 
 ```powershell
-PM> Install-Package Concordium.SDK -Version 2.0
+PM> Install-Package Concordium.SDK -Version 3.0
 ```
 or
 
