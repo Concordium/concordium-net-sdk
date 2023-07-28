@@ -13,8 +13,6 @@ public sealed class TransferTests
     private readonly WalletAccount _account2;
     private readonly WalletAccount _account1;
 
-    private const int Timeout = 120_000;
-
     public TransferTests(LocalNodeFixture fixture)
     {
         this._fixture = fixture;
@@ -22,11 +20,11 @@ public sealed class TransferTests
         this._account2 = LocalNodeFixture.CreateWalletAccount(2);
     }
 
-    [Fact(Timeout = Timeout)]
+    [Fact(Timeout = LocalNodeFixture.Timeout)]
     public async Task WhenTransfer_ThenAmountTransferred()
     {
         // Arrange
-        using var cts = new CancellationTokenSource(Timeout);
+        using var cts = new CancellationTokenSource(LocalNodeFixture.Timeout);
 
         var accountInfoBefore_1 = await this._fixture.Client.GetAccountInfoAsync(this._account1.AccountAddress, new LastFinal(), cts.Token);
         var accountInfoBefore_2 = await this._fixture.Client.GetAccountInfoAsync(this._account2.AccountAddress, new LastFinal(), cts.Token);

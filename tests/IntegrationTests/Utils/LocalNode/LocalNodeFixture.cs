@@ -12,6 +12,8 @@ public sealed class LocalNodeFixture : IDisposable
     private readonly ICompositeService _service;
     private const string GRpcPort = "20042";
     private const string ServiceName = "local-test-node";
+
+    internal const int Timeout = 120_000;
     internal ConcordiumClient Client { get; }
 
     public LocalNodeFixture()
