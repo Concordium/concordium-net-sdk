@@ -1,5 +1,18 @@
 ## Unreleased changes
 
+## 4.0.0
+- The SDK requires node version 6 or later.
+### Breaking changes in types
+  - `ConsensusInfo`
+    - `SlotDuration` is now an nullable field, only present in protocols 1-5.
+    - a new field `ConcordiumBftDetails` is added, that is present if protocol
+      version is 6 or higher
+    - Bugfix: `BlockLastArrivedTime` was wrongly mapped from `BlockLastReceivedTime`.
+  - `BlockInfo`
+    - `BlockSlot` is nullable, and only present in protocols 1-5
+    - new fields `Round` and `Epoch` that are present in protocol 6 or higher.
+
+
 ## 3.0.0
 - Added
   - Add optional cancellation token parameter to all client calls.
