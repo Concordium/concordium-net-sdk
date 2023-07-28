@@ -28,7 +28,10 @@ namespace Concordium.Sdk.Types;
 /// Time when the block was added to the node's tree. This is a subjective
 /// (i.e., node specific) value.
 /// </param>
-/// <param name="BlockSlot">Slot number of the slot the block is in.</param>
+/// <param name="BlockSlot">
+/// Slot number of the slot the block is in.
+/// Present in protocol versions 1-5.
+/// </param>
 /// <param name="BlockSlotTime">
 /// Slot time of the slot the block is in. In contrast to
 /// <see cref="BlockArriveTime"/> this is an objective value, all nodes
@@ -44,6 +47,8 @@ namespace Concordium.Sdk.Types;
 /// <param name="TransactionSize">Size of all the transactions in the block in bytes.</param>
 /// <param name="BlockStateHash">Hash of the block state at the end of the given block.</param>
 /// <param name="ProtocolVersion">Protocol version to which the block belongs.</param>
+/// <param name="Round">The round of the block. Present from protocol version 6.</param>
+/// <param name="Epoch">The epoch of the block. Present from protocol version 6.</param>
 public sealed record BlockInfo(
     BlockHash BlockHash,
     BlockHash BlockParent,
@@ -53,7 +58,7 @@ public sealed record BlockInfo(
     ulong EraBlockHeight,
     DateTimeOffset BlockReceiveTime,
     DateTimeOffset BlockArriveTime,
-    ulong BlockSlot,
+    ulong? BlockSlot,
     DateTimeOffset BlockSlotTime,
     BakerId? BlockBaker,
     bool Finalized,
@@ -61,7 +66,9 @@ public sealed record BlockInfo(
     EnergyAmount TransactionEnergyCost,
     uint TransactionSize,
     StateHash BlockStateHash,
-    ProtocolVersion ProtocolVersion
+    ProtocolVersion ProtocolVersion,
+    Round? Round,
+    Epoch? Epoch
     )
 {
     internal static BlockInfo From(Grpc.V2.BlockInfo blockInfo) =>
@@ -74,7 +81,7 @@ public sealed record BlockInfo(
             EraBlockHeight: blockInfo.EraBlockHeight.Value,
             BlockReceiveTime: blockInfo.ReceiveTime.ToDateTimeOffset(),
             BlockArriveTime: blockInfo.ArriveTime.ToDateTimeOffset(),
-            BlockSlot: blockInfo.SlotNumber.Value,
+            BlockSlot: blockInfo.SlotNumber?.Value,
             BlockSlotTime: blockInfo.SlotTime.ToDateTimeOffset(),
             BlockBaker: blockInfo.Baker != null ? BakerId.From(blockInfo.Baker) : null,
             Finalized: blockInfo.Finalized,
@@ -82,6 +89,8 @@ public sealed record BlockInfo(
             TransactionEnergyCost: new EnergyAmount(blockInfo.TransactionsEnergyCost.Value),
             TransactionSize: blockInfo.TransactionsSize,
             BlockStateHash: new StateHash(blockInfo.StateHash.Value),
-            ProtocolVersion: blockInfo.ProtocolVersion.Into()
+            ProtocolVersion: blockInfo.ProtocolVersion.Into(),
+            Round: blockInfo.Round != null ? Types.Round.From(blockInfo.Round) : null,
+            Epoch: blockInfo.Epoch != null ? Types.Epoch.From(blockInfo.Epoch) : null
         );
 }
