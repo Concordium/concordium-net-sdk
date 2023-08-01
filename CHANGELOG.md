@@ -14,6 +14,8 @@
       version is 6 or higher
   - `BlockInfo`
     - new fields `Round` and `Epoch` that are present in protocol 6 or higher.
+  - `BakerPoolStatus` 
+    - Added nullable `BakerPoolPendingChange` which is present if any change is pending on baker pool.
 
 ## 3.0.0
 - Added

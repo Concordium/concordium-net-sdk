@@ -23,6 +23,7 @@ namespace Concordium.Sdk.Types;
 /// if the pool is not a baker in the payday (e.g., because they just
 /// registered and a new payday has not started yet).
 /// </param>
+/// <param name="BakerStakePendingChange">Any pending change to the baker's stake.</param>
 /// <param name="AllPoolTotalCapital">Total capital staked across all pools.</param>
 public sealed record BakerPoolStatus(
         BakerId BakerId,
@@ -32,7 +33,8 @@ public sealed record BakerPoolStatus(
         CcdAmount DelegatedCapitalCap,
         BakerPoolInfo PoolInfo,
         CurrentPaydayBakerPoolStatus? CurrentPaydayStatus,
-        CcdAmount AllPoolTotalCapital)
+        CcdAmount AllPoolTotalCapital,
+        BakerPoolPendingChange? BakerStakePendingChange)
 {
     internal static BakerPoolStatus From(Grpc.V2.PoolInfoResponse poolInfoResponse) =>
         new(
@@ -43,7 +45,7 @@ public sealed record BakerPoolStatus(
             CcdAmount.From(poolInfoResponse.DelegatedCapitalCap),
             BakerPoolInfo.From(poolInfoResponse.PoolInfo)!,
             CurrentPaydayBakerPoolStatus.From(poolInfoResponse.CurrentPaydayInfo),
-            CcdAmount.From(poolInfoResponse.AllPoolTotalCapital));
+            CcdAmount.From(poolInfoResponse.AllPoolTotalCapital),
+            BakerPoolPendingChange.From(poolInfoResponse.EquityPendingChange)
+            );
 }
-
-
