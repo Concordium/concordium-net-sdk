@@ -4,18 +4,17 @@
 - The SDK requires node version 6 or later.
 - Breaking changes
   - `ConsensusInfo`
-    - `SlotDuration` is now an nullable field, only present in protocols 1-5.
+    - `SlotDuration` is now a nullable field, only present in protocols 1-5.
     - Bugfix: `BlockLastArrivedTime` was wrongly mapped from `BlockLastReceivedTime`.    
   - `BlockInfo`
-    - `BlockSlot` is nullable, and only present in protocols 1-5
+    - `BlockSlot` is now a nullable field, and only present in protocols 1-5
 - Added
   - `ConsensusInfo`
-    - a new field `ConcordiumBftDetails` is added, that is present if protocol
-      version is 6 or higher
+    - a new field `ConcordiumBftDetails` is added that is present if protocol version is 6 or higher
   - `BlockInfo`
     - new fields `Round` and `Epoch` that are present in protocol 6 or higher.
   - `BakerPoolStatus` 
-    - Added nullable `BakerPoolPendingChange` which is present if any change is pending on baker pool.
+    - a new field`BakerPoolPendingChange` is added which is present if any change is pending on baker pool.
 
 ## 3.0.0
 - Added

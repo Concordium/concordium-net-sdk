@@ -140,11 +140,8 @@ public sealed record ConsensusInfo(
     ConcordiumBftDetails? ConcordiumBftDetails
     )
 {
-    internal static ConsensusInfo From(Grpc.V2.ConsensusInfo consensusInfo)
-    {
-        var _ = ConcordiumBftDetails.TryFrom(consensusInfo, out var concordiumBftDetails);
-
-        return new ConsensusInfo(
+    internal static ConsensusInfo From(Grpc.V2.ConsensusInfo consensusInfo) =>
+        new(
             BestBlock: BlockHash.From(consensusInfo.BestBlock),
             GenesisBlock: BlockHash.From(consensusInfo.GenesisBlock),
             GenesisTime: consensusInfo.GenesisTime.ToDateTimeOffset(),
@@ -175,6 +172,5 @@ public sealed record ConsensusInfo(
             LastFinalizedTime: consensusInfo.LastFinalizedTime?.ToDateTimeOffset(),
             FinalizationPeriodEma: consensusInfo.HasFinalizationPeriodEma ? consensusInfo.FinalizationPeriodEma : null,
             FinalizationPeriodEmsd: consensusInfo.HasFinalizationPeriodEmsd ? consensusInfo.FinalizationPeriodEmsd : null,
-            ConcordiumBftDetails: concordiumBftDetails);
-    }
+            ConcordiumBftDetails: ConcordiumBftDetails.From(consensusInfo));
 }

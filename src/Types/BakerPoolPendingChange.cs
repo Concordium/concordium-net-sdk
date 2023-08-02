@@ -21,8 +21,7 @@ public abstract record BakerPoolPendingChange
             PoolPendingChange.ChangeOneofCase.Reduce =>
                 new BakerPoolReduceStakePending(CcdAmount.From(pendingChange.Reduce.ReducedEquityCapital), pendingChange.Reduce.EffectiveTime.ToDateTimeOffset()),
             PoolPendingChange.ChangeOneofCase.Remove =>
-                new BakerPoolRemovePending(pendingChange.Remove.EffectiveTime.ToDateTimeOffset())
-            ,
+                new BakerPoolRemovePending(pendingChange.Remove.EffectiveTime.ToDateTimeOffset()),
             PoolPendingChange.ChangeOneofCase.None => null,
             _ => throw new MissingEnumException<PoolPendingChange.ChangeOneofCase>(pendingChange.ChangeCase)
         };
