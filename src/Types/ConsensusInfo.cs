@@ -23,7 +23,10 @@ namespace Concordium.Sdk.Types;
 /// <see cref="GenesisBlock"/>.
 /// </param>
 /// <param name="CurrentEraGenesisTime">Time when the current era started.</param>
-/// <param name="SlotDuration">Duration of a slot.</param>
+/// <param name="SlotDuration">
+/// Duration of a slot.
+/// Present only in protocol versions 1-5.
+/// </param>
 /// <param name="EpochDuration">Duration of an epoch.</param>
 /// <param name="GenesisIndex">
 /// The number of chain restarts via a protocol update. An effected
@@ -99,6 +102,10 @@ namespace Concordium.Sdk.Types;
 /// finalizations. Will be `None` if there are no finalizations yet
 /// since the node start.
 /// </param>
+/// <param name="ConcordiumBftDetails">
+/// Parameters that apply from protocol 6 onward. This is present if and
+/// only if the protocol version is <see cref="ProtocolVersion.P6"/> or later.
+/// </param>
 public sealed record ConsensusInfo(
     BlockHash BestBlock,
     BlockHash GenesisBlock,
@@ -109,7 +116,7 @@ public sealed record ConsensusInfo(
     ProtocolVersion ProtocolVersion,
     BlockHash CurrentEraGenesisBlock,
     DateTimeOffset CurrentEraGenesisTime,
-    TimeSpan SlotDuration,
+    TimeSpan? SlotDuration,
     TimeSpan EpochDuration,
     uint GenesisIndex,
     uint BlocksReceivedCount,
@@ -129,12 +136,12 @@ public sealed record ConsensusInfo(
     ulong FinalizationCount,
     DateTimeOffset? LastFinalizedTime,
     double? FinalizationPeriodEma,
-    double? FinalizationPeriodEmsd
+    double? FinalizationPeriodEmsd,
+    ConcordiumBftDetails? ConcordiumBftDetails
     )
 {
     internal static ConsensusInfo From(Grpc.V2.ConsensusInfo consensusInfo) =>
-        new
-        (
+        new(
             BestBlock: BlockHash.From(consensusInfo.BestBlock),
             GenesisBlock: BlockHash.From(consensusInfo.GenesisBlock),
             GenesisTime: consensusInfo.GenesisTime.ToDateTimeOffset(),
@@ -144,8 +151,8 @@ public sealed record ConsensusInfo(
             ProtocolVersion: consensusInfo.ProtocolVersion.Into(),
             CurrentEraGenesisBlock: BlockHash.From(consensusInfo.CurrentEraGenesisBlock),
             CurrentEraGenesisTime: consensusInfo.CurrentEraGenesisTime.ToDateTimeOffset(),
-            SlotDuration: TimeSpan.FromMilliseconds(consensusInfo.SlotDuration.Value),
-            EpochDuration: TimeSpan.FromMilliseconds(consensusInfo.EpochDuration.Value),
+            SlotDuration: consensusInfo.SlotDuration?.ToTimeSpan(),
+            EpochDuration: consensusInfo.EpochDuration.ToTimeSpan(),
             GenesisIndex: consensusInfo.GenesisIndex.Value,
             BlocksReceivedCount: consensusInfo.BlocksReceivedCount,
             BlockLastReceivedTime: consensusInfo.BlockLastReceivedTime?.ToDateTimeOffset(),
@@ -154,7 +161,7 @@ public sealed record ConsensusInfo(
             BlockReceivePeriodEma: consensusInfo.HasBlockReceivePeriodEma ? consensusInfo.BlockReceivePeriodEma : null,
             BlockReceivePeriodEmsd: consensusInfo.HasBlockReceivePeriodEmsd ? consensusInfo.BlockReceivePeriodEmsd : null,
             BlocksVerifiedCount: consensusInfo.BlocksVerifiedCount,
-            BlockLastArrivedTime: consensusInfo.BlockLastReceivedTime?.ToDateTimeOffset(),
+            BlockLastArrivedTime: consensusInfo.BlockLastArrivedTime?.ToDateTimeOffset(),
             BlockArriveLatencyEma: consensusInfo.BlockArriveLatencyEma,
             BlockArriveLatencyEmsd: consensusInfo.BlockArriveLatencyEmsd,
             BlockArrivePeriodEma: consensusInfo.HasBlockArrivePeriodEma ? consensusInfo.BlockArrivePeriodEma : null,
@@ -164,6 +171,6 @@ public sealed record ConsensusInfo(
             FinalizationCount: consensusInfo.FinalizationCount,
             LastFinalizedTime: consensusInfo.LastFinalizedTime?.ToDateTimeOffset(),
             FinalizationPeriodEma: consensusInfo.HasFinalizationPeriodEma ? consensusInfo.FinalizationPeriodEma : null,
-            FinalizationPeriodEmsd: consensusInfo.HasFinalizationPeriodEmsd ? consensusInfo.FinalizationPeriodEmsd : null
-        );
+            FinalizationPeriodEmsd: consensusInfo.HasFinalizationPeriodEmsd ? consensusInfo.FinalizationPeriodEmsd : null,
+            ConcordiumBftDetails: ConcordiumBftDetails.From(consensusInfo));
 }
