@@ -2945,6 +2945,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Round.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Round.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Grpc.V2.SendBlockItemRequest.BlockItemOneofCase.yml",
       "output": {
         ".html": {
@@ -4155,6 +4165,36 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerPoolPendingChange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerPoolPendingChange.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerPoolReduceStakePending.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerPoolReduceStakePending.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerPoolRemovePending.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerPoolRemovePending.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.BakerPoolStatus.yml",
       "output": {
         ".html": {
@@ -4469,6 +4509,16 @@
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.CommissionRates.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ConcordiumBftDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ConcordiumBftDetails.html"
         }
       },
       "version": ""
@@ -6189,6 +6239,16 @@
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.RootUpdate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Round.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Round.html"
         }
       },
       "version": ""
