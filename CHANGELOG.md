@@ -1,5 +1,9 @@
 ## Unreleased changes
 
+## 4.0.1
+- Bugfix
+  - `TransactionCount` in `BlockInfo` had wrong mapping and used `TransactionsSize` from node.
+
 ## 4.0.0
 - The SDK requires node version 6 or later.
 - Breaking changes
