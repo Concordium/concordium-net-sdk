@@ -13,6 +13,20 @@ public sealed class GetBlockInfo : Tests
     }
 
     [Fact]
+    public async Task GivenBlockWithOneTransaction_WhenGetBlockInfo_ThenTransactionCountOne()
+    {
+        // Arrange
+        var blochHashString = this.GetString("blockHashOneTransaction");
+
+
+        // Act
+        var info = await this.Client.GetBlockInfoAsync(new Given(BlockHash.From(blochHashString)));
+
+        // Assert
+        info.Response.TransactionCount.Should().Be(1);
+    }
+
+    [Fact]
     public async Task GivenAbsoluteHeightAboveBlockHeight_WhenCallGetBlockInfo_ThenThrowException()
     {
         // Arrange

@@ -85,7 +85,7 @@ public sealed record BlockInfo(
             BlockSlotTime: blockInfo.SlotTime.ToDateTimeOffset(),
             BlockBaker: blockInfo.Baker != null ? BakerId.From(blockInfo.Baker) : null,
             Finalized: blockInfo.Finalized,
-            TransactionCount: blockInfo.TransactionsSize,
+            TransactionCount: blockInfo.TransactionCount,
             TransactionEnergyCost: new EnergyAmount(blockInfo.TransactionsEnergyCost.Value),
             TransactionSize: blockInfo.TransactionsSize,
             BlockStateHash: new StateHash(blockInfo.StateHash.Value),
