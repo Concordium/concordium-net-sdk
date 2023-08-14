@@ -22,7 +22,7 @@ public sealed record BakerPoolInfo(
 
         return new BakerPoolInfo(
             CommissionRates: CommissionRates.From(poolInfo.CommissionRates),
-            OpenStatus: BakerPoolOpenStatus.OpenForAll,
+            OpenStatus: poolInfo.OpenStatus.Into(),
             MetadataUrl: poolInfo.Url
         );
     }
