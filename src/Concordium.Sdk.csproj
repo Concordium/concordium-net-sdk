@@ -21,6 +21,9 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DocumentationFile>bin\Release\net6.0\Concordium.Sdk.xml</DocumentationFile>
+  </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\nuget\icon.png">
