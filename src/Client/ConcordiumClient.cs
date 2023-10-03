@@ -5,6 +5,7 @@ using Grpc.Core;
 using Grpc.Net.Client;
 using AccountAddress = Concordium.Sdk.Types.AccountAddress;
 using AccountInfo = Concordium.Sdk.Types.AccountInfo;
+using ArrivedBlockInfo = Concordium.Sdk.Types.ArrivedBlockInfo;
 using BakerId = Concordium.Sdk.Types.BakerId;
 using BlockHash = Concordium.Sdk.Types.BlockHash;
 using BlockInfo = Concordium.Sdk.Types.BlockInfo;
@@ -541,6 +542,22 @@ public sealed class ConcordiumClient : IDisposable
                 response.ResponseHeadersAsync,
                 ChainParametersFactory.From(chainParameters))
             .ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Return a stream of blocks that arrive from the time the query is made onward.
+    /// This can be used to listen for incoming blocks.
+    /// </summary>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>A stream of blocks that arrive from the time the query is made onward.</returns>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.Unimplemented"/> indicates that this endpoint is disabled in the node.
+    /// </exception>
+    public IAsyncEnumerable<ArrivedBlockInfo> GetBlocks(CancellationToken token = default)
+    {
+        var response = this.Raw.GetBlocks(token);
+        return response.ResponseStream.ReadAllAsync(token).Select(ArrivedBlockInfo.From);
     }
 
     public void Dispose() => this.Raw.Dispose();
