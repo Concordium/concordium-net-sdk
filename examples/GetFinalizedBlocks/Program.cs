@@ -5,7 +5,7 @@ using Concordium.Sdk.Client;
 // but we don't want to give default values.
 #pragma warning disable CS8618
 
-namespace GetBlocks;
+namespace GetFinalizedBlocks;
 
 internal sealed class GetBlocksOptions
 {
@@ -17,7 +17,7 @@ internal sealed class GetBlocksOptions
 public static class Program
 {
     /// <summary>
-    /// Example how to use <see cref="ConcordiumClient.GetBlocks"/>
+    /// Example how to use <see cref="ConcordiumClient.GetFinalizedBlocks"/>
     /// </summary>
     public static async Task Main(string[] args) =>
         await Parser.Default
@@ -30,11 +30,11 @@ public static class Program
 
         using var client = new ConcordiumClient(new Uri(options.Endpoint), new ConcordiumClientOptions());
 
-        var blocks = client.GetBlocks();
+        var blocks = client.GetFinalizedBlocks();
 
         await foreach (var block in blocks)
         {
-            Console.WriteLine($"Block arrived: {block}");
+            Console.WriteLine($"Finalized block arrived: {block}");
         }
     }
 }

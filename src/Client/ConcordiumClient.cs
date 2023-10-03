@@ -11,6 +11,7 @@ using BlockHash = Concordium.Sdk.Types.BlockHash;
 using BlockInfo = Concordium.Sdk.Types.BlockInfo;
 using BlockItemSummary = Concordium.Sdk.Types.BlockItemSummary;
 using ConsensusInfo = Concordium.Sdk.Types.ConsensusInfo;
+using FinalizedBlockInfo = Concordium.Sdk.Types.FinalizedBlockInfo;
 using FinalizationSummary = Concordium.Sdk.Types.FinalizationSummary;
 using IpInfo = Concordium.Sdk.Types.IpInfo;
 using NodeInfo = Concordium.Sdk.Types.NodeInfo;
@@ -558,6 +559,25 @@ public sealed class ConcordiumClient : IDisposable
     {
         var response = this.Raw.GetBlocks(token);
         return response.ResponseStream.ReadAllAsync(token).Select(ArrivedBlockInfo.From);
+    }
+
+    /// <summary>
+    /// Return a stream of blocks that are finalized from the time the query is
+    /// made onward. This can be used to listen for newly finalized blocks. Note
+    /// that there is no guarantee that blocks will not be skipped if the client is
+    /// too slow in processing the stream, however blocks will always be sent by
+    /// increasing block height.
+    /// </summary>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>A stream of finalized blocks that arrive from the time the query is made onward.</returns>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.Unimplemented"/> indicates that this endpoint is disabled in the node.
+    /// </exception>
+    public IAsyncEnumerable<FinalizedBlockInfo> GetFinalizedBlocks(CancellationToken token = default)
+    {
+        var response = this.Raw.GetFinalizedBlocks(token);
+        return response.ResponseStream.ReadAllAsync(token).Select(FinalizedBlockInfo.From);
     }
 
     public void Dispose() => this.Raw.Dispose();
