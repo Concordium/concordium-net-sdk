@@ -10,6 +10,7 @@ using BakerId = Concordium.Sdk.Types.BakerId;
 using BlockHash = Concordium.Sdk.Types.BlockHash;
 using BlockInfo = Concordium.Sdk.Types.BlockInfo;
 using BlockItemSummary = Concordium.Sdk.Types.BlockItemSummary;
+using Branch = Concordium.Sdk.Types.Branch;
 using ConsensusInfo = Concordium.Sdk.Types.ConsensusInfo;
 using FinalizedBlockInfo = Concordium.Sdk.Types.FinalizedBlockInfo;
 using FinalizationSummary = Concordium.Sdk.Types.FinalizationSummary;
@@ -578,6 +579,21 @@ public sealed class ConcordiumClient : IDisposable
     {
         var response = this.Raw.GetFinalizedBlocks(token);
         return response.ResponseStream.ReadAllAsync(token).Select(FinalizedBlockInfo.From);
+    }
+
+    /// <summary>
+    /// Get the current branches of blocks starting from and including the last finalized block.
+    /// </summary>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>The current branches of blocks.</returns>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.Unimplemented"/> indicates that this endpoint is disabled in the node.
+    /// </exception>
+    public async Task<Branch> GetBranchesAsync(CancellationToken token = default)
+    {
+        var response = await this.Raw.GetBranchesAsync(token);
+        return Branch.From(response);
     }
 
     public void Dispose() => this.Raw.Dispose();
