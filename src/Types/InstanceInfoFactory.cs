@@ -5,7 +5,7 @@ namespace Concordium.Sdk.Types;
 /// <summary>
 /// Information about an existing smart contract instance.
 /// </summary>
-public interface IInstanceInfo {}
+public interface IInstanceInfo { }
 
 internal static class InstanceInfoFactory
 {

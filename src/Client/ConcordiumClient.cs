@@ -618,7 +618,8 @@ public sealed class ConcordiumClient : IDisposable
     {
         var response = this.Raw.GetInstanceInfoAsync(new InstanceInfoRequest
         {
-            Address = contractAddress.ToProto(), BlockHash = blockHashInput.Into()
+            Address = contractAddress.ToProto(),
+            BlockHash = blockHashInput.Into()
         }, token);
 
         await Task.WhenAll(response.ResponseHeadersAsync, response.ResponseAsync)

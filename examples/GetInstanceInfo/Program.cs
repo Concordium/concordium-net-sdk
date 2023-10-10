@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using CommandLine;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
