@@ -1,6 +1,8 @@
 ## Unreleased changes
 - Bugfix
   - Documentation was missing when adding library as nuget packages and hovering over methods and classes.
+- Added
+  - gRPC queries relevant for smart contracts.
 
 ## 4.0.1
 - Bugfix
