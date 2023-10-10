@@ -17,6 +17,7 @@ using FinalizationSummary = Concordium.Sdk.Types.FinalizationSummary;
 using IpInfo = Concordium.Sdk.Types.IpInfo;
 using NodeInfo = Concordium.Sdk.Types.NodeInfo;
 using TransactionHash = Concordium.Sdk.Types.TransactionHash;
+using PendingUpdate = Concordium.Sdk.Types.PendingUpdate;
 
 namespace Concordium.Sdk.Client;
 
@@ -609,6 +610,23 @@ public sealed class ConcordiumClient : IDisposable
     {
         var response = this.Raw.GetBranches(token);
         return Branch.From(response);
+    }
+
+    /// <summary>
+    /// Get the pending updates to chain parameters at the end of a given block.
+    /// The stream will end when all the pending updates for a given block have been returned.
+    /// </summary>
+    /// <param name="blockHash">The block to get ancestors of</param>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>The pending updates.</returns>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.Unimplemented"/> indicates that this endpoint is disabled in the node.
+    /// </exception>
+    public Task<QueryResponse<IAsyncEnumerable<PendingUpdate>>> GetBlockPendingUpdates(IBlockHashInput blockHash, CancellationToken token = default)
+    {
+        var responses = this.Raw.GetBlockPendingUpdates(blockHash.Into(), token);
+        return QueryResponse<IAsyncEnumerable<PendingUpdate>>.From(responses, PendingUpdate.From, token);
     }
 
     /// <summary>
