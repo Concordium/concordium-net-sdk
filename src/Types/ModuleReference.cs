@@ -1,3 +1,4 @@
+using Concordium.Grpc.V2;
 using Google.Protobuf;
 namespace Concordium.Sdk.Types;
 
@@ -8,6 +9,10 @@ public sealed record ModuleReference : Hash
 {
     internal ModuleReference(ByteString byteString) : base(byteString.ToArray())
     { }
+
+    internal static ModuleReference From(ModuleRef moduleRef) => new(moduleRef.Value);
+
+    internal ModuleRef Into() => new() { Value = ByteString.CopyFrom(this.AsSpan()) };
 
     /// <summary>
     /// Initializes a new instance.
