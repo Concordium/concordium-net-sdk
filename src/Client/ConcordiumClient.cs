@@ -597,6 +597,21 @@ public sealed class ConcordiumClient : IDisposable
     }
 
     /// <summary>
+    /// Get the current branches of blocks starting from and including the last finalized block.
+    /// </summary>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>The current branches of blocks.</returns>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.Unimplemented"/> indicates that this endpoint is disabled in the node.
+    /// </exception>
+    public Branch GetBranches(CancellationToken token = default)
+    {
+        var response = this.Raw.GetBranches(token);
+        return Branch.From(response);
+    }
+
+    /// <summary>
     /// Get a stream of ancestors for the provided block.
     /// Starting with the provided block itself, moving backwards until no more
     /// ancestors or the requested number of ancestors has been returned.
