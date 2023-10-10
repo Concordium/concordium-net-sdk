@@ -15,6 +15,7 @@ using FinalizationSummary = Concordium.Sdk.Types.FinalizationSummary;
 using IpInfo = Concordium.Sdk.Types.IpInfo;
 using NodeInfo = Concordium.Sdk.Types.NodeInfo;
 using TransactionHash = Concordium.Sdk.Types.TransactionHash;
+using VersionedModuleSource = Concordium.Sdk.Types.VersionedModuleSource;
 
 namespace Concordium.Sdk.Client;
 
@@ -587,7 +588,7 @@ public sealed class ConcordiumClient : IDisposable
     /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
     /// <see cref="StatusCode.NotFound"/> indicates block was not found.
     /// </exception>
-    public async Task<QueryResponse<IVersionedModuleSource>> GetModuleSourceAsync(IBlockHashInput blockHashInput, ModuleReference moduleReference, CancellationToken token = default)
+    public async Task<QueryResponse<VersionedModuleSource>> GetModuleSourceAsync(IBlockHashInput blockHashInput, ModuleReference moduleReference, CancellationToken token = default)
     {
         var response = this.Raw.GetModuleSourceAsync(new ModuleSourceRequest { BlockHash = blockHashInput.Into(), ModuleRef = moduleReference.Into() }, token);
 
@@ -595,7 +596,7 @@ public sealed class ConcordiumClient : IDisposable
             .ConfigureAwait(false);
         var versionedModuleSource = await response.ResponseAsync;
 
-        return await QueryResponse<IVersionedModuleSource>.From(
+        return await QueryResponse<VersionedModuleSource>.From(
                 response.ResponseHeadersAsync,
                 VersionedModuleSourceFactory.From(versionedModuleSource))
             .ConfigureAwait(false);
