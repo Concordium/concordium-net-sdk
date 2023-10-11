@@ -586,7 +586,7 @@ public sealed class ConcordiumClient : IDisposable
     /// <returns>Mapped versioned module source instances.</returns>
     /// <exception cref="RpcException">
     /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
-    /// <see cref="StatusCode.NotFound"/> indicates block was not found.
+    /// <see cref="StatusCode.NotFound"/> indicates either the block or the smart contract module was not found.
     /// </exception>
     public async Task<QueryResponse<VersionedModuleSource>> GetModuleSourceAsync(IBlockHashInput blockHashInput, ModuleReference moduleReference, CancellationToken token = default)
     {
