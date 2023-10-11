@@ -571,7 +571,7 @@ public sealed class ConcordiumClient : IDisposable
     /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
     /// <see cref="StatusCode.NotFound"/> indicates block was not found.
     /// </exception>
-    public Task<QueryResponse<IAsyncEnumerable<ContractAddress>>> GetInstanceList(IBlockHashInput blockHashInput, CancellationToken token = default)
+    public Task<QueryResponse<IAsyncEnumerable<ContractAddress>>> GetInstanceListAsync(IBlockHashInput blockHashInput, CancellationToken token = default)
     {
         var response = this.Raw.GetInstanceList(blockHashInput.Into(), token);
         return QueryResponse<IAsyncEnumerable<ContractAddress>>.From(response, ContractAddress.From, token);
