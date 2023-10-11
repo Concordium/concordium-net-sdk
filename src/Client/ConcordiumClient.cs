@@ -609,7 +609,7 @@ public sealed class ConcordiumClient : IDisposable
     /// <param name="blockHashInput">Block hash from where smart contract information will be given.</param>
     /// <param name="contractAddress">Address of smart contract instance.</param>
     /// <param name="token">Cancellation token</param>
-    /// <returns>Information about the given smart contract.</returns>
+    /// <returns>Information about the given smart contract instance.</returns>
     /// <exception cref="RpcException">
     /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
     /// <see cref="StatusCode.NotFound"/> indicates block or smart contract instance was not found.
