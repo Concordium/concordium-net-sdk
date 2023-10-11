@@ -630,8 +630,6 @@ public sealed class ConcordiumClient : IDisposable
                 response.ResponseHeadersAsync,
                 InstanceInfoFactory.From(instanceInfo))
             .ConfigureAwait(false);
-
-
     }
 
     public void Dispose() => this.Raw.Dispose();
