@@ -607,7 +607,7 @@ public sealed class ConcordiumClient : IDisposable
     /// given block.
     /// </summary>
     /// <param name="blockHashInput">Block hash from where smart contract information will be given.</param>
-    /// <param name="contractAddress">Address of smart contract.</param>
+    /// <param name="contractAddress">Address of smart contract instance.</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>Information about the given smart contract.</returns>
     /// <exception cref="RpcException">
