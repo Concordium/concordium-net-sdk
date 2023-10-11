@@ -612,7 +612,7 @@ public sealed class ConcordiumClient : IDisposable
     /// <returns>Information about the given smart contract.</returns>
     /// <exception cref="RpcException">
     /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
-    /// <see cref="StatusCode.NotFound"/> indicates block was not found.
+    /// <see cref="StatusCode.NotFound"/> indicates block or smart contract instance was not found.
     /// </exception>
     public async Task<QueryResponse<IInstanceInfo>> GetInstanceInfoAsync(IBlockHashInput blockHashInput, ContractAddress contractAddress, CancellationToken token = default)
     {
