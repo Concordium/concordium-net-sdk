@@ -42,7 +42,7 @@ public sealed record InstanceInfoV0(
             instanceInfo.Model.Value.ToByteArray(),
             AccountAddress.From(instanceInfo.Owner),
             CcdAmount.From(instanceInfo.Amount),
-            instanceInfo.Methods.Select(r => new ReceiveName(r.Value)).ToList(),
+            instanceInfo.Methods.Select(ReceiveName.From).ToList(),
             ContractName.From(instanceInfo.Name),
             ModuleReference.From(instanceInfo.SourceModule)
         );
@@ -68,7 +68,7 @@ public sealed record InstanceInfoV1(
         new(
             AccountAddress.From(instanceInfo.Owner),
             CcdAmount.From(instanceInfo.Amount),
-            instanceInfo.Methods.Select(r => new ReceiveName(r.Value)).ToList(),
+            instanceInfo.Methods.Select(ReceiveName.From).ToList(),
             ContractName.From(instanceInfo.Name),
             ModuleReference.From(instanceInfo.SourceModule)
         );
