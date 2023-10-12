@@ -27,7 +27,7 @@ internal sealed class GetInstanceListOptions
 public static class Program
 {
     /// <summary>
-    /// Example how to use <see cref="ConcordiumClient.GetInstanceList"/>
+    /// Example how to use <see cref="ConcordiumClient.GetInstanceListAsync"/>
     /// </summary>s
     public static async Task Main(string[] args) =>
         await Parser.Default
@@ -40,7 +40,7 @@ public static class Program
 
         var block = BlockHash.From(options.BlockHash);
 
-        var queryResponse = await client.GetInstanceList(new Given(block));
+        var queryResponse = await client.GetInstanceListAsync(new Given(block));
 
         var count = 0;
         await foreach (var contractAddress in queryResponse.Response)
