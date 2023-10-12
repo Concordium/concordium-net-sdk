@@ -17,6 +17,8 @@ public sealed record ReceiveName
 
     internal ReceiveName(string receive) => this.Receive = receive;
 
+    internal static ReceiveName From(Grpc.V2.ReceiveName receiveName) => new(receiveName.Value);
+
     /// <summary>
     /// Try parse input name against expected format.
     /// </summary>
