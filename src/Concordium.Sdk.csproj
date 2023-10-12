@@ -3,7 +3,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackageVersion>4.0.1</PackageVersion>
+    <PackageVersion>4.1.0</PackageVersion>
     <Description>
       A .NET integration library written in C# which adds support for
       constructing and sending various transactions, as well as querying
