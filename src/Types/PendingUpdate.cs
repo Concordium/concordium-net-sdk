@@ -1,12 +1,13 @@
-namespace Concordium.Sdk.Types;
 using Concordium.Sdk.Exceptions;
-using GrpcEffect = Concordium.Grpc.V2.PendingUpdate.EffectOneofCase;
+using GrpcEffect = Grpc.V2.PendingUpdate.EffectOneofCase;
 
+namespace Concordium.Sdk.Types;
 /// <summary>
 /// Minimum stake needed to become a baker. This only applies to protocol version 1-3.
 /// </summary>
 /// <param name="MinimumThresholdForBaking">Minimum threshold required for registering as a baker.</param>
-public record BakerStakeThreshold(CcdAmount MinimumThresholdForBaking) {
+public record BakerStakeThreshold(CcdAmount MinimumThresholdForBaking)
+{
     internal static BakerStakeThreshold From(Grpc.V2.BakerStakeThreshold bakerStakeThreshold) => new(CcdAmount.From(bakerStakeThreshold.BakerStakeThreshold_));
 };
 
@@ -15,12 +16,13 @@ public record BakerStakeThreshold(CcdAmount MinimumThresholdForBaking) {
 /// </summary>
 /// <param name="EffectiveTime">The effective time of the update.</param>
 /// <param name="Effect">The effect of the update.</param>
-public sealed record PendingUpdate(UInt64 EffectiveTime, Effect Effect)
+public sealed record PendingUpdate(ulong EffectiveTime, Effect Effect)
 {
     internal static PendingUpdate From(Grpc.V2.PendingUpdate pendingUpdate) =>
         new(
             pendingUpdate.EffectiveTime.Value,
-            pendingUpdate.EffectCase switch {
+            pendingUpdate.EffectCase switch
+            {
                 GrpcEffect.RootKeys => new EffectRootKeys(RootKeys.From(pendingUpdate.RootKeys)),
                 GrpcEffect.Level1Keys => new EffectLevel1Keys(Level1Keys.From(pendingUpdate.Level1Keys)),
                 GrpcEffect.Level2KeysCpv0 => new EffectLevel2KeysCpv0(AuthorizationsV0.From(pendingUpdate.Level2KeysCpv0)),

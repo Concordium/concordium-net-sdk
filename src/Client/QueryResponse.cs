@@ -52,11 +52,7 @@ public sealed record QueryResponse<T>(BlockHash BlockHash, T Response)
     {
         const string blockHashEntry = "blockhash";
 
-        var blockHash = metadata.Get(blockHashEntry);
-        if (blockHash == null)
-        {
-            throw new MissingMemberException($"gRPC metadata is missing the resolved block hash at entry: {blockHashEntry}");
-        }
+        var blockHash = metadata.Get(blockHashEntry) ?? throw new MissingMemberException($"gRPC metadata is missing the resolved block hash at entry: {blockHashEntry}");
 
         return BlockHash.From(blockHash!.Value);
     }

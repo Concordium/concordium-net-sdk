@@ -12,12 +12,12 @@ using BlockInfo = Concordium.Sdk.Types.BlockInfo;
 using BlockItemSummary = Concordium.Sdk.Types.BlockItemSummary;
 using Branch = Concordium.Sdk.Types.Branch;
 using ConsensusInfo = Concordium.Sdk.Types.ConsensusInfo;
-using FinalizedBlockInfo = Concordium.Sdk.Types.FinalizedBlockInfo;
 using FinalizationSummary = Concordium.Sdk.Types.FinalizationSummary;
+using FinalizedBlockInfo = Concordium.Sdk.Types.FinalizedBlockInfo;
 using IpInfo = Concordium.Sdk.Types.IpInfo;
 using NodeInfo = Concordium.Sdk.Types.NodeInfo;
-using TransactionHash = Concordium.Sdk.Types.TransactionHash;
 using PendingUpdate = Concordium.Sdk.Types.PendingUpdate;
+using TransactionHash = Concordium.Sdk.Types.TransactionHash;
 
 namespace Concordium.Sdk.Client;
 
@@ -644,7 +644,8 @@ public sealed class ConcordiumClient : IDisposable
     /// </exception>
     public Task<QueryResponse<IAsyncEnumerable<BlockHash>>> GetAncestors(IBlockHashInput blockHash, ulong amount, CancellationToken token = default)
     {
-        var req = new Concordium.Grpc.V2.AncestorsRequest() {
+        var req = new AncestorsRequest()
+        {
             BlockHash = blockHash.Into(),
             Amount = amount
         };
