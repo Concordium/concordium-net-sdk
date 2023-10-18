@@ -1,6 +1,13 @@
 ## Unreleased changes
 - Bugfix
   - Documentation was missing when adding library as nuget packages and hovering over methods and classes.
+- Added
+  - New GRPC-endpoints:
+    - `GetBlocks`
+    - `GetFinalizedBlocks`
+    - `GetBranches`
+    - `GetAncestors`
+    - `GetBlockPendingUpdates`
 
 ## 4.0.1
 - Bugfix
