@@ -12,12 +12,14 @@ using BlockInfo = Concordium.Sdk.Types.BlockInfo;
 using BlockItemSummary = Concordium.Sdk.Types.BlockItemSummary;
 using Branch = Concordium.Sdk.Types.Branch;
 using ConsensusInfo = Concordium.Sdk.Types.ConsensusInfo;
+using ContractAddress = Concordium.Sdk.Types.ContractAddress;
 using FinalizationSummary = Concordium.Sdk.Types.FinalizationSummary;
 using FinalizedBlockInfo = Concordium.Sdk.Types.FinalizedBlockInfo;
 using IpInfo = Concordium.Sdk.Types.IpInfo;
 using NodeInfo = Concordium.Sdk.Types.NodeInfo;
 using PendingUpdate = Concordium.Sdk.Types.PendingUpdate;
 using TransactionHash = Concordium.Sdk.Types.TransactionHash;
+using VersionedModuleSource = Concordium.Sdk.Types.VersionedModuleSource;
 
 namespace Concordium.Sdk.Client;
 
@@ -651,6 +653,92 @@ public sealed class ConcordiumClient : IDisposable
         };
         var response = this.Raw.GetAncestors(req, token);
         return QueryResponse<IAsyncEnumerable<BlockHash>>.From(response, BlockHash.From, token);
+
+    /// <summary>
+    /// Get all smart contract modules that exist at the end of a given block.
+    /// </summary>
+    /// <param name="blockHashInput">Block hash from where modules will be given.</param>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>Stream of modules in given block.</returns>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.NotFound"/> indicates block was not found.
+    /// </exception>
+    public Task<QueryResponse<IAsyncEnumerable<ModuleReference>>> GetModuleListAsync(IBlockHashInput blockHashInput, CancellationToken token = default)
+    {
+        var response = this.Raw.GetModuleList(blockHashInput.Into(), token);
+        return QueryResponse<IAsyncEnumerable<ModuleReference>>.From(response, ModuleReference.From, token);
+    }
+
+    /// <summary>
+    /// Get the addresses of all smart contract instances in a given block.
+    /// </summary>
+    /// <param name="blockHashInput">Block hash from where contracts will be given.</param>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>Stream of contracts in given block.</returns>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.NotFound"/> indicates block was not found.
+    /// </exception>
+    public Task<QueryResponse<IAsyncEnumerable<ContractAddress>>> GetInstanceListAsync(IBlockHashInput blockHashInput, CancellationToken token = default)
+    {
+        var response = this.Raw.GetInstanceList(blockHashInput.Into(), token);
+        return QueryResponse<IAsyncEnumerable<ContractAddress>>.From(response, ContractAddress.From, token);
+    }
+
+    /// <summary>
+    /// Returns the source of a smart contract module.
+    /// </summary>
+    /// <param name="blockHashInput">Block hash from where module source will be given.</param>
+    /// <param name="moduleReference">Module reference from where source is requested.</param>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>Mapped versioned module source instances.</returns>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.NotFound"/> indicates either the block or the smart contract module was not found.
+    /// </exception>
+    public async Task<QueryResponse<VersionedModuleSource>> GetModuleSourceAsync(IBlockHashInput blockHashInput, ModuleReference moduleReference, CancellationToken token = default)
+    {
+        var response = this.Raw.GetModuleSourceAsync(new ModuleSourceRequest { BlockHash = blockHashInput.Into(), ModuleRef = moduleReference.Into() }, token);
+
+        await Task.WhenAll(response.ResponseHeadersAsync, response.ResponseAsync)
+            .ConfigureAwait(false);
+        var versionedModuleSource = await response.ResponseAsync;
+
+        return await QueryResponse<VersionedModuleSource>.From(
+                response.ResponseHeadersAsync,
+                VersionedModuleSourceFactory.From(versionedModuleSource))
+            .ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Get information about a smart contract instance as it appears at the end of a
+    /// given block.
+    /// </summary>
+    /// <param name="blockHashInput">Block hash from where smart contract information will be given.</param>
+    /// <param name="contractAddress">Address of smart contract instance.</param>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>Information about the given smart contract instance.</returns>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.NotFound"/> indicates block or smart contract instance was not found.
+    /// </exception>
+    public async Task<QueryResponse<IInstanceInfo>> GetInstanceInfoAsync(IBlockHashInput blockHashInput, ContractAddress contractAddress, CancellationToken token = default)
+    {
+        var response = this.Raw.GetInstanceInfoAsync(new InstanceInfoRequest
+        {
+            Address = contractAddress.ToProto(),
+            BlockHash = blockHashInput.Into()
+        }, token);
+
+        await Task.WhenAll(response.ResponseHeadersAsync, response.ResponseAsync)
+            .ConfigureAwait(false);
+        var instanceInfo = await response.ResponseAsync;
+
+        return await QueryResponse<IInstanceInfo>.From(
+                response.ResponseHeadersAsync,
+                InstanceInfoFactory.From(instanceInfo))
+            .ConfigureAwait(false);
     }
 
     public void Dispose() => this.Raw.Dispose();
