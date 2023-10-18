@@ -653,6 +653,7 @@ public sealed class ConcordiumClient : IDisposable
         };
         var response = this.Raw.GetAncestors(req, token);
         return QueryResponse<IAsyncEnumerable<BlockHash>>.From(response, BlockHash.From, token);
+    }
 
     /// <summary>
     /// Get all smart contract modules that exist at the end of a given block.

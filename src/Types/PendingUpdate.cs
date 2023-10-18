@@ -1,5 +1,5 @@
 using Concordium.Sdk.Exceptions;
-using GrpcEffect = Grpc.V2.PendingUpdate.EffectOneofCase;
+using GrpcEffect = Concordium.Grpc.V2.PendingUpdate.EffectOneofCase;
 
 namespace Concordium.Sdk.Types;
 /// <summary>
