@@ -1,15 +1,10 @@
 ## Unreleased changes
+- Added
+  - New GRPC-endpoints: `GetBlocks`, `GetFinalizedBlocks`, `GetBranches`, `GetAncestors`, `GetBlockPendingUpdates`
 
 ## 4.1.0
 - Bugfix
   - Documentation was missing when adding library as nuget packages and hovering over methods and classes.
-- Added
-  - New GRPC-endpoints:
-    - `GetBlocks`
-    - `GetFinalizedBlocks`
-    - `GetBranches`
-    - `GetAncestors`
-    - `GetBlockPendingUpdates`
   - gRPC queries relevant for smart contracts.
     - GetModuleListAsync
     - GetInstanceListAsync

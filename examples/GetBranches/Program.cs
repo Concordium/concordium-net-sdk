@@ -8,7 +8,7 @@ using Branch = Concordium.Sdk.Types.Branch;
 
 namespace GetBranches;
 
-internal sealed class GetNodeInfoOptions
+internal sealed class GetBranchesOptions
 {
     [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.",
         Default = "http://node.testnet.concordium.com:20000/")]
@@ -23,24 +23,23 @@ public static class Program
     /// </summary>s
     public static async Task Main(string[] args) =>
         await Parser.Default
-            .ParseArguments<GetNodeInfoOptions>(args)
+            .ParseArguments<GetBranchesOptions>(args)
             .WithParsedAsync(Run);
 
-    private static async Task Run(GetNodeInfoOptions options)
+    private static async Task Run(GetBranchesOptions options)
     {
         using var client = new ConcordiumClient(new Uri(options.Endpoint), new ConcordiumClientOptions());
 
         var branch = await client.GetBranchesAsync();
 
-        // Prints branches as a tree
-        printer(0, branch);
+        printBranchesAsTree(0, branch);
     }
 
-    private static void printer(uint depth, Branch branch) {
+    private static void printBranchesAsTree(uint depth, Branch branch) {
         for (int i = 0; i < depth; i++) {
             Console.Write("--");
         }
         Console.WriteLine(branch.BlockHash);
-        branch.Children.ForEach(x => printer(depth+1, x));
+        branch.Children.ForEach(x => printBranchesAsTree(depth+1, x));
     }
 }

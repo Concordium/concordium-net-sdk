@@ -16,6 +16,8 @@ public interface IBlockHeight
 /// <param name="Height">Height from the beginning of the chain.</param>
 public sealed record AbsoluteHeight(ulong Height) : IBlockHeight
 {
+    internal static AbsoluteHeight From(AbsoluteBlockHeight blockHeight) => new(blockHeight.Value);
+
     public BlocksAtHeightRequest Into() =>
         new()
         {

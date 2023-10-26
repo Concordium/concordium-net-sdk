@@ -637,19 +637,19 @@ public sealed class ConcordiumClient : IDisposable
     /// ancestors or the requested number of ancestors has been returned.
     /// </summary>
     /// <param name="blockHash">The block to get ancestors of</param>
-    /// <param name="amount">The maximum number of ancestors returned</param>
+    /// <param name="limit">The maximum number of ancestors returned</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>A stream of ancestors.</returns>
     /// <exception cref="RpcException">
     /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
     /// <see cref="StatusCode.Unimplemented"/> indicates that this endpoint is disabled in the node.
     /// </exception>
-    public Task<QueryResponse<IAsyncEnumerable<BlockHash>>> GetAncestors(IBlockHashInput blockHash, ulong amount, CancellationToken token = default)
+    public Task<QueryResponse<IAsyncEnumerable<BlockHash>>> GetAncestors(IBlockHashInput blockHash, ulong limit, CancellationToken token = default)
     {
         var req = new AncestorsRequest()
         {
             BlockHash = blockHash.Into(),
-            Amount = amount
+            Amount = limit
         };
         var response = this.Raw.GetAncestors(req, token);
         return QueryResponse<IAsyncEnumerable<BlockHash>>.From(response, BlockHash.From, token);

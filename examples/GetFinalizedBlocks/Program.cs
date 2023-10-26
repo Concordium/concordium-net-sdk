@@ -7,7 +7,7 @@ using Concordium.Sdk.Client;
 
 namespace GetFinalizedBlocks;
 
-internal sealed class GetBlocksOptions
+internal sealed class GetFinalizedBlocksOptions
 {
     [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.",
         Default = "http://node.testnet.concordium.com:20000/")]
@@ -21,10 +21,10 @@ public static class Program
     /// </summary>
     public static async Task Main(string[] args) =>
         await Parser.Default
-            .ParseArguments<GetBlocksOptions>(args)
+            .ParseArguments<GetFinalizedBlocksOptions>(args)
             .WithParsedAsync(Run);
 
-    private static async Task Run(GetBlocksOptions options)
+    private static async Task Run(GetFinalizedBlocksOptions options)
     {
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
 

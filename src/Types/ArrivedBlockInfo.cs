@@ -5,11 +5,11 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 /// <param name="BlockHash">Hash of the block.</param>
 /// <param name="BlockHeight">Absolute height of the block, height 0 is the genesis block.</param>
-public sealed record ArrivedBlockInfo(BlockHash BlockHash, ulong BlockHeight)
+public sealed record ArrivedBlockInfo(BlockHash BlockHash, AbsoluteHeight BlockHeight)
 {
     internal static ArrivedBlockInfo From(Grpc.V2.ArrivedBlockInfo info) =>
         new(
             BlockHash.From(info.Hash),
-            info.Height.Value
+            AbsoluteHeight.From(info.Height)
         );
 }
