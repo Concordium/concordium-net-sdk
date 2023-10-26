@@ -54,7 +54,7 @@ public sealed record PendingUpdate(TransactionTime EffectiveTime, IEffect Effect
 }
 
 /// <summary>The effect of the update.</summary>
-public interface IEffect {};
+public interface IEffect { };
 
 /// <summary>Updates to the root keys.</summary>
 public sealed record EffectRootKeys(RootKeys RootKeys) : IEffect;

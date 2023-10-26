@@ -5,9 +5,9 @@ namespace Concordium.Sdk.Types;
 public sealed record TransactionTime(ulong SecondsSinceUnixEpoch)
 {
     internal static TransactionTime From(Grpc.V2.TransactionTime transactionTime) =>
-        new TransactionTime(transactionTime.Value);
+        new(transactionTime.Value);
 
     /// <summary>Convert the TransactionTime to a DateTimeOffset.</summary>
-    public DateTimeOffset toDateTimeOffset() => 
-        DateTimeOffset.FromUnixTimeSeconds((long) this.SecondsSinceUnixEpoch);
+    public DateTimeOffset ToDateTimeOffset() =>
+        DateTimeOffset.FromUnixTimeSeconds((long)this.SecondsSinceUnixEpoch);
 }
