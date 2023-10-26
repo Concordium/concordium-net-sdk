@@ -644,7 +644,7 @@ public sealed class ConcordiumClient : IDisposable
     /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
     /// <see cref="StatusCode.Unimplemented"/> indicates that this endpoint is disabled in the node.
     /// </exception>
-    public Task<QueryResponse<IAsyncEnumerable<BlockHash>>> GetAncestors(IBlockHashInput blockHash, ulong amount, CancellationToken token = default)
+    public Task<QueryResponse<IAsyncEnumerable<BlockHash>>> GetAncestors(IBlockHashInput blockHash, ulong limit, CancellationToken token = default)
     {
         var req = new AncestorsRequest()
         {

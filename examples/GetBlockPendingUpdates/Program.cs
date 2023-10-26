@@ -39,12 +39,13 @@ public static class Program
 
         IBlockHashInput bi = o.BlockHash != null ? new Given(BlockHash.From(o.BlockHash)) : new LastFinal();
 
-        var blocks = await client.GetBlockPendingUpdates(bi);
+        var updates = await client.GetBlockPendingUpdates(bi);
 
         Console.WriteLine($"Updates:");
-        await foreach (var block in blocks.Response)
+        await foreach (var update in updates.Response)
         {
-            Console.WriteLine($"Block arrived: {block}");
+            Console.WriteLine($"Pending update: {update}");
+
         }
     }
 }
