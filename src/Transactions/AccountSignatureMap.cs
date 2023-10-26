@@ -56,4 +56,13 @@ public sealed record AccountSignatureMap
         }
         return accountSignatureMap;
     }
+
+    internal static AccountSignatureMap From(Grpc.V2.AccountSignatureMap map) {
+        var dict = new Dictionary<AccountKeyIndex, byte[]>();
+        foreach (var s in map.Signatures)
+        {
+            dict.Add(new AccountKeyIndex((byte) s.Key), s.Value.Value.ToByteArray());
+        }
+        return AccountSignatureMap.Create(dict);
+    }
 }
