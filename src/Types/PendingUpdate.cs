@@ -16,11 +16,11 @@ public record BakerStakeThreshold(CcdAmount MinimumThresholdForBaking)
 /// </summary>
 /// <param name="EffectiveTime">The effective time of the update.</param>
 /// <param name="Effect">The effect of the update.</param>
-public sealed record PendingUpdate(ulong EffectiveTime, Effect Effect)
+public sealed record PendingUpdate(TransactionTime EffectiveTime, IEffect Effect)
 {
     internal static PendingUpdate From(Grpc.V2.PendingUpdate pendingUpdate) =>
         new(
-            pendingUpdate.EffectiveTime.Value,
+            TransactionTime.From(pendingUpdate.EffectiveTime),
             pendingUpdate.EffectCase switch
             {
                 GrpcEffect.RootKeys => new EffectRootKeys(RootKeys.From(pendingUpdate.RootKeys)),
@@ -28,7 +28,7 @@ public sealed record PendingUpdate(ulong EffectiveTime, Effect Effect)
                 GrpcEffect.Level2KeysCpv0 => new EffectLevel2KeysCpv0(AuthorizationsV0.From(pendingUpdate.Level2KeysCpv0)),
                 GrpcEffect.Level2KeysCpv1 => new EffectLevel2KeysCpv1(AuthorizationsV1.From(pendingUpdate.Level2KeysCpv1)),
                 GrpcEffect.Protocol => new EffectProtocol(ProtocolUpdate.From(pendingUpdate.Protocol)),
-                GrpcEffect.ElectionDifficulty => new EffectElectionDifficulty(AmountFraction.From(pendingUpdate.ElectionDifficulty.Value)),
+                GrpcEffect.ElectionDifficulty => new EffectElectionDifficulty(ElectionDifficulty.From(pendingUpdate.ElectionDifficulty)),
                 GrpcEffect.EuroPerEnergy => new EffectEuroPerEnergy(ExchangeRate.From(pendingUpdate.EuroPerEnergy)),
                 GrpcEffect.MicroCcdPerEuro => new EffectMicroCcdPerEnergy(ExchangeRate.From(pendingUpdate.MicroCcdPerEuro)),
                 GrpcEffect.FoundationAccount => new EffectFoundationAccount(AccountAddress.From(pendingUpdate.FoundationAccount)),
@@ -48,60 +48,59 @@ public sealed record PendingUpdate(ulong EffectiveTime, Effect Effect)
                 GrpcEffect.BlockEnergyLimit => new EffectBlockEnergyLimit(EnergyAmount.From(pendingUpdate.BlockEnergyLimit)),
                 GrpcEffect.FinalizationCommitteeParameters => new EffectFinalizationCommitteeParameters(FinalizationCommitteeParameters.From(pendingUpdate.FinalizationCommitteeParameters)),
                 GrpcEffect.None => throw new NotImplementedException(),
-                //GrpcEffect.TransactionFeeDistribution
                 _ => throw new MissingEnumException<GrpcEffect>(pendingUpdate.EffectCase),
             }
         );
 }
 
 /// <summary>The effect of the update.</summary>
-public abstract record Effect;
+public interface IEffect {};
 
 /// <summary>Updates to the root keys.</summary>
-public sealed record EffectRootKeys(RootKeys RootKeys) : Effect;
+public sealed record EffectRootKeys(RootKeys RootKeys) : IEffect;
 /// <summary>Updates to the level 1 keys.</summary>
-public sealed record EffectLevel1Keys(Level1Keys Level1Keys) : Effect;
+public sealed record EffectLevel1Keys(Level1Keys Level1Keys) : IEffect;
 /// <summary>Updates to the level 2 keys.</summary>
-public sealed record EffectLevel2KeysCpv0(AuthorizationsV0 Level2KeysUpdateV0) : Effect;
+public sealed record EffectLevel2KeysCpv0(AuthorizationsV0 Level2KeysUpdateV0) : IEffect;
 /// <summary>Updates to the level 2 keys.</summary>
-public sealed record EffectLevel2KeysCpv1(AuthorizationsV1 Level2KeysUpdateV1) : Effect;
+public sealed record EffectLevel2KeysCpv1(AuthorizationsV1 Level2KeysUpdateV1) : IEffect;
 /// <summary>Protocol updates.</summary>
-public sealed record EffectProtocol(ProtocolUpdate ProtocolUpdate) : Effect;
+public sealed record EffectProtocol(ProtocolUpdate ProtocolUpdate) : IEffect;
 /// <summary>Updates to the election difficulty parameter.</summary>
-public sealed record EffectElectionDifficulty(AmountFraction ElectionDifficulty) : Effect;
+public sealed record EffectElectionDifficulty(ElectionDifficulty ElectionDifficulty) : IEffect;
 /// <summary>Updates to the euro:energy exchange rate.</summary>
-public sealed record EffectEuroPerEnergy(ExchangeRate EuroPerEnergy) : Effect;
+public sealed record EffectEuroPerEnergy(ExchangeRate EuroPerEnergy) : IEffect;
 /// <summary>Updates to the CCD:EUR exchange rate.</summary>
-public sealed record EffectMicroCcdPerEnergy(ExchangeRate MicroCcdPerEnergy) : Effect;
+public sealed record EffectMicroCcdPerEnergy(ExchangeRate MicroCcdPerEnergy) : IEffect;
 /// <summary>Updates to the foundation account.</summary>
-public sealed record EffectFoundationAccount(AccountAddress FoundationAccount) : Effect;
+public sealed record EffectFoundationAccount(AccountAddress FoundationAccount) : IEffect;
 /// <summary>Updates to the mint distribution. Is only relevant prior to protocol version 4.</summary>
-public sealed record EffectMintDistributionCpv0(MintDistributionCpv0 MintDistributionCpv0) : Effect;
+public sealed record EffectMintDistributionCpv0(MintDistributionCpv0 MintDistributionCpv0) : IEffect;
 /// <summary>The mint distribution was updated. Introduced in protocol version 4.</summary>
-public sealed record EffectMintDistributionCpv1(MintDistributionCpv1 MintDistributionCpv1) : Effect;
+public sealed record EffectMintDistributionCpv1(MintDistributionCpv1 MintDistributionCpv1) : IEffect;
 /// <summary>Updates to the transaction fee distribution.</summary>
-public sealed record EffectTransactionFeeDistribution(TransactionFeeDistribution TransactionFeeDistribution) : Effect;
+public sealed record EffectTransactionFeeDistribution(TransactionFeeDistribution TransactionFeeDistribution) : IEffect;
 /// <summary>Updates to the GAS rewards.</summary>
-public sealed record EffectGasRewards(GasRewards GasRewards) : Effect;
+public sealed record EffectGasRewards(GasRewards GasRewards) : IEffect;
 /// <summary>Updates baker stake threshold. Is only relevant prior to protocol version 4.</summary>
-public sealed record EffectPoolParametersCpv0(BakerStakeThreshold BakerParameters) : Effect;
+public sealed record EffectPoolParametersCpv0(BakerStakeThreshold BakerParameters) : IEffect;
 /// <summary>Updates pool parameters. Introduced in protocol version 4.</summary>
-public sealed record EffectPoolParametersCpv1(PoolParameters PoolParameters) : Effect;
+public sealed record EffectPoolParametersCpv1(PoolParameters PoolParameters) : IEffect;
 /// <summary>Adds a new anonymity revoker.</summary>
-public sealed record EffectAddAnonymityRevoker(ArInfo AddAnonymityRevoker) : Effect;
+public sealed record EffectAddAnonymityRevoker(ArInfo AddAnonymityRevoker) : IEffect;
 /// <summary>Adds a new identity provider.</summary>
-public sealed record EffectAddIdentityProvider(IpInfo AddIdentityProvider) : Effect;
+public sealed record EffectAddIdentityProvider(IpInfo AddIdentityProvider) : IEffect;
 /// <summary>Updates to cooldown parameters for chain parameters version 1 introduced in protocol version 4.</summary>
-public sealed record EffectCooldownParameters(CooldownParameters CooldownParameters) : Effect;
+public sealed record EffectCooldownParameters(CooldownParameters CooldownParameters) : IEffect;
 /// <summary>Updates to time parameters for chain parameters version 1 introduced in protocol version 4.</summary>
-public sealed record EffectTimeParameters(TimeParameters TimeParameters) : Effect;
+public sealed record EffectTimeParameters(TimeParameters TimeParameters) : IEffect;
 /// <summary>Updates to the GAS rewards effective from protocol version 6 (chain parameters version 2).</summary>
-public sealed record EffectGasRewardsCpv2(GasRewardsCpv2 GasRewardsCpv2) : Effect;
+public sealed record EffectGasRewardsCpv2(GasRewardsCpv2 GasRewardsCpv2) : IEffect;
 /// <summary>Updates to the consensus timeouts for chain parameters version 2.</summary>
-public sealed record EffectTimeoutParameters(TimeoutParameters TimeoutParameters) : Effect;
+public sealed record EffectTimeoutParameters(TimeoutParameters TimeoutParameters) : IEffect;
 /// <summary>Updates to the the minimum time between blocks for chain parameters version 2.</summary>
-public sealed record EffectMinBlockTime(TimeSpan MinBlockTime) : Effect;
+public sealed record EffectMinBlockTime(TimeSpan MinBlockTime) : IEffect;
 /// <summary>Updates to the block energy limit for chain parameters version 2.</summary>
-public sealed record EffectBlockEnergyLimit(EnergyAmount BlockEnergyLimit) : Effect;
+public sealed record EffectBlockEnergyLimit(EnergyAmount BlockEnergyLimit) : IEffect;
 /// <summary>Updates to the finalization committee for for chain parameters version 2.</summary>
-public sealed record EffectFinalizationCommitteeParameters(FinalizationCommitteeParameters FinalizationCommitteeParameters) : Effect;
+public sealed record EffectFinalizationCommitteeParameters(FinalizationCommitteeParameters FinalizationCommitteeParameters) : IEffect;

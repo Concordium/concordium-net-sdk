@@ -16,7 +16,7 @@ internal sealed class GetBlockPendingUpdatesOptions
     [Option(
         'b',
         "block-hash",
-        HelpText = "Block hash of the block."
+        HelpText = "Block hash of the block. Defaults to LastFinal."
     )]
     public string BlockHash { get; set; }
 }
@@ -33,8 +33,6 @@ public static class Program
 
     private static async Task Run(GetBlockPendingUpdatesOptions o)
     {
-        using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
-
         using var client = new ConcordiumClient(new Uri(o.Endpoint), new ConcordiumClientOptions());
 
         IBlockHashInput bi = o.BlockHash != null ? new Given(BlockHash.From(o.BlockHash)) : new LastFinal();
