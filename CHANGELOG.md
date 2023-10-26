@@ -5,6 +5,7 @@
 ## 4.1.0
 - Bugfix
   - Documentation was missing when adding library as nuget packages and hovering over methods and classes.
+- Added
   - gRPC queries relevant for smart contracts.
     - GetModuleListAsync
     - GetInstanceListAsync
