@@ -1,4 +1,6 @@
 using Concordium.Sdk.Types;
+using Concordium.Sdk.Exceptions;
+using PayloadCase = Concordium.Grpc.V2.AccountTransactionPayload.PayloadOneofCase;
 
 namespace Concordium.Sdk.Transactions;
 
@@ -47,4 +49,20 @@ public abstract record AccountTransactionPayload
     /// </summary>
     public Grpc.V2.AccountTransactionPayload ToProto() =>
         new() { RawPayload = Google.Protobuf.ByteString.CopyFrom(this.ToBytes()) };
+
+    internal static AccountTransactionPayload From(Grpc.V2.AccountTransactionPayload payload) {
+        return payload.PayloadCase switch {
+            PayloadCase.TransferWithMemo => new TransferWithMemo(
+                CcdAmount.From(payload.TransferWithMemo.Amount),
+                AccountAddress.From(payload.TransferWithMemo.Receiver),
+                // Following line complains that 'Memo' might be null but accompanying comment states explicitly that it can't be.
+                OnChainData.From(payload.TransferWithMemo.Memo)
+            ),
+            PayloadCase.Transfer => new Transfer(
+                CcdAmount.From(payload.Transfer.Amount),
+                AccountAddress.From(payload.Transfer.Receiver)
+            ),
+            _ => throw new MissingEnumException<PayloadCase>(payload.PayloadCase),
+        };
+    }
 }

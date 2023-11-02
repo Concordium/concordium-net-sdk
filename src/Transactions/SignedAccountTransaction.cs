@@ -1,4 +1,5 @@
 using Concordium.Grpc.V2;
+using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;
 
@@ -19,16 +20,24 @@ public record SignedAccountTransaction(
     AccountTransactionHeader Header,
     AccountTransactionPayload Payload,
     AccountTransactionSignature Signature
-    )
-
+): BlockItemType
 {
-    public AccountTransaction ToProto() =>
+    /// <summary>Converts this type to the equivalent protocol buffer type.</summary>
+    public Grpc.V2.AccountTransaction ToProto() =>
         new()
         {
             Header = this.Header.ToProto(),
             Payload = this.Payload.ToProto(),
             Signature = this.Signature.ToProto(),
         };
+
+    internal static SignedAccountTransaction From(Grpc.V2.AccountTransaction accountTransaction) {
+        return new SignedAccountTransaction(
+            AccountTransactionHeader.From(accountTransaction.Header),
+            AccountTransactionPayload.From(accountTransaction.Payload),
+            AccountTransactionSignature.From(accountTransaction.Signature)
+        );
+    }
 
     /// <summary>
     /// Converts the signed account transaction to a protocol buffer

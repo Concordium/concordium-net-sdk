@@ -29,6 +29,8 @@ public sealed record ModuleV0(byte[] Source) : VersionedModuleSource(Source)
 {
     internal static ModuleV0 From(Grpc.V2.VersionedModuleSource.Types.ModuleSourceV0 moduleSourceV0) =>
         new(moduleSourceV0.Value.ToByteArray());
+
+    public byte[] ToBytes() => this.Source.Prepend((byte) 0).ToArray();
 }
 
 /// <summary>
@@ -39,4 +41,6 @@ public sealed record ModuleV1(byte[] Source) : VersionedModuleSource(Source)
 {
     internal static ModuleV1 From(Grpc.V2.VersionedModuleSource.Types.ModuleSourceV1 moduleSourceV1) =>
         new(moduleSourceV1.Value.ToByteArray());
+
+    public byte[] ToBytes() => this.Source.Prepend((byte) 1).ToArray();
 }
