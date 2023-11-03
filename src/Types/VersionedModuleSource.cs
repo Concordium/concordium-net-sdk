@@ -21,7 +21,7 @@ public abstract record VersionedModuleSource
     protected VersionedModuleSource(byte[] source)
     {
         this.Source = source;
-        this._module =  new Lazy<Module>(this.GetWasmModule);
+        this._module = new Lazy<Module>(this.GetWasmModule);
     }
 
     /// <summary>
@@ -103,7 +103,7 @@ public sealed record ModuleV0(byte[] Source) : VersionedModuleSource(Source)
     internal static ModuleV0 From(Grpc.V2.VersionedModuleSource.Types.ModuleSourceV0 moduleSourceV0) =>
         new(moduleSourceV0.Value.ToByteArray());
 
-    private protected override (byte[]? Schema, ModuleSchemaVersion SchemaVersion)? ExtractSchemaFromWebAssemblyModule(WebAssembly.Module module)
+    private protected override (byte[]? Schema, ModuleSchemaVersion SchemaVersion)? ExtractSchemaFromWebAssemblyModule(Module module)
     {
         if (GetSchemaFromWasmCustomSection(module, "concordium-schema", out var moduleV0SchemaUndefined))
         {

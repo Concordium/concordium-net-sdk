@@ -16,7 +16,7 @@ public sealed class VersionedModuleSourceTests
     [InlineData("cis2-wccd-embedded-schema-v1-versioned.wasm.v1", ModuleSchemaVersion.Undefined, true, 1)]
     public async Task WhenCreateModuleSchema_ThenParseWithCorrectVersion(string fileName, ModuleSchemaVersion version, bool trim, int moduleVersion)
     {
-        var bytes = (await File.ReadAllBytesAsync($"./Data/{fileName}"));
+        var bytes = await File.ReadAllBytesAsync($"./Data/{fileName}");
         if (trim)
         {
             bytes = bytes[8..];

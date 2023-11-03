@@ -33,7 +33,7 @@ public class InteropBindingTests
         var schema = (await File.ReadAllTextAsync("./Data/cis2_wCCD_sub")).Trim();
 
         // Act
-        var message = InteropBinding.SchemaDisplay(schema,  ModuleSchemaVersion.Undefined);
+        var message = InteropBinding.SchemaDisplay(schema, ModuleSchemaVersion.Undefined);
 
         // Assert
         await Verifier.Verify(message)
@@ -51,7 +51,7 @@ public class InteropBindingTests
         const string value = "005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc790000";
 
         // Act
-        var message = InteropBinding.GetReceiveContractParameter(schema, contractName, entrypoint, value,null);
+        var message = InteropBinding.GetReceiveContractParameter(schema, contractName, entrypoint, value, null);
 
         // Assert
         await Verifier.Verify(message)

@@ -11,7 +11,7 @@ internal sealed class InteropBindingException : Exception
         message != null ? new InteropBindingException(message) : Empty();
 
     private InteropBindingException(string message) : base(message)
-    {}
+    { }
 
     private static InteropBindingException Empty() => new(EmptyErrorMessage);
 }

@@ -16,13 +16,13 @@ public sealed class RejectReasonTests
         const string contractName = "cis2_wCCD";
         const string entrypoint = "wrap";
         const string message = "005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc790000";
-        const string expectedMessage = "{\"data\":\"\",\"to\":{\"Account\":[\"3fpkgmKcGDKGgsDhUQEBAQXbFZJQw97JmbuhzmvujYuG1sQxtV\"]}}";
+        const string expectedMessage = /*lang=json,strict*/ "{\"data\":\"\",\"to\":{\"Account\":[\"3fpkgmKcGDKGgsDhUQEBAQXbFZJQw97JmbuhzmvujYuG1sQxtV\"]}}";
         _ = ReceiveName.TryParse($"{contractName}.{entrypoint}", out var result);
         var versionedModuleSchema = new VersionedModuleSchema(schema, ModuleSchemaVersion.Undefined);
 
         var rejectedReceive = new RejectedReceive(
             -1,
-            new ContractAddress(1,0),
+            new ContractAddress(1, 0),
             result.ReceiveName!,
             new Parameter(Convert.FromHexString(message)));
 

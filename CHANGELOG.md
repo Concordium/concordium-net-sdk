@@ -1,5 +1,9 @@
 ## Unreleased changes
 - Added
+  - Deserialization from module schema
+    - Contract entrypoint messages
+    - Contract events
+    - Module schema
   - New GRPC-endpoints: `GetBlocks`, `GetFinalizedBlocks`, `GetBranches`, `GetAncestors`, `GetBlockPendingUpdates`
   - Helpers to get contract name on `ReceiveName` and `ContractName` and entrypoint on `ReceiveName`.
 

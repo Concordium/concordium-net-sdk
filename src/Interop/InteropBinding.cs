@@ -132,11 +132,11 @@ internal static class InteropBinding
     /// A C# layout which compiled to a C interpretable structure. This is used as an optional parameter.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct FFIByteOption
+    internal readonly struct FFIByteOption
     {
         internal byte t { get; private init; }
         /// <summary>
-        /// 1 is interpreted as true. <see cref="Boolean"/> are not used since it isn't a blittable type.
+        /// 1 is interpreted as true. <see cref="bool"/> are not used since it isn't a blittable type.
         /// </summary>
         /// <remarks>
         /// <see href="https://learn.microsoft.com/en-us/dotnet/framework/interop/blittable-and-non-blittable-types">Blittable and Non-Blittable Types</see>
