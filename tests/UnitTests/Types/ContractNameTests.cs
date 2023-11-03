@@ -39,4 +39,19 @@ public class ContractNameTests
             initName.Should().BeNull();
         }
     }
+
+    [Fact]
+    public void WhenGetContractNamePart_ThenReturnContractName()
+    {
+        // Arrange
+        const string prefix = "init_";
+        const string expected = "awesome";
+        _ = ContractName.TryParse($"{prefix}{expected}", out var result);
+
+        // Act
+        var actual = result.ContractName!.GetContractName();
+
+        // Assert
+        actual.Should().Be(expected);
+    }
 }
