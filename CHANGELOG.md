@@ -1,6 +1,7 @@
 ## Unreleased changes
 - Added
   - New GRPC-endpoints: `GetBlocks`, `GetFinalizedBlocks`, `GetBranches`, `GetAncestors`, `GetBlockPendingUpdates`
+  - Helpers to get contract name on `ReceiveName` and `ContractName` and entrypoint on `ReceiveName`.
 
 ## 4.1.0
 - Bugfix

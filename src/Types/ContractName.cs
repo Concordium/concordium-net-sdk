@@ -37,6 +37,12 @@ public sealed record ContractName
     }
 
     /// <summary>
+    /// Get the contract name part of <see cref="Name"/>.
+    /// </summary>
+    /// <returns>Contract name</returns>
+    public string GetContractName() => this.Name[(this.Name.IndexOf('_') + 1)..];
+
+    /// <summary>
     /// Validation error of contract name.
     /// </summary>
     public enum ValidationError
