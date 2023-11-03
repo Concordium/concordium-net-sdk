@@ -3,8 +3,6 @@ using System.Runtime.InteropServices;
 using Application.Exceptions;
 using Concordium.Sdk.Types;
 
-// ReSharper disable InconsistentNaming
-// Disabling are because names should follow the names in rust code.
 
 namespace Concordium.Sdk.Interop;
 
@@ -17,13 +15,13 @@ internal static class InteropBinding
     private const string DllName = "librust_bindings";
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "schema_display")]
-    private static extern bool schema_display(string schema, FFIByteOption schema_version, ref IntPtr result);
+    private static extern bool SchemaDisplay(string schema, FFIByteOption schema_version, ref IntPtr result);
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_receive_contract_parameter")]
-    private static extern bool get_receive_contract_parameter(string schema, FFIByteOption schema_version, string contract_name, string entrypoint, string value, ref IntPtr result);
+    private static extern bool GetReceiveContractParameter(string schema, FFIByteOption schema_version, string contract_name, string entrypoint, string value, ref IntPtr result);
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_event_contract")]
-    private static extern bool get_event_contract(string schema, FFIByteOption schema_version, string contract_name, string value, ref IntPtr result);
+    private static extern bool GetEventContract(string schema, FFIByteOption schema_version, string contract_name, string value, ref IntPtr result);
 
     /// <summary>
     /// Get module schema in a human interpretable form.
@@ -37,7 +35,7 @@ internal static class InteropBinding
         var result = IntPtr.Zero;
         try
         {
-            var schemaDisplay = schema_display(schema, ffiOption, ref result);
+            var schemaDisplay = SchemaDisplay(schema, ffiOption, ref result);
             var resultStringAnsi = Marshal.PtrToStringAnsi(result);
 
             if (schemaDisplay)
@@ -72,7 +70,7 @@ internal static class InteropBinding
         try
         {
             var schemaDisplay =
-                get_receive_contract_parameter(schema, ffiOption, contractName, entrypoint, value, ref result);
+                GetReceiveContractParameter(schema, ffiOption, contractName, entrypoint, value, ref result);
             var resultStringAnsi = Marshal.PtrToStringAnsi(result);
 
             if (schemaDisplay)
@@ -103,7 +101,7 @@ internal static class InteropBinding
         var result = IntPtr.Zero;
         try
         {
-            var schemaDisplay = get_event_contract(schema, ffiOption, contractName, value, ref result);
+            var schemaDisplay = GetEventContract(schema, ffiOption, contractName, value, ref result);
             var resultStringAnsi = Marshal.PtrToStringAnsi(result);
 
             if (schemaDisplay)
