@@ -154,5 +154,4 @@ internal static class InteropBinding
                 ? None()
                 : Some((byte)version);
     }
-    #pragma warning restore IDE1006
 }
