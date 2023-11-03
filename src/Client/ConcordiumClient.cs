@@ -5,15 +5,19 @@ using Grpc.Core;
 using Grpc.Net.Client;
 using AccountAddress = Concordium.Sdk.Types.AccountAddress;
 using AccountInfo = Concordium.Sdk.Types.AccountInfo;
+using ArrivedBlockInfo = Concordium.Sdk.Types.ArrivedBlockInfo;
 using BakerId = Concordium.Sdk.Types.BakerId;
 using BlockHash = Concordium.Sdk.Types.BlockHash;
 using BlockInfo = Concordium.Sdk.Types.BlockInfo;
 using BlockItemSummary = Concordium.Sdk.Types.BlockItemSummary;
+using Branch = Concordium.Sdk.Types.Branch;
 using ConsensusInfo = Concordium.Sdk.Types.ConsensusInfo;
 using ContractAddress = Concordium.Sdk.Types.ContractAddress;
 using FinalizationSummary = Concordium.Sdk.Types.FinalizationSummary;
+using FinalizedBlockInfo = Concordium.Sdk.Types.FinalizedBlockInfo;
 using IpInfo = Concordium.Sdk.Types.IpInfo;
 using NodeInfo = Concordium.Sdk.Types.NodeInfo;
+using PendingUpdate = Concordium.Sdk.Types.PendingUpdate;
 using TransactionHash = Concordium.Sdk.Types.TransactionHash;
 using VersionedModuleSource = Concordium.Sdk.Types.VersionedModuleSource;
 
@@ -543,6 +547,112 @@ public sealed class ConcordiumClient : IDisposable
                 response.ResponseHeadersAsync,
                 ChainParametersFactory.From(chainParameters))
             .ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Return a stream of blocks that arrive from the time the query is made onward.
+    /// This can be used to listen for incoming blocks.
+    /// </summary>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>A stream of blocks that arrive from the time the query is made onward.</returns>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.Unimplemented"/> indicates that this endpoint is disabled in the node.
+    /// </exception>
+    public IAsyncEnumerable<ArrivedBlockInfo> GetBlocks(CancellationToken token = default)
+    {
+        var response = this.Raw.GetBlocks(token);
+        return response.ResponseStream.ReadAllAsync(token).Select(ArrivedBlockInfo.From);
+    }
+
+    /// <summary>
+    /// Return a stream of blocks that are finalized from the time the query is
+    /// made onward. This can be used to listen for newly finalized blocks. Note
+    /// that there is no guarantee that blocks will not be skipped if the client is
+    /// too slow in processing the stream, however blocks will always be sent by
+    /// increasing block height.
+    /// </summary>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>A stream of finalized blocks that arrive from the time the query is made onward.</returns>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.Unimplemented"/> indicates that this endpoint is disabled in the node.
+    /// </exception>
+    public IAsyncEnumerable<FinalizedBlockInfo> GetFinalizedBlocks(CancellationToken token = default)
+    {
+        var response = this.Raw.GetFinalizedBlocks(token);
+        return response.ResponseStream.ReadAllAsync(token).Select(FinalizedBlockInfo.From);
+    }
+
+    /// <summary>
+    /// Get the current branches of blocks starting from and including the last finalized block.
+    /// </summary>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>The current branches of blocks.</returns>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.Unimplemented"/> indicates that this endpoint is disabled in the node.
+    /// </exception>
+    public async Task<Branch> GetBranchesAsync(CancellationToken token = default)
+    {
+        var response = await this.Raw.GetBranchesAsync(token).ConfigureAwait(false);
+        return Branch.From(response);
+    }
+
+    /// <summary>
+    /// Get the current branches of blocks starting from and including the last finalized block.
+    /// </summary>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>The current branches of blocks.</returns>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.Unimplemented"/> indicates that this endpoint is disabled in the node.
+    /// </exception>
+    public Branch GetBranches(CancellationToken token = default)
+    {
+        var response = this.Raw.GetBranches(token);
+        return Branch.From(response);
+    }
+
+    /// <summary>
+    /// Get the pending updates to chain parameters at the end of a given block.
+    /// The stream will end when all the pending updates for a given block have been returned.
+    /// </summary>
+    /// <param name="blockHash">The block to get ancestors of</param>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>The pending updates.</returns>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.Unimplemented"/> indicates that this endpoint is disabled in the node.
+    /// </exception>
+    public Task<QueryResponse<IAsyncEnumerable<PendingUpdate>>> GetBlockPendingUpdates(IBlockHashInput blockHash, CancellationToken token = default)
+    {
+        var responses = this.Raw.GetBlockPendingUpdates(blockHash.Into(), token);
+        return QueryResponse<IAsyncEnumerable<PendingUpdate>>.From(responses, PendingUpdate.From, token);
+    }
+
+    /// <summary>
+    /// Get a stream of ancestors for the provided block.
+    /// Starting with the provided block itself, moving backwards until no more
+    /// ancestors or the requested number of ancestors has been returned.
+    /// </summary>
+    /// <param name="blockHash">The block to get ancestors of</param>
+    /// <param name="limit">The maximum number of ancestors returned</param>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>A stream of ancestors.</returns>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.Unimplemented"/> indicates that this endpoint is disabled in the node.
+    /// </exception>
+    public Task<QueryResponse<IAsyncEnumerable<BlockHash>>> GetAncestors(IBlockHashInput blockHash, ulong limit, CancellationToken token = default)
+    {
+        var req = new AncestorsRequest()
+        {
+            BlockHash = blockHash.Into(),
+            Amount = limit
+        };
+        var response = this.Raw.GetAncestors(req, token);
+        return QueryResponse<IAsyncEnumerable<BlockHash>>.From(response, BlockHash.From, token);
     }
 
     /// <summary>
