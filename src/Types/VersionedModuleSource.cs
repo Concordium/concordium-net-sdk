@@ -68,7 +68,7 @@ public abstract record VersionedModuleSource
     {
         schema = null;
         var customSection = module.CustomSections
-            .SingleOrDefault(section => section.Name.Equals(entryKey, StringComparison.InvariantCulture));
+            .SingleOrDefault(section => section.Name.Equals(entryKey, StringComparison.Ordinal));
 
         if (customSection == null)
         {
