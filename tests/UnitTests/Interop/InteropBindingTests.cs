@@ -82,20 +82,20 @@ public class InteropBindingTests
     public void GivenVersion_WhenMapModuleSchemaVersionToFFIOption_ThenOptionContainsVersion(ModuleSchemaVersion version, byte mapped)
     {
         // Act
-        var ffiOption = InteropBinding.FFIByteOption.Create(version);
+        var ffiOption = InteropBinding.FfiByteOption.Create(version);
 
         // Assert
-        ffiOption.is_some.Should().Be(1);
-        ffiOption.t.Should().Be(mapped);
+        ffiOption.IsSome.Should().Be(1);
+        ffiOption.T.Should().Be(mapped);
     }
 
     [Fact]
     public void GivenUndefinedVersion_WhenMapModuleSchemaVersionToFFIOption_ThenOptionEmpty()
     {
         // Act
-        var ffiOption = InteropBinding.FFIByteOption.Create(ModuleSchemaVersion.Undefined);
+        var ffiOption = InteropBinding.FfiByteOption.Create(ModuleSchemaVersion.Undefined);
 
         // Assert
-        ffiOption.is_some.Should().Be(0);
+        ffiOption.IsSome.Should().Be(0);
     }
 }
