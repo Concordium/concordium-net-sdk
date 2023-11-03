@@ -28,8 +28,11 @@ public abstract record VersionedModuleSource
     /// Get possible module schema embedded in module source code.
     /// </summary>
     /// <returns>Possible module schema and module schema version</returns>
-    public (string Schema, ModuleSchemaVersion SchemaVersion)? GetModuleSchema() =>
-        this.ExtractSchemaFromWebAssemblyModule(this._module.Value);
+    public VersionedModuleSchema? GetModuleSchema()
+    {
+        var result = this.ExtractSchemaFromWebAssemblyModule(this._module.Value);
+        return result == null ? null : new VersionedModuleSchema(result.Value.Schema!, result.Value.SchemaVersion);
+    }
 
     private Module GetWasmModule()
     {
@@ -49,7 +52,7 @@ public abstract record VersionedModuleSource
     /// - V1 modules additionally support section 'concordium-schema-v2' which always contain a v1 schema (not a typo).
     /// The section 'concordium-schema' is the most common and is what the current tooling produces.
     /// </summary>
-    private protected abstract (string Schema, ModuleSchemaVersion SchemaVersion)?
+    private protected abstract (byte[]? Schema, ModuleSchemaVersion SchemaVersion)?
         ExtractSchemaFromWebAssemblyModule(Module module);
 
     /// <summary>
@@ -61,7 +64,7 @@ public abstract record VersionedModuleSource
     /// <param name="entryKey">Name which is search for in custom sections.</param>
     /// <param name="schema">Possible schema if exist in custom sections.</param>
     /// <returns>True if schema was embedded in the custom section.</returns>
-    protected static bool GetSchemaFromWasmCustomSection(WebAssembly.Module module, string entryKey, out string? schema)
+    protected static bool GetSchemaFromWasmCustomSection(Module module, string entryKey, out byte[]? schema)
     {
         schema = null;
         var customSection = module.CustomSections
@@ -72,7 +75,7 @@ public abstract record VersionedModuleSource
             return false;
         }
 
-        schema = Convert.ToHexString(customSection.Content.ToArray());
+        schema = customSection.Content.ToArray();
         return true;
     }
 }
@@ -100,7 +103,7 @@ public sealed record ModuleV0(byte[] Source) : VersionedModuleSource(Source)
     internal static ModuleV0 From(Grpc.V2.VersionedModuleSource.Types.ModuleSourceV0 moduleSourceV0) =>
         new(moduleSourceV0.Value.ToByteArray());
 
-    private protected override (string Schema, ModuleSchemaVersion SchemaVersion)? ExtractSchemaFromWebAssemblyModule(WebAssembly.Module module)
+    private protected override (byte[]? Schema, ModuleSchemaVersion SchemaVersion)? ExtractSchemaFromWebAssemblyModule(WebAssembly.Module module)
     {
         if (GetSchemaFromWasmCustomSection(module, "concordium-schema", out var moduleV0SchemaUndefined))
         {
@@ -123,7 +126,7 @@ public sealed record ModuleV1(byte[] Source) : VersionedModuleSource(Source)
     internal static ModuleV1 From(Grpc.V2.VersionedModuleSource.Types.ModuleSourceV1 moduleSourceV1) =>
         new(moduleSourceV1.Value.ToByteArray());
 
-    private protected override (string Schema, ModuleSchemaVersion SchemaVersion)? ExtractSchemaFromWebAssemblyModule(Module module)
+    private protected override (byte[]? Schema, ModuleSchemaVersion SchemaVersion)? ExtractSchemaFromWebAssemblyModule(Module module)
     {
         if (GetSchemaFromWasmCustomSection(module, "concordium-schema", out var moduleV1SchemaUndefined))
         {

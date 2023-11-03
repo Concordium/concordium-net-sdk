@@ -1,3 +1,4 @@
+using Application.Exceptions;
 using Concordium.Sdk.Exceptions;
 
 namespace Concordium.Sdk.Types;
@@ -38,5 +39,23 @@ public sealed record ContractInitializedEvent(
             .ToList();
         return new ContractInitializedEvent(contractVersion, moduleReference, contractAddress, amount,
             initName, events);
+    }
+
+    /// <summary>
+    /// Deserialize events from <see cref="schema"/>.
+    /// </summary>
+    /// <param name="schema">Module schema in hexadecimal.</param>
+    /// <returns>List of deserialized events. Possible null if this was returned from deserialization.</returns>
+    /// <exception cref="InteropBindingException">Thrown if an event wasn't able to be deserialized from schema.</exception>
+    public IList<string?> GetDeserializedEvents(VersionedModuleSchema schema)
+    {
+        var deserialized = new List<string?>(this.Events.Count);
+        foreach (var contractEvent in this.Events)
+        {
+            var deserializeEvent = contractEvent.GetDeserializeEvent(schema, this.InitName.GetContractName());
+            deserialized.Add(deserializeEvent);
+        }
+
+        return deserialized;
     }
 }

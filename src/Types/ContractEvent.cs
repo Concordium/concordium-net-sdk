@@ -1,3 +1,6 @@
+using Application.Exceptions;
+using Concordium.Sdk.Interop;
+
 namespace Concordium.Sdk.Types;
 
 /// <summary>
@@ -9,4 +12,31 @@ public sealed record ContractEvent(byte[] Bytes)
     /// Return hex representation.
     /// </summary>
     public string ToHexString() => Convert.ToHexString(this.Bytes).ToLowerInvariant();
+
+    /// <summary>
+    /// Deserialize event from <see cref="schema"/>.
+    /// </summary>
+    /// <param name="schema">Module schema in hexadecimal.</param>
+    /// <param name="contractName">Contract name.</param>
+    /// <returns><see cref="Bytes"/> deserialized.</returns>
+    /// <exception cref="InteropBindingException">Thrown when event wasn't able to be deserialized from schema.</exception>
+    public string? GetDeserializeEvent(
+        VersionedModuleSchema schema,
+        string contractName
+    ) => GetDeserializeEvent(schema, contractName, Convert.ToHexString(this.Bytes));
+
+    /// <summary>
+    /// Deserialize event from <see cref="schema"/>.
+    /// </summary>
+    /// <param name="schema">Module schema in hexadecimal.</param>
+    /// <param name="contractName">Contract name.</param>
+    /// <param name="eventInHex">Event in hexadecimal.</param>
+    /// <returns><see cref="eventInHex"/> deserialized.</returns>
+    /// <exception cref="InteropBindingException">Thrown when event wasn't able to be deserialized from schema.</exception>
+    public static string? GetDeserializeEvent(
+        VersionedModuleSchema schema,
+        string contractName,
+        string eventInHex
+        ) =>
+        InteropBinding.GetEventContract(schema.Schema, contractName, eventInHex, schema.Version);
 }

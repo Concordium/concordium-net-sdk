@@ -27,7 +27,7 @@ public sealed class VersionedModuleSourceTests
         var moduleSchema = module.GetModuleSchema();
 
         // Assert
-        moduleSchema!.Value.SchemaVersion.Should().Be(version);
+        moduleSchema!.Version.Should().Be(version);
     }
 
 
@@ -47,7 +47,7 @@ public sealed class VersionedModuleSourceTests
         if (schema is not null)
         {
             moduleSchema.Should().NotBeNull();
-            moduleSchema!.Value.Schema.Should().Be(schema);
+            moduleSchema!.Schema.Should().Be(schema.ToLowerInvariant());
         }
         else
         {

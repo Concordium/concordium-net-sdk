@@ -1,4 +1,6 @@
+using Application.Exceptions;
 using Concordium.Sdk.Exceptions;
+using Concordium.Sdk.Interop;
 
 namespace Concordium.Sdk.Types;
 
@@ -182,11 +184,22 @@ public sealed record OutOfEnergy : IRejectReason;
 /// Rejected due to contract logic in init function of a contract.
 /// </summary>
 public sealed record RejectedInit(int RejectReason) : IRejectReason;
+
 /// <summary>
 /// Rejected due to contract logic in receive function of a contract.
 /// </summary>
 public sealed record RejectedReceive(int RejectReason, ContractAddress ContractAddress, ReceiveName ReceiveName,
-    Parameter Parameter) : IRejectReason;
+    Parameter Parameter) : IRejectReason
+{
+    /// <summary>
+    /// Deserialize message from <see cref="schema"/>.
+    /// </summary>
+    /// <param name="schema">Versioned module schema.</param>
+    /// <returns><see cref="Parameter"/> deserialized.</returns>
+    /// <exception cref="InteropBindingException">Thrown when message wasn't able to be deserialized form schema.</exception>
+    public string? GetDeserializeMessage(VersionedModuleSchema schema) =>
+        Updated.GetDeserializeMessage(schema, this.ReceiveName, this.Parameter.ToHexString());
+}
 /// <summary>
 /// Proof that the baker owns relevant private keys is not valid.
 /// </summary>
