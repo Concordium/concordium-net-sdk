@@ -40,7 +40,7 @@ public sealed record ContractName
     /// Get the contract name part of <see cref="Name"/>.
     /// </summary>
     /// <returns>Contract name</returns>
-    public string GetContractName() => this.Name[(this.Name.IndexOf('_')+1)..];
+    public string GetContractName() => this.Name[(this.Name.IndexOf('_') + 1)..];
 
     /// <summary>
     /// Validation error of contract name.
