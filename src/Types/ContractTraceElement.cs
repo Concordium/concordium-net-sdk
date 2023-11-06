@@ -92,7 +92,7 @@ public sealed record Updated(
     /// <summary>
     /// Deserialize message from <see cref="schema"/>.
     /// </summary>
-    /// <param name="schema">Module schema in hexadecimal.</param>
+    /// <param name="schema">Module schema.</param>
     /// <param name="receiveName">Receive name.</param>
     /// <param name="message">Message in hexadecimal.</param>
     /// <returns><see cref="message"/> deserialized.</returns>
