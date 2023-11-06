@@ -15,13 +15,13 @@ internal static class InteropBinding
     private const string DllName = "librust_bindings";
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "schema_display")]
-    private static extern bool SchemaDisplay(string schema, FfiByteOption schema_version, ref IntPtr result);
+    private static extern bool SchemaDisplay([MarshalAs(UnmanagedType.LPUTF8Str)] string schema, FfiByteOption schema_version, ref IntPtr result);
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_receive_contract_parameter")]
-    private static extern bool GetReceiveContractParameter(string schema, FfiByteOption schema_version, string contract_name, string entrypoint, string value, ref IntPtr result);
+    private static extern bool GetReceiveContractParameter([MarshalAs(UnmanagedType.LPUTF8Str)] string schema, FfiByteOption schema_version, [MarshalAs(UnmanagedType.LPUTF8Str)] string contract_name, [MarshalAs(UnmanagedType.LPUTF8Str)] string entrypoint, [MarshalAs(UnmanagedType.LPUTF8Str)] string value, ref IntPtr result);
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_event_contract")]
-    private static extern bool GetEventContract(string schema, FfiByteOption schema_version, string contract_name, string value, ref IntPtr result);
+    private static extern bool GetEventContract([MarshalAs(UnmanagedType.LPUTF8Str)] string schema, FfiByteOption schema_version, [MarshalAs(UnmanagedType.LPUTF8Str)] string contract_name, [MarshalAs(UnmanagedType.LPUTF8Str)] string value, ref IntPtr result);
 
     /// <summary>
     /// Get module schema in a human interpretable form.
@@ -36,7 +36,7 @@ internal static class InteropBinding
         try
         {
             var schemaDisplay = SchemaDisplay(schema, ffiOption, ref result);
-            var resultStringAnsi = Marshal.PtrToStringAnsi(result);
+            var resultStringAnsi = Marshal.PtrToStringUTF8(result);
 
             if (schemaDisplay)
             {
@@ -71,7 +71,7 @@ internal static class InteropBinding
         {
             var schemaDisplay =
                 GetReceiveContractParameter(schema, ffiOption, contractName, entrypoint, value, ref result);
-            var resultStringAnsi = Marshal.PtrToStringAnsi(result);
+            var resultStringAnsi = Marshal.PtrToStringUTF8(result);
 
             if (schemaDisplay)
             {
@@ -102,7 +102,7 @@ internal static class InteropBinding
         try
         {
             var schemaDisplay = GetEventContract(schema, ffiOption, contractName, value, ref result);
-            var resultStringAnsi = Marshal.PtrToStringAnsi(result);
+            var resultStringAnsi = Marshal.PtrToStringUTF8(result);
 
             if (schemaDisplay)
             {
