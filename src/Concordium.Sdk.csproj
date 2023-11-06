@@ -94,18 +94,6 @@
   </Target>
 
   <ItemGroup>
-    <Content Include="..\rust-bindings\Cargo.toml">
-      <Link>rust-bindings\Cargo.toml</Link>
-    </Content>
-    <Content Include="..\rust-bindings\src\lib.rs">
-      <Link>rust-bindings\src\lib.rs</Link>
-    </Content>
-    <Content Include="..\rust-bindings\test-data\cis2_wCCD_sub">
-      <Link>rust-bindings\test-data\cis2_wCCD_sub</Link>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <InternalsVisibleTo Include="Concordium.Sdk.Tests.UnitTests" />
   </ItemGroup>
 </Project>
