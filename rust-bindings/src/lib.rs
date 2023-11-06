@@ -33,7 +33,7 @@ impl FFIByteOption {
 /// # Arguments
 ///
 /// * 'schema' - Module schema in hexadecimal
-/// * 'schem_version' - Optinal schema version
+/// * 'schem_version' - Optional schema version
 /// * 'result' - Parsed schema if the call succeeded or the error message in case of failure.
 ///
 /// # Returns
