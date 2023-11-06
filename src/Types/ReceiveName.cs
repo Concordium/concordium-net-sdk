@@ -44,7 +44,7 @@ public sealed record ReceiveName
     /// Get entrypoint part of <see cref="Receive"/> which is the entrypoint called on the contract.
     /// </summary>
     /// <returns>Entrypoint</returns>
-    public string GetEntrypoint() => this.Receive[(this.Receive.IndexOf('.') + 1)..];
+    public EntryPoint GetEntrypoint() => new(this.Receive[(this.Receive.IndexOf('.') + 1)..]);
 
     /// <summary>
     /// Validation error of receive name.
