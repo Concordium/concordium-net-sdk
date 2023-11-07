@@ -52,6 +52,6 @@ public class ContractNameTests
         var actual = result.ContractName!.GetContractName();
 
         // Assert
-        actual.Should().Be(expected);
+        actual.ContractName.Should().Be(expected);
     }
 }

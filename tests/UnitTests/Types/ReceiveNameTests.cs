@@ -50,7 +50,7 @@ public class ReceiveNameTests
         var actual = result.ReceiveName!.GetContractName();
 
         // Assert
-        actual.Should().Be(contractName);
+        actual.ContractName.Should().Be(contractName);
     }
 
     [Fact]
