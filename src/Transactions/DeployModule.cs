@@ -1,4 +1,4 @@
-
+using Concordium.Sdk.Helpers;
 using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;
@@ -11,24 +11,41 @@ public sealed record DeployModule(VersionedModuleSource Module) : AccountTransac
     private const byte TransactionType = (byte)Types.TransactionType.DeployModule;
 
     /// <summary>
-    /// Copies the "transfer with memo" account transaction in the binary format expected by the node to a byte array.
+    /// Copies the "deploy module" account transaction in the binary format expected by the node to a byte array.
     /// </summary>
-    /// <param name="Module">The smart contract module to be deployed.</param>
+    /// <param name="module">The smart contract module to be deployed.</param>
     private static byte[] Serialize(VersionedModuleSource module)
     {
         using var memoryStream = new MemoryStream((int)(
             sizeof(TransactionType) +
-            AccountAddress.BytesLength +
-            module.Source.Length +
-            CcdAmount.BytesLength));
+            module.BytesLength
+        ));
         memoryStream.WriteByte(TransactionType);
-        memoryStream.Write(receiver.ToBytes());
-        memoryStream.Write(memo.ToBytes());
-        memoryStream.Write(amount.ToBytes());
+        memoryStream.Write(module.ToBytes());
         return memoryStream.ToArray();
+    }
+
+
+    /// <summary>
+    /// Create a "deploy module" payload from a serialized as bytes.
+    /// </summary>
+    /// <param name="bytes">The "deploy module" payload as bytes.</param>
+    public static bool TryDeserial(byte[] bytes, out (DeployModule? ContractName, DeserialErr? Error) output) {
+        (VersionedModuleSource?, DeserialErr?) module = (null, null);
+
+        var deserialSuccess = VersionedModuleSourceFactory.TryDeserialize(bytes.Skip(1).ToArray(), out module);
+
+        if (!deserialSuccess) {
+            output = (null, module.Item2);
+            return false;
+        };
+
+        output = (new DeployModule(module.Item1), null);
+        return false;
     }
 
     public override ulong GetTransactionSpecificCost() => 300;
 
-    public override byte[] ToBytes() => Serialize(this.Amount, this.Receiver, this.Memo);
+    public override byte[] ToBytes() => Serialize(this.Module);
 }
+

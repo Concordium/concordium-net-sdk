@@ -69,7 +69,6 @@ public sealed record AccountSignatureMap
 
 
 /// <summary>Index of a key in an authorizations update payload.</summary>
-/// <param name="Value">The key index represented by a <see cref="byte"/>.</param>
 public sealed record UpdateKeysIndex(byte Value);
 
 /// <summary>A map from <see cref="UpdateKeysIndex"/> to signatures.</summary>
@@ -79,11 +78,11 @@ public sealed record UpdateInstructionSignatureMap
     public ImmutableDictionary<UpdateKeysIndex, byte[]> Signatures { get; init; }
 
     /// <summary>Initializes a new instance of the <see cref="UpdateInstructionSignatureMap"/> class.</summary>
-    /// <param name="signatures">A map from account key indices to signatures.</param>
+    /// <param name="signatures">A map from update key indices to signatures.</param>
     private UpdateInstructionSignatureMap(Dictionary<UpdateKeysIndex, byte[]> signatures) => this.Signatures = signatures.ToImmutableDictionary();
 
     /// <summary>Creates a new instance of the <see cref="UpdateInstructionSignatureMap"/> class.</summary>
-    /// <param name="signatures">A map from account key indices to signatures.</param>
+    /// <param name="signatures">A map from update key indices to signatures.</param>
     /// <exception cref="ArgumentException">A signature is not 64 bytes.</exception>
     public static UpdateInstructionSignatureMap Create(Dictionary<UpdateKeysIndex, byte[]> signatures)
     {
@@ -95,7 +94,7 @@ public sealed record UpdateInstructionSignatureMap
         return new UpdateInstructionSignatureMap(signatures);
     }
 
-    /// <summary>Converts the account signature map to its corresponding protocol buffer message instance.</summary>
+    /// <summary>Converts the update signature map to its corresponding protocol buffer message instance.</summary>
     public Grpc.V2.SignatureMap ToProto()
     {
         var signatureMap = new Grpc.V2.SignatureMap();

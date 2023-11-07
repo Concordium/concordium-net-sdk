@@ -145,4 +145,9 @@ public sealed record OnChainData : IEquatable<OnChainData>
 
         return From(memo.Value.ToByteArray());
     }
+
+    internal static OnChainData From(Grpc.V2.RegisteredData registeredData)
+    {
+        return From(registeredData.Value.ToByteArray());
+    }
 }

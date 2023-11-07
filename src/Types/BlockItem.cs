@@ -14,13 +14,13 @@ namespace Concordium.Sdk.Types;
 /// <param name="Header">The header of the UpdateInstruction.</param>
 /// <param name="Payload">The payload of the UpdateInstruction. Can currently only be a `RawPayload`</param>
 public record UpdateInstruction(
-    SignatureMap SignatureMap, 
+    UpdateInstructionSignatureMap SignatureMap,
     UpdateInstructionHeader Header, 
     IUpdateInstructionPayload Payload
 ): BlockItemType {
     internal static UpdateInstruction From(Grpc.V2.UpdateInstruction updateInstruction) =>
         new UpdateInstruction(
-            SignatureMap.From(updateInstruction.Signatures),
+            UpdateInstructionSignatureMap.From(updateInstruction.Signatures),
             UpdateInstructionHeader.From(updateInstruction.Header),
             updateInstruction.Payload.PayloadCase switch {
                 UpdateInstructionPayloadCase.RawPayload => new UpdateInstructionPayloadRaw(updateInstruction.Payload.RawPayload.ToByteArray()),
