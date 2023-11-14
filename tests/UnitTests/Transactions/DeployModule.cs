@@ -1,6 +1,4 @@
-using System;
 using Concordium.Sdk.Transactions;
-using Concordium.Sdk.Helpers;
 using Concordium.Sdk.Types;
 using FluentAssertions;
 using Xunit;

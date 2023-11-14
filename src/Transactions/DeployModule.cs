@@ -25,25 +25,32 @@ public sealed record DeployModule(VersionedModuleSource Module) : AccountTransac
         return memoryStream.ToArray();
     }
 
-
     /// <summary>
     /// Create a "deploy module" payload from a serialized as bytes.
     /// </summary>
     /// <param name="bytes">The "deploy module" payload as bytes.</param>
     /// <param name="output">Where to write the result of the operation.</param>
-    public static bool TryDeserial(byte[] bytes, out (DeployModule? ContractName, DeserialErr? Error) output) {
-        var deserialSuccess = VersionedModuleSourceFactory.TryDeserialize(bytes.Skip(1).ToArray(), out var module);
+    public static bool TryDeserial(byte[] bytes, out (DeployModule? Module, String? Error) output) {
+        if (bytes.Length <= 9) {
+			var msg = $"Invalid input length in `DeployModule.TryDeserial`. expected at least 9, found {bytes.Length}";
+            output = (null, msg);
+            return false;
+        }
+
+        var deserialSuccess = VersionedModuleSourceFactory.TryDeserial(bytes.Skip(1).ToArray(), out var module);
 
         if (!deserialSuccess) {
             output = (null, module.Item2);
             return false;
         };
         if (bytes[0] != TransactionType) {
-            output = (null, DeserialErr.InvalidTransactionType);
+			var msg = $"Invalid transaction type in `DeployModule.TryDeserial`. expected {TransactionType}, found {bytes[0]}";
+            output = (null, msg);
+            return false;
         }
 
         output = (new DeployModule(module.Item1), null);
-        return false;
+        return true;
     }
 
     public override ulong GetTransactionSpecificCost() => 300;

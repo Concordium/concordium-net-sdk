@@ -132,6 +132,30 @@ public sealed record OnChainData : IEquatable<OnChainData>
     /// </summary>
     public override string ToString() => Convert.ToHexString(this._value).ToLowerInvariant();
 
+    /// <summary>
+    /// Create an account address from a serialized as bytes.
+    /// </summary>
+    /// <param name="bytes">The account address as bytes.</param>
+    /// <param name="output">Where to write the result of the operation.</param>
+    public static bool TryDeserial(byte[] bytes, out (OnChainData? accountAddress , String? Error) output) {
+        if (bytes.Length == 0) {
+            var msg = $"Invalid length of input in `OnChainData.TryDeserial`. Length must be more than 0";
+            output = (null, msg);
+            return false;
+        };
+
+        var size = (int) bytes.First();
+
+        if (bytes.Length != size+1) {
+            var msg = $"Invalid length of input in `OnChainData.TryDeserial`. Expected array of size {size+1}, found {bytes.Length}";
+            output = (null, msg);
+            return false;
+        };
+
+        output = (new OnChainData(bytes.Skip(1).ToArray()), null);
+        return true;
+    }
+
     public bool Equals(OnChainData? other) => other is not null && this._value.SequenceEqual(other._value);
 
     public override int GetHashCode() => Helpers.HashCode.GetHashCodeByteArray(this._value);

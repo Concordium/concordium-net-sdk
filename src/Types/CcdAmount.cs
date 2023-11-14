@@ -111,6 +111,30 @@ public readonly record struct CcdAmount
     }
 
     /// <summary>
+    /// Create a CCD amount from a serialized as bytes.
+    /// </summary>
+    /// <param name="bytes">The CCD amount as bytes.</param>
+    /// <param name="output">Where to write the result of the operation.</param>
+    public static bool TryDeserial(byte[] bytes, out (CcdAmount? accountAddress , String? Error) output) {
+        if (bytes.Length != BytesLength) {
+            var msg = $"Invalid length of input in `CcdAmount.TryDeserial`. Expected {BytesLength}, found {bytes.Length}";
+            output = (null, msg);
+            return false;
+        };
+
+        // This call also verifies the length
+        var U64Deserial = Helpers.Deserial.TryDeserialU64(bytes, 0, out var amount);
+
+        if (!U64Deserial) {
+            output = (null, amount.Item2);
+            return false;
+        };
+
+        output = (new CcdAmount(amount.Item1.Value), null);
+        return true;
+    }
+
+    /// <summary>
     /// Copies the CCD amuunt represented in big-endian format to  byte array.
     /// </summary>
     public byte[] ToBytes() => Serialization.ToBytes(this.Value);

@@ -73,6 +73,16 @@ public sealed class TransferTests
     }
 
     [Fact]
+    public void ToBytes_InverseOfFromBytes()
+    {
+        var transferBytes = CreateTransfer().ToBytes();
+
+        var deserialSuccess = Transfer.TryDeserial(transferBytes, out var transfer);
+
+        CreateTransfer().Should().Be(transfer.Item1);
+    }
+
+    [Fact]
     public void Prepare_ThenSign_ProducesCorrectSignatures()
     {
         // Create the transfer.

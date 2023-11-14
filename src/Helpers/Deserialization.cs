@@ -11,7 +11,10 @@ public enum DeserialErr
 	InvalidModuleVersion,
 	InvalidTransactionType,
 	InternalError,
+	InvalidLength,
 }
+
+
 
 /// <summary>
 /// Helpers for deserializing data.
@@ -21,18 +24,38 @@ public static class Deserial
     /// <summary>
     /// Creates a uint from a byte array.
     /// </summary>
-    public static bool TryDeserialU32(byte[] input, int offset, out (uint? Uint, DeserialErr? Error) output)
+    public static bool TryDeserialU32(byte[] input, int offset, out (uint? Uint, String? Error) output)
     {
-		var offset_input = input.Skip(offset).ToArray();
-
-        if (offset_input.Length < 4) {
-			output = (null, DeserialErr.TooShort);
+        if (input.Length < 4) {
+			var msg = $"Invalid length in TryDeserialU32. Must be longer than 4, but was {input.Length}";
+			output = (null, msg);
 			return false;
 		}
+
+		var offset_input = input.Skip(offset).ToArray();
 
 		var bytes = offset_input.Take(4).ToArray();
 
         output = (BinaryPrimitives.ReadUInt32BigEndian(bytes), null);
+		return true;
+    }
+
+    /// <summary>
+    /// Creates a uint from a byte array.
+    /// </summary>
+    public static bool TryDeserialU64(byte[] input, int offset, out (ulong? Ulong, String? Error) output)
+    {
+        if (input.Length < 8) {
+			var msg = $"Invalid length in TryDeserialU32. Must be longer than 4, but was {input.Length}";
+			output = (null, msg);
+			return false;
+		}
+
+		var offset_input = input.Skip(offset).ToArray();
+
+		var bytes = offset_input.Take(8).ToArray();
+
+        output = (BinaryPrimitives.ReadUInt64BigEndian(bytes), null);
 		return true;
     }
 

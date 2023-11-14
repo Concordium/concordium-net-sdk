@@ -20,11 +20,7 @@ public abstract record VersionedModuleSource(byte[] Source) : IEquatable<Version
         return memoryStream.ToArray();
     }
 
-    //public override bool Equals(object obj)
-    //{
-    //    return Equals(obj as VersionedModuleSource);
-    //}
-
+    /// <summary>Check for equality.</summary>
     public virtual bool Equals(VersionedModuleSource? other)
     {
         return other != null &&
@@ -32,10 +28,7 @@ public abstract record VersionedModuleSource(byte[] Source) : IEquatable<Version
                Source.SequenceEqual(other.Source);
     }
 
-    /// <summary>
-    /// Version 0 module source.
-    /// </summary>
-    /// <param name="Source">Source code of module</param>
+    /// <summary>Gets hash code.</summary>
     public override int GetHashCode()
     {
         var sourceHash = Helpers.HashCode.GetHashCodeByteArray(this.Source);
@@ -56,7 +49,7 @@ internal static class VersionedModuleSourceFactory
                 .ModuleCase)
         };
 
-    internal static bool TryDeserialize(byte[] bytes, out (VersionedModuleSource? ContractName, DeserialErr? Error) output) {
+    internal static bool TryDeserial(byte[] bytes, out (VersionedModuleSource? VersionedModuleSource, String? Error) output) {
         var versionSuccess = Deserial.TryDeserialU32(bytes, 0, out var version);
 
         if (!versionSuccess) {
@@ -64,7 +57,7 @@ internal static class VersionedModuleSourceFactory
             return false;
         }
         if (bytes.Length < 8) {
-            output = (null, DeserialErr.TooShort);
+            output = (null, "The given byte array in `VersionModuleSourceFactory.TryDeserial`, is too short");
             return false;
         }
 
@@ -77,7 +70,7 @@ internal static class VersionedModuleSourceFactory
             output = (ModuleV1.From(rest), null);
             return true;
         } else {
-            output = (null, DeserialErr.InvalidModuleVersion);
+            output = (null, $"Invalid module version byte, expected 0 or 1 but found {version.Item1}");
             return false;
         };
     }
@@ -175,14 +168,4 @@ public sealed record ModuleV1(byte[] Source) : VersionedModuleSource(Source)
             throw new ArgumentException("The provided string is not hex encoded: ", e);
         }
     }
-}
-
-/// <summary>
-/// Thrown when a matched enum value could not be handled in a switch statement.
-/// </summary>
-public sealed class InvalidModuleVersion : Exception
-{
-    internal InvalidModuleVersion(uint versionByte) :
-        base($"Unknown version byte: {versionByte}")
-    { }
 }

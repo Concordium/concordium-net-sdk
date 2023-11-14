@@ -216,6 +216,22 @@ public sealed record AccountAddress : IEquatable<AccountAddress>, IAddress, IAcc
     public Grpc.V2.AccountIdentifierInput ToAccountIdentifierInput() =>
         new() { Address = this.ToProto() };
 
+    /// <summary>
+    /// Create an account address from a serialized as bytes.
+    /// </summary>
+    /// <param name="bytes">The account address as bytes.</param>
+    /// <param name="output">Where to write the result of the operation.</param>
+    public static bool TryDeserial(byte[] bytes, out (AccountAddress? accountAddress , String? Error) output) {
+        if (bytes.Length != 32) {
+            var msg = $"Invalid length of input in `AccountAddress.TryDeserial`. Expected 32, found {bytes.Length}";
+            output = (null, msg);
+            return false;
+        };
+
+        output = (new AccountAddress(bytes.ToArray()), null);
+        return true;
+    }
+
     public bool Equals(AccountAddress? other) => other is not null && this._value.SequenceEqual(other._value);
 
     public override int GetHashCode() => Helpers.HashCode.GetHashCodeByteArray(this._value);
