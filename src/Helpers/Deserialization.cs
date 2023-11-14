@@ -9,6 +9,8 @@ public enum DeserialErr
 {
     TooShort,
 	InvalidModuleVersion,
+	InvalidTransactionType,
+	InternalError,
 }
 
 /// <summary>
@@ -34,6 +36,7 @@ public static class Deserial
 		return true;
     }
 
+	// TODO: Debug tool remove
 	private static void PrintBytes(String msg, byte[] bytes) {
 		Console.WriteLine(msg);
 		foreach (byte b in bytes) {

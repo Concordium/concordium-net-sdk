@@ -30,15 +30,17 @@ public sealed record DeployModule(VersionedModuleSource Module) : AccountTransac
     /// Create a "deploy module" payload from a serialized as bytes.
     /// </summary>
     /// <param name="bytes">The "deploy module" payload as bytes.</param>
+    /// <param name="output">Where to write the result of the operation.</param>
     public static bool TryDeserial(byte[] bytes, out (DeployModule? ContractName, DeserialErr? Error) output) {
-        (VersionedModuleSource?, DeserialErr?) module = (null, null);
-
-        var deserialSuccess = VersionedModuleSourceFactory.TryDeserialize(bytes.Skip(1).ToArray(), out module);
+        var deserialSuccess = VersionedModuleSourceFactory.TryDeserialize(bytes.Skip(1).ToArray(), out var module);
 
         if (!deserialSuccess) {
             output = (null, module.Item2);
             return false;
         };
+        if (bytes[0] != TransactionType) {
+            output = (null, DeserialErr.InvalidTransactionType);
+        }
 
         output = (new DeployModule(module.Item1), null);
         return false;

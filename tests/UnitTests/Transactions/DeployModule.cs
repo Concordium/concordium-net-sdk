@@ -46,12 +46,34 @@ public sealed class DeployModuleTests
     [Fact]
     public void ToBytes_InverseOfFromBytes()
     {
-        // The expected payload was generated using the Concordium Rust SDK.
         var moduleBytes = CreateDeployModule().ToBytes();
 
-        (DeployModule?, DeserialErr?) module = (null, null);
-        var deserialSuccess = DeployModule.TryDeserial(moduleBytes, out module);
+        var deserialSuccess = DeployModule.TryDeserial(moduleBytes, out var module);
 
-        CreateDeployModule().Should().BeEquivalentTo(module.Item1);
+        CreateDeployModule().Should().Be(module.Item1);
+    }
+
+    [Fact]
+    public void Equality_BasicEqualityAndNull()
+    {
+        var v1_1 = ModuleV1.FromHex("00");
+        var v1_2 = ModuleV1.FromHex("00");
+
+        v1_1.Should().Be(v1_2);
+        v1_1.Should().NotBe(null);
+
+        v1_1 = null;
+
+        v1_1.Should().Be(null);
+        v1_1.Should().NotBe(v1_2);
+    }
+
+    [Fact]
+    public void Equality_DifferentVersionsNotEqual()
+    {
+        var v0 = ModuleV0.FromHex("00");
+        var v1 = ModuleV1.FromHex("00");
+
+        v0.Should().NotBe(v1);
     }
 }

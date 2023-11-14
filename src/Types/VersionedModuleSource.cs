@@ -6,7 +6,7 @@ namespace Concordium.Sdk.Types;
 /// <summary>
 /// Contains source code of a versioned module where inherited classes are concrete versions.
 /// </summary>
-public abstract record VersionedModuleSource(byte[] Source) {
+public abstract record VersionedModuleSource(byte[] Source) : IEquatable<VersionedModuleSource> {
     internal const uint MaxLength = 8 * 65536;
     internal uint BytesLength = 2 * sizeof(int) + (uint) Source.Length;
 
@@ -20,6 +20,27 @@ public abstract record VersionedModuleSource(byte[] Source) {
         return memoryStream.ToArray();
     }
 
+    //public override bool Equals(object obj)
+    //{
+    //    return Equals(obj as VersionedModuleSource);
+    //}
+
+    public virtual bool Equals(VersionedModuleSource? other)
+    {
+        return other != null &&
+               other.GetType().Equals(this.GetType()) &&
+               Source.SequenceEqual(other.Source);
+    }
+
+    /// <summary>
+    /// Version 0 module source.
+    /// </summary>
+    /// <param name="Source">Source code of module</param>
+    public override int GetHashCode()
+    {
+        var sourceHash = Helpers.HashCode.GetHashCodeByteArray(this.Source);
+        return sourceHash + (int) this.GetVersion();
+    }
 }
 
 internal static class VersionedModuleSourceFactory
@@ -36,8 +57,7 @@ internal static class VersionedModuleSourceFactory
         };
 
     internal static bool TryDeserialize(byte[] bytes, out (VersionedModuleSource? ContractName, DeserialErr? Error) output) {
-        (uint?, DeserialErr?) version = (null, null);
-        var versionSuccess = Deserial.TryDeserialU32(bytes, 0, out version);
+        var versionSuccess = Deserial.TryDeserialU32(bytes, 0, out var version);
 
         if (!versionSuccess) {
             output = (null, version.Item2);
@@ -53,8 +73,8 @@ internal static class VersionedModuleSourceFactory
         if (version.Item1 == 0) {
             output = (ModuleV0.From(rest), null);
             return true;
-        } else if (version.Item1== 1) {
-            output = (ModuleV0.From(rest), null);
+        } else if (version.Item1 == 1) {
+            output = (ModuleV1.From(rest), null);
             return true;
         } else {
             output = (null, DeserialErr.InvalidModuleVersion);
