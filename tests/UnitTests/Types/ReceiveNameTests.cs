@@ -36,4 +36,36 @@ public class ReceiveNameTests
             receiveName.Should().BeNull();
         }
     }
+
+    [Fact]
+    public void WhenGetContractNamePart_ThenReturnName()
+    {
+        // Arrange
+        const string contractName = "some_contract";
+        const string contractEntrypoint = "some_entrypoint";
+
+        _ = ReceiveName.TryParse($"{contractName}.{contractEntrypoint}", out var result);
+
+        // Act
+        var actual = result.ReceiveName!.GetContractName();
+
+        // Assert
+        actual.ContractName.Should().Be(contractName);
+    }
+
+    [Fact]
+    public void WhenGetEntrypointPart_ThenReturnEntrypoint()
+    {
+        // Arrange
+        const string contractName = "some_contract";
+        const string contractEntrypoint = "some_entrypoint";
+
+        _ = ReceiveName.TryParse($"{contractName}.{contractEntrypoint}", out var result);
+
+        // Act
+        var actual = result.ReceiveName!.GetEntrypoint();
+
+        // Assert
+        actual.Name.Should().Be(contractEntrypoint);
+    }
 }

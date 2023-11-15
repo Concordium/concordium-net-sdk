@@ -1,6 +1,8 @@
 ## Unreleased changes
 - Added
   - New GRPC-endpoints: `GetBlocks`, `GetFinalizedBlocks`, `GetBranches`, `GetAncestors`, `GetBlockPendingUpdates`
+  - Added helpers to get new type `ContractIdentifier` on `ReceiveName` and `ContractName`. This new type only holds the contract name part of `ReceiveName` and `ContractName`.
+    Also added helper to get entrypoint on `ReceiveName`.
 
 ## 4.1.0
 - Bugfix

@@ -35,6 +35,18 @@ public sealed record ReceiveName
     }
 
     /// <summary>
+    /// Get the contract name part of <see cref="Receive"/>.
+    /// </summary>
+    /// <returns>Contract identification name</returns>
+    public ContractIdentifier GetContractName() => new(this.Receive[..this.Receive.IndexOf('.')]);
+
+    /// <summary>
+    /// Get entrypoint part of <see cref="Receive"/> which is the entrypoint called on the contract.
+    /// </summary>
+    /// <returns>Entrypoint</returns>
+    public EntryPoint GetEntrypoint() => new(this.Receive[(this.Receive.IndexOf('.') + 1)..]);
+
+    /// <summary>
     /// Validation error of receive name.
     /// </summary>
     public enum ValidationError
