@@ -82,22 +82,24 @@ public sealed record Updated(
     /// <returns><see cref="Message"/> deserialized as json.</returns>
     /// <exception cref="InteropBindingException">Thrown when message wasn't able to be deserialized form schema.</exception>
     public string GetDeserializeMessage(VersionedModuleSchema schema) =>
-        GetDeserializeMessage(schema, this.ReceiveName, this.Message);
+        GetDeserializeMessage(schema, this.ReceiveName.GetContractName(), this.ReceiveName.GetEntrypoint(), this.Message);
 
     /// <summary>
     /// Deserialize message from <see cref="schema"/>.
     /// </summary>
     /// <param name="schema">Module schema.</param>
-    /// <param name="receiveName">Receive name.</param>
+    /// <param name="contractIdentifier">Contract name.</param>
+    /// <param name="entryPoint">Entrypoint on contract.</param>
     /// <param name="message">Message to entrypoint.</param>
     /// <returns><see cref="message"/> deserialized as json.</returns>
     /// <exception cref="InteropBindingException">Thrown when message wasn't able to be deserialized from schema.</exception>
     public static string GetDeserializeMessage(
         VersionedModuleSchema schema,
-        ReceiveName receiveName,
+        ContractIdentifier contractIdentifier,
+        EntryPoint entryPoint,
         Parameter message
     ) =>
-        InteropBinding.GetReceiveContractParameter(schema, receiveName.GetContractName(), receiveName.GetEntrypoint(), message);
+        InteropBinding.GetReceiveContractParameter(schema, contractIdentifier, entryPoint, message);
 
     /// <summary>
     /// Deserialize events from <see cref="schema"/>.

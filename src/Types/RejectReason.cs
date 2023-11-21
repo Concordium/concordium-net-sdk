@@ -197,7 +197,7 @@ public sealed record RejectedReceive(int RejectReason, ContractAddress ContractA
     /// <returns><see cref="Parameter"/> deserialized as json.</returns>
     /// <exception cref="InteropBindingException">Thrown when message wasn't able to be deserialized form schema.</exception>
     public string GetDeserializeMessage(VersionedModuleSchema schema) =>
-        Updated.GetDeserializeMessage(schema, this.ReceiveName, this.Parameter);
+        Updated.GetDeserializeMessage(schema, this.ReceiveName.GetContractName(), this.ReceiveName.GetEntrypoint(), this.Parameter);
 }
 /// <summary>
 /// Proof that the baker owns relevant private keys is not valid.
