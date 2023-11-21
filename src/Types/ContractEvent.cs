@@ -23,20 +23,5 @@ public sealed record ContractEvent(byte[] Bytes)
     public string? GetDeserializeEvent(
         VersionedModuleSchema schema,
         ContractIdentifier contractName
-    ) => GetDeserializeEvent(schema, contractName, this.Bytes);
-
-    /// <summary>
-    /// Deserialize event from <see cref="schema"/>.
-    /// </summary>
-    /// <param name="schema">Module schema.</param>
-    /// <param name="contractName">Contract name.</param>
-    /// <param name="contractEvent">Event.</param>
-    /// <returns><see cref="contractEvent"/> deserialized.</returns>
-    /// <exception cref="InteropBindingException">Thrown when event wasn't able to be deserialized from schema.</exception>
-    public static string? GetDeserializeEvent(
-        VersionedModuleSchema schema,
-        ContractIdentifier contractName,
-        byte[] contractEvent
-        ) =>
-        InteropBinding.GetEventContract(schema.Schema, contractName, contractEvent, schema.Version);
+    ) => InteropBinding.GetEventContract(schema, contractName, this);
 }

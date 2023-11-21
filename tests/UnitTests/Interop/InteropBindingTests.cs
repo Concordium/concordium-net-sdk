@@ -17,9 +17,10 @@ public class InteropBindingTests
     {
         // Arrange
         var schema = (await File.ReadAllTextAsync("./Data/cis2-nft-schema")).Trim();
+        var versionedModuleSchema = new VersionedModuleSchema(Convert.FromHexString(schema), ModuleSchemaVersion.V1);
 
         // Act
-        var message = InteropBinding.SchemaDisplay(Convert.FromHexString(schema), ModuleSchemaVersion.V1);
+        var message = InteropBinding.SchemaDisplay(versionedModuleSchema);
 
         // Assert
         await Verifier.Verify(message)
@@ -32,9 +33,10 @@ public class InteropBindingTests
     {
         // Arrange
         var schema = (await File.ReadAllTextAsync("./Data/cis2_wCCD_sub")).Trim();
+        var versionedModuleSchema = new VersionedModuleSchema(Convert.FromHexString(schema), ModuleSchemaVersion.Undefined);
 
         // Act
-        var message = InteropBinding.SchemaDisplay(Convert.FromHexString(schema), ModuleSchemaVersion.Undefined);
+        var message = InteropBinding.SchemaDisplay(versionedModuleSchema);
 
         // Assert
         await Verifier.Verify(message)
@@ -50,9 +52,13 @@ public class InteropBindingTests
         const string contractName = "cis2_wCCD";
         const string entrypoint = "wrap";
         const string value = "005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc790000";
+        var versionedModuleSchema = new VersionedModuleSchema(Convert.FromHexString(schema), ModuleSchemaVersion.Undefined);
+        var parameter = new Parameter(Convert.FromHexString(value));
+        var contractIdentifier = new ContractIdentifier(contractName);
+        var entryPoint = new EntryPoint(entrypoint);
 
         // Act
-        var message = InteropBinding.GetReceiveContractParameter(Convert.FromHexString(schema), new ContractIdentifier(contractName), new EntryPoint(entrypoint), new Parameter(Convert.FromHexString(value)), null);
+        var message = InteropBinding.GetReceiveContractParameter(versionedModuleSchema, contractIdentifier, entryPoint, parameter);
 
         // Assert
         await Verifier.Verify(message)
@@ -67,9 +73,12 @@ public class InteropBindingTests
         var schema = (await File.ReadAllTextAsync("./Data/cis2_wCCD_sub")).Trim();
         const string contractName = "cis2_wCCD";
         const string value = "fe00c0843d005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc79";
+        var versionedModuleSchema = new VersionedModuleSchema(Convert.FromHexString(schema), ModuleSchemaVersion.Undefined);
+        var contractIdentifier = new ContractIdentifier(contractName);
+        var contractEvent = new ContractEvent(Convert.FromHexString(value));
 
         // Act
-        var message = InteropBinding.GetEventContract(Convert.FromHexString(schema), new ContractIdentifier(contractName), Convert.FromHexString(value), ModuleSchemaVersion.Undefined);
+        var message = InteropBinding.GetEventContract(versionedModuleSchema, contractIdentifier, contractEvent);
 
         // Assert
         await Verifier.Verify(message)

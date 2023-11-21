@@ -83,11 +83,10 @@ public sealed record Updated(
     /// <exception cref="InteropBindingException">Thrown when message wasn't able to be deserialized form schema.</exception>
     public string? GetDeserializeMessage(VersionedModuleSchema schema) =>
         InteropBinding.GetReceiveContractParameter(
-            schema.Schema,
+            schema,
             this.ReceiveName.GetContractName(),
             this.ReceiveName.GetEntrypoint(),
-            this.Message,
-            schema.Version);
+            this.Message);
 
     /// <summary>
     /// Deserialize message from <see cref="schema"/>.
@@ -102,7 +101,7 @@ public sealed record Updated(
         ReceiveName receiveName,
         Parameter message
     ) =>
-        InteropBinding.GetReceiveContractParameter(schema.Schema, receiveName.GetContractName(), receiveName.GetEntrypoint(), message, schema.Version);
+        InteropBinding.GetReceiveContractParameter(schema, receiveName.GetContractName(), receiveName.GetEntrypoint(), message);
 
     /// <summary>
     /// Deserialize events from <see cref="schema"/>.
