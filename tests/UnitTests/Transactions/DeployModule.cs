@@ -29,7 +29,7 @@ public sealed class DeployModuleTests
     public void ToBytes_ReturnsCorrectValue()
     {
         // The expected payload was generated using the Concordium Rust SDK.
-        var expectedBytes = new byte[] { 
+        var expectedBytes = new byte[] {
             0, 0, 0, 0, 1, 0, 0, 0, 86, 0, 97, 115, 109, 1, 0, 0, 0, 4, 5,
             1, 112, 1, 1, 1, 5, 3, 1, 0, 16, 6, 25, 3, 127, 1, 65, 128, 128,
             192, 0, 11, 127, 0, 65, 128, 128, 192, 0, 11, 127, 0, 65, 128,
@@ -48,7 +48,7 @@ public sealed class DeployModuleTests
 
         var deserialSuccess = DeployModule.TryDeserial(moduleBytes, out var module);
 
-        CreateDeployModule().Should().Be(module.Item1);
+        CreateDeployModule().Should().Be(module.Module);
     }
 
     [Fact]

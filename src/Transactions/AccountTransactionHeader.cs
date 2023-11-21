@@ -91,13 +91,11 @@ public sealed record AccountTransactionHeader(
     /// <summary>
     /// Converts the account transaction header to its corresponding protocol buffer message instance.
     /// </summary>
-    internal static AccountTransactionHeader From(Grpc.V2.AccountTransactionHeader accountTransactionHeader) {
-        return new AccountTransactionHeader(
-            AccountAddress.From(accountTransactionHeader.Sender), 
+    internal static AccountTransactionHeader From(Grpc.V2.AccountTransactionHeader accountTransactionHeader) => new(
+            AccountAddress.From(accountTransactionHeader.Sender),
             AccountSequenceNumber.From(accountTransactionHeader.SequenceNumber),
             Expiry.From(accountTransactionHeader.Expiry.Value),
             EnergyAmount.From(accountTransactionHeader.EnergyAmount),
-            new PayloadSize((uint) accountTransactionHeader.CalculateSize())
+            new PayloadSize((uint)accountTransactionHeader.CalculateSize())
         );
-    }
 }

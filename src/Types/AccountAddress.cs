@@ -221,8 +221,10 @@ public sealed record AccountAddress : IEquatable<AccountAddress>, IAddress, IAcc
     /// </summary>
     /// <param name="bytes">The account address as bytes.</param>
     /// <param name="output">Where to write the result of the operation.</param>
-    public static bool TryDeserial(byte[] bytes, out (AccountAddress? accountAddress , String? Error) output) {
-        if (bytes.Length != 32) {
+    public static bool TryDeserial(byte[] bytes, out (AccountAddress? accountAddress, string? Error) output)
+    {
+        if (bytes.Length != 32)
+        {
             var msg = $"Invalid length of input in `AccountAddress.TryDeserial`. Expected 32, found {bytes.Length}";
             output = (null, msg);
             return false;

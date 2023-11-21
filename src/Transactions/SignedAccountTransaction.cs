@@ -20,10 +20,10 @@ public record SignedAccountTransaction(
     AccountTransactionHeader Header,
     AccountTransactionPayload Payload,
     AccountTransactionSignature Signature
-): BlockItemType
+) : BlockItemType
 {
     /// <summary>Converts this type to the equivalent protocol buffer type.</summary>
-    public Grpc.V2.AccountTransaction ToProto() =>
+    public AccountTransaction ToProto() =>
         new()
         {
             Header = this.Header.ToProto(),
@@ -31,13 +31,11 @@ public record SignedAccountTransaction(
             Signature = this.Signature.ToProto(),
         };
 
-    internal static SignedAccountTransaction From(Grpc.V2.AccountTransaction accountTransaction) {
-        return new SignedAccountTransaction(
+    internal static SignedAccountTransaction From(AccountTransaction accountTransaction) => new(
             AccountTransactionHeader.From(accountTransaction.Header),
             AccountTransactionPayload.From(accountTransaction.Payload),
             AccountTransactionSignature.From(accountTransaction.Signature)
         );
-    }
 
     /// <summary>
     /// Converts the signed account transaction to a protocol buffer

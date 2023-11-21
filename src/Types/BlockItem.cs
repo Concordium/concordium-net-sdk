@@ -1,8 +1,8 @@
 using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Transactions;
+using BlockItemCase = Concordium.Grpc.V2.BlockItem.BlockItemOneofCase;
 using CredentialDeploymentPayloadCase = Concordium.Grpc.V2.CredentialDeployment.PayloadOneofCase;
 using UpdateInstructionPayloadCase = Concordium.Grpc.V2.UpdateInstructionPayload.PayloadOneofCase;
-using BlockItemCase = Concordium.Grpc.V2.BlockItem.BlockItemOneofCase;
 
 namespace Concordium.Sdk.Types;
 
@@ -15,14 +15,16 @@ namespace Concordium.Sdk.Types;
 /// <param name="Payload">The payload of the UpdateInstruction. Can currently only be a `RawPayload`</param>
 public record UpdateInstruction(
     UpdateInstructionSignatureMap SignatureMap,
-    UpdateInstructionHeader Header, 
+    UpdateInstructionHeader Header,
     IUpdateInstructionPayload Payload
-): BlockItemType {
+) : BlockItemType
+{
     internal static UpdateInstruction From(Grpc.V2.UpdateInstruction updateInstruction) =>
-        new UpdateInstruction(
+        new(
             UpdateInstructionSignatureMap.From(updateInstruction.Signatures),
             UpdateInstructionHeader.From(updateInstruction.Header),
-            updateInstruction.Payload.PayloadCase switch {
+            updateInstruction.Payload.PayloadCase switch
+            {
                 UpdateInstructionPayloadCase.RawPayload => new UpdateInstructionPayloadRaw(updateInstruction.Payload.RawPayload.ToByteArray()),
                 UpdateInstructionPayloadCase.None => throw new NotImplementedException(),
                 _ => throw new MissingEnumException<UpdateInstructionPayloadCase>(updateInstruction.Payload.PayloadCase),
@@ -35,12 +37,13 @@ public record UpdateInstruction(
 /// <param name="EffectiveTime">When the update takes effect.</param>
 /// <param name="Timeout">Latest time the update instruction can included in a block.</param>
 public record UpdateInstructionHeader(
-    UpdateSequenceNumber SequenceNumber, 
-    TransactionTime EffectiveTime, 
+    UpdateSequenceNumber SequenceNumber,
+    TransactionTime EffectiveTime,
     TransactionTime Timeout
-) {
+)
+{
     internal static UpdateInstructionHeader From(Grpc.V2.UpdateInstructionHeader header) =>
-        new UpdateInstructionHeader(
+        new(
             UpdateSequenceNumber.From(header.SequenceNumber),
             TransactionTime.From(header.EffectiveTime),
             TransactionTime.From(header.Timeout)
@@ -52,13 +55,14 @@ public record UpdateInstructionHeader(
 /// Equivalent to `SequenceNumber` for account transactions.
 /// Update sequence numbers are per update type and the minimum value is 1.
 /// </summary>
-public record UpdateSequenceNumber(UInt64 SequenceNumber) {
+public record UpdateSequenceNumber(ulong SequenceNumber)
+{
     internal static UpdateSequenceNumber From(Grpc.V2.UpdateSequenceNumber sequenceNumber) =>
-        new UpdateSequenceNumber(sequenceNumber.Value);
+        new(sequenceNumber.Value);
 }
 
 /// <summary>The payload for an UpdateInstruction.</summary>
-public interface IUpdateInstructionPayload{}
+public interface IUpdateInstructionPayload { }
 
 /// <summary>A raw payload encoded according to the format defined by the protocol.</summary>
 public sealed record UpdateInstructionPayloadRaw(byte[] RawPayload) : IUpdateInstructionPayload;
@@ -70,11 +74,13 @@ public sealed record UpdateInstructionPayloadRaw(byte[] RawPayload) : IUpdateIns
 /// </summary>
 /// <param name="MessageExpiry">Latest time the credential deployment can included in a block.</param>
 /// <param name="Payload">The payload of the credential deployment.</param>
-public record CredentialDeployment(TransactionTime MessageExpiry, ICredentialPayload Payload): BlockItemType {
+public record CredentialDeployment(TransactionTime MessageExpiry, ICredentialPayload Payload) : BlockItemType
+{
     internal static CredentialDeployment From(Grpc.V2.CredentialDeployment cred) =>
-        new CredentialDeployment(
+        new(
             TransactionTime.From(cred.MessageExpiry),
-            cred.PayloadCase switch {
+            cred.PayloadCase switch
+            {
                 CredentialDeploymentPayloadCase.RawPayload => new CredentialPayloadRaw(cred.RawPayload.ToByteArray()),
                 CredentialDeploymentPayloadCase.None => throw new NotImplementedException(),
                 _ => throw new MissingEnumException<CredentialDeploymentPayloadCase>(cred.PayloadCase),
@@ -83,7 +89,7 @@ public record CredentialDeployment(TransactionTime MessageExpiry, ICredentialPay
 }
 
 /// <summary>The payload of a Credential Deployment.</summary>
-public interface ICredentialPayload{};
+public interface ICredentialPayload { };
 
 /// <summary>
 /// A raw payload, which is just the encoded payload.
@@ -97,12 +103,14 @@ public sealed record CredentialPayloadRaw(byte[] RawPayload) : ICredentialPayloa
 public sealed record BlockItem(TransactionHash TransactionHash, BlockItemType BlockItemType)
 {
     internal static BlockItem From(Grpc.V2.BlockItem blockItem) =>
-        new BlockItem(
+        new(
             TransactionHash.From(blockItem.Hash.ToString()),
-            blockItem.BlockItemCase switch {
+            blockItem.BlockItemCase switch
+            {
                 BlockItemCase.AccountTransaction => SignedAccountTransaction.From(blockItem.AccountTransaction),
                 BlockItemCase.CredentialDeployment => CredentialDeployment.From(blockItem.CredentialDeployment),
                 BlockItemCase.UpdateInstruction => UpdateInstruction.From(blockItem.UpdateInstruction),
+                BlockItemCase.None => throw new NotImplementedException(),
                 _ => throw new MissingEnumException<BlockItemCase>(blockItem.BlockItemCase),
             }
         );

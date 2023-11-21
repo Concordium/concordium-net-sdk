@@ -3,71 +3,81 @@ using System.Buffers.Binary;
 namespace Concordium.Sdk.Helpers;
 
 /// <summary>
-/// Error on deserialization.
-/// </summary>
-public enum DeserialErr
-{
-    TooShort,
-	InvalidModuleVersion,
-	InvalidTransactionType,
-	InternalError,
-	InvalidLength,
-}
-
-
-
-/// <summary>
 /// Helpers for deserializing data.
 /// </summary>
 public static class Deserial
 {
     /// <summary>
-    /// Creates a uint from a byte array.
+    /// Creates a ushort from a byte array.
     /// </summary>
-    public static bool TryDeserialU32(byte[] input, int offset, out (uint? Uint, String? Error) output)
+    public static bool TryDeserialU16(byte[] input, int offset, out (ushort? Uint, string? Error) output)
     {
-        if (input.Length < 4) {
-			var msg = $"Invalid length in TryDeserialU32. Must be longer than 4, but was {input.Length}";
-			output = (null, msg);
-			return false;
-		}
+        if (input.Length < sizeof(ushort))
+        {
+            var msg = $"Invalid length in TryDeserialU32. Must be longer than {sizeof(ushort)}, but was {input.Length}";
+            output = (null, msg);
+            return false;
+        }
 
-		var offset_input = input.Skip(offset).ToArray();
+        var offset_input = input.Skip(offset).ToArray();
 
-		var bytes = offset_input.Take(4).ToArray();
+        var bytes = offset_input.Take(sizeof(ushort)).ToArray();
 
-        output = (BinaryPrimitives.ReadUInt32BigEndian(bytes), null);
-		return true;
+        output = (BinaryPrimitives.ReadUInt16BigEndian(bytes), null);
+        return true;
     }
 
     /// <summary>
     /// Creates a uint from a byte array.
     /// </summary>
-    public static bool TryDeserialU64(byte[] input, int offset, out (ulong? Ulong, String? Error) output)
+    public static bool TryDeserialU32(byte[] input, int offset, out (uint? Uint, string? Error) output)
     {
-        if (input.Length < 8) {
-			var msg = $"Invalid length in TryDeserialU32. Must be longer than 4, but was {input.Length}";
-			output = (null, msg);
-			return false;
-		}
+        if (input.Length < sizeof(uint))
+        {
+            var msg = $"Invalid length in TryDeserialU32. Must be longer than 4, but was {input.Length}";
+            output = (null, msg);
+            return false;
+        }
 
-		var offset_input = input.Skip(offset).ToArray();
+        var offset_input = input.Skip(offset).ToArray();
 
-		var bytes = offset_input.Take(8).ToArray();
+        var bytes = offset_input.Take(sizeof(uint)).ToArray();
 
-        output = (BinaryPrimitives.ReadUInt64BigEndian(bytes), null);
-		return true;
+        output = (BinaryPrimitives.ReadUInt32BigEndian(bytes), null);
+        return true;
     }
 
-	// TODO: Debug tool remove
-	private static void PrintBytes(String msg, byte[] bytes) {
-		Console.WriteLine(msg);
-		foreach (byte b in bytes) {
-			Console.Write(b);
-			Console.Write(" ");
-		}
-		Console.Write("\n");
-	} 
+    /// <summary>
+    /// Creates a uint from a byte array.
+    /// </summary>
+    public static bool TryDeserialU64(byte[] input, int offset, out (ulong? Ulong, string? Error) output)
+    {
+        if (input.Length < sizeof(ulong))
+        {
+            var msg = $"Invalid length in TryDeserialU32. Must be longer than {sizeof(ulong)}, but was {input.Length}";
+            output = (null, msg);
+            return false;
+        }
+
+        var offset_input = input.Skip(offset).ToArray();
+
+        var bytes = offset_input.Take(sizeof(ulong)).ToArray();
+
+        output = (BinaryPrimitives.ReadUInt64BigEndian(bytes), null);
+        return true;
+    }
+
+    // TODO: Debug tool remove
+    public static void PrintBytes(string msg, byte[] bytes)
+    {
+        Console.WriteLine(msg);
+        foreach (var b in bytes)
+        {
+            Console.Write(b);
+            Console.Write(" ");
+        }
+        Console.Write("\n");
+    }
 }
 
 

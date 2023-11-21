@@ -31,5 +31,39 @@ public sealed record RegisterData(OnChainData Data) : AccountTransactionPayload
         return memoryStream.ToArray();
     }
 
+    /// <summary>
+    /// Create a "register data" payload from a serialized as bytes.
+    /// </summary>
+    /// <param name="bytes">The payload as bytes.</param>
+    /// <param name="output">Where to write the result of the operation.</param>
+    public static bool TryDeserial(byte[] bytes, out (RegisterData?, string? Error) output)
+    {
+        var minSize = sizeof(TransactionType);
+        if (bytes.Length < minSize)
+        {
+            var msg = $"Invalid length in `TransferWithMemo.TryDeserial`. Expected at least {minSize}, found {bytes.Length}";
+            output = (null, msg);
+            return false;
+        };
+        if (bytes[0] != TransactionType)
+        {
+            var msg = $"Invalid transaction type in `Transfer.TryDeserial`. expected {TransactionType}, found {bytes[0]}";
+            output = (null, msg);
+            return false;
+        };
+
+        var memoBytes = bytes.Skip(sizeof(TransactionType)).ToArray();
+        var memoDeserial = OnChainData.TryDeserial(memoBytes, out var memo);
+
+        if (!memoDeserial)
+        {
+            output = (null, memo.Error);
+            return false;
+        };
+
+        output = (new RegisterData(memo.accountAddress), null);
+        return true;
+    }
+
     public override byte[] ToBytes() => Serialize(this.Data);
 }

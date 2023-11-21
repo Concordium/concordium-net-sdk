@@ -6,33 +6,32 @@ namespace Concordium.Sdk.Types;
 /// <summary>
 /// Contains source code of a versioned module where inherited classes are concrete versions.
 /// </summary>
-public abstract record VersionedModuleSource(byte[] Source) : IEquatable<VersionedModuleSource> {
+public abstract record VersionedModuleSource(byte[] Source) : IEquatable<VersionedModuleSource>
+{
     internal const uint MaxLength = 8 * 65536;
-    internal uint BytesLength = 2 * sizeof(int) + (uint) Source.Length;
+    internal uint BytesLength = (2 * sizeof(int)) + (uint)Source.Length;
 
     internal abstract uint GetVersion();
 
-    internal byte[] ToBytes() {
-        using var memoryStream = new MemoryStream((int)(BytesLength));
-        memoryStream.Write(Serialization.ToBytes(GetVersion()));
-        memoryStream.Write(Serialization.ToBytes((uint) Source.Length));
-        memoryStream.Write(Source);
+    internal byte[] ToBytes()
+    {
+        using var memoryStream = new MemoryStream((int)this.BytesLength);
+        memoryStream.Write(Serialization.ToBytes(this.GetVersion()));
+        memoryStream.Write(Serialization.ToBytes((uint)this.Source.Length));
+        memoryStream.Write(this.Source);
         return memoryStream.ToArray();
     }
 
     /// <summary>Check for equality.</summary>
-    public virtual bool Equals(VersionedModuleSource? other)
-    {
-        return other != null &&
+    public virtual bool Equals(VersionedModuleSource? other) => other != null &&
                other.GetType().Equals(this.GetType()) &&
-               Source.SequenceEqual(other.Source);
-    }
+               this.Source.SequenceEqual(other.Source);
 
     /// <summary>Gets hash code.</summary>
     public override int GetHashCode()
     {
         var sourceHash = Helpers.HashCode.GetHashCodeByteArray(this.Source);
-        return sourceHash + (int) this.GetVersion();
+        return sourceHash + (int)this.GetVersion();
     }
 }
 
@@ -49,28 +48,36 @@ internal static class VersionedModuleSourceFactory
                 .ModuleCase)
         };
 
-    internal static bool TryDeserial(byte[] bytes, out (VersionedModuleSource? VersionedModuleSource, String? Error) output) {
+    internal static bool TryDeserial(byte[] bytes, out (VersionedModuleSource? VersionedModuleSource, string? Error) output)
+    {
         var versionSuccess = Deserial.TryDeserialU32(bytes, 0, out var version);
 
-        if (!versionSuccess) {
-            output = (null, version.Item2);
+        if (!versionSuccess)
+        {
+            output = (null, version.Error);
             return false;
         }
-        if (bytes.Length < 8) {
+        if (bytes.Length < 8)
+        {
             output = (null, "The given byte array in `VersionModuleSourceFactory.TryDeserial`, is too short");
             return false;
         }
 
         var rest = bytes.Skip(8).ToArray();
 
-        if (version.Item1 == 0) {
+        if (version.Uint == 0)
+        {
             output = (ModuleV0.From(rest), null);
             return true;
-        } else if (version.Item1 == 1) {
+        }
+        else if (version.Uint == 1)
+        {
             output = (ModuleV1.From(rest), null);
             return true;
-        } else {
-            output = (null, $"Invalid module version byte, expected 0 or 1 but found {version.Item1}");
+        }
+        else
+        {
+            output = (null, $"Invalid module version byte, expected 0 or 1 but found {version.Uint}");
             return false;
         };
     }
@@ -82,7 +89,7 @@ internal static class VersionedModuleSourceFactory
 /// <param name="Source">Source code of module</param>
 public sealed record ModuleV0(byte[] Source) : VersionedModuleSource(Source)
 {
-    override internal uint GetVersion() => 0;
+    internal override uint GetVersion() => 0;
 
     internal static ModuleV0 From(Grpc.V2.VersionedModuleSource.Types.ModuleSourceV0 moduleSourceV0) =>
         new(moduleSourceV0.Value.ToByteArray());
@@ -129,7 +136,7 @@ public sealed record ModuleV0(byte[] Source) : VersionedModuleSource(Source)
 /// <param name="Source">Source code of module</param>
 public sealed record ModuleV1(byte[] Source) : VersionedModuleSource(Source)
 {
-    override internal uint GetVersion() => 1;
+    internal override uint GetVersion() => 1;
 
     internal static ModuleV1 From(Grpc.V2.VersionedModuleSource.Types.ModuleSourceV1 moduleSourceV1) =>
         new(moduleSourceV1.Value.ToByteArray());

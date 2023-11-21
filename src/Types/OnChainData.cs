@@ -12,6 +12,9 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public sealed record OnChainData : IEquatable<OnChainData>
 {
+    /// <summary>
+    /// The maximum length of a bytearray passed to the constructor.
+    /// </summary>
     public const uint MaxLength = 256;
 
     /// <summary>
@@ -137,22 +140,39 @@ public sealed record OnChainData : IEquatable<OnChainData>
     /// </summary>
     /// <param name="bytes">The account address as bytes.</param>
     /// <param name="output">Where to write the result of the operation.</param>
-    public static bool TryDeserial(byte[] bytes, out (OnChainData? accountAddress , String? Error) output) {
-        if (bytes.Length == 0) {
-            var msg = $"Invalid length of input in `OnChainData.TryDeserial`. Length must be more than 0";
+    public static bool TryDeserial(byte[] bytes, out (OnChainData? accountAddress, string? Error) output)
+    {
+        if (bytes.Length == 0)
+        {
+            var msg = "Invalid length of input in `OnChainData.TryDeserial`. Length must be more than 0";
             output = (null, msg);
             return false;
         };
 
-        var size = (int) bytes.First();
-
-        if (bytes.Length != size+1) {
-            var msg = $"Invalid length of input in `OnChainData.TryDeserial`. Expected array of size {size+1}, found {bytes.Length}";
+        if (bytes.Length > sizeof(ushort) + MaxLength)
+        {
+            var msg = $"Invalid length of input in `OnChainData.TryDeserial`. Length must not be more than {sizeof(ushort) + MaxLength}";
             output = (null, msg);
             return false;
         };
 
-        output = (new OnChainData(bytes.Skip(1).ToArray()), null);
+        var deserialSuccess = Deserial.TryDeserialU16(bytes, 0, out var sizeRead);
+        if (!deserialSuccess)
+        {
+            output = (null, sizeRead.Error);
+            return false;
+        };
+
+        var size = sizeRead.Uint + sizeof(ushort);
+
+        if (bytes.Length != size)
+        {
+            var msg = $"Invalid length of input in `OnChainData.TryDeserial`. Expected array of size {size}, found {bytes.Length}";
+            output = (null, msg);
+            return false;
+        };
+
+        output = (new OnChainData(bytes.Skip(sizeof(ushort)).ToArray()), null);
         return true;
     }
 
@@ -170,8 +190,5 @@ public sealed record OnChainData : IEquatable<OnChainData>
         return From(memo.Value.ToByteArray());
     }
 
-    internal static OnChainData From(Grpc.V2.RegisteredData registeredData)
-    {
-        return From(registeredData.Value.ToByteArray());
-    }
+    internal static OnChainData From(Grpc.V2.RegisteredData registeredData) => From(registeredData.Value.ToByteArray());
 }

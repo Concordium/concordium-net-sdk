@@ -28,7 +28,7 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
     /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
     private static byte[] Serialize(CcdAmount amount, AccountAddress receiver)
     {
-        using var memoryStream = new MemoryStream((int)(BytesLength));
+        using var memoryStream = new MemoryStream((int)BytesLength);
         memoryStream.WriteByte(TransactionType);
         memoryStream.Write(receiver.ToBytes());
         memoryStream.Write(amount.ToBytes());
@@ -40,36 +40,41 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
     /// </summary>
     /// <param name="bytes">The "transfer" payload as bytes.</param>
     /// <param name="output">Where to write the result of the operation.</param>
-    public static bool TryDeserial(byte[] bytes, out (Transfer? , String? Error) output) {
-        if (bytes.Length != BytesLength) {
+    public static bool TryDeserial(byte[] bytes, out (Transfer?, string? Error) output)
+    {
+        if (bytes.Length != BytesLength)
+        {
             var msg = $"Invalid length in `Transfer.TryDeserial`. Expected {BytesLength}, found {bytes.Length}";
             output = (null, msg);
             return false;
         };
-        if (bytes[0] != TransactionType) {
-			var msg = $"Invalid transaction type in `Transfer.TryDeserial`. expected {TransactionType}, found {bytes[0]}";
+        if (bytes[0] != TransactionType)
+        {
+            var msg = $"Invalid transaction type in `Transfer.TryDeserial`. expected {TransactionType}, found {bytes[0]}";
             output = (null, msg);
             return false;
         };
 
-        var accountBytes = bytes.Skip(1).Take((int) AccountAddress.BytesLength).ToArray();
+        var accountBytes = bytes.Skip(1).Take((int)AccountAddress.BytesLength).ToArray();
         var accDeserial = AccountAddress.TryDeserial(accountBytes, out var account);
 
-        if (!accDeserial) {
-            output = (null, account.Item2);
+        if (!accDeserial)
+        {
+            output = (null, account.Error);
             return false;
         };
 
-        var amountBytes = bytes.Skip((int) AccountAddress.BytesLength + 1).ToArray();
+        var amountBytes = bytes.Skip((int)AccountAddress.BytesLength + 1).ToArray();
         var amountDeserial = CcdAmount.TryDeserial(amountBytes, out var amount);
 
-        if (!amountDeserial) {
-            output = (null, amount.Item2);
+        if (!amountDeserial)
+        {
+            output = (null, amount.Error);
             return false;
         };
 
-        output = (new Transfer(amount.Item1.Value, account.Item1), null);
-        return false;
+        output = (new Transfer(amount.accountAddress.Value, account.accountAddress), null);
+        return true;
     }
 
     public override ulong GetTransactionSpecificCost() => 300;

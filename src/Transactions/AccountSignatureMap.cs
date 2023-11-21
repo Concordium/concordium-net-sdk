@@ -57,13 +57,14 @@ public sealed record AccountSignatureMap
         return accountSignatureMap;
     }
 
-    internal static AccountSignatureMap From(Grpc.V2.AccountSignatureMap map) {
+    internal static AccountSignatureMap From(Grpc.V2.AccountSignatureMap map)
+    {
         var dict = new Dictionary<AccountKeyIndex, byte[]>();
         foreach (var s in map.Signatures)
         {
-            dict.Add(new AccountKeyIndex((byte) s.Key), s.Value.Value.ToByteArray());
+            dict.Add(new AccountKeyIndex((byte)s.Key), s.Value.Value.ToByteArray());
         }
-        return AccountSignatureMap.Create(dict);
+        return Create(dict);
     }
 }
 
@@ -108,12 +109,13 @@ public sealed record UpdateInstructionSignatureMap
         return signatureMap;
     }
 
-    internal static UpdateInstructionSignatureMap From(Grpc.V2.SignatureMap map) {
+    internal static UpdateInstructionSignatureMap From(Grpc.V2.SignatureMap map)
+    {
         var dict = new Dictionary<UpdateKeysIndex, byte[]>();
         foreach (var s in map.Signatures)
         {
-            dict.Add(new UpdateKeysIndex((byte) s.Key), s.Value.Value.ToByteArray());
+            dict.Add(new UpdateKeysIndex((byte)s.Key), s.Value.Value.ToByteArray());
         }
-        return UpdateInstructionSignatureMap.Create(dict);
+        return Create(dict);
     }
 }
