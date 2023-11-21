@@ -53,23 +53,23 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="../concordium-grpc-api/v2/concordium/types.proto" GrpcServices="Client">
+    <Protobuf Include="../concordium-base/concordium-grpc-api/v2/concordium/types.proto" GrpcServices="Client">
       <Access>Public</Access>
       <ProtoCompile>True</ProtoCompile>
       <CompileOutputs>True</CompileOutputs>
       <OutputDir>obj\Debug\net6.0\</OutputDir>
       <Generator>MSBuild:Compile</Generator>
       <Link>v2/concordium/types.proto</Link>
-      <ProtoRoot>../concordium-grpc-api</ProtoRoot>
+      <ProtoRoot>../concordium-base/concordium-grpc-api</ProtoRoot>
     </Protobuf>
-    <Protobuf Include="../concordium-grpc-api/v2/concordium/service.proto" GrpcServices="Client">
+    <Protobuf Include="../concordium-base/concordium-grpc-api/v2/concordium/service.proto" GrpcServices="Client">
       <Access>Public</Access>
       <ProtoCompile>True</ProtoCompile>
       <CompileOutputs>True</CompileOutputs>
       <OutputDir>obj\Debug\net6.0\</OutputDir>
       <Generator>MSBuild:Compile</Generator>
       <Link>v2/concordium/services.proto</Link>
-      <ProtoRoot>../concordium-grpc-api</ProtoRoot>
+      <ProtoRoot>../concordium-base/concordium-grpc-api</ProtoRoot>
     </Protobuf>
   </ItemGroup>
 
