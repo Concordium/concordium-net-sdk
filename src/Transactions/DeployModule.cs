@@ -6,6 +6,27 @@ namespace Concordium.Sdk.Transactions;
 /// <param name="Module">The smart contract module to be deployed.</param>
 public sealed record DeployModule(VersionedModuleSource Module) : AccountTransactionPayload
 {
+    /// <summary>
+    /// Prepares the account transaction payload for signing.
+    /// </summary>
+    /// <param name="sender">Address of the sender of the transaction.</param>
+    /// <param name="sequenceNumber">Account sequence number to use for the transaction.</param>
+    /// <param name="expiry">Expiration time of the transaction.</param>
+    public PreparedAccountTransaction Prepare(
+        AccountAddress sender,
+        AccountSequenceNumber sequenceNumber,
+        Expiry expiry
+    ) => new(sender, sequenceNumber, expiry, this.transactionCost, this);
+
+    /// <summary>
+    /// The transaction specific cost for submitting this type of
+    /// transaction to the chain.
+    ///
+    /// This should reflect the transaction-specific costs defined here:
+    /// https://github.com/Concordium/concordium-base/blob/78f557b8b8c94773a25e4f86a1a92bc323ea2e3d/haskell-src/Concordium/Cost.hs
+    /// </summary>
+    private readonly EnergyAmount transactionCost = new(Module.BytesLength / 10);
+
     /// <summary>The account transaction type to be used in the serialized payload.</summary>
     private const byte TransactionType = (byte)Types.TransactionType.DeployModule;
 
@@ -31,7 +52,8 @@ public sealed record DeployModule(VersionedModuleSource Module) : AccountTransac
     /// <param name="output">Where to write the result of the operation.</param>
     public static bool TryDeserial(byte[] bytes, out (DeployModule? Module, string? Error) output)
     {
-        if (bytes.Length <= 9)
+        var minLength = sizeof(TransactionType) + (2 * sizeof(int));
+        if (bytes.Length <= minLength)
         {
             var msg = $"Invalid input length in `DeployModule.TryDeserial`. expected at least 9, found {bytes.Length}";
             output = (null, msg);
@@ -55,8 +77,6 @@ public sealed record DeployModule(VersionedModuleSource Module) : AccountTransac
         output = (new DeployModule(module.VersionedModuleSource), null);
         return true;
     }
-
-    public override ulong GetTransactionSpecificCost() => 300;
 
     public override byte[] ToBytes() => Serialize(this.Module);
 }

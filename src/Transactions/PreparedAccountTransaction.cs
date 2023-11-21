@@ -14,11 +14,13 @@ namespace Concordium.Sdk.Transactions;
 /// <param name="Sender">Address of the sender of the transaction.</param>
 /// <param name="SequenceNumber">Account sequence number to use for the transaction.</param>
 /// <param name="Expiry">Expiration time of the transaction.</param>
+/// <param name="Energy">The maximum energy cost of this transaction.</param>
 /// <param name="Payload">Payload to send to the node.</param>
 public sealed record PreparedAccountTransaction(
     AccountAddress Sender,
     AccountSequenceNumber SequenceNumber,
     Expiry Expiry,
+    EnergyAmount Energy,
     AccountTransactionPayload Payload
     )
 {
@@ -34,10 +36,9 @@ public sealed record PreparedAccountTransaction(
         var serializedPayloadSize = (uint)serializedPayload.Length;
 
         // Compute the energy cost.
-        var txSpecificCost = this.Payload.GetTransactionSpecificCost();
         var energyCost = CalculateEnergyCost(
             transactionSigner.GetSignatureCount(),
-            txSpecificCost,
+            this.Energy.Value,
             AccountTransactionHeader.BytesLength,
             serializedPayloadSize
         );

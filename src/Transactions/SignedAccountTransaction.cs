@@ -1,5 +1,4 @@
 using Concordium.Grpc.V2;
-using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;
 

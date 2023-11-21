@@ -14,32 +14,6 @@ namespace Concordium.Sdk.Transactions;
 public abstract record AccountTransactionPayload
 {
     /// <summary>
-    /// Prepares the account transaction payload for signing.
-    /// </summary>
-    /// <param name="sender">Address of the sender of the transaction.</param>
-    /// <param name="sequenceNumber">Account sequence number to use for the transaction.</param>
-    /// <param name="expiry">Expiration time of the transaction.</param>
-    public PreparedAccountTransaction Prepare(
-        AccountAddress sender,
-        AccountSequenceNumber sequenceNumber,
-        Expiry expiry
-    ) => new(sender, sequenceNumber, expiry, this);
-
-    /// <summary>
-    /// Gets the transaction specific cost for submitting this type of
-    /// transaction to the chain.
-    ///
-    /// This should reflect the transaction-specific costs defined here:
-    /// https://github.com/Concordium/concordium-base/blob/78f557b8b8c94773a25e4f86a1a92bc323ea2e3d/haskell-src/Concordium/Cost.hs
-    ///
-    /// Note that this is only part of the cost of a transaction, and
-    /// does not include costs associated with verification of signatures
-    /// as well as costs that are incurred at execution time, for instance
-    /// when initializing or updating a smart contract.
-    /// </summary>
-    public abstract ulong GetTransactionSpecificCost();
-
-    /// <summary>
     /// Copies the on-chain data in the binary format expected by the node to a byte array.
     /// </summary>
     public abstract byte[] ToBytes();
@@ -67,10 +41,109 @@ public abstract record AccountTransactionPayload
         PayloadCase.DeployModule => new DeployModule(
             VersionedModuleSourceFactory.From(payload.DeployModule)
         ),
-        PayloadCase.None => throw new NotImplementedException(),
-        PayloadCase.RawPayload => throw new NotImplementedException(),
+        PayloadCase.RawPayload => ParseRawPayload(payload.RawPayload),
         PayloadCase.InitContract => throw new NotImplementedException(),
         PayloadCase.UpdateContract => throw new NotImplementedException(),
+        PayloadCase.None => throw new NotImplementedException(),
         _ => throw new MissingEnumException<PayloadCase>(payload.PayloadCase),
     };
+
+    private static AccountTransactionPayload ParseRawPayload(Google.Protobuf.ByteString payload)
+    {
+        (AccountTransactionPayload?, string?) parsedPayload = (null, null);
+
+        switch ((TransactionType)payload.First())
+        {
+            case TransactionType.Transfer:
+            {
+                Transfer.TryDeserial(payload.ToArray(), out var output);
+                parsedPayload = output;
+                break;
+            }
+            case TransactionType.TransferWithMemo:
+            {
+                TransferWithMemo.TryDeserial(payload.ToArray(), out var output);
+                parsedPayload = output;
+                break;
+            }
+            case TransactionType.RegisterData:
+            {
+                RegisterData.TryDeserial(payload.ToArray(), out var output);
+                parsedPayload = output;
+                break;
+            }
+            case TransactionType.DeployModule:
+            {
+                DeployModule.TryDeserial(payload.ToArray(), out var output);
+                parsedPayload = output;
+                break;
+            }
+
+            case TransactionType.InitContract:
+                break;
+            case TransactionType.Update:
+                break;
+            case TransactionType.AddBaker:
+                break;
+            case TransactionType.RemoveBaker:
+                break;
+            case TransactionType.UpdateBakerStake:
+                break;
+            case TransactionType.UpdateBakerRestakeEarnings:
+                break;
+            case TransactionType.UpdateBakerKeys:
+                break;
+            case TransactionType.UpdateCredentialKeys:
+                break;
+            case TransactionType.EncryptedAmountTransfer:
+                break;
+            case TransactionType.TransferToEncrypted:
+                break;
+            case TransactionType.TransferToPublic:
+                break;
+            case TransactionType.TransferWithSchedule:
+                break;
+            case TransactionType.UpdateCredentials:
+                break;
+            case TransactionType.EncryptedAmountTransferWithMemo:
+                break;
+            case TransactionType.TransferWithScheduleAndMemo:
+                break;
+            case TransactionType.ConfigureBaker:
+                break;
+            case TransactionType.ConfigureDelegation:
+                break;
+            default:
+                throw new NotImplementedException();
+        };
+
+        if (parsedPayload.Item2 != null)
+        {
+            throw new DeserialException(parsedPayload.Item2);
+        }
+        return parsedPayload.Item1;
+    }
+
+    /// <summary>
+    /// Prepares the account transaction payload for signing. Will throw an
+    /// exception if AccountTransaction is of subtype RawPayload. Should only
+    /// be used for testing.
+    /// </summary>
+    /// <param name="sender">Address of the sender of the transaction.</param>
+    /// <param name="sequenceNumber">Account sequence number to use for the transaction.</param>
+    /// <param name="expiry">Expiration time of the transaction.</param>
+    internal PreparedAccountTransaction PrepareWithException(
+        AccountAddress sender,
+        AccountSequenceNumber sequenceNumber,
+        Expiry expiry
+    ) => this switch
+    {
+        Transfer transfer => transfer.Prepare(sender, sequenceNumber, expiry),
+        TransferWithMemo transferWithMemo => transferWithMemo.Prepare(sender, sequenceNumber, expiry),
+        DeployModule deployModule => deployModule.Prepare(sender, sequenceNumber, expiry),
+        RegisterData registerData => registerData.Prepare(sender, sequenceNumber, expiry),
+        _ => throw new NotImplementedException(),
+    };
+
 }
+

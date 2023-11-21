@@ -1,10 +1,8 @@
 using Concordium.Sdk.Exceptions;
-using Concordium.Sdk.Transactions;
-using BlockItemCase = Concordium.Grpc.V2.BlockItem.BlockItemOneofCase;
-using CredentialDeploymentPayloadCase = Concordium.Grpc.V2.CredentialDeployment.PayloadOneofCase;
+using Concordium.Sdk.Types;
 using UpdateInstructionPayloadCase = Concordium.Grpc.V2.UpdateInstructionPayload.PayloadOneofCase;
 
-namespace Concordium.Sdk.Types;
+namespace Concordium.Sdk.Transactions;
 
 /// <summary>
 /// Update instructions are messages which can update the chain parameters. Including which keys are allowed
@@ -66,55 +64,3 @@ public interface IUpdateInstructionPayload { }
 
 /// <summary>A raw payload encoded according to the format defined by the protocol.</summary>
 public sealed record UpdateInstructionPayloadRaw(byte[] RawPayload) : IUpdateInstructionPayload;
-
-/// <summary>
-/// Credential deployments create new accounts. They are not paid for
-/// directly by the sender. Instead, bakers are rewarded by the protocol for
-/// including them.
-/// </summary>
-/// <param name="MessageExpiry">Latest time the credential deployment can included in a block.</param>
-/// <param name="Payload">The payload of the credential deployment.</param>
-public record CredentialDeployment(TransactionTime MessageExpiry, ICredentialPayload Payload) : BlockItemType
-{
-    internal static CredentialDeployment From(Grpc.V2.CredentialDeployment cred) =>
-        new(
-            TransactionTime.From(cred.MessageExpiry),
-            cred.PayloadCase switch
-            {
-                CredentialDeploymentPayloadCase.RawPayload => new CredentialPayloadRaw(cred.RawPayload.ToByteArray()),
-                CredentialDeploymentPayloadCase.None => throw new NotImplementedException(),
-                _ => throw new MissingEnumException<CredentialDeploymentPayloadCase>(cred.PayloadCase),
-            }
-        );
-}
-
-/// <summary>The payload of a Credential Deployment.</summary>
-public interface ICredentialPayload { };
-
-/// <summary>
-/// A raw payload, which is just the encoded payload.
-/// A typed variant might be added in the future.
-/// </summary>
-public sealed record CredentialPayloadRaw(byte[] RawPayload) : ICredentialPayload;
-
-/// <summary>A block item.</summary>
-/// <param name="TransactionHash">The hash of the block item that identifies it to the chain.</param>
-/// <param name="BlockItemType">Either a SignedAccountTransaction, CredentialDeployment or UpdateInstruction.</param>
-public sealed record BlockItem(TransactionHash TransactionHash, BlockItemType BlockItemType)
-{
-    internal static BlockItem From(Grpc.V2.BlockItem blockItem) =>
-        new(
-            TransactionHash.From(blockItem.Hash.ToString()),
-            blockItem.BlockItemCase switch
-            {
-                BlockItemCase.AccountTransaction => SignedAccountTransaction.From(blockItem.AccountTransaction),
-                BlockItemCase.CredentialDeployment => CredentialDeployment.From(blockItem.CredentialDeployment),
-                BlockItemCase.UpdateInstruction => UpdateInstruction.From(blockItem.UpdateInstruction),
-                BlockItemCase.None => throw new NotImplementedException(),
-                _ => throw new MissingEnumException<BlockItemCase>(blockItem.BlockItemCase),
-            }
-        );
-}
-
-/// <summary>Either a SignedAccountTransaction, CredentialDeployment or UpdateInstruction.</summary>
-public abstract record BlockItemType;

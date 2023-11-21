@@ -22,6 +22,27 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
     private const uint BytesLength = sizeof(TransactionType) + AccountAddress.BytesLength + CcdAmount.BytesLength;
 
     /// <summary>
+    /// Prepares the account transaction payload for signing.
+    /// </summary>
+    /// <param name="sender">Address of the sender of the transaction.</param>
+    /// <param name="sequenceNumber">Account sequence number to use for the transaction.</param>
+    /// <param name="expiry">Expiration time of the transaction.</param>
+    public PreparedAccountTransaction Prepare(
+        AccountAddress sender,
+        AccountSequenceNumber sequenceNumber,
+        Expiry expiry
+    ) => new(sender, sequenceNumber, expiry, this.transactionCost, this);
+
+    /// <summary>
+    /// The transaction specific cost for submitting this type of
+    /// transaction to the chain.
+    ///
+    /// This should reflect the transaction-specific costs defined here:
+    /// https://github.com/Concordium/concordium-base/blob/78f557b8b8c94773a25e4f86a1a92bc323ea2e3d/haskell-src/Concordium/Cost.hs
+    /// </summary>
+    internal readonly EnergyAmount transactionCost = new(300);
+
+    /// <summary>
     /// Copies the "transfer" account transaction in the binary format expected by the node to a byte array.
     /// </summary>
     /// <param name="amount">Amount to send.</param>
@@ -76,8 +97,6 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
         output = (new Transfer(amount.accountAddress.Value, account.accountAddress), null);
         return true;
     }
-
-    public override ulong GetTransactionSpecificCost() => 300;
 
     public override byte[] ToBytes() => Serialize(this.Amount, this.Receiver);
 }

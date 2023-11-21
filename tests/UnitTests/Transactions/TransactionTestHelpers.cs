@@ -21,7 +21,15 @@ public static class TransactionTestHelpers
         var sender = AccountAddress.From("3QuZ47NkUk5icdDSvnfX8HiJzCnSRjzi6KwGEmqgQ7hCXNBTWN");
         var sequenceNumber = AccountSequenceNumber.From(123);
         var expiry = Expiry.From(65537);
-        return transaction.Prepare(sender, sequenceNumber, expiry);
+
+        return transaction switch
+        {
+            Transfer transfer => transfer.Prepare(sender, sequenceNumber, expiry),
+            TransferWithMemo transferWithMemo => transferWithMemo.Prepare(sender, sequenceNumber, expiry),
+            DeployModule deployModule => deployModule.Prepare(sender, sequenceNumber, expiry),
+            RegisterData registerData => registerData.Prepare(sender, sequenceNumber, expiry),
+            _ => throw new System.NotImplementedException(),
+        };
     }
 
     /// <summary>
