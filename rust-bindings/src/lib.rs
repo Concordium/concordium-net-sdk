@@ -10,7 +10,6 @@ use concordium_contracts_common::{
 };
 use serde_json::to_string;
 
-pub type HexString = String;
 pub type JsonString = String;
 
 #[repr(C)]
@@ -46,13 +45,14 @@ impl FFIByteOption {
 /// Rust compiler.
 #[no_mangle]
 pub unsafe extern "C" fn schema_display(
-    schema: *const c_char,
+    schema_ptr: *const u8,
+    schema_size: i32,
     schema_version: FFIByteOption,
     result: *mut *mut c_char,
 ) -> bool {
+    let schema = slice_from_ptr(schema_ptr, schema_size as usize);
     assign_result(result, || {
-        let schema_hex = get_str_from_pointer(schema)?;
-        schema_display_aux(schema_hex, schema_version.into_option())
+        schema_display_aux(schema, schema_version.into_option())
     })
 }
 
@@ -79,25 +79,27 @@ pub unsafe extern "C" fn schema_display(
 /// Rust compiler.
 #[no_mangle]
 pub unsafe extern "C" fn get_receive_contract_parameter(
-    schema: *const c_char,
+    schema_ptr: *const u8,
+    schema_size: i32,
     schema_version: FFIByteOption,
     contract_name: *const c_char,
     entrypoint: *const c_char,
-    value: *const c_char,
+    value_ptr: *const u8,
+    value_size: i32,
     result: *mut *mut c_char,
 ) -> bool {
     assign_result(result, || {
-        let schema_hex = get_str_from_pointer(schema)?;
+        let schema = slice_from_ptr(schema_ptr, schema_size as usize);
         let contract_name_str = get_str_from_pointer(contract_name)?;
         let entrypoint_str = get_str_from_pointer(entrypoint)?;
-        let value_hex = get_str_from_pointer(value)?;
+        let value = slice_from_ptr(value_ptr, value_size as usize);
 
         get_receive_contract_parameter_aux(
-            schema_hex,
+            schema,
             schema_version.into_option(),
             &contract_name_str,
             &entrypoint_str,
-            value_hex,
+            value,
         )
     })
 }
@@ -122,22 +124,24 @@ pub unsafe extern "C" fn get_receive_contract_parameter(
 /// Rust compiler.
 #[no_mangle]
 pub unsafe extern "C" fn get_event_contract(
-    schema: *const c_char,
+    schema_ptr: *const u8,
+    schema_size: i32,
     schema_version: FFIByteOption,
     contract_name: *const c_char,
-    value: *const c_char,
+    value_ptr: *const u8,
+    value_size: i32,
     result: *mut *mut c_char,
 ) -> bool {
     assign_result(result, || {
-        let schema_hex = get_str_from_pointer(schema)?;
+        let schema = slice_from_ptr(schema_ptr, schema_size as usize);
         let contract_name_str = get_str_from_pointer(contract_name)?;
-        let value_hex = get_str_from_pointer(value)?;
+        let value = slice_from_ptr(value_ptr, value_size as usize);
 
         get_event_contract_aux(
-            schema_hex,
+            schema,
             schema_version.into_option(),
             &contract_name_str,
-            value_hex,
+            value,
         )
     })
 }
@@ -173,43 +177,45 @@ unsafe fn assign_result<F: FnOnce() -> Result<T>, T: ToString>(
 }
 
 pub fn get_receive_contract_parameter_aux(
-    schema: HexString,
+    schema: &[u8],
     schema_version: Option<u8>,
     contract_name: &str,
     entrypoint: &str,
-    serialized_value: HexString,
+    value: &[u8],
 ) -> Result<String> {
-    let module_schema = VersionedModuleSchema::new(&hex::decode(schema)?, &schema_version)?;
+    let module_schema = VersionedModuleSchema::new(schema, &schema_version)?;
     let parameter_type = module_schema.get_receive_param_schema(contract_name, entrypoint)?;
-    let deserialized = deserialize_type_value(serialized_value, &parameter_type, true)?;
+    let deserialized = deserialize_type_value(value, &parameter_type, true)?;
     Ok(deserialized)
 }
 
-fn schema_display_aux(schema: HexString, schema_version: Option<u8>) -> Result<String> {
-    let decoded = hex::decode(schema)?;
-    let display = VersionedModuleSchema::new(&decoded, &schema_version)?;
+unsafe fn slice_from_ptr<'a, T>(data: *const T, size: usize) -> &'a [T] {
+    std::slice::from_raw_parts(data, size)
+}
+
+fn schema_display_aux(schema: &[u8], schema_version: Option<u8>) -> Result<String> {
+    let display = VersionedModuleSchema::new(schema, &schema_version)?;
     Ok(display.to_string())
 }
 
 fn get_event_contract_aux(
-    schema: HexString,
+    schema: &[u8],
     schema_version: Option<u8>,
     contract_name: &str,
-    serialized_value: HexString,
+    value: &[u8],
 ) -> Result<String> {
-    let module_schema = VersionedModuleSchema::new(&hex::decode(schema)?, &schema_version)?;
+    let module_schema = VersionedModuleSchema::new(schema, &schema_version)?;
     let parameter_type = module_schema.get_event_schema(contract_name)?;
-    let deserialized = deserialize_type_value(serialized_value, &parameter_type, true)?;
+    let deserialized = deserialize_type_value(value, &parameter_type, true)?;
     Ok(deserialized)
 }
 
 fn deserialize_type_value(
-    serialized_value: HexString,
+    value: &[u8],
     value_type: &Type,
     verbose_error_message: bool,
 ) -> Result<String> {
-    let decoded = hex::decode(serialized_value)?;
-    let mut cursor = Cursor::new(decoded);
+    let mut cursor = Cursor::new(value);
     match value_type.to_json(&mut cursor) {
         Ok(v) => Ok(to_string(&v)?),
         Err(e) => Err(anyhow!("{}", e.display(verbose_error_message))),
@@ -238,8 +244,12 @@ mod test {
             "fe00c0843d005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc79";
 
         // Act
-        let display =
-            get_event_contract_aux(schema, schema_version, contract_name, message.to_string())?;
+        let display = get_event_contract_aux(
+            &hex::decode(schema)?,
+            schema_version,
+            contract_name,
+            &hex::decode(message)?,
+        )?;
 
         // Assert
         assert_eq!(display, expected);
@@ -258,11 +268,11 @@ mod test {
 
         // Act
         let display = get_receive_contract_parameter_aux(
-            schema,
+            &hex::decode(schema)?,
             schema_version,
             contract_name,
             entrypoint,
-            message.to_string(),
+            &hex::decode(message)?,
         )?;
 
         // Assert
@@ -290,7 +300,7 @@ mod test {
         let schema = "ffff03010000000c00000054657374436f6e7472616374000000000001150200000003000000466f6f020300000042617202".to_string();
 
         // Act
-        let display = schema_display_aux(schema, schema_version)?;
+        let display = schema_display_aux(&hex::decode(schema)?, schema_version)?;
 
         // Assert
         assert_eq!(display, expected);

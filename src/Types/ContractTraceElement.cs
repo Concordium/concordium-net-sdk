@@ -86,7 +86,7 @@ public sealed record Updated(
             schema.Schema,
             this.ReceiveName.GetContractName(),
             this.ReceiveName.GetEntrypoint(),
-            this.Message.ToHexString(),
+            this.Message,
             schema.Version);
 
     /// <summary>
@@ -94,20 +94,20 @@ public sealed record Updated(
     /// </summary>
     /// <param name="schema">Module schema.</param>
     /// <param name="receiveName">Receive name.</param>
-    /// <param name="message">Message in hexadecimal.</param>
+    /// <param name="message">Message to entrypoint.</param>
     /// <returns><see cref="message"/> deserialized.</returns>
     /// <exception cref="InteropBindingException">Thrown when message wasn't able to be deserialized from schema.</exception>
     public static string? GetDeserializeMessage(
         VersionedModuleSchema schema,
         ReceiveName receiveName,
-        string message
+        Parameter message
     ) =>
         InteropBinding.GetReceiveContractParameter(schema.Schema, receiveName.GetContractName(), receiveName.GetEntrypoint(), message, schema.Version);
 
     /// <summary>
     /// Deserialize events from <see cref="schema"/>.
     /// </summary>
-    /// <param name="schema">Module schema in hexadecimal.</param>
+    /// <param name="schema">Module schema.</param>
     /// <returns>List of deserialized events. Possible null if this was returned from deserialization.</returns>
     /// <exception cref="InteropBindingException">Thrown if an event wasn't able to be deserialized from schema.</exception>
     public IList<string?> GetDeserializedEvents(VersionedModuleSchema schema)
@@ -141,7 +141,7 @@ public sealed record Interrupted(ContractAddress Address, IList<ContractEvent> E
     /// <summary>
     /// Deserialize events from <see cref="schema"/>.
     /// </summary>
-    /// <param name="schema">Module schema in hexadecimal.</param>
+    /// <param name="schema">Module schema.</param>
     /// <param name="contractName">Contract name.</param>
     /// <returns>List of deserialized events. Possible null if this was returned from deserialization.</returns>
     /// <exception cref="InteropBindingException">Thrown if an event wasn't able to be deserialized from schema.</exception>

@@ -23,20 +23,20 @@ public sealed record ContractEvent(byte[] Bytes)
     public string? GetDeserializeEvent(
         VersionedModuleSchema schema,
         ContractIdentifier contractName
-    ) => GetDeserializeEvent(schema, contractName, Convert.ToHexString(this.Bytes));
+    ) => GetDeserializeEvent(schema, contractName, this.Bytes);
 
     /// <summary>
     /// Deserialize event from <see cref="schema"/>.
     /// </summary>
-    /// <param name="schema">Module schema in hexadecimal.</param>
+    /// <param name="schema">Module schema.</param>
     /// <param name="contractName">Contract name.</param>
-    /// <param name="eventInHex">Event in hexadecimal.</param>
-    /// <returns><see cref="eventInHex"/> deserialized.</returns>
+    /// <param name="contractEvent">Event.</param>
+    /// <returns><see cref="contractEvent"/> deserialized.</returns>
     /// <exception cref="InteropBindingException">Thrown when event wasn't able to be deserialized from schema.</exception>
     public static string? GetDeserializeEvent(
         VersionedModuleSchema schema,
         ContractIdentifier contractName,
-        string eventInHex
+        byte[] contractEvent
         ) =>
-        InteropBinding.GetEventContract(schema.Schema, contractName, eventInHex, schema.Version);
+        InteropBinding.GetEventContract(schema.Schema, contractName, contractEvent, schema.Version);
 }

@@ -47,7 +47,7 @@ public sealed class VersionedModuleSourceTests
         if (schema is not null)
         {
             moduleSchema.Should().NotBeNull();
-            moduleSchema!.Schema.Should().Be(schema.ToLowerInvariant());
+            Convert.ToHexString(moduleSchema!.Schema).ToLowerInvariant().Should().Be(schema.ToLowerInvariant());
         }
         else
         {

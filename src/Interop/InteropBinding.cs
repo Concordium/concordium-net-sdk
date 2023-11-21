@@ -15,27 +15,45 @@ internal static class InteropBinding
     private const string DllName = "librust_bindings";
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "schema_display")]
-    private static extern bool SchemaDisplay([MarshalAs(UnmanagedType.LPUTF8Str)] string schema, FfiByteOption schema_version, ref IntPtr result);
+    private static extern bool SchemaDisplay(
+        [MarshalAs(UnmanagedType.LPArray)] byte[] schema,
+        int schema_size,
+        FfiByteOption schema_version,
+        ref IntPtr result);
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_receive_contract_parameter")]
-    private static extern bool GetReceiveContractParameter([MarshalAs(UnmanagedType.LPUTF8Str)] string schema, FfiByteOption schema_version, [MarshalAs(UnmanagedType.LPUTF8Str)] string contract_name, [MarshalAs(UnmanagedType.LPUTF8Str)] string entrypoint, [MarshalAs(UnmanagedType.LPUTF8Str)] string value, ref IntPtr result);
+    private static extern bool GetReceiveContractParameter(
+        [MarshalAs(UnmanagedType.LPArray)] byte[] schema, int schema_size,
+        FfiByteOption schema_version,
+        [MarshalAs(UnmanagedType.LPUTF8Str)] string contract_name,
+        [MarshalAs(UnmanagedType.LPUTF8Str)] string entrypoint,
+        [MarshalAs(UnmanagedType.LPArray)] byte[] value_ptr,
+        int value_size,
+        ref IntPtr result);
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_event_contract")]
-    private static extern bool GetEventContract([MarshalAs(UnmanagedType.LPUTF8Str)] string schema, FfiByteOption schema_version, [MarshalAs(UnmanagedType.LPUTF8Str)] string contract_name, [MarshalAs(UnmanagedType.LPUTF8Str)] string value, ref IntPtr result);
+    private static extern bool GetEventContract(
+        [MarshalAs(UnmanagedType.LPArray)] byte[] schema,
+        int schema_size,
+        FfiByteOption schema_version,
+        [MarshalAs(UnmanagedType.LPUTF8Str)] string contract_name,
+        [MarshalAs(UnmanagedType.LPArray)] byte[] value_ptr,
+        int value_size,
+        ref IntPtr result);
 
     /// <summary>
     /// Get module schema in a human interpretable form.
     /// </summary>
-    /// <param name="schema">Module schema in hexadecimal</param>
+    /// <param name="schema">Module schema</param>
     /// <param name="schemaVersion">Optional schema version if present from module</param>
     /// <returns>Module schema in a human interpretable form</returns>
-    internal static string? SchemaDisplay(string schema, ModuleSchemaVersion? schemaVersion)
+    internal static string? SchemaDisplay(byte[] schema, ModuleSchemaVersion? schemaVersion)
     {
         var ffiOption = FfiByteOption.Create(schemaVersion);
         var result = IntPtr.Zero;
         try
         {
-            var schemaDisplay = SchemaDisplay(schema, ffiOption, ref result);
+            var schemaDisplay = SchemaDisplay(schema, schema.Length, ffiOption, ref result);
             var resultStringAnsi = Marshal.PtrToStringUTF8(result);
 
             if (schemaDisplay)
@@ -57,20 +75,20 @@ internal static class InteropBinding
     ///
     /// Receive parameters are those given to a contract entrypoint on a update call.
     /// </summary>
-    /// <param name="schema">Module schema in hexadecimal</param>
+    /// <param name="schema">Module schema</param>
     /// <param name="contractName">Contract name</param>
     /// <param name="entrypoint">Entrypoint of contract</param>
-    /// <param name="value">Receive parameters in hexadecimal</param>
+    /// <param name="value">Receive parameters</param>
     /// <param name="schemaVersion">Optional schema version if present from module</param>
     /// <returns>Receive parameters in a human interpretable form</returns>
-    internal static string? GetReceiveContractParameter(string schema, ContractIdentifier contractName, EntryPoint entrypoint, string value, ModuleSchemaVersion? schemaVersion)
+    internal static string? GetReceiveContractParameter(byte[] schema, ContractIdentifier contractName, EntryPoint entrypoint, Parameter value, ModuleSchemaVersion? schemaVersion)
     {
         var ffiOption = FfiByteOption.Create(schemaVersion);
         var result = IntPtr.Zero;
         try
         {
             var schemaDisplay =
-                GetReceiveContractParameter(schema, ffiOption, contractName.ContractName, entrypoint.Name, value, ref result);
+                GetReceiveContractParameter(schema, schema.Length, ffiOption, contractName.ContractName, entrypoint.Name, value.Param, value.Param.Length, ref result);
             var resultStringAnsi = Marshal.PtrToStringUTF8(result);
 
             if (schemaDisplay)
@@ -90,18 +108,18 @@ internal static class InteropBinding
     /// <summary>
     /// Get contract event in a human interpretable form.
     /// </summary>
-    /// <param name="schema">Module schema in hexadecimal</param>
+    /// <param name="schema">Module schema</param>
     /// <param name="contractName">Contract name</param>
-    /// <param name="value">Contract event in hexadecimal</param>
+    /// <param name="value">Contract event </param>
     /// <param name="schemaVersion">Optional schema version if present from module</param>
     /// <returns>Contract event in a human interpretable form</returns>
-    internal static string? GetEventContract(string schema, ContractIdentifier contractName, string value, ModuleSchemaVersion? schemaVersion)
+    internal static string? GetEventContract(byte[] schema, ContractIdentifier contractName, byte[] value, ModuleSchemaVersion? schemaVersion)
     {
         var ffiOption = FfiByteOption.Create(schemaVersion);
         var result = IntPtr.Zero;
         try
         {
-            var schemaDisplay = GetEventContract(schema, ffiOption, contractName.ContractName, value, ref result);
+            var schemaDisplay = GetEventContract(schema, schema.Length, ffiOption, contractName.ContractName, value, value.Length, ref result);
             var resultStringAnsi = Marshal.PtrToStringUTF8(result);
 
             if (schemaDisplay)

@@ -19,7 +19,7 @@ public sealed class ContractTraceElementTests
         const string message = "005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc790000";
         const string expectedMessage = /*lang=json,strict*/ "{\"data\":\"\",\"to\":{\"Account\":[\"3fpkgmKcGDKGgsDhUQEBAQXbFZJQw97JmbuhzmvujYuG1sQxtV\"]}}";
         _ = ReceiveName.TryParse($"{contractName}.{entrypoint}", out var result);
-        var versionedModuleSchema = new VersionedModuleSchema(schema, ModuleSchemaVersion.Undefined);
+        var versionedModuleSchema = VersionedModuleSchema.Create(schema, ModuleSchemaVersion.Undefined);
 
         var updated = new Updated(
             ContractVersion.V0,
@@ -47,7 +47,7 @@ public sealed class ContractTraceElementTests
         const string eventMessage = "fe00c0843d005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc79";
         const string expectedEvent = /*lang=json,strict*/ "{\"Mint\":{\"amount\":\"1000000\",\"owner\":{\"Account\":[\"3fpkgmKcGDKGgsDhUQEBAQXbFZJQw97JmbuhzmvujYuG1sQxtV\"]},\"token_id\":\"\"}}";
         _ = ReceiveName.TryParse($"{contractName}.{entrypoint}", out var result);
-        var versionedModuleSchema = new VersionedModuleSchema(schema, ModuleSchemaVersion.Undefined);
+        var versionedModuleSchema = VersionedModuleSchema.Create(schema, ModuleSchemaVersion.Undefined);
 
         var updated = new Updated(
             ContractVersion.V0,
@@ -73,7 +73,7 @@ public sealed class ContractTraceElementTests
         const string contractName = "cis2_wCCD";
         const string eventMessage = "fe00c0843d005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc79";
         const string expectedEvent = /*lang=json,strict*/ "{\"Mint\":{\"amount\":\"1000000\",\"owner\":{\"Account\":[\"3fpkgmKcGDKGgsDhUQEBAQXbFZJQw97JmbuhzmvujYuG1sQxtV\"]},\"token_id\":\"\"}}";
-        var versionedModuleSchema = new VersionedModuleSchema(schema, ModuleSchemaVersion.Undefined);
+        var versionedModuleSchema = VersionedModuleSchema.Create(schema, ModuleSchemaVersion.Undefined);
 
         var interrupted = new Interrupted(
             new ContractAddress(1, 0),
