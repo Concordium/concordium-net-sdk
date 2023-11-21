@@ -50,7 +50,7 @@ public class ReceiveNameTests
         var actual = result.ReceiveName!.GetContractName();
 
         // Assert
-        actual.Should().Be(contractName);
+        actual.ContractName.Should().Be(contractName);
     }
 
     [Fact]
@@ -66,6 +66,6 @@ public class ReceiveNameTests
         var actual = result.ReceiveName!.GetEntrypoint();
 
         // Assert
-        actual.Should().Be(contractEntrypoint);
+        actual.Name.Should().Be(contractEntrypoint);
     }
 }
