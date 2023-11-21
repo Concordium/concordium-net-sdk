@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Text.Json;
 using Application.Exceptions;
 using Concordium.Sdk.Types;
 
@@ -45,8 +46,8 @@ internal static class InteropBinding
     /// Get module schema in a human interpretable form.
     /// </summary>
     /// <param name="schema">Module schema</param>
-    /// <returns>Module schema in a human interpretable form</returns>
-    internal static string? SchemaDisplay(VersionedModuleSchema schema)
+    /// <returns>Module schema as a json string</returns>
+    internal static string SchemaDisplay(VersionedModuleSchema schema)
     {
         var ffiOption = FfiByteOption.Create(schema.Version);
         var result = IntPtr.Zero;
@@ -55,7 +56,7 @@ internal static class InteropBinding
             var schemaDisplay = SchemaDisplay(schema.Schema, schema.Schema.Length, ffiOption, ref result);
             var resultStringAnsi = Marshal.PtrToStringUTF8(result);
 
-            if (schemaDisplay)
+            if (schemaDisplay && resultStringAnsi != null)
             {
                 return resultStringAnsi;
             }
@@ -78,8 +79,8 @@ internal static class InteropBinding
     /// <param name="contractName">Contract name</param>
     /// <param name="entrypoint">Entrypoint of contract</param>
     /// <param name="value">Receive parameters</param>
-    /// <returns>Receive parameters in a human interpretable form</returns>
-    internal static string? GetReceiveContractParameter(VersionedModuleSchema schema, ContractIdentifier contractName, EntryPoint entrypoint, Parameter value)
+    /// <returns>Receive parameters as a json string</returns>
+    internal static string GetReceiveContractParameter(VersionedModuleSchema schema, ContractIdentifier contractName, EntryPoint entrypoint, Parameter value)
     {
         var ffiOption = FfiByteOption.Create(schema.Version);
         var result = IntPtr.Zero;
@@ -89,7 +90,7 @@ internal static class InteropBinding
                 GetReceiveContractParameter(schema.Schema, schema.Schema.Length, ffiOption, contractName.ContractName, entrypoint.Name, value.Param, value.Param.Length, ref result);
             var resultStringAnsi = Marshal.PtrToStringUTF8(result);
 
-            if (schemaDisplay)
+            if (schemaDisplay && resultStringAnsi != null)
             {
                 return resultStringAnsi;
             }
@@ -110,8 +111,8 @@ internal static class InteropBinding
     /// <param name="contractName">Contract name</param>
     /// <param name="contractEvent">Contract event </param>
     /// <param name="schemaVersion">Optional schema version if present from module</param>
-    /// <returns>Contract event in a human interpretable form</returns>
-    internal static string? GetEventContract(VersionedModuleSchema schema, ContractIdentifier contractName, ContractEvent contractEvent)
+    /// <returns>Contract event as a json string</returns>
+    internal static string GetEventContract(VersionedModuleSchema schema, ContractIdentifier contractName, ContractEvent contractEvent)
     {
         var ffiOption = FfiByteOption.Create(schema.Version);
         var result = IntPtr.Zero;
@@ -120,7 +121,7 @@ internal static class InteropBinding
             var schemaDisplay = GetEventContract(schema.Schema, schema.Schema.Length, ffiOption, contractName.ContractName, contractEvent.Bytes, contractEvent.Bytes.Length, ref result);
             var resultStringAnsi = Marshal.PtrToStringUTF8(result);
 
-            if (schemaDisplay)
+            if (schemaDisplay && resultStringAnsi != null)
             {
                 return resultStringAnsi;
             }

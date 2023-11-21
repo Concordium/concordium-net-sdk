@@ -5,7 +5,7 @@ namespace Application.Exceptions;
 /// </summary>
 internal sealed class InteropBindingException : Exception
 {
-    internal const string EmptyErrorMessage = "Empty error message returned";
+    private const string EmptyErrorMessage = "Empty error message returned";
 
     internal static InteropBindingException Create(string? message) =>
         message != null ? new InteropBindingException(message) : Empty();

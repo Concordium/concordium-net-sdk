@@ -194,9 +194,9 @@ public sealed record RejectedReceive(int RejectReason, ContractAddress ContractA
     /// Deserialize message from <see cref="schema"/>.
     /// </summary>
     /// <param name="schema">Versioned module schema.</param>
-    /// <returns><see cref="Parameter"/> deserialized.</returns>
+    /// <returns><see cref="Parameter"/> deserialized as json.</returns>
     /// <exception cref="InteropBindingException">Thrown when message wasn't able to be deserialized form schema.</exception>
-    public string? GetDeserializeMessage(VersionedModuleSchema schema) =>
+    public string GetDeserializeMessage(VersionedModuleSchema schema) =>
         Updated.GetDeserializeMessage(schema, this.ReceiveName, this.Parameter);
 }
 /// <summary>
