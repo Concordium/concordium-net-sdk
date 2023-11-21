@@ -22,7 +22,7 @@ public sealed record ContractEvent(byte[] Bytes)
     /// <exception cref="InteropBindingException">Thrown when event wasn't able to be deserialized from schema.</exception>
     public string? GetDeserializeEvent(
         VersionedModuleSchema schema,
-        string contractName
+        ContractIdentifier contractName
     ) => GetDeserializeEvent(schema, contractName, Convert.ToHexString(this.Bytes));
 
     /// <summary>
@@ -35,7 +35,7 @@ public sealed record ContractEvent(byte[] Bytes)
     /// <exception cref="InteropBindingException">Thrown when event wasn't able to be deserialized from schema.</exception>
     public static string? GetDeserializeEvent(
         VersionedModuleSchema schema,
-        string contractName,
+        ContractIdentifier contractName,
         string eventInHex
         ) =>
         InteropBinding.GetEventContract(schema.Schema, contractName, eventInHex, schema.Version);

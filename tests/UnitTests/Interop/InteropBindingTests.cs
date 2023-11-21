@@ -51,7 +51,7 @@ public class InteropBindingTests
         const string value = "005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc790000";
 
         // Act
-        var message = InteropBinding.GetReceiveContractParameter(schema, contractName, entrypoint, value, null);
+        var message = InteropBinding.GetReceiveContractParameter(schema, new ContractIdentifier(contractName), new EntryPoint(entrypoint), value, null);
 
         // Assert
         await Verifier.Verify(message)
@@ -68,7 +68,7 @@ public class InteropBindingTests
         const string value = "fe00c0843d005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc79";
 
         // Act
-        var message = InteropBinding.GetEventContract(schema, contractName, value, ModuleSchemaVersion.Undefined);
+        var message = InteropBinding.GetEventContract(schema, new ContractIdentifier(contractName), value, ModuleSchemaVersion.Undefined);
 
         // Assert
         await Verifier.Verify(message)

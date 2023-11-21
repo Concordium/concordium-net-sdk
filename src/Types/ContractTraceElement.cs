@@ -145,7 +145,7 @@ public sealed record Interrupted(ContractAddress Address, IList<ContractEvent> E
     /// <param name="contractName">Contract name.</param>
     /// <returns>List of deserialized events. Possible null if this was returned from deserialization.</returns>
     /// <exception cref="InteropBindingException">Thrown if an event wasn't able to be deserialized from schema.</exception>
-    public IList<string?> GetDeserializedEvents(VersionedModuleSchema schema, string contractName)
+    public IList<string?> GetDeserializedEvents(VersionedModuleSchema schema, ContractIdentifier contractName)
     {
         var deserialized = new List<string?>(this.Events.Count);
         foreach (var contractEvent in this.Events)

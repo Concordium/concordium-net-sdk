@@ -20,7 +20,7 @@ public sealed class ContractEventTests
         var contractEvent = new ContractEvent(Convert.FromHexString(eventMessage));
 
         // Act
-        var events = contractEvent.GetDeserializeEvent(versionedModuleSchema, contractName);
+        var events = contractEvent.GetDeserializeEvent(versionedModuleSchema, new ContractIdentifier(contractName));
 
         // Assert
         events.Should().Be(expectedEvent);

@@ -63,14 +63,14 @@ internal static class InteropBinding
     /// <param name="value">Receive parameters in hexadecimal</param>
     /// <param name="schemaVersion">Optional schema version if present from module</param>
     /// <returns>Receive parameters in a human interpretable form</returns>
-    internal static string? GetReceiveContractParameter(string schema, string contractName, string entrypoint, string value, ModuleSchemaVersion? schemaVersion)
+    internal static string? GetReceiveContractParameter(string schema, ContractIdentifier contractName, EntryPoint entrypoint, string value, ModuleSchemaVersion? schemaVersion)
     {
         var ffiOption = FfiByteOption.Create(schemaVersion);
         var result = IntPtr.Zero;
         try
         {
             var schemaDisplay =
-                GetReceiveContractParameter(schema, ffiOption, contractName, entrypoint, value, ref result);
+                GetReceiveContractParameter(schema, ffiOption, contractName.ContractName, entrypoint.Name, value, ref result);
             var resultStringAnsi = Marshal.PtrToStringUTF8(result);
 
             if (schemaDisplay)
@@ -95,13 +95,13 @@ internal static class InteropBinding
     /// <param name="value">Contract event in hexadecimal</param>
     /// <param name="schemaVersion">Optional schema version if present from module</param>
     /// <returns>Contract event in a human interpretable form</returns>
-    internal static string? GetEventContract(string schema, string contractName, string value, ModuleSchemaVersion? schemaVersion)
+    internal static string? GetEventContract(string schema, ContractIdentifier contractName, string value, ModuleSchemaVersion? schemaVersion)
     {
         var ffiOption = FfiByteOption.Create(schemaVersion);
         var result = IntPtr.Zero;
         try
         {
-            var schemaDisplay = GetEventContract(schema, ffiOption, contractName, value, ref result);
+            var schemaDisplay = GetEventContract(schema, ffiOption, contractName.ContractName, value, ref result);
             var resultStringAnsi = Marshal.PtrToStringUTF8(result);
 
             if (schemaDisplay)

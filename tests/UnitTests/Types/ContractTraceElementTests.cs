@@ -80,7 +80,7 @@ public sealed class ContractTraceElementTests
             new List<ContractEvent> { new(Convert.FromHexString(eventMessage)) });
 
         // Act
-        var events = interrupted.GetDeserializedEvents(versionedModuleSchema, contractName);
+        var events = interrupted.GetDeserializedEvents(versionedModuleSchema, new ContractIdentifier(contractName));
 
         // Assert
         events.Should().BeEquivalentTo(new List<string> { expectedEvent });
