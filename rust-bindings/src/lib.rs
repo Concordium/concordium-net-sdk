@@ -159,7 +159,7 @@ pub unsafe extern "C" fn get_event_contract(
 /// # Returns
 ///
 /// A boolean, that indicates whether the computation was successful or not.
-fn assign_result<'a, F: FnOnce() -> Result<Vec<u8>>>(callback: ResultCallback, f: F) -> bool {
+fn assign_result<F: FnOnce() -> Result<Vec<u8>>>(callback: ResultCallback, f: F) -> bool {
     match f() {
         Ok(output) => {
             let out_lenght = output.len() as i32;
@@ -177,7 +177,7 @@ fn assign_result<'a, F: FnOnce() -> Result<Vec<u8>>>(callback: ResultCallback, f
     }
 }
 
-pub fn get_receive_contract_parameter_aux<'a>(
+pub fn get_receive_contract_parameter_aux(
     schema: &[u8],
     schema_version: Option<u8>,
     contract_name: &str,
@@ -199,7 +199,7 @@ fn schema_display_aux(schema: &[u8], schema_version: Option<u8>) -> Result<Vec<u
     Ok(display.to_string().into_bytes())
 }
 
-fn get_event_contract_aux<'a>(
+fn get_event_contract_aux(
     schema: &[u8],
     schema_version: Option<u8>,
     contract_name: &str,
