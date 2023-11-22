@@ -48,13 +48,15 @@ pub unsafe extern "C" fn schema_display(
     schema_ptr: *const u8,
     schema_size: i32,
     schema_version: FFIByteOption,
-    result: *mut *mut c_char,
+    callback: ResultCallback,
 ) -> bool {
     let schema = slice_from_ptr(schema_ptr, schema_size as usize);
-    assign_result(result, || {
+    assign_result(callback, || {
         schema_display_aux(schema, schema_version.into_option())
     })
 }
+
+type ResultCallback = unsafe extern "C" fn(*mut i8) -> ();
 
 /// Get contract receive parameters in a human interpretable form.
 ///
@@ -86,9 +88,9 @@ pub unsafe extern "C" fn get_receive_contract_parameter(
     entrypoint: *const c_char,
     value_ptr: *const u8,
     value_size: i32,
-    result: *mut *mut c_char,
+    callback: ResultCallback,
 ) -> bool {
-    assign_result(result, || {
+    assign_result(callback, || {
         let schema = slice_from_ptr(schema_ptr, schema_size as usize);
         let contract_name_str = get_str_from_pointer(contract_name)?;
         let entrypoint_str = get_str_from_pointer(entrypoint)?;
@@ -130,9 +132,9 @@ pub unsafe extern "C" fn get_event_contract(
     contract_name: *const c_char,
     value_ptr: *const u8,
     value_size: i32,
-    result: *mut *mut c_char,
+    callback: ResultCallback,
 ) -> bool {
-    assign_result(result, || {
+    assign_result(callback, || {
         let schema = slice_from_ptr(schema_ptr, schema_size as usize);
         let contract_name_str = get_str_from_pointer(contract_name)?;
         let value = slice_from_ptr(value_ptr, value_size as usize);
@@ -161,16 +163,36 @@ pub unsafe extern "C" fn get_event_contract(
 ///
 /// This function is marked as unsafe because it deferences a raw pointer.
 unsafe fn assign_result<F: FnOnce() -> Result<T>, T: ToString>(
-    target: *mut *mut c_char,
+    callback: ResultCallback,
     f: F,
 ) -> bool {
     match f() {
-        Ok(output) => {
-            *target = CString::new(output.to_string()).unwrap().into_raw();
-            true
-        }
+        Ok(output) => match CString::new(output.to_string()) {
+            Ok(output_string) => {
+                let target = output_string.into_raw();
+                callback(target);
+                drop(CString::from_raw(target));
+                true
+            }
+            Err(e) => {
+                let error_string = match CString::new(e.to_string()) {
+                    Ok(e_string) => e_string,
+                    Err(_) => CString::new("NulError when creating CString").unwrap(),
+                };
+                let target = error_string.into_raw();
+                callback(target);
+                drop(CString::from_raw(target));
+                false
+            }
+        },
         Err(e) => {
-            *target = CString::new(e.to_string()).unwrap().into_raw();
+            let error_string = match CString::new(e.to_string()) {
+                Ok(e_string) => e_string,
+                Err(_) => CString::new("NulError when creating CString").unwrap(),
+            };
+            let target = error_string.into_raw();
+            callback(target);
+            drop(CString::from_raw(target));
             false
         }
     }

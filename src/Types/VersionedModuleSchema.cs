@@ -1,4 +1,4 @@
-using Application.Exceptions;
+using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Interop;
 
 namespace Concordium.Sdk.Types;

@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
-using Application.Exceptions;
+using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Types;
 
 
@@ -19,7 +19,7 @@ internal static class InteropBinding
         [MarshalAs(UnmanagedType.LPArray)] byte[] schema,
         int schema_size,
         FfiByteOption schema_version,
-        ref IntPtr result);
+        [MarshalAs(UnmanagedType.FunctionPtr)]SetResultCallback callback);
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_receive_contract_parameter")]
     private static extern bool GetReceiveContractParameter(
@@ -29,7 +29,7 @@ internal static class InteropBinding
         [MarshalAs(UnmanagedType.LPUTF8Str)] string entrypoint,
         [MarshalAs(UnmanagedType.LPArray)] byte[] value_ptr,
         int value_size,
-        ref IntPtr result);
+        [MarshalAs(UnmanagedType.FunctionPtr)]SetResultCallback callback);
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_event_contract")]
     private static extern bool GetEventContract(
@@ -39,34 +39,32 @@ internal static class InteropBinding
         [MarshalAs(UnmanagedType.LPUTF8Str)] string contract_name,
         [MarshalAs(UnmanagedType.LPArray)] byte[] value_ptr,
         int value_size,
-        ref IntPtr result);
+        [MarshalAs(UnmanagedType.FunctionPtr)]SetResultCallback callback);
+
+    /// <summary>
+    /// Callback to set result of interop call.
+    /// </summary>
+    private delegate void SetResultCallback(string input);
 
     /// <summary>
     /// Get module schema in a human interpretable form.
     /// </summary>
     /// <param name="schema">Module schema</param>
-    /// <returns>Module schema as a json string</returns>
+    /// <returns>Module schema as json.</returns>
     internal static string SchemaDisplay(VersionedModuleSchema schema)
     {
         var ffiOption = FfiByteOption.Create(schema.Version);
-        var result = IntPtr.Zero;
-        try
-        {
-            var schemaDisplay = SchemaDisplay(schema.Schema, schema.Schema.Length, ffiOption, ref result);
-            var resultStringAnsi = Marshal.PtrToStringUTF8(result);
+        string? result = null;
 
-            if (schemaDisplay && resultStringAnsi != null)
-            {
-                return resultStringAnsi;
-            }
+        var schemaDisplay = SchemaDisplay(schema.Schema, schema.Schema.Length, ffiOption, input => result = input);
 
-            var interopException = InteropBindingException.Create(resultStringAnsi);
-            throw interopException;
-        }
-        finally
+        if (schemaDisplay && result != null)
         {
-            FreeIfNonzero(result);
+            return result;
         }
+
+        var interopException = InteropBindingException.Create(result);
+        throw interopException;
     }
 
     /// <summary>
@@ -78,29 +76,21 @@ internal static class InteropBinding
     /// <param name="contractName">Contract name</param>
     /// <param name="entrypoint">Entrypoint of contract</param>
     /// <param name="value">Receive parameters</param>
-    /// <returns>Receive parameters as a json string</returns>
+    /// <returns>Receive parameters as json.</returns>
     internal static string GetReceiveContractParameter(VersionedModuleSchema schema, ContractIdentifier contractName, EntryPoint entrypoint, Parameter value)
     {
         var ffiOption = FfiByteOption.Create(schema.Version);
-        var result = IntPtr.Zero;
-        try
-        {
-            var schemaDisplay =
-                GetReceiveContractParameter(schema.Schema, schema.Schema.Length, ffiOption, contractName.ContractName, entrypoint.Name, value.Param, value.Param.Length, ref result);
-            var resultStringAnsi = Marshal.PtrToStringUTF8(result);
+        string? result = null;
+        var receiveContractParameter =
+            GetReceiveContractParameter(schema.Schema, schema.Schema.Length, ffiOption, contractName.ContractName, entrypoint.Name, value.Param, value.Param.Length, input => result = input);
 
-            if (schemaDisplay && resultStringAnsi != null)
-            {
-                return resultStringAnsi;
-            }
-
-            var interopException = InteropBindingException.Create(resultStringAnsi);
-            throw interopException;
-        }
-        finally
+        if (receiveContractParameter && result != null)
         {
-            FreeIfNonzero(result);
+            return result;
         }
+
+        var interopException = InteropBindingException.Create(result);
+        throw interopException;
     }
 
     /// <summary>
@@ -109,29 +99,20 @@ internal static class InteropBinding
     /// <param name="schema">Module schema</param>
     /// <param name="contractName">Contract name</param>
     /// <param name="contractEvent">Contract event </param>
-    /// <param name="schemaVersion">Optional schema version if present from module</param>
-    /// <returns>Contract event as a json string</returns>
+    /// <returns>Contract event as json.</returns>
     internal static string GetEventContract(VersionedModuleSchema schema, ContractIdentifier contractName, ContractEvent contractEvent)
     {
         var ffiOption = FfiByteOption.Create(schema.Version);
-        var result = IntPtr.Zero;
-        try
-        {
-            var schemaDisplay = GetEventContract(schema.Schema, schema.Schema.Length, ffiOption, contractName.ContractName, contractEvent.Bytes, contractEvent.Bytes.Length, ref result);
-            var resultStringAnsi = Marshal.PtrToStringUTF8(result);
+        string? result = null;
+        var schemaDisplay = GetEventContract(schema.Schema, schema.Schema.Length, ffiOption, contractName.ContractName, contractEvent.Bytes, contractEvent.Bytes.Length, input => result = input);
 
-            if (schemaDisplay && resultStringAnsi != null)
-            {
-                return resultStringAnsi;
-            }
-
-            var interopException = InteropBindingException.Create(resultStringAnsi);
-            throw interopException;
-        }
-        finally
+        if (schemaDisplay && result != null)
         {
-            FreeIfNonzero(result);
+            return result;
         }
+
+        var interopException = InteropBindingException.Create(result);
+        throw interopException;
     }
 
     private static void FreeIfNonzero(IntPtr ptr)

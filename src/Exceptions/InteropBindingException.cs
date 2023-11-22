@@ -1,4 +1,4 @@
-namespace Application.Exceptions;
+namespace Concordium.Sdk.Exceptions;
 
 /// <summary>
 /// Thrown when a interop call failed with possible error as message.

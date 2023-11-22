@@ -1,4 +1,3 @@
-using Application.Exceptions;
 using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Helpers;
 using Concordium.Sdk.Interop;
