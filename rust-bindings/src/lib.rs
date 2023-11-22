@@ -1,7 +1,4 @@
-use std::{
-    ffi::CStr,
-    os::raw::c_char,
-};
+use std::{ffi::CStr, os::raw::c_char};
 
 use anyhow::{anyhow, Result};
 use concordium_contracts_common::{
@@ -12,7 +9,7 @@ use serde_json::to_vec;
 
 pub type JsonString = String;
 
-/// Callback allowing the callee to copy results from an array into their environment. 
+/// Callback allowing the callee to copy results from an array into their environment.
 /// The callee is expected to handle all errors.
 type ResultCallback = extern "C" fn(*const u8, i32) -> ();
 
@@ -162,10 +159,7 @@ pub unsafe extern "C" fn get_event_contract(
 /// # Returns
 ///
 /// A boolean, that indicates whether the computation was successful or not.
-fn assign_result<'a, F: FnOnce() -> Result<Vec<u8>>>(
-    callback: ResultCallback,
-    f: F,
-) -> bool {
+fn assign_result<'a, F: FnOnce() -> Result<Vec<u8>>>(callback: ResultCallback, f: F) -> bool {
     match f() {
         Ok(output) => {
             let out_lenght = output.len() as i32;
