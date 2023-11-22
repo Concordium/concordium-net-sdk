@@ -9,8 +9,8 @@ use serde_json::to_vec;
 
 pub type JsonString = String;
 
-/// Callback allowing the callee to copy results from an array into their environment.
-/// The callee is expected to handle all errors.
+/// Callback allowing the callee to copy results from an array into their
+/// environment. The callee is expected to handle all errors.
 type ResultCallback = extern "C" fn(*const u8, i32) -> ();
 
 #[repr(C)]
