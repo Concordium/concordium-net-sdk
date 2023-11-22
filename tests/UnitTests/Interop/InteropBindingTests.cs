@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using Concordium.Sdk.Interop;
 using Concordium.Sdk.Types;
@@ -23,7 +24,7 @@ public class InteropBindingTests
         var message = InteropBinding.SchemaDisplay(versionedModuleSchema);
 
         // Assert
-        await Verifier.Verify(message)
+        await Verifier.Verify(Encoding.UTF8.GetString(message))
             .UseFileName("module-versioned-schema")
             .UseDirectory("__snapshots__");
     }
@@ -39,7 +40,7 @@ public class InteropBindingTests
         var message = InteropBinding.SchemaDisplay(versionedModuleSchema);
 
         // Assert
-        await Verifier.Verify(message)
+        await Verifier.Verify(Encoding.UTF8.GetString(message))
             .UseFileName("module-schema")
             .UseDirectory("__snapshots__");
     }
@@ -61,7 +62,7 @@ public class InteropBindingTests
         var message = InteropBinding.GetReceiveContractParameter(versionedModuleSchema, contractIdentifier, entryPoint, parameter);
 
         // Assert
-        await Verifier.Verify(message)
+        await Verifier.Verify(Encoding.UTF8.GetString(message))
             .UseFileName("receive-params")
             .UseDirectory("__snapshots__");
     }
@@ -81,7 +82,7 @@ public class InteropBindingTests
         var message = InteropBinding.GetEventContract(versionedModuleSchema, contractIdentifier, contractEvent);
 
         // Assert
-        await Verifier.Verify(message)
+        await Verifier.Verify(Encoding.UTF8.GetString(message))
             .UseFileName("event")
             .UseDirectory("__snapshots__");
     }

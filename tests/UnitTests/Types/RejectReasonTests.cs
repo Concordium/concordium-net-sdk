@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 using Concordium.Sdk.Types;
 using FluentAssertions;
 using Xunit;
@@ -30,6 +31,6 @@ public sealed class RejectReasonTests
         var deserializeMessage = rejectedReceive.GetDeserializeMessage(versionedModuleSchema);
 
         // Assert
-        deserializeMessage.Should().Be(expectedMessage);
+        Encoding.UTF8.GetString(deserializeMessage).Should().Be(expectedMessage);
     }
 }

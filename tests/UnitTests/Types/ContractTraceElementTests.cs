@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
 using Concordium.Sdk.Types;
 using FluentAssertions;
 using Xunit;
@@ -34,7 +36,7 @@ public sealed class ContractTraceElementTests
         var deserializeMessage = updated.GetDeserializeMessage(versionedModuleSchema);
 
         // Assert
-        deserializeMessage.Should().Be(expectedMessage);
+        Encoding.UTF8.GetString(deserializeMessage).Should().Be(expectedMessage);
     }
 
     [Fact]
@@ -62,7 +64,7 @@ public sealed class ContractTraceElementTests
         var events = updated.GetDeserializedEvents(versionedModuleSchema);
 
         // Assert
-        events.Should().BeEquivalentTo(new List<string> { expectedEvent });
+        events.Select(e => Encoding.UTF8.GetString(e)).Should().BeEquivalentTo(new List<string> { expectedEvent });
     }
 
     [Fact]
@@ -83,6 +85,6 @@ public sealed class ContractTraceElementTests
         var events = interrupted.GetDeserializedEvents(versionedModuleSchema, new ContractIdentifier(contractName));
 
         // Assert
-        events.Should().BeEquivalentTo(new List<string> { expectedEvent });
+        events.Select(e => Encoding.UTF8.GetString(e)).Should().BeEquivalentTo(new List<string> { expectedEvent });
     }
 }

@@ -1,5 +1,5 @@
 use std::{
-    ffi::{CStr, CString},
+    ffi::CStr,
     os::raw::c_char,
 };
 
@@ -8,11 +8,13 @@ use concordium_contracts_common::{
     schema::{Type, VersionedModuleSchema},
     Cursor,
 };
-use serde_json::to_string;
+use serde_json::to_vec;
 
 pub type JsonString = String;
 
-type ResultCallback = unsafe extern "C" fn(*mut i8) -> ();
+/// Callback allowing the callee to copy results from an array into their environment. 
+/// The callee is expected to handle all errors.
+type ResultCallback = extern "C" fn(*const u8, i32) -> ();
 
 #[repr(C)]
 pub struct FFIByteOption {
@@ -45,10 +47,6 @@ impl FFIByteOption {
 ///
 /// The same caveats as for [`std::slice::from_raw_parts`] apply in
 /// relation to safety and lifetimes.
-///
-/// The callback given must also ensure safety and handle any errors
-/// within that function.
-/// Rust compiler.
 #[no_mangle]
 pub unsafe extern "C" fn schema_display(
     schema_ptr: *const u8,
@@ -84,9 +82,6 @@ pub unsafe extern "C" fn schema_display(
 ///
 /// The same caveats as for [`std::slice::from_raw_parts`] apply in
 /// relation to safety and lifetimes.
-///
-/// The callback given must also ensure safety and handle any errors
-/// within that function.
 #[no_mangle]
 pub unsafe extern "C" fn get_receive_contract_parameter(
     schema_ptr: *const u8,
@@ -132,9 +127,6 @@ pub unsafe extern "C" fn get_receive_contract_parameter(
 ///
 /// The same caveats as for [`std::slice::from_raw_parts`] apply in
 /// relation to safety and lifetimes.
-///
-/// The callback given must also ensure safety and handle any errors
-/// within that function.
 #[no_mangle]
 pub unsafe extern "C" fn get_event_contract(
     schema_ptr: *const u8,
@@ -164,60 +156,40 @@ pub unsafe extern "C" fn get_event_contract(
 ///
 /// # Arguments
 ///
-/// * 'callback' - Callback which can be used to set resulting output
-/// * 'f' - callback function, which result should be assigned to target.
+/// * 'callback' - callback enabling the callee to copy the result.
+/// * 'f' - callback function, which generates result.
 ///
 /// # Returns
 ///
 /// A boolean, that indicates whether the computation was successful or not.
-///
-/// # Safety
-///
-/// The callback given must also ensure safety and handle any errors
-/// within that function.
-unsafe fn assign_result<F: FnOnce() -> Result<T>, T: ToString>(
+fn assign_result<'a, F: FnOnce() -> Result<Vec<u8>>>(
     callback: ResultCallback,
     f: F,
 ) -> bool {
     match f() {
-        Ok(output) => match CString::new(output.to_string()) {
-            Ok(output_string) => {
-                let target = output_string.into_raw();
-                callback(target);
-                drop(CString::from_raw(target));
-                true
-            }
-            Err(e) => {
-                let error_string = match CString::new(e.to_string()) {
-                    Ok(e_string) => e_string,
-                    Err(_) => CString::new("NulError when creating CString").unwrap(),
-                };
-                let target = error_string.into_raw();
-                callback(target);
-                drop(CString::from_raw(target));
-                false
-            }
-        },
+        Ok(output) => {
+            let out_lenght = output.len() as i32;
+            let ptr = output.as_ptr();
+            callback(ptr, out_lenght);
+            true
+        }
         Err(e) => {
-            let error_string = match CString::new(e.to_string()) {
-                Ok(e_string) => e_string,
-                Err(_) => CString::new("NulError when creating CString").unwrap(),
-            };
-            let target = error_string.into_raw();
-            callback(target);
-            drop(CString::from_raw(target));
+            let error = format!("{}", e).into_bytes();
+            let error_length = error.len() as i32;
+            let ptr = error.as_ptr();
+            callback(ptr, error_length);
             false
         }
     }
 }
 
-pub fn get_receive_contract_parameter_aux(
+pub fn get_receive_contract_parameter_aux<'a>(
     schema: &[u8],
     schema_version: Option<u8>,
     contract_name: &str,
     entrypoint: &str,
     value: &[u8],
-) -> Result<String> {
+) -> Result<Vec<u8>> {
     let module_schema = VersionedModuleSchema::new(schema, &schema_version)?;
     let parameter_type = module_schema.get_receive_param_schema(contract_name, entrypoint)?;
     let deserialized = deserialize_type_value(value, &parameter_type, true)?;
@@ -228,17 +200,17 @@ unsafe fn slice_from_ptr<'a, T>(data: *const T, size: usize) -> &'a [T] {
     std::slice::from_raw_parts(data, size)
 }
 
-fn schema_display_aux(schema: &[u8], schema_version: Option<u8>) -> Result<String> {
+fn schema_display_aux(schema: &[u8], schema_version: Option<u8>) -> Result<Vec<u8>> {
     let display = VersionedModuleSchema::new(schema, &schema_version)?;
-    Ok(display.to_string())
+    Ok(display.to_string().into_bytes())
 }
 
-fn get_event_contract_aux(
+fn get_event_contract_aux<'a>(
     schema: &[u8],
     schema_version: Option<u8>,
     contract_name: &str,
     value: &[u8],
-) -> Result<String> {
+) -> Result<Vec<u8>> {
     let module_schema = VersionedModuleSchema::new(schema, &schema_version)?;
     let parameter_type = module_schema.get_event_schema(contract_name)?;
     let deserialized = deserialize_type_value(value, &parameter_type, true)?;
@@ -249,10 +221,10 @@ fn deserialize_type_value(
     value: &[u8],
     value_type: &Type,
     verbose_error_message: bool,
-) -> Result<String> {
+) -> Result<Vec<u8>> {
     let mut cursor = Cursor::new(value);
     match value_type.to_json(&mut cursor) {
-        Ok(v) => Ok(to_string(&v)?),
+        Ok(v) => Ok(to_vec(&v)?),
         Err(e) => Err(anyhow!("{}", e.display(verbose_error_message))),
     }
 }
@@ -287,7 +259,7 @@ mod test {
         )?;
 
         // Assert
-        assert_eq!(display, expected);
+        assert_eq!(String::from_utf8(display)?, expected);
         Ok(())
     }
 
@@ -311,7 +283,7 @@ mod test {
         )?;
 
         // Assert
-        assert_eq!(display, expected);
+        assert_eq!(String::from_utf8(display)?, expected);
         Ok(())
     }
 
@@ -338,7 +310,7 @@ mod test {
         let display = schema_display_aux(&hex::decode(schema)?, schema_version)?;
 
         // Assert
-        assert_eq!(display, expected);
+        assert_eq!(String::from_utf8(display)?, expected);
         Ok(())
     }
 }

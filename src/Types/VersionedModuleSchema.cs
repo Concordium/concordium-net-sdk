@@ -22,5 +22,5 @@ public sealed record VersionedModuleSchema(byte[] Schema, ModuleSchemaVersion Ve
     /// </summary>
     /// <returns>Schema as json uft8 encoded.</returns>
     /// <exception cref="InteropBindingException">Thrown when schema wasn't able to be deserialized.</exception>
-    public string GetDeserializedSchema() => InteropBinding.SchemaDisplay(this);
+    public byte[] GetDeserializedSchema() => InteropBinding.SchemaDisplay(this);
 };

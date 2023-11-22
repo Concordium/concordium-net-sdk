@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 using Concordium.Sdk.Types;
 using FluentAssertions;
 using Xunit;
@@ -23,6 +24,6 @@ public sealed class ContractEventTests
         var events = contractEvent.GetDeserializeEvent(versionedModuleSchema, new ContractIdentifier(contractName));
 
         // Assert
-        events.Should().Be(expectedEvent);
+        Encoding.UTF8.GetString(events).Should().Be(expectedEvent);
     }
 }

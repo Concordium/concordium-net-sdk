@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
 using Concordium.Sdk.Types;
 using FluentAssertions;
 using Xunit;
@@ -32,6 +34,6 @@ public sealed class ContractInitializedEventTests
         var events = contractInitializedEvent.GetDeserializedEvents(versionedModuleSchema);
 
         // Assert
-        events.Should().BeEquivalentTo(new List<string> { expectedEvent });
+        events.Select(e => Encoding.UTF8.GetString(e)).Should().BeEquivalentTo(new List<string> { expectedEvent });
     }
 }

@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace Concordium.Sdk.Exceptions;
 
 /// <summary>
@@ -7,8 +9,8 @@ internal sealed class InteropBindingException : Exception
 {
     private const string EmptyErrorMessage = "Empty error message returned";
 
-    internal static InteropBindingException Create(string? message) =>
-        message != null ? new InteropBindingException(message) : Empty();
+    internal static InteropBindingException Create(byte[]? message) =>
+        message != null ? new InteropBindingException(Encoding.UTF8.GetString(message)) : Empty();
 
     private InteropBindingException(string message) : base(message)
     { }

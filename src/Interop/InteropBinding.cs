@@ -42,21 +42,26 @@ internal static class InteropBinding
         [MarshalAs(UnmanagedType.FunctionPtr)] SetResultCallback callback);
 
     /// <summary>
-    /// Callback to set result of interop call.
+    /// Callback to set byte array result of interop call.
     /// </summary>
-    private delegate void SetResultCallback(string input);
+    private delegate void SetResultCallback(IntPtr ptr, int size);
 
     /// <summary>
     /// Get module schema in a human interpretable form.
     /// </summary>
     /// <param name="schema">Module schema</param>
     /// <returns>Module schema as json uft8 encoded.</returns>
-    internal static string SchemaDisplay(VersionedModuleSchema schema)
+    internal static byte[] SchemaDisplay(VersionedModuleSchema schema)
     {
         var ffiOption = FfiByteOption.Create(schema.Version);
-        string? result = null;
+        byte[]? result = null;
 
-        var schemaDisplay = SchemaDisplay(schema.Schema, schema.Schema.Length, ffiOption, input => result = input);
+        var schemaDisplay = SchemaDisplay(schema.Schema, schema.Schema.Length, ffiOption,
+            (ptr, size) =>
+            {
+                result = new byte [size];
+                Marshal.Copy(ptr, result, 0, size);
+            });
 
         if (schemaDisplay && result != null)
         {
@@ -77,12 +82,20 @@ internal static class InteropBinding
     /// <param name="entrypoint">Entrypoint of contract</param>
     /// <param name="value">Receive parameters</param>
     /// <returns>Receive parameters as json uft8 encoded.</returns>
-    internal static string GetReceiveContractParameter(VersionedModuleSchema schema, ContractIdentifier contractName, EntryPoint entrypoint, Parameter value)
+    internal static byte[] GetReceiveContractParameter(VersionedModuleSchema schema, ContractIdentifier contractName, EntryPoint entrypoint, Parameter value)
     {
         var ffiOption = FfiByteOption.Create(schema.Version);
-        string? result = null;
+
+        byte[]? result = null;
+
         var receiveContractParameter =
-            GetReceiveContractParameter(schema.Schema, schema.Schema.Length, ffiOption, contractName.ContractName, entrypoint.Name, value.Param, value.Param.Length, input => result = input);
+            GetReceiveContractParameter(schema.Schema, schema.Schema.Length, ffiOption,
+                contractName.ContractName, entrypoint.Name, value.Param, value.Param.Length,
+                (ptr, size) =>
+                {
+                    result = new byte [size];
+                    Marshal.Copy(ptr, result, 0, size);
+                });
 
         if (receiveContractParameter && result != null)
         {
@@ -100,11 +113,19 @@ internal static class InteropBinding
     /// <param name="contractName">Contract name</param>
     /// <param name="contractEvent">Contract event </param>
     /// <returns>Contract event as json uft8 encoded.</returns>
-    internal static string GetEventContract(VersionedModuleSchema schema, ContractIdentifier contractName, ContractEvent contractEvent)
+    internal static byte[] GetEventContract(VersionedModuleSchema schema, ContractIdentifier contractName, ContractEvent contractEvent)
     {
         var ffiOption = FfiByteOption.Create(schema.Version);
-        string? result = null;
-        var schemaDisplay = GetEventContract(schema.Schema, schema.Schema.Length, ffiOption, contractName.ContractName, contractEvent.Bytes, contractEvent.Bytes.Length, input => result = input);
+
+        var result = Array.Empty<byte>();
+
+        var schemaDisplay = GetEventContract(schema.Schema, schema.Schema.Length, ffiOption,
+            contractName.ContractName, contractEvent.Bytes, contractEvent.Bytes.Length,
+            (ptr, size) =>
+            {
+                result = new byte [size];
+                Marshal.Copy(ptr, result, 0, size);
+            });
 
         if (schemaDisplay && result != null)
         {
