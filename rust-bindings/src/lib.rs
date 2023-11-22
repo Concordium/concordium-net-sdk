@@ -35,8 +35,7 @@ impl FFIByteOption {
 ///
 /// * 'schema' - Module schema
 /// * 'schem_version' - Optional schema version
-/// * 'callback' - Callback which can be used to set resulting
-///   output
+/// * 'callback' - Callback which can be used to set resulting output
 ///
 /// # Returns
 ///
@@ -65,7 +64,7 @@ pub unsafe extern "C" fn schema_display(
 
 /// Get contract receive parameters in a human interpretable form.
 ///
-/// Receive parameters are those given to a contract entrypoint on a update 
+/// Receive parameters are those given to a contract entrypoint on a update
 /// call.
 ///
 /// # Arguments
@@ -124,8 +123,7 @@ pub unsafe extern "C" fn get_receive_contract_parameter(
 /// * 'schem_version' - Optinal schema version
 /// * 'contract_name' - Contract name
 /// * 'value' - Contract event
-/// * 'callback' - Callback which can be used to set resulting
-///   output
+/// * 'callback' - Callback which can be used to set resulting output
 ///
 /// # Returns
 ///
