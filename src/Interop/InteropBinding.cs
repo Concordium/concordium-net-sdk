@@ -19,7 +19,7 @@ internal static class InteropBinding
         [MarshalAs(UnmanagedType.LPArray)] byte[] schema,
         int schema_size,
         FfiByteOption schema_version,
-        [MarshalAs(UnmanagedType.FunctionPtr)]SetResultCallback callback);
+        [MarshalAs(UnmanagedType.FunctionPtr)] SetResultCallback callback);
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_receive_contract_parameter")]
     private static extern bool GetReceiveContractParameter(
@@ -29,7 +29,7 @@ internal static class InteropBinding
         [MarshalAs(UnmanagedType.LPUTF8Str)] string entrypoint,
         [MarshalAs(UnmanagedType.LPArray)] byte[] value_ptr,
         int value_size,
-        [MarshalAs(UnmanagedType.FunctionPtr)]SetResultCallback callback);
+        [MarshalAs(UnmanagedType.FunctionPtr)] SetResultCallback callback);
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_event_contract")]
     private static extern bool GetEventContract(
@@ -39,7 +39,7 @@ internal static class InteropBinding
         [MarshalAs(UnmanagedType.LPUTF8Str)] string contract_name,
         [MarshalAs(UnmanagedType.LPArray)] byte[] value_ptr,
         int value_size,
-        [MarshalAs(UnmanagedType.FunctionPtr)]SetResultCallback callback);
+        [MarshalAs(UnmanagedType.FunctionPtr)] SetResultCallback callback);
 
     /// <summary>
     /// Callback to set result of interop call.
@@ -113,14 +113,6 @@ internal static class InteropBinding
 
         var interopException = InteropBindingException.Create(result);
         throw interopException;
-    }
-
-    private static void FreeIfNonzero(IntPtr ptr)
-    {
-        if (ptr != IntPtr.Zero)
-        {
-            Marshal.FreeHGlobal(ptr);
-        }
     }
 
     /// <summary>
