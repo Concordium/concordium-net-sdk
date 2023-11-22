@@ -59,7 +59,7 @@ internal static class InteropBinding
         var schemaDisplay = SchemaDisplay(schema.Schema, schema.Schema.Length, ffiOption,
             (ptr, size) =>
             {
-                result = new byte [size];
+                result = new byte[size];
                 Marshal.Copy(ptr, result, 0, size);
             });
 
@@ -93,7 +93,7 @@ internal static class InteropBinding
                 contractName.ContractName, entrypoint.Name, value.Param, value.Param.Length,
                 (ptr, size) =>
                 {
-                    result = new byte [size];
+                    result = new byte[size];
                     Marshal.Copy(ptr, result, 0, size);
                 });
 
@@ -123,7 +123,7 @@ internal static class InteropBinding
             contractName.ContractName, contractEvent.Bytes, contractEvent.Bytes.Length,
             (ptr, size) =>
             {
-                result = new byte [size];
+                result = new byte[size];
                 Marshal.Copy(ptr, result, 0, size);
             });
 
