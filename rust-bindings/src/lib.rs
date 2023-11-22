@@ -16,7 +16,7 @@ type ResultCallback = unsafe extern "C" fn(*mut i8) -> ();
 
 #[repr(C)]
 pub struct FFIByteOption {
-    pub t: u8,
+    pub t:       u8,
     pub is_some: u8,
 }
 
@@ -33,9 +33,10 @@ impl FFIByteOption {
 ///
 /// # Arguments
 ///
-/// * 'schema' - Module schema in hexadecimal
+/// * 'schema' - Module schema
 /// * 'schem_version' - Optional schema version
-/// * 'result' - Parsed schema if the call succeeded or the error message in case of failure.
+/// * 'callback' - Callback which can be used to set resulting
+///   output
 ///
 /// # Returns
 ///
@@ -64,16 +65,18 @@ pub unsafe extern "C" fn schema_display(
 
 /// Get contract receive parameters in a human interpretable form.
 ///
-/// Receive parameters are those given to a contract entrypoint on a update call.
+/// Receive parameters are those given to a contract entrypoint on a update 
+/// call.
 ///
 /// # Arguments
 ///
-/// * 'schema' - Module schema in hexadecimal
+/// * 'schema' - Module schema
 /// * 'schem_version' - Optional schema version
 /// * 'contract_name' - Contract name
 /// * 'entrypoint' - Entrypoint of contract
-/// * 'value' - Receive parameters in hexadecimal
-/// * 'result' - Parsed receive parameters if the call succeeded or the error message in case of failure.
+/// * 'value' - Receive parameters
+/// * 'callback' - Callback which can be used to set resulting
+///   output
 ///
 /// # Returns
 ///
@@ -117,11 +120,12 @@ pub unsafe extern "C" fn get_receive_contract_parameter(
 ///
 /// # Arguments
 ///
-/// * 'schema' - Module schema in hexadecimal
+/// * 'schema' - Module schema
 /// * 'schem_version' - Optinal schema version
 /// * 'contract_name' - Contract name
-/// * 'value' - Contract event in hexadecimal
-/// * 'result' - Parsed contract event if the call succeeded or the error message in case of failure.
+/// * 'value' - Contract event
+/// * 'callback' - Callback which can be used to set resulting
+///   output
 ///
 /// # Returns
 ///
@@ -158,11 +162,13 @@ pub unsafe extern "C" fn get_event_contract(
     })
 }
 
-/// Compute result using the provided callback f, convert it into a C string and assign it to the provided target.
+/// Compute result using the provided callback f, convert it into a C string and
+/// assign it to the provided target.
 ///
 /// # Arguments
 ///
-/// * 'target' - Pointer to a C String, which will be assigned the result / error message of f.
+/// * 'target' - Pointer to a C String, which will be assigned the result /
+///  error message of f.
 /// * 'f' - callback function, which result should be assigned to target.
 ///
 /// # Returns
