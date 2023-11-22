@@ -74,8 +74,7 @@ pub unsafe extern "C" fn schema_display(
 /// * 'contract_name' - Contract name
 /// * 'entrypoint' - Entrypoint of contract
 /// * 'value' - Receive parameters
-/// * 'callback' - Callback which can be used to set resulting
-///   output
+/// * 'callback' - Callback which can be used to set resulting output
 ///
 /// # Returns
 ///
