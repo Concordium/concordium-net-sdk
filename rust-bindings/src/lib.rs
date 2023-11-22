@@ -42,10 +42,10 @@ impl FFIByteOption {
 /// If the call succeeded or not.
 ///
 /// # Safety
-/// 
+///
 /// The same caveats as for [`std::slice::from_raw_parts`] apply in
 /// relation to safety and lifetimes.
-/// 
+///
 /// The callback given must also ensure safety and handle any errors
 /// within that function.
 /// Rust compiler.
@@ -80,10 +80,10 @@ pub unsafe extern "C" fn schema_display(
 /// If the call succeeded or not.
 ///
 /// # Safety
-/// 
+///
 /// The same caveats as for [`std::slice::from_raw_parts`] apply in
 /// relation to safety and lifetimes.
-/// 
+///
 /// The callback given must also ensure safety and handle any errors
 /// within that function.
 #[no_mangle]
@@ -128,10 +128,10 @@ pub unsafe extern "C" fn get_receive_contract_parameter(
 /// If the call succeeded or not.
 ///
 /// # Safety
-/// 
+///
 /// The same caveats as for [`std::slice::from_raw_parts`] apply in
 /// relation to safety and lifetimes.
-/// 
+///
 /// The callback given must also ensure safety and handle any errors
 /// within that function.
 #[no_mangle]
@@ -170,7 +170,7 @@ pub unsafe extern "C" fn get_event_contract(
 /// A boolean, that indicates whether the computation was successful or not.
 ///
 /// # Safety
-/// 
+///
 /// The callback given must also ensure safety and handle any errors
 /// within that function.
 unsafe fn assign_result<F: FnOnce() -> Result<T>, T: ToString>(
