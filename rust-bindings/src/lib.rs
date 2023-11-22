@@ -12,6 +12,8 @@ use serde_json::to_string;
 
 pub type JsonString = String;
 
+type ResultCallback = unsafe extern "C" fn(*mut i8) -> ();
+
 #[repr(C)]
 pub struct FFIByteOption {
     pub t: u8,
@@ -40,8 +42,12 @@ impl FFIByteOption {
 /// If the call succeeded or not.
 ///
 /// # Safety
-///
-/// This function is marked as unsafe because it performs operations that are not checked by the
+/// 
+/// The same caveats as for [`std::slice::from_raw_parts`] apply in
+/// relation to safety and lifetimes.
+/// 
+/// The callback given must also ensure safety and handle any errors
+/// within that function.
 /// Rust compiler.
 #[no_mangle]
 pub unsafe extern "C" fn schema_display(
@@ -55,8 +61,6 @@ pub unsafe extern "C" fn schema_display(
         schema_display_aux(schema, schema_version.into_option())
     })
 }
-
-type ResultCallback = unsafe extern "C" fn(*mut i8) -> ();
 
 /// Get contract receive parameters in a human interpretable form.
 ///
@@ -76,9 +80,12 @@ type ResultCallback = unsafe extern "C" fn(*mut i8) -> ();
 /// If the call succeeded or not.
 ///
 /// # Safety
-///
-/// This function is marked as unsafe because it performs operations that are not checked by the
-/// Rust compiler.
+/// 
+/// The same caveats as for [`std::slice::from_raw_parts`] apply in
+/// relation to safety and lifetimes.
+/// 
+/// The callback given must also ensure safety and handle any errors
+/// within that function.
 #[no_mangle]
 pub unsafe extern "C" fn get_receive_contract_parameter(
     schema_ptr: *const u8,
@@ -121,9 +128,12 @@ pub unsafe extern "C" fn get_receive_contract_parameter(
 /// If the call succeeded or not.
 ///
 /// # Safety
-///
-/// This function is marked as unsafe because it performs operations that are not checked by the
-/// Rust compiler.
+/// 
+/// The same caveats as for [`std::slice::from_raw_parts`] apply in
+/// relation to safety and lifetimes.
+/// 
+/// The callback given must also ensure safety and handle any errors
+/// within that function.
 #[no_mangle]
 pub unsafe extern "C" fn get_event_contract(
     schema_ptr: *const u8,
@@ -160,8 +170,9 @@ pub unsafe extern "C" fn get_event_contract(
 /// A boolean, that indicates whether the computation was successful or not.
 ///
 /// # Safety
-///
-/// This function is marked as unsafe because it deferences a raw pointer.
+/// 
+/// The callback given must also ensure safety and handle any errors
+/// within that function.
 unsafe fn assign_result<F: FnOnce() -> Result<T>, T: ToString>(
     callback: ResultCallback,
     f: F,
