@@ -164,8 +164,7 @@ pub unsafe extern "C" fn get_event_contract(
 ///
 /// # Arguments
 ///
-/// * 'target' - Pointer to a C String, which will be assigned the result /
-///  error message of f.
+/// * 'callback' - Callback which can be used to set resulting output
 /// * 'f' - callback function, which result should be assigned to target.
 ///
 /// # Returns
