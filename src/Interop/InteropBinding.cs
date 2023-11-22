@@ -50,7 +50,7 @@ internal static class InteropBinding
     /// Get module schema in a human interpretable form.
     /// </summary>
     /// <param name="schema">Module schema</param>
-    /// <returns>Module schema as json.</returns>
+    /// <returns>Module schema as json uft8 encoded.</returns>
     internal static string SchemaDisplay(VersionedModuleSchema schema)
     {
         var ffiOption = FfiByteOption.Create(schema.Version);
@@ -76,7 +76,7 @@ internal static class InteropBinding
     /// <param name="contractName">Contract name</param>
     /// <param name="entrypoint">Entrypoint of contract</param>
     /// <param name="value">Receive parameters</param>
-    /// <returns>Receive parameters as json.</returns>
+    /// <returns>Receive parameters as json uft8 encoded.</returns>
     internal static string GetReceiveContractParameter(VersionedModuleSchema schema, ContractIdentifier contractName, EntryPoint entrypoint, Parameter value)
     {
         var ffiOption = FfiByteOption.Create(schema.Version);
@@ -99,7 +99,7 @@ internal static class InteropBinding
     /// <param name="schema">Module schema</param>
     /// <param name="contractName">Contract name</param>
     /// <param name="contractEvent">Contract event </param>
-    /// <returns>Contract event as json.</returns>
+    /// <returns>Contract event as json uft8 encoded.</returns>
     internal static string GetEventContract(VersionedModuleSchema schema, ContractIdentifier contractName, ContractEvent contractEvent)
     {
         var ffiOption = FfiByteOption.Create(schema.Version);
