@@ -8,10 +8,27 @@ on:
   workflow_dispatch:
 
 env:
-  RUST_VERSION: "1.65"
+  RUST_FMT: nightly-2023-04-01-x86_64-unknown-linux-gnu
+  RUST_CLIPPY: 1.68
 
 jobs:
-  build-test-format:
+  rustfmt:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set up Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: ${{ env.RUST_FMT }}
+        override: true
+        components: rustfmt
+
+    - name: Format Rust Project
+      run: cargo fmt --manifest-path=./rust-bindings/Cargo.toml --check
+
+  rustclippy-build-test:
 
     runs-on: ubuntu-latest
 
@@ -24,12 +41,9 @@ jobs:
       uses: actions-rs/toolchain@v1
       with:
         profile: minimal
-        toolchain: ${{ env.RUST_VERSION }}
+        toolchain: ${{ env.RUST_CLIPPY }}
         override: true
-        components: rustfmt, clippy
-
-    - name: Format Rust Project
-      run: cargo fmt --manifest-path=./rust-bindings/Cargo.toml --check
+        components: clippy
 
     - name: Clippy Rust Project
       run: cargo clippy --manifest-path=./rust-bindings/Cargo.toml --tests --release -- --no-deps
