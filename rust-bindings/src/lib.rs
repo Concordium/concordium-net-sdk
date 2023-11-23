@@ -222,6 +222,8 @@ fn deserialize_type_value(
     }
 }
 
+/// The content of the pointer c_char must not be mutated for the duration of
+/// lifetime 'a.
 fn get_str_from_pointer<'a>(input: *const c_char) -> Result<&'a str> {
     let c_str: &CStr = unsafe { CStr::from_ptr(input) };
     Ok(c_str.to_str()?)

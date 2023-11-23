@@ -109,9 +109,10 @@ public sealed record Updated(
     public IList<Utf8Json> GetDeserializedEvents(VersionedModuleSchema schema)
     {
         var deserialized = new List<Utf8Json>(this.Events.Count);
+        var contractIdentifier = this.ReceiveName.GetContractName();
         foreach (var contractEvent in this.Events)
         {
-            var deserializeEvent = contractEvent.GetDeserializeEvent(schema, this.ReceiveName.GetContractName());
+            var deserializeEvent = contractEvent.GetDeserializeEvent(schema, contractIdentifier);
             deserialized.Add(deserializeEvent);
         }
 
