@@ -6,7 +6,7 @@ namespace Concordium.Sdk.Types;
 public enum ModuleSchemaVersion
 {
     /// <summary>
-    /// Version not known and possible embedded in schema.
+    /// Version not known and possibly embedded in schema.
     /// </summary>
     Undefined = -1,
     /// <summary>
