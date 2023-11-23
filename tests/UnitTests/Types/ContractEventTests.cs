@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Text;
 using Concordium.Sdk.Types;
 using FluentAssertions;
 using Xunit;
