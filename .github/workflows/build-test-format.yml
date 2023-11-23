@@ -38,11 +38,9 @@ jobs:
 
     - name: Set up Rust
       uses: actions-rs/toolchain@v1
-      with:
-        profile: minimal
-        toolchain: ${{ env.RUST_CLIPPY }}
-        override: true
-        components: clippy
+      run: |
+        rustup default ${{ env.RUST_CLIPPY }}
+        rustup component add clippy
 
     - name: Clippy Rust Project
       run: cargo clippy --manifest-path=./rust-bindings/Cargo.toml --tests --release -- --no-deps
