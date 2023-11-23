@@ -12,7 +12,7 @@ namespace Concordium.Sdk.Interop;
 [SuppressMessage("Globalization", "CA2101:Specify marshaling for P/Invoke string arguments")]
 internal static class InteropBinding
 {
-    private const string DllName = "librust_bindings";
+    private const string DllName = "rust_bindings";
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "schema_display")]
     private static extern bool SchemaDisplay(
