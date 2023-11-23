@@ -1,10 +1,10 @@
-use std::{ffi::CStr, os::raw::c_char};
 use anyhow::{anyhow, Result};
 use concordium_contracts_common::{
     schema::{Type, VersionedModuleSchema},
     Cursor,
 };
 use serde_json::to_vec;
+use std::{ffi::CStr, os::raw::c_char};
 
 pub type JsonString = String;
 
