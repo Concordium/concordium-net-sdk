@@ -2,7 +2,6 @@ name: Relase
 
 on:
     pull_request:
-      branches: [ "rust_bindings" ]
     workflow_dispatch:
 
 env:
