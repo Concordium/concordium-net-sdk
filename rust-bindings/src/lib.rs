@@ -98,8 +98,8 @@ pub unsafe extern "C" fn get_receive_contract_parameter(
         get_receive_contract_parameter_aux(
             schema,
             schema_version.into_option(),
-            &contract_name_str,
-            &entrypoint_str,
+            contract_name_str,
+            entrypoint_str,
             value,
         )
     })
@@ -141,7 +141,7 @@ pub unsafe extern "C" fn get_event_contract(
         get_event_contract_aux(
             schema,
             schema_version.into_option(),
-            &contract_name_str,
+            contract_name_str,
             value,
         )
     })
@@ -217,9 +217,9 @@ fn deserialize_type_value(
         Err(e) => Err(anyhow!("{}", e.display(verbose_error_message))),
     }
 }
-
-/// The content of the pointer c_char must not be mutated for the duration of
-/// lifetime 'a.
+/// The provided raw pointer [`c_char`] must be a [`std::ffi::CString`].
+/// The content of the pointer [`c_char`] must not be mutated for the duration
+/// of lifetime 'a.
 fn get_str_from_pointer<'a>(input: *const c_char) -> Result<&'a str> {
     let c_str: &CStr = unsafe { CStr::from_ptr(input) };
     Ok(c_str.to_str()?)
