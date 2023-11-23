@@ -104,3 +104,6 @@ jobs:
 
       - name: Pack
         run: dotnet pack -c Release -p:RunRustBuild=false -p:IncludeAllRustBuilds=true
+
+      # - name: Publish to NuGet
+      #   run: dotnet nuget push "src/bin/Release/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
