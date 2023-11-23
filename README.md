@@ -41,6 +41,18 @@ in your project root. It can also be used as a GIT submodule by embedding the cl
 git clone https://github.com/Concordium/concordium-net-sdk --recurse-submodules
 ```
 
+## Rust bindings
+
+The .NET SDK uses Foreign Function Interface (FFI) functions to code written in Rust. The Rust code is located in `./rust-bindings`.
+
+Whenever the .NET SDK is build the Rust code is autimatically compiled. This is done as a `PreBuildEvent` defined in the `Concordium.Sdk.csproj` file. Hence any changes
+to the Rust code will take effect on the next build of the .NET SDK.
+
+You can build the Rust code manually by running
+```sh
+cargo build --manifest-path=../rust-bindings/Cargo.toml --release
+```
+
 ## Basic usage
 
 At the core of the SDK is the [`ConcordiumClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html) class which is used to connect to a Concordium node and exposes methods interacting with it. The [`ConcordiumClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html) can be instantiated as follows:
