@@ -50,7 +50,7 @@ pub unsafe extern "C" fn schema_display(
     schema_version: FFIByteOption,
     callback: ResultCallback,
 ) -> bool {
-    let schema = slice_from_ptr(schema_ptr, schema_size as usize);
+    let schema = std::slice::from_raw_parts(schema_ptr, schema_size as usize);
     assign_result(callback, || {
         schema_display_aux(schema, schema_version.into_option())
     })
@@ -90,10 +90,10 @@ pub unsafe extern "C" fn get_receive_contract_parameter(
     callback: ResultCallback,
 ) -> bool {
     assign_result(callback, || {
-        let schema = slice_from_ptr(schema_ptr, schema_size as usize);
+        let schema = std::slice::from_raw_parts(schema_ptr, schema_size as usize);
         let contract_name_str = get_str_from_pointer(contract_name)?;
         let entrypoint_str = get_str_from_pointer(entrypoint)?;
-        let value = slice_from_ptr(value_ptr, value_size as usize);
+        let value = std::slice::from_raw_parts(value_ptr, value_size as usize);
 
         get_receive_contract_parameter_aux(
             schema,
@@ -134,9 +134,9 @@ pub unsafe extern "C" fn get_event_contract(
     callback: ResultCallback,
 ) -> bool {
     assign_result(callback, || {
-        let schema = slice_from_ptr(schema_ptr, schema_size as usize);
+        let schema = std::slice::from_raw_parts(schema_ptr, schema_size as usize);
         let contract_name_str = get_str_from_pointer(contract_name)?;
-        let value = slice_from_ptr(value_ptr, value_size as usize);
+        let value = std::slice::from_raw_parts(value_ptr, value_size as usize);
 
         get_event_contract_aux(
             schema,
@@ -187,10 +187,6 @@ pub fn get_receive_contract_parameter_aux(
     let parameter_type = module_schema.get_receive_param_schema(contract_name, entrypoint)?;
     let deserialized = deserialize_type_value(value, &parameter_type, true)?;
     Ok(deserialized)
-}
-
-unsafe fn slice_from_ptr<'a, T>(data: *const T, size: usize) -> &'a [T] {
-    std::slice::from_raw_parts(data, size)
 }
 
 fn schema_display_aux(schema: &[u8], schema_version: Option<u8>) -> Result<Vec<u8>> {
