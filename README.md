@@ -45,7 +45,7 @@ git clone https://github.com/Concordium/concordium-net-sdk --recurse-submodules
 
 The .NET SDK uses Foreign Function Interface (FFI) functions to code written in Rust. The Rust code is located in `./rust-bindings`.
 
-Whenever the .NET SDK is build the Rust code is autimatically compiled. This is done as a `PreBuildEvent` defined in the `Concordium.Sdk.csproj` file. Hence any changes
+Whenever the .NET SDK is build the Rust code is automatically compiled. This is done as a `PreBuildEvent` defined in the `Concordium.Sdk.csproj` file. Hence any changes
 to the Rust code will take effect on the next build of the .NET SDK.
 
 You can build the Rust code manually by running
