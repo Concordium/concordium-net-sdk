@@ -21,16 +21,11 @@ jobs:
       with:
         submodules: recursive
 
-    - name: Set up Rust
-      uses: actions-rs/toolchain@v1
-      with:
-        profile: minimal
-        toolchain: ${{ env.RUST_FMT }}
-        override: true
-        components: rustfmt
-
     - name: Format Rust Project
-      run: cargo fmt --manifest-path=./rust-bindings/Cargo.toml --all --check
+      run: |
+        rustup default ${{ env.RUST_FMT }}
+        rustup component add rustfmt
+        cargo fmt --manifest-path=./rust-bindings/Cargo.toml --all --check
 
   rustclippy-build-test:
 
