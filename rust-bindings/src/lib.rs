@@ -1,5 +1,4 @@
 use std::{ffi::CStr, os::raw::c_char};
-
 use anyhow::{anyhow, Result};
 use concordium_contracts_common::{
     schema::{Type, VersionedModuleSchema},
