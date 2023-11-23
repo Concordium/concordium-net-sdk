@@ -24,6 +24,6 @@ public sealed class ContractEventTests
         var events = contractEvent.GetDeserializeEvent(versionedModuleSchema, new ContractIdentifier(contractName));
 
         // Assert
-        Encoding.UTF8.GetString(events).Should().Be(expectedEvent);
+        events.ToString().Should().Be(expectedEvent);
     }
 }

@@ -24,7 +24,7 @@ public class InteropBindingTests
         var message = InteropBinding.SchemaDisplay(versionedModuleSchema);
 
         // Assert
-        await Verifier.Verify(Encoding.UTF8.GetString(message))
+        await Verifier.Verify(message.ToString())
             .UseFileName("module-versioned-schema")
             .UseDirectory("__snapshots__");
     }
@@ -40,7 +40,7 @@ public class InteropBindingTests
         var message = InteropBinding.SchemaDisplay(versionedModuleSchema);
 
         // Assert
-        await Verifier.Verify(Encoding.UTF8.GetString(message))
+        await Verifier.Verify(message.ToString())
             .UseFileName("module-schema")
             .UseDirectory("__snapshots__");
     }
@@ -62,7 +62,7 @@ public class InteropBindingTests
         var message = InteropBinding.GetReceiveContractParameter(versionedModuleSchema, contractIdentifier, entryPoint, parameter);
 
         // Assert
-        await Verifier.Verify(Encoding.UTF8.GetString(message))
+        await Verifier.Verify(message.ToString())
             .UseFileName("receive-params")
             .UseDirectory("__snapshots__");
     }
@@ -82,7 +82,7 @@ public class InteropBindingTests
         var message = InteropBinding.GetEventContract(versionedModuleSchema, contractIdentifier, contractEvent);
 
         // Assert
-        await Verifier.Verify(Encoding.UTF8.GetString(message))
+        await Verifier.Verify(message.ToString())
             .UseFileName("event")
             .UseDirectory("__snapshots__");
     }

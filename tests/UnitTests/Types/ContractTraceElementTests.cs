@@ -36,7 +36,7 @@ public sealed class ContractTraceElementTests
         var deserializeMessage = updated.GetDeserializeMessage(versionedModuleSchema);
 
         // Assert
-        Encoding.UTF8.GetString(deserializeMessage).Should().Be(expectedMessage);
+        deserializeMessage.ToString().Should().Be(expectedMessage);
     }
 
     [Fact]
@@ -64,7 +64,7 @@ public sealed class ContractTraceElementTests
         var events = updated.GetDeserializedEvents(versionedModuleSchema);
 
         // Assert
-        events.Select(e => Encoding.UTF8.GetString(e)).Should().BeEquivalentTo(new List<string> { expectedEvent });
+        events.Select(e => e.ToString()).Should().BeEquivalentTo(new List<string> { expectedEvent });
     }
 
     [Fact]
@@ -85,6 +85,6 @@ public sealed class ContractTraceElementTests
         var events = interrupted.GetDeserializedEvents(versionedModuleSchema, new ContractIdentifier(contractName));
 
         // Assert
-        events.Select(e => Encoding.UTF8.GetString(e)).Should().BeEquivalentTo(new List<string> { expectedEvent });
+        events.Select(e => e.ToString()).Should().BeEquivalentTo(new List<string> { expectedEvent });
     }
 }

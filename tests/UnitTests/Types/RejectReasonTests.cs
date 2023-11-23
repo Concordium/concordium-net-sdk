@@ -31,6 +31,6 @@ public sealed class RejectReasonTests
         var deserializeMessage = rejectedReceive.GetDeserializeMessage(versionedModuleSchema);
 
         // Assert
-        Encoding.UTF8.GetString(deserializeMessage).Should().Be(expectedMessage);
+        deserializeMessage.ToString().Should().Be(expectedMessage);
     }
 }

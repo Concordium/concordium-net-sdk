@@ -34,6 +34,6 @@ public sealed class ContractInitializedEventTests
         var events = contractInitializedEvent.GetDeserializedEvents(versionedModuleSchema);
 
         // Assert
-        events.Select(e => Encoding.UTF8.GetString(e)).Should().BeEquivalentTo(new List<string> { expectedEvent });
+        events.Select(e => e.ToString()).Should().BeEquivalentTo(new List<string> { expectedEvent });
     }
 }

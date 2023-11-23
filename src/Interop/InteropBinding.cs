@@ -51,7 +51,7 @@ internal static class InteropBinding
     /// </summary>
     /// <param name="schema">Module schema</param>
     /// <returns>Module schema as json uft8 encoded.</returns>
-    internal static byte[] SchemaDisplay(VersionedModuleSchema schema)
+    internal static Utf8Json SchemaDisplay(VersionedModuleSchema schema)
     {
         var ffiOption = FfiByteOption.Create(schema.Version);
         byte[]? result = null;
@@ -65,7 +65,7 @@ internal static class InteropBinding
 
         if (schemaDisplay && result != null)
         {
-            return result;
+            return new Utf8Json(result);
         }
 
         var interopException = InteropBindingException.Create(result);
@@ -82,7 +82,7 @@ internal static class InteropBinding
     /// <param name="entrypoint">Entrypoint of contract</param>
     /// <param name="value">Receive parameters</param>
     /// <returns>Receive parameters as json uft8 encoded.</returns>
-    internal static byte[] GetReceiveContractParameter(VersionedModuleSchema schema, ContractIdentifier contractName, EntryPoint entrypoint, Parameter value)
+    internal static Utf8Json GetReceiveContractParameter(VersionedModuleSchema schema, ContractIdentifier contractName, EntryPoint entrypoint, Parameter value)
     {
         var ffiOption = FfiByteOption.Create(schema.Version);
 
@@ -99,7 +99,7 @@ internal static class InteropBinding
 
         if (receiveContractParameter && result != null)
         {
-            return result;
+            return new Utf8Json(result);
         }
 
         var interopException = InteropBindingException.Create(result);
@@ -113,7 +113,7 @@ internal static class InteropBinding
     /// <param name="contractName">Contract name</param>
     /// <param name="contractEvent">Contract event </param>
     /// <returns>Contract event as json uft8 encoded.</returns>
-    internal static byte[] GetEventContract(VersionedModuleSchema schema, ContractIdentifier contractName, ContractEvent contractEvent)
+    internal static Utf8Json GetEventContract(VersionedModuleSchema schema, ContractIdentifier contractName, ContractEvent contractEvent)
     {
         var ffiOption = FfiByteOption.Create(schema.Version);
 
@@ -129,7 +129,7 @@ internal static class InteropBinding
 
         if (schemaDisplay && result != null)
         {
-            return result;
+            return new Utf8Json(result);
         }
 
         var interopException = InteropBindingException.Create(result);

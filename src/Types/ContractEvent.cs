@@ -20,7 +20,7 @@ public sealed record ContractEvent(byte[] Bytes)
     /// <param name="contractName">Contract name.</param>
     /// <returns><see cref="Bytes"/> deserialized as json uft8 encoded.</returns>
     /// <exception cref="InteropBindingException">Thrown when event wasn't able to be deserialized from schema.</exception>
-    public byte[] GetDeserializeEvent(
+    public Utf8Json GetDeserializeEvent(
         VersionedModuleSchema schema,
         ContractIdentifier contractName
     ) => InteropBinding.GetEventContract(schema, contractName, this);
