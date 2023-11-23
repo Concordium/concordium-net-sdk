@@ -222,10 +222,9 @@ fn deserialize_type_value(
     }
 }
 
-fn get_str_from_pointer(input: *const c_char) -> Result<String> {
+fn get_str_from_pointer<'a>(input: *const c_char) -> Result<&'a str> {
     let c_str: &CStr = unsafe { CStr::from_ptr(input) };
-    let str_slice: &str = c_str.to_str()?;
-    Ok(str_slice.to_string())
+    Ok(c_str.to_str()?)
 }
 
 #[cfg(test)]
