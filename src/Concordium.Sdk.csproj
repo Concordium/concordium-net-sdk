@@ -76,23 +76,23 @@
 
   <ItemGroup>
     <!-- Include rust_bindings.dll on Windows -->
-    <Content Include="../rust-bindings/target/release/rust_bindings.dll" Condition="'$(IsWindows)'=='true' Or '$(IncludeAllRustBuilds)'=='true'">
+    <None Include="../rust-bindings/target/release/rust_bindings.dll" Condition="'$(IsWindows)'=='true' Or '$(IncludeAllRustBuilds)'=='true'">
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <Pack>True</Pack>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
     <!-- Include librust_bindings.dylib on macOS -->
-    <Content Include="../rust-bindings/target/release/librust_bindings.dylib" Condition="'$(IsOSX)'=='true' Or '$(IncludeAllRustBuilds)'=='true'">
+    <None Include="../rust-bindings/target/release/librust_bindings.dylib" Condition="'$(IsOSX)'=='true' Or '$(IncludeAllRustBuilds)'=='true'">
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <Pack>True</Pack>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
     <!-- Include librust_bindings.so on Linux -->
-    <Content Include="../rust-bindings/target/release/librust_bindings.so" Condition="'$(IsLinux)'=='true' Or '$(IncludeAllRustBuilds)'=='true'">
+    <None Include="../rust-bindings/target/release/librust_bindings.so" Condition="'$(IsLinux)'=='true' Or '$(IncludeAllRustBuilds)'=='true'">
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <Pack>True</Pack>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="$(RunRustBuild)">
