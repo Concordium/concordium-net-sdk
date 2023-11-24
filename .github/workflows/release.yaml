@@ -1,6 +1,7 @@
 name: Release
 
 on:
+  pull_request:
   workflow_dispatch:
 
 env:
@@ -104,6 +105,12 @@ jobs:
 
       - name: Pack
         run: dotnet pack -c Release -p:RunRustBuild=false -p:IncludeAllRustBuilds=true
+
+      - name: Upload package for validation
+        uses: actions/upload-artifact@master
+        with:
+          name: package-validation
+          path: ./src/bin/Release
 
       # - name: Publish to NuGet
       #   run: dotnet nuget push "src/bin/Release/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
