@@ -7,8 +7,8 @@ namespace Concordium.Sdk.Transactions;
 /// is when querying transactions from chain that have not been implemented for
 /// this SDK yet, and thus can not be deserialized.
 /// </summary>
-/// <param name="bytes">The raw bytes of the payload.</param>
-public sealed record RawPayload(byte[] bytes) : AccountTransactionPayload
+/// <param name="Bytes">The raw bytes of the payload.</param>
+public sealed record RawPayload(byte[] Bytes) : AccountTransactionPayload
 {
-    public override byte[] ToBytes() => this.bytes;
+    public override byte[] ToBytes() => this.Bytes;
 }

@@ -125,9 +125,9 @@ public readonly record struct CcdAmount
         };
 
         // This call also verifies the length
-        var U64Deserial = Deserial.TryDeserialU64(bytes, 0, out var amount);
+        var u64Deserial = Deserial.TryDeserialU64(bytes, 0, out var amount);
 
-        if (!U64Deserial)
+        if (!u64Deserial)
         {
             output = (null, amount.Error);
             return false;

@@ -28,7 +28,7 @@ public sealed record TransferWithMemo(CcdAmount Amount, AccountAddress Receiver,
         AccountAddress sender,
         AccountSequenceNumber sequenceNumber,
         Expiry expiry
-    ) => new(sender, sequenceNumber, expiry, this.transactionCost, this);
+    ) => new(sender, sequenceNumber, expiry, this._transactionCost, this);
 
     /// <summary>
     /// The transaction specific cost for submitting this type of
@@ -37,7 +37,7 @@ public sealed record TransferWithMemo(CcdAmount Amount, AccountAddress Receiver,
     /// This should reflect the transaction-specific costs defined here:
     /// https://github.com/Concordium/concordium-base/blob/78f557b8b8c94773a25e4f86a1a92bc323ea2e3d/haskell-src/Concordium/Cost.hs
     /// </summary>
-    internal readonly EnergyAmount transactionCost = new(300);
+    private readonly EnergyAmount _transactionCost = new(300);
 
     /// <summary>
     /// Copies the "transfer with memo" account transaction in the binary format expected by the node to a byte array.

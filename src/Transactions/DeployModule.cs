@@ -16,7 +16,7 @@ public sealed record DeployModule(VersionedModuleSource Module) : AccountTransac
         AccountAddress sender,
         AccountSequenceNumber sequenceNumber,
         Expiry expiry
-    ) => new(sender, sequenceNumber, expiry, this.transactionCost, this);
+    ) => new(sender, sequenceNumber, expiry, this._transactionCost, this);
 
     /// <summary>
     /// The transaction specific cost for submitting this type of
@@ -25,7 +25,7 @@ public sealed record DeployModule(VersionedModuleSource Module) : AccountTransac
     /// This should reflect the transaction-specific costs defined here:
     /// https://github.com/Concordium/concordium-base/blob/78f557b8b8c94773a25e4f86a1a92bc323ea2e3d/haskell-src/Concordium/Cost.hs
     /// </summary>
-    private readonly EnergyAmount transactionCost = new(Module.BytesLength / 10);
+    private readonly EnergyAmount _transactionCost = new(Module.BytesLength / 10);
 
     /// <summary>The account transaction type to be used in the serialized payload.</summary>
     private const byte TransactionType = (byte)Types.TransactionType.DeployModule;

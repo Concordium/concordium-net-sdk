@@ -9,13 +9,15 @@ namespace Concordium.Sdk.Types;
 public abstract record VersionedModuleSource(byte[] Source) : IEquatable<VersionedModuleSource>
 {
     internal const uint MaxLength = 8 * 65536;
-    internal uint BytesLength = (2 * sizeof(int)) + (uint)Source.Length;
 
     internal abstract uint GetVersion();
 
     internal byte[] ToBytes()
     {
-        using var memoryStream = new MemoryStream((int)this.BytesLength);
+        using var memoryStream = new MemoryStream(
+            (2 * sizeof(int)) +
+            this.Source.Length
+        );
         memoryStream.Write(Serialization.ToBytes(this.GetVersion()));
         memoryStream.Write(Serialization.ToBytes((uint)this.Source.Length));
         memoryStream.Write(this.Source);
