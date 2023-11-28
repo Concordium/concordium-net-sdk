@@ -43,7 +43,6 @@ public static class Program
         await foreach (var update in updates.Response)
         {
             Console.WriteLine($"Pending update: {update}");
-
         }
     }
 }
