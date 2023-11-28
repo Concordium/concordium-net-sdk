@@ -32,14 +32,16 @@ public static class Program
 
         var branch = await client.GetBranchesAsync();
 
-        printBranchesAsTree(0, branch);
+        PrintBranchesAsTree(0, branch);
     }
 
-    private static void printBranchesAsTree(uint depth, Branch branch) {
-        for (int i = 0; i < depth; i++) {
+    private static void PrintBranchesAsTree(uint depth, Branch branch)
+    {
+        for (var i = 0; i < depth; i++)
+        {
             Console.Write("--");
         }
         Console.WriteLine(branch.BlockHash);
-        branch.Children.ForEach(x => printBranchesAsTree(depth+1, x));
+        branch.Children.ForEach(x => PrintBranchesAsTree(depth + 1, x));
     }
 }

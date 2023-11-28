@@ -596,7 +596,7 @@ public sealed class ConcordiumClient : IDisposable
     /// </exception>
     public async Task<Branch> GetBranchesAsync(CancellationToken token = default)
     {
-        var response = await this.Raw.GetBranchesAsync(token);
+        var response = await this.Raw.GetBranchesAsync(token).ConfigureAwait(false);
         return Branch.From(response);
     }
 

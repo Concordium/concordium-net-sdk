@@ -3,10 +3,13 @@
   - New GRPC-endpoints: `GetBlocks`, `GetFinalizedBlocks`, `GetBranches`, `GetAncestors`, `GetBlockPendingUpdates`, `GetBlockItems`
   - New transaction `DeployModule`
   - Added serialization and deserialization for all instances of `AccountTransactionPayload`
+  - Added helpers to get new type `ContractIdentifier` on `ReceiveName` and `ContractName`. This new type only holds the contract name part of `ReceiveName` and `ContractName`.
+    Also added helper to get entrypoint on `ReceiveName`.
 
 ## 4.1.0
 - Bugfix
   - Documentation was missing when adding library as nuget packages and hovering over methods and classes.
+- Added
   - gRPC queries relevant for smart contracts.
     - GetModuleListAsync
     - GetInstanceListAsync
