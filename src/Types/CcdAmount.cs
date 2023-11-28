@@ -111,9 +111,9 @@ public readonly record struct CcdAmount
     }
 
     /// <summary>
-    /// Create a CCD amount from a serialized as bytes.
+    /// Create a CCD amount from a byte array.
     /// </summary>
-    /// <param name="bytes">The CCD amount as bytes.</param>
+    /// <param name="bytes">The serialized CCD amount.</param>
     /// <param name="output">Where to write the result of the operation.</param>
     public static bool TryDeserial(byte[] bytes, out (CcdAmount? accountAddress, string? Error) output)
     {

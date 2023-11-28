@@ -1,7 +1,7 @@
 namespace Concordium.Sdk.Exceptions;
 
 /// <summary>
-/// Thrown when a matched enum value could not be handled in a switch statement.
+/// Thrown when deserialization fails and is explicitly meant not to.
 /// </summary>
 public sealed class DeserialException : Exception
 {

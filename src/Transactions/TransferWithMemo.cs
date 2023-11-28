@@ -47,7 +47,11 @@ public sealed record TransferWithMemo(CcdAmount Amount, AccountAddress Receiver,
     /// <param name="memo">Memo to include with the transaction.</param>
     private static byte[] Serialize(CcdAmount amount, AccountAddress receiver, OnChainData memo)
     {
-        using var memoryStream = new MemoryStream((int)(sizeof(TransactionType) + CcdAmount.BytesLength + AccountAddress.BytesLength + OnChainData.MaxLength));
+        using var memoryStream = new MemoryStream((int)(
+            sizeof(TransactionType) +
+            CcdAmount.BytesLength +
+            AccountAddress.BytesLength +
+            OnChainData.MaxLength));
         memoryStream.WriteByte(TransactionType);
         memoryStream.Write(receiver.ToBytes());
         memoryStream.Write(memo.ToBytes());

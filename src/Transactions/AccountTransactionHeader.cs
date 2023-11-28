@@ -89,7 +89,7 @@ public sealed record AccountTransactionHeader(
         };
 
     /// <summary>
-    /// Converts the account transaction header to its corresponding protocol buffer message instance.
+    /// Creates an account transaction header from its corresponding protocol buffer message instance.
     /// </summary>
     internal static AccountTransactionHeader From(Grpc.V2.AccountTransactionHeader accountTransactionHeader) => new(
             AccountAddress.From(accountTransactionHeader.Sender),

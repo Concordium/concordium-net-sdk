@@ -48,7 +48,7 @@ public static class Deserial
     }
 
     /// <summary>
-    /// Creates a uint from a byte array.
+    /// Creates a ulong from a byte array.
     /// </summary>
     public static bool TryDeserialU64(byte[] input, int offset, out (ulong? Ulong, string? Error) output)
     {
@@ -65,18 +65,6 @@ public static class Deserial
 
         output = (BinaryPrimitives.ReadUInt64BigEndian(bytes), null);
         return true;
-    }
-
-    // TODO: Debug tool remove
-    public static void PrintBytes(string msg, byte[] bytes)
-    {
-        Console.WriteLine(msg);
-        foreach (var b in bytes)
-        {
-            Console.Write(b);
-            Console.Write(" ");
-        }
-        Console.Write("\n");
     }
 }
 

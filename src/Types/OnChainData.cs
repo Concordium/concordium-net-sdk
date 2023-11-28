@@ -136,9 +136,9 @@ public sealed record OnChainData : IEquatable<OnChainData>
     public override string ToString() => Convert.ToHexString(this._value).ToLowerInvariant();
 
     /// <summary>
-    /// Create an account address from a serialized as bytes.
+    /// Create an "OnChainData" from a byte array.
     /// </summary>
-    /// <param name="bytes">The account address as bytes.</param>
+    /// <param name="bytes">The serialized "OnChainData".</param>
     /// <param name="output">Where to write the result of the operation.</param>
     public static bool TryDeserial(byte[] bytes, out (OnChainData? accountAddress, string? Error) output)
     {

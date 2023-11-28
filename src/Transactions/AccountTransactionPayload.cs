@@ -123,27 +123,5 @@ public abstract record AccountTransactionPayload
         }
         return parsedPayload.Item1;
     }
-
-    /// <summary>
-    /// Prepares the account transaction payload for signing. Will throw an
-    /// exception if AccountTransaction is of subtype RawPayload. Should only
-    /// be used for testing.
-    /// </summary>
-    /// <param name="sender">Address of the sender of the transaction.</param>
-    /// <param name="sequenceNumber">Account sequence number to use for the transaction.</param>
-    /// <param name="expiry">Expiration time of the transaction.</param>
-    internal PreparedAccountTransaction PrepareWithException(
-        AccountAddress sender,
-        AccountSequenceNumber sequenceNumber,
-        Expiry expiry
-    ) => this switch
-    {
-        Transfer transfer => transfer.Prepare(sender, sequenceNumber, expiry),
-        TransferWithMemo transferWithMemo => transferWithMemo.Prepare(sender, sequenceNumber, expiry),
-        DeployModule deployModule => deployModule.Prepare(sender, sequenceNumber, expiry),
-        RegisterData registerData => registerData.Prepare(sender, sequenceNumber, expiry),
-        _ => throw new NotImplementedException(),
-    };
-
 }
 

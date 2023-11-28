@@ -11,6 +11,9 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public sealed record AccountAddress : IEquatable<AccountAddress>, IAddress, IAccountIdentifier
 {
+    /// <summary>
+    /// The serialized length of the account address.
+    /// </summary>
     public const uint BytesLength = 32;
 
     /// <summary>
@@ -217,9 +220,9 @@ public sealed record AccountAddress : IEquatable<AccountAddress>, IAddress, IAcc
         new() { Address = this.ToProto() };
 
     /// <summary>
-    /// Create an account address from a serialized as bytes.
+    /// Create an account address from a byte array.
     /// </summary>
-    /// <param name="bytes">The account address as bytes.</param>
+    /// <param name="bytes">The serialized account address.</param>
     /// <param name="output">Where to write the result of the operation.</param>
     public static bool TryDeserial(byte[] bytes, out (AccountAddress? accountAddress, string? Error) output)
     {

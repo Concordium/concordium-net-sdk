@@ -48,7 +48,12 @@ internal static class VersionedModuleSourceFactory
                 .ModuleCase)
         };
 
-    internal static bool TryDeserial(byte[] bytes, out (VersionedModuleSource? VersionedModuleSource, string? Error) output)
+    /// <summary>
+    /// Create a versioned module schema from a byte array.
+    /// </summary>
+    /// <param name="bytes">The serialized schema.</param>
+    /// <param name="output">Where to write the result of the operation.</param>
+    public static bool TryDeserial(byte[] bytes, out (VersionedModuleSource? VersionedModuleSource, string? Error) output)
     {
         var versionSuccess = Deserial.TryDeserialU32(bytes, 0, out var version);
 
