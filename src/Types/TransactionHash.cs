@@ -25,6 +25,9 @@ public sealed record TransactionHash : Hash
     public static TransactionHash From(byte[] transactionHashAsBytes) =>
         new(transactionHashAsBytes);
 
+    internal static TransactionHash From(Grpc.V2.TransactionHash proto) =>
+        new(proto.Value.ToArray());
+
     /// <summary>
     /// Converts the transaction hash to its corresponding protocol buffer message instance.
     ///

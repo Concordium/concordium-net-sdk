@@ -11,7 +11,7 @@ public sealed record BlockItem(TransactionHash TransactionHash, BlockItemType Bl
 {
     internal static BlockItem From(Grpc.V2.BlockItem blockItem) =>
         new(
-            TransactionHash.From(blockItem.Hash.ToString()),
+            TransactionHash.From(blockItem.Hash),
             blockItem.BlockItemCase switch
             {
                 BlockItemCase.AccountTransaction => SignedAccountTransaction.From(blockItem.AccountTransaction),
