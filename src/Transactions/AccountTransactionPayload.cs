@@ -78,6 +78,41 @@ public abstract record AccountTransactionPayload
                 parsedPayload = output;
                 break;
             }
+
+            case TransactionType.InitContract:
+                break;
+            case TransactionType.Update:
+                break;
+            case TransactionType.AddBaker:
+                break;
+            case TransactionType.RemoveBaker:
+                break;
+            case TransactionType.UpdateBakerStake:
+                break;
+            case TransactionType.UpdateBakerRestakeEarnings:
+                break;
+            case TransactionType.UpdateBakerKeys:
+                break;
+            case TransactionType.UpdateCredentialKeys:
+                break;
+            case TransactionType.EncryptedAmountTransfer:
+                break;
+            case TransactionType.TransferToEncrypted:
+                break;
+            case TransactionType.TransferToPublic:
+                break;
+            case TransactionType.TransferWithSchedule:
+                break;
+            case TransactionType.UpdateCredentials:
+                break;
+            case TransactionType.EncryptedAmountTransferWithMemo:
+                break;
+            case TransactionType.TransferWithScheduleAndMemo:
+                break;
+            case TransactionType.ConfigureBaker:
+                break;
+            case TransactionType.ConfigureDelegation:
+                break;
             default:
                 throw new NotImplementedException();
         };

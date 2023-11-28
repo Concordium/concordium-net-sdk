@@ -12,12 +12,11 @@ public abstract record VersionedModuleSource(byte[] Source) : IEquatable<Version
 
     internal abstract uint GetVersion();
 
+    internal uint GetBytesLength() => (uint)((2 * sizeof(int)) + this.Source.Length);
+
     internal byte[] ToBytes()
     {
-        using var memoryStream = new MemoryStream(
-            (2 * sizeof(int)) +
-            this.Source.Length
-        );
+        using var memoryStream = new MemoryStream((int)this.GetBytesLength());
         memoryStream.Write(Serialization.ToBytes(this.GetVersion()));
         memoryStream.Write(Serialization.ToBytes((uint)this.Source.Length));
         memoryStream.Write(this.Source);

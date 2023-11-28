@@ -25,7 +25,8 @@ public sealed record DeployModule(VersionedModuleSource Module) : AccountTransac
     /// This should reflect the transaction-specific costs defined here:
     /// https://github.com/Concordium/concordium-base/blob/78f557b8b8c94773a25e4f86a1a92bc323ea2e3d/haskell-src/Concordium/Cost.hs
     /// </summary>
-    private readonly EnergyAmount _transactionCost = new(Module.BytesLength / 10);
+
+    private readonly EnergyAmount _transactionCost = new(Module.GetBytesLength() / 10);
 
     /// <summary>The account transaction type to be used in the serialized payload.</summary>
     private const byte TransactionType = (byte)Types.TransactionType.DeployModule;
@@ -38,7 +39,7 @@ public sealed record DeployModule(VersionedModuleSource Module) : AccountTransac
     {
         using var memoryStream = new MemoryStream((int)(
             sizeof(TransactionType) +
-            module.BytesLength
+            module.GetBytesLength()
         ));
         memoryStream.WriteByte(TransactionType);
         memoryStream.Write(module.ToBytes());

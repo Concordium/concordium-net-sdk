@@ -1,6 +1,8 @@
 ## Unreleased changes
 - Added
-  - New GRPC-endpoints: `GetBlocks`, `GetFinalizedBlocks`, `GetBranches`, `GetAncestors`, `GetBlockPendingUpdates`
+  - New GRPC-endpoints: `GetBlocks`, `GetFinalizedBlocks`, `GetBranches`, `GetAncestors`, `GetBlockPendingUpdates`, `GetBlockItems`
+  - New transaction `DeployModule`
+  - Added serialization and deserialization for all instances of `AccountTransactionPayload`
 
 ## 4.1.0
 - Bugfix
