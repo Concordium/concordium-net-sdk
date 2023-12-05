@@ -37,12 +37,14 @@ public static class Program
 
         IBlockHashInput bi = o.BlockHash != null ? new Given(BlockHash.From(o.BlockHash)) : new LastFinal();
 
-        var blockItems = client.GetBlockItems(bi);
-
-        await foreach (var item in blockItems)
+        var blockItems = await client.GetBlockItems(bi);
+        
+        Console.WriteLine($"All block items in block {blockItems.BlockHash}: [");
+        await foreach (var item in blockItems.Response)
         {
-            Console.WriteLine($"Blockitem: {item}");
+            Console.WriteLine($"{item},");
         }
+        Console.WriteLine("]");
     }
 }
 
