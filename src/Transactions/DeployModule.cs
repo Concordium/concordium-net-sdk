@@ -1,3 +1,4 @@
+using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;
@@ -77,9 +78,7 @@ public sealed record DeployModule(VersionedModuleSource Module) : AccountTransac
 
         if (module.VersionedModuleSource == null)
         {
-            var msg = $"The parsed output is null, but no error was found. This should not be possible.";
-            output = (null, msg);
-            return false;
+            throw new DeserialInvalidResultException();
         }
 
         output = (new DeployModule(module.VersionedModuleSource), null);

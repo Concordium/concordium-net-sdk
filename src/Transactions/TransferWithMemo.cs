@@ -1,4 +1,5 @@
 using System.Buffers.Binary;
+using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;
@@ -108,9 +109,7 @@ public sealed record TransferWithMemo(CcdAmount Amount, AccountAddress Receiver,
 
         if (amount.Amount == null || account.AccountAddress == null || memo.OnChainData == null)
         {
-            var msg = $"The parsed output is null, but no error was found. This should not be possible.";
-            output = (null, msg);
-            return false;
+            throw new DeserialInvalidResultException();
         };
 
         output = (new TransferWithMemo(amount.Amount.Value, account.AccountAddress, memo.OnChainData), null);

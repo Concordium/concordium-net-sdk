@@ -95,14 +95,19 @@ public abstract record AccountTransactionPayload
             case TransactionType.TransferWithScheduleAndMemo:
             case TransactionType.ConfigureBaker:
             case TransactionType.ConfigureDelegation:
-            default:
                 parsedPayload = (new RawPayload(payload.ToArray()), null);
                 break;
+            default:
+                throw new MissingEnumException<TransactionType>((TransactionType)payload.First());
         };
 
         if (parsedPayload.Item2 != null)
         {
             throw new DeserialException(parsedPayload.Item2);
+        }
+        if (parsedPayload.Item1 == null)
+        {
+            throw new DeserialInvalidResultException();
         }
         return parsedPayload.Item1;
     }

@@ -1,3 +1,4 @@
+using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;
@@ -80,9 +81,7 @@ public sealed record RegisterData(OnChainData Data) : AccountTransactionPayload
 
         if (memo.OnChainData == null)
         {
-            var msg = $"The parsed output is null, but no error was found. This should not be possible.";
-            output = (null, msg);
-            return false;
+            throw new DeserialInvalidResultException();
         };
 
         output = (new RegisterData(memo.OnChainData), null);
