@@ -1,3 +1,4 @@
+using System.Buffers.Binary;
 using Concordium.Sdk.Helpers;
 
 namespace Concordium.Sdk.Types;
@@ -115,25 +116,18 @@ public readonly record struct CcdAmount
     /// </summary>
     /// <param name="bytes">The serialized CCD amount.</param>
     /// <param name="output">Where to write the result of the operation.</param>
-    public static bool TryDeserial(byte[] bytes, out (CcdAmount? accountAddress, string? Error) output)
+    public static bool TryDeserial(ReadOnlySpan<byte> bytes, out (CcdAmount? Amount, string? Error) output)
     {
-        if (bytes.Length != BytesLength)
+        if (bytes.Length < BytesLength)
         {
-            var msg = $"Invalid length of input in `CcdAmount.TryDeserial`. Expected {BytesLength}, found {bytes.Length}";
+            var msg = $"Invalid length of input in `CcdAmount.TryDeserial`. Expected at least {BytesLength}, found {bytes.Length}";
             output = (null, msg);
             return false;
         };
 
-        // This call also verifies the length
-        var u64Deserial = Deserial.TryDeserialU64(bytes, 0, out var amount);
+        var amount = BinaryPrimitives.ReadUInt64BigEndian(bytes);
 
-        if (!u64Deserial)
-        {
-            output = (null, amount.Error);
-            return false;
-        };
-
-        output = (new CcdAmount(amount.Ulong.Value), null);
+        output = (new CcdAmount(amount), null);
         return true;
     }
 

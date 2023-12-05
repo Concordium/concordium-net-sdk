@@ -75,11 +75,14 @@ public sealed class TransferTests
     [Fact]
     public void ToBytes_InverseOfFromBytes()
     {
-        var transferBytes = CreateTransfer().ToBytes();
-
-        var deserialSuccess = Transfer.TryDeserial(transferBytes, out var transfer);
-
-        CreateTransfer().Should().Be(transfer.Item1);
+        if (Transfer.TryDeserial(CreateTransfer().ToBytes(), out var deserial))
+        {
+            CreateTransfer().Should().Be(deserial.Transfer);
+        }
+        else
+        {
+            Assert.Fail(deserial.Error);
+        }
     }
 
     [Fact]

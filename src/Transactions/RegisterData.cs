@@ -55,7 +55,7 @@ public sealed record RegisterData(OnChainData Data) : AccountTransactionPayload
     /// </summary>
     /// <param name="bytes">The payload as bytes.</param>
     /// <param name="output">Where to write the result of the operation.</param>
-    public static bool TryDeserial(byte[] bytes, out (RegisterData?, string? Error) output)
+    public static bool TryDeserial(ReadOnlySpan<byte> bytes, out (RegisterData? RegisterData, string? Error) output)
     {
         var minSize = sizeof(TransactionType);
         if (bytes.Length < minSize)
@@ -71,16 +71,21 @@ public sealed record RegisterData(OnChainData Data) : AccountTransactionPayload
             return false;
         };
 
-        var memoBytes = bytes.Skip(sizeof(TransactionType)).ToArray();
-        var memoDeserial = OnChainData.TryDeserial(memoBytes, out var memo);
-
-        if (!memoDeserial)
+        var memoBytes = bytes[sizeof(TransactionType)..];
+        if (!OnChainData.TryDeserial(memoBytes, out var memo))
         {
             output = (null, memo.Error);
             return false;
         };
 
-        output = (new RegisterData(memo.accountAddress), null);
+        if (memo.OnChainData == null)
+        {
+            var msg = $"The parsed output is null, but no error was found. This should not be possible.";
+            output = (null, msg);
+            return false;
+        };
+
+        output = (new RegisterData(memo.OnChainData), null);
         return true;
     }
 

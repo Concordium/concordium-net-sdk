@@ -51,26 +51,33 @@ public sealed record DeployModule(VersionedModuleSource Module) : AccountTransac
     /// </summary>
     /// <param name="bytes">The "deploy module" payload as bytes.</param>
     /// <param name="output">Where to write the result of the operation.</param>
-    public static bool TryDeserial(byte[] bytes, out (DeployModule? Module, string? Error) output)
+    public static bool TryDeserial(ReadOnlySpan<byte> bytes, out (DeployModule? Module, string? Error) output)
     {
         var minLength = sizeof(TransactionType) + (2 * sizeof(int));
-        if (bytes.Length <= minLength)
+        if (bytes.Length < minLength)
         {
-            var msg = $"Invalid input length in `DeployModule.TryDeserial`. expected at least 9, found {bytes.Length}";
+            var msg = $"Invalid input length in `DeployModule.TryDeserial`. expected at least {minLength}, found {bytes.Length}";
             output = (null, msg);
             return false;
         }
 
-        var deserialSuccess = VersionedModuleSourceFactory.TryDeserial(bytes.Skip(1).ToArray(), out var module);
+        if (bytes[0] != TransactionType)
+        {
+            var msg = $"Invalid transaction type in `DeployModule.TryDeserial`. expected {TransactionType}, found {bytes[0]}";
+            output = (null, msg);
+            return false;
+        }
 
+        var deserialSuccess = VersionedModuleSourceFactory.TryDeserial(bytes[sizeof(TransactionType)..], out var module);
         if (!deserialSuccess)
         {
             output = (null, module.Error);
             return false;
         };
-        if (bytes[0] != TransactionType)
+
+        if (module.VersionedModuleSource == null)
         {
-            var msg = $"Invalid transaction type in `DeployModule.TryDeserial`. expected {TransactionType}, found {bytes[0]}";
+            var msg = $"The parsed output is null, but no error was found. This should not be possible.";
             output = (null, msg);
             return false;
         }

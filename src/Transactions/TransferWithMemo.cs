@@ -1,3 +1,4 @@
+using System.Buffers.Binary;
 using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;
@@ -64,9 +65,9 @@ public sealed record TransferWithMemo(CcdAmount Amount, AccountAddress Receiver,
     /// </summary>
     /// <param name="bytes">The payload as bytes.</param>
     /// <param name="output">Where to write the result of the operation.</param>
-    public static bool TryDeserial(byte[] bytes, out (TransferWithMemo?, string? Error) output)
+    public static bool TryDeserial(ReadOnlySpan<byte> bytes, out (TransferWithMemo? Transfer, string? Error) output)
     {
-        var minSize = sizeof(TransactionType) + AccountAddress.BytesLength + CcdAmount.BytesLength;
+        var minSize = sizeof(TransactionType) + AccountAddress.BytesLength + CcdAmount.BytesLength + sizeof(ushort);
         if (bytes.Length < minSize)
         {
             var msg = $"Invalid length in `TransferWithMemo.TryDeserial`. Expected at least {minSize}, found {bytes.Length}";
@@ -82,37 +83,37 @@ public sealed record TransferWithMemo(CcdAmount Amount, AccountAddress Receiver,
 
         var trxTypeLength = sizeof(TransactionType);
         var accountLength = (int)AccountAddress.BytesLength;
-        var amountLength = (int)CcdAmount.BytesLength;
-        var memoLength = bytes.Length - trxTypeLength - accountLength - amountLength;
+        var memoLength = BinaryPrimitives.ReadUInt16BigEndian(bytes[(trxTypeLength + accountLength)..]) + sizeof(ushort);
 
-        var accountBytes = bytes.Skip(trxTypeLength).Take(accountLength).ToArray();
-        var accDeserial = AccountAddress.TryDeserial(accountBytes, out var account);
-
-        if (!accDeserial)
+        var accountBytes = bytes[trxTypeLength..];
+        if (!AccountAddress.TryDeserial(accountBytes, out var account))
         {
             output = (null, account.Error);
             return false;
         };
 
-        var memoBytes = bytes.Skip(trxTypeLength + accountLength).Take(memoLength).ToArray();
-        var memoDeserial = OnChainData.TryDeserial(memoBytes, out var memo);
-
-        if (!memoDeserial)
+        var memoBytes = bytes[(trxTypeLength + accountLength)..];
+        if (!OnChainData.TryDeserial(memoBytes, out var memo))
         {
             output = (null, memo.Error);
             return false;
         };
 
-        var amountBytes = bytes.Skip(trxTypeLength + accountLength + memoLength).Take(amountLength).ToArray();
-        var amountDeserial = CcdAmount.TryDeserial(amountBytes, out var amount);
-
-        if (!amountDeserial)
+        var amountBytes = bytes[(trxTypeLength + accountLength + memoLength)..];
+        if (!CcdAmount.TryDeserial(amountBytes, out var amount))
         {
             output = (null, amount.Error);
             return false;
         };
 
-        output = (new TransferWithMemo(amount.accountAddress.Value, account.accountAddress, memo.accountAddress), null);
+        if (amount.Amount == null || account.AccountAddress == null || memo.OnChainData == null)
+        {
+            var msg = $"The parsed output is null, but no error was found. This should not be possible.";
+            output = (null, msg);
+            return false;
+        };
+
+        output = (new TransferWithMemo(amount.Amount.Value, account.AccountAddress, memo.OnChainData), null);
         return true;
     }
 

@@ -61,7 +61,7 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
     /// </summary>
     /// <param name="bytes">The "transfer" payload as bytes.</param>
     /// <param name="output">Where to write the result of the operation.</param>
-    public static bool TryDeserial(byte[] bytes, out (Transfer?, string? Error) output)
+    public static bool TryDeserial(ReadOnlySpan<byte> bytes, out (Transfer? Transfer, string? Error) output)
     {
         if (bytes.Length != BytesLength)
         {
@@ -76,25 +76,28 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
             return false;
         };
 
-        var accountBytes = bytes.Skip(1).Take((int)AccountAddress.BytesLength).ToArray();
-        var accDeserial = AccountAddress.TryDeserial(accountBytes, out var account);
-
-        if (!accDeserial)
+        var accountBytes = bytes[sizeof(TransactionType)..];
+        if (!AccountAddress.TryDeserial(accountBytes, out var account))
         {
             output = (null, account.Error);
             return false;
         };
 
-        var amountBytes = bytes.Skip((int)AccountAddress.BytesLength + 1).ToArray();
-        var amountDeserial = CcdAmount.TryDeserial(amountBytes, out var amount);
-
-        if (!amountDeserial)
+        var amountBytes = bytes[((int)AccountAddress.BytesLength + sizeof(TransactionType))..];
+        if (!CcdAmount.TryDeserial(amountBytes, out var amount))
         {
             output = (null, amount.Error);
             return false;
         };
 
-        output = (new Transfer(amount.accountAddress.Value, account.accountAddress), null);
+        if (amount.Amount == null || account.AccountAddress == null)
+        {
+            var msg = $"The parsed output is null, but no error was found. This should not be possible.";
+            output = (null, msg);
+            return false;
+        }
+
+        output = (new Transfer(amount.Amount.Value, account.AccountAddress), null);
         return true;
     }
 

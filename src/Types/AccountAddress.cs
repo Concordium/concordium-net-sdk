@@ -224,16 +224,16 @@ public sealed record AccountAddress : IEquatable<AccountAddress>, IAddress, IAcc
     /// </summary>
     /// <param name="bytes">The serialized account address.</param>
     /// <param name="output">Where to write the result of the operation.</param>
-    public static bool TryDeserial(byte[] bytes, out (AccountAddress? accountAddress, string? Error) output)
+    public static bool TryDeserial(ReadOnlySpan<byte> bytes, out (AccountAddress? AccountAddress, string? Error) output)
     {
-        if (bytes.Length != 32)
+        if (bytes.Length < BytesLength)
         {
-            var msg = $"Invalid length of input in `AccountAddress.TryDeserial`. Expected 32, found {bytes.Length}";
+            var msg = $"Invalid length of input in `AccountAddress.TryDeserial`. Expected at least {BytesLength}, found {bytes.Length}";
             output = (null, msg);
             return false;
         };
 
-        output = (new AccountAddress(bytes.ToArray()), null);
+        output = (new AccountAddress(bytes[..(int)BytesLength].ToArray()), null);
         return true;
     }
 

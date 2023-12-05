@@ -746,17 +746,17 @@ public sealed class ConcordiumClient : IDisposable
     /// <summary>
     /// Get the items of a block.
     /// </summary>
-    /// <param name="blockHashInput">Block hash from where smart contract information will be given.</param>
+    /// <param name="blockHashInput">Identifies what block to get the information from.</param>
     /// <param name="token">Cancellation token</param>
     /// <returns>A stream of block items.</returns>
     /// <exception cref="RpcException">
     /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
     /// <see cref="StatusCode.Unimplemented"/> indicates that this endpoint is disabled in the node.
     /// </exception>
-    public IAsyncEnumerable<BlockItem> GetBlockItems(IBlockHashInput blockHashInput, CancellationToken token = default)
+    public Task<QueryResponse<IAsyncEnumerable<BlockItem>>> GetBlockItems(IBlockHashInput blockHashInput, CancellationToken token = default)
     {
         var response = this.Raw.GetBlockItems(blockHashInput.Into(), token);
-        return response.ResponseStream.ReadAllAsync(token).Select(BlockItem.From);
+        return QueryResponse<IAsyncEnumerable<BlockItem>>.From(response, BlockItem.From, token);
     }
 
     public void Dispose() => this.Raw.Dispose();

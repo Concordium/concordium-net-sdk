@@ -88,8 +88,14 @@ public sealed class SimpleTransferWithMemoPayloadTests
     public void ToBytes_TryDeserialIsInverse()
     {
         var transfer = CreateTransferWithMemo();
-        var transferResult = TransferWithMemo.TryDeserial(transfer.ToBytes(), out var transferDeserial);
-        transfer.Should().Be(transferDeserial.Item1);
+        if (TransferWithMemo.TryDeserial(transfer.ToBytes(), out var deserial))
+        {
+            transfer.Should().Be(deserial.Transfer);
+        }
+        else
+        {
+            Assert.Fail(deserial.Error);
+        };
     }
 
     [Fact]

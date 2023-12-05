@@ -1,3 +1,4 @@
+using System.Buffers.Binary;
 using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Helpers;
 
@@ -54,36 +55,32 @@ internal static class VersionedModuleSourceFactory
     /// </summary>
     /// <param name="bytes">The serialized schema.</param>
     /// <param name="output">Where to write the result of the operation.</param>
-    public static bool TryDeserial(byte[] bytes, out (VersionedModuleSource? VersionedModuleSource, string? Error) output)
+    public static bool TryDeserial(ReadOnlySpan<byte> bytes, out (VersionedModuleSource? VersionedModuleSource, string? Error) output)
     {
-        var versionSuccess = Deserial.TryDeserialU32(bytes, 0, out var version);
-
-        if (!versionSuccess)
+        if (bytes.Length < 2 * sizeof(int))
         {
-            output = (null, version.Error);
-            return false;
-        }
-        if (bytes.Length < 8)
-        {
-            output = (null, "The given byte array in `VersionModuleSourceFactory.TryDeserial`, is too short");
+            output = (null, $"The given byte array in `VersionModuleSourceFactory.TryDeserial`, is too short. Must be longer than {2 * sizeof(int)}.");
             return false;
         }
 
-        var rest = bytes.Skip(8).ToArray();
+        var version = BinaryPrimitives.ReadUInt32BigEndian(bytes);
+        var length = BinaryPrimitives.ReadUInt32BigEndian(bytes[sizeof(int)..]);
 
-        if (version.Uint == 0)
+        var rest = bytes.Slice(2 * sizeof(int), (int)length).ToArray();
+
+        if (version == 0)
         {
             output = (ModuleV0.From(rest), null);
             return true;
         }
-        else if (version.Uint == 1)
+        else if (version == 1)
         {
             output = (ModuleV1.From(rest), null);
             return true;
         }
         else
         {
-            output = (null, $"Invalid module version byte, expected 0 or 1 but found {version.Uint}");
+            output = (null, $"Invalid module version byte, expected 0 or 1 but found {version}");
             return false;
         };
     }

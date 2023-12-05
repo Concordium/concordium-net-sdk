@@ -1,3 +1,4 @@
+using System.Buffers.Binary;
 using System.Formats.Cbor;
 
 using Concordium.Sdk.Helpers;
@@ -140,11 +141,11 @@ public sealed record OnChainData : IEquatable<OnChainData>
     /// </summary>
     /// <param name="bytes">The serialized "OnChainData".</param>
     /// <param name="output">Where to write the result of the operation.</param>
-    public static bool TryDeserial(byte[] bytes, out (OnChainData? accountAddress, string? Error) output)
+    public static bool TryDeserial(ReadOnlySpan<byte> bytes, out (OnChainData? OnChainData, string? Error) output)
     {
-        if (bytes.Length == 0)
+        if (bytes.Length < sizeof(ushort))
         {
-            var msg = "Invalid length of input in `OnChainData.TryDeserial`. Length must be more than 0";
+            var msg = $"Invalid length of input in `OnChainData.TryDeserial`. Length must be more than {sizeof(ushort)}";
             output = (null, msg);
             return false;
         };
@@ -156,23 +157,16 @@ public sealed record OnChainData : IEquatable<OnChainData>
             return false;
         };
 
-        var deserialSuccess = Deserial.TryDeserialU16(bytes, 0, out var sizeRead);
-        if (!deserialSuccess)
+        var sizeRead = BinaryPrimitives.ReadUInt16BigEndian(bytes);
+        var size = sizeRead + sizeof(ushort);
+        if (size > bytes.Length)
         {
-            output = (null, sizeRead.Error);
-            return false;
-        };
-
-        var size = sizeRead.Uint + sizeof(ushort);
-
-        if (bytes.Length != size)
-        {
-            var msg = $"Invalid length of input in `OnChainData.TryDeserial`. Expected array of size {size}, found {bytes.Length}";
+            var msg = $"Invalid length of input in `OnChainData.TryDeserial`. Expected array of size at least {size}, found {bytes.Length}";
             output = (null, msg);
             return false;
         };
 
-        output = (new OnChainData(bytes.Skip(sizeof(ushort)).ToArray()), null);
+        output = (new OnChainData(bytes.Slice(sizeof(ushort), sizeRead).ToArray()), null);
         return true;
     }
 

@@ -46,9 +46,15 @@ public sealed class DeployModuleTests
     {
         var moduleBytes = CreateDeployModule().ToBytes();
 
-        var deserialSuccess = DeployModule.TryDeserial(moduleBytes, out var module);
+        if (DeployModule.TryDeserial(moduleBytes, out var module))
+        {
+            CreateDeployModule().Should().Be(module.Module);
+        }
+        else
+        {
+            Assert.Fail(module.Error);
+        }
 
-        CreateDeployModule().Should().Be(module.Module);
     }
 
     [Fact]

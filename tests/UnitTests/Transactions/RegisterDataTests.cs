@@ -31,8 +31,14 @@ public sealed class RegisterDataTests
     public void ToBytes_TryDeserialIsInverse()
     {
         var registerData = CreateRegisterData();
-        var result = RegisterData.TryDeserial(registerData.ToBytes(), out var registerDataDeserial);
-        registerData.Should().Be(registerDataDeserial.Item1);
+        if (RegisterData.TryDeserial(registerData.ToBytes(), out var deserial))
+        {
+            registerData.Should().Be(deserial.RegisterData);
+        }
+        else
+        {
+            Assert.Fail(deserial.Error);
+        }
     }
 
     [Fact]
