@@ -39,4 +39,23 @@ public sealed record ContractInitializedEvent(
         return new ContractInitializedEvent(contractVersion, moduleReference, contractAddress, amount,
             initName, events);
     }
+
+    /// <summary>
+    /// Deserialize events from <see cref="schema"/>.
+    /// </summary>
+    /// <param name="schema">Module schema in hexadecimal.</param>
+    /// <returns>List of deserialized json uft8 encoded events. Possible null if this was returned from deserialization.</returns>
+    /// <exception cref="InteropBindingException">Thrown if an event wasn't able to be deserialized from schema.</exception>
+    public IList<Utf8Json> GetDeserializedEvents(VersionedModuleSchema schema)
+    {
+        var deserialized = new List<Utf8Json>(this.Events.Count);
+        var contractIdentifier = this.InitName.GetContractName();
+        foreach (var contractEvent in this.Events)
+        {
+            var deserializeEvent = contractEvent.GetDeserializeEvent(schema, contractIdentifier);
+            deserialized.Add(deserializeEvent);
+        }
+
+        return deserialized;
+    }
 }

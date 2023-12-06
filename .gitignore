@@ -387,3 +387,6 @@ Desktop.ini
 
 # Custom
 test_configuration.json
+
+# Rust
+target/

@@ -1,3 +1,6 @@
+using Concordium.Sdk.Exceptions;
+using Concordium.Sdk.Interop;
+
 namespace Concordium.Sdk.Types;
 
 /// <summary>
@@ -9,4 +12,16 @@ public sealed record ContractEvent(byte[] Bytes)
     /// Return hex representation.
     /// </summary>
     public string ToHexString() => Convert.ToHexString(this.Bytes).ToLowerInvariant();
+
+    /// <summary>
+    /// Deserialize event from <see cref="schema"/>.
+    /// </summary>
+    /// <param name="schema">Module schema in hexadecimal.</param>
+    /// <param name="contractName">Contract name.</param>
+    /// <returns><see cref="Bytes"/> deserialized as json uft8 encoded.</returns>
+    /// <exception cref="InteropBindingException">Thrown when event wasn't able to be deserialized from schema.</exception>
+    public Utf8Json GetDeserializeEvent(
+        VersionedModuleSchema schema,
+        ContractIdentifier contractName
+    ) => InteropBinding.GetEventContract(schema, contractName, this);
 }
