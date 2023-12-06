@@ -7,7 +7,7 @@
 
 This is a .NET integration library written in C# which adds support for constructing and sending various transactions, as well as querying various aspects of the Concordium blockchain and its nodes. This SDK uses version 2 of the [Concordium Node gRPC API](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) to interact with Concordium nodes and in turn the Concordium blockchain, and serves as a wrapper for this API with added ergonomics. Note that this deprecates earlier versions of the SDK that use version 1 of the API, cfr. the [migration](#migration) section for more details.
 
-Read ahead for a brief overview and some examples, or skip directly the [rendered documentation](#documentation). 
+Read ahead for a brief overview and some examples, or skip directly the [rendered documentation](#documentation).
 
 ## Overview
 
@@ -22,14 +22,14 @@ Currently, helpers for working with transactions of the [`Transfer`](http://deve
 ## Prerequisites/compatibility
 
 - .NET Framework: 6.0 or later.
-- Concordium Node version compatibility: 5.*
+- Concordium Node version compatibility: 6.*
 
 ## Installation
 
 The SDK is published on [nuget.org](https://www.nuget.org/packages/ConcordiumNetSdk). Depending on your setup, it can be added to your project as a dependency by running either
 
 ```powershell
-PM> Install-Package Concordium.SDK -Version 3.0
+PM> Install-Package Concordium.SDK -Version 4.2
 ```
 or
 
@@ -99,7 +99,7 @@ Expiry expiry = Expiry.AtMinutesFromNow(10); // Transaction expires 10 minutes a
 SignedAccountTransaction signedTransfer = preparedTransfer.Sign(signer);
 ```
 
-A signed transaction can be submitted to the blockchain by invoking the [`SendAccountTransaction`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_SendAccountTransaction__1_Concordium_Sdk_Transactions_SignedAccountTransaction___0__) method. If the transfer was accepted by the node, its [`TransactionHash`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.TransactionHash.html) used to uniquely identify the transaction is returned: 
+A signed transaction can be submitted to the blockchain by invoking the [`SendAccountTransaction`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_SendAccountTransaction__1_Concordium_Sdk_Transactions_SignedAccountTransaction___0__) method. If the transfer was accepted by the node, its [`TransactionHash`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.TransactionHash.html) used to uniquely identify the transaction is returned:
 
 ```csharp
 TransactionHash = client.SendAccountTransaction(signedTransfer);
@@ -122,7 +122,7 @@ AccountSequenceNumber sequenceNumber = client.GetNextAccountSequenceNumber(sende
 
 ### Using the raw client API
 
-The entire [Concordium Node gRPC API V2](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) is exposed through minimal wrappers of classes that model the interface types and services as they were generated from the protocol buffer schema definitions using the [`Grpc.Tools`](https://www.nuget.org/packages/Grpc.Tools/) and [`Grpc.Net.Client`](https://www.nuget.org/packages/Grpc.Net.Client) packages. These wrappers are defined in the [`RawClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html), instances of which can *only* be accessed through the [`Raw`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_Raw) field of [`ConcordiumClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html) instances. 
+The entire [Concordium Node gRPC API V2](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) is exposed through minimal wrappers of classes that model the interface types and services as they were generated from the protocol buffer schema definitions using the [`Grpc.Tools`](https://www.nuget.org/packages/Grpc.Tools/) and [`Grpc.Net.Client`](https://www.nuget.org/packages/Grpc.Net.Client) packages. These wrappers are defined in the [`RawClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html), instances of which can *only* be accessed through the [`Raw`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_Raw) field of [`ConcordiumClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html) instances.
 
 As an example, the raw API call `GetAccountInfo` defined in the [Concordium Node gRPC API V2](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) takes as its input a gRPC message of the [AccountInfoRequest](https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfoRequest) kind and expects a gRPC response of the [AccountInfo](https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfo) kind. This method can be invoked through [`RawClient.GetAccountInfo`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html#Concordium_Sdk_Client_RawClient_GetAccountInfo_Concordium_Grpc_V2_AccountInfoRequest_) by supplying an instance of its corresponding generated type for [`AccountInfoRequest`](https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfoRequest). In the following, we wish to retrieve the information of an account in the last finalized block:
 

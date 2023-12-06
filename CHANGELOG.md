@@ -1,4 +1,7 @@
 ## Unreleased changes
+
+## 4.2.0
+
 - Added
   - Deserialization from module schema
     - Contract entrypoint messages
