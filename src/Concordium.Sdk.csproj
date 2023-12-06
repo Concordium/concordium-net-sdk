@@ -3,7 +3,6 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackageVersion>4.1.0</PackageVersion>
     <Description>
       A .NET integration library written in C# which adds support for
       constructing and sending various transactions, as well as querying
@@ -16,7 +15,7 @@
     <PackageTags>concordium;concordium-net-sdk;blockchain;sdk;</PackageTags>
     <Company>Concordium</Company>
     <PackageId>ConcordiumNetSdk</PackageId>
-    <Version>4.0.1</Version>
+    <Version>4.1.0</Version>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
@@ -25,6 +24,7 @@
     <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
     <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
     <RunRustBuild>true</RunRustBuild>
+    <IncludeAllRustBuilds>false</IncludeAllRustBuilds>
   </PropertyGroup>
 
   <ItemGroup>
@@ -75,16 +75,22 @@
 
 
   <ItemGroup>
-    <!-- Include librust.dll on Windows -->
-    <None Include="../rust-bindings/target/release/librust_bindings.dll" Condition="'$(IsWindows)'=='true'">
+    <!-- Include rust_bindings.dll on Windows -->
+    <None Include="../rust-bindings/target/release/rust_bindings.dll" Condition="'$(IsWindows)'=='true' Or '$(IncludeAllRustBuilds)'=='true'">
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <Pack>True</Pack>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <!-- Include librust.dylib on macOS -->
-    <None Include="../rust-bindings/target/release/librust_bindings.dylib" Condition="'$(IsOSX)'=='true'">
+    <!-- Include librust_bindings.dylib on macOS -->
+    <None Include="../rust-bindings/target/release/librust_bindings.dylib" Condition="'$(IsOSX)'=='true' Or '$(IncludeAllRustBuilds)'=='true'">
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <Pack>True</Pack>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <!-- Include librust.so on Linux -->
-    <None Include="../rust-bindings/target/release/librust_bindings.so" Condition="'$(IsLinux)'=='true'">
+    <!-- Include librust_bindings.so on Linux -->
+    <None Include="../rust-bindings/target/release/librust_bindings.so" Condition="'$(IsLinux)'=='true' Or '$(IncludeAllRustBuilds)'=='true'">
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <Pack>True</Pack>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
