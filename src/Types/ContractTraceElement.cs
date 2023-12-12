@@ -1,5 +1,6 @@
 using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Helpers;
+using Concordium.Sdk.Interop;
 
 namespace Concordium.Sdk.Types;
 
@@ -71,7 +72,53 @@ public sealed record Updated(
     CcdAmount Amount,
     Parameter Message,
     ReceiveName ReceiveName,
-    IList<ContractEvent> Events) : IContractTraceElement;
+    IList<ContractEvent> Events) : IContractTraceElement
+{
+    /// <summary>
+    /// Deserialize message from <see cref="schema"/>.
+    /// </summary>
+    /// <param name="schema">Versioned module schema.</param>
+    /// <returns><see cref="Message"/> deserialized as json uft8 encoded.</returns>
+    /// <exception cref="InteropBindingException">Thrown when message wasn't able to be deserialized form schema.</exception>
+    public Utf8Json GetDeserializeMessage(VersionedModuleSchema schema) =>
+        GetDeserializeMessage(schema, this.ReceiveName.GetContractName(), this.ReceiveName.GetEntrypoint(), this.Message);
+
+    /// <summary>
+    /// Deserialize message from <see cref="schema"/>.
+    /// </summary>
+    /// <param name="schema">Module schema.</param>
+    /// <param name="contractIdentifier">Contract name.</param>
+    /// <param name="entryPoint">Entrypoint on contract.</param>
+    /// <param name="message">Message to entrypoint.</param>
+    /// <returns><see cref="message"/> deserialized as json uft8 encoded.</returns>
+    /// <exception cref="InteropBindingException">Thrown when message wasn't able to be deserialized from schema.</exception>
+    public static Utf8Json GetDeserializeMessage(
+        VersionedModuleSchema schema,
+        ContractIdentifier contractIdentifier,
+        EntryPoint entryPoint,
+        Parameter message
+    ) =>
+        InteropBinding.GetReceiveContractParameter(schema, contractIdentifier, entryPoint, message);
+
+    /// <summary>
+    /// Deserialize events from <see cref="schema"/>.
+    /// </summary>
+    /// <param name="schema">Module schema.</param>
+    /// <returns>List of deserialized json uft8 encoded events. Possible null if this was returned from deserialization.</returns>
+    /// <exception cref="InteropBindingException">Thrown if an event wasn't able to be deserialized from schema.</exception>
+    public IList<Utf8Json> GetDeserializedEvents(VersionedModuleSchema schema)
+    {
+        var deserialized = new List<Utf8Json>(this.Events.Count);
+        var contractIdentifier = this.ReceiveName.GetContractName();
+        foreach (var contractEvent in this.Events)
+        {
+            var deserializeEvent = contractEvent.GetDeserializeEvent(schema, contractIdentifier);
+            deserialized.Add(deserializeEvent);
+        }
+
+        return deserialized;
+    }
+}
 
 /// <summary>
 /// A contract transferred an amount to the account.
@@ -86,7 +133,27 @@ public sealed record Transferred(ContractAddress From, CcdAmount Amount, Account
 /// </summary>
 /// <param name="Address">The contract interrupted.</param>
 /// <param name="Events">The events generated up until the interruption.</param>
-public sealed record Interrupted(ContractAddress Address, IList<ContractEvent> Events) : IContractTraceElement;
+public sealed record Interrupted(ContractAddress Address, IList<ContractEvent> Events) : IContractTraceElement
+{
+    /// <summary>
+    /// Deserialize events from <see cref="schema"/>.
+    /// </summary>
+    /// <param name="schema">Module schema.</param>
+    /// <param name="contractName">Contract name.</param>
+    /// <returns>List of deserialized json uft8 encoded events. Possible null if this was returned from deserialization.</returns>
+    /// <exception cref="InteropBindingException">Thrown if an event wasn't able to be deserialized from schema.</exception>
+    public IList<Utf8Json> GetDeserializedEvents(VersionedModuleSchema schema, ContractIdentifier contractName)
+    {
+        var deserialized = new List<Utf8Json>(this.Events.Count);
+        foreach (var contractEvent in this.Events)
+        {
+            var deserializeEvent = contractEvent.GetDeserializeEvent(schema, contractName);
+            deserialized.Add(deserializeEvent);
+        }
+
+        return deserialized;
+    }
+}
 
 /// <summary>
 /// A previously interrupted contract was resumed.

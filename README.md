@@ -7,7 +7,7 @@
 
 This is a .NET integration library written in C# which adds support for constructing and sending various transactions, as well as querying various aspects of the Concordium blockchain and its nodes. This SDK uses version 2 of the [Concordium Node gRPC API](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) to interact with Concordium nodes and in turn the Concordium blockchain, and serves as a wrapper for this API with added ergonomics. Note that this deprecates earlier versions of the SDK that use version 1 of the API, cfr. the [migration](#migration) section for more details.
 
-Read ahead for a brief overview and some examples, or skip directly the [rendered documentation](#documentation). 
+Read ahead for a brief overview and some examples, or skip directly the [rendered documentation](#documentation).
 
 ## Overview
 
@@ -22,14 +22,14 @@ Currently, helpers for working with transactions of the [`Transfer`](http://deve
 ## Prerequisites/compatibility
 
 - .NET Framework: 6.0 or later.
-- Concordium Node version compatibility: 5.*
+- Concordium Node version compatibility: 6.*
 
 ## Installation
 
 The SDK is published on [nuget.org](https://www.nuget.org/packages/ConcordiumNetSdk). Depending on your setup, it can be added to your project as a dependency by running either
 
 ```powershell
-PM> Install-Package Concordium.SDK -Version 3.0
+PM> Install-Package Concordium.SDK -Version 4.2
 ```
 or
 
@@ -39,6 +39,18 @@ dotnet add package Concordium.SDK
 in your project root. It can also be used as a GIT submodule by embedding the cloned [repository](https://github.com/Concordium/concordium-net-sdk) directly into your project:
 ```sh
 git clone https://github.com/Concordium/concordium-net-sdk --recurse-submodules
+```
+
+## Rust bindings
+
+The .NET SDK uses Foreign Function Interface (FFI) functions to code written in Rust. The Rust code is located in `./rust-bindings`.
+
+Whenever the .NET SDK is build the Rust code is automatically compiled. This is done as a `PreBuildEvent` defined in the `Concordium.Sdk.csproj` file. Hence any changes
+to the Rust code will take effect on the next build of the .NET SDK.
+
+You can build the Rust code manually by running
+```sh
+cargo build --manifest-path=../rust-bindings/Cargo.toml --release
 ```
 
 ## Basic usage
@@ -87,7 +99,7 @@ Expiry expiry = Expiry.AtMinutesFromNow(10); // Transaction expires 10 minutes a
 SignedAccountTransaction signedTransfer = preparedTransfer.Sign(signer);
 ```
 
-A signed transaction can be submitted to the blockchain by invoking the [`SendAccountTransaction`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_SendAccountTransaction__1_Concordium_Sdk_Transactions_SignedAccountTransaction___0__) method. If the transfer was accepted by the node, its [`TransactionHash`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.TransactionHash.html) used to uniquely identify the transaction is returned: 
+A signed transaction can be submitted to the blockchain by invoking the [`SendAccountTransaction`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_SendAccountTransaction__1_Concordium_Sdk_Transactions_SignedAccountTransaction___0__) method. If the transfer was accepted by the node, its [`TransactionHash`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Types.TransactionHash.html) used to uniquely identify the transaction is returned:
 
 ```csharp
 TransactionHash = client.SendAccountTransaction(signedTransfer);
@@ -110,7 +122,7 @@ AccountSequenceNumber sequenceNumber = client.GetNextAccountSequenceNumber(sende
 
 ### Using the raw client API
 
-The entire [Concordium Node gRPC API V2](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) is exposed through minimal wrappers of classes that model the interface types and services as they were generated from the protocol buffer schema definitions using the [`Grpc.Tools`](https://www.nuget.org/packages/Grpc.Tools/) and [`Grpc.Net.Client`](https://www.nuget.org/packages/Grpc.Net.Client) packages. These wrappers are defined in the [`RawClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html), instances of which can *only* be accessed through the [`Raw`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_Raw) field of [`ConcordiumClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html) instances. 
+The entire [Concordium Node gRPC API V2](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) is exposed through minimal wrappers of classes that model the interface types and services as they were generated from the protocol buffer schema definitions using the [`Grpc.Tools`](https://www.nuget.org/packages/Grpc.Tools/) and [`Grpc.Net.Client`](https://www.nuget.org/packages/Grpc.Net.Client) packages. These wrappers are defined in the [`RawClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html), instances of which can *only* be accessed through the [`Raw`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html#Concordium_Sdk_Client_ConcordiumClient_Raw) field of [`ConcordiumClient`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.ConcordiumClient.html) instances.
 
 As an example, the raw API call `GetAccountInfo` defined in the [Concordium Node gRPC API V2](https://developer.concordium.software/concordium-grpc-api/#v2%2fconcordium%2fservice.proto) takes as its input a gRPC message of the [AccountInfoRequest](https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfoRequest) kind and expects a gRPC response of the [AccountInfo](https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfo) kind. This method can be invoked through [`RawClient.GetAccountInfo`](http://developer.concordium.software/concordium-net-sdk/api/Concordium.Sdk.Client.RawClient.html#Concordium_Sdk_Client_RawClient_GetAccountInfo_Concordium_Grpc_V2_AccountInfoRequest_) by supplying an instance of its corresponding generated type for [`AccountInfoRequest`](https://developer.concordium.software/concordium-grpc-api/#concordium.v2.AccountInfoRequest). In the following, we wish to retrieve the information of an account in the last finalized block:
 
@@ -193,6 +205,14 @@ Rendered documentation for this project is available [here](http://developer.con
 This deprecates earlier versions of the Concordium .NET SDK that used version 1 of the Concordium Node gRPC API. In terms of semantics and the information carried in messages, the APIs are quite similar, so APIs of the older SDK versions have corresponding raw methods in this version. Note that in some cases endpoints in the version 1 API are "split" into several endpoints in the version 2 API to increase the granularity.
 
 Another major difference between this and the previous version of the SDK is that this version of the SDK currently does not support deploying contract modules with schemas.
+
+## Test data
+
+Data for both C# and Rust tests has been generated by creating contracts and modules in an environment, primarily on testnet. For detailed documentation on contract development, refer to this [link](https://developer.concordium.software/en/mainnet/smart-contracts/tutorials/index.html).
+
+To obtain on-chain data, a Concordium client, such as the one in the .NET SDK, has been utilized. For instance, to retrieve module source data, one can use GetModuleSourceAsync as an example.
+
+When fetching data in binary format, the best practice is to store it in its raw form and avoid any encoding.
 
 ## License
 

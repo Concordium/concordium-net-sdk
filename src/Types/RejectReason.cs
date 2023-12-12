@@ -182,11 +182,22 @@ public sealed record OutOfEnergy : IRejectReason;
 /// Rejected due to contract logic in init function of a contract.
 /// </summary>
 public sealed record RejectedInit(int RejectReason) : IRejectReason;
+
 /// <summary>
 /// Rejected due to contract logic in receive function of a contract.
 /// </summary>
 public sealed record RejectedReceive(int RejectReason, ContractAddress ContractAddress, ReceiveName ReceiveName,
-    Parameter Parameter) : IRejectReason;
+    Parameter Parameter) : IRejectReason
+{
+    /// <summary>
+    /// Deserialize message from <see cref="schema"/>.
+    /// </summary>
+    /// <param name="schema">Versioned module schema.</param>
+    /// <returns><see cref="Parameter"/> deserialized as json uft8 encoded.</returns>
+    /// <exception cref="InteropBindingException">Thrown when message wasn't able to be deserialized using the schema.</exception>
+    public Utf8Json GetDeserializeMessage(VersionedModuleSchema schema) =>
+        Updated.GetDeserializeMessage(schema, this.ReceiveName.GetContractName(), this.ReceiveName.GetEntrypoint(), this.Parameter);
+}
 /// <summary>
 /// Proof that the baker owns relevant private keys is not valid.
 /// </summary>
