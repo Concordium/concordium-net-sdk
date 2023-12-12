@@ -1,3 +1,5 @@
+using Concordium.Sdk.Types;
+
 namespace Concordium.Sdk.Transactions;
 
 /// <summary>
@@ -10,5 +12,10 @@ namespace Concordium.Sdk.Transactions;
 /// <param name="Bytes">The raw bytes of the payload.</param>
 public sealed record RawPayload(byte[] Bytes) : AccountTransactionPayload
 {
+    /// <summary>
+    /// Gets the size (number of bytes) of the payload.
+    /// </summary>
+    internal override PayloadSize Size() => new((uint)this.Bytes.Length);
+
     public override byte[] ToBytes() => this.Bytes;
 }

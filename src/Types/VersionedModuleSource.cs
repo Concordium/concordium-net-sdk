@@ -13,11 +13,14 @@ public abstract record VersionedModuleSource(byte[] Source) : IEquatable<Version
 
     internal abstract uint GetVersion();
 
-    internal uint GetBytesLength() => (uint)((2 * sizeof(int)) + this.Source.Length);
+    /// <summary>
+    /// Gets the length (number of bytes) of the Module.
+    /// </summary>
+    internal uint Length() => (uint)((2 * sizeof(int)) + this.Source.Length);
 
     internal byte[] ToBytes()
     {
-        using var memoryStream = new MemoryStream((int)this.GetBytesLength());
+        using var memoryStream = new MemoryStream((int)this.Length());
         memoryStream.Write(Serialization.ToBytes(this.GetVersion()));
         memoryStream.Write(Serialization.ToBytes((uint)this.Source.Length));
         memoryStream.Write(this.Source);

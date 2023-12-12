@@ -30,6 +30,11 @@ public sealed record OnChainData : IEquatable<OnChainData>
     private OnChainData(byte[] bytes) => this._value = bytes;
 
     /// <summary>
+    /// Gets the length (number of bytes) of the data.
+    /// </summary>
+    internal uint Length() => (uint)this._value.Length;
+
+    /// <summary>
     /// Creates an instance from a hex encoded string.
     /// </summary>
     /// <param name="hexString">Data represented as a hex encoded string representing at most <see cref="MaxLength"/> bytes.</param>

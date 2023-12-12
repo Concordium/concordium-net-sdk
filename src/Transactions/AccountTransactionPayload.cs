@@ -19,6 +19,11 @@ public abstract record AccountTransactionPayload
     public abstract byte[] ToBytes();
 
     /// <summary>
+    /// Gets the size (number of bytes) of the payload.
+    /// </summary>
+    internal abstract PayloadSize Size();
+
+    /// <summary>
     /// Converts the transaction to its corresponding protocol buffer message instance.
     /// </summary>
     public Grpc.V2.AccountTransactionPayload ToProto() =>

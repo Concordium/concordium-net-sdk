@@ -38,6 +38,11 @@ public sealed record RegisterData(OnChainData Data) : AccountTransactionPayload
     private readonly EnergyAmount _transactionCost = new(300);
 
     /// <summary>
+    /// Gets the size (number of bytes) of the payload.
+    /// </summary>
+    internal override PayloadSize Size() => new(sizeof(TransactionType) + this.Data.Length());
+
+    /// <summary>
     /// Copies the "register data" account transaction in the binary format expected by the node to a byte array.
     /// </summary>
     /// <param name="data">The data to be registered on-chain.</param>

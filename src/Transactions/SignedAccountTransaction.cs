@@ -22,19 +22,22 @@ public record SignedAccountTransaction(
 ) : BlockItemType
 {
     /// <summary>Converts this type to the equivalent protocol buffer type.</summary>
-    public AccountTransaction ToProto() =>
-        new()
-        {
-            Header = this.Header.ToProto(),
-            Payload = this.Payload.ToProto(),
-            Signature = this.Signature.ToProto(),
-        };
+    public AccountTransaction ToProto() => new()
+    {
+        Header = this.Header.ToProto(),
+        Payload = this.Payload.ToProto(),
+        Signature = this.Signature.ToProto(),
+    };
 
-    internal static SignedAccountTransaction From(AccountTransaction accountTransaction) => new(
-            AccountTransactionHeader.From(accountTransaction.Header),
-            AccountTransactionPayload.From(accountTransaction.Payload),
+    internal static SignedAccountTransaction From(AccountTransaction accountTransaction)
+    {
+        var payload = AccountTransactionPayload.From(accountTransaction.Payload);
+        return new(
+            AccountTransactionHeader.From(accountTransaction.Header, payload.Size()),
+            payload,
             AccountTransactionSignature.From(accountTransaction.Signature)
         );
+    }
 
     /// <summary>
     /// Converts the signed account transaction to a protocol buffer

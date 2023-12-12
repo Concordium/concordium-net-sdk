@@ -44,6 +44,11 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
     private readonly EnergyAmount _transactionCost = new(300);
 
     /// <summary>
+    /// Gets the size (number of bytes) of the payload.
+    /// </summary>
+    internal override PayloadSize Size() => new(BytesLength);
+
+    /// <summary>
     /// Copies the "transfer" account transaction in the binary format expected by the node to a byte array.
     /// </summary>
     /// <param name="amount">Amount to send.</param>

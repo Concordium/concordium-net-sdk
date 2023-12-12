@@ -42,6 +42,15 @@ public sealed record TransferWithMemo(CcdAmount Amount, AccountAddress Receiver,
     private readonly EnergyAmount _transactionCost = new(300);
 
     /// <summary>
+    /// Gets the size (number of bytes) of the payload.
+    /// </summary>
+    internal override PayloadSize Size() => new(
+        this.Memo.Length() +
+        sizeof(TransactionType) +
+        CcdAmount.BytesLength +
+        AccountAddress.BytesLength);
+
+    /// <summary>
     /// Copies the "transfer with memo" account transaction in the binary format expected by the node to a byte array.
     /// </summary>
     /// <param name="amount">Amount to send.</param>
