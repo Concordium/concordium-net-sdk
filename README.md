@@ -23,7 +23,7 @@ Currently, helpers for working with transactions of the [`Transfer`](http://deve
 
 - .NET Framework: 6.0 or later.
 - Concordium Node version compatibility: 6.*
-- On iOS currently only dotnet x86 runtimes are supported.
+- On macOS currently only dotnet x86 runtimes are supported.
 
 ## Installation
 
