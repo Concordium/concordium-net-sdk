@@ -52,7 +52,7 @@ public sealed record Parameter(byte[] Param) : IEquatable<Parameter>
             return false;
         };
 
-        output = (new Parameter(bytes.Slice(sizeof(ushort), (int)sizeRead).ToArray()), null);
+        output = (new Parameter(bytes.Slice(sizeof(ushort), sizeRead).ToArray()), null);
         return true;
     }
 

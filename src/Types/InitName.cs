@@ -10,7 +10,8 @@ namespace Concordium.Sdk.Types;
 public sealed record InitName : IEquatable<InitName>
 {
     /// A contract init name.
-    public readonly string Name;
+    public string Name { get; }
+
     private readonly byte[] _bytes;
 
     /// <summary>
@@ -59,7 +60,7 @@ public sealed record InitName : IEquatable<InitName>
 
         try
         {
-            var initNameBytes = bytes.Slice(sizeof(ushort), (int)sizeRead).ToArray();
+            var initNameBytes = bytes.Slice(sizeof(ushort), sizeRead).ToArray();
             var ascii = Encoding.ASCII.GetString(initNameBytes);
             var initName = new InitName(ascii);
             output = (initName, null);
@@ -76,18 +77,18 @@ public sealed record InitName : IEquatable<InitName>
     /// <summary>
     /// Creates an instance from a string.
     /// </summary>
-    /// <param name="Name">
+    /// <param name="name">
     /// The init name of a smart contract function. Expected format:
     /// `init_&lt;contract_name&gt;`. It must only consist of atmost 100 ASCII alphanumeric
     /// or punctuation characters, must not contain a '.' and must start with `init_`.
     /// </param>
-    public InitName(string Name)
+    public InitName(string name)
     {
-        var containsDot = Name.Contains('.');
-        var longerThan100 = Name.Length > 100;
-        var startsWithInit = new Regex(@"^init_").IsMatch(Name);
-        var alphanumericOrPunctuation = Name.All(c => char.IsLetterOrDigit(c) || char.IsPunctuation(c));
-        var isAscii = Name.All(char.IsAscii);
+        var containsDot = name.Contains('.');
+        var longerThan100 = name.Length > 100;
+        var startsWithInit = new Regex(@"^init_").IsMatch(name);
+        var alphanumericOrPunctuation = name.All(c => char.IsLetterOrDigit(c) || char.IsPunctuation(c));
+        var isAscii = name.All(char.IsAscii);
 
         if (containsDot)
         {
@@ -111,8 +112,8 @@ public sealed record InitName : IEquatable<InitName>
         }
         else
         {
-            this._bytes = Encoding.ASCII.GetBytes(Name);
-            this.Name = Name;
+            this._bytes = Encoding.ASCII.GetBytes(name);
+            this.Name = name;
         }
     }
 

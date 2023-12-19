@@ -28,7 +28,7 @@ public sealed record ModuleReference : Hash
             return false;
         };
 
-        output = (new ModuleReference(bytes.Slice(0, (int)BytesLength).ToArray()), null);
+        output = (new ModuleReference(bytes[..BytesLength].ToArray()), null);
         return true;
     }
 

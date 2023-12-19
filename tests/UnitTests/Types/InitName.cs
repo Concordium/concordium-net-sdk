@@ -1,7 +1,4 @@
 using System;
-using System.Buffers.Binary;
-using System.Linq;
-using System.Text;
 using Concordium.Sdk.Types;
 using FluentAssertions;
 using Xunit;
@@ -11,7 +8,10 @@ namespace Concordium.Sdk.Tests.UnitTests.Types;
 public sealed class InitNameTests
 {
     [Fact]
-    public void IsAlphaNumeric() => new InitName("init_some_ascii_here");
+    public void IsAlphaNumeric()
+    {
+        var init = new InitName("init_some_ascii_here");
+    }
 
     [Fact]
     public void IsAlphaNumeric_Negative() => Assert.Throws<ArgumentException>(() => new InitName("init_åå"));
@@ -20,7 +20,7 @@ public sealed class InitNameTests
     public void Max100Length()
     {
         var name = "init______1_________2_________3_________4_________5_________6_________7_________8_________9_________";
-        new InitName(name);
+        var init = new InitName(name);
         Assert.Equal(100, name.Length);
         Assert.Throws<ArgumentException>(() => new InitName("init_åå"));
     }
@@ -42,7 +42,10 @@ public sealed class InitNameTests
     }
 
     [Fact]
-    public void CanContainPunctuation() => new InitName("init_,;:'\"(){}[]?!");
+    public void CanContainPunctuation()
+    {
+        var init = new InitName("init_,;:'\"(){}[]?!");
+    }
 
     [Fact]
     public void DeserializesCorrectly()

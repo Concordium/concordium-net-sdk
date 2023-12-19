@@ -128,13 +128,14 @@ public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, I
     /// <summary>
     /// Copies the "transfer" account transaction in the binary format expected by the node to a byte array.
     /// </summary>
-    public override byte[] ToBytes() {
+    public override byte[] ToBytes()
+    {
         using var memoryStream = new MemoryStream((int)this.Size().Size);
         memoryStream.WriteByte(TransactionType);
-        memoryStream.Write(Amount.ToBytes());
-        memoryStream.Write(ModuleRef.ToBytes());
-        memoryStream.Write(InitName.ToBytes());
-        memoryStream.Write(Parameter.ToBytes());
+        memoryStream.Write(this.Amount.ToBytes());
+        memoryStream.Write(this.ModuleRef.ToBytes());
+        memoryStream.Write(this.InitName.ToBytes());
+        memoryStream.Write(this.Parameter.ToBytes());
         return memoryStream.ToArray();
     }
 }
