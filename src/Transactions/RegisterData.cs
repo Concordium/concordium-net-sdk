@@ -40,21 +40,7 @@ public sealed record RegisterData(OnChainData Data) : AccountTransactionPayload
     /// <summary>
     /// Gets the size (number of bytes) of the payload.
     /// </summary>
-    internal override PayloadSize Size() => new(sizeof(TransactionType) + this.Data.Length());
-
-    /// <summary>
-    /// Copies the "register data" account transaction in the binary format expected by the node to a byte array.
-    /// </summary>
-    /// <param name="data">The data to be registered on-chain.</param>
-    private static byte[] Serialize(OnChainData data)
-    {
-        var buffer = data.ToBytes();
-        var size = sizeof(TransactionType) + buffer.Length;
-        using var memoryStream = new MemoryStream(size);
-        memoryStream.WriteByte(TransactionType);
-        memoryStream.Write(buffer);
-        return memoryStream.ToArray();
-    }
+    internal override PayloadSize Size() => new(sizeof(TransactionType) + this.Data.SerializedLength());
 
     /// <summary>
     /// Create a "register data" payload from a serialized as bytes.
@@ -72,7 +58,7 @@ public sealed record RegisterData(OnChainData Data) : AccountTransactionPayload
         };
         if (bytes[0] != TransactionType)
         {
-            var msg = $"Invalid transaction type in `Transfer.TryDeserial`. expected {TransactionType}, found {bytes[0]}";
+            var msg = $"Invalid transaction type in `Transfer.TryDeserial`. Expected {TransactionType}, found {bytes[0]}";
             output = (null, msg);
             return false;
         };
@@ -86,12 +72,22 @@ public sealed record RegisterData(OnChainData Data) : AccountTransactionPayload
 
         if (memo.OnChainData == null)
         {
-            throw new DeserialInvalidResultException();
+            throw new DeserialNullException();
         };
 
         output = (new RegisterData(memo.OnChainData), null);
         return true;
     }
 
-    public override byte[] ToBytes() => Serialize(this.Data);
+    /// <summary>
+    /// Copies the "register data" account transaction in the binary format expected by the node to a byte array.
+    /// </summary>
+    public override byte[] ToBytes()
+    {
+        using var memoryStream = new MemoryStream((int)this.Size().Size);
+        memoryStream.WriteByte(TransactionType);
+        memoryStream.Write(this.Data.ToBytes());
+        return memoryStream.ToArray();
+    }
+
 }

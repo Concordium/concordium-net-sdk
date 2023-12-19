@@ -19,7 +19,7 @@ public record CredentialDeployment(TransactionTime MessageExpiry, ICredentialPay
             cred.PayloadCase switch
             {
                 CredentialDeploymentPayloadCase.RawPayload => new CredentialPayloadRaw(cred.RawPayload.ToByteArray()),
-                CredentialDeploymentPayloadCase.None => throw new NotImplementedException(),
+                CredentialDeploymentPayloadCase.None => throw new MissingEnumException<CredentialDeploymentPayloadCase>(cred.PayloadCase),
                 _ => throw new MissingEnumException<CredentialDeploymentPayloadCase>(cred.PayloadCase),
             }
         );

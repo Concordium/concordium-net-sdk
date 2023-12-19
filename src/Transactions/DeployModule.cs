@@ -27,7 +27,7 @@ public sealed record DeployModule(VersionedModuleSource Module) : AccountTransac
     /// https://github.com/Concordium/concordium-base/blob/78f557b8b8c94773a25e4f86a1a92bc323ea2e3d/haskell-src/Concordium/Cost.hs
     /// </summary>
 
-    private readonly EnergyAmount _transactionCost = new(Module.Length() / 10);
+    private readonly EnergyAmount _transactionCost = new(Module.SerializedLength() / 10);
 
     /// <summary>The account transaction type to be used in the serialized payload.</summary>
     private const byte TransactionType = (byte)Types.TransactionType.DeployModule;
@@ -35,22 +35,7 @@ public sealed record DeployModule(VersionedModuleSource Module) : AccountTransac
     /// <summary>
     /// Gets the size (number of bytes) of the payload.
     /// </summary>
-    internal override PayloadSize Size() => new(this.Module.Length() + sizeof(TransactionType));
-
-    /// <summary>
-    /// Copies the "deploy module" account transaction in the binary format expected by the node to a byte array.
-    /// </summary>
-    /// <param name="module">The smart contract module to be deployed.</param>
-    private static byte[] Serialize(VersionedModuleSource module)
-    {
-        using var memoryStream = new MemoryStream((int)(
-            sizeof(TransactionType) +
-            module.Length()
-        ));
-        memoryStream.WriteByte(TransactionType);
-        memoryStream.Write(module.ToBytes());
-        return memoryStream.ToArray();
-    }
+    internal override PayloadSize Size() => new(this.Module.SerializedLength() + sizeof(TransactionType));
 
     /// <summary>
     /// Create a "deploy module" payload from a serialized as bytes.
@@ -62,14 +47,14 @@ public sealed record DeployModule(VersionedModuleSource Module) : AccountTransac
         var minLength = sizeof(TransactionType) + (2 * sizeof(int));
         if (bytes.Length < minLength)
         {
-            var msg = $"Invalid input length in `DeployModule.TryDeserial`. expected at least {minLength}, found {bytes.Length}";
+            var msg = $"Invalid input length in `DeployModule.TryDeserial`. Expected at least {minLength}, found {bytes.Length}";
             output = (null, msg);
             return false;
         }
 
         if (bytes[0] != TransactionType)
         {
-            var msg = $"Invalid transaction type in `DeployModule.TryDeserial`. expected {TransactionType}, found {bytes[0]}";
+            var msg = $"Invalid transaction type in `DeployModule.TryDeserial`. Expected {TransactionType}, found {bytes[0]}";
             output = (null, msg);
             return false;
         }
@@ -83,13 +68,22 @@ public sealed record DeployModule(VersionedModuleSource Module) : AccountTransac
 
         if (module.VersionedModuleSource == null)
         {
-            throw new DeserialInvalidResultException();
+            throw new DeserialNullException();
         }
 
         output = (new DeployModule(module.VersionedModuleSource), null);
         return true;
     }
 
-    public override byte[] ToBytes() => Serialize(this.Module);
+    /// <summary>
+    /// Copies the "deploy module" account transaction in the binary format expected by the node to a byte array.
+    /// </summary>
+    public override byte[] ToBytes()
+    {
+        using var memoryStream = new MemoryStream((int)this.Module.SerializedLength());
+        memoryStream.WriteByte(TransactionType);
+        memoryStream.Write(this.Module.ToBytes());
+        return memoryStream.ToArray();
+    }
 }
 

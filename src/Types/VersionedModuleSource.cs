@@ -5,6 +5,9 @@ using WebAssembly;
 
 namespace Concordium.Sdk.Types;
 
+/// <summary>
+/// Contains source code of a versioned module where inherited classes are concrete versions.
+/// </summary>
 public abstract record VersionedModuleSource
 {
     /// <summary>
@@ -18,9 +21,11 @@ public abstract record VersionedModuleSource
     internal abstract uint GetVersion();
 
     /// <summary>
-    /// Gets the length (number of bytes) of the Module.
+    /// Gets the length (number of bytes) of the serialized Module.
     /// </summary>
-    internal uint Length() => (uint)((2 * sizeof(int)) + this.Source.Length);
+    internal uint SerializedLength() => (uint)((2 * sizeof(int)) + this.Source.Length);
+
+    internal const uint MinSerializedLength = 2 * sizeof(int);
 
     /// <summary>
     /// Base constructor
@@ -51,7 +56,7 @@ public abstract record VersionedModuleSource
 
     internal byte[] ToBytes()
     {
-        using var memoryStream = new MemoryStream((int)this.Length());
+        using var memoryStream = new MemoryStream((int)this.SerializedLength());
         memoryStream.Write(Serialization.ToBytes(this.GetVersion()));
         memoryStream.Write(Serialization.ToBytes((uint)this.Source.Length));
         memoryStream.Write(this.Source);
@@ -129,9 +134,9 @@ internal static class VersionedModuleSourceFactory
     /// <param name="output">Where to write the result of the operation.</param>
     public static bool TryDeserial(ReadOnlySpan<byte> bytes, out (VersionedModuleSource? VersionedModuleSource, string? Error) output)
     {
-        if (bytes.Length < 2 * sizeof(int))
+        if (bytes.Length < VersionedModuleSource.MinSerializedLength)
         {
-            output = (null, $"The given byte array in `VersionModuleSourceFactory.TryDeserial`, is too short. Must be longer than {2 * sizeof(int)}.");
+            output = (null, $"The given byte array in `VersionModuleSourceFactory.TryDeserial`, is too short. Must be longer than {VersionedModuleSource.MinSerializedLength}.");
             return false;
         }
 

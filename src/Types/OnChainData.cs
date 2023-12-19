@@ -19,6 +19,11 @@ public sealed record OnChainData : IEquatable<OnChainData>
     public const uint MaxLength = 256;
 
     /// <summary>
+    /// The minimum serialized length.
+    /// </summary>
+    internal const uint MinSerializedLength = sizeof(ushort);
+
+    /// <summary>
     /// Byte array representing the data.
     /// </summary>
     private readonly byte[] _value;
@@ -30,9 +35,9 @@ public sealed record OnChainData : IEquatable<OnChainData>
     private OnChainData(byte[] bytes) => this._value = bytes;
 
     /// <summary>
-    /// Gets the length (number of bytes) of the data.
+    /// Gets the length (number of bytes) of the serializd data.
     /// </summary>
-    internal uint Length() => (uint)this._value.Length;
+    internal uint SerializedLength() => (uint)this._value.Length + sizeof(ushort);
 
     /// <summary>
     /// Creates an instance from a hex encoded string.
@@ -130,7 +135,7 @@ public sealed record OnChainData : IEquatable<OnChainData>
     /// </summary>
     public byte[] ToBytes()
     {
-        using var memoryStream = new MemoryStream(sizeof(ushort) + this._value.Length);
+        using var memoryStream = new MemoryStream((int)this.SerializedLength());
         memoryStream.Write(Serialization.ToBytes((ushort)this._value.Length));
         memoryStream.Write(this._value);
         return memoryStream.ToArray();
@@ -148,16 +153,9 @@ public sealed record OnChainData : IEquatable<OnChainData>
     /// <param name="output">Where to write the result of the operation.</param>
     public static bool TryDeserial(ReadOnlySpan<byte> bytes, out (OnChainData? OnChainData, string? Error) output)
     {
-        if (bytes.Length < sizeof(ushort))
+        if (bytes.Length < MinSerializedLength)
         {
-            var msg = $"Invalid length of input in `OnChainData.TryDeserial`. Length must be more than {sizeof(ushort)}";
-            output = (null, msg);
-            return false;
-        };
-
-        if (bytes.Length > sizeof(ushort) + MaxLength)
-        {
-            var msg = $"Invalid length of input in `OnChainData.TryDeserial`. Length must not be more than {sizeof(ushort) + MaxLength}";
+            var msg = $"Invalid length of input in `OnChainData.TryDeserial`. Length must be more than {MinSerializedLength}";
             output = (null, msg);
             return false;
         };

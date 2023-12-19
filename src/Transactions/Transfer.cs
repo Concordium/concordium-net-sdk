@@ -49,20 +49,6 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
     internal override PayloadSize Size() => new(BytesLength);
 
     /// <summary>
-    /// Copies the "transfer" account transaction in the binary format expected by the node to a byte array.
-    /// </summary>
-    /// <param name="amount">Amount to send.</param>
-    /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
-    private static byte[] Serialize(CcdAmount amount, AccountAddress receiver)
-    {
-        using var memoryStream = new MemoryStream((int)BytesLength);
-        memoryStream.WriteByte(TransactionType);
-        memoryStream.Write(receiver.ToBytes());
-        memoryStream.Write(amount.ToBytes());
-        return memoryStream.ToArray();
-    }
-
-    /// <summary>
     /// Create a "transfer" payload from a serialized as bytes.
     /// </summary>
     /// <param name="bytes">The "transfer" payload as bytes.</param>
@@ -77,7 +63,7 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
         };
         if (bytes[0] != TransactionType)
         {
-            var msg = $"Invalid transaction type in `Transfer.TryDeserial`. expected {TransactionType}, found {bytes[0]}";
+            var msg = $"Invalid transaction type in `Transfer.TryDeserial`. Expected {TransactionType}, found {bytes[0]}";
             output = (null, msg);
             return false;
         };
@@ -98,12 +84,22 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
 
         if (amount.Amount == null || account.AccountAddress == null)
         {
-            throw new DeserialInvalidResultException();
+            throw new DeserialNullException();
         }
 
         output = (new Transfer(amount.Amount.Value, account.AccountAddress), null);
         return true;
     }
 
-    public override byte[] ToBytes() => Serialize(this.Amount, this.Receiver);
+    /// <summary>
+    /// Copies the "transfer" account transaction in the binary format expected by the node to a byte array.
+    /// </summary>
+    public override byte[] ToBytes()
+    {
+        using var memoryStream = new MemoryStream((int)BytesLength);
+        memoryStream.WriteByte(TransactionType);
+        memoryStream.Write(this.Receiver.ToBytes());
+        memoryStream.Write(this.Amount.ToBytes());
+        return memoryStream.ToArray();
+    }
 }

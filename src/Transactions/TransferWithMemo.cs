@@ -45,30 +45,10 @@ public sealed record TransferWithMemo(CcdAmount Amount, AccountAddress Receiver,
     /// Gets the size (number of bytes) of the payload.
     /// </summary>
     internal override PayloadSize Size() => new(
-        this.Memo.Length() +
+        this.Memo.SerializedLength() +
         sizeof(TransactionType) +
         CcdAmount.BytesLength +
         AccountAddress.BytesLength);
-
-    /// <summary>
-    /// Copies the "transfer with memo" account transaction in the binary format expected by the node to a byte array.
-    /// </summary>
-    /// <param name="amount">Amount to send.</param>
-    /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
-    /// <param name="memo">Memo to include with the transaction.</param>
-    private static byte[] Serialize(CcdAmount amount, AccountAddress receiver, OnChainData memo)
-    {
-        using var memoryStream = new MemoryStream((int)(
-            sizeof(TransactionType) +
-            CcdAmount.BytesLength +
-            AccountAddress.BytesLength +
-            OnChainData.MaxLength));
-        memoryStream.WriteByte(TransactionType);
-        memoryStream.Write(receiver.ToBytes());
-        memoryStream.Write(memo.ToBytes());
-        memoryStream.Write(amount.ToBytes());
-        return memoryStream.ToArray();
-    }
 
     /// <summary>
     /// Create a "transfer with memo" payload from a serialized as bytes.
@@ -86,7 +66,7 @@ public sealed record TransferWithMemo(CcdAmount Amount, AccountAddress Receiver,
         };
         if (bytes[0] != TransactionType)
         {
-            var msg = $"Invalid transaction type in `Transfer.TryDeserial`. expected {TransactionType}, found {bytes[0]}";
+            var msg = $"Invalid transaction type in `Transfer.TryDeserial`. Expected {TransactionType}, found {bytes[0]}";
             output = (null, msg);
             return false;
         };
@@ -118,12 +98,23 @@ public sealed record TransferWithMemo(CcdAmount Amount, AccountAddress Receiver,
 
         if (amount.Amount == null || account.AccountAddress == null || memo.OnChainData == null)
         {
-            throw new DeserialInvalidResultException();
+            throw new DeserialNullException();
         };
 
         output = (new TransferWithMemo(amount.Amount.Value, account.AccountAddress, memo.OnChainData), null);
         return true;
     }
 
-    public override byte[] ToBytes() => Serialize(this.Amount, this.Receiver, this.Memo);
+    /// <summary>
+    /// Copies the "transfer with memo" account transaction in the binary format expected by the node to a byte array.
+    /// </summary>
+    public override byte[] ToBytes()
+    {
+        using var memoryStream = new MemoryStream((int)this.Size().Size);
+        memoryStream.WriteByte(TransactionType);
+        memoryStream.Write(this.Receiver.ToBytes());
+        memoryStream.Write(this.Memo.ToBytes());
+        memoryStream.Write(this.Amount.ToBytes());
+        return memoryStream.ToArray();
+    }
 }

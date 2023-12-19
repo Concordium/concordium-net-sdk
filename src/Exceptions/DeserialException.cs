@@ -14,9 +14,9 @@ public class DeserialException : Exception
 /// Thrown when deserialization fails but no error message is present. This
 /// should, by construction, be impossible.
 /// </summary>
-public sealed class DeserialInvalidResultException : DeserialException
+public sealed class DeserialNullException : DeserialException
 {
-    internal DeserialInvalidResultException() :
+    internal DeserialNullException() :
         base($"Deserialization error: The parsed output is null, but no error was found. This should not be possible.")
     { }
 }
