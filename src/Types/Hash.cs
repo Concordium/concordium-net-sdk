@@ -1,3 +1,5 @@
+using System.Buffers.Binary;
+
 namespace Concordium.Sdk.Types;
 
 /// <summary>

@@ -142,7 +142,7 @@ public sealed record OnChainData : IEquatable<OnChainData>
     public override string ToString() => Convert.ToHexString(this._value).ToLowerInvariant();
 
     /// <summary>
-    /// Create an "OnChainData" from a byte array.
+    /// Deserialize an "OnChainData" from a byte array.
     /// </summary>
     /// <param name="bytes">The serialized "OnChainData".</param>
     /// <param name="output">Where to write the result of the operation.</param>
