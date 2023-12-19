@@ -82,15 +82,15 @@ public sealed class InitContractTests
             0,
             0
         };
-        newInitContract().ToBytes().Should().BeEquivalentTo(expectedBytes);
+        NewInitContract().ToBytes().Should().BeEquivalentTo(expectedBytes);
     }
 
     [Fact]
     public void ToBytes_InverseOfFromBytes()
     {
-        if (InitContract.TryDeserial(newInitContract().ToBytes(), out var deserial))
+        if (InitContract.TryDeserial(NewInitContract().ToBytes(), out var deserial))
         {
-            newInitContract().Should().Be(deserial.InitContract);
+            NewInitContract().Should().Be(deserial.InitContract);
         }
         else
         {
