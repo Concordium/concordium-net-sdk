@@ -114,7 +114,10 @@ public abstract record VersionedModuleSource
     }
 }
 
-internal static class VersionedModuleSourceFactory
+/// <summary>
+/// Crates a VersiondModuleSource.
+/// </summary>
+public static class VersionedModuleSourceFactory
 {
     internal static VersionedModuleSource From(Grpc.V2.VersionedModuleSource versionedModuleSource) =>
         versionedModuleSource.ModuleCase switch
@@ -126,6 +129,20 @@ internal static class VersionedModuleSourceFactory
             _ => throw new MissingEnumException<Grpc.V2.VersionedModuleSource.ModuleOneofCase>(versionedModuleSource
                 .ModuleCase)
         };
+
+    /// <summary>
+    /// Create a cref="VersionedModuleSource" from a versioned WASM file.
+    /// </summary>
+    /// <param name="modulePath">The path to the versioned WASM file.</param>
+    /// <exception cref="DeserialException">The provided WASM module was unable to be parsed.</exception>
+    public static VersionedModuleSource FromFile(string modulePath) {
+        var bytes = File.ReadAllBytes(modulePath); 
+        if (VersionedModuleSourceFactory.TryDeserial(bytes, out var versionedModule)) {
+            return versionedModule.VersionedModuleSource;
+        } else {
+            throw new DeserialException(versionedModule.Error);
+        }
+    }
 
     /// <summary>
     /// Create a versioned module schema from a byte array.
