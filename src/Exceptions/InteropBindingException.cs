@@ -5,7 +5,7 @@ namespace Concordium.Sdk.Exceptions;
 /// <summary>
 /// Thrown when a interop call failed with possible error as message.
 /// </summary>
-internal sealed class InteropBindingException : Exception
+public sealed class InteropBindingException : Exception
 {
     private const string EmptyErrorMessage = "Empty error message returned";
 
