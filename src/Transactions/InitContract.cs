@@ -1,4 +1,3 @@
-using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;
@@ -106,7 +105,9 @@ public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, I
         };
         if (name.Name == null)
         {
-            throw new DeserialInvalidResultException();
+            var msg = $"Name was null, but did not produce an error";
+            output = (null, msg);
+            return false;
         }
 
         var paramBytes = bytes[(int)(name.Name.SerializedLength() + Hash.BytesLength + CcdAmount.BytesLength + sizeof(TransactionType))..];
