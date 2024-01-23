@@ -8,6 +8,7 @@ namespace Concordium.Sdk.Types;
 /// <param name="Value">Value of the energy amount.</param>
 public readonly record struct EnergyAmount(ulong Value)
 {
+    ///<summary>Byte length of Energy. Used for serialization.</summary>
     public const uint BytesLength = sizeof(ulong);
 
     /// <summary>
@@ -36,7 +37,7 @@ public readonly record struct EnergyAmount(ulong Value)
     }
 
     /// <summary>
-    /// Subtract CCD amounts.
+    /// Subtract Energy amounts.
     /// </summary>
     /// <exception cref="ArgumentException">The result does not fit in <see cref="ulong"/></exception>
     public static EnergyAmount operator -(EnergyAmount a, EnergyAmount b)

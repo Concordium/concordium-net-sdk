@@ -4,11 +4,11 @@ using Concordium.Sdk.Types;
 namespace Concordium.Sdk.Transactions;
 
 /// <summary>
-/// Represents a "transfer" account transaction.
+/// Represents an "init_contract" transaction.
 ///
-/// Used for transferring CCD from one account to another.
+/// Used for initializing deployed smart contracts.
 /// </summary>
-/// <param name="Amount">Amount to send.</param>
+/// <param name="Amount">Deposit this amount of CCD.</param>
 /// <param name="ModuleRef">The smart contract module reference.</param>
 /// <param name="InitName">The init name of the smart contract.</param>
 /// <param name="Parameter">The parameters for the smart contract.</param>
@@ -43,7 +43,7 @@ public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, I
         AccountSequenceNumber sequenceNumber,
         Expiry expiry,
         EnergyAmount energy
-    ) => new(sender, sequenceNumber, expiry, this._transactionBaseCost + energy, this);
+    ) => new(sender, sequenceNumber, expiry, new EnergyAmount(TrxBaseCost) + energy, this);
 
     /// <summary>
     /// The base transaction specific cost for submitting this type of
@@ -52,7 +52,7 @@ public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, I
     /// This should reflect the transaction-specific costs defined here:
     /// https://github.com/Concordium/concordium-base/blob/78f557b8b8c94773a25e4f86a1a92bc323ea2e3d/haskell-src/Concordium/Cost.hs
     /// </summary>
-    private readonly EnergyAmount _transactionBaseCost = new(300);
+    private const ushort TrxBaseCost = 300;
 
     /// <summary>
     /// Gets the size (number of bytes) of the payload.
@@ -118,7 +118,9 @@ public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, I
 
         if (amount.Amount == null || moduleRef.Ref == null || param.Parameter == null)
         {
-            throw new DeserialInvalidResultException();
+            var msg = $"Amount, ModuleRef or Parameter were null, but did not produce an error";
+            output = (null, msg);
+            return false;
         }
 
         output = (new InitContract(amount.Amount.Value, moduleRef.Ref, name.Name, param.Parameter), null);
@@ -126,7 +128,7 @@ public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, I
     }
 
     /// <summary>
-    /// Copies the "transfer" account transaction in the binary format expected by the node to a byte array.
+    /// Copies the "init_contract" transaction in the binary format expected by the node to a byte array.
     /// </summary>
     public override byte[] ToBytes()
     {

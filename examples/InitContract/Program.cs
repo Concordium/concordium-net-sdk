@@ -1,4 +1,4 @@
-using System;
+using System.Globalization;
 using CommandLine;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;
@@ -10,7 +10,8 @@ using Concordium.Sdk.Wallets;
 
 namespace InitContract;
 
-internal sealed class InitContractOptions {
+internal sealed class InitContractOptions
+{
     [Option(
         'k',
         "keys",
@@ -21,8 +22,8 @@ internal sealed class InitContractOptions {
     [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.",
         Default = "http://node.testnet.concordium.com:20000/")]
     public string Endpoint { get; set; }
-    [Option('a', "amount", HelpText = "Amount of CCD to transfer.", Required = true)]
-    public ulong Amount { get; set; } = 0;
+    [Option('a', "amount", HelpText = "Amount of CCD to deposit.", Default = 0)]
+    public ulong Amount { get; set; }
 
     [Option('m', "module-ref", HelpText = "The module reference of the smart contract.", Required = true)]
     public string ModuleRef { get; set; }
@@ -61,8 +62,8 @@ public static class Program
         var amount = CcdAmount.FromCcd(o.Amount);
         var moduleRef = new ModuleReference(o.ModuleRef);
         var initName = new InitName(o.InitName);
-        var param = new Parameter(new byte[0]);
-        var maxEnergy = new EnergyAmount(UInt32.Parse(o.MaxEnergy));
+        var param = new Parameter(Array.Empty<byte>());
+        var maxEnergy = new EnergyAmount(uint.Parse(o.MaxEnergy, CultureInfo.InvariantCulture));
         var transferPayload = new Concordium.Sdk.Transactions.InitContract(amount, moduleRef, initName, param);
 
         // Prepare the transaction for signing.

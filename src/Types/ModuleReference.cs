@@ -15,9 +15,9 @@ public sealed record ModuleReference : Hash
     internal ModuleRef Into() => new() { Value = ByteString.CopyFrom(this.AsSpan()) };
 
     /// <summary>
-    /// Create a parameter from a byte array.
+    /// Create a module reference from a byte array.
     /// </summary>
-    /// <param name="bytes">The serialized parameters.</param>
+    /// <param name="bytes">The serialized module reference.</param>
     /// <param name="output">Where to write the result of the operation.</param>
     public static bool TryDeserial(ReadOnlySpan<byte> bytes, out (ModuleReference? Ref, string? Error) output)
     {
