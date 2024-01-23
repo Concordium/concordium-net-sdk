@@ -135,11 +135,15 @@ public static class VersionedModuleSourceFactory
     /// </summary>
     /// <param name="modulePath">The path to the versioned WASM file.</param>
     /// <exception cref="DeserialException">The provided WASM module was unable to be parsed.</exception>
-    public static VersionedModuleSource FromFile(string modulePath) {
-        var bytes = File.ReadAllBytes(modulePath); 
-        if (VersionedModuleSourceFactory.TryDeserial(bytes, out var versionedModule)) {
+    public static VersionedModuleSource FromFile(string modulePath)
+    {
+        var bytes = File.ReadAllBytes(modulePath);
+        if (TryDeserial(bytes, out var versionedModule))
+        {
             return versionedModule.VersionedModuleSource;
-        } else {
+        }
+        else
+        {
             throw new DeserialException(versionedModule.Error);
         }
     }

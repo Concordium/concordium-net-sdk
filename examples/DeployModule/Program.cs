@@ -9,7 +9,8 @@ using Concordium.Sdk.Wallets;
 
 namespace DeployModule;
 
-internal sealed class DeployModuleOptions {
+internal sealed class DeployModuleOptions
+{
     [Option(
         'k',
         "keys",
