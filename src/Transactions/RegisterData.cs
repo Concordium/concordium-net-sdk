@@ -1,4 +1,3 @@
-using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;
@@ -26,7 +25,7 @@ public sealed record RegisterData(OnChainData Data) : AccountTransactionPayload
         AccountAddress sender,
         AccountSequenceNumber sequenceNumber,
         Expiry expiry
-    ) => new(sender, sequenceNumber, expiry, this._transactionCost, this);
+    ) => new(sender, sequenceNumber, expiry, new EnergyAmount(TrxCost), this);
 
     /// <summary>
     /// The transaction specific cost for submitting this type of
@@ -35,26 +34,12 @@ public sealed record RegisterData(OnChainData Data) : AccountTransactionPayload
     /// This should reflect the transaction-specific costs defined here:
     /// https://github.com/Concordium/concordium-base/blob/78f557b8b8c94773a25e4f86a1a92bc323ea2e3d/haskell-src/Concordium/Cost.hs
     /// </summary>
-    private readonly EnergyAmount _transactionCost = new(300);
+    private const ushort TrxCost = 300;
 
     /// <summary>
     /// Gets the size (number of bytes) of the payload.
     /// </summary>
-    internal override PayloadSize Size() => new(sizeof(TransactionType) + this.Data.Length());
-
-    /// <summary>
-    /// Copies the "register data" account transaction in the binary format expected by the node to a byte array.
-    /// </summary>
-    /// <param name="data">The data to be registered on-chain.</param>
-    private static byte[] Serialize(OnChainData data)
-    {
-        var buffer = data.ToBytes();
-        var size = sizeof(TransactionType) + buffer.Length;
-        using var memoryStream = new MemoryStream(size);
-        memoryStream.WriteByte(TransactionType);
-        memoryStream.Write(buffer);
-        return memoryStream.ToArray();
-    }
+    internal override PayloadSize Size() => new(sizeof(TransactionType) + this.Data.SerializedLength());
 
     /// <summary>
     /// Create a "register data" payload from a serialized as bytes.
@@ -72,7 +57,7 @@ public sealed record RegisterData(OnChainData Data) : AccountTransactionPayload
         };
         if (bytes[0] != TransactionType)
         {
-            var msg = $"Invalid transaction type in `Transfer.TryDeserial`. expected {TransactionType}, found {bytes[0]}";
+            var msg = $"Invalid transaction type in `Transfer.TryDeserial`. Expected {TransactionType}, found {bytes[0]}";
             output = (null, msg);
             return false;
         };
@@ -86,12 +71,24 @@ public sealed record RegisterData(OnChainData Data) : AccountTransactionPayload
 
         if (memo.OnChainData == null)
         {
-            throw new DeserialInvalidResultException();
+            var msg = $"OnChainData was null, but did not produce an error";
+            output = (null, msg);
+            return false;
         };
 
         output = (new RegisterData(memo.OnChainData), null);
         return true;
     }
 
-    public override byte[] ToBytes() => Serialize(this.Data);
+    /// <summary>
+    /// Copies the "register data" account transaction in the binary format expected by the node to a byte array.
+    /// </summary>
+    public override byte[] ToBytes()
+    {
+        using var memoryStream = new MemoryStream((int)this.Size().Size);
+        memoryStream.WriteByte(TransactionType);
+        memoryStream.Write(this.Data.ToBytes());
+        return memoryStream.ToArray();
+    }
+
 }

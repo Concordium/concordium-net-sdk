@@ -24,7 +24,7 @@ public record UpdateInstruction(
             updateInstruction.Payload.PayloadCase switch
             {
                 UpdateInstructionPayloadCase.RawPayload => new UpdateInstructionPayloadRaw(updateInstruction.Payload.RawPayload.ToByteArray()),
-                UpdateInstructionPayloadCase.None => throw new NotImplementedException(),
+                UpdateInstructionPayloadCase.None => throw new MissingEnumException<UpdateInstructionPayloadCase>(updateInstruction.Payload.PayloadCase),
                 _ => throw new MissingEnumException<UpdateInstructionPayloadCase>(updateInstruction.Payload.PayloadCase),
             }
         );

@@ -49,7 +49,7 @@ public abstract record AccountTransactionPayload
         PayloadCase.RawPayload => ParseRawPayload(payload.RawPayload),
         PayloadCase.InitContract => throw new NotImplementedException(),
         PayloadCase.UpdateContract => throw new NotImplementedException(),
-        PayloadCase.None => throw new NotImplementedException(),
+        PayloadCase.None => throw new MissingEnumException<PayloadCase>(payload.PayloadCase),
         _ => throw new MissingEnumException<PayloadCase>(payload.PayloadCase),
     };
 
@@ -112,7 +112,7 @@ public abstract record AccountTransactionPayload
         }
         if (parsedPayload.Item1 == null)
         {
-            throw new DeserialInvalidResultException();
+            throw new DeserialNullException();
         }
         return parsedPayload.Item1;
     }

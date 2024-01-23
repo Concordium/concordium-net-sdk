@@ -1,4 +1,3 @@
-using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;
@@ -32,7 +31,7 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
         AccountAddress sender,
         AccountSequenceNumber sequenceNumber,
         Expiry expiry
-    ) => new(sender, sequenceNumber, expiry, this._transactionCost, this);
+    ) => new(sender, sequenceNumber, expiry, new EnergyAmount(TrxCost), this);
 
     /// <summary>
     /// The transaction specific cost for submitting this type of
@@ -41,26 +40,12 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
     /// This should reflect the transaction-specific costs defined here:
     /// https://github.com/Concordium/concordium-base/blob/78f557b8b8c94773a25e4f86a1a92bc323ea2e3d/haskell-src/Concordium/Cost.hs
     /// </summary>
-    private readonly EnergyAmount _transactionCost = new(300);
+    private const ushort TrxCost = 300;
 
     /// <summary>
     /// Gets the size (number of bytes) of the payload.
     /// </summary>
     internal override PayloadSize Size() => new(BytesLength);
-
-    /// <summary>
-    /// Copies the "transfer" account transaction in the binary format expected by the node to a byte array.
-    /// </summary>
-    /// <param name="amount">Amount to send.</param>
-    /// <param name="receiver">Address of the receiver account to which the amount will be sent.</param>
-    private static byte[] Serialize(CcdAmount amount, AccountAddress receiver)
-    {
-        using var memoryStream = new MemoryStream((int)BytesLength);
-        memoryStream.WriteByte(TransactionType);
-        memoryStream.Write(receiver.ToBytes());
-        memoryStream.Write(amount.ToBytes());
-        return memoryStream.ToArray();
-    }
 
     /// <summary>
     /// Create a "transfer" payload from a serialized as bytes.
@@ -77,7 +62,7 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
         };
         if (bytes[0] != TransactionType)
         {
-            var msg = $"Invalid transaction type in `Transfer.TryDeserial`. expected {TransactionType}, found {bytes[0]}";
+            var msg = $"Invalid transaction type in `Transfer.TryDeserial`. Expected {TransactionType}, found {bytes[0]}";
             output = (null, msg);
             return false;
         };
@@ -98,12 +83,24 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
 
         if (amount.Amount == null || account.AccountAddress == null)
         {
-            throw new DeserialInvalidResultException();
+            var msg = $"Amount or AccountAddress were null, but did not produce an error";
+            output = (null, msg);
+            return false;
         }
 
         output = (new Transfer(amount.Amount.Value, account.AccountAddress), null);
         return true;
     }
 
-    public override byte[] ToBytes() => Serialize(this.Amount, this.Receiver);
+    /// <summary>
+    /// Copies the "transfer" account transaction in the binary format expected by the node to a byte array.
+    /// </summary>
+    public override byte[] ToBytes()
+    {
+        using var memoryStream = new MemoryStream((int)BytesLength);
+        memoryStream.WriteByte(TransactionType);
+        memoryStream.Write(this.Receiver.ToBytes());
+        memoryStream.Write(this.Amount.ToBytes());
+        return memoryStream.ToArray();
+    }
 }

@@ -5,6 +5,9 @@ using WebAssembly;
 
 namespace Concordium.Sdk.Types;
 
+/// <summary>
+/// Contains source code of a versioned module where inherited classes are concrete versions.
+/// </summary>
 public abstract record VersionedModuleSource
 {
     /// <summary>
@@ -18,9 +21,11 @@ public abstract record VersionedModuleSource
     internal abstract uint GetVersion();
 
     /// <summary>
-    /// Gets the length (number of bytes) of the Module.
+    /// Gets the length (number of bytes) of the serialized Module.
     /// </summary>
-    internal uint Length() => (uint)((2 * sizeof(int)) + this.Source.Length);
+    internal uint SerializedLength() => (uint)((2 * sizeof(int)) + this.Source.Length);
+
+    internal const uint MinSerializedLength = 2 * sizeof(int);
 
     /// <summary>
     /// Base constructor
@@ -51,7 +56,7 @@ public abstract record VersionedModuleSource
 
     internal byte[] ToBytes()
     {
-        using var memoryStream = new MemoryStream((int)this.Length());
+        using var memoryStream = new MemoryStream((int)this.SerializedLength());
         memoryStream.Write(Serialization.ToBytes(this.GetVersion()));
         memoryStream.Write(Serialization.ToBytes((uint)this.Source.Length));
         memoryStream.Write(this.Source);
@@ -129,12 +134,13 @@ internal static class VersionedModuleSourceFactory
     /// <param name="output">Where to write the result of the operation.</param>
     public static bool TryDeserial(ReadOnlySpan<byte> bytes, out (VersionedModuleSource? VersionedModuleSource, string? Error) output)
     {
-        if (bytes.Length < 2 * sizeof(int))
+        if (bytes.Length < VersionedModuleSource.MinSerializedLength)
         {
-            output = (null, $"The given byte array in `VersionModuleSourceFactory.TryDeserial`, is too short. Must be longer than {2 * sizeof(int)}.");
+            output = (null, $"The given byte array in `VersionModuleSourceFactory.TryDeserial`, is too short. Must be longer than {VersionedModuleSource.MinSerializedLength}.");
             return false;
         }
 
+        // The functions below would throw if it were not for the above check.
         var version = BinaryPrimitives.ReadUInt32BigEndian(bytes);
         var length = BinaryPrimitives.ReadUInt32BigEndian(bytes[sizeof(int)..]);
 
@@ -171,6 +177,8 @@ public sealed record ModuleV0(byte[] Source) : VersionedModuleSource(Source)
 
     /// <summary>
     /// Creates a WASM-module from byte array.
+    /// Note: Does not copy the given byte array, so it assumes that the underlying
+    /// byte array is not mutated
     /// </summary>
     /// <param name="source">WASM-module as a byte array.</param>
     /// <exception cref="ArgumentException">The length of the supplied module exceeds "MaxLength".</exception>
@@ -183,7 +191,7 @@ public sealed record ModuleV0(byte[] Source) : VersionedModuleSource(Source)
             );
         }
 
-        return new ModuleV0(source.ToArray());
+        return new ModuleV0(source);
     }
 
     /// <summary>
@@ -193,15 +201,8 @@ public sealed record ModuleV0(byte[] Source) : VersionedModuleSource(Source)
     /// <exception cref="ArgumentException">The supplied string is not a hex encoded WASM-module representing at most "MaxLength" bytes.</exception>
     public static ModuleV0 FromHex(string hexString)
     {
-        try
-        {
-            var value = Convert.FromHexString(hexString);
-            return From(value);
-        }
-        catch (Exception e)
-        {
-            throw new ArgumentException("The provided string is not hex encoded: ", e);
-        }
+        var value = Convert.FromHexString(hexString);
+        return From(value);
     }
 
     private protected override (byte[]? Schema, ModuleSchemaVersion SchemaVersion)? ExtractSchemaFromWebAssemblyModule(Module module)
@@ -231,6 +232,8 @@ public sealed record ModuleV1(byte[] Source) : VersionedModuleSource(Source)
 
     /// <summary>
     /// Creates a WASM-module from byte array.
+    /// Note: Does not copy the given byte array, so it assumes that the underlying
+    /// byte array is not mutated
     /// </summary>
     /// <param name="source">WASM-module as a byte array.</param>
     /// <exception cref="ArgumentException">The length of the supplied module exceeds "MaxLength".</exception>
@@ -243,7 +246,7 @@ public sealed record ModuleV1(byte[] Source) : VersionedModuleSource(Source)
             );
         }
 
-        return new ModuleV1(source.ToArray());
+        return new ModuleV1(source);
     }
 
     /// <summary>
