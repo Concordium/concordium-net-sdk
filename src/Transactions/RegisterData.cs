@@ -1,4 +1,3 @@
-using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;
@@ -26,7 +25,7 @@ public sealed record RegisterData(OnChainData Data) : AccountTransactionPayload
         AccountAddress sender,
         AccountSequenceNumber sequenceNumber,
         Expiry expiry
-    ) => new(sender, sequenceNumber, expiry, this._transactionCost, this);
+    ) => new(sender, sequenceNumber, expiry, new EnergyAmount(TrxCost), this);
 
     /// <summary>
     /// The transaction specific cost for submitting this type of
@@ -35,7 +34,7 @@ public sealed record RegisterData(OnChainData Data) : AccountTransactionPayload
     /// This should reflect the transaction-specific costs defined here:
     /// https://github.com/Concordium/concordium-base/blob/78f557b8b8c94773a25e4f86a1a92bc323ea2e3d/haskell-src/Concordium/Cost.hs
     /// </summary>
-    private readonly EnergyAmount _transactionCost = new(300);
+    private const ushort TrxCost = 300;
 
     /// <summary>
     /// Gets the size (number of bytes) of the payload.
@@ -72,7 +71,9 @@ public sealed record RegisterData(OnChainData Data) : AccountTransactionPayload
 
         if (memo.OnChainData == null)
         {
-            throw new DeserialNullException();
+            var msg = $"OnChainData was null, but did not produce an error";
+            output = (null, msg);
+            return false;
         };
 
         output = (new RegisterData(memo.OnChainData), null);

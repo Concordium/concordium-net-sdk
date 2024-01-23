@@ -66,6 +66,28 @@ public sealed record AccountSignatureMap
         }
         return Create(dict);
     }
+
+    /// <summary>Check for equality.</summary>
+    public bool Equals(AccountSignatureMap? other) => other != null &&
+               other.GetType().Equals(this.GetType()) &&
+               this.Signatures.Count == other.Signatures.Count &&
+               this.Signatures.All(p => p.Value == other.Signatures[p.Key]);
+
+    /// <summary>Gets hash code.</summary>
+    public override int GetHashCode()
+    {
+        // Based on https://stackoverflow.com/questions/1646807/quick-and-simple-hash-code-combinations
+        unchecked
+        {
+            var hash = 17;
+            foreach (var (key, val) in this.Signatures)
+            {
+                hash = (hash * 31) + key.GetHashCode();
+                hash = (hash * 31) + Helpers.HashCode.GetHashCodeByteArray(val);
+            }
+            return hash;
+        }
+    }
 }
 
 
@@ -117,5 +139,27 @@ public sealed record UpdateInstructionSignatureMap
             dict.Add(new UpdateKeysIndex((byte)s.Key), s.Value.Value.ToByteArray());
         }
         return Create(dict);
+    }
+
+    /// <summary>Check for equality.</summary>
+    public bool Equals(UpdateInstructionSignatureMap? other) => other != null &&
+               other.GetType().Equals(this.GetType()) &&
+               this.Signatures.Count == other.Signatures.Count &&
+               this.Signatures.All(p => p.Value == other.Signatures[p.Key]);
+
+    /// <summary>Gets hash code.</summary>
+    public override int GetHashCode()
+    {
+        // Based on https://stackoverflow.com/questions/1646807/quick-and-simple-hash-code-combinations
+        unchecked
+        {
+            var hash = 17;
+            foreach (var (key, val) in this.Signatures)
+            {
+                hash = (hash * 31) + key.GetHashCode();
+                hash = (hash * 31) + Helpers.HashCode.GetHashCodeByteArray(val);
+            }
+            return hash;
+        }
     }
 }

@@ -160,6 +160,7 @@ public sealed record OnChainData : IEquatable<OnChainData>
             return false;
         };
 
+        // The function below would throw if it were not for the above check.
         var sizeRead = BinaryPrimitives.ReadUInt16BigEndian(bytes);
         var size = sizeRead + sizeof(ushort);
         if (size > bytes.Length)
@@ -173,8 +174,10 @@ public sealed record OnChainData : IEquatable<OnChainData>
         return true;
     }
 
+    /// <summary>Check for equality.</summary>
     public bool Equals(OnChainData? other) => other is not null && this._value.SequenceEqual(other._value);
 
+    /// <summary>Gets hash code.</summary>
     public override int GetHashCode() => Helpers.HashCode.GetHashCodeByteArray(this._value);
 
     internal static OnChainData? From(Grpc.V2.Memo? memo)

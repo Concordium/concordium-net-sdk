@@ -17,7 +17,7 @@ public sealed record BlockItem(TransactionHash TransactionHash, BlockItemType Bl
                 BlockItemCase.AccountTransaction => SignedAccountTransaction.From(blockItem.AccountTransaction),
                 BlockItemCase.CredentialDeployment => CredentialDeployment.From(blockItem.CredentialDeployment),
                 BlockItemCase.UpdateInstruction => UpdateInstruction.From(blockItem.UpdateInstruction),
-                BlockItemCase.None => throw new NotImplementedException(),
+                BlockItemCase.None => throw new UnexpectedNodeResponseException(),
                 _ => throw new MissingEnumException<BlockItemCase>(blockItem.BlockItemCase),
             }
         );

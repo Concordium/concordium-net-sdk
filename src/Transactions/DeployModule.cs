@@ -1,4 +1,3 @@
-using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;
@@ -68,7 +67,9 @@ public sealed record DeployModule(VersionedModuleSource Module) : AccountTransac
 
         if (module.VersionedModuleSource == null)
         {
-            throw new DeserialNullException();
+            var msg = $"VersionedModuleSource was null, but did not produce an error";
+            output = (null, msg);
+            return false;
         }
 
         output = (new DeployModule(module.VersionedModuleSource), null);
