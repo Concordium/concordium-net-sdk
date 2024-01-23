@@ -2,6 +2,7 @@
   - Added
     - New GRPC-endpoint: `GetBlockItems`
     - New transaction `DeployModule`
+    - New transaction `InitContract`
     - The function `Prepare` has been removed from the `AccountTransactionPayload` class, but is implemented for all subclasses except `RawPayload`.
     - Added serialization and deserialization for all instances of `AccountTransactionPayload`
 
