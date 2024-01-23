@@ -1,4 +1,3 @@
-using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;
@@ -32,7 +31,7 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
         AccountAddress sender,
         AccountSequenceNumber sequenceNumber,
         Expiry expiry
-    ) => new(sender, sequenceNumber, expiry, this._transactionCost, this);
+    ) => new(sender, sequenceNumber, expiry, new EnergyAmount(TrxCost), this);
 
     /// <summary>
     /// The transaction specific cost for submitting this type of
@@ -41,7 +40,7 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
     /// This should reflect the transaction-specific costs defined here:
     /// https://github.com/Concordium/concordium-base/blob/78f557b8b8c94773a25e4f86a1a92bc323ea2e3d/haskell-src/Concordium/Cost.hs
     /// </summary>
-    private readonly EnergyAmount _transactionCost = new(300);
+    private const ushort TrxCost = 300;
 
     /// <summary>
     /// Gets the size (number of bytes) of the payload.
@@ -84,7 +83,9 @@ public sealed record Transfer(CcdAmount Amount, AccountAddress Receiver) : Accou
 
         if (amount.Amount == null || account.AccountAddress == null)
         {
-            throw new DeserialNullException();
+            var msg = $"Amount or AccountAddress were null, but did not produce an error";
+            output = (null, msg);
+            return false;
         }
 
         output = (new Transfer(amount.Amount.Value, account.AccountAddress), null);

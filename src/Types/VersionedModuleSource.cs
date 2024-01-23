@@ -157,6 +157,7 @@ public static class VersionedModuleSourceFactory
             return false;
         }
 
+        // The functions below would throw if it were not for the above check.
         var version = BinaryPrimitives.ReadUInt32BigEndian(bytes);
         var length = BinaryPrimitives.ReadUInt32BigEndian(bytes[sizeof(int)..]);
 
@@ -193,6 +194,8 @@ public sealed record ModuleV0(byte[] Source) : VersionedModuleSource(Source)
 
     /// <summary>
     /// Creates a WASM-module from byte array.
+    /// Note: Does not copy the given byte array, so it assumes that the underlying
+    /// byte array is not mutated
     /// </summary>
     /// <param name="source">WASM-module as a byte array.</param>
     /// <exception cref="ArgumentException">The length of the supplied module exceeds "MaxLength".</exception>
@@ -205,7 +208,7 @@ public sealed record ModuleV0(byte[] Source) : VersionedModuleSource(Source)
             );
         }
 
-        return new ModuleV0(source.ToArray());
+        return new ModuleV0(source);
     }
 
     /// <summary>
@@ -215,15 +218,8 @@ public sealed record ModuleV0(byte[] Source) : VersionedModuleSource(Source)
     /// <exception cref="ArgumentException">The supplied string is not a hex encoded WASM-module representing at most "MaxLength" bytes.</exception>
     public static ModuleV0 FromHex(string hexString)
     {
-        try
-        {
-            var value = Convert.FromHexString(hexString);
-            return From(value);
-        }
-        catch (Exception e)
-        {
-            throw new ArgumentException("The provided string is not hex encoded: ", e);
-        }
+        var value = Convert.FromHexString(hexString);
+        return From(value);
     }
 
     private protected override (byte[]? Schema, ModuleSchemaVersion SchemaVersion)? ExtractSchemaFromWebAssemblyModule(Module module)
@@ -253,6 +249,8 @@ public sealed record ModuleV1(byte[] Source) : VersionedModuleSource(Source)
 
     /// <summary>
     /// Creates a WASM-module from byte array.
+    /// Note: Does not copy the given byte array, so it assumes that the underlying
+    /// byte array is not mutated
     /// </summary>
     /// <param name="source">WASM-module as a byte array.</param>
     /// <exception cref="ArgumentException">The length of the supplied module exceeds "MaxLength".</exception>
@@ -265,7 +263,7 @@ public sealed record ModuleV1(byte[] Source) : VersionedModuleSource(Source)
             );
         }
 
-        return new ModuleV1(source.ToArray());
+        return new ModuleV1(source);
     }
 
     /// <summary>

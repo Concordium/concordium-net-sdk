@@ -1,5 +1,4 @@
 using System.Buffers.Binary;
-using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Types;
 
 namespace Concordium.Sdk.Transactions;
@@ -30,7 +29,7 @@ public sealed record TransferWithMemo(CcdAmount Amount, AccountAddress Receiver,
         AccountAddress sender,
         AccountSequenceNumber sequenceNumber,
         Expiry expiry
-    ) => new(sender, sequenceNumber, expiry, this._transactionCost, this);
+    ) => new(sender, sequenceNumber, expiry, new EnergyAmount(TrxCost), this);
 
     /// <summary>
     /// The transaction specific cost for submitting this type of
@@ -39,7 +38,7 @@ public sealed record TransferWithMemo(CcdAmount Amount, AccountAddress Receiver,
     /// This should reflect the transaction-specific costs defined here:
     /// https://github.com/Concordium/concordium-base/blob/78f557b8b8c94773a25e4f86a1a92bc323ea2e3d/haskell-src/Concordium/Cost.hs
     /// </summary>
-    private readonly EnergyAmount _transactionCost = new(300);
+    private const ushort TrxCost = 300;
 
     /// <summary>
     /// Gets the size (number of bytes) of the payload.
@@ -98,7 +97,9 @@ public sealed record TransferWithMemo(CcdAmount Amount, AccountAddress Receiver,
 
         if (amount.Amount == null || account.AccountAddress == null || memo.OnChainData == null)
         {
-            throw new DeserialNullException();
+            var msg = $"Amount, AccountAddress or OnChainData were null, but did not produce an error";
+            output = (null, msg);
+            return false;
         };
 
         output = (new TransferWithMemo(amount.Amount.Value, account.AccountAddress, memo.OnChainData), null);
