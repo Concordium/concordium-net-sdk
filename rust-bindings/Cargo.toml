@@ -11,6 +11,7 @@ name="rust_bindings"
 crate-type = ["cdylib"]
 
 [dependencies]
+thiserror = "1.0"
 anyhow="1.0"
 serde_json = "1.0"
 serde = { version = "1.0" }
