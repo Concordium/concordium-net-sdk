@@ -1,4 +1,5 @@
 ## Unreleased changes
+- Switched the GitHub runners from using 'ubuntu-latest' to 'ubuntu-20.04' to ensure compatibility with the default .NET 6 Docker image for the SDK.
 
 ## 4.2.1
 - Bugfix
