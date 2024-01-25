@@ -1,3 +1,4 @@
+using System.Buffers.Binary;
 using System.Formats.Cbor;
 
 using Concordium.Sdk.Helpers;
@@ -12,7 +13,15 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public sealed record OnChainData : IEquatable<OnChainData>
 {
+    /// <summary>
+    /// The maximum length of a bytearray passed to the constructor.
+    /// </summary>
     public const uint MaxLength = 256;
+
+    /// <summary>
+    /// The minimum serialized length.
+    /// </summary>
+    internal const uint MinSerializedLength = sizeof(ushort);
 
     /// <summary>
     /// Byte array representing the data.
@@ -24,6 +33,11 @@ public sealed record OnChainData : IEquatable<OnChainData>
     /// </summary>
     /// <param name="bytes">Data represented by at most <see cref="MaxLength"/> bytes.</param>
     private OnChainData(byte[] bytes) => this._value = bytes;
+
+    /// <summary>
+    /// Gets the length (number of bytes) of the serializd data.
+    /// </summary>
+    internal uint SerializedLength() => (uint)this._value.Length + sizeof(ushort);
 
     /// <summary>
     /// Creates an instance from a hex encoded string.
@@ -121,7 +135,7 @@ public sealed record OnChainData : IEquatable<OnChainData>
     /// </summary>
     public byte[] ToBytes()
     {
-        using var memoryStream = new MemoryStream(sizeof(ushort) + this._value.Length);
+        using var memoryStream = new MemoryStream((int)this.SerializedLength());
         memoryStream.Write(Serialization.ToBytes((ushort)this._value.Length));
         memoryStream.Write(this._value);
         return memoryStream.ToArray();
@@ -132,8 +146,38 @@ public sealed record OnChainData : IEquatable<OnChainData>
     /// </summary>
     public override string ToString() => Convert.ToHexString(this._value).ToLowerInvariant();
 
+    /// <summary>
+    /// Create an "OnChainData" from a byte array.
+    /// </summary>
+    /// <param name="bytes">The serialized "OnChainData".</param>
+    /// <param name="output">Where to write the result of the operation.</param>
+    public static bool TryDeserial(ReadOnlySpan<byte> bytes, out (OnChainData? OnChainData, string? Error) output)
+    {
+        if (bytes.Length < MinSerializedLength)
+        {
+            var msg = $"Invalid length of input in `OnChainData.TryDeserial`. Length must be more than {MinSerializedLength}";
+            output = (null, msg);
+            return false;
+        };
+
+        // The function below would throw if it were not for the above check.
+        var sizeRead = BinaryPrimitives.ReadUInt16BigEndian(bytes);
+        var size = sizeRead + sizeof(ushort);
+        if (size > bytes.Length)
+        {
+            var msg = $"Invalid length of input in `OnChainData.TryDeserial`. Expected array of size at least {size}, found {bytes.Length}";
+            output = (null, msg);
+            return false;
+        };
+
+        output = (new OnChainData(bytes.Slice(sizeof(ushort), sizeRead).ToArray()), null);
+        return true;
+    }
+
+    /// <summary>Check for equality.</summary>
     public bool Equals(OnChainData? other) => other is not null && this._value.SequenceEqual(other._value);
 
+    /// <summary>Gets hash code.</summary>
     public override int GetHashCode() => Helpers.HashCode.GetHashCodeByteArray(this._value);
 
     internal static OnChainData? From(Grpc.V2.Memo? memo)
@@ -145,4 +189,6 @@ public sealed record OnChainData : IEquatable<OnChainData>
 
         return From(memo.Value.ToByteArray());
     }
+
+    internal static OnChainData From(Grpc.V2.RegisteredData registeredData) => From(registeredData.Value.ToByteArray());
 }

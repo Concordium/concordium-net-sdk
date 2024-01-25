@@ -1,4 +1,6 @@
+using System.Buffers.Binary;
 using Concordium.Sdk.Exceptions;
+using Concordium.Sdk.Helpers;
 using WebAssembly;
 
 namespace Concordium.Sdk.Types;
@@ -13,6 +15,17 @@ public abstract record VersionedModuleSource
     /// </summary>
     public byte[] Source { get; }
     private readonly Lazy<Module> _module;
+
+    internal const uint MaxLength = 8 * 65536;
+
+    internal abstract uint GetVersion();
+
+    /// <summary>
+    /// Gets the length (number of bytes) of the serialized Module.
+    /// </summary>
+    internal uint SerializedLength() => (uint)((2 * sizeof(int)) + this.Source.Length);
+
+    internal const uint MinSerializedLength = 2 * sizeof(int);
 
     /// <summary>
     /// Base constructor
@@ -39,6 +52,27 @@ public abstract record VersionedModuleSource
         using var stream = new MemoryStream(this.Source);
         var moduleWasm = Module.ReadFromBinary(stream);
         return moduleWasm;
+    }
+
+    internal byte[] ToBytes()
+    {
+        using var memoryStream = new MemoryStream((int)this.SerializedLength());
+        memoryStream.Write(Serialization.ToBytes(this.GetVersion()));
+        memoryStream.Write(Serialization.ToBytes((uint)this.Source.Length));
+        memoryStream.Write(this.Source);
+        return memoryStream.ToArray();
+    }
+
+    /// <summary>Check for equality.</summary>
+    public virtual bool Equals(VersionedModuleSource? other) => other != null &&
+               other.GetType().Equals(this.GetType()) &&
+               this.Source.SequenceEqual(other.Source);
+
+    /// <summary>Gets hash code.</summary>
+    public override int GetHashCode()
+    {
+        var sourceHash = Helpers.HashCode.GetHashCodeByteArray(this.Source);
+        return sourceHash + (int)this.GetVersion();
     }
 
     /// <summary>
@@ -92,6 +126,42 @@ internal static class VersionedModuleSourceFactory
             _ => throw new MissingEnumException<Grpc.V2.VersionedModuleSource.ModuleOneofCase>(versionedModuleSource
                 .ModuleCase)
         };
+
+    /// <summary>
+    /// Create a versioned module schema from a byte array.
+    /// </summary>
+    /// <param name="bytes">The serialized schema.</param>
+    /// <param name="output">Where to write the result of the operation.</param>
+    public static bool TryDeserial(ReadOnlySpan<byte> bytes, out (VersionedModuleSource? VersionedModuleSource, string? Error) output)
+    {
+        if (bytes.Length < VersionedModuleSource.MinSerializedLength)
+        {
+            output = (null, $"The given byte array in `VersionModuleSourceFactory.TryDeserial`, is too short. Must be longer than {VersionedModuleSource.MinSerializedLength}.");
+            return false;
+        }
+
+        // The functions below would throw if it were not for the above check.
+        var version = BinaryPrimitives.ReadUInt32BigEndian(bytes);
+        var length = BinaryPrimitives.ReadUInt32BigEndian(bytes[sizeof(int)..]);
+
+        var rest = bytes.Slice(2 * sizeof(int), (int)length).ToArray();
+
+        if (version == 0)
+        {
+            output = (ModuleV0.From(rest), null);
+            return true;
+        }
+        else if (version == 1)
+        {
+            output = (ModuleV1.From(rest), null);
+            return true;
+        }
+        else
+        {
+            output = (null, $"Invalid module version byte, expected 0 or 1 but found {version}");
+            return false;
+        };
+    }
 }
 
 /// <summary>
@@ -100,8 +170,40 @@ internal static class VersionedModuleSourceFactory
 /// <param name="Source">Source code of module</param>
 public sealed record ModuleV0(byte[] Source) : VersionedModuleSource(Source)
 {
+    internal override uint GetVersion() => 0;
+
     internal static ModuleV0 From(Grpc.V2.VersionedModuleSource.Types.ModuleSourceV0 moduleSourceV0) =>
         new(moduleSourceV0.Value.ToByteArray());
+
+    /// <summary>
+    /// Creates a WASM-module from byte array.
+    /// Note: Does not copy the given byte array, so it assumes that the underlying
+    /// byte array is not mutated
+    /// </summary>
+    /// <param name="source">WASM-module as a byte array.</param>
+    /// <exception cref="ArgumentException">The length of the supplied module exceeds "MaxLength".</exception>
+    public static ModuleV0 From(byte[] source)
+    {
+        if (source.Length > MaxLength)
+        {
+            throw new ArgumentException(
+                $"Size of a data is not allowed to exceed {MaxLength} bytes."
+            );
+        }
+
+        return new ModuleV0(source);
+    }
+
+    /// <summary>
+    /// Creates an instance from a hex encoded string.
+    /// </summary>
+    /// <param name="hexString">The WASM-module represented as a hex encoded string representing at most "MaxLength" bytes.</param>
+    /// <exception cref="ArgumentException">The supplied string is not a hex encoded WASM-module representing at most "MaxLength" bytes.</exception>
+    public static ModuleV0 FromHex(string hexString)
+    {
+        var value = Convert.FromHexString(hexString);
+        return From(value);
+    }
 
     private protected override (byte[]? Schema, ModuleSchemaVersion SchemaVersion)? ExtractSchemaFromWebAssemblyModule(Module module)
     {
@@ -123,8 +225,47 @@ public sealed record ModuleV0(byte[] Source) : VersionedModuleSource(Source)
 /// <param name="Source">Source code of module</param>
 public sealed record ModuleV1(byte[] Source) : VersionedModuleSource(Source)
 {
+    internal override uint GetVersion() => 1;
+
     internal static ModuleV1 From(Grpc.V2.VersionedModuleSource.Types.ModuleSourceV1 moduleSourceV1) =>
         new(moduleSourceV1.Value.ToByteArray());
+
+    /// <summary>
+    /// Creates a WASM-module from byte array.
+    /// Note: Does not copy the given byte array, so it assumes that the underlying
+    /// byte array is not mutated
+    /// </summary>
+    /// <param name="source">WASM-module as a byte array.</param>
+    /// <exception cref="ArgumentException">The length of the supplied module exceeds "MaxLength".</exception>
+    public static ModuleV1 From(byte[] source)
+    {
+        if (source.Length > MaxLength)
+        {
+            throw new ArgumentException(
+                $"Size of a data is not allowed to exceed {MaxLength} bytes."
+            );
+        }
+
+        return new ModuleV1(source);
+    }
+
+    /// <summary>
+    /// Creates an instance from a hex encoded string.
+    /// </summary>
+    /// <param name="hexString">The WASM-module represented as a hex encoded string representing at most "MaxLength" bytes.</param>
+    /// <exception cref="ArgumentException">The supplied string is not a hex encoded WASM-module representing at most "MaxLength" bytes.</exception>
+    public static ModuleV1 FromHex(string hexString)
+    {
+        try
+        {
+            var value = Convert.FromHexString(hexString);
+            return From(value);
+        }
+        catch (Exception e)
+        {
+            throw new ArgumentException("The provided string is not hex encoded: ", e);
+        }
+    }
 
     private protected override (byte[]? Schema, ModuleSchemaVersion SchemaVersion)? ExtractSchemaFromWebAssemblyModule(Module module)
     {

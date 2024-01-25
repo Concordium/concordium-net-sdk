@@ -87,4 +87,15 @@ public sealed record AccountTransactionHeader(
             Expiry = this.Expiry.ToProto(),
             EnergyAmount = new Grpc.V2.Energy() { Value = this.MaxEnergyCost.Value }
         };
+
+    /// <summary>
+    /// Creates an account transaction header from its corresponding protocol buffer message instance.
+    /// </summary>
+    internal static AccountTransactionHeader From(Grpc.V2.AccountTransactionHeader accountTransactionHeader, PayloadSize payloadSize) => new(
+            AccountAddress.From(accountTransactionHeader.Sender),
+            AccountSequenceNumber.From(accountTransactionHeader.SequenceNumber),
+            Expiry.From(accountTransactionHeader.Expiry.Value),
+            EnergyAmount.From(accountTransactionHeader.EnergyAmount),
+            payloadSize
+        );
 }

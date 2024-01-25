@@ -11,6 +11,9 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public sealed record AccountAddress : IEquatable<AccountAddress>, IAddress, IAccountIdentifier
 {
+    /// <summary>
+    /// The serialized length of the account address.
+    /// </summary>
     public const uint BytesLength = 32;
 
     /// <summary>
@@ -215,6 +218,24 @@ public sealed record AccountAddress : IEquatable<AccountAddress>, IAddress, IAcc
     /// </summary>
     public Grpc.V2.AccountIdentifierInput ToAccountIdentifierInput() =>
         new() { Address = this.ToProto() };
+
+    /// <summary>
+    /// Create an account address from a byte array.
+    /// </summary>
+    /// <param name="bytes">The serialized account address.</param>
+    /// <param name="output">Where to write the result of the operation.</param>
+    public static bool TryDeserial(ReadOnlySpan<byte> bytes, out (AccountAddress? AccountAddress, string? Error) output)
+    {
+        if (bytes.Length < BytesLength)
+        {
+            var msg = $"Invalid length of input in `AccountAddress.TryDeserial`. Expected at least {BytesLength}, found {bytes.Length}";
+            output = (null, msg);
+            return false;
+        };
+
+        output = (new AccountAddress(bytes[..(int)BytesLength].ToArray()), null);
+        return true;
+    }
 
     public bool Equals(AccountAddress? other) => other is not null && this._value.SequenceEqual(other._value);
 

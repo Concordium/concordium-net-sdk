@@ -7,13 +7,16 @@ public static class HashCode
 {
     public static int GetHashCodeByteArray(byte[] array)
     {
-        var hashValue = 31;
-
-        foreach (var value in array)
+        unchecked
         {
-            hashValue = (37 * hashValue) + value.GetHashCode();
-        }
+            var hashValue = 31;
 
-        return hashValue;
+            foreach (var value in array)
+            {
+                hashValue = (37 * hashValue) + value.GetHashCode();
+            }
+
+            return hashValue;
+        }
     }
 }

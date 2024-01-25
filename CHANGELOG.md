@@ -1,11 +1,19 @@
 ## Unreleased changes
+- Bugfix
+  - Switched the GitHub runners from using 'ubuntu-latest' to 'ubuntu-20.04' to ensure compatibility with the default .NET 6 Docker image for the SDK.
+- Added
+  - New GRPC-endpoint: `GetBlockItems`
+  - New transaction `DeployModule`
+  - The function `Prepare` has been removed from the `AccountTransactionPayload` class, but is implemented for all subclasses except `RawPayload`.
+  - Added serialization and deserialization for all instances of `AccountTransactionPayload`
+- Breaking
+  - The function `GetTransactionSpecificCost` has been removed from the `AccountTransactionPayload` class.
 
 ## 4.2.1
 - Bugfix
   - Fix wrong build of rust dependencies which made the interops call not work on iOS.
 
 ## 4.2.0
-- Added
   - Deserialization from module schema
     - Contract entrypoint messages
     - Contract events
