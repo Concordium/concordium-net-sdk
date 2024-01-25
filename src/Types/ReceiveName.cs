@@ -149,7 +149,7 @@ public sealed record ReceiveName
     /// <summary>
     /// Gets the serialized length (number of bytes) of the receive name.
     /// </summary>
-    internal uint SerializedLength() => sizeof(ushort) + (uint)this.Receive.Length; // Safe to cast the length since a valid receivename is at most 100.
+    internal uint SerializedLength() => MinSerializedLength + (uint)this.Receive.Length; // Safe to cast the length since a valid receive name is at most 100.
 
     /// <summary>
     /// Gets the minimum serialized length (number of bytes) of the receive name.

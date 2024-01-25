@@ -49,11 +49,11 @@ public abstract record AccountTransactionPayload
         PayloadCase.RawPayload => ParseRawPayload(payload.RawPayload),
         PayloadCase.InitContract => throw new NotImplementedException(),
         PayloadCase.UpdateContract => new UpdateContract(
-        CcdAmount.From(payload.UpdateContract.Amount),
-        ContractAddress.From(payload.UpdateContract.Address),
-        ReceiveName.From(payload.UpdateContract.ReceiveName),
-        Parameter.From(payload.UpdateContract.Parameter)
-),
+            CcdAmount.From(payload.UpdateContract.Amount),
+            ContractAddress.From(payload.UpdateContract.Address),
+            ReceiveName.From(payload.UpdateContract.ReceiveName),
+            Parameter.From(payload.UpdateContract.Parameter)
+        ),
         PayloadCase.None => throw new MissingEnumException<PayloadCase>(payload.PayloadCase),
         _ => throw new MissingEnumException<PayloadCase>(payload.PayloadCase),
     };

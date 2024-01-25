@@ -1,4 +1,3 @@
-using System.Globalization;
 using CommandLine;
 using Concordium.Sdk.Client;
 using Concordium.Sdk.Types;

@@ -18,7 +18,7 @@ public sealed record UpdateContract(CcdAmount Amount, ContractAddress Address, R
     /// <param name="energy">
     /// The amount of energy that can be used for contract execution.
     /// The base energy amount for transaction verification will be added to this cost.
-    /// .</param>
+    /// </param>
     public PreparedAccountTransaction Prepare(
         AccountAddress sender,
         AccountSequenceNumber sequenceNumber,
@@ -112,7 +112,7 @@ public sealed record UpdateContract(CcdAmount Amount, ContractAddress Address, R
     /// </summary>
     public override byte[] ToBytes()
     {
-        using var memoryStream = new MemoryStream((int)this.Size().Size); // Safe to cast since a payload will never be
+        using var memoryStream = new MemoryStream((int)this.Size().Size); // Safe to cast since a payload will never be large enough for this to overflow.
         memoryStream.WriteByte(TransactionType);
         memoryStream.Write(this.Amount.ToBytes());
         memoryStream.Write(this.Address.ToBytes());

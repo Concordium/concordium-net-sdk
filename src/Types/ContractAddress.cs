@@ -61,7 +61,7 @@ public sealed record ContractAddress(ulong Index, ulong SubIndex) : IAddress
     /// </summary>
     public byte[] ToBytes()
     {
-        using var memoryStream = new MemoryStream((int)BytesLength); // Safe to cast since a payload will never be
+        using var memoryStream = new MemoryStream((int)BytesLength); // Safe to cast since we know BytesLength is within the range of int.
         memoryStream.Write(Serialization.ToBytes(this.Index));
         memoryStream.Write(Serialization.ToBytes(this.SubIndex));
         return memoryStream.ToArray();
