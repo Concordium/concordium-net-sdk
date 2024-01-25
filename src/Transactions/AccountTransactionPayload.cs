@@ -1,4 +1,6 @@
+using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Types;
+using PayloadCase = Concordium.Grpc.V2.AccountTransactionPayload.PayloadOneofCase;
 
 namespace Concordium.Sdk.Transactions;
 
@@ -12,39 +14,107 @@ namespace Concordium.Sdk.Transactions;
 public abstract record AccountTransactionPayload
 {
     /// <summary>
-    /// Prepares the account transaction payload for signing.
-    /// </summary>
-    /// <param name="sender">Address of the sender of the transaction.</param>
-    /// <param name="sequenceNumber">Account sequence number to use for the transaction.</param>
-    /// <param name="expiry">Expiration time of the transaction.</param>
-    public PreparedAccountTransaction Prepare(
-        AccountAddress sender,
-        AccountSequenceNumber sequenceNumber,
-        Expiry expiry
-    ) => new(sender, sequenceNumber, expiry, this);
-
-    /// <summary>
-    /// Gets the transaction specific cost for submitting this type of
-    /// transaction to the chain.
-    ///
-    /// This should reflect the transaction-specific costs defined here:
-    /// https://github.com/Concordium/concordium-base/blob/78f557b8b8c94773a25e4f86a1a92bc323ea2e3d/haskell-src/Concordium/Cost.hs
-    ///
-    /// Note that this is only part of the cost of a transaction, and
-    /// does not include costs associated with verification of signatures
-    /// as well as costs that are incurred at execution time, for instance
-    /// when initializing or updating a smart contract.
-    /// </summary>
-    public abstract ulong GetTransactionSpecificCost();
-
-    /// <summary>
     /// Copies the on-chain data in the binary format expected by the node to a byte array.
     /// </summary>
     public abstract byte[] ToBytes();
+
+    /// <summary>
+    /// Gets the size (number of bytes) of the payload.
+    /// </summary>
+    internal abstract PayloadSize Size();
 
     /// <summary>
     /// Converts the transaction to its corresponding protocol buffer message instance.
     /// </summary>
     public Grpc.V2.AccountTransactionPayload ToProto() =>
         new() { RawPayload = Google.Protobuf.ByteString.CopyFrom(this.ToBytes()) };
+
+    internal static AccountTransactionPayload From(Grpc.V2.AccountTransactionPayload payload) => payload.PayloadCase switch
+    {
+        PayloadCase.TransferWithMemo => new TransferWithMemo(
+            CcdAmount.From(payload.TransferWithMemo.Amount),
+            AccountAddress.From(payload.TransferWithMemo.Receiver),
+            OnChainData.From(payload.TransferWithMemo.Memo)
+        ),
+        PayloadCase.Transfer => new Transfer(
+            CcdAmount.From(payload.Transfer.Amount),
+            AccountAddress.From(payload.Transfer.Receiver)
+        ),
+        PayloadCase.RegisterData => new RegisterData(
+            OnChainData.From(payload.RegisterData)
+        ),
+        PayloadCase.DeployModule => new DeployModule(
+            VersionedModuleSourceFactory.From(payload.DeployModule)
+        ),
+        PayloadCase.RawPayload => ParseRawPayload(payload.RawPayload),
+        PayloadCase.InitContract => throw new NotImplementedException(),
+        PayloadCase.UpdateContract => throw new NotImplementedException(),
+        PayloadCase.None => throw new MissingEnumException<PayloadCase>(payload.PayloadCase),
+        _ => throw new MissingEnumException<PayloadCase>(payload.PayloadCase),
+    };
+
+    private static AccountTransactionPayload ParseRawPayload(Google.Protobuf.ByteString payload)
+    {
+        (AccountTransactionPayload?, string?) parsedPayload = (null, null);
+
+        switch ((TransactionType)payload.First())
+        {
+            case TransactionType.Transfer:
+            {
+                Transfer.TryDeserial(payload.ToArray(), out var output);
+                parsedPayload = output;
+                break;
+            }
+            case TransactionType.TransferWithMemo:
+            {
+                TransferWithMemo.TryDeserial(payload.ToArray(), out var output);
+                parsedPayload = output;
+                break;
+            }
+            case TransactionType.RegisterData:
+            {
+                RegisterData.TryDeserial(payload.ToArray(), out var output);
+                parsedPayload = output;
+                break;
+            }
+            case TransactionType.DeployModule:
+            {
+                DeployModule.TryDeserial(payload.ToArray(), out var output);
+                parsedPayload = output;
+                break;
+            }
+            case TransactionType.InitContract:
+            case TransactionType.Update:
+            case TransactionType.AddBaker:
+            case TransactionType.RemoveBaker:
+            case TransactionType.UpdateBakerStake:
+            case TransactionType.UpdateBakerRestakeEarnings:
+            case TransactionType.UpdateBakerKeys:
+            case TransactionType.UpdateCredentialKeys:
+            case TransactionType.EncryptedAmountTransfer:
+            case TransactionType.TransferToEncrypted:
+            case TransactionType.TransferToPublic:
+            case TransactionType.TransferWithSchedule:
+            case TransactionType.UpdateCredentials:
+            case TransactionType.EncryptedAmountTransferWithMemo:
+            case TransactionType.TransferWithScheduleAndMemo:
+            case TransactionType.ConfigureBaker:
+            case TransactionType.ConfigureDelegation:
+                parsedPayload = (new RawPayload(payload.ToArray()), null);
+                break;
+            default:
+                throw new MissingEnumException<TransactionType>((TransactionType)payload.First());
+        };
+
+        if (parsedPayload.Item2 != null)
+        {
+            throw new DeserialException(parsedPayload.Item2);
+        }
+        if (parsedPayload.Item1 == null)
+        {
+            throw new DeserialNullException();
+        }
+        return parsedPayload.Item1;
+    }
 }
+

@@ -6,9 +6,9 @@ using Concordium.Sdk.Types;
 // but we don't want to give default values.
 #pragma warning disable CS8618
 
-namespace GetBlockPendingUpdates;
+namespace GetBlockItems;
 
-internal sealed class GetBlockPendingUpdatesOptions
+internal sealed class GetBlocksOptions
 {
     [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.",
         Default = "http://node.testnet.concordium.com:20000/")]
@@ -24,25 +24,27 @@ internal sealed class GetBlockPendingUpdatesOptions
 public static class Program
 {
     /// <summary>
-    /// Example how to use <see cref="ConcordiumClient.GetBlockPendingUpdates"/>
+    /// Example how to use <see cref="ConcordiumClient.GetBlockItems"/>
     /// </summary>
     public static async Task Main(string[] args) =>
         await Parser.Default
-            .ParseArguments<GetBlockPendingUpdatesOptions>(args)
+            .ParseArguments<GetBlocksOptions>(args)
             .WithParsedAsync(Run);
 
-    private static async Task Run(GetBlockPendingUpdatesOptions o)
+    private static async Task Run(GetBlocksOptions o)
     {
         using var client = new ConcordiumClient(new Uri(o.Endpoint), new ConcordiumClientOptions());
 
         IBlockHashInput bi = o.BlockHash != null ? new Given(BlockHash.From(o.BlockHash)) : new LastFinal();
 
-        var updates = await client.GetBlockPendingUpdates(bi);
-
-        Console.WriteLine($"Updates:");
-        await foreach (var update in updates.Response)
+        var blockItems = await client.GetBlockItems(bi);
+        
+        Console.WriteLine($"All block items in block {blockItems.BlockHash}: [");
+        await foreach (var item in blockItems.Response)
         {
-            Console.WriteLine($"Pending update: {update}");
+            Console.WriteLine($"{item},");
         }
+        Console.WriteLine("]");
     }
 }
+

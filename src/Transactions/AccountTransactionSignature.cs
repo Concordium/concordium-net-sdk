@@ -72,4 +72,17 @@ public sealed record AccountTransactionSignature
             .ForEach(x => accountTransactionSignature.Signatures.Add(x.Key.Value, x.Value.ToProto()));
         return accountTransactionSignature;
     }
+
+    internal static AccountTransactionSignature From(Grpc.V2.AccountTransactionSignature signature)
+    {
+        var dict = new Dictionary<AccountCredentialIndex, AccountSignatureMap>();
+        foreach (var s in signature.Signatures)
+        {
+            dict.Add(
+                new AccountCredentialIndex((byte)s.Key),
+                AccountSignatureMap.From(s.Value)
+            );
+        }
+        return new AccountTransactionSignature(dict);
+    }
 }

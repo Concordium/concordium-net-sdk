@@ -28,6 +28,20 @@ public sealed class RegisterDataTests
     }
 
     [Fact]
+    public void ToBytes_TryDeserialIsInverse()
+    {
+        var registerData = CreateRegisterData();
+        if (RegisterData.TryDeserial(registerData.ToBytes(), out var deserial))
+        {
+            registerData.Should().Be(deserial.RegisterData);
+        }
+        else
+        {
+            Assert.Fail(deserial.Error);
+        }
+    }
+
+    [Fact]
     public void Prepare_ThenSign_ProducesCorrectSignatures()
     {
         // Create the transfer.

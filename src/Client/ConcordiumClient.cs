@@ -9,6 +9,7 @@ using ArrivedBlockInfo = Concordium.Sdk.Types.ArrivedBlockInfo;
 using BakerId = Concordium.Sdk.Types.BakerId;
 using BlockHash = Concordium.Sdk.Types.BlockHash;
 using BlockInfo = Concordium.Sdk.Types.BlockInfo;
+using BlockItem = Concordium.Sdk.Transactions.BlockItem;
 using BlockItemSummary = Concordium.Sdk.Types.BlockItemSummary;
 using Branch = Concordium.Sdk.Types.Branch;
 using ConsensusInfo = Concordium.Sdk.Types.ConsensusInfo;
@@ -740,6 +741,22 @@ public sealed class ConcordiumClient : IDisposable
                 response.ResponseHeadersAsync,
                 InstanceInfoFactory.From(instanceInfo))
             .ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Get the items of a block.
+    /// </summary>
+    /// <param name="blockHashInput">Identifies what block to get the information from.</param>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>A stream of block items.</returns>
+    /// <exception cref="RpcException">
+    /// RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.
+    /// <see cref="StatusCode.Unimplemented"/> indicates that this endpoint is disabled in the node.
+    /// </exception>
+    public Task<QueryResponse<IAsyncEnumerable<BlockItem>>> GetBlockItems(IBlockHashInput blockHashInput, CancellationToken token = default)
+    {
+        var response = this.Raw.GetBlockItems(blockHashInput.Into(), token);
+        return QueryResponse<IAsyncEnumerable<BlockItem>>.From(response, BlockItem.From, token);
     }
 
     public void Dispose() => this.Raw.Dispose();
