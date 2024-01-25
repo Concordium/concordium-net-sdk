@@ -85,6 +85,20 @@ public sealed class SimpleTransferWithMemoPayloadTests
     }
 
     [Fact]
+    public void ToBytes_TryDeserialIsInverse()
+    {
+        var transfer = CreateTransferWithMemo();
+        if (TransferWithMemo.TryDeserial(transfer.ToBytes(), out var deserial))
+        {
+            transfer.Should().Be(deserial.Transfer);
+        }
+        else
+        {
+            Assert.Fail(deserial.Error);
+        };
+    }
+
+    [Fact]
     public void Prepare_ThenSign_ProducesCorrectSignatures()
     {
         // Create the transfer.

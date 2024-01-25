@@ -56,4 +56,110 @@ public sealed record AccountSignatureMap
         }
         return accountSignatureMap;
     }
+
+    internal static AccountSignatureMap From(Grpc.V2.AccountSignatureMap map)
+    {
+        var dict = new Dictionary<AccountKeyIndex, byte[]>();
+        foreach (var s in map.Signatures)
+        {
+            // The GRPC api states that keys must not exceed 2^8, so this should be safe.
+            dict.Add(new AccountKeyIndex((byte)s.Key), s.Value.Value.ToByteArray());
+        }
+        return Create(dict);
+    }
+
+    /// <summary>Check for equality.</summary>
+    public bool Equals(AccountSignatureMap? other) => other != null &&
+               other.GetType().Equals(this.GetType()) &&
+               this.Signatures.Count == other.Signatures.Count &&
+               this.Signatures.All(p => p.Value == other.Signatures[p.Key]);
+
+    /// <summary>Gets hash code.</summary>
+    public override int GetHashCode()
+    {
+        unchecked
+        {
+            var hash = 17;
+            foreach (var (key, val) in this.Signatures)
+            {
+                hash += key.GetHashCode();
+                hash += Helpers.HashCode.GetHashCodeByteArray(val);
+            }
+            return hash;
+        }
+    }
+}
+
+
+/// <summary>Index of a key in an authorizations update payload.</summary>
+public sealed record UpdateKeysIndex(byte Value);
+
+/// <summary>A map from <see cref="UpdateKeysIndex"/> to signatures.</summary>
+public sealed record UpdateInstructionSignatureMap
+{
+    /// <summary>Internal representation of the map.</summary>
+    public ImmutableDictionary<UpdateKeysIndex, byte[]> Signatures { get; init; }
+
+    /// <summary>Initializes a new instance of the <see cref="UpdateInstructionSignatureMap"/> class.</summary>
+    /// <param name="signatures">A map from update key indices to signatures.</param>
+    private UpdateInstructionSignatureMap(Dictionary<UpdateKeysIndex, byte[]> signatures) => this.Signatures = signatures.ToImmutableDictionary();
+
+    /// <summary>Creates a new instance of the <see cref="UpdateInstructionSignatureMap"/> class.</summary>
+    /// <param name="signatures">A map from update key indices to signatures.</param>
+    /// <exception cref="ArgumentException">A signature is not 64 bytes.</exception>
+    public static UpdateInstructionSignatureMap Create(Dictionary<UpdateKeysIndex, byte[]> signatures)
+    {
+        // Signatures are 64-byte ed25519 signatures and therefore 64 bytes.
+        if (signatures.Values.Any(signature => signature.Length != 64))
+        {
+            throw new ArgumentException($"Signature should be {64} bytes.");
+        }
+        return new UpdateInstructionSignatureMap(signatures);
+    }
+
+    /// <summary>Converts the update signature map to its corresponding protocol buffer message instance.</summary>
+    public Grpc.V2.SignatureMap ToProto()
+    {
+        var signatureMap = new Grpc.V2.SignatureMap();
+        foreach (var s in this.Signatures)
+        {
+            signatureMap.Signatures.Add(
+                s.Key.Value,
+                new Grpc.V2.Signature() { Value = Google.Protobuf.ByteString.CopyFrom(s.Value) }
+            );
+        }
+        return signatureMap;
+    }
+
+    internal static UpdateInstructionSignatureMap From(Grpc.V2.SignatureMap map)
+    {
+        var dict = new Dictionary<UpdateKeysIndex, byte[]>();
+        foreach (var s in map.Signatures)
+        {
+            // The GRPC api states that keys must not exceed 2^8, so this should be safe.
+            dict.Add(new UpdateKeysIndex((byte)s.Key), s.Value.Value.ToByteArray());
+        }
+        return Create(dict);
+    }
+
+    /// <summary>Check for equality.</summary>
+    public bool Equals(UpdateInstructionSignatureMap? other) => other != null &&
+               other.GetType().Equals(this.GetType()) &&
+               this.Signatures.Count == other.Signatures.Count &&
+               this.Signatures.All(p => p.Value == other.Signatures[p.Key]);
+
+    /// <summary>Gets hash code.</summary>
+    public override int GetHashCode()
+    {
+        unchecked
+        {
+            var hash = 17;
+            foreach (var (key, val) in this.Signatures)
+            {
+                hash += key.GetHashCode();
+                hash += Helpers.HashCode.GetHashCodeByteArray(val);
+            }
+            return hash;
+        }
+    }
 }

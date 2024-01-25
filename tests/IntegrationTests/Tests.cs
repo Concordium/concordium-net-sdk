@@ -54,9 +54,19 @@ public abstract class Tests : IDisposable
 
     protected async Task<TransactionHash> Transfer(ITransactionSigner account, AccountAddress sender, AccountTransactionPayload transactionPayload, CancellationToken token)
     {
-        var (accountSequenceNumber, _) = await this.Client.GetNextAccountSequenceNumberAsync(sender, token);
-        var preparedAccountTransaction = transactionPayload.Prepare(sender, accountSequenceNumber, Expiry.AtMinutesFromNow(30));
-        var signedTransfer = preparedAccountTransaction.Sign(account);
+        var (sequenceNumber, _) = await this.Client.GetNextAccountSequenceNumberAsync(sender, token);
+        var expiry = Expiry.AtMinutesFromNow(30);
+
+        var prepared = transactionPayload switch
+        {
+            Transfer transfer => transfer.Prepare(sender, sequenceNumber, expiry),
+            TransferWithMemo transferWithMemo => transferWithMemo.Prepare(sender, sequenceNumber, expiry),
+            DeployModule deployModule => deployModule.Prepare(sender, sequenceNumber, expiry),
+            RegisterData registerData => registerData.Prepare(sender, sequenceNumber, expiry),
+            _ => throw new NotImplementedException(),
+        };
+
+        var signedTransfer = prepared.Sign(account);
         var txHash = await this.Client.SendAccountTransactionAsync(signedTransfer, token);
         return txHash;
     }
