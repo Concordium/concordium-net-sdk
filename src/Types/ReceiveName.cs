@@ -1,6 +1,6 @@
-using Concordium.Sdk.Helpers;
 using System.Buffers.Binary;
 using System.Text;
+using Concordium.Sdk.Helpers;
 
 namespace Concordium.Sdk.Types;
 
@@ -41,8 +41,10 @@ public sealed record ReceiveName
     /// </summary>
     /// <param name="name">Input receive name.</param>
     /// <returns>The parsed receive name</returns>
-    public static ReceiveName Parse(string name) {
-        if (!TryParse(name, out var result)) {
+    public static ReceiveName Parse(string name)
+    {
+        if (!TryParse(name, out var result))
+        {
             throw new ArgumentException(ValidationErrorToString(result.Error!.Value));
         }
         return result.ReceiveName!;
@@ -70,14 +72,13 @@ public sealed record ReceiveName
         InvalidCharacters,
     }
 
-    private static string ValidationErrorToString(ValidationError error) {
-        return error switch
-        {
-            ValidationError.MissingDotSeparator => $"Receive name did not include the mandatory '.' character.",
-                ValidationError.TooLong => $"The receive name is more than 100 characters.",
-                ValidationError.InvalidCharacters => $"The receive name contained invalid characters.",
-                };
-    }
+    private static string ValidationErrorToString(ValidationError error) => error switch
+    {
+        ValidationError.MissingDotSeparator => $"Receive name did not include the mandatory '.' character.",
+        ValidationError.TooLong => $"The receive name is more than 100 characters.",
+        ValidationError.InvalidCharacters => $"The receive name contained invalid characters.",
+        _ => throw new NotImplementedException(),
+    };
 
     private static bool IsValid(string name, out ValidationError? error)
     {
@@ -127,7 +128,8 @@ public sealed record ReceiveName
         {
             var ascii = Encoding.ASCII.GetString(bytes[sizeof(ushort)..sizeRead]);
 
-            if (!TryParse(ascii, out var parseOut)) {
+            if (!TryParse(ascii, out var parseOut))
+            {
                 var error = ValidationErrorToString(parseOut.Error!.Value);
                 output = (null, error);
                 return false;

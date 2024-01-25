@@ -1,5 +1,5 @@
-using Concordium.Sdk.Helpers;
 using System.Buffers.Binary;
+using Concordium.Sdk.Helpers;
 
 namespace Concordium.Sdk.Types;
 
@@ -59,8 +59,9 @@ public sealed record ContractAddress(ulong Index, ulong SubIndex) : IAddress
     /// <summary>
     /// Serialize the ContractAddress in big-endian format.
     /// </summary>
-    public byte[] ToBytes() {
-        using var memoryStream = new MemoryStream((int) BytesLength); // Safe to cast since a payload will never be
+    public byte[] ToBytes()
+    {
+        using var memoryStream = new MemoryStream((int)BytesLength); // Safe to cast since a payload will never be
         memoryStream.Write(Serialization.ToBytes(this.Index));
         memoryStream.Write(Serialization.ToBytes(this.SubIndex));
         return memoryStream.ToArray();

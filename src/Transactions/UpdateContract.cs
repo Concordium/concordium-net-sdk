@@ -24,7 +24,7 @@ public sealed record UpdateContract(CcdAmount Amount, ContractAddress Address, R
         AccountSequenceNumber sequenceNumber,
         Expiry expiry,
         EnergyAmount energy
-    ) => new(sender, sequenceNumber, expiry, energy, this);
+    ) => new(sender, sequenceNumber, expiry, new(_baseCost.Value + energy.Value), this);
 
     /// <summary>
     /// The transaction specific cost for submitting this type of
@@ -33,7 +33,7 @@ public sealed record UpdateContract(CcdAmount Amount, ContractAddress Address, R
     /// This should reflect the transaction-specific costs defined here:
     /// https://github.com/Concordium/concordium-base/blob/78f557b8b8c94773a25e4f86a1a92bc323ea2e3d/haskell-src/Concordium/Cost.hs
     /// </summary>
-    private static EnergyAmount _baseCost = new(300);
+    private static readonly EnergyAmount _baseCost = new(300);
 
     /// <summary>The account transaction type to be used in the serialized payload.</summary>
     private const byte TransactionType = (byte)Types.TransactionType.Update;
@@ -41,7 +41,7 @@ public sealed record UpdateContract(CcdAmount Amount, ContractAddress Address, R
     /// <summary>
     /// Gets the size (number of bytes) of the payload.
     /// </summary>
-    internal override PayloadSize Size() => new(sizeof(TransactionType) + CcdAmount.BytesLength + ContractAddress.BytesLength + ReceiveName.SerializedLength() + Parameter.SerializedLength());
+    internal override PayloadSize Size() => new(sizeof(TransactionType) + CcdAmount.BytesLength + ContractAddress.BytesLength + this.ReceiveName.SerializedLength() + this.Parameter.SerializedLength());
 
     /// <summary>
     /// Create a "update contract" payload from a serialized as bytes.
@@ -65,28 +65,28 @@ public sealed record UpdateContract(CcdAmount Amount, ContractAddress Address, R
             return false;
         }
 
-        ReadOnlySpan<byte> remaining_bytes = bytes[sizeof(TransactionType)..];
+        var remaining_bytes = bytes[sizeof(TransactionType)..];
 
         if (!CcdAmount.TryDeserial(remaining_bytes, out var amount))
         {
             output = (null, amount.Error);
             return false;
         };
-        remaining_bytes = remaining_bytes[(int) CcdAmount.BytesLength..];
+        remaining_bytes = remaining_bytes[(int)CcdAmount.BytesLength..];
 
         if (!ContractAddress.TryDeserial(remaining_bytes, out var address))
         {
             output = (null, address.Error);
             return false;
         };
-        remaining_bytes = remaining_bytes[(int) ContractAddress.BytesLength..];
+        remaining_bytes = remaining_bytes[(int)ContractAddress.BytesLength..];
 
         if (!ReceiveName.TryDeserial(remaining_bytes, out var receiveName) || receiveName.receiveName == null)
         {
             output = (null, receiveName.Error);
             return false;
         };
-        remaining_bytes = remaining_bytes[(int) receiveName.receiveName.SerializedLength()..];
+        remaining_bytes = remaining_bytes[(int)receiveName.receiveName.SerializedLength()..];
 
         if (!Parameter.TryDeserial(remaining_bytes, out var parameter))
         {
@@ -94,7 +94,8 @@ public sealed record UpdateContract(CcdAmount Amount, ContractAddress Address, R
             return false;
         };
 
-        if (amount.Amount == null || address.Address == null || receiveName.receiveName == null || parameter.Parameter == null) {
+        if (amount.Amount == null || address.Address == null || receiveName.receiveName == null || parameter.Parameter == null)
+        {
             var msg = $"Unexpected null pointer when deserializing.";
             output = (null, msg);
             return false;
@@ -111,7 +112,7 @@ public sealed record UpdateContract(CcdAmount Amount, ContractAddress Address, R
     /// </summary>
     public override byte[] ToBytes()
     {
-        using var memoryStream = new MemoryStream((int) this.Size().Size); // Safe to cast since a payload will never be
+        using var memoryStream = new MemoryStream((int)this.Size().Size); // Safe to cast since a payload will never be
         memoryStream.WriteByte(TransactionType);
         memoryStream.Write(this.Amount.ToBytes());
         memoryStream.Write(this.Address.ToBytes());
