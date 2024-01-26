@@ -1,3 +1,5 @@
+using System.Buffers.Binary;
+using System.Text;
 using Concordium.Sdk.Helpers;
 
 namespace Concordium.Sdk.Types;
@@ -35,6 +37,20 @@ public sealed record ReceiveName
     }
 
     /// <summary>
+    /// Parse input name against expected format.
+    /// </summary>
+    /// <param name="name">Input receive name.</param>
+    /// <returns>The parsed receive name</returns>
+    public static ReceiveName Parse(string name)
+    {
+        if (!TryParse(name, out var result))
+        {
+            throw new ArgumentException(ValidationErrorToString(result.Error!.Value));
+        }
+        return result.ReceiveName!;
+    }
+
+    /// <summary>
     /// Get the contract name part of <see cref="Receive"/>.
     /// </summary>
     /// <returns>Contract identification name</returns>
@@ -56,6 +72,14 @@ public sealed record ReceiveName
         InvalidCharacters,
     }
 
+    private static string ValidationErrorToString(ValidationError error) => error switch
+    {
+        ValidationError.MissingDotSeparator => $"Receive name did not include the mandatory '.' character.",
+        ValidationError.TooLong => $"The receive name is more than 100 characters.",
+        ValidationError.InvalidCharacters => $"The receive name contained invalid characters.",
+        _ => throw new NotImplementedException(),
+    };
+
     private static bool IsValid(string name, out ValidationError? error)
     {
         if (!name.Contains('.'))
@@ -76,4 +100,73 @@ public sealed record ReceiveName
         error = null;
         return true;
     }
+
+    /// <summary>
+    /// Attempt to deserialize a span of bytes into a smart contract receive name.
+    /// </summary>
+    /// <param name="bytes">The span of bytes potentially containing a receive name.</param>
+    /// <param name="output">Where to write the result of the operation</param>
+    public static bool TryDeserial(ReadOnlySpan<byte> bytes, out (ReceiveName? receiveName, string? Error) output)
+    {
+        if (bytes.Length < MinSerializedLength)
+        {
+            var msg = $"Invalid length of input in `ReceiveName.TryDeserial`. Expected at least {MinSerializedLength}, found {bytes.Length}";
+            output = (null, msg);
+            return false;
+        };
+        var sizeRead = BinaryPrimitives.ReadUInt16BigEndian(bytes); // This should never throw, since we already checked the length.
+        var size = sizeof(ushort) + sizeRead;
+
+        if (size > bytes.Length)
+        {
+            var msg = $"Invalid length of input in `ReceiveName.TryDeserial`. Expected array of size at least {size}, found {bytes.Length}";
+            output = (null, msg);
+            return false;
+        };
+
+        try
+        {
+            var ascii = Encoding.ASCII.GetString(bytes[sizeof(ushort)..sizeRead]);
+
+            if (!TryParse(ascii, out var parseOut))
+            {
+                var error = ValidationErrorToString(parseOut.Error!.Value);
+                output = (null, error);
+                return false;
+
+            }
+            output = (parseOut.ReceiveName, null);
+            return true;
+        }
+        catch (ArgumentException e)
+        {
+            var msg = $"Invalid ReceiveName in `ReceiveName.TryDeserial`: {e.Message}";
+            output = (null, msg);
+            return false;
+        };
+    }
+
+    /// <summary>
+    /// Gets the serialized length (number of bytes) of the receive name.
+    /// </summary>
+    internal uint SerializedLength() => MinSerializedLength + (uint)this.Receive.Length; // Safe to cast the length since a valid receive name is at most 100.
+
+    /// <summary>
+    /// Gets the minimum serialized length (number of bytes) of the receive name.
+    /// </summary>
+    internal const uint MinSerializedLength = sizeof(ushort);
+
+    /// <summary>
+    /// Serialize the smart contract receive name into a byte array which has the length preprended.
+    /// </summary>
+	public byte[] ToBytes()
+    {
+        using var memoryStream = new MemoryStream((int)this.SerializedLength());
+        memoryStream.Write(Serialization.ToBytes((ushort)this.Receive.Length)); // Safe since a valid receive name must be within 100 ASCII characters.
+        var bytes = new byte[this.Receive.Length];
+        Encoding.ASCII.GetBytes(this.Receive, bytes);
+        memoryStream.Write(bytes);
+        return memoryStream.ToArray();
+    }
+
 }
