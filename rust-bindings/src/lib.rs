@@ -198,7 +198,7 @@ fn schema_display_aux(schema: &[u8], schema_version: Option<u8>) -> Result<Vec<u
 
 #[derive(Error, Debug)]
 pub enum FFIError {
-    #[error("{}", 0)]
+    #[error("{0}")]
     JsonError(String),
     #[error("error when using serde")]
     SerdeJsonError,
