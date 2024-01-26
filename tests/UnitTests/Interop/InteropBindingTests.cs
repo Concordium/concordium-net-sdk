@@ -7,17 +7,12 @@ using Concordium.Sdk.Types;
 using FluentAssertions;
 using VerifyXunit;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Concordium.Sdk.Tests.UnitTests.Interop;
 
 [UsesVerify]
 public class InteropBindingTests
 {
-    private readonly ITestOutputHelper _outputHelper;
-
-    public InteropBindingTests(ITestOutputHelper outputHelper) => this._outputHelper = outputHelper;
-
     [Fact]
     public async Task GivenSchemaVersion_WhenSchemaDisplay_ThenReturnSchema()
     {
