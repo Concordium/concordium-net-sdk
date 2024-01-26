@@ -109,7 +109,7 @@ public class InteropBindingTests
         }
         catch (InteropBindingException e)
         {
-            this._outputHelper.WriteLine($"{e.Result}");
+            this._outputHelper.WriteLine($"This is some result: {e.Result}");
         }
 
         // Act
