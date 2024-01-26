@@ -49,7 +49,7 @@ pub unsafe extern "C" fn schema_display(
     schema_size: i32,
     schema_version: FFIByteOption,
     callback: ResultCallback,
-) -> u32 {
+) -> u8 {
     let schema = std::slice::from_raw_parts(schema_ptr, schema_size as usize);
     assign_result(callback, || {
         schema_display_aux(schema, schema_version.into_option())
@@ -88,7 +88,7 @@ pub unsafe extern "C" fn get_receive_contract_parameter(
     value_ptr: *const u8,
     value_size: i32,
     callback: ResultCallback,
-) -> u32 {
+) -> u8 {
     assign_result(callback, || {
         let schema = std::slice::from_raw_parts(schema_ptr, schema_size as usize);
         let contract_name_str = get_str_from_pointer(contract_name)?;
@@ -132,7 +132,7 @@ pub unsafe extern "C" fn get_event_contract(
     value_ptr: *const u8,
     value_size: i32,
     callback: ResultCallback,
-) -> u32 {
+) -> u8 {
     assign_result(callback, || {
         let schema = std::slice::from_raw_parts(schema_ptr, schema_size as usize);
         let contract_name_str = get_str_from_pointer(contract_name)?;
@@ -158,7 +158,7 @@ pub unsafe extern "C" fn get_event_contract(
 /// # Returns
 ///
 /// A boolean, that indicates whether the computation was successful or not.
-fn assign_result<F: FnOnce() -> Result<Vec<u8>, FFIError>>(callback: ResultCallback, f: F) -> u32 {
+fn assign_result<F: FnOnce() -> Result<Vec<u8>, FFIError>>(callback: ResultCallback, f: F) -> u8 {
     match f() {
         Ok(output) => {
             let out_lenght = output.len() as i32;
