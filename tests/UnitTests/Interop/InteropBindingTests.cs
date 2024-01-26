@@ -210,7 +210,7 @@ public class InteropBindingTests
         var contractEvent = new ContractEvent(Convert.FromHexString(value));
 
         // Act
-        var action = () =>  InteropBinding.GetEventContract(versionedModuleSchema, contractIdentifier, contractEvent);
+        var action = () => InteropBinding.GetEventContract(versionedModuleSchema, contractIdentifier, contractEvent);
 
         // Assert
         action.Should().Throw<InteropBindingException>()
@@ -231,7 +231,7 @@ public class InteropBindingTests
         var contractEvent = new ContractEvent(Convert.FromHexString(value));
 
         // Act
-        var action = () =>  InteropBinding.GetEventContract(versionedModuleSchema, contractIdentifier, contractEvent);
+        var action = () => InteropBinding.GetEventContract(versionedModuleSchema, contractIdentifier, contractEvent);
 
         // Assert
         action.Should().Throw<InteropBindingException>()
@@ -252,7 +252,7 @@ public class InteropBindingTests
         var contractEvent = new ContractEvent(Convert.FromHexString(value)[..^3]); // Bad contract event
 
         // Act
-        var action = () =>  InteropBinding.GetEventContract(versionedModuleSchema, contractIdentifier, contractEvent);
+        var action = () => InteropBinding.GetEventContract(versionedModuleSchema, contractIdentifier, contractEvent);
 
         // Assert
         action.Should().Throw<InteropBindingException>()
