@@ -2,7 +2,7 @@ use anyhow::Result;
 use concordium_contracts_common::{
     schema::{Type, VersionedModuleSchema, VersionedSchemaError}, 
     schema_json::ToJsonError, 
-    Cursor
+    Cursor,
 };
 use serde_json::to_vec;
 use std::{ffi::CStr, os::raw::c_char};
@@ -206,7 +206,7 @@ pub enum FFIError {
     #[error("encountered string which wasn't utf8 encoded")]
     Utf8Error,
     #[error(transparent)]
-    VersionedSchemaError(#[from]VersionedSchemaError),
+    VersionedSchemaError(#[from] VersionedSchemaError),
 }
 
 impl FFIError {
