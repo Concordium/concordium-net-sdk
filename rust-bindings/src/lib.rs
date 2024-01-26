@@ -1,6 +1,6 @@
 use anyhow::Result;
 use concordium_contracts_common::{
-    schema::{Type, VersionedModuleSchema, impls::VersionedSchemaError}, schema_json::ToJsonError, Cursor
+    schema::{Type, VersionedModuleSchema, VersionedSchemaError}, schema_json::ToJsonError, Cursor
 };
 use serde_json::to_vec;
 use thiserror::Error;
@@ -195,6 +195,7 @@ fn schema_display_aux(schema: &[u8], schema_version: Option<u8>) -> Result<Vec<u
 }
 
 #[derive(Error, Debug)]
+#[repr(C)]
 pub enum FFIError {
     
     #[error("{}", 0)]
@@ -208,7 +209,7 @@ pub enum FFIError {
 }
 
 impl FFIError {
-    fn to_int(&self) -> u32 {
+    fn to_int(&self) -> u8 {
         match self {
             FFIError::JsonError(_) => 1,
             FFIError::SerdeJsonError => 2,

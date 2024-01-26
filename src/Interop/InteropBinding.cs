@@ -15,14 +15,14 @@ internal static class InteropBinding
     private const string DllName = "rust_bindings";
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "schema_display")]
-    private static extern bool SchemaDisplay(
+    private static extern Result SchemaDisplay(
         [MarshalAs(UnmanagedType.LPArray)] byte[] schema,
         int schema_size,
         FfiByteOption schema_version,
         [MarshalAs(UnmanagedType.FunctionPtr)] SetResultCallback callback);
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_receive_contract_parameter")]
-    private static extern bool GetReceiveContractParameter(
+    private static extern Result GetReceiveContractParameter(
         [MarshalAs(UnmanagedType.LPArray)] byte[] schema, int schema_size,
         FfiByteOption schema_version,
         [MarshalAs(UnmanagedType.LPUTF8Str)] string contract_name,
@@ -32,7 +32,7 @@ internal static class InteropBinding
         [MarshalAs(UnmanagedType.FunctionPtr)] SetResultCallback callback);
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_event_contract")]
-    private static extern bool GetEventContract(
+    private static extern Result GetEventContract(
         [MarshalAs(UnmanagedType.LPArray)] byte[] schema,
         int schema_size,
         FfiByteOption schema_version,
@@ -63,12 +63,12 @@ internal static class InteropBinding
                 Marshal.Copy(ptr, result, 0, size);
             });
 
-        if (schemaDisplay && result != null)
+        if (!schemaDisplay.IsError() && result != null)
         {
             return new Utf8Json(result);
         }
 
-        var interopException = InteropBindingException.Create(result);
+        var interopException = InteropBindingException.Create(schemaDisplay, result);
         throw interopException;
     }
 
@@ -97,12 +97,12 @@ internal static class InteropBinding
                     Marshal.Copy(ptr, result, 0, size);
                 });
 
-        if (receiveContractParameter && result != null)
+        if (!receiveContractParameter.IsError() && result != null)
         {
             return new Utf8Json(result);
         }
 
-        var interopException = InteropBindingException.Create(result);
+        var interopException = InteropBindingException.Create(receiveContractParameter, result);
         throw interopException;
     }
 
@@ -127,12 +127,12 @@ internal static class InteropBinding
                 Marshal.Copy(ptr, result, 0, size);
             });
 
-        if (schemaDisplay && result != null)
+        if (!schemaDisplay.IsError() && result != null)
         {
             return new Utf8Json(result);
         }
 
-        var interopException = InteropBindingException.Create(result);
+        var interopException = InteropBindingException.Create(schemaDisplay, result);
         throw interopException;
     }
 
