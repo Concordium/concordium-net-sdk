@@ -105,7 +105,7 @@ public class InteropBindingTests
         action.Should().Throw<InteropBindingException>()
             .Where(e =>
                 e.Result == Result.JsonError &&
-                e.Message.StartsWith("Failed to deserialize AccountAddress due to: Could not parse AccountAddress"));
+                e.Message.StartsWith("Failed to deserialize AccountAddress due to: Could not parse AccountAddress", StringComparison.Ordinal));
     }
 
     [Fact]
