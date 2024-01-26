@@ -1,10 +1,12 @@
 use anyhow::Result;
 use concordium_contracts_common::{
-    schema::{Type, VersionedModuleSchema, VersionedSchemaError}, schema_json::ToJsonError, Cursor
+    schema::{Type, VersionedModuleSchema, VersionedSchemaError}, 
+    schema_json::ToJsonError, 
+    Cursor
 };
 use serde_json::to_vec;
-use thiserror::Error;
 use std::{ffi::CStr, os::raw::c_char};
+use thiserror::Error;
 
 pub type JsonString = String;
 
@@ -204,7 +206,7 @@ pub enum FFIError {
     #[error("encountered string which wasn't utf8 encoded")]
     Utf8Error,
     #[error(transparent)]
-    VersionedSchemaError(#[from]VersionedSchemaError)
+    VersionedSchemaError(#[from]VersionedSchemaError),
 }
 
 impl FFIError {
@@ -235,21 +237,15 @@ impl FFIError {
 }
 
 impl From<std::str::Utf8Error> for FFIError {
-    fn from(_: std::str::Utf8Error) -> Self {
-        FFIError::Utf8Error
-    }
+    fn from(_: std::str::Utf8Error) -> Self { FFIError::Utf8Error }
 }
 
 impl From<serde_json::Error> for FFIError {
-    fn from(_: serde_json::Error) -> Self {
-        FFIError::SerdeJsonError
-    }
+    fn from(_: serde_json::Error) -> Self { FFIError::SerdeJsonError }
 }
 
 impl From<ToJsonError> for FFIError {
-    fn from(value: ToJsonError) -> Self {
-        FFIError::JsonError(value.display(true))
-    }
+    fn from(value: ToJsonError) -> Self { FFIError::JsonError(value.display(true)) }
 }
 
 fn get_event_contract_aux(
@@ -264,10 +260,7 @@ fn get_event_contract_aux(
     Ok(deserialized)
 }
 
-fn deserialize_type_value(
-    value: &[u8],
-    value_type: &Type
-) -> Result<Vec<u8>, FFIError> {
+fn deserialize_type_value(value: &[u8], value_type: &Type) -> Result<Vec<u8>, FFIError> {
     let mut cursor = Cursor::new(value);
     let v = value_type.to_json(&mut cursor)?;
     Ok(to_vec(&v)?)
