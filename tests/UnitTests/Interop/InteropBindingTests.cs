@@ -103,15 +103,6 @@ public class InteropBindingTests
         var contractIdentifier = new ContractIdentifier(contractName);
         var entryPoint = new EntryPoint(entrypoint);
 
-        try
-        {
-            var receiveContractParameter = InteropBinding.GetReceiveContractParameter(versionedModuleSchema, contractIdentifier, entryPoint, parameter);
-        }
-        catch (InteropBindingException e)
-        {
-            this._outputHelper.WriteLine($"This is some result: {e.Result}");
-        }
-
         // Act
         var action = () => InteropBinding.GetReceiveContractParameter(versionedModuleSchema, contractIdentifier, entryPoint, parameter);
 
