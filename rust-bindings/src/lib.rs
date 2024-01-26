@@ -195,7 +195,6 @@ fn schema_display_aux(schema: &[u8], schema_version: Option<u8>) -> Result<Vec<u
 }
 
 #[derive(Error, Debug)]
-#[repr(C)]
 pub enum FFIError {
     
     #[error("{}", 0)]
