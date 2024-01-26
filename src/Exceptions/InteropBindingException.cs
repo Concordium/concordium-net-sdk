@@ -12,12 +12,12 @@ public sealed class InteropBindingException : Exception
     /// <summary>
     /// Type of error
     /// </summary>
-    public Result Result { get; }
+    public InteropError InteropError { get; }
 
-    internal static InteropBindingException Create(Result result, byte[]? message) =>
-        message != null ? new InteropBindingException(result, Encoding.UTF8.GetString(message)) : Empty(result);
+    internal static InteropBindingException Create(InteropError interopError, byte[]? message) =>
+        message != null ? new InteropBindingException(interopError, Encoding.UTF8.GetString(message)) : Empty(interopError);
 
-    private InteropBindingException(Result result, string message) : base(message) => this.Result = result;
+    private InteropBindingException(InteropError interopError, string message) : base(message) => this.InteropError = interopError;
 
-    private static InteropBindingException Empty(Result result) => new(result, EmptyErrorMessage);
+    private static InteropBindingException Empty(InteropError interopError) => new(interopError, EmptyErrorMessage);
 }

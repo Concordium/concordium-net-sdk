@@ -15,14 +15,14 @@ internal static class InteropBinding
     private const string DllName = "rust_bindings";
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "schema_display")]
-    private static extern Result SchemaDisplay(
+    private static extern byte SchemaDisplay(
         [MarshalAs(UnmanagedType.LPArray)] byte[] schema,
         int schema_size,
         FfiByteOption schema_version,
         [MarshalAs(UnmanagedType.FunctionPtr)] SetResultCallback callback);
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_receive_contract_parameter")]
-    private static extern Result GetReceiveContractParameter(
+    private static extern byte GetReceiveContractParameter(
         [MarshalAs(UnmanagedType.LPArray)] byte[] schema, int schema_size,
         FfiByteOption schema_version,
         [MarshalAs(UnmanagedType.LPUTF8Str)] string contract_name,
@@ -32,7 +32,7 @@ internal static class InteropBinding
         [MarshalAs(UnmanagedType.FunctionPtr)] SetResultCallback callback);
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_event_contract")]
-    private static extern Result GetEventContract(
+    private static extern byte GetEventContract(
         [MarshalAs(UnmanagedType.LPArray)] byte[] schema,
         int schema_size,
         FfiByteOption schema_version,
@@ -54,7 +54,7 @@ internal static class InteropBinding
     internal static Utf8Json SchemaDisplay(VersionedModuleSchema schema)
     {
         var ffiOption = FfiByteOption.Create(schema.Version);
-        byte[]? result = null;
+        var result = Array.Empty<byte>();
 
         var schemaDisplay = SchemaDisplay(schema.Schema, schema.Schema.Length, ffiOption,
             (ptr, size) =>
@@ -63,12 +63,12 @@ internal static class InteropBinding
                 Marshal.Copy(ptr, result, 0, size);
             });
 
-        if (!schemaDisplay.IsError() && result != null)
+        if (!InteropErrorExtensions.TryMapError(schemaDisplay, out var error))
         {
             return new Utf8Json(result);
         }
 
-        var interopException = InteropBindingException.Create(schemaDisplay, result);
+        var interopException = InteropBindingException.Create(error!.Value, result);
         throw interopException;
     }
 
@@ -86,7 +86,7 @@ internal static class InteropBinding
     {
         var ffiOption = FfiByteOption.Create(schema.Version);
 
-        byte[]? result = null;
+        var result = Array.Empty<byte>();
 
         var receiveContractParameter =
             GetReceiveContractParameter(schema.Schema, schema.Schema.Length, ffiOption,
@@ -97,12 +97,12 @@ internal static class InteropBinding
                     Marshal.Copy(ptr, result, 0, size);
                 });
 
-        if (!receiveContractParameter.IsError() && result != null)
+        if (!InteropErrorExtensions.TryMapError(receiveContractParameter, out var error))
         {
             return new Utf8Json(result);
         }
 
-        var interopException = InteropBindingException.Create(receiveContractParameter, result);
+        var interopException = InteropBindingException.Create(error!.Value, result);
         throw interopException;
     }
 
@@ -127,12 +127,12 @@ internal static class InteropBinding
                 Marshal.Copy(ptr, result, 0, size);
             });
 
-        if (!schemaDisplay.IsError() && result != null)
+        if (!InteropErrorExtensions.TryMapError(schemaDisplay, out var error))
         {
             return new Utf8Json(result);
         }
 
-        var interopException = InteropBindingException.Create(schemaDisplay, result);
+        var interopException = InteropBindingException.Create(error!.Value, result);
         throw interopException;
     }
 

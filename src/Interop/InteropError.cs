@@ -3,12 +3,8 @@ namespace Concordium.Sdk.Interop;
 /// <summary>
 /// Result type which on errors hold error type information.
 /// </summary>
-public enum Result
+public enum InteropError
 {
-    /// <summary>
-    /// No error
-    /// </summary>
-    NoError = 0,
     /// <summary>
     /// Represents errors occurring while deserializing to the schema JSON format.
     /// </summary>
@@ -85,7 +81,73 @@ public enum Result
     VersionedSchemaErrorEventNotSupported = 18,
 }
 
-internal static class ErrorExtensions
+internal static class InteropErrorExtensions
 {
-    internal static bool IsError(this Result result) => result != Result.NoError;
+    internal static bool TryMapError(byte result, out InteropError? error)
+    {
+        error = null;
+        switch (result)
+        {
+            case 0:
+                break;
+            case 1:
+                error = InteropError.JsonError;
+                break;
+            case 2:
+                error = InteropError.SerdeJsonError;
+                break;
+            case 3:
+                error = InteropError.Utf8Error;
+                break;
+            case 4:
+                error = InteropError.VersionedSchemaErrorParseError;
+                break;
+            case 5:
+                error = InteropError.VersionedSchemaErrorMissingSchemaVersion;
+                break;
+            case 6:
+                error = InteropError.VersionedSchemaErrorInvalidSchemaVersion;
+                break;
+            case 7:
+                error = InteropError.VersionedSchemaErrorNoContractInModule;
+                break;
+            case 8:
+                error = InteropError.VersionedSchemaErrorNoReceiveInContract;
+                break;
+            case 9:
+                error = InteropError.VersionedSchemaErrorNoInitInContract;
+                break;
+            case 10:
+                error = InteropError.VersionedSchemaErrorNoParamsInReceive;
+                break;
+            case 11:
+                error = InteropError.VersionedSchemaErrorNoParamsInInit;
+                break;
+            case 12:
+                error = InteropError.VersionedSchemaErrorNoErrorInReceive;
+                break;
+            case 13:
+                error = InteropError.VersionedSchemaErrorNoErrorInInit;
+                break;
+            case 14:
+                error = InteropError.VersionedSchemaErrorErrorNotSupported;
+                break;
+            case 15:
+                error = InteropError.VersionedSchemaErrorNoReturnValueInReceive;
+                break;
+            case 16:
+                error = InteropError.VersionedSchemaErrorReturnValueNotSupported;
+                break;
+            case 17:
+                error = InteropError.VersionedSchemaErrorNoEventInContract;
+                break;
+            case 18:
+                error = InteropError.VersionedSchemaErrorEventNotSupported;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(result), result, null);
+        }
+
+        return error != null;
+    }
 }
