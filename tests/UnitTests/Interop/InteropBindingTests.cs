@@ -50,7 +50,7 @@ public class InteropBindingTests
     {
         // Arrange
         var schema = Convert.FromHexString((await File.ReadAllTextAsync("./Data/cis2-nft-schema")).Trim());
-        var versionedModuleSchema = new VersionedModuleSchema(schema[..^3], ModuleSchemaVersion.V1);
+        var versionedModuleSchema = new VersionedModuleSchema(schema[..^3], ModuleSchemaVersion.V1); // Bad schema
 
         // Act
 
@@ -94,7 +94,7 @@ public class InteropBindingTests
         const string entrypoint = "wrap";
         var value = Convert.FromHexString("005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc790000");
         var versionedModuleSchema = new VersionedModuleSchema(Convert.FromHexString(schema), ModuleSchemaVersion.Undefined);
-        var parameter = new Parameter(value[..^3]);
+        var parameter = new Parameter(value[..^3]); // Bad parameter
         var contractIdentifier = new ContractIdentifier(contractName);
         var entryPoint = new EntryPoint(entrypoint);
 
@@ -106,6 +106,72 @@ public class InteropBindingTests
             .Where(e =>
                 e.Result == Result.JsonError &&
                 e.Message.StartsWith("Failed to deserialize AccountAddress due to: Could not parse AccountAddress"));
+    }
+
+    [Fact]
+    public async Task GivenBadContractIdentifier_WhenDisplayReceiveParam_ThenThrowException()
+    {
+        // Arrange
+        var schema = (await File.ReadAllTextAsync("./Data/cis2_wCCD_sub")).Trim();
+        const string contractName = "cis2_wCCD";
+        const string entrypoint = "wrap";
+        var versionedModuleSchema = new VersionedModuleSchema(Convert.FromHexString(schema), ModuleSchemaVersion.Undefined);
+        var parameter = new Parameter(Convert.FromHexString("005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc790000"));
+        var contractIdentifier = new ContractIdentifier(contractName[..^3]); // Bad contract identifier
+        var entryPoint = new EntryPoint(entrypoint);
+
+        // Act
+        var action = () => InteropBinding.GetReceiveContractParameter(versionedModuleSchema, contractIdentifier, entryPoint, parameter);
+
+        // Assert
+        action.Should().Throw<InteropBindingException>()
+            .Where(e =>
+                e.Result == Result.VersionedSchemaErrorNoContractInModule &&
+                e.Message.Equals("Unable to find contract schema in module schema", StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public async Task GivenBadEntrypoint_WhenDisplayReceiveParam_ThenThrowException()
+    {
+        // Arrange
+        var schema = (await File.ReadAllTextAsync("./Data/cis2_wCCD_sub")).Trim();
+        const string contractName = "cis2_wCCD";
+        const string entrypoint = "wrap";
+        var versionedModuleSchema = new VersionedModuleSchema(Convert.FromHexString(schema), ModuleSchemaVersion.Undefined);
+        var parameter = new Parameter(Convert.FromHexString("005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc790000"));
+        var contractIdentifier = new ContractIdentifier(contractName);
+        var entryPoint = new EntryPoint(entrypoint[..^2]); // Bad entrypoint
+
+        // Act
+        var action = () => InteropBinding.GetReceiveContractParameter(versionedModuleSchema, contractIdentifier, entryPoint, parameter);
+
+        // Assert
+        action.Should().Throw<InteropBindingException>()
+            .Where(e =>
+                e.Result == Result.VersionedSchemaErrorNoReceiveInContract &&
+                e.Message.Equals("Receive function schema not found in contract schema", StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public async Task GivenBadSchema_WhenDisplayReceiveParam_ThenThrowException()
+    {
+        // Arrange
+        var schema = Convert.FromHexString((await File.ReadAllTextAsync("./Data/cis2_wCCD_sub")).Trim());
+        const string contractName = "cis2_wCCD";
+        const string entrypoint = "wrap";
+        var versionedModuleSchema = new VersionedModuleSchema(schema[30..], ModuleSchemaVersion.Undefined); // Bad schema
+        var parameter = new Parameter(Convert.FromHexString("005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc790000"));
+        var contractIdentifier = new ContractIdentifier(contractName);
+        var entryPoint = new EntryPoint(entrypoint[..^2]);
+
+        // Act
+        var action = () => InteropBinding.GetReceiveContractParameter(versionedModuleSchema, contractIdentifier, entryPoint, parameter);
+
+        // Assert
+        action.Should().Throw<InteropBindingException>()
+            .Where(e =>
+                e.Result == Result.VersionedSchemaErrorMissingSchemaVersion &&
+                e.Message.Equals("Missing Schema Version", StringComparison.Ordinal));
     }
 
     [Fact]
@@ -126,6 +192,69 @@ public class InteropBindingTests
         await Verifier.Verify(message.ToString())
             .UseFileName("event")
             .UseDirectory("__snapshots__");
+    }
+
+    [Fact]
+    public async Task GivenBadSchema_WhenDisplayEvent_ThenThrowException()
+    {
+        // Arrange
+        var schema = Convert.FromHexString((await File.ReadAllTextAsync("./Data/cis2_wCCD_sub")).Trim());
+        const string contractName = "cis2_wCCD";
+        const string value = "fe00c0843d005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc79";
+        var versionedModuleSchema = new VersionedModuleSchema(schema[..^3], ModuleSchemaVersion.Undefined); // Bad schema
+        var contractIdentifier = new ContractIdentifier(contractName);
+        var contractEvent = new ContractEvent(Convert.FromHexString(value));
+
+        // Act
+        var action = () =>  InteropBinding.GetEventContract(versionedModuleSchema, contractIdentifier, contractEvent);
+
+        // Assert
+        action.Should().Throw<InteropBindingException>()
+            .Where(e =>
+                e.Result == Result.VersionedSchemaErrorMissingSchemaVersion &&
+                e.Message.Equals("Missing Schema Version", StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public async Task GivenBadContractIdentifier_WhenDisplayEvent_ThenThrowException()
+    {
+        // Arrange
+        var schema = (await File.ReadAllTextAsync("./Data/cis2_wCCD_sub")).Trim();
+        const string contractName = "cis2_wCCD";
+        const string value = "fe00c0843d005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc79";
+        var versionedModuleSchema = new VersionedModuleSchema(Convert.FromHexString(schema), ModuleSchemaVersion.Undefined);
+        var contractIdentifier = new ContractIdentifier(contractName[..^3]); // Bad contract identifier
+        var contractEvent = new ContractEvent(Convert.FromHexString(value));
+
+        // Act
+        var action = () =>  InteropBinding.GetEventContract(versionedModuleSchema, contractIdentifier, contractEvent);
+
+        // Assert
+        action.Should().Throw<InteropBindingException>()
+            .Where(e =>
+                e.Result == Result.VersionedSchemaErrorNoContractInModule &&
+                e.Message.Equals("Unable to find contract schema in module schema", StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public async Task GivenBadContractEvent_WhenDisplayEvent_ThenThrowException()
+    {
+        // Arrange
+        var schema = (await File.ReadAllTextAsync("./Data/cis2_wCCD_sub")).Trim();
+        const string contractName = "cis2_wCCD";
+        const string value = "fe00c0843d005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc79";
+        var versionedModuleSchema = new VersionedModuleSchema(Convert.FromHexString(schema), ModuleSchemaVersion.Undefined);
+        var contractIdentifier = new ContractIdentifier(contractName);
+        var contractEvent = new ContractEvent(Convert.FromHexString(value)[..^3]); // Bad contract event
+
+        // Act
+        var action = () =>  InteropBinding.GetEventContract(versionedModuleSchema, contractIdentifier, contractEvent);
+
+        // Assert
+        action.Should().Throw<InteropBindingException>()
+            .Where(e =>
+                e.Result == Result.JsonError &&
+                e.Message.StartsWith("Failed to deserialize AccountAddress due to: Could not parse"));
     }
 
     [Theory]
