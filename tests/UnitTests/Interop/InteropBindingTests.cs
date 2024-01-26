@@ -64,7 +64,7 @@ public class InteropBindingTests
         // Assert
         action.Should().Throw<InteropBindingException>()
             .Where(e =>
-                e.InteropError == InteropError.VersionedSchemaErrorParseError &&
+                e.Result == Result.VersionedSchemaErrorParseError &&
                 e.Message.Equals("Parse error", StringComparison.Ordinal));
     }
 
@@ -109,7 +109,7 @@ public class InteropBindingTests
         }
         catch (InteropBindingException e)
         {
-            this._outputHelper.WriteLine($"This is some result: {e.InteropError}");
+            this._outputHelper.WriteLine($"This is some result: {e.Result}");
         }
 
         // Act
@@ -118,7 +118,7 @@ public class InteropBindingTests
         // Assert
         action.Should().Throw<InteropBindingException>()
             .Where(e =>
-                e.InteropError == InteropError.JsonError &&
+                e.Result == Result.JsonError &&
                 e.Message.StartsWith("Failed to deserialize AccountAddress due to: Could not parse AccountAddress", StringComparison.InvariantCulture));
     }
 
@@ -140,7 +140,7 @@ public class InteropBindingTests
         // Assert
         action.Should().Throw<InteropBindingException>()
             .Where(e =>
-                e.InteropError == InteropError.VersionedSchemaErrorNoContractInModule &&
+                e.Result == Result.VersionedSchemaErrorNoContractInModule &&
                 e.Message.Equals("Unable to find contract schema in module schema", StringComparison.Ordinal));
     }
 
@@ -162,7 +162,7 @@ public class InteropBindingTests
         // Assert
         action.Should().Throw<InteropBindingException>()
             .Where(e =>
-                e.InteropError == InteropError.VersionedSchemaErrorNoReceiveInContract &&
+                e.Result == Result.VersionedSchemaErrorNoReceiveInContract &&
                 e.Message.Equals("Receive function schema not found in contract schema", StringComparison.Ordinal));
     }
 
@@ -184,7 +184,7 @@ public class InteropBindingTests
         // Assert
         action.Should().Throw<InteropBindingException>()
             .Where(e =>
-                e.InteropError == InteropError.VersionedSchemaErrorMissingSchemaVersion &&
+                e.Result == Result.VersionedSchemaErrorMissingSchemaVersion &&
                 e.Message.Equals("Missing Schema Version", StringComparison.Ordinal));
     }
 
@@ -225,7 +225,7 @@ public class InteropBindingTests
         // Assert
         action.Should().Throw<InteropBindingException>()
             .Where(e =>
-                e.InteropError == InteropError.VersionedSchemaErrorMissingSchemaVersion &&
+                e.Result == Result.VersionedSchemaErrorMissingSchemaVersion &&
                 e.Message.Equals("Missing Schema Version", StringComparison.Ordinal));
     }
 
@@ -246,7 +246,7 @@ public class InteropBindingTests
         // Assert
         action.Should().Throw<InteropBindingException>()
             .Where(e =>
-                e.InteropError == InteropError.VersionedSchemaErrorNoContractInModule &&
+                e.Result == Result.VersionedSchemaErrorNoContractInModule &&
                 e.Message.Equals("Unable to find contract schema in module schema", StringComparison.Ordinal));
     }
 
@@ -267,7 +267,7 @@ public class InteropBindingTests
         // Assert
         action.Should().Throw<InteropBindingException>()
             .Where(e =>
-                e.InteropError == InteropError.JsonError &&
+                e.Result == Result.JsonError &&
                 e.Message.StartsWith("Failed to deserialize AccountAddress due to: Could not parse"));
     }
 
