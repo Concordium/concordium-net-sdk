@@ -66,7 +66,7 @@ public sealed record Parameter(byte[] Param)
             output = (null, msg);
             return false;
         };
-        let parameter = new Parameter(bytes.Slice(sizeof(ushort), sizeRead).ToArray());
+        var parameter = new Parameter(bytes.Slice(sizeof(ushort), sizeRead).ToArray());
         output = (parameter, null);
         return true;
     }
