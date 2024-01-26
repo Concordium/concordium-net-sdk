@@ -15,7 +15,7 @@
     <PackageTags>concordium;concordium-net-sdk;blockchain;sdk;</PackageTags>
     <Company>Concordium</Company>
     <PackageId>ConcordiumNetSdk</PackageId>
-    <Version>4.2.1</Version>
+    <Version>4.3.0</Version>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
