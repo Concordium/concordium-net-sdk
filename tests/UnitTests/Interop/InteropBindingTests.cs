@@ -7,12 +7,17 @@ using Concordium.Sdk.Types;
 using FluentAssertions;
 using VerifyXunit;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Concordium.Sdk.Tests.UnitTests.Interop;
 
 [UsesVerify]
 public class InteropBindingTests
 {
+    private readonly ITestOutputHelper _outputHelper;
+
+    public InteropBindingTests(ITestOutputHelper outputHelper) => this._outputHelper = outputHelper;
+
     [Fact]
     public async Task GivenSchemaVersion_WhenSchemaDisplay_ThenReturnSchema()
     {
@@ -97,6 +102,15 @@ public class InteropBindingTests
         var parameter = new Parameter(value[..^3]); // Bad parameter
         var contractIdentifier = new ContractIdentifier(contractName);
         var entryPoint = new EntryPoint(entrypoint);
+
+        try
+        {
+            var receiveContractParameter = InteropBinding.GetReceiveContractParameter(versionedModuleSchema, contractIdentifier, entryPoint, parameter);
+        }
+        catch (InteropBindingException e)
+        {
+            this._outputHelper.WriteLine($"{e.Result}");
+        }
 
         // Act
         var action = () => InteropBinding.GetReceiveContractParameter(versionedModuleSchema, contractIdentifier, entryPoint, parameter);
