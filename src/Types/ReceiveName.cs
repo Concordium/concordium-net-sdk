@@ -115,7 +115,7 @@ public sealed record ReceiveName
             return false;
         };
         var sizeRead = BinaryPrimitives.ReadUInt16BigEndian(bytes); // This should never throw, since we already checked the length.
-        var size = sizeRead + MinSerializedLength;
+        var size = sizeof(ushort) + sizeRead;
 
         if (size > bytes.Length)
         {

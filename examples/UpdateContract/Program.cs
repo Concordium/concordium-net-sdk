@@ -19,7 +19,7 @@ internal sealed class UpdateTransactionExampleOptions
     )]
     public string WalletKeysFile { get; set; }
     [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.",
-        Default = "http://node.testnet.concordium.com:20000/")]
+        Default = "https://grpc.testnet.concordium.com:20000/")]
     public string Endpoint { get; set; }
     [Option('a', "amount", HelpText = "Amount of CCD to deposit.", Default = 0)]
     public ulong Amount { get; set; }
@@ -41,7 +41,7 @@ internal sealed class UpdateTransactionExampleOptions
 /// in the Concordium browser wallet key export format, and that a path
 /// pointing to it is supplied to it from the command line.
 ///
-/// Cfr. <see cref="UpdateTransactionExampleOptions"/> for more info
+/// See <see cref="UpdateTransactionExampleOptions"/> for more info
 /// on how to run the program, or refer to the help message.
 /// </summary>
 internal class Program
@@ -80,13 +80,13 @@ internal class Program
         var sender = account.AccountAddress;
         var sequenceNumber = client.GetNextAccountSequenceNumber(sender).Item1;
         var expiry = Expiry.AtMinutesFromNow(30);
-        var preparedTransfer = updatePayload.Prepare(sender, sequenceNumber, expiry, maxEnergy);
+        var preparedPayload = updatePayload.Prepare(sender, sequenceNumber, expiry, maxEnergy);
 
         // Sign the transaction using the account keys.
-        var signedTransfer = preparedTransfer.Sign(account);
+        var signedTransaction = preparedPayload.Sign(account);
 
         // Submit the transaction.
-        var txHash = client.SendAccountTransaction(signedTransfer);
+        var txHash = await client.SendAccountTransactionAsync(signedTransaction);
 
         // Print the transaction hash.
         Console.WriteLine($"Successfully submitted transfer transaction with hash {txHash}");

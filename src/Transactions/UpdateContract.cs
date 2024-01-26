@@ -24,16 +24,7 @@ public sealed record UpdateContract(CcdAmount Amount, ContractAddress Address, R
         AccountSequenceNumber sequenceNumber,
         Expiry expiry,
         EnergyAmount energy
-    ) => new(sender, sequenceNumber, expiry, new(_baseCost.Value + energy.Value), this);
-
-    /// <summary>
-    /// The transaction specific cost for submitting this type of
-    /// transaction to the chain.
-    ///
-    /// This should reflect the transaction-specific costs defined here:
-    /// https://github.com/Concordium/concordium-base/blob/78f557b8b8c94773a25e4f86a1a92bc323ea2e3d/haskell-src/Concordium/Cost.hs
-    /// </summary>
-    private static readonly EnergyAmount _baseCost = new(300);
+    ) => new(sender, sequenceNumber, expiry, energy, this);
 
     /// <summary>The account transaction type to be used in the serialized payload.</summary>
     private const byte TransactionType = (byte)Types.TransactionType.Update;
@@ -81,12 +72,12 @@ public sealed record UpdateContract(CcdAmount Amount, ContractAddress Address, R
         };
         remaining_bytes = remaining_bytes[(int)ContractAddress.BytesLength..];
 
-        if (!ReceiveName.TryDeserial(remaining_bytes, out var receiveName) || receiveName.receiveName == null)
+        if (!ReceiveName.TryDeserial(remaining_bytes, out var receiveName))
         {
             output = (null, receiveName.Error);
             return false;
         };
-        remaining_bytes = remaining_bytes[(int)receiveName.receiveName.SerializedLength()..];
+        remaining_bytes = remaining_bytes[(int)receiveName.receiveName!.SerializedLength()..];
 
         if (!Parameter.TryDeserial(remaining_bytes, out var parameter))
         {

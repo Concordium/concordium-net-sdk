@@ -59,14 +59,15 @@ public sealed record Parameter(byte[] Param)
             return false;
         }
 
-        var size = sizeRead + MinSerializedLength;
+        var size = sizeof(ushort) + sizeRead;
         if (size > bytes.Length)
         {
             var msg = $"Invalid length of input in `Parameter.TryDeserial`. Expected array of size at least {size}, found {bytes.Length}";
             output = (null, msg);
             return false;
         };
-        output = (new Parameter(bytes.Slice(sizeof(ushort), sizeRead).ToArray()), null);
+        let parameter = new Parameter(bytes.Slice(sizeof(ushort), sizeRead).ToArray());
+        output = (parameter, null);
         return true;
     }
 
