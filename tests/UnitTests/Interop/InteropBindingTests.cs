@@ -58,7 +58,6 @@ public class InteropBindingTests
         var versionedModuleSchema = new VersionedModuleSchema(schema[..^3], ModuleSchemaVersion.V1); // Bad schema
 
         // Act
-
         var action = () => InteropBinding.SchemaDisplay(versionedModuleSchema);
 
         // Assert
