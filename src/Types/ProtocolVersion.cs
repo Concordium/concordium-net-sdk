@@ -34,7 +34,12 @@ public enum ProtocolVersion
     P5,
     /// Protocol `P6` is a future protocol update that will introduce a new
     /// consensus.
-    P6
+    P6,
+    /// <summary>
+    /// Protocol `P7` modifies hashing to better support light clients, and
+    /// implements tokenomics changes.
+    /// </summary>
+    P7,
 }
 
 
@@ -60,6 +65,7 @@ internal static class ProtocolVersionFactory
             Grpc.V2.ProtocolVersion._4 => ProtocolVersion.P4,
             Grpc.V2.ProtocolVersion._5 => ProtocolVersion.P5,
             Grpc.V2.ProtocolVersion._6 => ProtocolVersion.P6,
+            Grpc.V2.ProtocolVersion._7 => ProtocolVersion.P7,
             _ => throw new MissingEnumException<Grpc.V2.ProtocolVersion>(protocolVersion)
         };
 }
