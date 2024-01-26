@@ -11,7 +11,7 @@ namespace GetBlockItems;
 internal sealed class GetBlocksOptions
 {
     [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.",
-        Default = "http://node.testnet.concordium.com:20000/")]
+        Default = "http://grpc.testnet.concordium.com:20000/")]
     public string Endpoint { get; set; }
     [Option(
         'b',
@@ -38,7 +38,7 @@ public static class Program
         IBlockHashInput bi = o.BlockHash != null ? new Given(BlockHash.From(o.BlockHash)) : new LastFinal();
 
         var blockItems = await client.GetBlockItems(bi);
-        
+
         Console.WriteLine($"All block items in block {blockItems.BlockHash}: [");
         await foreach (var item in blockItems.Response)
         {

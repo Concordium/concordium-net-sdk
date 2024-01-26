@@ -48,7 +48,12 @@ public abstract record AccountTransactionPayload
         ),
         PayloadCase.RawPayload => ParseRawPayload(payload.RawPayload),
         PayloadCase.InitContract => throw new NotImplementedException(),
-        PayloadCase.UpdateContract => throw new NotImplementedException(),
+        PayloadCase.UpdateContract => new UpdateContract(
+            CcdAmount.From(payload.UpdateContract.Amount),
+            ContractAddress.From(payload.UpdateContract.Address),
+            ReceiveName.From(payload.UpdateContract.ReceiveName),
+            Parameter.From(payload.UpdateContract.Parameter)
+        ),
         PayloadCase.None => throw new MissingEnumException<PayloadCase>(payload.PayloadCase),
         _ => throw new MissingEnumException<PayloadCase>(payload.PayloadCase),
     };
@@ -83,8 +88,13 @@ public abstract record AccountTransactionPayload
                 parsedPayload = output;
                 break;
             }
-            case TransactionType.InitContract:
             case TransactionType.Update:
+            {
+                UpdateContract.TryDeserial(payload.ToArray(), out var output);
+                parsedPayload = output;
+                break;
+            }
+            case TransactionType.InitContract:
             case TransactionType.AddBaker:
             case TransactionType.RemoveBaker:
             case TransactionType.UpdateBakerStake:

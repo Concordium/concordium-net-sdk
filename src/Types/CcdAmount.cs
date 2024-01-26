@@ -132,7 +132,7 @@ public readonly record struct CcdAmount
     }
 
     /// <summary>
-    /// Copies the CCD amuunt represented in big-endian format to  byte array.
+    /// Copies the CCD amount represented in big-endian format to  byte array.
     /// </summary>
     public byte[] ToBytes() => Serialization.ToBytes(this.Value);
 
