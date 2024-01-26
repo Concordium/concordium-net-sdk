@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Interop;
 using Concordium.Sdk.Types;
 using FluentAssertions;
@@ -45,6 +46,22 @@ public class InteropBindingTests
     }
 
     [Fact]
+    public async Task GivenBadSchema_WhenSchemaDisplay_ThenThrowExceptionWithParseError()
+    {
+        // Arrange
+        var schema = Convert.FromHexString((await File.ReadAllTextAsync("./Data/cis2-nft-schema")).Trim());
+        var versionedModuleSchema = new VersionedModuleSchema(schema[..^3], ModuleSchemaVersion.V1);
+
+        // Act
+
+        var action = () => InteropBinding.SchemaDisplay(versionedModuleSchema);
+
+        // Assert
+        action.Should().Throw<InteropBindingException>()
+            .Where(e => e.Result == Result.VersionedSchemaErrorParseError);
+    }
+
+    [Fact]
     public async Task WhenDisplayReceiveParam_ThenReturnParams()
     {
         // Arrange
@@ -64,6 +81,27 @@ public class InteropBindingTests
         await Verifier.Verify(message.ToString())
             .UseFileName("receive-params")
             .UseDirectory("__snapshots__");
+    }
+
+    [Fact]
+    public async Task GivenBadReceiveParam_WhenDisplayReceiveParam_ThenThrowException()
+    {
+        // Arrange
+        var schema = (await File.ReadAllTextAsync("./Data/cis2_wCCD_sub")).Trim();
+        const string contractName = "cis2_wCCD";
+        const string entrypoint = "wrap";
+        var value = Convert.FromHexString("005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc790000");
+        var versionedModuleSchema = new VersionedModuleSchema(Convert.FromHexString(schema), ModuleSchemaVersion.Undefined);
+        var parameter = new Parameter(value[..^3]);
+        var contractIdentifier = new ContractIdentifier(contractName);
+        var entryPoint = new EntryPoint(entrypoint);
+
+        // Act
+        var action = () => InteropBinding.GetReceiveContractParameter(versionedModuleSchema, contractIdentifier, entryPoint, parameter);
+
+        // Assert
+        action.Should().Throw<InteropBindingException>()
+            .Where(e => e.Result == Result.NoError);
     }
 
     [Fact]
