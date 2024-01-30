@@ -79,7 +79,7 @@ public sealed record Updated(
     /// </summary>
     /// <param name="schema">Versioned module schema.</param>
     /// <returns><see cref="Message"/> deserialized as json uft8 encoded.</returns>
-    /// <exception cref="InteropBindingException">Thrown when message wasn't able to be deserialized form schema.</exception>
+    /// <exception cref="SchemaJsonException">Thrown when message wasn't able to be deserialized form schema.</exception>
     public Utf8Json GetDeserializeMessage(VersionedModuleSchema schema) =>
         GetDeserializeMessage(schema, this.ReceiveName.GetContractName(), this.ReceiveName.GetEntrypoint(), this.Message);
 
@@ -91,7 +91,7 @@ public sealed record Updated(
     /// <param name="entryPoint">Entrypoint on contract.</param>
     /// <param name="message">Message to entrypoint.</param>
     /// <returns><see cref="message"/> deserialized as json uft8 encoded.</returns>
-    /// <exception cref="InteropBindingException">Thrown when message wasn't able to be deserialized from schema.</exception>
+    /// <exception cref="SchemaJsonException">Thrown when message wasn't able to be deserialized from schema.</exception>
     public static Utf8Json GetDeserializeMessage(
         VersionedModuleSchema schema,
         ContractIdentifier contractIdentifier,
@@ -105,7 +105,7 @@ public sealed record Updated(
     /// </summary>
     /// <param name="schema">Module schema.</param>
     /// <returns>List of deserialized json uft8 encoded events. Possible null if this was returned from deserialization.</returns>
-    /// <exception cref="InteropBindingException">Thrown if an event wasn't able to be deserialized from schema.</exception>
+    /// <exception cref="SchemaJsonException">Thrown if an event wasn't able to be deserialized from schema.</exception>
     public IList<Utf8Json> GetDeserializedEvents(VersionedModuleSchema schema)
     {
         var deserialized = new List<Utf8Json>(this.Events.Count);
@@ -141,7 +141,7 @@ public sealed record Interrupted(ContractAddress Address, IList<ContractEvent> E
     /// <param name="schema">Module schema.</param>
     /// <param name="contractName">Contract name.</param>
     /// <returns>List of deserialized json uft8 encoded events. Possible null if this was returned from deserialization.</returns>
-    /// <exception cref="InteropBindingException">Thrown if an event wasn't able to be deserialized from schema.</exception>
+    /// <exception cref="SchemaJsonException">Thrown if an event wasn't able to be deserialized from schema.</exception>
     public IList<Utf8Json> GetDeserializedEvents(VersionedModuleSchema schema, ContractIdentifier contractName)
     {
         var deserialized = new List<Utf8Json>(this.Events.Count);
