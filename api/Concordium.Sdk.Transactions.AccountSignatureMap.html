@@ -2,12 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class AccountSignatureMap
- </title>
+      <title>Class AccountSignatureMap </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class AccountSignatureMap
- ">
+      <meta name="title" content="Class AccountSignatureMap ">
       
+      <meta name="description" content="Represents a map from  values to signatures. An  corresponds to a mapping from key indices to signatures produced by signing a transaction hash with the account keys corresponding to the indices. A key index is always relative to an . Each signature is currently produced by signing with an  and therefore 64 bytes long.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -18,13 +17,21 @@
       
       
       <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/main/apiSpec/new?filename=Concordium_Sdk_Transactions_AccountSignatureMap.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Transactions.AccountSignatureMap%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module">
-    import options from './../public/main.js'
-    import { init } from './../public/docfx.min.js'
-    init(options)
-  </script>
+  <script type="module" src="./../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -78,8 +85,7 @@
 
 
   <h1 id="Concordium_Sdk_Transactions_AccountSignatureMap" data-uid="Concordium.Sdk.Transactions.AccountSignatureMap" class="text-break">
-    Class AccountSignatureMap
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountSignatureMap.cs/#L16"><i class="bi bi-code-slash"></i></a>
+Class AccountSignatureMap  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountSignatureMap.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -119,7 +125,7 @@ signing with an <a class="xref" href="Concordium.Sdk.Crypto.Ed25519SignKey.html"
   </dl>
 
 
-  <dl class="typelist derived">
+  <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
     <div>
@@ -127,9 +133,6 @@ signing with an <a class="xref" href="Concordium.Sdk.Crypto.Ed25519SignKey.html"
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
@@ -231,6 +234,75 @@ signing with an <a class="xref" href="Concordium.Sdk.Crypto.Ed25519SignKey.html"
 
 
 
+  <a id="Concordium_Sdk_Transactions_AccountSignatureMap_Equals_" data-uid="Concordium.Sdk.Transactions.AccountSignatureMap.Equals*"></a>
+
+  <h3 id="Concordium_Sdk_Transactions_AccountSignatureMap_Equals_Concordium_Sdk_Transactions_AccountSignatureMap_" data-uid="Concordium.Sdk.Transactions.AccountSignatureMap.Equals(Concordium.Sdk.Transactions.AccountSignatureMap)">
+  Equals(AccountSignatureMap?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountSignatureMap.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Check for equality.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(AccountSignatureMap? other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Sdk.Transactions.AccountSignatureMap.html">AccountSignatureMap</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Transactions_AccountSignatureMap_GetHashCode_" data-uid="Concordium.Sdk.Transactions.AccountSignatureMap.GetHashCode*"></a>
+
+  <h3 id="Concordium_Sdk_Transactions_AccountSignatureMap_GetHashCode" data-uid="Concordium.Sdk.Transactions.AccountSignatureMap.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountSignatureMap.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets hash code.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Concordium_Sdk_Transactions_AccountSignatureMap_ToProto_" data-uid="Concordium.Sdk.Transactions.AccountSignatureMap.ToProto*"></a>
 
   <h3 id="Concordium_Sdk_Transactions_AccountSignatureMap_ToProto" data-uid="Concordium.Sdk.Transactions.AccountSignatureMap.ToProto">
@@ -270,7 +342,7 @@ signing with an <a class="xref" href="Concordium.Sdk.Crypto.Ed25519SignKey.html"
           <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Transactions/AccountSignatureMap.cs/#L16" class="edit-link">Edit this page</a>
         </div>
 
-        
+
       </div>
 
       <div class="affix">
@@ -279,7 +351,7 @@ signing with an <a class="xref" href="Concordium.Sdk.Crypto.Ed25519SignKey.html"
     </main>
 
 
-    <footer class="border-top">
+    <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
           <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>

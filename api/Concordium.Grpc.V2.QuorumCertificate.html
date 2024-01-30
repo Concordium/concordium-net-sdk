@@ -1,0 +1,939 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class QuorumCertificate </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class QuorumCertificate ">
+      
+      <meta name="description" content="A quorum certificate is the certificate that the finalization comittee issues in order to certify a block. A block must be certified before it will be part of the authorative part of the chain.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/main/apiSpec/new?filename=Concordium_Grpc_V2_QuorumCertificate.md&amp;value=---%0Auid%3A%20Concordium.Grpc.V2.QuorumCertificate%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Concordium.Grpc.V2.QuorumCertificate">
+
+
+
+  <h1 id="Concordium_Grpc_V2_QuorumCertificate" data-uid="Concordium.Grpc.V2.QuorumCertificate" class="text-break">
+Class QuorumCertificate  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88279"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Concordium.html">Concordium</a>.<a class="xref" href="Concordium.Grpc.html">Grpc</a>.<a class="xref" href="Concordium.Grpc.V2.html">V2</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Concordium.Sdk.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>A quorum certificate is the certificate that the
+finalization comittee issues in order to certify a block.
+A block must be certified before it will be part of the
+authorative part of the chain.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class QuorumCertificate : IMessage&lt;QuorumCertificate&gt;, IEquatable&lt;QuorumCertificate&gt;, IDeepCloneable&lt;QuorumCertificate&gt;, IBufferMessage, IMessage</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">QuorumCertificate</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><span class="xref">IMessage</span>&lt;<a class="xref" href="Concordium.Grpc.V2.QuorumCertificate.html">QuorumCertificate</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Concordium.Grpc.V2.QuorumCertificate.html">QuorumCertificate</a>&gt;</div>
+      <div><span class="xref">IDeepCloneable</span>&lt;<a class="xref" href="Concordium.Grpc.V2.QuorumCertificate.html">QuorumCertificate</a>&gt;</div>
+      <div><span class="xref">IBufferMessage</span></div>
+      <div><span class="xref">IMessage</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Concordium_Grpc_V2_QuorumCertificate__ctor_" data-uid="Concordium.Grpc.V2.QuorumCertificate.#ctor*"></a>
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate__ctor" data-uid="Concordium.Grpc.V2.QuorumCertificate.#ctor">
+  QuorumCertificate()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88302"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QuorumCertificate()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_QuorumCertificate__ctor_" data-uid="Concordium.Grpc.V2.QuorumCertificate.#ctor*"></a>
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate__ctor_Concordium_Grpc_V2_QuorumCertificate_" data-uid="Concordium.Grpc.V2.QuorumCertificate.#ctor(Concordium.Grpc.V2.QuorumCertificate)">
+  QuorumCertificate(QuorumCertificate)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88310"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QuorumCertificate(QuorumCertificate other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Grpc.V2.QuorumCertificate.html">QuorumCertificate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_AggregateSignatureFieldNumber" data-uid="Concordium.Grpc.V2.QuorumCertificate.AggregateSignatureFieldNumber">
+  AggregateSignatureFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88373"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;aggregate_signature&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int AggregateSignatureFieldNumber = 4</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_BlockHashFieldNumber" data-uid="Concordium.Grpc.V2.QuorumCertificate.BlockHashFieldNumber">
+  BlockHashFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88328"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;block_hash&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BlockHashFieldNumber = 1</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_EpochFieldNumber" data-uid="Concordium.Grpc.V2.QuorumCertificate.EpochFieldNumber">
+  EpochFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88358"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;epoch&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int EpochFieldNumber = 3</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_RoundFieldNumber" data-uid="Concordium.Grpc.V2.QuorumCertificate.RoundFieldNumber">
+  RoundFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88343"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;round&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int RoundFieldNumber = 2</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_SignatoriesFieldNumber" data-uid="Concordium.Grpc.V2.QuorumCertificate.SignatoriesFieldNumber">
+  SignatoriesFieldNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88388"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Field number for the &quot;signatories&quot; field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int SignatoriesFieldNumber = 5</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Concordium_Grpc_V2_QuorumCertificate_AggregateSignature_" data-uid="Concordium.Grpc.V2.QuorumCertificate.AggregateSignature*"></a>
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_AggregateSignature" data-uid="Concordium.Grpc.V2.QuorumCertificate.AggregateSignature">
+  AggregateSignature
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88378"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The aggregated signature by the finalization committee on the block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QuorumSignature AggregateSignature { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.QuorumSignature.html">QuorumSignature</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_QuorumCertificate_BlockHash_" data-uid="Concordium.Grpc.V2.QuorumCertificate.BlockHash*"></a>
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_BlockHash" data-uid="Concordium.Grpc.V2.QuorumCertificate.BlockHash">
+  BlockHash
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88333"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The hash of the block that the quorum certificate refers to.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockHash BlockHash { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.BlockHash.html">BlockHash</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_QuorumCertificate_Descriptor_" data-uid="Concordium.Grpc.V2.QuorumCertificate.Descriptor*"></a>
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_Descriptor" data-uid="Concordium.Grpc.V2.QuorumCertificate.Descriptor">
+  Descriptor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88290"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MessageDescriptor Descriptor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">MessageDescriptor</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_QuorumCertificate_Epoch_" data-uid="Concordium.Grpc.V2.QuorumCertificate.Epoch*"></a>
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_Epoch" data-uid="Concordium.Grpc.V2.QuorumCertificate.Epoch">
+  Epoch
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88363"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The epoch of the block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Epoch Epoch { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Epoch.html">Epoch</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_QuorumCertificate_Parser_" data-uid="Concordium.Grpc.V2.QuorumCertificate.Parser*"></a>
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_Parser" data-uid="Concordium.Grpc.V2.QuorumCertificate.Parser">
+  Parser
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88286"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MessageParser&lt;QuorumCertificate&gt; Parser { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">MessageParser</span>&lt;<a class="xref" href="Concordium.Grpc.V2.QuorumCertificate.html">QuorumCertificate</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_QuorumCertificate_Round_" data-uid="Concordium.Grpc.V2.QuorumCertificate.Round*"></a>
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_Round" data-uid="Concordium.Grpc.V2.QuorumCertificate.Round">
+  Round
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88348"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The round of the block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Round Round { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.Round.html">Round</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_QuorumCertificate_Signatories_" data-uid="Concordium.Grpc.V2.QuorumCertificate.Signatories*"></a>
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_Signatories" data-uid="Concordium.Grpc.V2.QuorumCertificate.Signatories">
+  Signatories
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88398"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A list of the finalizers that formed the quorum certificate
+i.e., the ones who have contributed to the 'aggregate_siganture'.
+The finalizers are identified by their baker id as this is stable
+across protocols and epochs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RepeatedField&lt;BakerId&gt; Signatories { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">RepeatedField</span>&lt;<a class="xref" href="Concordium.Grpc.V2.BakerId.html">BakerId</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Concordium_Grpc_V2_QuorumCertificate_CalculateSize_" data-uid="Concordium.Grpc.V2.QuorumCertificate.CalculateSize*"></a>
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_CalculateSize" data-uid="Concordium.Grpc.V2.QuorumCertificate.CalculateSize">
+  CalculateSize()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88504"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Calculates the size of this message in Protocol Buffer wire format, in bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CalculateSize()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of bytes required to write this message
+to a coded output stream.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_QuorumCertificate_Clone_" data-uid="Concordium.Grpc.V2.QuorumCertificate.Clone*"></a>
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_Clone" data-uid="Concordium.Grpc.V2.QuorumCertificate.Clone">
+  Clone()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88321"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a deep clone of this object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public QuorumCertificate Clone()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Grpc.V2.QuorumCertificate.html">QuorumCertificate</a></dt>
+    <dd><p>A deep clone of this object.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_QuorumCertificate_Equals_" data-uid="Concordium.Grpc.V2.QuorumCertificate.Equals*"></a>
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_Equals_Concordium_Grpc_V2_QuorumCertificate_" data-uid="Concordium.Grpc.V2.QuorumCertificate.Equals(Concordium.Grpc.V2.QuorumCertificate)">
+  Equals(QuorumCertificate)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88410"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(QuorumCertificate other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Grpc.V2.QuorumCertificate.html">QuorumCertificate</a></dt>
+    <dd><p>An object to compare with this object.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_QuorumCertificate_Equals_" data-uid="Concordium.Grpc.V2.QuorumCertificate.Equals*"></a>
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_Equals_System_Object_" data-uid="Concordium.Grpc.V2.QuorumCertificate.Equals(System.Object)">
+  Equals(object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88404"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether the specified object is equal to the current object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the specified object  is equal to the current object; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_QuorumCertificate_GetHashCode_" data-uid="Concordium.Grpc.V2.QuorumCertificate.GetHashCode*"></a>
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_GetHashCode" data-uid="Concordium.Grpc.V2.QuorumCertificate.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88427"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Serves as the default hash function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>A hash code for the current object.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_QuorumCertificate_MergeFrom_" data-uid="Concordium.Grpc.V2.QuorumCertificate.MergeFrom*"></a>
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_MergeFrom_Concordium_Grpc_V2_QuorumCertificate_" data-uid="Concordium.Grpc.V2.QuorumCertificate.MergeFrom(Concordium.Grpc.V2.QuorumCertificate)">
+  MergeFrom(QuorumCertificate)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88527"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Merges the given message into this one.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MergeFrom(QuorumCertificate other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Grpc.V2.QuorumCertificate.html">QuorumCertificate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="Concordium_Grpc_V2_QuorumCertificate_MergeFrom_Concordium_Grpc_V2_QuorumCertificate__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>See the user guide for precise merge semantics.</p>
+</div>
+
+
+
+
+  <a id="Concordium_Grpc_V2_QuorumCertificate_MergeFrom_" data-uid="Concordium.Grpc.V2.QuorumCertificate.MergeFrom*"></a>
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_MergeFrom_Google_Protobuf_CodedInputStream_" data-uid="Concordium.Grpc.V2.QuorumCertificate.MergeFrom(Google.Protobuf.CodedInputStream)">
+  MergeFrom(CodedInputStream)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88561"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Merges the data from the specified coded input stream with the current message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MergeFrom(CodedInputStream input)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>input</code> <span class="xref">CodedInputStream</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="Concordium_Grpc_V2_QuorumCertificate_MergeFrom_Google_Protobuf_CodedInputStream__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>See the user guide for precise merge semantics.</p>
+</div>
+
+
+
+
+  <a id="Concordium_Grpc_V2_QuorumCertificate_ToString_" data-uid="Concordium.Grpc.V2.QuorumCertificate.ToString*"></a>
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_ToString" data-uid="Concordium.Grpc.V2.QuorumCertificate.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88442"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns a string that represents the current object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A string that represents the current object.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Grpc_V2_QuorumCertificate_WriteTo_" data-uid="Concordium.Grpc.V2.QuorumCertificate.WriteTo*"></a>
+
+  <h3 id="Concordium_Grpc_V2_QuorumCertificate_WriteTo_Google_Protobuf_CodedOutputStream_" data-uid="Concordium.Grpc.V2.QuorumCertificate.WriteTo(Google.Protobuf.CodedOutputStream)">
+  WriteTo(CodedOutputStream)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88448"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes the data to the given coded output stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteTo(CodedOutputStream output)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <span class="xref">CodedOutputStream</span></dt>
+    <dd><p>Coded output stream to write the data to. Must not be null.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L88279" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

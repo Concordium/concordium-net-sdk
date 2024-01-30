@@ -2,12 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class OnChainData
- </title>
+      <title>Class OnChainData </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class OnChainData
- ">
+      <meta name="title" content="Class OnChainData ">
       
+      <meta name="description" content="Represents data to be stored or that was stored on-chain as part of a transaction. This can be any data which is at most  bytes, but the convention is to use CBOR encoded data.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -18,13 +17,21 @@
       
       
       <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/main/apiSpec/new?filename=Concordium_Sdk_Types_OnChainData.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Types.OnChainData%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module">
-    import options from './../public/main.js'
-    import { init } from './../public/docfx.min.js'
-    init(options)
-  </script>
+  <script type="module" src="./../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -78,8 +85,7 @@
 
 
   <h1 id="Concordium_Sdk_Types_OnChainData" data-uid="Concordium.Sdk.Types.OnChainData" class="text-break">
-    Class OnChainData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L13"><i class="bi bi-code-slash"></i></a>
+Class OnChainData  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -116,7 +122,7 @@ to use CBOR encoded data.</p>
   </dl>
 
 
-  <dl class="typelist derived">
+  <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
     <div>
@@ -145,10 +151,11 @@ to use CBOR encoded data.</p>
 
   <h3 id="Concordium_Sdk_Types_OnChainData_MaxLength" data-uid="Concordium.Sdk.Types.OnChainData.MaxLength">
   MaxLength
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The maximum length of a bytearray passed to the constructor.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -180,7 +187,7 @@ to use CBOR encoded data.</p>
 
   <h3 id="Concordium_Sdk_Types_OnChainData_AsSpan" data-uid="Concordium.Sdk.Types.OnChainData.AsSpan">
   AsSpan()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L104"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns span of underlying data.</p>
@@ -212,10 +219,10 @@ to use CBOR encoded data.</p>
 
   <h3 id="Concordium_Sdk_Types_OnChainData_Equals_Concordium_Sdk_Types_OnChainData_" data-uid="Concordium.Sdk.Types.OnChainData.Equals(Concordium.Sdk.Types.OnChainData)">
   Equals(OnChainData?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L135"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L178"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
+  <div class="markdown level1 summary"><p>Check for equality.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -226,15 +233,13 @@ to use CBOR encoded data.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>other</code> <a class="xref" href="Concordium.Sdk.Types.OnChainData.html">OnChainData</a></dt>
-    <dd><p>An object to compare with this object.</p>
-</dd>
+    <dd></dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -251,7 +256,7 @@ to use CBOR encoded data.</p>
 
   <h3 id="Concordium_Sdk_Types_OnChainData_From_System_Byte___" data-uid="Concordium.Sdk.Types.OnChainData.From(System.Byte[])">
   From(byte[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L88"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates an instance from byte array.</p>
@@ -295,7 +300,7 @@ to use CBOR encoded data.</p>
 
   <h3 id="Concordium_Sdk_Types_OnChainData_FromHex_System_String_" data-uid="Concordium.Sdk.Types.OnChainData.FromHex(System.String)">
   FromHex(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates an instance from a hex encoded string.</p>
@@ -339,7 +344,7 @@ to use CBOR encoded data.</p>
 
   <h3 id="Concordium_Sdk_Types_OnChainData_FromTextEncodeAsCBOR_System_String_System_Formats_Cbor_CborConformanceMode_" data-uid="Concordium.Sdk.Types.OnChainData.FromTextEncodeAsCBOR(System.String,System.Formats.Cbor.CborConformanceMode)">
   FromTextEncodeAsCBOR(string, CborConformanceMode)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L72"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates an instance from a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> whose CBOR encoding will be used for the data to be registered on-chain.</p>
@@ -392,10 +397,10 @@ to use CBOR encoded data.</p>
 
   <h3 id="Concordium_Sdk_Types_OnChainData_GetHashCode" data-uid="Concordium.Sdk.Types.OnChainData.GetHashCode">
   GetHashCode()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L181"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Serves as the default hash function.</p>
+  <div class="markdown level1 summary"><p>Gets hash code.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -407,8 +412,7 @@ to use CBOR encoded data.</p>
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>A hash code for the current object.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -425,7 +429,7 @@ to use CBOR encoded data.</p>
 
   <h3 id="Concordium_Sdk_Types_OnChainData_ToBytes" data-uid="Concordium.Sdk.Types.OnChainData.ToBytes">
   ToBytes()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L136"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Copies the on-chain data in the binary format expected by the node
@@ -460,7 +464,7 @@ prepended as a 16-bit unsigned integer in big-endian format.</p>
 
   <h3 id="Concordium_Sdk_Types_OnChainData_ToString" data-uid="Concordium.Sdk.Types.OnChainData.ToString">
   ToString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L133"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L147"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the data to register on-chain as a hex-encoded string.</p>
@@ -492,7 +496,7 @@ prepended as a 16-bit unsigned integer in big-endian format.</p>
 
   <h3 id="Concordium_Sdk_Types_OnChainData_TryCborDecodeToString" data-uid="Concordium.Sdk.Types.OnChainData.TryCborDecodeToString">
   TryCborDecodeToString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L113"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Try to decode the data to be registered on-chain as a single CBOR encoded string.</p>
@@ -522,14 +526,55 @@ a single CBOR encoded string, and <code>null</code> otherwise.</p>
 
 
 
+  <a id="Concordium_Sdk_Types_OnChainData_TryDeserial_" data-uid="Concordium.Sdk.Types.OnChainData.TryDeserial*"></a>
+
+  <h3 id="Concordium_Sdk_Types_OnChainData_TryDeserial_System_ReadOnlySpan_System_Byte__System_ValueTuple_Concordium_Sdk_Types_OnChainData_System_String___" data-uid="Concordium.Sdk.Types.OnChainData.TryDeserial(System.ReadOnlySpan{System.Byte},System.ValueTuple{Concordium.Sdk.Types.OnChainData,System.String}@)">
+  TryDeserial(ReadOnlySpan&lt;byte&gt;, out (OnChainData? OnChainData, string? Error))
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L154"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create an &quot;OnChainData&quot; from a byte array.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryDeserial(ReadOnlySpan&lt;byte&gt; bytes, out (OnChainData? OnChainData, string? Error) output)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bytes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</dt>
+    <dd><p>The serialized &quot;OnChainData&quot;.</p>
+</dd>
+    <dt><code>output</code> (<a class="xref" href="Concordium.Sdk.Types.OnChainData.html">OnChainData</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-concordium.sdk.types.onchaindata,system.string-.onchaindata">OnChainData</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-concordium.sdk.types.onchaindata,system.string-.error">Error</a>)</dt>
+    <dd><p>Where to write the result of the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L13" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/OnChainData.cs/#L14" class="edit-link">Edit this page</a>
         </div>
 
-        
+
       </div>
 
       <div class="affix">
@@ -538,7 +583,7 @@ a single CBOR encoded string, and <code>null</code> otherwise.</p>
     </main>
 
 
-    <footer class="border-top">
+    <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
           <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>

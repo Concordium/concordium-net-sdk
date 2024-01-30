@@ -2,12 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class ConcordiumClient
- </title>
+      <title>Class ConcordiumClient </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class ConcordiumClient
- ">
+      <meta name="title" content="Class ConcordiumClient ">
       
+      <meta name="description" content="A client for interacting with the Concordium gRPC API V2 exposed by nodes.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -18,13 +17,21 @@
       
       
       <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/main/apiSpec/new?filename=Concordium_Sdk_Client_ConcordiumClient.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Client.ConcordiumClient%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module">
-    import options from './../public/main.js'
-    import { init } from './../public/docfx.min.js'
-    init(options)
-  </script>
+  <script type="module" src="./../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -78,8 +85,7 @@
 
 
   <h1 id="Concordium_Sdk_Client_ConcordiumClient" data-uid="Concordium.Sdk.Client.ConcordiumClient" class="text-break">
-    Class ConcordiumClient
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L23"><i class="bi bi-code-slash"></i></a>
+Class ConcordiumClient  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -114,7 +120,7 @@
   </dl>
 
 
-  <dl class="typelist derived">
+  <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
     <div>
@@ -150,7 +156,7 @@
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient__ctor_System_Uri_Concordium_Sdk_Client_ConcordiumClientOptions_" data-uid="Concordium.Sdk.Client.ConcordiumClient.#ctor(System.Uri,Concordium.Sdk.Client.ConcordiumClientOptions)">
   ConcordiumClient(Uri, ConcordiumClientOptions)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L70"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Concordium.Sdk.Client.ConcordiumClient.html">ConcordiumClient</a> class.</p>
@@ -186,7 +192,7 @@
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient__ctor_System_Uri_System_UInt16_System_Nullable_System_UInt64__Grpc_Net_Client_GrpcChannelOptions_" data-uid="Concordium.Sdk.Client.ConcordiumClient.#ctor(System.Uri,System.UInt16,System.Nullable{System.UInt64},Grpc.Net.Client.GrpcChannelOptions)">
   ConcordiumClient(Uri, ushort, ulong?, GrpcChannelOptions?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L60"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>DEPRECATED - Use overload which accepts <a class="xref" href="Concordium.Sdk.Client.ConcordiumClientOptions.html">ConcordiumClientOptions</a></p>
@@ -217,7 +223,7 @@ specified in <code class="paramref">endpoint</code>.</p>
     <dt><code>timeout</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a>?</dt>
     <dd><p>The maximum permitted duration of a call made by this client, in seconds. <code>null</code> allows the call to run indefinitely.</p>
 </dd>
-    <dt><code>rawChannelOptions</code> <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Net.Client/GrpcChannelOptions.cs">GrpcChannelOptions</a></dt>
+    <dt><code>rawChannelOptions</code> <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Net.Client/GrpcChannelOptions.cs">GrpcChannelOptions</a></dt>
     <dd><p>The options for the channel that is used to communicate with the node.</p>
 </dd>
   </dl>
@@ -241,7 +247,7 @@ specified in <code class="paramref">endpoint</code>.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_Raw" data-uid="Concordium.Sdk.Client.ConcordiumClient.Raw">
   Raw
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L35"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The raw client.</p>
@@ -277,7 +283,7 @@ specified in <code class="paramref">endpoint</code>.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_Dispose" data-uid="Concordium.Sdk.Client.ConcordiumClient.Dispose">
   Dispose()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L546"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L762"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
@@ -304,7 +310,7 @@ specified in <code class="paramref">endpoint</code>.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetAccountInfoAsync_Concordium_Sdk_Types_IAccountIdentifier_Concordium_Sdk_Types_IBlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetAccountInfoAsync(Concordium.Sdk.Types.IAccountIdentifier,Concordium.Sdk.Types.IBlockHashInput,System.Threading.CancellationToken)">
   GetAccountInfoAsync(IAccountIdentifier, IBlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L212"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L219"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the information for the given account in the given block.</p>
@@ -344,9 +350,9 @@ specified in <code class="paramref">endpoint</code>.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
-<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates either block or account was not found.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates either block or account was not found.</p>
 </dd>
   </dl>
 
@@ -356,7 +362,7 @@ specified in <code class="paramref">endpoint</code>.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetAccountListAsync_Concordium_Sdk_Types_IBlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetAccountListAsync(Concordium.Sdk.Types.IBlockHashInput,System.Threading.CancellationToken)">
   GetAccountListAsync(IBlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L246"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L253"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the list of accounts in the given block.
@@ -395,9 +401,63 @@ of the given block have been returned.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
-<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block account was not found.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block account was not found.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Concordium_Sdk_Client_ConcordiumClient_GetAncestors_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetAncestors*"></a>
+
+  <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetAncestors_Concordium_Sdk_Types_IBlockHashInput_System_UInt64_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetAncestors(Concordium.Sdk.Types.IBlockHashInput,System.UInt64,System.Threading.CancellationToken)">
+  GetAncestors(IBlockHashInput, ulong, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L648"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a stream of ancestors for the provided block.
+Starting with the provided block itself, moving backwards until no more
+ancestors or the requested number of ancestors has been returned.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;QueryResponse&lt;IAsyncEnumerable&lt;BlockHash&gt;&gt;&gt; GetAncestors(IBlockHashInput blockHash, ulong limit, CancellationToken token = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockHash</code> <a class="xref" href="Concordium.Sdk.Types.IBlockHashInput.html">IBlockHashInput</a></dt>
+    <dd><p>The block to get ancestors of</p>
+</dd>
+    <dt><code>limit</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>The maximum number of ancestors returned</p>
+</dd>
+    <dt><code>token</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Concordium.Sdk.Client.QueryResponse-1.html">QueryResponse</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1">IAsyncEnumerable</a>&lt;<a class="xref" href="Concordium.Sdk.Types.BlockHash.html">BlockHash</a>&gt;&gt;&gt;</dt>
+    <dd><p>A stream of ancestors.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">Unimplemented</a> indicates that this endpoint is disabled in the node.</p>
 </dd>
   </dl>
 
@@ -407,7 +467,7 @@ of the given block have been returned.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetBakerListAsync_Concordium_Sdk_Types_IBlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBakerListAsync(Concordium.Sdk.Types.IBlockHashInput,System.Threading.CancellationToken)">
   GetBakerListAsync(IBlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L513"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L520"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all the bakers at the end of the given block.</p>
@@ -444,9 +504,9 @@ of the given block have been returned.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
-<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
 </dd>
   </dl>
 
@@ -456,7 +516,7 @@ of the given block have been returned.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetBlockChainParametersAsync_Concordium_Sdk_Types_IBlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBlockChainParametersAsync(Concordium.Sdk.Types.IBlockHashInput,System.Threading.CancellationToken)">
   GetBlockChainParametersAsync(IBlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L531"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L538"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the chain parameters in effect after a given block.</p>
@@ -493,9 +553,9 @@ of the given block have been returned.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
-<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
 </dd>
   </dl>
 
@@ -505,7 +565,7 @@ of the given block have been returned.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetBlockFinalizationSummaryAsync_Concordium_Sdk_Types_IBlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBlockFinalizationSummaryAsync(Concordium.Sdk.Types.IBlockHashInput,System.Threading.CancellationToken)">
   GetBlockFinalizationSummaryAsync(IBlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L450"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L457"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the information about a finalization record in a block.
@@ -547,9 +607,9 @@ If the block does not exist an exception is thrown is returned.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
-<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
 </dd>
   </dl>
 
@@ -559,7 +619,7 @@ If the block does not exist an exception is thrown is returned.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetBlockInfoAsync_Concordium_Sdk_Types_IBlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBlockInfoAsync(Concordium.Sdk.Types.IBlockHashInput,System.Threading.CancellationToken)">
   GetBlockInfoAsync(IBlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L399"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L406"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information, such as height, timings, and transaction counts for the
@@ -597,9 +657,9 @@ given block.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
-<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
 </dd>
   </dl>
 
@@ -609,7 +669,7 @@ given block.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetBlockItemStatus_Concordium_Sdk_Types_TransactionHash_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBlockItemStatus(Concordium.Sdk.Types.TransactionHash,System.Threading.CancellationToken)">
   GetBlockItemStatus(TransactionHash, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L178"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L185"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the status of and information about a specific block item given a transaction hash.</p>
@@ -646,8 +706,8 @@ given block.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.</p>
 </dd>
   </dl>
 
@@ -657,7 +717,7 @@ given block.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetBlockItemStatusAsync_Concordium_Sdk_Types_TransactionHash_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBlockItemStatusAsync(Concordium.Sdk.Types.TransactionHash,System.Threading.CancellationToken)">
   GetBlockItemStatusAsync(TransactionHash, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L192"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L199"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the status of and information about a specific block item given a transaction hash.</p>
@@ -694,8 +754,107 @@ given block.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Concordium_Sdk_Client_ConcordiumClient_GetBlockItems_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBlockItems*"></a>
+
+  <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetBlockItems_Concordium_Sdk_Types_IBlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBlockItems(Concordium.Sdk.Types.IBlockHashInput,System.Threading.CancellationToken)">
+  GetBlockItems(IBlockHashInput, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L756"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the items of a block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;QueryResponse&lt;IAsyncEnumerable&lt;BlockItem&gt;&gt;&gt; GetBlockItems(IBlockHashInput blockHashInput, CancellationToken token = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockHashInput</code> <a class="xref" href="Concordium.Sdk.Types.IBlockHashInput.html">IBlockHashInput</a></dt>
+    <dd><p>Identifies what block to get the information from.</p>
+</dd>
+    <dt><code>token</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Concordium.Sdk.Client.QueryResponse-1.html">QueryResponse</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1">IAsyncEnumerable</a>&lt;<a class="xref" href="Concordium.Sdk.Transactions.BlockItem.html">BlockItem</a>&gt;&gt;&gt;</dt>
+    <dd><p>A stream of block items.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">Unimplemented</a> indicates that this endpoint is disabled in the node.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Concordium_Sdk_Client_ConcordiumClient_GetBlockPendingUpdates_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBlockPendingUpdates*"></a>
+
+  <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetBlockPendingUpdates_Concordium_Sdk_Types_IBlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBlockPendingUpdates(Concordium.Sdk.Types.IBlockHashInput,System.Threading.CancellationToken)">
+  GetBlockPendingUpdates(IBlockHashInput, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L629"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the pending updates to chain parameters at the end of a given block.
+The stream will end when all the pending updates for a given block have been returned.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;QueryResponse&lt;IAsyncEnumerable&lt;PendingUpdate&gt;&gt;&gt; GetBlockPendingUpdates(IBlockHashInput blockHash, CancellationToken token = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockHash</code> <a class="xref" href="Concordium.Sdk.Types.IBlockHashInput.html">IBlockHashInput</a></dt>
+    <dd><p>The block to get ancestors of</p>
+</dd>
+    <dt><code>token</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Concordium.Sdk.Client.QueryResponse-1.html">QueryResponse</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1">IAsyncEnumerable</a>&lt;<a class="xref" href="Concordium.Sdk.Types.PendingUpdate.html">PendingUpdate</a>&gt;&gt;&gt;</dt>
+    <dd><p>The pending updates.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">Unimplemented</a> indicates that this endpoint is disabled in the node.</p>
 </dd>
   </dl>
 
@@ -705,7 +864,7 @@ given block.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetBlockSpecialEvents_Concordium_Sdk_Types_IBlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBlockSpecialEvents(Concordium.Sdk.Types.IBlockHashInput,System.Threading.CancellationToken)">
   GetBlockSpecialEvents(IBlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L427"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L434"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a the special events in a given block. The stream will end when all the
@@ -744,9 +903,9 @@ payouts. They are not directly generated by any transaction.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
-<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
 </dd>
   </dl>
 
@@ -756,7 +915,7 @@ payouts. They are not directly generated by any transaction.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetBlockTransactionEvents_Concordium_Sdk_Types_IBlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBlockTransactionEvents(Concordium.Sdk.Types.IBlockHashInput,System.Threading.CancellationToken)">
   GetBlockTransactionEvents(IBlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L476"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L483"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the transaction events in a given block. The stream will end when all the
@@ -794,9 +953,56 @@ transaction events for a given block have been returned.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
-<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Concordium_Sdk_Client_ConcordiumClient_GetBlocks_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBlocks*"></a>
+
+  <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetBlocks_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBlocks(System.Threading.CancellationToken)">
+  GetBlocks(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L563"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return a stream of blocks that arrive from the time the query is made onward.
+This can be used to listen for incoming blocks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IAsyncEnumerable&lt;ArrivedBlockInfo&gt; GetBlocks(CancellationToken token = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>token</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1">IAsyncEnumerable</a>&lt;<a class="xref" href="Concordium.Sdk.Types.ArrivedBlockInfo.html">ArrivedBlockInfo</a>&gt;</dt>
+    <dd><p>A stream of blocks that arrive from the time the query is made onward.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">Unimplemented</a> indicates that this endpoint is disabled in the node.</p>
 </dd>
   </dl>
 
@@ -806,7 +1012,7 @@ transaction events for a given block have been returned.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetBlocksAtHeightAsync_Concordium_Sdk_Types_IBlockHeight_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBlocksAtHeightAsync(Concordium.Sdk.Types.IBlockHeight,System.Threading.CancellationToken)">
   GetBlocksAtHeightAsync(IBlockHeight, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L379"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L386"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a list of live blocks at a given height.</p>
@@ -843,8 +1049,100 @@ transaction events for a given block have been returned.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Concordium_Sdk_Client_ConcordiumClient_GetBranches_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBranches*"></a>
+
+  <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetBranches_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBranches(System.Threading.CancellationToken)">
+  GetBranches(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L612"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the current branches of blocks starting from and including the last finalized block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Branch GetBranches(CancellationToken token = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>token</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.Branch.html">Branch</a></dt>
+    <dd><p>The current branches of blocks.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">Unimplemented</a> indicates that this endpoint is disabled in the node.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Concordium_Sdk_Client_ConcordiumClient_GetBranchesAsync_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBranchesAsync*"></a>
+
+  <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetBranchesAsync_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetBranchesAsync(System.Threading.CancellationToken)">
+  GetBranchesAsync(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L597"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the current branches of blocks starting from and including the last finalized block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Branch&gt; GetBranchesAsync(CancellationToken token = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>token</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Concordium.Sdk.Types.Branch.html">Branch</a>&gt;</dt>
+    <dd><p>The current branches of blocks.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">Unimplemented</a> indicates that this endpoint is disabled in the node.</p>
 </dd>
   </dl>
 
@@ -854,7 +1152,7 @@ transaction events for a given block have been returned.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetConsensusInfoAsync_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetConsensusInfoAsync(System.Threading.CancellationToken)">
   GetConsensusInfoAsync(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L366"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L373"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information about the current state of consensus. This is an
@@ -889,8 +1187,58 @@ overview of the node's current view of the chain.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Concordium_Sdk_Client_ConcordiumClient_GetFinalizedBlocks_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetFinalizedBlocks*"></a>
+
+  <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetFinalizedBlocks_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetFinalizedBlocks(System.Threading.CancellationToken)">
+  GetFinalizedBlocks(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L582"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return a stream of blocks that are finalized from the time the query is
+made onward. This can be used to listen for newly finalized blocks. Note
+that there is no guarantee that blocks will not be skipped if the client is
+too slow in processing the stream, however blocks will always be sent by
+increasing block height.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IAsyncEnumerable&lt;FinalizedBlockInfo&gt; GetFinalizedBlocks(CancellationToken token = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>token</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1">IAsyncEnumerable</a>&lt;<a class="xref" href="Concordium.Sdk.Types.FinalizedBlockInfo.html">FinalizedBlockInfo</a>&gt;</dt>
+    <dd><p>A stream of finalized blocks that arrive from the time the query is made onward.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">Unimplemented</a> indicates that this endpoint is disabled in the node.</p>
 </dd>
   </dl>
 
@@ -900,7 +1248,7 @@ overview of the node's current view of the chain.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetIdentityProvidersAsync_Concordium_Sdk_Types_IBlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetIdentityProvidersAsync(Concordium.Sdk.Types.IBlockHashInput,System.Threading.CancellationToken)">
   GetIdentityProvidersAsync(IBlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L495"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L502"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the identity providers registered as of the end of a given block.
@@ -938,9 +1286,212 @@ The stream will end when all the identity providers have been returned.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
-<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Concordium_Sdk_Client_ConcordiumClient_GetInstanceInfoAsync_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetInstanceInfoAsync*"></a>
+
+  <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetInstanceInfoAsync_Concordium_Sdk_Types_IBlockHashInput_Concordium_Sdk_Types_ContractAddress_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetInstanceInfoAsync(Concordium.Sdk.Types.IBlockHashInput,Concordium.Sdk.Types.ContractAddress,System.Threading.CancellationToken)">
+  GetInstanceInfoAsync(IBlockHashInput, ContractAddress, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L728"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get information about a smart contract instance as it appears at the end of a
+given block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;QueryResponse&lt;IInstanceInfo&gt;&gt; GetInstanceInfoAsync(IBlockHashInput blockHashInput, ContractAddress contractAddress, CancellationToken token = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockHashInput</code> <a class="xref" href="Concordium.Sdk.Types.IBlockHashInput.html">IBlockHashInput</a></dt>
+    <dd><p>Block hash from where smart contract information will be given.</p>
+</dd>
+    <dt><code>contractAddress</code> <a class="xref" href="Concordium.Sdk.Types.ContractAddress.html">ContractAddress</a></dt>
+    <dd><p>Address of smart contract instance.</p>
+</dd>
+    <dt><code>token</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Concordium.Sdk.Client.QueryResponse-1.html">QueryResponse</a>&lt;<a class="xref" href="Concordium.Sdk.Types.IInstanceInfo.html">IInstanceInfo</a>&gt;&gt;</dt>
+    <dd><p>Information about the given smart contract instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block or smart contract instance was not found.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Concordium_Sdk_Client_ConcordiumClient_GetInstanceListAsync_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetInstanceListAsync*"></a>
+
+  <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetInstanceListAsync_Concordium_Sdk_Types_IBlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetInstanceListAsync(Concordium.Sdk.Types.IBlockHashInput,System.Threading.CancellationToken)">
+  GetInstanceListAsync(IBlockHashInput, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L685"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the addresses of all smart contract instances in a given block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;QueryResponse&lt;IAsyncEnumerable&lt;ContractAddress&gt;&gt;&gt; GetInstanceListAsync(IBlockHashInput blockHashInput, CancellationToken token = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockHashInput</code> <a class="xref" href="Concordium.Sdk.Types.IBlockHashInput.html">IBlockHashInput</a></dt>
+    <dd><p>Block hash from where contracts will be given.</p>
+</dd>
+    <dt><code>token</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Concordium.Sdk.Client.QueryResponse-1.html">QueryResponse</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1">IAsyncEnumerable</a>&lt;<a class="xref" href="Concordium.Sdk.Types.ContractAddress.html">ContractAddress</a>&gt;&gt;&gt;</dt>
+    <dd><p>Stream of contracts in given block.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Concordium_Sdk_Client_ConcordiumClient_GetModuleListAsync_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetModuleListAsync*"></a>
+
+  <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetModuleListAsync_Concordium_Sdk_Types_IBlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetModuleListAsync(Concordium.Sdk.Types.IBlockHashInput,System.Threading.CancellationToken)">
+  GetModuleListAsync(IBlockHashInput, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L669"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get all smart contract modules that exist at the end of a given block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;QueryResponse&lt;IAsyncEnumerable&lt;ModuleReference&gt;&gt;&gt; GetModuleListAsync(IBlockHashInput blockHashInput, CancellationToken token = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockHashInput</code> <a class="xref" href="Concordium.Sdk.Types.IBlockHashInput.html">IBlockHashInput</a></dt>
+    <dd><p>Block hash from where modules will be given.</p>
+</dd>
+    <dt><code>token</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Concordium.Sdk.Client.QueryResponse-1.html">QueryResponse</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1">IAsyncEnumerable</a>&lt;<a class="xref" href="Concordium.Sdk.Types.ModuleReference.html">ModuleReference</a>&gt;&gt;&gt;</dt>
+    <dd><p>Stream of modules in given block.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Concordium_Sdk_Client_ConcordiumClient_GetModuleSourceAsync_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetModuleSourceAsync*"></a>
+
+  <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetModuleSourceAsync_Concordium_Sdk_Types_IBlockHashInput_Concordium_Sdk_Types_ModuleReference_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetModuleSourceAsync(Concordium.Sdk.Types.IBlockHashInput,Concordium.Sdk.Types.ModuleReference,System.Threading.CancellationToken)">
+  GetModuleSourceAsync(IBlockHashInput, ModuleReference, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L702"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the source of a smart contract module.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;QueryResponse&lt;VersionedModuleSource&gt;&gt; GetModuleSourceAsync(IBlockHashInput blockHashInput, ModuleReference moduleReference, CancellationToken token = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockHashInput</code> <a class="xref" href="Concordium.Sdk.Types.IBlockHashInput.html">IBlockHashInput</a></dt>
+    <dd><p>Block hash from where module source will be given.</p>
+</dd>
+    <dt><code>moduleReference</code> <a class="xref" href="Concordium.Sdk.Types.ModuleReference.html">ModuleReference</a></dt>
+    <dd><p>Module reference from where source is requested.</p>
+</dd>
+    <dt><code>token</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Concordium.Sdk.Client.QueryResponse-1.html">QueryResponse</a>&lt;<a class="xref" href="Concordium.Sdk.Types.VersionedModuleSource.html">VersionedModuleSource</a>&gt;&gt;</dt>
+    <dd><p>Mapped versioned module source instances.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates either the block or the smart contract module was not found.</p>
 </dd>
   </dl>
 
@@ -950,7 +1501,7 @@ The stream will end when all the identity providers have been returned.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetNextAccountSequenceNumber_Concordium_Sdk_Types_AccountAddress_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetNextAccountSequenceNumber(Concordium.Sdk.Types.AccountAddress,System.Threading.CancellationToken)">
   GetNextAccountSequenceNumber(AccountAddress, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L137"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Query the chain for the next sequence number of the account with the supplied
@@ -996,8 +1547,8 @@ associated transactions are finalized the sequence number is reliable and the bo
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.</p>
 </dd>
   </dl>
 
@@ -1007,7 +1558,7 @@ associated transactions are finalized the sequence number is reliable and the bo
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetNextAccountSequenceNumberAsync_Concordium_Sdk_Types_AccountAddress_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetNextAccountSequenceNumberAsync(Concordium.Sdk.Types.AccountAddress,System.Threading.CancellationToken)">
   GetNextAccountSequenceNumberAsync(AccountAddress, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L160"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L167"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which queries the chain for the next sequence number of the
@@ -1052,8 +1603,8 @@ If the latter is the case, then the sequence number is reliable.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.</p>
 </dd>
   </dl>
 
@@ -1063,7 +1614,7 @@ If the latter is the case, then the sequence number is reliable.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetNodeInfoAsync_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetNodeInfoAsync(System.Threading.CancellationToken)">
   GetNodeInfoAsync(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L272"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L279"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieve information about the node.
@@ -1106,8 +1657,8 @@ the consensus protocol.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.</p>
 </dd>
   </dl>
 
@@ -1117,7 +1668,7 @@ the consensus protocol.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetPassiveDelegationInfoAsync_Concordium_Sdk_Types_IBlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetPassiveDelegationInfoAsync(Concordium.Sdk.Types.IBlockHashInput,System.Threading.CancellationToken)">
   GetPassiveDelegationInfoAsync(IBlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L344"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L351"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>State of the passive delegation pool at block hash. Changes to delegation,
@@ -1156,9 +1707,9 @@ first.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
-<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
 </dd>
   </dl>
 
@@ -1168,7 +1719,7 @@ first.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetPoolInfoAsync_Concordium_Sdk_Types_BakerId_Concordium_Sdk_Types_IBlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetPoolInfoAsync(Concordium.Sdk.Types.BakerId,Concordium.Sdk.Types.IBlockHashInput,System.Threading.CancellationToken)">
   GetPoolInfoAsync(BakerId, IBlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L291"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L298"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information about a given pool at the end of a given block.
@@ -1210,9 +1761,9 @@ exception is thrown.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
-<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
 </dd>
   </dl>
 
@@ -1222,7 +1773,7 @@ exception is thrown.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_GetTokenomicsInfoAsync_Concordium_Sdk_Types_IBlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.GetTokenomicsInfoAsync(Concordium.Sdk.Types.IBlockHashInput,System.Threading.CancellationToken)">
   GetTokenomicsInfoAsync(IBlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L317"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L324"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information about tokenomics at the end of a given block.</p>
@@ -1259,9 +1810,9 @@ exception is thrown.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
-    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
-<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dd><p>RPC error occurred, access <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">StatusCode</a> for more information.
+<a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/StatusCode.cs">NotFound</a> indicates block was not found.</p>
 </dd>
   </dl>
 
@@ -1271,7 +1822,7 @@ exception is thrown.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_SendAccountTransaction_Concordium_Sdk_Transactions_SignedAccountTransaction_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.SendAccountTransaction(Concordium.Sdk.Transactions.SignedAccountTransaction,System.Threading.CancellationToken)">
   SendAccountTransaction(SignedAccountTransaction, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L81"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Send an account transaction to the node.</p>
@@ -1308,7 +1859,7 @@ exception is thrown.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
     <dd><p>The call failed, e.g. due to the node not accepting the transaction.</p>
 </dd>
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.formatexception">FormatException</a></dt>
@@ -1322,7 +1873,7 @@ exception is thrown.</p>
 
   <h3 id="Concordium_Sdk_Client_ConcordiumClient_SendAccountTransactionAsync_Concordium_Sdk_Transactions_SignedAccountTransaction_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.ConcordiumClient.SendAccountTransactionAsync(Concordium.Sdk.Transactions.SignedAccountTransaction,System.Threading.CancellationToken)">
   SendAccountTransactionAsync(SignedAccountTransaction, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L101"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Spawn a task which sends an account transaction to the node.</p>
@@ -1361,7 +1912,7 @@ has an invalid number of bytes.</p>
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/6e6bcb5a10588f4853cf32aab0195346768a2a36/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/RpcException.cs">RpcException</a></dt>
     <dd><p>The call failed, e.g. due to the node not accepting the transaction.</p>
 </dd>
   </dl>
@@ -1372,10 +1923,10 @@ has an invalid number of bytes.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L23" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/ConcordiumClient.cs/#L30" class="edit-link">Edit this page</a>
         </div>
 
-        
+
       </div>
 
       <div class="affix">
@@ -1384,7 +1935,7 @@ has an invalid number of bytes.</p>
     </main>
 
 
-    <footer class="border-top">
+    <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
           <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>

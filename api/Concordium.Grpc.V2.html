@@ -2,11 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Namespace Concordium.Grpc.V2
- </title>
+      <title>Namespace Concordium.Grpc.V2 </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Namespace Concordium.Grpc.V2
- ">
+      <meta name="title" content="Namespace Concordium.Grpc.V2 ">
+      
       
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
@@ -18,13 +17,21 @@
       
       
       
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module">
-    import options from './../public/main.js'
-    import { init } from './../public/docfx.min.js'
-    init(options)
-  </script>
+  <script type="module" src="./../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -75,8 +82,7 @@
 
         <article data-uid="Concordium.Grpc.V2">
 
-  <h1 id="Concordium_Grpc_V2" data-uid="Concordium.Grpc.V2" class="text-break">Namespace Concordium.Grpc.V2
-</h1>
+  <h1 id="Concordium_Grpc_V2" data-uid="Concordium.Grpc.V2" class="text-break">Namespace Concordium.Grpc.V2</h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
@@ -429,6 +435,12 @@ This information is added with the introduction of delegation.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BakerRewardPeriodInfo.html">BakerRewardPeriodInfo</a></dt>
+      <dd><p>Information about a particular baker with respect to
+the current reward period.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Grpc.V2.BakerSignatureVerifyKey.html">BakerSignatureVerifyKey</a></dt>
       <dd><p>Baker's public key used to check that they are indeed the ones who
 produced the block.</p>
@@ -453,6 +465,12 @@ produced the block.</p>
       <dt><a class="xref" href="Concordium.Grpc.V2.BannedPeers.html">BannedPeers</a></dt>
       <dd><p>The banned peers given by
 their IP addresses.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.BlockCertificates.html">BlockCertificates</a></dt>
+      <dd><p>Certificates for a block for protocols supporting
+ConcordiumBFT.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -837,6 +855,137 @@ Metadata that should be visible on the chain.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunErrorResponse.html">DryRunErrorResponse</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunErrorResponse.Types.html">DryRunErrorResponse.Types</a></dt>
+      <dd><p>Container for nested types declared in the DryRunErrorResponse message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunErrorResponse.Types.AccountNotFound.html">DryRunErrorResponse.Types.AccountNotFound</a></dt>
+      <dd><p>The specified account was not found.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunErrorResponse.Types.AmountOverLimit.html">DryRunErrorResponse.Types.AmountOverLimit</a></dt>
+      <dd><p>The amount that was requested to be minted would overflow the total supply.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunErrorResponse.Types.BalanceInsufficient.html">DryRunErrorResponse.Types.BalanceInsufficient</a></dt>
+      <dd><p>The sender account for the transaction has insufficient balance to pay the preliminary fees
+for the transaction to be included in a block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunErrorResponse.Types.BlockNotFound.html">DryRunErrorResponse.Types.BlockNotFound</a></dt>
+      <dd><p>The requested block was not found, so its state could not be loaded.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunErrorResponse.Types.EnergyInsufficient.html">DryRunErrorResponse.Types.EnergyInsufficient</a></dt>
+      <dd><p>The energy made available for the transaction is insufficient to cover the basic processing
+required to include a transaction in a block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunErrorResponse.Types.InstanceNotFound.html">DryRunErrorResponse.Types.InstanceNotFound</a></dt>
+      <dd><p>The specified instance was not found.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunErrorResponse.Types.InvokeFailure.html">DryRunErrorResponse.Types.InvokeFailure</a></dt>
+      <dd><p>Invoking the smart contract instance failed.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunErrorResponse.Types.NoState.html">DryRunErrorResponse.Types.NoState</a></dt>
+      <dd><p>The current block state is undefined. It should be initialized with
+a 'load_block_state' request before any other operations.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunInvokeInstance.html">DryRunInvokeInstance</a></dt>
+      <dd><p>Invoke an entrypoint on a smart contract instance.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunMintToAccount.html">DryRunMintToAccount</a></dt>
+      <dd><p>Mint a specified amount and credit it to the specified account as part of a dry run.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunRequest.html">DryRunRequest</a></dt>
+      <dd><p>An operation to dry run.  The first operation in a dry-run sequence should be
+<code>load_block_state</code>: any other operation will be met with <code>NoState</code> until a
+state is successfully loaded.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunResponse.html">DryRunResponse</a></dt>
+      <dd><p>A response to a <code>DryRunRequest</code>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunSignature.html">DryRunSignature</a></dt>
+      <dd><p>A dry run signature is a pair of a credential index and key index, identifying the credential
+and key that is presumed to have signed the transaction. No actual cryptographic signature is
+included.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunStateOperation.html">DryRunStateOperation</a></dt>
+      <dd><p>An operation that can update the state as part of a dry run.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunStateQuery.html">DryRunStateQuery</a></dt>
+      <dd><p>Run a query as part of a dry run. Queries do not update the block state.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunSuccessResponse.html">DryRunSuccessResponse</a></dt>
+      <dd><p>The dry run operation completed successfully.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunSuccessResponse.Types.html">DryRunSuccessResponse.Types</a></dt>
+      <dd><p>Container for nested types declared in the DryRunSuccessResponse message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunSuccessResponse.Types.BlockStateLoaded.html">DryRunSuccessResponse.Types.BlockStateLoaded</a></dt>
+      <dd><p>The block state at the specified block was successfully loaded.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunSuccessResponse.Types.InvokeSuccess.html">DryRunSuccessResponse.Types.InvokeSuccess</a></dt>
+      <dd><p>The smart contract instance was invoked successfully.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunSuccessResponse.Types.MintedToAccount.html">DryRunSuccessResponse.Types.MintedToAccount</a></dt>
+      <dd><p>The specified amount was minted to the specified account.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunSuccessResponse.Types.TimestampSet.html">DryRunSuccessResponse.Types.TimestampSet</a></dt>
+      <dd><p>The current apparent timestamp was updated to the specified value.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunSuccessResponse.Types.TransactionExecuted.html">DryRunSuccessResponse.Types.TransactionExecuted</a></dt>
+      <dd><p>The transaction was executed.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunTransaction.html">DryRunTransaction</a></dt>
+      <dd><p>Dry run an account transaction</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Grpc.V2.DumpRequest.html">DumpRequest</a></dt>
       <dd><p>Request to enable dumping of network packages.</p>
 </dd>
@@ -915,6 +1064,29 @@ This cost is then converted to CCD amounts.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.EpochFinalizationEntry.html">EpochFinalizationEntry</a></dt>
+      <dd><p>The epoch finalization entry is the proof that
+makes the protocol able to advance to a new epoch.
+I.e. the 'EpochFinalizationEntry' is present if and only if
+the block is the first block of a new 'Epoch'.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.EpochRequest.html">EpochRequest</a></dt>
+      <dd><p>Input to queries which take an epoch as a parameter.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.EpochRequest.Types.html">EpochRequest.Types</a></dt>
+      <dd><p>Container for nested types declared in the EpochRequest message type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.EpochRequest.Types.RelativeEpoch.html">EpochRequest.Types.RelativeEpoch</a></dt>
+      <dd><p>Request an epoch by number at a given genesis index.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Grpc.V2.ExchangeRate.html">ExchangeRate</a></dt>
       <dd><p>Represents an exchange rate.</p>
 </dd>
@@ -943,6 +1115,13 @@ completed finalization.</p>
     <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Grpc.V2.FinalizedBlockInfo.html">FinalizedBlockInfo</a></dt>
       <dd><p>Information about a finalized block that is part of the streaming response.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.FinalizerRound.html">FinalizerRound</a></dt>
+      <dd><p>The finalizer round is a map from a 'Round'
+to the list of finalizers (identified by their 'BakerId') that signed
+off the round.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -1368,6 +1547,19 @@ the value is expected to be in the range (0..u16::MAX).</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.QuorumCertificate.html">QuorumCertificate</a></dt>
+      <dd><p>A quorum certificate is the certificate that the
+finalization comittee issues in order to certify a block.
+A block must be certified before it will be part of the
+authorative part of the chain.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.QuorumSignature.html">QuorumSignature</a></dt>
+      <dd><p>The signature of a 'QuorumCertificate'.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Grpc.V2.Ratio.html">Ratio</a></dt>
       <dd><p>Represents a ratio, i.e., 'numerator / denominator'.</p>
 </dd>
@@ -1480,8 +1672,8 @@ account. The minimum sequence number is 1.</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Grpc.V2.SignatureMap.html">SignatureMap</a></dt>
-      <dd><p>Wrapper for a map from indexes to signatures.
-Needed because protobuf doesn't allow nested maps directly.</p>
+      <dd><p>A signature on an update instruction.
+The type <code>UpdateKeysIndex</code> is not used directly, as messages cannot be keys in maps.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -1514,6 +1706,13 @@ Needed because protobuf doesn't allow nested maps directly.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.SuccessorProof.html">SuccessorProof</a></dt>
+      <dd><p>A proof that establishes that the successor block of
+a 'EpochFinalizationEntry' is the immediate successor of
+the finalized block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Grpc.V2.TimeParametersCpv1.html">TimeParametersCpv1</a></dt>
       <dd><p>The time parameters are introduced as of protocol version 4, and consist of
 the reward period length and the mint rate per payday. These are coupled as
@@ -1521,8 +1720,21 @@ a change to either affects the overall rate of minting.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.TimeoutCertificate.html">TimeoutCertificate</a></dt>
+      <dd><p>A timeout certificate is the certificate that the
+finalization committee issues when a round times out,
+thus making it possible for the protocol to proceed to the
+next round.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Grpc.V2.TimeoutParameters.html">TimeoutParameters</a></dt>
       <dd><p>Parameters that determine timeouts in the consensus protocol used from protocol version 6.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.TimeoutSignature.html">TimeoutSignature</a></dt>
+      <dd><p>The signature of a 'TimeoutCertificate'.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -1607,10 +1819,6 @@ cases.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Concordium.Grpc.V2.UpdateInstructionSignature.html">UpdateInstructionSignature</a></dt>
-      <dd></dd>
-    </dl>
-    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Grpc.V2.UpdateKeysIndex.html">UpdateKeysIndex</a></dt>
       <dd><p>Index of a key in an authorizations update payload.</p>
 </dd>
@@ -1655,6 +1863,11 @@ Update sequence numbers are per update type and the minimum value is 1.</p>
     <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Grpc.V2.VersionedModuleSource.Types.ModuleSourceV1.html">VersionedModuleSource.Types.ModuleSourceV1</a></dt>
       <dd><p>Source bytes of a smart contract v1 module.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.WinningBaker.html">WinningBaker</a></dt>
+      <dd><p>Details of which baker won the lottery in a given round in consensus version 1.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -1773,6 +1986,41 @@ Enums
     <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Grpc.V2.DelegationTarget.TargetOneofCase.html">DelegationTarget.TargetOneofCase</a></dt>
       <dd><p>Enum of possible cases for the &quot;target&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunErrorResponse.ErrorOneofCase.html">DryRunErrorResponse.ErrorOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;error&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunRequest.RequestOneofCase.html">DryRunRequest.RequestOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;request&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunResponse.ResponseOneofCase.html">DryRunResponse.ResponseOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;response&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunStateOperation.OperationOneofCase.html">DryRunStateOperation.OperationOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;operation&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunStateQuery.QueryOneofCase.html">DryRunStateQuery.QueryOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;query&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.DryRunSuccessResponse.ResponseOneofCase.html">DryRunSuccessResponse.ResponseOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;response&quot; oneof.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Grpc.V2.EpochRequest.EpochRequestInputOneofCase.html">EpochRequest.EpochRequestInputOneofCase</a></dt>
+      <dd><p>Enum of possible cases for the &quot;epoch_request_input&quot; oneof.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -1898,7 +2146,7 @@ current baking committee.</p>
         <div class="contribution d-print-none">
         </div>
 
-        
+
       </div>
 
       <div class="affix">
@@ -1907,7 +2155,7 @@ current baking committee.</p>
     </main>
 
 
-    <footer class="border-top">
+    <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
           <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>

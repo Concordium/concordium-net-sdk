@@ -2,11 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Namespace Concordium.Sdk.Transactions
- </title>
+      <title>Namespace Concordium.Sdk.Transactions </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Namespace Concordium.Sdk.Transactions
- ">
+      <meta name="title" content="Namespace Concordium.Sdk.Transactions ">
+      
       
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
@@ -18,13 +17,21 @@
       
       
       
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module">
-    import options from './../public/main.js'
-    import { init } from './../public/docfx.min.js'
-    init(options)
-  </script>
+  <script type="module" src="./../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -75,8 +82,7 @@
 
         <article data-uid="Concordium.Sdk.Transactions">
 
-  <h1 id="Concordium_Sdk_Transactions" data-uid="Concordium.Sdk.Transactions" class="text-break">Namespace Concordium.Sdk.Transactions
-</h1>
+  <h1 id="Concordium_Sdk_Transactions" data-uid="Concordium.Sdk.Transactions" class="text-break">Namespace Concordium.Sdk.Transactions</h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
@@ -132,12 +138,48 @@ keys corresponding to the indices.</p>
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Transactions.BlockItem.html">BlockItem</a></dt>
+      <dd><p>A block item.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Transactions.BlockItemType.html">BlockItemType</a></dt>
+      <dd><p>Either a SignedAccountTransaction, CredentialDeployment or UpdateInstruction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Transactions.CredentialDeployment.html">CredentialDeployment</a></dt>
+      <dd><p>Credential deployments create new accounts. They are not paid for
+directly by the sender. Instead, bakers are rewarded by the protocol for
+including them.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Transactions.CredentialPayloadRaw.html">CredentialPayloadRaw</a></dt>
+      <dd><p>A raw payload, which is just the encoded payload.
+A typed variant might be added in the future.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Transactions.DeployModule.html">DeployModule</a></dt>
+      <dd><p>A deployment of a Wasm smart contract module.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Transactions.PreparedAccountTransaction.html">PreparedAccountTransaction</a></dt>
       <dd><p>Represents an account transaction which is prepared for signing.</p>
 <p>The transaction is prepared in the sense that it is augmented with the
 <a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a> of the sender, the <a class="xref" href="Concordium.Sdk.Types.AccountSequenceNumber.html">AccountSequenceNumber</a> to use
 when submitting the transaction as well as its <a class="xref" href="Concordium.Sdk.Types.Expiry.html">Expiry</a>. These are also
 used when signing the transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Transactions.RawPayload.html">RawPayload</a></dt>
+      <dd><p>Represents the raw payload of an account transaction.</p>
+<p>Used mostly for debugging, the only place where this will be encountered
+is when querying transactions from chain that have not been implemented for
+this SDK yet, and thus can not be deserialized.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -177,9 +219,52 @@ to the sign keys of an account.</p>
 but additionally stores a memo associated with the transfer on-chain.</p>
 </dd>
     </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Transactions.UpdateContract.html">UpdateContract</a></dt>
+      <dd><p>A deployment of a Wasm smart contract module.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Transactions.UpdateInstruction.html">UpdateInstruction</a></dt>
+      <dd><p>Update instructions are messages which can update the chain parameters. Including which keys are allowed
+to make future update instructions.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Transactions.UpdateInstructionHeader.html">UpdateInstructionHeader</a></dt>
+      <dd><p>The header of an UpdateInstruction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Transactions.UpdateInstructionPayloadRaw.html">UpdateInstructionPayloadRaw</a></dt>
+      <dd><p>A raw payload encoded according to the format defined by the protocol.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Transactions.UpdateInstructionSignatureMap.html">UpdateInstructionSignatureMap</a></dt>
+      <dd><p>A map from <a class="xref" href="Concordium.Sdk.Transactions.UpdateKeysIndex.html">UpdateKeysIndex</a> to signatures.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Transactions.UpdateKeysIndex.html">UpdateKeysIndex</a></dt>
+      <dd><p>Index of a key in an authorizations update payload.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Transactions.UpdateSequenceNumber.html">UpdateSequenceNumber</a></dt>
+      <dd><p>A sequence number that determines the ordering of update transactions.
+Equivalent to <code>SequenceNumber</code> for account transactions.
+Update sequence numbers are per update type and the minimum value is 1.</p>
+</dd>
+    </dl>
     <h3 id="interfaces">
 Interfaces
 </h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Transactions.ICredentialPayload.html">ICredentialPayload</a></dt>
+      <dd><p>The payload of a Credential Deployment.</p>
+</dd>
+    </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Concordium.Sdk.Transactions.ITransactionSigner.html">ITransactionSigner</a></dt>
       <dd><p>Implementers of <a class="xref" href="Concordium.Sdk.Transactions.ITransactionSigner.html">ITransactionSigner</a> provide functionality for signing
@@ -196,6 +281,11 @@ should reflect this structure and correspond to a mapping from credential and ke
 to the signatures produced by signing a transaction hash with the corresponding keys.</p>
 </dd>
     </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Concordium.Sdk.Transactions.IUpdateInstructionPayload.html">IUpdateInstructionPayload</a></dt>
+      <dd><p>The payload for an UpdateInstruction.</p>
+</dd>
+    </dl>
 
 
 </article>
@@ -203,7 +293,7 @@ to the signatures produced by signing a transaction hash with the corresponding 
         <div class="contribution d-print-none">
         </div>
 
-        
+
       </div>
 
       <div class="affix">
@@ -212,7 +302,7 @@ to the signatures produced by signing a transaction hash with the corresponding 
     </main>
 
 
-    <footer class="border-top">
+    <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
           <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
