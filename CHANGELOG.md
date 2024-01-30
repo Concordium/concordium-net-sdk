@@ -1,5 +1,9 @@
 ## Unreleased changes
 
+## 4.3.1
+- Added
+  - Enhanced error handling for FFI calls and exposing detailed exceptions to the client, providing information about potential errors.
+
 ## 4.3.0
 - Bugfix
   - Switched the GitHub runners from using 'ubuntu-latest' to 'ubuntu-20.04' to ensure compatibility with the default .NET 6 Docker image for the SDK.
