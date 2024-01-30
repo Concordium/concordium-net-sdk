@@ -15,14 +15,14 @@ internal static class InteropBinding
     private const string DllName = "rust_bindings";
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "schema_display")]
-    private static extern Result SchemaDisplay(
+    private static extern SchemaJsonResult SchemaDisplay(
         [MarshalAs(UnmanagedType.LPArray)] byte[] schema,
         int schema_size,
         FfiByteOption schema_version,
         [MarshalAs(UnmanagedType.FunctionPtr)] SetResultCallback callback);
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_receive_contract_parameter")]
-    private static extern Result GetReceiveContractParameter(
+    private static extern SchemaJsonResult GetReceiveContractParameter(
         [MarshalAs(UnmanagedType.LPArray)] byte[] schema, int schema_size,
         FfiByteOption schema_version,
         [MarshalAs(UnmanagedType.LPUTF8Str)] string contract_name,
@@ -32,7 +32,7 @@ internal static class InteropBinding
         [MarshalAs(UnmanagedType.FunctionPtr)] SetResultCallback callback);
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_event_contract")]
-    private static extern Result GetEventContract(
+    private static extern SchemaJsonResult GetEventContract(
         [MarshalAs(UnmanagedType.LPArray)] byte[] schema,
         int schema_size,
         FfiByteOption schema_version,
@@ -68,7 +68,7 @@ internal static class InteropBinding
             return new Utf8Json(result);
         }
 
-        var interopException = InteropBindingException.Create(schemaDisplay, result);
+        var interopException = SchemaJsonException.Create(schemaDisplay, result);
         throw interopException;
     }
 
@@ -102,7 +102,7 @@ internal static class InteropBinding
             return new Utf8Json(result);
         }
 
-        var interopException = InteropBindingException.Create(receiveContractParameter, result);
+        var interopException = SchemaJsonException.Create(receiveContractParameter, result);
         throw interopException;
     }
 
@@ -132,7 +132,7 @@ internal static class InteropBinding
             return new Utf8Json(result);
         }
 
-        var interopException = InteropBindingException.Create(schemaDisplay, result);
+        var interopException = SchemaJsonException.Create(schemaDisplay, result);
         throw interopException;
     }
 

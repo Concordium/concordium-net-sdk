@@ -3,7 +3,7 @@ namespace Concordium.Sdk.Interop;
 /// <summary>
 /// Result type which on errors hold error type information.
 /// </summary>
-public enum Result
+public enum SchemaJsonResult
 {
     /// <summary>
     /// No error
@@ -87,5 +87,5 @@ public enum Result
 
 internal static class ErrorExtensions
 {
-    internal static bool IsError(this Result result) => result != Result.NoError;
+    internal static bool IsError(this SchemaJsonResult schemaJsonResult) => schemaJsonResult != SchemaJsonResult.NoError;
 }

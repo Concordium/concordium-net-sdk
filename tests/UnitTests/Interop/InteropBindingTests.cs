@@ -56,9 +56,9 @@ public class InteropBindingTests
         var action = () => InteropBinding.SchemaDisplay(versionedModuleSchema);
 
         // Assert
-        action.Should().Throw<InteropBindingException>()
+        action.Should().Throw<SchemaJsonException>()
             .Where(e =>
-                e.Result == Result.VersionedSchemaErrorParseError &&
+                e.SchemaJsonResult == SchemaJsonResult.VersionedSchemaErrorParseError &&
                 e.Message.Equals("Parse error", StringComparison.Ordinal));
     }
 
@@ -101,9 +101,9 @@ public class InteropBindingTests
         var action = () => InteropBinding.GetReceiveContractParameter(versionedModuleSchema, contractIdentifier, entryPoint, parameter);
 
         // Assert
-        action.Should().Throw<InteropBindingException>()
+        action.Should().Throw<SchemaJsonException>()
             .Where(e =>
-                e.Result == Result.JsonError &&
+                e.SchemaJsonResult == SchemaJsonResult.JsonError &&
                 e.Message.StartsWith("Failed to deserialize AccountAddress due to: Could not parse AccountAddress", StringComparison.InvariantCulture));
     }
 
@@ -123,9 +123,9 @@ public class InteropBindingTests
         var action = () => InteropBinding.GetReceiveContractParameter(versionedModuleSchema, contractIdentifier, entryPoint, parameter);
 
         // Assert
-        action.Should().Throw<InteropBindingException>()
+        action.Should().Throw<SchemaJsonException>()
             .Where(e =>
-                e.Result == Result.VersionedSchemaErrorNoContractInModule &&
+                e.SchemaJsonResult == SchemaJsonResult.VersionedSchemaErrorNoContractInModule &&
                 e.Message.Equals("Unable to find contract schema in module schema", StringComparison.Ordinal));
     }
 
@@ -145,9 +145,9 @@ public class InteropBindingTests
         var action = () => InteropBinding.GetReceiveContractParameter(versionedModuleSchema, contractIdentifier, entryPoint, parameter);
 
         // Assert
-        action.Should().Throw<InteropBindingException>()
+        action.Should().Throw<SchemaJsonException>()
             .Where(e =>
-                e.Result == Result.VersionedSchemaErrorNoReceiveInContract &&
+                e.SchemaJsonResult == SchemaJsonResult.VersionedSchemaErrorNoReceiveInContract &&
                 e.Message.Equals("Receive function schema not found in contract schema", StringComparison.Ordinal));
     }
 
@@ -167,9 +167,9 @@ public class InteropBindingTests
         var action = () => InteropBinding.GetReceiveContractParameter(versionedModuleSchema, contractIdentifier, entryPoint, parameter);
 
         // Assert
-        action.Should().Throw<InteropBindingException>()
+        action.Should().Throw<SchemaJsonException>()
             .Where(e =>
-                e.Result == Result.VersionedSchemaErrorMissingSchemaVersion &&
+                e.SchemaJsonResult == SchemaJsonResult.VersionedSchemaErrorMissingSchemaVersion &&
                 e.Message.Equals("Missing Schema Version", StringComparison.Ordinal));
     }
 
@@ -208,9 +208,9 @@ public class InteropBindingTests
         var action = () => InteropBinding.GetEventContract(versionedModuleSchema, contractIdentifier, contractEvent);
 
         // Assert
-        action.Should().Throw<InteropBindingException>()
+        action.Should().Throw<SchemaJsonException>()
             .Where(e =>
-                e.Result == Result.VersionedSchemaErrorMissingSchemaVersion &&
+                e.SchemaJsonResult == SchemaJsonResult.VersionedSchemaErrorMissingSchemaVersion &&
                 e.Message.Equals("Missing Schema Version", StringComparison.Ordinal));
     }
 
@@ -229,9 +229,9 @@ public class InteropBindingTests
         var action = () => InteropBinding.GetEventContract(versionedModuleSchema, contractIdentifier, contractEvent);
 
         // Assert
-        action.Should().Throw<InteropBindingException>()
+        action.Should().Throw<SchemaJsonException>()
             .Where(e =>
-                e.Result == Result.VersionedSchemaErrorNoContractInModule &&
+                e.SchemaJsonResult == SchemaJsonResult.VersionedSchemaErrorNoContractInModule &&
                 e.Message.Equals("Unable to find contract schema in module schema", StringComparison.Ordinal));
     }
 
@@ -250,9 +250,9 @@ public class InteropBindingTests
         var action = () => InteropBinding.GetEventContract(versionedModuleSchema, contractIdentifier, contractEvent);
 
         // Assert
-        action.Should().Throw<InteropBindingException>()
+        action.Should().Throw<SchemaJsonException>()
             .Where(e =>
-                e.Result == Result.JsonError &&
+                e.SchemaJsonResult == SchemaJsonResult.JsonError &&
                 e.Message.StartsWith("Failed to deserialize AccountAddress due to: Could not parse"));
     }
 

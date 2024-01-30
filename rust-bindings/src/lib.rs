@@ -209,6 +209,8 @@ pub enum FFIError {
 }
 
 impl FFIError {
+    /// The enumeration starts a 1 since return value 0 indicating a successfull
+    /// FFI call.
     fn to_int(&self) -> u16 {
         match self {
             FFIError::JsonError(_) => 1,
