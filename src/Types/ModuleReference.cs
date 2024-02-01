@@ -23,7 +23,7 @@ public sealed record ModuleReference : Hash
     {
         if (bytes.Length < BytesLength)
         {
-            var msg = $"Invalid length of input in `Hash.TryDeserial`. Expected at least {BytesLength}, found {bytes.Length}";
+            var msg = $"Invalid length of input in `ModuleReference.TryDeserial`. Expected at least {BytesLength}, found {bytes.Length}";
             output = (null, msg);
             return false;
         };
