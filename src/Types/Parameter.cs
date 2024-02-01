@@ -19,6 +19,11 @@ public sealed record Parameter(byte[] Param) : IEquatable<Parameter>
     internal const uint MinSerializedLength = sizeof(ushort);
 
     /// <summary>
+    /// Gets the maximum serialized length (number of bytes) of the parameter.
+    /// </summary>
+    internal const uint MaxSerializedLength = 65535;
+
+    /// <summary>
     /// Copies the parameters to a byte array which has the length preprended.
     /// </summary>
 	public byte[] ToBytes()
@@ -42,7 +47,14 @@ public sealed record Parameter(byte[] Param) : IEquatable<Parameter>
             output = (null, msg);
             return false;
         };
+        if (bytes.Length > MaxSerializedLength)
+        {
+            var msg = $"Invalid length of input in `Parameter.TryDeserial`. Expected at most {MaxSerializedLength}, found {bytes.Length}";
+            output = (null, msg);
+            return false;
+        };
 
+        // The below call can throw, but never will due to check above.
         var sizeRead = BinaryPrimitives.ReadUInt16BigEndian(bytes);
         var size = sizeRead + MinSerializedLength;
         if (size > bytes.Length)

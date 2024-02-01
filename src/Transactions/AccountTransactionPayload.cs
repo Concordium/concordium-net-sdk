@@ -84,6 +84,11 @@ public abstract record AccountTransactionPayload
                 break;
             }
             case TransactionType.InitContract:
+            {
+                InitContract.TryDeserial(payload.ToArray(), out var output);
+                parsedPayload = output;
+                break;
+            }
             case TransactionType.Update:
             case TransactionType.AddBaker:
             case TransactionType.RemoveBaker:

@@ -38,7 +38,12 @@ internal sealed class InitContractOptions
 public static class Program
 {
     /// <summary>
-    /// Example how to use <see cref="ConcordiumClient.GetBlockItems"/>
+    /// Example demonstrating how to submit a smart contract initialization
+    /// transaction.
+    ///
+    /// The example assumes you have your account key information stored
+    /// in the Concordium browser wallet key export format, and that a path
+    /// pointing to it is supplied to it from the command line.
     /// </summary>
     public static async Task Main(string[] args) =>
         await Parser.Default
