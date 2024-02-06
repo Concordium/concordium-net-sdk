@@ -20,7 +20,7 @@ internal sealed class InitContractOptions
     )]
     public string WalletKeysFile { get; set; }
     [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.",
-        Default = "http://node.testnet.concordium.com:20000/")]
+        Default = "http://grpc.testnet.concordium.com:20000/")]
     public string Endpoint { get; set; }
     [Option('a', "amount", HelpText = "Amount of CCD to deposit.", Default = 0)]
     public ulong Amount { get; set; }

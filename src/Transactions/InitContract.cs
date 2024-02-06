@@ -42,7 +42,7 @@ public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, C
         AccountSequenceNumber sequenceNumber,
         Expiry expiry,
         EnergyAmount energy
-    ) => new(sender, sequenceNumber, expiry, new EnergyAmount(TrxBaseCost) + energy, this);
+    ) => new(sender, sequenceNumber, expiry, energy, this);
 
     /// <summary>
     /// The base transaction specific cost for submitting this type of

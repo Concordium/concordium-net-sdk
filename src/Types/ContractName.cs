@@ -76,7 +76,7 @@ public sealed record ContractName
         };
 
         var sizeRead = BinaryPrimitives.ReadUInt16BigEndian(bytes);
-        var size = sizeRead + MinSerializedLength;
+        var size = sizeRead + sizeof(ushort);
         if (size > bytes.Length)
         {
             var msg = $"Invalid length of input in `InitName.TryDeserial`. Expected array of size at least {size}, found {bytes.Length}";
