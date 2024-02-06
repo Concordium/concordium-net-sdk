@@ -23,13 +23,14 @@ Currently, helpers for working with transactions of the [`Transfer`](http://deve
 
 - .NET Framework: 6.0 or later.
 - Concordium Node version compatibility: 6.*
+- On macOS currently only dotnet x86 runtimes are supported.
 
 ## Installation
 
 The SDK is published on [nuget.org](https://www.nuget.org/packages/ConcordiumNetSdk). Depending on your setup, it can be added to your project as a dependency by running either
 
 ```powershell
-PM> Install-Package Concordium.SDK -Version 4.2
+PM> Install-Package Concordium.SDK -Version 4.3
 ```
 or
 

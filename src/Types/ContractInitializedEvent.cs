@@ -45,7 +45,7 @@ public sealed record ContractInitializedEvent(
     /// </summary>
     /// <param name="schema">Module schema in hexadecimal.</param>
     /// <returns>List of deserialized json uft8 encoded events. Possible null if this was returned from deserialization.</returns>
-    /// <exception cref="InteropBindingException">Thrown if an event wasn't able to be deserialized from schema.</exception>
+    /// <exception cref="SchemaJsonException">Thrown if an event wasn't able to be deserialized from schema.</exception>
     public IList<Utf8Json> GetDeserializedEvents(VersionedModuleSchema schema)
     {
         var deserialized = new List<Utf8Json>(this.Events.Count);

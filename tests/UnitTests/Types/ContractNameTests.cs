@@ -59,7 +59,8 @@ public class ContractNameTests
     public void DeserializesCorrectly()
     {
         var success = ContractName.TryParse("init_name", out var parsed);
-        if (!success) {
+        if (!success)
+        {
             Assert.Fail(parsed.Error.ToString());
         }
 
@@ -84,11 +85,13 @@ public class ContractNameTests
     public void SerializeDeserialize()
     {
         var parseSuccess = ContractName.TryParse("init_some_name", out var parsed);
-        if (!parseSuccess) {
+        if (!parseSuccess)
+        {
             Assert.Fail(parsed.Error.ToString());
         }
         var deserialSuccess = ContractName.TryDeserial(parsed.ContractName!.ToBytes(), out var deserial);
-        if (!deserialSuccess) {
+        if (!deserialSuccess)
+        {
             Assert.Fail(deserial.Error);
         }
         deserial.ContractName.Should().Be(parsed.ContractName);

@@ -1,10 +1,12 @@
-use anyhow::{anyhow, Result};
+use anyhow::Result;
 use concordium_contracts_common::{
-    schema::{Type, VersionedModuleSchema},
+    schema::{Type, VersionedModuleSchema, VersionedSchemaError},
+    schema_json::ToJsonError,
     Cursor,
 };
 use serde_json::to_vec;
 use std::{ffi::CStr, os::raw::c_char};
+use thiserror::Error;
 
 pub type JsonString = String;
 
@@ -49,7 +51,7 @@ pub unsafe extern "C" fn schema_display(
     schema_size: i32,
     schema_version: FFIByteOption,
     callback: ResultCallback,
-) -> bool {
+) -> u16 {
     let schema = std::slice::from_raw_parts(schema_ptr, schema_size as usize);
     assign_result(callback, || {
         schema_display_aux(schema, schema_version.into_option())
@@ -88,7 +90,7 @@ pub unsafe extern "C" fn get_receive_contract_parameter(
     value_ptr: *const u8,
     value_size: i32,
     callback: ResultCallback,
-) -> bool {
+) -> u16 {
     assign_result(callback, || {
         let schema = std::slice::from_raw_parts(schema_ptr, schema_size as usize);
         let contract_name_str = get_str_from_pointer(contract_name)?;
@@ -132,7 +134,7 @@ pub unsafe extern "C" fn get_event_contract(
     value_ptr: *const u8,
     value_size: i32,
     callback: ResultCallback,
-) -> bool {
+) -> u16 {
     assign_result(callback, || {
         let schema = std::slice::from_raw_parts(schema_ptr, schema_size as usize);
         let contract_name_str = get_str_from_pointer(contract_name)?;
@@ -158,20 +160,20 @@ pub unsafe extern "C" fn get_event_contract(
 /// # Returns
 ///
 /// A boolean, that indicates whether the computation was successful or not.
-fn assign_result<F: FnOnce() -> Result<Vec<u8>>>(callback: ResultCallback, f: F) -> bool {
+fn assign_result<F: FnOnce() -> Result<Vec<u8>, FFIError>>(callback: ResultCallback, f: F) -> u16 {
     match f() {
         Ok(output) => {
             let out_lenght = output.len() as i32;
             let ptr = output.as_ptr();
             callback(ptr, out_lenght);
-            true
+            0
         }
         Err(e) => {
             let error = format!("{}", e).into_bytes();
             let error_length = error.len() as i32;
             let ptr = error.as_ptr();
             callback(ptr, error_length);
-            false
+            e.to_int()
         }
     }
 }
@@ -182,16 +184,69 @@ pub fn get_receive_contract_parameter_aux(
     contract_name: &str,
     entrypoint: &str,
     value: &[u8],
-) -> Result<Vec<u8>> {
+) -> Result<Vec<u8>, FFIError> {
     let module_schema = VersionedModuleSchema::new(schema, &schema_version)?;
     let parameter_type = module_schema.get_receive_param_schema(contract_name, entrypoint)?;
-    let deserialized = deserialize_type_value(value, &parameter_type, true)?;
+    let deserialized = deserialize_type_value(value, &parameter_type)?;
     Ok(deserialized)
 }
 
-fn schema_display_aux(schema: &[u8], schema_version: Option<u8>) -> Result<Vec<u8>> {
+fn schema_display_aux(schema: &[u8], schema_version: Option<u8>) -> Result<Vec<u8>, FFIError> {
     let display = VersionedModuleSchema::new(schema, &schema_version)?;
     Ok(display.to_string().into_bytes())
+}
+
+#[derive(Error, Debug)]
+pub enum FFIError {
+    #[error("{0}")]
+    JsonError(String),
+    #[error("error when using serde")]
+    SerdeJsonError,
+    #[error("encountered string which wasn't utf8 encoded")]
+    Utf8Error,
+    #[error(transparent)]
+    VersionedSchemaError(#[from] VersionedSchemaError),
+}
+
+impl FFIError {
+    /// The enumeration starts a 1 since return value 0 indicating a successfull
+    /// FFI call.
+    fn to_int(&self) -> u16 {
+        match self {
+            FFIError::JsonError(_) => 1,
+            FFIError::SerdeJsonError => 2,
+            FFIError::Utf8Error => 3,
+            FFIError::VersionedSchemaError(schema_error) => match schema_error {
+                VersionedSchemaError::ParseError => 4,
+                VersionedSchemaError::MissingSchemaVersion => 5,
+                VersionedSchemaError::InvalidSchemaVersion => 6,
+                VersionedSchemaError::NoContractInModule => 7,
+                VersionedSchemaError::NoReceiveInContract => 8,
+                VersionedSchemaError::NoInitInContract => 9,
+                VersionedSchemaError::NoParamsInReceive => 10,
+                VersionedSchemaError::NoParamsInInit => 11,
+                VersionedSchemaError::NoErrorInReceive => 12,
+                VersionedSchemaError::NoErrorInInit => 13,
+                VersionedSchemaError::ErrorNotSupported => 14,
+                VersionedSchemaError::NoReturnValueInReceive => 15,
+                VersionedSchemaError::ReturnValueNotSupported => 16,
+                VersionedSchemaError::NoEventInContract => 17,
+                VersionedSchemaError::EventNotSupported => 18,
+            },
+        }
+    }
+}
+
+impl From<std::str::Utf8Error> for FFIError {
+    fn from(_: std::str::Utf8Error) -> Self { FFIError::Utf8Error }
+}
+
+impl From<serde_json::Error> for FFIError {
+    fn from(_: serde_json::Error) -> Self { FFIError::SerdeJsonError }
+}
+
+impl From<ToJsonError> for FFIError {
+    fn from(value: ToJsonError) -> Self { FFIError::JsonError(value.display(true)) }
 }
 
 fn get_event_contract_aux(
@@ -199,28 +254,22 @@ fn get_event_contract_aux(
     schema_version: Option<u8>,
     contract_name: &str,
     value: &[u8],
-) -> Result<Vec<u8>> {
+) -> Result<Vec<u8>, FFIError> {
     let module_schema = VersionedModuleSchema::new(schema, &schema_version)?;
     let parameter_type = module_schema.get_event_schema(contract_name)?;
-    let deserialized = deserialize_type_value(value, &parameter_type, true)?;
+    let deserialized = deserialize_type_value(value, &parameter_type)?;
     Ok(deserialized)
 }
 
-fn deserialize_type_value(
-    value: &[u8],
-    value_type: &Type,
-    verbose_error_message: bool,
-) -> Result<Vec<u8>> {
+fn deserialize_type_value(value: &[u8], value_type: &Type) -> Result<Vec<u8>, FFIError> {
     let mut cursor = Cursor::new(value);
-    match value_type.to_json(&mut cursor) {
-        Ok(v) => Ok(to_vec(&v)?),
-        Err(e) => Err(anyhow!("{}", e.display(verbose_error_message))),
-    }
+    let v = value_type.to_json(&mut cursor)?;
+    Ok(to_vec(&v)?)
 }
 /// The provided raw pointer [`c_char`] must be a [`std::ffi::CString`].
 /// The content of the pointer [`c_char`] must not be mutated for the duration
 /// of lifetime 'a.
-fn get_str_from_pointer<'a>(input: *const c_char) -> Result<&'a str> {
+fn get_str_from_pointer<'a>(input: *const c_char) -> Result<&'a str, FFIError> {
     let c_str: &CStr = unsafe { CStr::from_ptr(input) };
     Ok(c_str.to_str()?)
 }

@@ -12,7 +12,7 @@ namespace GetBlockTransactionEvents;
 internal sealed class GetBlockTransactionEventsOptions
 {
     [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.",
-        Default = "http://node.testnet.concordium.com:20000/")]
+        Default = "http://grpc.testnet.concordium.com:20000/")]
     public string Endpoint { get; set; }
 }
 

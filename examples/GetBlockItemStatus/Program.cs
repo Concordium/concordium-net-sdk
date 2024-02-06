@@ -13,7 +13,7 @@ internal sealed class GetBlockItemSummaryOptions
     [Option(HelpText = "Transaction hash to lookup", Required = true)]
     public string TransactionHash { get; set; }
 
-    [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Default = "http://node.testnet.concordium.com:20000")]
+    [Option(HelpText = "URL representing the endpoint where the gRPC V2 API is served.", Default = "http://grpc.testnet.concordium.com:20000")]
     public string Endpoint { get; set; }
 }
 
@@ -37,7 +37,7 @@ public static class Program
     /// An example showing how one can query transaction status from a node.
     /// </summary>
     /// <param name="args">GetBlockItemSummaryOptions
-    /// Example: --endpoint http://node.testnet.concordium.com:20000 --transactionhash 143ca4183d0bb204000ad08e0fd5792985c808861b97f3b81cb9016ad39d09d2
+    /// Example: --endpoint http://grpc.testnet.concordium.com:20000 --transactionhash 143ca4183d0bb204000ad08e0fd5792985c808861b97f3b81cb9016ad39d09d2
     /// </param>
     public static async Task Main(string[] args)
     {

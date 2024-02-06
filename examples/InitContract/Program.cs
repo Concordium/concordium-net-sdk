@@ -65,7 +65,8 @@ public static class Program
 
         // Create the transfer transaction.
         var successfulParse = ContractName.TryParse(o.InitName, out var parsed);
-        if (!successfulParse) {
+        if (!successfulParse)
+        {
             throw new ArgumentException("Error parsing (" + o.InitName + "): " + parsed.Error.ToString());
         };
 

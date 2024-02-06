@@ -9,6 +9,11 @@ namespace Concordium.Sdk.Types;
 public sealed record Parameter(byte[] Param) : IEquatable<Parameter>
 {
     /// <summary>
+    /// Construct an empty smart contract parameter.
+    /// </summary>
+    public static Parameter Empty() => new(Array.Empty<byte>());
+
+    /// <summary>
     /// Gets the serialized length (number of bytes) of the parameter.
     /// </summary>
     internal uint SerializedLength() => sizeof(ushort) + (uint)this.Param.Length;
@@ -22,6 +27,8 @@ public sealed record Parameter(byte[] Param) : IEquatable<Parameter>
     /// Gets the maximum serialized length (number of bytes) of the parameter.
     /// </summary>
     internal const uint MaxSerializedLength = 65535;
+
+    internal static Parameter From(Grpc.V2.Parameter parameter) => new(parameter.Value.ToArray());
 
     /// <summary>
     /// Copies the parameters to a byte array which has the length preprended.
@@ -47,16 +54,16 @@ public sealed record Parameter(byte[] Param) : IEquatable<Parameter>
             output = (null, msg);
             return false;
         };
-        if (bytes.Length > MaxSerializedLength)
+
+        var sizeRead = BinaryPrimitives.ReadUInt16BigEndian(bytes);
+        if (sizeRead > MaxSerializedLength)
         {
-            var msg = $"Invalid length of input in `Parameter.TryDeserial`. Expected at most {MaxSerializedLength}, found {bytes.Length}";
+            var msg = $"Invalid length of input in `Parameter.TryDeserial`. The parameter size can be at most {MaxSerializedLength} bytes, found {bytes.Length}";
             output = (null, msg);
             return false;
-        };
+        }
 
-        // The below call can throw, but never will due to check above.
-        var sizeRead = BinaryPrimitives.ReadUInt16BigEndian(bytes);
-        var size = sizeRead + MinSerializedLength;
+        var size = sizeof(ushort) + sizeRead;
         if (size > bytes.Length)
         {
             var msg = $"Invalid length of input in `Parameter.TryDeserial`. Expected array of size at least {size}, found {bytes.Length}";
