@@ -45,15 +45,6 @@ public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, C
     ) => new(sender, sequenceNumber, expiry, energy, this);
 
     /// <summary>
-    /// The base transaction specific cost for submitting this type of
-    /// transaction to the chain.
-    ///
-    /// This should reflect the transaction-specific costs defined here:
-    /// https://github.com/Concordium/concordium-base/blob/78f557b8b8c94773a25e4f86a1a92bc323ea2e3d/haskell-src/Concordium/Cost.hs
-    /// </summary>
-    private const ushort TrxBaseCost = 300;
-
-    /// <summary>
     /// Gets the size (number of bytes) of the payload.
     /// </summary>
     internal override PayloadSize Size() => new(
@@ -83,22 +74,22 @@ public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, C
             return false;
         };
 
-        var amountBytes = bytes[sizeof(TransactionType)..];
-        if (!CcdAmount.TryDeserial(amountBytes, out var amount))
+        var remainingBytes = bytes[sizeof(TransactionType)..];
+        if (!CcdAmount.TryDeserial(remainingBytes, out var amount))
         {
             output = (null, amount.Error);
             return false;
         };
 
-        var refBytes = bytes[(int)(CcdAmount.BytesLength + sizeof(TransactionType))..];
-        if (!ModuleReference.TryDeserial(refBytes, out var moduleRef))
+        remainingBytes = bytes[(int)CcdAmount.BytesLength..];
+        if (!ModuleReference.TryDeserial(remainingBytes, out var moduleRef))
         {
             output = (null, moduleRef.Error);
             return false;
         };
 
-        var nameBytes = bytes[(int)(Hash.BytesLength + CcdAmount.BytesLength + sizeof(TransactionType))..];
-        if (!ContractName.TryDeserial(nameBytes, out var name))
+        remainingBytes = bytes[Hash.BytesLength..];
+        if (!ContractName.TryDeserial(remainingBytes, out var name))
         {
             output = (null, name.Error);
             return false;
@@ -110,8 +101,8 @@ public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, C
             return false;
         }
 
-        var paramBytes = bytes[(int)(name.ContractName.SerializedLength() + Hash.BytesLength + CcdAmount.BytesLength + sizeof(TransactionType))..];
-        if (!Parameter.TryDeserial(paramBytes, out var param))
+        remainingBytes = bytes[(int)name.ContractName.SerializedLength()..];
+        if (!Parameter.TryDeserial(remainingBytes, out var param))
         {
             output = (null, param.Error);
             return false;

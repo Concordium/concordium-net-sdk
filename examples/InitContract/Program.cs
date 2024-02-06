@@ -63,7 +63,7 @@ public static class Program
         };
         using var client = new ConcordiumClient(new Uri(o.Endpoint), clientOptions);
 
-        // Create the transfer transaction.
+        // Create the init transaction.
         var successfulParse = ContractName.TryParse(o.InitName, out var parsed);
         if (!successfulParse)
         {
@@ -74,22 +74,22 @@ public static class Program
         var moduleRef = new ModuleReference(o.ModuleRef);
         var param = new Parameter(Array.Empty<byte>());
         var maxEnergy = new EnergyAmount(uint.Parse(o.MaxEnergy, CultureInfo.InvariantCulture));
-        var transferPayload = new Concordium.Sdk.Transactions.InitContract(amount, moduleRef, parsed.ContractName!, param);
+        var payload = new Concordium.Sdk.Transactions.InitContract(amount, moduleRef, parsed.ContractName!, param);
 
         // Prepare the transaction for signing.
         var sender = account.AccountAddress;
         var sequenceNumber = client.GetNextAccountSequenceNumber(sender).Item1;
         var expiry = Expiry.AtMinutesFromNow(30);
-        var preparedTransfer = transferPayload.Prepare(sender, sequenceNumber, expiry, maxEnergy);
+        var preparedPayload = payload.Prepare(sender, sequenceNumber, expiry, maxEnergy);
 
         // Sign the transaction using the account keys.
-        var signedTransfer = preparedTransfer.Sign(account);
+        var signedTrx = preparedPayload.Sign(account);
 
         // Submit the transaction.
-        var txHash = client.SendAccountTransaction(signedTransfer);
+        var txHash = client.SendAccountTransaction(signedTrx);
 
         // Print the transaction hash.
-        Console.WriteLine($"Successfully submitted transfer transaction with hash {txHash}");
+        Console.WriteLine($"Successfully submitted init-contract transaction with hash {txHash}");
     }
 }
 
