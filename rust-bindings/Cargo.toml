@@ -8,13 +8,17 @@ exclude = ["test-data/*"]
 
 [lib]
 name="rust_bindings"
-crate-type = ["dylib"]
+crate-type = ["cdylib"]
 
 [dependencies]
+thiserror = "1.0"
 anyhow="1.0"
 serde_json = "1.0"
 serde = { version = "1.0" }
-concordium-contracts-common = { version = "8.1.1", features = ["derive-serde"], path = "../concordium-base/smart-contracts/contracts-common/concordium-contracts-common" }
+concordium-contracts-common = { version = "9.0.0", features = ["derive-serde"], path = "../concordium-base/smart-contracts/contracts-common/concordium-contracts-common" }
 
 [dev-dependencies]
 hex = "0.4"
+
+[profile.release]
+rpath = true

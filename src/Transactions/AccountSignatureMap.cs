@@ -62,6 +62,7 @@ public sealed record AccountSignatureMap
         var dict = new Dictionary<AccountKeyIndex, byte[]>();
         foreach (var s in map.Signatures)
         {
+            // The GRPC api states that keys must not exceed 2^8, so this should be safe.
             dict.Add(new AccountKeyIndex((byte)s.Key), s.Value.Value.ToByteArray());
         }
         return Create(dict);
@@ -76,14 +77,13 @@ public sealed record AccountSignatureMap
     /// <summary>Gets hash code.</summary>
     public override int GetHashCode()
     {
-        // Based on https://stackoverflow.com/questions/1646807/quick-and-simple-hash-code-combinations
         unchecked
         {
             var hash = 17;
             foreach (var (key, val) in this.Signatures)
             {
-                hash = (hash * 31) + key.GetHashCode();
-                hash = (hash * 31) + Helpers.HashCode.GetHashCodeByteArray(val);
+                hash += key.GetHashCode();
+                hash += Helpers.HashCode.GetHashCodeByteArray(val);
             }
             return hash;
         }
@@ -136,6 +136,7 @@ public sealed record UpdateInstructionSignatureMap
         var dict = new Dictionary<UpdateKeysIndex, byte[]>();
         foreach (var s in map.Signatures)
         {
+            // The GRPC api states that keys must not exceed 2^8, so this should be safe.
             dict.Add(new UpdateKeysIndex((byte)s.Key), s.Value.Value.ToByteArray());
         }
         return Create(dict);
@@ -150,14 +151,13 @@ public sealed record UpdateInstructionSignatureMap
     /// <summary>Gets hash code.</summary>
     public override int GetHashCode()
     {
-        // Based on https://stackoverflow.com/questions/1646807/quick-and-simple-hash-code-combinations
         unchecked
         {
             var hash = 17;
             foreach (var (key, val) in this.Signatures)
             {
-                hash = (hash * 31) + key.GetHashCode();
-                hash = (hash * 31) + Helpers.HashCode.GetHashCodeByteArray(val);
+                hash += key.GetHashCode();
+                hash += Helpers.HashCode.GetHashCodeByteArray(val);
             }
             return hash;
         }
