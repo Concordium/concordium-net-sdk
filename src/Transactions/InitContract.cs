@@ -9,9 +9,9 @@ namespace Concordium.Sdk.Transactions;
 /// </summary>
 /// <param name="Amount">Deposit this amount of CCD.</param>
 /// <param name="ModuleRef">The smart contract module reference.</param>
-/// <param name="InitName">The init name of the smart contract.</param>
+/// <param name="ContractName">The init name of the smart contract.</param>
 /// <param name="Parameter">The parameters for the smart contract.</param>
-public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, InitName InitName, Parameter Parameter) : AccountTransactionPayload
+public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, ContractName ContractName, Parameter Parameter) : AccountTransactionPayload
 {
     /// <summary>
     /// The init contract transaction type to be used in the serialized payload.
@@ -24,7 +24,7 @@ public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, I
 	internal const uint MinSerializedLength =
         CcdAmount.BytesLength +
         Hash.BytesLength +
-        InitName.MinSerializedLength +
+        ContractName.MinSerializedLength +
         Parameter.MinSerializedLength;
 
     /// <summary>
@@ -60,7 +60,7 @@ public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, I
         sizeof(TransactionType) +
         CcdAmount.BytesLength +
         Hash.BytesLength +
-        this.InitName.SerializedLength() +
+        this.ContractName.SerializedLength() +
         this.Parameter.SerializedLength());
 
     /// <summary>
@@ -98,19 +98,19 @@ public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, I
         };
 
         var nameBytes = bytes[(int)(Hash.BytesLength + CcdAmount.BytesLength + sizeof(TransactionType))..];
-        if (!InitName.TryDeserial(nameBytes, out var name))
+        if (!ContractName.TryDeserial(nameBytes, out var name))
         {
             output = (null, name.Error);
             return false;
         };
-        if (name.Name == null)
+        if (name.ContractName == null)
         {
             var msg = $"Name was null, but did not produce an error";
             output = (null, msg);
             return false;
         }
 
-        var paramBytes = bytes[(int)(name.Name.SerializedLength() + Hash.BytesLength + CcdAmount.BytesLength + sizeof(TransactionType))..];
+        var paramBytes = bytes[(int)(name.ContractName.SerializedLength() + Hash.BytesLength + CcdAmount.BytesLength + sizeof(TransactionType))..];
         if (!Parameter.TryDeserial(paramBytes, out var param))
         {
             output = (null, param.Error);
@@ -124,7 +124,7 @@ public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, I
             return false;
         }
 
-        output = (new InitContract(amount.Amount.Value, moduleRef.Ref, name.Name, param.Parameter), null);
+        output = (new InitContract(amount.Amount.Value, moduleRef.Ref, name.ContractName, param.Parameter), null);
         return true;
     }
 
@@ -137,7 +137,7 @@ public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, I
         memoryStream.WriteByte(TransactionType);
         memoryStream.Write(this.Amount.ToBytes());
         memoryStream.Write(this.ModuleRef.ToBytes());
-        memoryStream.Write(this.InitName.ToBytes());
+        memoryStream.Write(this.ContractName.ToBytes());
         memoryStream.Write(this.Parameter.ToBytes());
         return memoryStream.ToArray();
     }

@@ -1,3 +1,5 @@
+using System.Buffers.Binary;
+using System.Text;
 using Concordium.Sdk.Helpers;
 
 namespace Concordium.Sdk.Types;
@@ -17,6 +19,16 @@ public sealed record ContractName
     /// </summary>
     public string Name { get; init; }
 
+    /// <summary>
+    /// Gets the minimum serialized length (number of bytes) of the init name.
+    /// </summary>
+    internal const uint MinSerializedLength = sizeof(ushort);
+
+    /// <summary>
+    /// Gets the serialized length (number of bytes) of the init name.
+    /// </summary>
+    internal uint SerializedLength() => sizeof(ushort) + (uint)this.Name.Length;
+
     private ContractName(string name) => this.Name = name;
 
     internal static ContractName From(Grpc.V2.InitName initName) => new(initName.Value);
@@ -34,6 +46,59 @@ public sealed record ContractName
         var validate = IsValid(name, out var error);
         output = validate ? (new ContractName(name), null) : (null, error!);
         return validate;
+    }
+
+    /// <summary>
+    /// Copies the init name to a byte array which has the length preprended.
+    /// </summary>
+	public byte[] ToBytes()
+    {
+        var bytes = Encoding.ASCII.GetBytes(this.Name);
+
+        using var memoryStream = new MemoryStream((int)this.SerializedLength());
+        memoryStream.Write(Serialization.ToBytes((ushort)bytes.Length));
+        memoryStream.Write(bytes);
+        return memoryStream.ToArray();
+    }
+
+    /// <summary>
+    /// Deserialize an init name from a serialized byte array.
+    /// </summary>
+    /// <param name="bytes">The serialized init name.</param>
+    /// <param name="output">Where to write the result of the operation.</param>
+    public static bool TryDeserial(ReadOnlySpan<byte> bytes, out (ContractName? ContractName, string? Error) output)
+    {
+        if (bytes.Length < MinSerializedLength)
+        {
+            var msg = $"Invalid length of input in `InitName.TryDeserial`. Expected at least {MinSerializedLength}, found {bytes.Length}";
+            output = (null, msg);
+            return false;
+        };
+
+        var sizeRead = BinaryPrimitives.ReadUInt16BigEndian(bytes);
+        var size = sizeRead + MinSerializedLength;
+        if (size > bytes.Length)
+        {
+            var msg = $"Invalid length of input in `InitName.TryDeserial`. Expected array of size at least {size}, found {bytes.Length}";
+            output = (null, msg);
+            return false;
+        };
+
+        try
+        {
+            var initNameBytes = bytes.Slice(sizeof(ushort), sizeRead).ToArray();
+            var ascii = Encoding.ASCII.GetString(initNameBytes);
+
+            var correctlyParsed = TryParse(ascii, out var parseOut);
+            output = correctlyParsed ? (parseOut.ContractName, null) : (null, "Error parsing contract name (" + ascii + "): " + parseOut.Error.ToString());
+            return correctlyParsed;
+        }
+        catch (ArgumentException e)
+        {
+            var msg = $"Invalid InitName in `InitName.TryDeserial`: {e.Message}";
+            output = (null, msg);
+            return false;
+        };
     }
 
     /// <summary>
@@ -79,4 +144,10 @@ public sealed record ContractName
         error = null;
         return true;
     }
+
+    /// <summary>Check for equality.</summary>
+    public bool Equals(ContractName? other) => other != null && this.Name == other.Name;
+
+    /// <summary>Gets hash code.</summary>
+    public override int GetHashCode() => this.Name.GetHashCode();
 }

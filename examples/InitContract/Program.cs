@@ -64,12 +64,16 @@ public static class Program
         using var client = new ConcordiumClient(new Uri(o.Endpoint), clientOptions);
 
         // Create the transfer transaction.
+        var successfulParse = ContractName.TryParse(o.InitName, out var parsed);
+        if (!successfulParse) {
+            throw new ArgumentException("Error parsing (" + o.InitName + "): " + parsed.Error.ToString());
+        };
+
         var amount = CcdAmount.FromCcd(o.Amount);
         var moduleRef = new ModuleReference(o.ModuleRef);
-        var initName = new InitName(o.InitName);
         var param = new Parameter(Array.Empty<byte>());
         var maxEnergy = new EnergyAmount(uint.Parse(o.MaxEnergy, CultureInfo.InvariantCulture));
-        var transferPayload = new Concordium.Sdk.Transactions.InitContract(amount, moduleRef, initName, param);
+        var transferPayload = new Concordium.Sdk.Transactions.InitContract(amount, moduleRef, parsed.ContractName!, param);
 
         // Prepare the transaction for signing.
         var sender = account.AccountAddress;

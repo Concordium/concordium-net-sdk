@@ -15,10 +15,10 @@ public sealed class InitContractTests
     {
         var amount = CcdAmount.FromCcd(100);
         var moduleRef = new ModuleReference("0000000000000000000000000000000000000000000000000000000000000000");
-        var initName = new InitName("init_name");
+        var contractName = ContractName.TryParse("init_name", out var parsed);
         var parameter = new Parameter(System.Array.Empty<byte>());
 
-        return new InitContract(amount, moduleRef, initName, parameter);
+        return new InitContract(amount, moduleRef, parsed.ContractName!, parameter);
     }
 
     [Fact]
