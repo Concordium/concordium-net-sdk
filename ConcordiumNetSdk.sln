@@ -79,6 +79,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetFinalizedBlocks", "examp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transations.UpdateContract", "examples\UpdateContract\Transations.UpdateContract.csproj", "{DBFBB7D1-E82D-4380-8263-B4B0AC3A6266}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeployModule", "examples\DeployModule\DeployModule.csproj", "{D35681A3-04AE-41BA-86F3-3CF5369D6D97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -233,6 +235,10 @@ Global
 		{DBFBB7D1-E82D-4380-8263-B4B0AC3A6266}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBFBB7D1-E82D-4380-8263-B4B0AC3A6266}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBFBB7D1-E82D-4380-8263-B4B0AC3A6266}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D35681A3-04AE-41BA-86F3-3CF5369D6D97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D35681A3-04AE-41BA-86F3-3CF5369D6D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D35681A3-04AE-41BA-86F3-3CF5369D6D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D35681A3-04AE-41BA-86F3-3CF5369D6D97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -276,5 +282,6 @@ Global
 		{26417CD7-2897-47BA-BA9B-C4475187331A} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
 		{E2CC6AD7-98CE-41F5-8C66-AE8781F29C77} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
 		{DBFBB7D1-E82D-4380-8263-B4B0AC3A6266} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
+		{D35681A3-04AE-41BA-86F3-3CF5369D6D97} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
 	EndGlobalSection
 EndGlobal
