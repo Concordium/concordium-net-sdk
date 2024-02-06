@@ -21,9 +21,9 @@ public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, C
     /// <summary>
     /// The minimum serialized length in the serialized payload.
     /// </summary>
-	internal const uint MinSerializedLength =
+    internal const uint MinSerializedLength =
         CcdAmount.BytesLength +
-        Hash.BytesLength +
+        Hash.BytesLength + // ModuleRef
         ContractName.MinSerializedLength +
         Parameter.MinSerializedLength;
 
@@ -50,7 +50,7 @@ public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, C
     internal override PayloadSize Size() => new(
         sizeof(TransactionType) +
         CcdAmount.BytesLength +
-        Hash.BytesLength +
+        Hash.BytesLength + // ModuleRef
         this.ContractName.SerializedLength() +
         this.Parameter.SerializedLength());
 
@@ -75,42 +75,37 @@ public sealed record InitContract(CcdAmount Amount, ModuleReference ModuleRef, C
         };
 
         var remainingBytes = bytes[sizeof(TransactionType)..];
+
         if (!CcdAmount.TryDeserial(remainingBytes, out var amount))
         {
             output = (null, amount.Error);
             return false;
         };
+        remainingBytes = remainingBytes[(int)CcdAmount.BytesLength..];
 
-        remainingBytes = bytes[(int)CcdAmount.BytesLength..];
         if (!ModuleReference.TryDeserial(remainingBytes, out var moduleRef))
         {
             output = (null, moduleRef.Error);
             return false;
         };
+        remainingBytes = remainingBytes[Hash.BytesLength..]; // ModuleRef
 
-        remainingBytes = bytes[Hash.BytesLength..];
         if (!ContractName.TryDeserial(remainingBytes, out var name))
         {
             output = (null, name.Error);
             return false;
         };
-        if (name.ContractName == null)
-        {
-            var msg = $"Name was null, but did not produce an error";
-            output = (null, msg);
-            return false;
-        }
+        remainingBytes = remainingBytes[(int)name.ContractName!.SerializedLength()..];
 
-        remainingBytes = bytes[(int)name.ContractName.SerializedLength()..];
         if (!Parameter.TryDeserial(remainingBytes, out var param))
         {
             output = (null, param.Error);
             return false;
         };
 
-        if (amount.Amount == null || moduleRef.Ref == null || param.Parameter == null)
+        if (amount.Amount == null || moduleRef.Ref == null || name.ContractName == null || param.Parameter == null)
         {
-            var msg = $"Amount, ModuleRef or Parameter were null, but did not produce an error";
+            var msg = $"Amount, ModuleRef, ContractName or Parameter were null, but did not produce an error";
             output = (null, msg);
             return false;
         }
