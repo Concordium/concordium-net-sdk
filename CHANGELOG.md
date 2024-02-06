@@ -1,4 +1,6 @@
 ## Unreleased changes
+- Added
+  - New transaction `InitContract`
 
 ## 4.3.1
 - Added

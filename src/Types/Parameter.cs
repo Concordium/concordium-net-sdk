@@ -6,14 +6,13 @@ namespace Concordium.Sdk.Types;
 /// <summary>
 /// Parameter to the init function or entrypoint.
 /// </summary>
-public sealed record Parameter(byte[] Param)
+public sealed record Parameter(byte[] Param) : IEquatable<Parameter>
 {
     /// <summary>
     /// Construct an empty smart contract parameter.
     /// </summary>
     public static Parameter Empty() => new(Array.Empty<byte>());
 
-    private const uint MaxByteLength = 65535;
     /// <summary>
     /// Gets the serialized length (number of bytes) of the parameter.
     /// </summary>
@@ -23,6 +22,11 @@ public sealed record Parameter(byte[] Param)
     /// Gets the minimum serialized length (number of bytes) of the parameter.
     /// </summary>
     internal const uint MinSerializedLength = sizeof(ushort);
+
+    /// <summary>
+    /// Gets the maximum serialized length (number of bytes) of the parameter.
+    /// </summary>
+    internal const uint MaxSerializedLength = 65535;
 
     internal static Parameter From(Grpc.V2.Parameter parameter) => new(parameter.Value.ToArray());
 
@@ -52,9 +56,9 @@ public sealed record Parameter(byte[] Param)
         };
 
         var sizeRead = BinaryPrimitives.ReadUInt16BigEndian(bytes);
-        if (sizeRead > MaxByteLength)
+        if (sizeRead > MaxSerializedLength)
         {
-            var msg = $"Invalid length of input in `Parameter.TryDeserial`. The parameter size can be at most {MaxByteLength} bytes, found {bytes.Length}";
+            var msg = $"Invalid length of input in `Parameter.TryDeserial`. The parameter size can be at most {MaxSerializedLength} bytes, found {bytes.Length}";
             output = (null, msg);
             return false;
         }
@@ -66,9 +70,19 @@ public sealed record Parameter(byte[] Param)
             output = (null, msg);
             return false;
         };
-        var parameter = new Parameter(bytes.Slice(sizeof(ushort), sizeRead).ToArray());
-        output = (parameter, null);
+
+        output = (new Parameter(bytes.Slice(sizeof(ushort), sizeRead).ToArray()), null);
         return true;
+    }
+
+    /// <summary>Check for equality.</summary>
+    public bool Equals(Parameter? other) => other != null && this.Param.SequenceEqual(other.Param);
+
+    /// <summary>Gets hash code.</summary>
+    public override int GetHashCode()
+    {
+        var paramHash = Helpers.HashCode.GetHashCodeByteArray(this.Param);
+        return paramHash;
     }
 
     /// <summary>

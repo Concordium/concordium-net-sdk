@@ -54,4 +54,47 @@ public class ContractNameTests
         // Assert
         actual.ContractName.Should().Be(expected);
     }
+
+    [Fact]
+    public void DeserializesCorrectly()
+    {
+        var success = ContractName.TryParse("init_name", out var parsed);
+        if (!success)
+        {
+            Assert.Fail(parsed.Error.ToString());
+        }
+
+        var bytes = new byte[] {
+            0,
+            9,
+            105,
+            110,
+            105,
+            116,
+            95,
+            110,
+            97,
+            109,
+            101
+        };
+        Assert.Equal(parsed.ContractName!.ToBytes(), bytes);
+        Assert.Equal(parsed.ContractName!.SerializedLength(), (uint)bytes.Length);
+    }
+
+    [Fact]
+    public void SerializeDeserialize()
+    {
+        var parseSuccess = ContractName.TryParse("init_some_name", out var parsed);
+        if (!parseSuccess)
+        {
+            Assert.Fail(parsed.Error.ToString());
+        }
+        var deserialSuccess = ContractName.TryDeserial(parsed.ContractName!.ToBytes(), out var deserial);
+        if (!deserialSuccess)
+        {
+            Assert.Fail(deserial.Error);
+        }
+        deserial.ContractName.Should().Be(parsed.ContractName);
+        Assert.Equal(parsed.ContractName!.SerializedLength(), (uint)parsed.ContractName!.ToBytes().Length);
+    }
 }
