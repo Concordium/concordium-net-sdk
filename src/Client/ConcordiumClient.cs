@@ -206,6 +206,52 @@ public sealed class ConcordiumClient : IDisposable
     }
 
     /// <summary>
+    /// Wait until the transaction is finalized.
+    /// </summary>
+    /// <param name="transactionHash">Transaction Hash which is included in blocks returned.</param>
+    /// <param name="token">Cancellation token</param>
+    /// <returns>Hash of the block finalizing the transaction and the block summary of the transaction.</returns>
+    /// <exception cref="RpcException">RPC error occurred, access <see cref="RpcException.StatusCode"/> for more information.</exception>
+    public async Task<(BlockHash BlockHash, BlockItemSummary Summary)> WaitUntilFinalized(
+        TransactionHash transactionHash,
+        CancellationToken token = default
+    )
+    {
+        static bool isFinalized(ITransactionStatus status, out (BlockHash, BlockItemSummary)? output)
+        {
+            switch (status)
+            {
+                case TransactionStatusFinalized finalized:
+                    output = finalized.State;
+                    return true;
+                default:
+                    output = null;
+                    return false;
+            };
+        }
+
+        // Check the transaction status straight away and return if finalized already.
+        var status = await this.GetBlockItemStatusAsync(transactionHash, token);
+        if (isFinalized(status, out var finalized))
+        {
+            return finalized!.Value;
+        }
+
+        // Otherwise listen for new finalized blocks and recheck the status.
+        var blocks = this.GetFinalizedBlocks(token);
+        await foreach (var block in blocks)
+        {
+            var nowStatus = await this.GetBlockItemStatusAsync(transactionHash, token);
+            if (isFinalized(nowStatus, out var nowFinalized))
+            {
+                return nowFinalized!.Value;
+            }
+        }
+        // The above loop only exits when the block is finalized.
+        throw new InvalidOperationException("Unreachable code");
+    }
+
+    /// <summary>
     /// Get the information for the given account in the given block.
     /// </summary>
     /// <param name="accountIdentifier">Identifier of the account.</param>

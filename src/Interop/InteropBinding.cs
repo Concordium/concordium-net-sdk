@@ -41,6 +41,27 @@ internal static class InteropBinding
         int value_size,
         [MarshalAs(UnmanagedType.FunctionPtr)] SetResultCallback callback);
 
+    [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "into_receive_parameter")]
+    private static extern SchemaJsonResult IntoReceiveParameter(
+        [MarshalAs(UnmanagedType.LPArray)] byte[] schema,
+        int schema_size,
+        FfiByteOption schema_version,
+        [MarshalAs(UnmanagedType.LPUTF8Str)] string contract_name,
+        [MarshalAs(UnmanagedType.LPUTF8Str)] string function_name,
+        [MarshalAs(UnmanagedType.LPArray)] byte[] json_ptr,
+        int json_size,
+        [MarshalAs(UnmanagedType.FunctionPtr)] SetResultCallback callback);
+
+    [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "into_init_parameter")]
+    private static extern SchemaJsonResult IntoInitParameter(
+        [MarshalAs(UnmanagedType.LPArray)] byte[] schema,
+        int schema_size,
+        FfiByteOption schema_version,
+        [MarshalAs(UnmanagedType.LPUTF8Str)] string contract_name,
+        [MarshalAs(UnmanagedType.LPArray)] byte[] json_ptr,
+        int json_size,
+        [MarshalAs(UnmanagedType.FunctionPtr)] SetResultCallback callback);
+
     /// <summary>
     /// Callback to set byte array result of interop call.
     /// </summary>
@@ -133,6 +154,85 @@ internal static class InteropBinding
         }
 
         var interopException = SchemaJsonException.Create(schemaDisplay, result);
+        throw interopException;
+    }
+
+    /// <summary>
+    /// Contruct a smart contract receive parameter from a JSON string and the module schema.
+    /// </summary>
+    /// <param name="schema">Smart contract module schema</param>
+    /// <param name="contractName">Name of the smart contract</param>
+    /// <param name="functionName">Entrypoint of the contract to construct the parameter for</param>
+    /// <param name="json">JSON representation of the smart contract parameter</param>
+    /// <returns>Smart contract parameter</returns>
+    internal static Parameter IntoReceiveParameter(
+        VersionedModuleSchema schema,
+        ContractIdentifier contractName,
+        EntryPoint functionName,
+        Utf8Json json
+    )
+    {
+        var ffiOption = FfiByteOption.Create(schema.Version);
+        var result = Array.Empty<byte>();
+
+        var statusCode = IntoReceiveParameter(
+            schema.Schema,
+            schema.Schema.Length,
+            ffiOption,
+            contractName.ContractName,
+            functionName.Name,
+            json.Bytes,
+            json.Bytes.Length,
+            (ptr, size) =>
+            {
+                result = new byte[size];
+                Marshal.Copy(ptr, result, 0, size);
+            });
+
+        if (!statusCode.IsError() && result != null)
+        {
+            return new Parameter(result);
+        }
+
+        var interopException = SchemaJsonException.Create(statusCode, result);
+        throw interopException;
+    }
+
+    /// <summary>
+    /// Contruct a smart contract init parameter from a JSON string and the module schema.
+    /// </summary>
+    /// <param name="schema">Smart contract module schema</param>
+    /// <param name="contractName">Name of the smart contract</param>
+    /// <param name="json">JSON representation of the smart contract parameter</param>
+    /// <returns>Smart contract parameter</returns>
+    internal static Parameter IntoInitParameter(
+        VersionedModuleSchema schema,
+        ContractIdentifier contractName,
+        Utf8Json json
+    )
+    {
+        var ffiOption = FfiByteOption.Create(schema.Version);
+        var result = Array.Empty<byte>();
+
+        var statusCode = IntoInitParameter(
+            schema.Schema,
+            schema.Schema.Length,
+            ffiOption,
+            contractName.ContractName,
+            json.Bytes,
+            json.Bytes.Length,
+            (ptr, size) =>
+            {
+                result = new byte[size];
+                Marshal.Copy(ptr, result, 0, size);
+            });
+
+        if (!statusCode.IsError() && result != null)
+        {
+            return new Parameter(result);
+        }
+
+        var interopException = SchemaJsonException.Create(statusCode, result);
         throw interopException;
     }
 

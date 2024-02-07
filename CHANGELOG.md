@@ -1,6 +1,8 @@
 ## Unreleased changes
 - Added
   - New transaction `InitContract`
+  - Add `WaitUntilFinalized` method on `ConcordiumClient` for waiting for transactions to finalized.
+  - Add `Parameter.UpdateJson` and `Parameter.InitJson` for constructing parameters for update and init transactions using JSON and smart contract module schemas (see the example in example/UpdateContractMint).
 
 ## 4.3.1
 - Added

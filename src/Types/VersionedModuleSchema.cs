@@ -11,7 +11,7 @@ namespace Concordium.Sdk.Types;
 public sealed record VersionedModuleSchema(byte[] Schema, ModuleSchemaVersion Version)
 {
     /// <summary>
-    /// Constructor which converts <see cref="schema"/> into hexadecimal string.
+    /// Constructor which converts <paramref name="schema"/> into hexadecimal string.
     /// </summary>
     /// <param name="schema">Module schema given as an hexadecimal string.</param>
     /// <param name="version">Module schema version.</param>

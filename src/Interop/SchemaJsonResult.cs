@@ -10,7 +10,7 @@ public enum SchemaJsonResult
     /// </summary>
     NoError = 0,
     /// <summary>
-    /// Represents errors occurring while deserializing to the schema JSON format.
+    /// Represents errors occurring while converting to the schema JSON format.
     /// </summary>
     JsonError = 1,
     /// <summary>
@@ -83,6 +83,10 @@ public enum SchemaJsonResult
     /// Versioned Schema Error - Events not supported for this module version
     /// </summary>
     VersionedSchemaErrorEventNotSupported = 18,
+    /// <summary>
+    /// Represents errors occurring while converting from the schema JSON format.
+    /// </summary>
+    FromJsonError = 19
 }
 
 internal static class ErrorExtensions

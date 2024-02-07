@@ -14,7 +14,7 @@ public sealed record ContractEvent(byte[] Bytes)
     public string ToHexString() => Convert.ToHexString(this.Bytes).ToLowerInvariant();
 
     /// <summary>
-    /// Deserialize event from <see cref="schema"/>.
+    /// Deserialize event from <paramref name="schema"/>.
     /// </summary>
     /// <param name="schema">Module schema in hexadecimal.</param>
     /// <param name="contractName">Contract name.</param>
