@@ -3,7 +3,7 @@ namespace Concordium.Sdk.Interop;
 /// <summary>
 /// Result type which on errors hold error type information.
 /// </summary>
-public enum SchemaJsonResult
+public enum SchemaJsonResult : ushort
 {
     /// <summary>
     /// No error

@@ -259,7 +259,7 @@ fn assign_result<F: FnOnce() -> Result<Vec<u8>, FFIError>>(callback: ResultCallb
             0
         }
         Err(e) => {
-            let error = format!("{}", e).into_bytes();
+            let error = e.to_string().into_bytes();
             let error_length = error.len() as i32;
             let ptr = error.as_ptr();
             callback(ptr, error_length);
@@ -268,7 +268,7 @@ fn assign_result<F: FnOnce() -> Result<Vec<u8>, FFIError>>(callback: ResultCallb
     }
 }
 
-pub fn get_receive_contract_parameter_aux(
+fn get_receive_contract_parameter_aux(
     schema: &[u8],
     schema_version: Option<u8>,
     contract_name: &str,
@@ -287,8 +287,8 @@ fn schema_display_aux(schema: &[u8], schema_version: Option<u8>) -> Result<Vec<u
 }
 
 #[derive(Error, Debug)]
-pub enum FFIError {
-    #[error(transparent)]
+enum FFIError {
+    #[error("{}", .0.display(true))]
     ToJsonError(#[from] schema_json::ToJsonError),
     #[error("error when using serde")]
     SerdeJsonError(#[from] serde_json::Error),
