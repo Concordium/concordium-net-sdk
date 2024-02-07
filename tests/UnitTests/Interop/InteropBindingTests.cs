@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Interop;
@@ -255,6 +256,32 @@ public class InteropBindingTests
                 e.SchemaJsonResult == SchemaJsonResult.JsonError &&
                 e.Message.StartsWith("Failed to deserialize AccountAddress due to: Could not parse"));
     }
+
+    [Fact]
+    public async Task WhenIntoReceiveParamFromJson_ThenReturnParams()
+    {
+        // Arrange
+        var schema = Convert.FromHexString((await File.ReadAllTextAsync("./Data/cis2_wCCD_sub")).Trim());
+        const string contractName = "cis2_wCCD";
+        const string entrypoint = "wrap";
+        var versionedModuleSchema = new VersionedModuleSchema(schema, ModuleSchemaVersion.Undefined); // Bad schema
+        // var parameter = new Parameter(Convert.FromHexString("005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc790000"));
+        var json = new Utf8Json(Encoding.UTF8.GetBytes(
+        "{\"to\": { \"Account\": [\"4tUoKeVapaTwwi2yY3Vwe5auM65VL2vk31R3eVhTW94hnB159F\"] }, \"data\": \"\" }"
+        ));
+
+        var contractIdentifier = new ContractIdentifier(contractName);
+        var entryPoint = new EntryPoint(entrypoint);
+
+        // Act
+        var parameter = InteropBinding.IntoReceiveParameter(versionedModuleSchema, contractIdentifier, entryPoint, json);
+
+        // Assert
+        await Verifier.Verify(parameter.ToHexString())
+            .UseFileName("receive-params-hex-from-json")
+            .UseDirectory("__snapshots__");
+    }
+
 
     [Theory]
     [InlineData(ModuleSchemaVersion.V0, (byte)0)]
