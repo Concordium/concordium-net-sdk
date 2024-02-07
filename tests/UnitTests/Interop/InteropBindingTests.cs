@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 using Concordium.Sdk.Exceptions;
 using Concordium.Sdk.Interop;
@@ -265,11 +264,16 @@ public class InteropBindingTests
         const string contractName = "cis2_wCCD";
         const string entrypoint = "wrap";
         var versionedModuleSchema = new VersionedModuleSchema(schema, ModuleSchemaVersion.Undefined); // Bad schema
-        // var parameter = new Parameter(Convert.FromHexString("005f8b99a3ea8089002291fd646554848b00e7a0cd934e5bad6e6e93a4d4f4dc790000"));
-        var json = new Utf8Json(Encoding.UTF8.GetBytes(
-        "{\"to\": { \"Account\": [\"4tUoKeVapaTwwi2yY3Vwe5auM65VL2vk31R3eVhTW94hnB159F\"] }, \"data\": \"\" }"
-        ));
-
+        var json = new Utf8Json(System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(new
+        {
+            to = new
+            {
+                Account = new string[] {
+                    "4tUoKeVapaTwwi2yY3Vwe5auM65VL2vk31R3eVhTW94hnB159F"
+                                       },
+            },
+            data = ""
+        }));
         var contractIdentifier = new ContractIdentifier(contractName);
         var entryPoint = new EntryPoint(entrypoint);
 
