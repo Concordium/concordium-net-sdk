@@ -83,6 +83,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeployModule", "examples\De
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InitContract", "examples\InitContract\InitContract.csproj", "{E68CBBAC-7BC9-46D3-AA04-2B7A62BD6921}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transations.UpdateContractMint", "examples\UpdateContractMint\Transations.UpdateContractMint.csproj", "{A1B271B6-CC7B-4949-A3F5-4B7F1C2080CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -245,6 +247,10 @@ Global
 		{E68CBBAC-7BC9-46D3-AA04-2B7A62BD6921}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E68CBBAC-7BC9-46D3-AA04-2B7A62BD6921}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E68CBBAC-7BC9-46D3-AA04-2B7A62BD6921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1B271B6-CC7B-4949-A3F5-4B7F1C2080CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B271B6-CC7B-4949-A3F5-4B7F1C2080CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B271B6-CC7B-4949-A3F5-4B7F1C2080CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B271B6-CC7B-4949-A3F5-4B7F1C2080CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -290,5 +296,6 @@ Global
 		{DBFBB7D1-E82D-4380-8263-B4B0AC3A6266} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
 		{D35681A3-04AE-41BA-86F3-3CF5369D6D97} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
 		{E68CBBAC-7BC9-46D3-AA04-2B7A62BD6921} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
+		{A1B271B6-CC7B-4949-A3F5-4B7F1C2080CA} = {FD2CDD9F-4650-4705-9CA2-98CC81F8891D}
 	EndGlobalSection
 EndGlobal

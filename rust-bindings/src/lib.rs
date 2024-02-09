@@ -1,8 +1,8 @@
 use anyhow::Result;
 use concordium_contracts_common::{
+    from_bytes,
     schema::{Type, VersionedModuleSchema, VersionedSchemaError},
-    schema_json::ToJsonError,
-    Cursor,
+    schema_json, Cursor,
 };
 use serde_json::to_vec;
 use std::{ffi::CStr, os::raw::c_char};
@@ -149,6 +149,136 @@ pub unsafe extern "C" fn get_event_contract(
     })
 }
 
+/// Construct smart contract receive parameter from a JSON string and a smart
+/// contract schema.
+///
+/// # Arguments
+///
+/// * 'schema_ptr' - Pointer to smart contract module schema.
+/// * 'schema_size' - The byte size of the smart contract module schema.
+/// * 'schema_version' - Version of the smart contract module schema (Optional).
+/// * 'contract_name' - Contract name provided as a null terminated string.
+/// * 'function_name' - Receive function name provided as a null terminated
+///   string.
+/// * 'json_ptr' - Pointer to the UTF8 encoded JSON parameter.
+/// * 'json_size' - The byte size of the encoded JSON parameter.
+/// * 'callback' - Callback which can be used to set resulting output
+///
+/// # Returns
+///
+/// 0 if the call succeeded otherwise the return value corresponds to some error
+/// code.
+///
+/// # Safety
+///
+/// Every pointer provided as an argument is assumed to be alive for the
+/// duration of the call.
+#[no_mangle]
+pub unsafe extern "C" fn into_receive_parameter(
+    schema_ptr: *const u8,
+    schema_size: i32,
+    schema_version: FFIByteOption,
+    contract_name: *const c_char,
+    function_name: *const c_char,
+    json_ptr: *const u8,
+    json_size: i32,
+    callback: ResultCallback,
+) -> u16 {
+    assign_result(callback, || {
+        let schema = std::slice::from_raw_parts(schema_ptr, schema_size as usize);
+        let contract_name_str = get_str_from_pointer(contract_name)?;
+        let function_name_str = get_str_from_pointer(function_name)?;
+        let json_slice = std::slice::from_raw_parts(json_ptr, json_size as usize);
+        let module_schema = VersionedModuleSchema::new(schema, &schema_version.into_option())?;
+        let parameter_schema_type =
+            module_schema.get_receive_param_schema(contract_name_str, function_name_str)?;
+        let json_value: serde_json::Value = serde_json::from_slice(json_slice)?;
+        Ok(parameter_schema_type.serial_value(&json_value)?)
+    })
+}
+
+/// Construct smart contract init parameter from a JSON string and a smart
+/// contract schema.
+///
+/// # Arguments
+///
+/// * 'schema_ptr' - Pointer to smart contract module schema.
+/// * 'schema_size' - The byte size of the smart contract module schema.
+/// * 'schema_version' - Version of the smart contract module schema (Optional).
+/// * 'contract_name' - Contract name provided as a null terminated string.
+/// * 'json_ptr' - Pointer to the UTF8 encoded JSON parameter.
+/// * 'json_size' - The byte size of the encoded JSON parameter.
+/// * 'callback' - Callback which can be used to set resulting output
+///
+/// # Returns
+///
+/// 0 if the call succeeded otherwise the return value corresponds to some error
+/// code.
+///
+/// # Safety
+///
+/// Every pointer provided as an argument is assumed to be alive for the
+/// duration of the call.
+#[no_mangle]
+pub unsafe extern "C" fn into_init_parameter(
+    schema_ptr: *const u8,
+    schema_size: i32,
+    schema_version: FFIByteOption,
+    contract_name: *const c_char,
+    json_ptr: *const u8,
+    json_size: i32,
+    callback: ResultCallback,
+) -> u16 {
+    assign_result(callback, || {
+        let schema = std::slice::from_raw_parts(schema_ptr, schema_size as usize);
+        let contract_name_str = get_str_from_pointer(contract_name)?;
+        let json_slice = std::slice::from_raw_parts(json_ptr, json_size as usize);
+        let module_schema = VersionedModuleSchema::new(schema, &schema_version.into_option())?;
+        let parameter_schema_type = module_schema.get_init_param_schema(contract_name_str)?;
+        let json_value: serde_json::Value = serde_json::from_slice(json_slice)?;
+        Ok(parameter_schema_type.serial_value(&json_value)?)
+    })
+}
+
+/// Convert some JSON representation into bytes using a smart contract schema
+/// type.
+///
+/// # Arguments
+///
+/// * 'schema_type_ptr' - Pointer to smart contract schema type.
+/// * 'schema_type_size' - The byte size of the smart contract schema type.
+/// * 'json_ptr' - Pointer to the UTF8 encoded JSON parameter.
+/// * 'json_size' - The byte size of the encoded JSON parameter.
+/// * 'callback' - Callback which can be used to set resulting output
+///
+/// # Returns
+///
+/// 0 if the call succeeded otherwise the return value corresponds to some error
+/// code.
+///
+/// # Safety
+///
+/// Every pointer provided as an argument is assumed to be alive for the
+/// duration of the call.
+#[no_mangle]
+pub unsafe extern "C" fn schema_json_to_bytes(
+    schema_type_ptr: *const u8,
+    schema_type_size: i32,
+    json_ptr: *const u8,
+    json_size: i32,
+    callback: ResultCallback,
+) -> u16 {
+    assign_result(callback, || {
+        let schema_type_bytes =
+            std::slice::from_raw_parts(schema_type_ptr, schema_type_size as usize);
+        let json_slice = std::slice::from_raw_parts(json_ptr, json_size as usize);
+        let parameter_schema_type: Type =
+            from_bytes(&schema_type_bytes).map_err(|_| FFIError::ParseSchemaType)?;
+        let json_value: serde_json::Value = serde_json::from_slice(json_slice)?;
+        Ok(parameter_schema_type.serial_value(&json_value)?)
+    })
+}
+
 /// Compute result using the provided callback f, convert it into a C string and
 /// assign it to the provided target.
 ///
@@ -169,7 +299,7 @@ fn assign_result<F: FnOnce() -> Result<Vec<u8>, FFIError>>(callback: ResultCallb
             0
         }
         Err(e) => {
-            let error = format!("{}", e).into_bytes();
+            let error = e.to_string().into_bytes();
             let error_length = error.len() as i32;
             let ptr = error.as_ptr();
             callback(ptr, error_length);
@@ -178,7 +308,7 @@ fn assign_result<F: FnOnce() -> Result<Vec<u8>, FFIError>>(callback: ResultCallb
     }
 }
 
-pub fn get_receive_contract_parameter_aux(
+fn get_receive_contract_parameter_aux(
     schema: &[u8],
     schema_version: Option<u8>,
     contract_name: &str,
@@ -197,15 +327,19 @@ fn schema_display_aux(schema: &[u8], schema_version: Option<u8>) -> Result<Vec<u
 }
 
 #[derive(Error, Debug)]
-pub enum FFIError {
-    #[error("{0}")]
-    JsonError(String),
+enum FFIError {
+    #[error("{}", .0.display(true))]
+    ToJsonError(#[from] schema_json::ToJsonError),
     #[error("error when using serde")]
-    SerdeJsonError,
+    SerdeJsonError(#[from] serde_json::Error),
     #[error("encountered string which wasn't utf8 encoded")]
-    Utf8Error,
+    Utf8Error(#[from] std::str::Utf8Error),
     #[error(transparent)]
     VersionedSchemaError(#[from] VersionedSchemaError),
+    #[error(transparent)]
+    FromJsonError(#[from] schema_json::JsonError),
+    #[error("error parsing the schema type")]
+    ParseSchemaType,
 }
 
 impl FFIError {
@@ -213,9 +347,9 @@ impl FFIError {
     /// FFI call.
     fn to_int(&self) -> u16 {
         match self {
-            FFIError::JsonError(_) => 1,
-            FFIError::SerdeJsonError => 2,
-            FFIError::Utf8Error => 3,
+            FFIError::ToJsonError(_) => 1,
+            FFIError::SerdeJsonError(_) => 2,
+            FFIError::Utf8Error(_) => 3,
             FFIError::VersionedSchemaError(schema_error) => match schema_error {
                 VersionedSchemaError::ParseError => 4,
                 VersionedSchemaError::MissingSchemaVersion => 5,
@@ -233,20 +367,10 @@ impl FFIError {
                 VersionedSchemaError::NoEventInContract => 17,
                 VersionedSchemaError::EventNotSupported => 18,
             },
+            FFIError::FromJsonError(_) => 19,
+            FFIError::ParseSchemaType => 20,
         }
     }
-}
-
-impl From<std::str::Utf8Error> for FFIError {
-    fn from(_: std::str::Utf8Error) -> Self { FFIError::Utf8Error }
-}
-
-impl From<serde_json::Error> for FFIError {
-    fn from(_: serde_json::Error) -> Self { FFIError::SerdeJsonError }
-}
-
-impl From<ToJsonError> for FFIError {
-    fn from(value: ToJsonError) -> Self { FFIError::JsonError(value.display(true)) }
 }
 
 fn get_event_contract_aux(
@@ -266,6 +390,7 @@ fn deserialize_type_value(value: &[u8], value_type: &Type) -> Result<Vec<u8>, FF
     let v = value_type.to_json(&mut cursor)?;
     Ok(to_vec(&v)?)
 }
+
 /// The provided raw pointer [`c_char`] must be a [`std::ffi::CString`].
 /// The content of the pointer [`c_char`] must not be mutated for the duration
 /// of lifetime 'a.

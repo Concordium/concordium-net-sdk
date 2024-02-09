@@ -256,6 +256,63 @@ public class InteropBindingTests
                 e.Message.StartsWith("Failed to deserialize AccountAddress due to: Could not parse"));
     }
 
+    [Fact]
+    public async Task WhenIntoReceiveParamFromJson_ThenReturnParams()
+    {
+        // Arrange
+        var schema = Convert.FromHexString((await File.ReadAllTextAsync("./Data/cis2_wCCD_sub")).Trim());
+        const string contractName = "cis2_wCCD";
+        const string entrypoint = "wrap";
+        var versionedModuleSchema = new VersionedModuleSchema(schema, ModuleSchemaVersion.Undefined);
+        var json = new Utf8Json(System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(new
+        {
+            to = new
+            {
+                Account = new string[] {
+                    "4tUoKeVapaTwwi2yY3Vwe5auM65VL2vk31R3eVhTW94hnB159F"
+                                       },
+            },
+            data = ""
+        }));
+        var contractIdentifier = new ContractIdentifier(contractName);
+        var entryPoint = new EntryPoint(entrypoint);
+
+        // Act
+        var parameter = InteropBinding.IntoReceiveParameter(versionedModuleSchema, contractIdentifier, entryPoint, json);
+
+        // Assert
+        await Verifier.Verify(parameter.ToHexString())
+            .UseFileName("receive-params-hex-from-json")
+            .UseDirectory("__snapshots__");
+    }
+
+    [Fact]
+    public async Task WhenParameterFromJson_ThenReturnBytes()
+    {
+        // Arrange
+        var wCcdWrapSchemaType = SchemaType.FromBase64String("FAACAAAAAgAAAHRvFQIAAAAHAAAAQWNjb3VudAEBAAAACwgAAABDb250cmFjdAECAAAADBYBBAAAAGRhdGEdAQ==");
+        var json = new Utf8Json(System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(new
+        {
+            to = new
+            {
+                Account = new string[] {
+                    "4tUoKeVapaTwwi2yY3Vwe5auM65VL2vk31R3eVhTW94hnB159F"
+                },
+            },
+            data = ""
+        }));
+
+        // Act
+        var bytes = InteropBinding.SchemaJsonToBytes(wCcdWrapSchemaType, json);
+
+        // Assert
+        await Verifier.Verify(Convert.ToHexString(bytes))
+            .UseFileName("wCCD-wrap-param-hex-from-json")
+            .UseDirectory("__snapshots__");
+    }
+
+
+
     [Theory]
     [InlineData(ModuleSchemaVersion.V0, (byte)0)]
     [InlineData(ModuleSchemaVersion.V2, (byte)2)]

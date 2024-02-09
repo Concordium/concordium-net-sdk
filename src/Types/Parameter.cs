@@ -33,13 +33,49 @@ public sealed record Parameter(byte[] Param) : IEquatable<Parameter>
     /// <summary>
     /// Copies the parameters to a byte array which has the length preprended.
     /// </summary>
-	public byte[] ToBytes()
+    public byte[] ToBytes()
     {
         using var memoryStream = new MemoryStream((int)this.SerializedLength());
         memoryStream.Write(Serialization.ToBytes((ushort)this.Param.Length));
         memoryStream.Write(this.Param);
         return memoryStream.ToArray();
     }
+
+    /// <summary>
+    /// Create a parameter from JSON representation using the smart contract module schema for a smart contract update transaction.
+    /// </summary>
+    /// <param name="moduleSchema">The smart contract module schema.</param>
+    /// <param name="contractName">The name of the contract.</param>
+    /// <param name="functionName">The name of entrypoint of the smart contract.</param>
+    /// <param name="jsonParameter">The UTF8 encoding of the JSON representation of the smart contract parameter.</param>
+    public static Parameter UpdateJson(
+        VersionedModuleSchema moduleSchema,
+        ContractIdentifier contractName,
+        EntryPoint functionName,
+        Utf8Json jsonParameter
+    ) => Interop.InteropBinding.IntoReceiveParameter(moduleSchema, contractName, functionName, jsonParameter);
+
+    /// <summary>
+    /// Create a parameter from JSON representation using the smart contract module schema for a smart contract init transaction.
+    /// </summary>
+    /// <param name="moduleSchema">The smart contract module schema.</param>
+    /// <param name="contractName">The name of the contract.</param>
+    /// <param name="jsonParameter">The UTF8 encoding of the JSON representation of the smart contract parameter.</param>
+    public static Parameter InitJson(
+        VersionedModuleSchema moduleSchema,
+        ContractIdentifier contractName,
+        Utf8Json jsonParameter
+    ) => Interop.InteropBinding.IntoInitParameter(moduleSchema, contractName, jsonParameter);
+
+    /// <summary>
+    /// Create a parameter from JSON representation using the smart contract schema type.
+    /// </summary>
+    /// <param name="schemaType">The smart contract schema type for the parameter.</param>
+    /// <param name="jsonParameter">The UTF8 encoding of the JSON representation of the smart contract parameter.</param>
+    public static Parameter FromJson(
+        SchemaType schemaType,
+        Utf8Json jsonParameter
+    ) => new(Interop.InteropBinding.SchemaJsonToBytes(schemaType, jsonParameter));
 
     /// <summary>
     /// Create a parameter from a byte array.

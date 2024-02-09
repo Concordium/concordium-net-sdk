@@ -3,14 +3,14 @@ namespace Concordium.Sdk.Interop;
 /// <summary>
 /// Result type which on errors hold error type information.
 /// </summary>
-public enum SchemaJsonResult
+public enum SchemaJsonResult : ushort
 {
     /// <summary>
     /// No error
     /// </summary>
     NoError = 0,
     /// <summary>
-    /// Represents errors occurring while deserializing to the schema JSON format.
+    /// Represents errors occurring while converting to the schema JSON format.
     /// </summary>
     JsonError = 1,
     /// <summary>
@@ -83,6 +83,14 @@ public enum SchemaJsonResult
     /// Versioned Schema Error - Events not supported for this module version
     /// </summary>
     VersionedSchemaErrorEventNotSupported = 18,
+    /// <summary>
+    /// Represents errors occurring while converting from the schema JSON format.
+    /// </summary>
+    FromJsonError = 19,
+    /// <summary>
+    /// Represents errors occurring parsing a smart contract schema type.
+    /// </summary>
+    ParseSchemaType = 20
 }
 
 internal static class ErrorExtensions

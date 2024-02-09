@@ -90,7 +90,7 @@ public abstract record VersionedModuleSource
         ExtractSchemaFromWebAssemblyModule(Module module);
 
     /// <summary>
-    /// From custom sections in <see cref="module"/> get entry with name <see cref="entryKey"/>.
+    /// From custom sections in <paramref name="module"/> get entry with name <paramref name="entryKey"/>.
     ///
     /// Fails if multiple entries exist with the same name.
     /// </summary>
