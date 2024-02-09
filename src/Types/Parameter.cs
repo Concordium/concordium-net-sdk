@@ -67,6 +67,15 @@ public sealed record Parameter(byte[] Param) : IEquatable<Parameter>
         Utf8Json jsonParameter
     ) => Interop.InteropBinding.IntoInitParameter(moduleSchema, contractName, jsonParameter);
 
+    /// <summary>
+    /// Create a parameter from JSON representation using the smart contract schema type.
+    /// </summary>
+    /// <param name="schemaType">The smart contract schema type for the parameter.</param>
+    /// <param name="jsonParameter">The UTF8 encoding of the JSON representation of the smart contract parameter.</param>
+    public static Parameter FromJson(
+        SchemaType schemaType,
+        Utf8Json jsonParameter
+    ) => new(Interop.InteropBinding.SchemaJsonToBytes(schemaType, jsonParameter));
 
     /// <summary>
     /// Create a parameter from a byte array.

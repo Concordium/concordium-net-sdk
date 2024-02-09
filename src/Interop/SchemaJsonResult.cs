@@ -86,7 +86,11 @@ public enum SchemaJsonResult : ushort
     /// <summary>
     /// Represents errors occurring while converting from the schema JSON format.
     /// </summary>
-    FromJsonError = 19
+    FromJsonError = 19,
+    /// <summary>
+    /// Represents errors occurring parsing a smart contract schema type.
+    /// </summary>
+    ParseSchemaType = 20
 }
 
 internal static class ErrorExtensions

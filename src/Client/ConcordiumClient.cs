@@ -210,6 +210,10 @@ public sealed class ConcordiumClient : IDisposable
     ///
     /// For production it is recommended to provide a <see cref="CancellationToken"/> with a timeout,
     /// since a faulty/misbehaving node could otherwise make this wait indefinitely.
+    ///
+    /// The <see cref="RpcException"/> with <see cref="RpcException.StatusCode"/> of NotFound is thrown
+    /// if the transaction is not known by the node. Sending a transaction right before calling this
+    /// method, might produce this exception, due to the node still processing the transaction.
     /// </summary>
     /// <param name="transactionHash">Transaction Hash which is included in blocks returned.</param>
     /// <param name="token">Cancellation token</param>

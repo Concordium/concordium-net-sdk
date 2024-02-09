@@ -1,5 +1,6 @@
 use anyhow::Result;
 use concordium_contracts_common::{
+    from_bytes,
     schema::{Type, VersionedModuleSchema, VersionedSchemaError},
     schema_json, Cursor,
 };
@@ -239,6 +240,45 @@ pub unsafe extern "C" fn into_init_parameter(
     })
 }
 
+/// Convert some JSON representation into bytes using a smart contract schema
+/// type.
+///
+/// # Arguments
+///
+/// * 'schema_type_ptr' - Pointer to smart contract schema type.
+/// * 'schema_type_size' - The byte size of the smart contract schema type.
+/// * 'json_ptr' - Pointer to the UTF8 encoded JSON parameter.
+/// * 'json_size' - The byte size of the encoded JSON parameter.
+/// * 'callback' - Callback which can be used to set resulting output
+///
+/// # Returns
+///
+/// 0 if the call succeeded otherwise the return value corresponds to some error
+/// code.
+///
+/// # Safety
+///
+/// Every pointer provided as an argument is assumed to be alive for the
+/// duration of the call.
+#[no_mangle]
+pub unsafe extern "C" fn schema_json_to_bytes(
+    schema_type_ptr: *const u8,
+    schema_type_size: i32,
+    json_ptr: *const u8,
+    json_size: i32,
+    callback: ResultCallback,
+) -> u16 {
+    assign_result(callback, || {
+        let schema_type_bytes =
+            std::slice::from_raw_parts(schema_type_ptr, schema_type_size as usize);
+        let json_slice = std::slice::from_raw_parts(json_ptr, json_size as usize);
+        let parameter_schema_type: Type =
+            from_bytes(&schema_type_bytes).map_err(|_| FFIError::ParseSchemaType)?;
+        let json_value: serde_json::Value = serde_json::from_slice(json_slice)?;
+        Ok(parameter_schema_type.serial_value(&json_value)?)
+    })
+}
+
 /// Compute result using the provided callback f, convert it into a C string and
 /// assign it to the provided target.
 ///
@@ -298,6 +338,8 @@ enum FFIError {
     VersionedSchemaError(#[from] VersionedSchemaError),
     #[error(transparent)]
     FromJsonError(#[from] schema_json::JsonError),
+    #[error("error parsing the schema type")]
+    ParseSchemaType,
 }
 
 impl FFIError {
@@ -326,6 +368,7 @@ impl FFIError {
                 VersionedSchemaError::EventNotSupported => 18,
             },
             FFIError::FromJsonError(_) => 19,
+            FFIError::ParseSchemaType => 20,
         }
     }
 }

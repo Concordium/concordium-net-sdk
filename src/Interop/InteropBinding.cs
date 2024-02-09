@@ -62,6 +62,14 @@ internal static class InteropBinding
         int json_size,
         [MarshalAs(UnmanagedType.FunctionPtr)] SetResultCallback callback);
 
+    [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "schema_json_to_bytes")]
+    private static extern SchemaJsonResult SchemaJsonToBytes(
+        [MarshalAs(UnmanagedType.LPArray)] byte[] schema_type,
+        int schema_type_size,
+        [MarshalAs(UnmanagedType.LPArray)] byte[] json_ptr,
+        int json_size,
+        [MarshalAs(UnmanagedType.FunctionPtr)] SetResultCallback callback);
+
     /// <summary>
     /// Callback to set byte array result of interop call.
     /// </summary>
@@ -230,6 +238,39 @@ internal static class InteropBinding
         if (!statusCode.IsError() && result != null)
         {
             return new Parameter(result);
+        }
+
+        var interopException = SchemaJsonException.Create(statusCode, result);
+        throw interopException;
+    }
+
+    /// <summary>
+    /// Contruct a smart contract init parameter from a JSON string and the module schema.
+    /// </summary>
+    /// <param name="schemaType">Smart contract schema type</param>
+    /// <param name="json">JSON representation of the smart contract parameter</param>
+    /// <returns>Smart contract parameter as bytes</returns>
+    internal static byte[] SchemaJsonToBytes(
+        SchemaType schemaType,
+        Utf8Json json
+    )
+    {
+        var result = Array.Empty<byte>();
+
+        var statusCode = SchemaJsonToBytes(
+            schemaType.Type,
+            schemaType.Type.Length,
+            json.Bytes,
+            json.Bytes.Length,
+            (ptr, size) =>
+            {
+                result = new byte[size];
+                Marshal.Copy(ptr, result, 0, size);
+            });
+
+        if (!statusCode.IsError() && result != null)
+        {
+            return result;
         }
 
         var interopException = SchemaJsonException.Create(statusCode, result);
