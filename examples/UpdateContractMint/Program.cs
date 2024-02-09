@@ -51,6 +51,8 @@ internal sealed class Options
 ///   format, and that a path pointing to it is supplied to it from the command line.
 /// - The 'cis2_multi' smart contract example is deployed on chain (already on testnet) with a
 ///   module reference matching the value of `CIS2_MULTI_MODULE_REF`.
+/// - You have the contract address of an instance of the 'cis2_multi' smart contract (On testnet
+///   the contract with index 7936 can be used).
 /// </summary>
 internal class Program
 {
@@ -106,7 +108,7 @@ internal class Program
                 Url = options.MetadataUrl,
                 ContentHash = new JsonNoHash
                 {
-                    None = Array.Empty<string>()
+                    None = Array.Empty<int>()
                 },
             },
             TokenId = options.TokenId
@@ -166,7 +168,7 @@ internal class Program
                 "Transaction summary failed to parse as a contract update transaction."
             );
         }
-        // Print out the events from each updated contract.
+        // Print out the events from each updated contract in the block.
         foreach (var update in updates)
         {
             var updatedContract = update.Item1;
@@ -251,10 +253,11 @@ internal class Program
     }
 
     /// <summary>
-    /// Indicator of no hash provided for the token metadata.
+    /// Indicator of no checksum (SHA256 hash) provided for the token metadata.
+    /// Note this still contains an array of int for the JSON format to match.
     /// </summary>
     private class JsonNoHash
     {
-        public string[] None { get; set; }
+        public int[] None { get; set; }
     }
 }
