@@ -1,4 +1,6 @@
 ## Unreleased changes
+
+## 4.4.0
 - Added
   - New transaction `InitContract`
   - Add `WaitUntilFinalized` method on `ConcordiumClient` for waiting for transactions to finalized.
@@ -54,7 +56,7 @@
 - Breaking changes
   - `ConsensusInfo`
     - `SlotDuration` is now a nullable field, only present in protocols 1-5.
-    - Bugfix: `BlockLastArrivedTime` was wrongly mapped from `BlockLastReceivedTime`.    
+    - Bugfix: `BlockLastArrivedTime` was wrongly mapped from `BlockLastReceivedTime`.
   - `BlockInfo`
     - `BlockSlot` is now a nullable field, and only present in protocols 1-5
 - Added
@@ -62,7 +64,7 @@
     - a new field `ConcordiumBftDetails` is added that is present if protocol version is 6 or higher
   - `BlockInfo`
     - new fields `Round` and `Epoch` that are present in protocol 6 or higher.
-  - `BakerPoolStatus` 
+  - `BakerPoolStatus`
     - a new field`BakerPoolPendingChange` is added which is present if any change is pending on baker pool.
 
 ## 3.0.0
@@ -80,7 +82,7 @@
     - Record structs has readonly where immutability is expected.
     - Implicit operators are removed to favor being explicit.
   - Add ConfigureAwait to enhance library uses from UI- or own syncronization context   usages.
-  - `RawClient` asynchronous calls have been changed to return either `AsyncUnaryCall<T>`   or `AsyncServerStreamingCall` such that response header is available in   `ConcordiumClient`. 
+  - `RawClient` asynchronous calls have been changed to return either `AsyncUnaryCall<T>`   or `AsyncServerStreamingCall` such that response header is available in   `ConcordiumClient`.
     One can get the response be calling `.ResponseAsync` on `AsyncUnaryCall<T>` and   `ResponseStream` on `AsyncServerStreamingCall`.
   - Property `Timeout` moved into `Options` in class `RawClient`. `Timeout` now defaults to 'indefinitely' compared to 30 seconds in obsolete constructor of `ConcordiumClient`.
   - `AccountTransactionType` is renamed to `TransactionType`.
