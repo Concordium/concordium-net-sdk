@@ -170,7 +170,7 @@ Class ModuleReference  <a class="header-action link-secondary" title="View sourc
 
   <h3 id="Concordium_Sdk_Types_ModuleReference__ctor_System_String_" data-uid="Concordium.Sdk.Types.ModuleReference.#ctor(System.String)">
   ModuleReference(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ModuleReference.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ModuleReference.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance.</p>
@@ -202,6 +202,51 @@ Class ModuleReference  <a class="header-action link-secondary" title="View sourc
     <dd><p>The supplied string is not a 64-character hex encoded string.</p>
 </dd>
   </dl>
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Concordium_Sdk_Types_ModuleReference_TryDeserial_" data-uid="Concordium.Sdk.Types.ModuleReference.TryDeserial*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ModuleReference_TryDeserial_System_ReadOnlySpan_System_Byte__System_ValueTuple_Concordium_Sdk_Types_ModuleReference_System_String___" data-uid="Concordium.Sdk.Types.ModuleReference.TryDeserial(System.ReadOnlySpan{System.Byte},System.ValueTuple{Concordium.Sdk.Types.ModuleReference,System.String}@)">
+  TryDeserial(ReadOnlySpan&lt;byte&gt;, out (ModuleReference? Ref, string? Error))
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ModuleReference.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a module reference from a byte array.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryDeserial(ReadOnlySpan&lt;byte&gt; bytes, out (ModuleReference? Ref, string? Error) output)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bytes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</dt>
+    <dd><p>The serialized module reference.</p>
+</dd>
+    <dt><code>output</code> (<a class="xref" href="Concordium.Sdk.Types.ModuleReference.html">ModuleReference</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-concordium.sdk.types.modulereference,system.string-.ref">Ref</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-concordium.sdk.types.modulereference,system.string-.error">Error</a>)</dt>
+    <dd><p>Where to write the result of the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
 
 
 

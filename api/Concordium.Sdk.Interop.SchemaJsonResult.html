@@ -99,7 +99,7 @@ Enum SchemaJsonResult  <a class="header-action link-secondary" title="View sourc
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum SchemaJsonResult</code></pre>
+    <pre><code class="lang-csharp hljs">public enum SchemaJsonResult : ushort</code></pre>
   </div>
 
 
@@ -113,11 +113,17 @@ Enum SchemaJsonResult  <a class="header-action link-secondary" title="View sourc
   <h2 id="fields">Fields
 </h2>
   <dl class="parameters">
+    <dt id="Concordium_Sdk_Interop_SchemaJsonResult_FromJsonError"><code>FromJsonError = 19</code></dt>
+    <dd><p>Represents errors occurring while converting from the schema JSON format.</p>
+</dd>
     <dt id="Concordium_Sdk_Interop_SchemaJsonResult_JsonError"><code>JsonError = 1</code></dt>
-    <dd><p>Represents errors occurring while deserializing to the schema JSON format.</p>
+    <dd><p>Represents errors occurring while converting to the schema JSON format.</p>
 </dd>
     <dt id="Concordium_Sdk_Interop_SchemaJsonResult_NoError"><code>NoError = 0</code></dt>
     <dd><p>No error</p>
+</dd>
+    <dt id="Concordium_Sdk_Interop_SchemaJsonResult_ParseSchemaType"><code>ParseSchemaType = 20</code></dt>
+    <dd><p>Represents errors occurring parsing a smart contract schema type.</p>
 </dd>
     <dt id="Concordium_Sdk_Interop_SchemaJsonResult_SerdeJsonError"><code>SerdeJsonError = 2</code></dt>
     <dd><p>This type represents all possible errors that can occur when serializing or

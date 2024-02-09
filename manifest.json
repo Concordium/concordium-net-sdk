@@ -4214,6 +4214,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Transactions.InitContract.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Transactions.InitContract.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Transactions.PreparedAccountTransaction.yml",
       "output": {
         ".html": {
@@ -7314,6 +7324,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.SchemaType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.SchemaType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.SerializationFailure.yml",
       "output": {
         ".html": {
@@ -7648,6 +7668,16 @@
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.VersionedModuleSource.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.VersionedModuleSourceFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.VersionedModuleSourceFactory.html"
         }
       },
       "version": ""

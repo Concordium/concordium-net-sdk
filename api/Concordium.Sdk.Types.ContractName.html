@@ -85,7 +85,7 @@
 
 
   <h1 id="Concordium_Sdk_Types_ContractName" data-uid="Concordium.Sdk.Types.ContractName" class="text-break">
-Class ContractName  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractName.cs/#L11"><i class="bi bi-code-slash"></i></a>
+Class ContractName  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractName.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -133,9 +133,6 @@ start with 'init_'.</p>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
-    </div>
-    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
@@ -159,7 +156,7 @@ start with 'init_'.</p>
 
   <h3 id="Concordium_Sdk_Types_ContractName_Name" data-uid="Concordium.Sdk.Types.ContractName.Name">
   Name
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractName.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractName.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>A contract name with format: &quot;init_&lt;contract_name&gt;&quot;.</p>
@@ -191,11 +188,48 @@ start with 'init_'.</p>
 </h2>
 
 
+  <a id="Concordium_Sdk_Types_ContractName_Equals_" data-uid="Concordium.Sdk.Types.ContractName.Equals*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ContractName_Equals_Concordium_Sdk_Types_ContractName_" data-uid="Concordium.Sdk.Types.ContractName.Equals(Concordium.Sdk.Types.ContractName)">
+  Equals(ContractName?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractName.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Check for equality.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(ContractName? other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Concordium.Sdk.Types.ContractName.html">ContractName</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Concordium_Sdk_Types_ContractName_GetContractName_" data-uid="Concordium.Sdk.Types.ContractName.GetContractName*"></a>
 
   <h3 id="Concordium_Sdk_Types_ContractName_GetContractName" data-uid="Concordium.Sdk.Types.ContractName.GetContractName">
   GetContractName()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractName.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractName.cs/#L108"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the contract name part of <a class="xref" href="Concordium.Sdk.Types.ContractName.html#Concordium_Sdk_Types_ContractName_Name">Name</a>.</p>
@@ -224,11 +258,116 @@ start with 'init_'.</p>
 
 
 
+  <a id="Concordium_Sdk_Types_ContractName_GetHashCode_" data-uid="Concordium.Sdk.Types.ContractName.GetHashCode*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ContractName_GetHashCode" data-uid="Concordium.Sdk.Types.ContractName.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractName.cs/#L152"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets hash code.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ContractName_ToBytes_" data-uid="Concordium.Sdk.Types.ContractName.ToBytes*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ContractName_ToBytes" data-uid="Concordium.Sdk.Types.ContractName.ToBytes">
+  ToBytes()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractName.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Copies the init name to a byte array which has the length preprended.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] ToBytes()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_ContractName_TryDeserial_" data-uid="Concordium.Sdk.Types.ContractName.TryDeserial*"></a>
+
+  <h3 id="Concordium_Sdk_Types_ContractName_TryDeserial_System_ReadOnlySpan_System_Byte__System_ValueTuple_Concordium_Sdk_Types_ContractName_System_String___" data-uid="Concordium.Sdk.Types.ContractName.TryDeserial(System.ReadOnlySpan{System.Byte},System.ValueTuple{Concordium.Sdk.Types.ContractName,System.String}@)">
+  TryDeserial(ReadOnlySpan&lt;byte&gt;, out (ContractName? ContractName, string? Error))
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractName.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deserialize an init name from a serialized byte array.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryDeserial(ReadOnlySpan&lt;byte&gt; bytes, out (ContractName? ContractName, string? Error) output)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bytes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</dt>
+    <dd><p>The serialized init name.</p>
+</dd>
+    <dt><code>output</code> (<a class="xref" href="Concordium.Sdk.Types.ContractName.html">ContractName</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-concordium.sdk.types.contractname,system.string-.contractname">ContractName</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-concordium.sdk.types.contractname,system.string-.error">Error</a>)</dt>
+    <dd><p>Where to write the result of the operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Concordium_Sdk_Types_ContractName_TryParse_" data-uid="Concordium.Sdk.Types.ContractName.TryParse*"></a>
 
   <h3 id="Concordium_Sdk_Types_ContractName_TryParse_System_String_System_ValueTuple_Concordium_Sdk_Types_ContractName_System_Nullable_Concordium_Sdk_Types_ContractName_ValidationError____" data-uid="Concordium.Sdk.Types.ContractName.TryParse(System.String,System.ValueTuple{Concordium.Sdk.Types.ContractName,System.Nullable{Concordium.Sdk.Types.ContractName.ValidationError}}@)">
   TryParse(string, out (ContractName? ContractName, ValidationError? Error))
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractName.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractName.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Try parse input name against expected format.</p>
@@ -271,7 +410,7 @@ If parsing failed Error will be not null with first error seen.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractName.cs/#L11" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/ContractName.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
 
