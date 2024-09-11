@@ -71,7 +71,7 @@ public sealed record ReceiveName
         MissingDotSeparator,
         /// <summary> The receive name is more than 100 characters. </summary>
         TooLong,
-        /// <summary> The receive name contained invalid characters. </summary>
+        /// <summary> The receive name contained characters that are not ASCII alphanumeric or ASCII punctuation. </summary>
         InvalidCharacters,
     }
 
