@@ -8,7 +8,7 @@ namespace Concordium.Sdk.Types;
 public interface IBlockHashInput
 {
     /// <summary>
-    /// Convert this into type expected by the gRPC.
+    /// Convert this into the type expected by the gRPC API.
     /// </summary>
     BlockHashInput Into();
 }
@@ -21,7 +21,7 @@ public sealed record Best : IBlockHashInput
     private static readonly Empty _empty = new();
 
     /// <summary>
-    /// Convert this into type expected by the gRPC.
+    /// Convert this into the type expected by the gRPC API.
     /// </summary>
     public BlockHashInput Into() => new()
     {
@@ -38,7 +38,7 @@ public sealed record LastFinal : IBlockHashInput
     private static readonly Empty _empty = new();
 
     /// <summary>
-    /// Convert this into type expected by the gRPC.
+    /// Convert this into the type expected by the gRPC API.
     /// </summary>
     public BlockHashInput Into() => new()
     {
@@ -52,7 +52,7 @@ public sealed record LastFinal : IBlockHashInput
 public sealed record Given(BlockHash BlockHash) : IBlockHashInput
 {
     /// <summary>
-    /// Convert this into type expected by the gRPC.
+    /// Convert this into the type expected by the gRPC API.
     /// </summary>
     public BlockHashInput Into() => new() { Given = this.BlockHash.ToProto() };
 }

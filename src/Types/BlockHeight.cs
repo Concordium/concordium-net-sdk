@@ -8,7 +8,7 @@ namespace Concordium.Sdk.Types;
 public interface IBlockHeight
 {
     /// <summary>
-    /// Convert into a request for blocks at height.
+    /// Convert into a BlocksAtHeightRequest.
     /// </summary>
     BlocksAtHeightRequest Into();
 }
@@ -22,7 +22,7 @@ public sealed record AbsoluteHeight(ulong Height) : IBlockHeight
     internal static AbsoluteHeight From(AbsoluteBlockHeight blockHeight) => new(blockHeight.Value);
 
     /// <summary>
-    /// Convert an AbsoluteHeight into a request for blocks at height.
+    /// Convert an AbsoluteHeight into a BlocksAtHeightRequest.
     /// </summary>
     public BlocksAtHeightRequest Into() =>
         new()
@@ -47,7 +47,7 @@ public sealed record AbsoluteHeight(ulong Height) : IBlockHeight
 public sealed record RelativeHeight(ulong Height, uint GenesisIndex, bool Restrict) : IBlockHeight
 {
     /// <summary>
-    /// Convert an RelativeHeight into a request for blocks at height.
+    /// Convert a RelativeHeight into a BlocksAtHeightRequest.
     /// </summary>
     public BlocksAtHeightRequest Into() =>
         new()
