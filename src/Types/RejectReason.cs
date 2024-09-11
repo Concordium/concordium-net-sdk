@@ -190,7 +190,7 @@ public sealed record RejectedReceive(int RejectReason, ContractAddress ContractA
     Parameter Parameter) : IRejectReason
 {
     /// <summary>
-    /// Deserialize message from <see cref="schema"/>.
+    /// Deserialize message using a <see cref="VersionedModuleSchema"/>.
     /// </summary>
     /// <param name="schema">Versioned module schema.</param>
     /// <returns><see cref="Parameter"/> deserialized as json uft8 encoded.</returns>

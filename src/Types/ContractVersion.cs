@@ -3,11 +3,17 @@ using Concordium.Sdk.Exceptions;
 namespace Concordium.Sdk.Types;
 
 /// <summary>
-/// Contract version.
+/// Smart Contract Module version.
 /// </summary>
 public enum ContractVersion
 {
+    /// <summary>
+    /// Smart Contract Module version 0.
+    /// </summary>
     V0 = 0,
+    /// <summary>
+    /// Smart Contract Module version 1.
+    /// </summary>
     V1 = 1
 }
 

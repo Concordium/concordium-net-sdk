@@ -70,6 +70,24 @@ public sealed record RewardOverviewV0(
 /// <summary>
 /// Reward Overview version 1.
 /// </summary>
+/// <param name="ProtocolVersion">
+/// The active protocol version at the time of this reward overview.
+/// </param>
+/// <param name="TotalAmount">
+/// The total number of CCD in existence at the time of this reward overview.
+/// </param>
+/// <param name="TotalEncryptedAmount">
+/// The total number of encrypted/shielded CCD at the time of this reward overview.
+/// </param>
+/// <param name="BakingRewardAccount">
+/// The amount of CCD in the Baking Reward Account.
+/// </param>
+/// <param name="FinalizationRewardAccount">
+/// The amount of CCD in the Finalization Reward Account.
+/// </param>
+/// <param name="GasAccount">
+/// The amount of CCD in the GAS Account.
+/// </param>
 /// <param name="FoundationTransactionRewards">
 /// The transaction reward fraction accruing to the foundation (to be
 /// paid at next payday).

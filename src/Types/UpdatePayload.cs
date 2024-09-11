@@ -16,28 +16,51 @@ public interface IUpdatePayload
 /// </summary>
 public enum UpdateType
 {
+    /// <summary> Update of protocol version. </summary>
     ProtocolUpdate,
+    /// <summary> Update of the election difficulty. </summary>
     ElectionDifficultyUpdate,
+    /// <summary> Update of conversion rate of Euro per energy. </summary>
     EuroPerEnergyUpdate,
+    /// <summary> Update of conversion rate of CCD per Euro. </summary>
     MicroCcdPerEuroUpdate,
+    /// <summary> Update of account marked as foundation account. </summary>
     FoundationAccountUpdate,
+    /// <summary> Update of distribution of minted CCD. </summary>
     MintDistributionUpdate,
+    /// <summary> Update of distribution of transaction fee. </summary>
     TransactionFeeDistributionUpdate,
+    /// <summary> Update of distribution of GAS rewards. </summary>
     GasRewardsUpdate,
+    /// <summary> Update of minimum threshold for becoming a validator. </summary>
     BakerStakeThresholdUpdate,
+    /// <summary> Introduce new Identity Disclosure Authority. </summary>
     AddAnonymityRevokerUpdate,
+    /// <summary> Introduce new Identity Provider. </summary>
     AddIdentityProviderUpdate,
+    /// <summary> Update of root keys. </summary>
     RootUpdate,
+    /// <summary> Update of level1 keys. </summary>
     Level1Update,
+    /// <summary> Update of level2 keys. </summary>
     Level2Update,
+    /// <summary> Update of pool parameters. </summary>
     PoolParametersCpv1Update,
+    /// <summary> Update of cooldown parameters. </summary>
     CooldownParametersCpv1Update,
+    /// <summary> Update of time parameters. </summary>
     TimeParametersCpv1Update,
+    /// <summary> Update of distribution of minted CCD. </summary>
     MintDistributionCpv1Update,
+    /// <summary> Update of distribution of GAS rewards. </summary>
     GasRewardsCpv2Update,
+    /// <summary> Update of timeout parameters. </summary>
     TimeoutParametersUpdate,
+    /// <summary> Update of min-block-time parameters. </summary>
     MinBlockTimeUpdate,
+    /// <summary> Update of block energy limit parameters. </summary>
     BlockEnergyLimitUpdate,
+    /// <summary> Update of finalization committee parameters. </summary>
     FinalizationCommitteeParametersUpdate,
 }
 

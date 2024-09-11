@@ -15,6 +15,9 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public readonly record struct AccountSequenceNumber
 {
+    /// <summary>
+    /// The number of bytes used to represent this type when serialized.
+    /// </summary>
     public const uint BytesLength = sizeof(ulong);
 
     /// <summary>

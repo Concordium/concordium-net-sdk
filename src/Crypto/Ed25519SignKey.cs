@@ -83,6 +83,7 @@ public sealed record Ed25519SignKey : ISigner, IEquatable<Ed25519SignKey>
         return algorithm.Sign(key, bytes);
     }
 
+    /// <summary> Determines whether one Ed25519SignKey is equal to a second Ed25519SignKey. </summary>
     public bool Equals(Ed25519SignKey? other)
     {
         if (other is null)
@@ -98,5 +99,6 @@ public sealed record Ed25519SignKey : ISigner, IEquatable<Ed25519SignKey>
         return this._value.SequenceEqual(other._value);
     }
 
+    /// <summary> Get hash code for the Ed25519SignKey. </summary>
     public override int GetHashCode() => Helpers.HashCode.GetHashCodeByteArray(this._value);
 }

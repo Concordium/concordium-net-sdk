@@ -17,5 +17,8 @@ public sealed record RawPayload(byte[] Bytes) : AccountTransactionPayload
     /// </summary>
     internal override PayloadSize Size() => new((uint)this.Bytes.Length);
 
+    /// <summary>
+    /// Get the array of bytes representing this payload.
+    /// </summary>
     public override byte[] ToBytes() => this.Bytes;
 }

@@ -8,6 +8,9 @@ namespace Concordium.Sdk.Types;
 /// <param name="Size">Payload size</param>
 public readonly record struct PayloadSize(uint Size)
 {
+    /// <summary>
+    /// Number of bytes used to represent this type when serialized.
+    /// </summary>
     public const uint BytesLength = sizeof(uint);
 
     /// <summary>

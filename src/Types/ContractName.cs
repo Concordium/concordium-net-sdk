@@ -112,9 +112,13 @@ public sealed record ContractName
     /// </summary>
     public enum ValidationError
     {
+        /// <summary> Contract name did not include the mandatory prefix of 'init_'. </summary>
         MissingInitPrefix,
+        /// <summary> The contract name is more than 100 characters. </summary>
         TooLong,
+        /// <summary> The contract name contained the character '.'. </summary>
         ContainsDot,
+        /// <summary> The contract name contains characters that are not alphanumeric ASCII. </summary>
         InvalidCharacters,
     }
 

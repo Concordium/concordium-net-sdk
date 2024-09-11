@@ -279,6 +279,7 @@ public sealed record TransferredToPublic(EncryptedAmountRemovedEvent Removed, Cc
 /// </summary>
 /// <param name="To">Receiver account.</param>
 /// <param name="Amount">The list of releases. Ordered by increasing timestamp.</param>
+/// <param name="Memo">Additional data attached to the transaction.</param>
 public sealed record TransferredWithSchedule
     (AccountAddress To, IList<(DateTimeOffset, CcdAmount)> Amount, OnChainData? Memo) : IAccountTransactionEffects
 {

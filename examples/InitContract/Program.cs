@@ -78,7 +78,7 @@ public static class Program
 
         // Prepare the transaction for signing.
         var sender = account.AccountAddress;
-        var sequenceNumber = client.GetNextAccountSequenceNumber(sender).Item1;
+        var (sequenceNumber, _) = await client.GetNextAccountSequenceNumberAsync(sender);
         var expiry = Expiry.AtMinutesFromNow(30);
         var preparedPayload = payload.Prepare(sender, sequenceNumber, expiry, maxEnergy);
 
@@ -86,7 +86,7 @@ public static class Program
         var signedTrx = preparedPayload.Sign(account);
 
         // Submit the transaction.
-        var txHash = client.SendAccountTransaction(signedTrx);
+        var txHash = await client.SendAccountTransactionAsync(signedTrx);
 
         // Print the transaction hash.
         Console.WriteLine($"Successfully submitted init-contract transaction with hash {txHash}");

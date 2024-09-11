@@ -24,9 +24,11 @@ public sealed class TransactionSigner : ITransactionSigner
     public TransactionSigner() =>
         this._signers = new Dictionary<AccountCredentialIndex, Dictionary<AccountKeyIndex, ISigner>>();
 
+    /// <summary> Get the number of signatures this signer can produce.</summary>
     public byte GetSignatureCount()
         => (byte)this._signers.Values.SelectMany(x => x.Values).Count();
 
+    /// <summary> Get credential-key-map of the signer.</summary>
     public ImmutableDictionary<AccountCredentialIndex, ImmutableDictionary<AccountKeyIndex, ISigner>>
         GetSignerEntries() => this._signers
             .Select(

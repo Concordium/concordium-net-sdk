@@ -5,6 +5,9 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public abstract record Hash : IEquatable<Hash>
 {
+    /// <summary>
+    /// Number of bytes used to represent the hash.
+    /// </summary>
     public const int BytesLength = 32;
 
     /// <summary>
@@ -68,6 +71,9 @@ public abstract record Hash : IEquatable<Hash>
     /// </summary>
     public sealed override string ToString() => Convert.ToHexString(this._value).ToLowerInvariant();
 
+    /// <summary>
+    /// Indicates that two hashes are the same hash.
+    /// </summary>
     public virtual bool Equals(Hash? other)
     {
         if (other is null)
@@ -88,5 +94,8 @@ public abstract record Hash : IEquatable<Hash>
         return this._value.SequenceEqual(other._value);
     }
 
+    /// <summary>
+    /// Get the hash code for a hash.
+    /// </summary>
     public override int GetHashCode() => Helpers.HashCode.GetHashCodeByteArray(this._value);
 }

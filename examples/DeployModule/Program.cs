@@ -61,7 +61,7 @@ public static class Program
 
         // Prepare the transaction for signing.
         var sender = account.AccountAddress;
-        var sequenceNumber = client.GetNextAccountSequenceNumber(sender).Item1;
+        var (sequenceNumber, _) = await client.GetNextAccountSequenceNumberAsync(sender);
         var expiry = Expiry.AtMinutesFromNow(30);
         var preparedTransfer = transferPayload.Prepare(sender, sequenceNumber, expiry);
 
@@ -69,7 +69,7 @@ public static class Program
         var signedTransfer = preparedTransfer.Sign(account);
 
         // Submit the transaction.
-        var txHash = client.SendAccountTransaction(signedTransfer);
+        var txHash = await client.SendAccountTransactionAsync(signedTransfer);
 
         // Print the transaction hash.
         Console.WriteLine($"Successfully submitted transfer transaction with hash {txHash}");

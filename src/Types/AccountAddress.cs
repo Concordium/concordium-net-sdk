@@ -237,7 +237,10 @@ public sealed record AccountAddress : IEquatable<AccountAddress>, IAddress, IAcc
         return true;
     }
 
+    /// <summary> Determines whether one AccountAddress is equal to a second AccountAddress. </summary>
+    /// <remarks> This does not consider two distinct aliases to the same account as equal. </remarks>
     public bool Equals(AccountAddress? other) => other is not null && this._value.SequenceEqual(other._value);
 
+    /// <summary> Get hash code for the AccountAddress. </summary>
     public override int GetHashCode() => Helpers.HashCode.GetHashCodeByteArray(this._value);
 }
