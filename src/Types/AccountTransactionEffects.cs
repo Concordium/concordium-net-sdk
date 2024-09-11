@@ -27,7 +27,7 @@ internal static class AccountTransactionEffectsFactory
                 new AccountTransfer(
                     CcdAmount.From(effects.AccountTransfer.Amount),
                  AccountAddress.From(effects.AccountTransfer.Receiver),
-                    OnChainData.From(effects.AccountTransfer.Memo)),
+                    effects.AccountTransfer.Memo == null ? null : OnChainData.From(effects.AccountTransfer.Memo)),
             Grpc.V2.AccountTransactionEffects.EffectOneofCase.BakerAdded =>
                 new BakerAdded(BakerKeysEvent.From(
                     effects.BakerAdded.KeysEvent),
@@ -45,7 +45,7 @@ internal static class AccountTransactionEffectsFactory
                 new EncryptedAmountTransferred(
                     EncryptedAmountRemovedEvent.From(effects.EncryptedAmountTransferred.Removed),
                     NewEncryptedAmountEvent.From(effects.EncryptedAmountTransferred.Added),
-                    OnChainData.From(effects.EncryptedAmountTransferred.Memo)
+                    effects.EncryptedAmountTransferred.Memo == null ? null : OnChainData.From(effects.EncryptedAmountTransferred.Memo)
                 ),
             Grpc.V2.AccountTransactionEffects.EffectOneofCase.TransferredToEncrypted =>
                 new TransferredToEncrypted(
@@ -57,7 +57,7 @@ internal static class AccountTransactionEffectsFactory
                 new TransferredWithSchedule(
                     AccountAddress.From(effects.TransferredWithSchedule.Receiver),
                     effects.TransferredWithSchedule.Amount.Select(a => (a.Timestamp.ToDateTimeOffset(), a.Amount.ToCcd())).ToList(),
-                    OnChainData.From(effects.TransferredWithSchedule.Memo)
+                    effects.TransferredWithSchedule.Memo == null ? null : OnChainData.From(effects.TransferredWithSchedule.Memo)
                     ),
             Grpc.V2.AccountTransactionEffects.EffectOneofCase.CredentialKeysUpdated =>
                 CredentialKeysUpdated.From(effects.CredentialKeysUpdated),
