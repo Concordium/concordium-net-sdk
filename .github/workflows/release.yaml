@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  RUST_VERSION: 1.68
+  RUST_VERSION: 1.73
 
 jobs:
   build-native-ubuntu:
