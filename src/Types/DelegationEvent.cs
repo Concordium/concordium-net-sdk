@@ -27,7 +27,7 @@ internal static class DelegationEventFactory
                 DelegationAdded.From(delegationEvent.DelegationAdded),
             DelegationEvent.EventOneofCase.DelegationRemoved =>
                 DelegationRemoved.From(delegationEvent.DelegationRemoved),
-            DelegationEvent.EventOneofCase.BakerRemoved => throw new NotImplementedException(),
+            DelegationEvent.EventOneofCase.BakerRemoved => DelegationEventBakerRemoved.From(delegationEvent.BakerRemoved),
             DelegationEvent.EventOneofCase.None =>
                 throw new MissingEnumException<DelegationEvent.EventOneofCase>(delegationEvent.EventCase),
             _ => throw new MissingEnumException<DelegationEvent.EventOneofCase>(delegationEvent.EventCase)
@@ -112,5 +112,17 @@ public sealed record DelegationRemoved(DelegatorId DelegatorId) : IDelegationEve
     internal static DelegationRemoved From(Grpc.V2.DelegatorId id) =>
         new(
             DelegatorId.From(id)
+        );
+}
+
+/// <summary>
+/// A baker was removed.
+/// </summary>
+/// <param name="BakerId">Baker's id</param>
+public sealed record DelegationEventBakerRemoved(BakerId BakerId) : IDelegationEvent
+{
+    internal static DelegationEventBakerRemoved From(DelegationEvent.Types.BakerRemoved removed) =>
+        new(
+            BakerId.From(removed.BakerId)
         );
 }

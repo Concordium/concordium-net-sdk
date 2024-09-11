@@ -5,7 +5,13 @@ namespace Concordium.Sdk.Types;
 /// <summary>
 /// Information related to staking for a specific account.
 /// </summary>
-public interface IAccountStakingInfo { }
+public interface IAccountStakingInfo
+{
+    /// <summary>
+    /// Get the amount of CCD being staked.
+    /// </summary>
+    public CcdAmount GetStakedAmount();
+}
 
 internal static class AccountStakingInfo
 {
@@ -48,6 +54,11 @@ public sealed record AccountBaker(
             StakedAmount: CcdAmount.From(stakeBaker.StakedAmount),
             BakerPoolInfo: BakerPoolInfo.From(stakeBaker.PoolInfo)
         );
+
+    /// <summary>
+    /// Get the amount of CCD being staked.
+    /// </summary>
+    public CcdAmount GetStakedAmount() => this.StakedAmount;
 }
 
 /// <summary>
@@ -67,4 +78,8 @@ public sealed record AccountDelegation(
             DelegationTarget: DelegationTarget.From(stakeDelegator.Target),
             PendingChange: AccountDelegationPendingChangeFactory.From(stakeDelegator.PendingChange)
         );
+    /// <summary>
+    /// Get the amount of CCD being staked.
+    /// </summary>
+    public CcdAmount GetStakedAmount() => this.StakedAmount;
 }
