@@ -9,7 +9,7 @@ on:
 
 env:
   RUST_FMT: nightly-2023-04-01-x86_64-unknown-linux-gnu
-  RUST_CLIPPY: 1.68
+  RUST_CLIPPY: 1.73
 
 jobs:
   rustfmt:
@@ -48,7 +48,7 @@ jobs:
       run: cargo build --manifest-path=./rust-bindings/Cargo.toml --release
 
     - name: Test Rust Project
-      run: cargo test --manifest-path=./rust-bindings/Cargo.toml --release        
+      run: cargo test --manifest-path=./rust-bindings/Cargo.toml --release
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
@@ -58,11 +58,12 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
 
+    - name: Check formatting
+      run: dotnet format --verify-no-changes
+
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore -warnaserror
 
     - name: Test
       run: dotnet test --filter FullyQualifiedName!~IntegrationTests --no-build --verbosity normal
 
-    - name: Check formatting
-      run: dotnet format --verify-no-changes

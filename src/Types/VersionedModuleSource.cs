@@ -140,18 +140,18 @@ public static class VersionedModuleSourceFactory
         var bytes = File.ReadAllBytes(modulePath);
         if (TryDeserial(bytes, out var versionedModule))
         {
-            return versionedModule.VersionedModuleSource;
+            return versionedModule.VersionedModuleSource!;
         }
         else
         {
-            throw new DeserialException(versionedModule.Error);
+            throw new DeserialException(versionedModule.Error!);
         }
     }
 
     /// <summary>
-    /// Create a versioned module schema from a byte array.
+    /// Create a <see cref="VersionedModuleSource" /> from a byte array.
     /// </summary>
-    /// <param name="bytes">The serialized schema.</param>
+    /// <param name="bytes">Span of bytes with the serialized smart contract module</param>
     /// <param name="output">Where to write the result of the operation.</param>
     public static bool TryDeserial(ReadOnlySpan<byte> bytes, out (VersionedModuleSource? VersionedModuleSource, string? Error) output)
     {

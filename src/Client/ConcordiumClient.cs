@@ -812,5 +812,8 @@ public sealed class ConcordiumClient : IDisposable
         return QueryResponse<IAsyncEnumerable<BlockItem>>.From(response, BlockItem.From, token);
     }
 
+    /// <summary>
+    /// Dispose the client
+    /// </summary>
     public void Dispose() => this.Raw.Dispose();
 }

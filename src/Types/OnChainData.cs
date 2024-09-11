@@ -180,15 +180,7 @@ public sealed record OnChainData : IEquatable<OnChainData>
     /// <summary>Gets hash code.</summary>
     public override int GetHashCode() => Helpers.HashCode.GetHashCodeByteArray(this._value);
 
-    internal static OnChainData? From(Grpc.V2.Memo? memo)
-    {
-        if (memo == null || memo.Value.Length == 0)
-        {
-            return null;
-        }
-
-        return From(memo.Value.ToByteArray());
-    }
+    internal static OnChainData From(Grpc.V2.Memo memo) => From(memo.Value.ToByteArray());
 
     internal static OnChainData From(Grpc.V2.RegisteredData registeredData) => From(registeredData.Value.ToByteArray());
 }

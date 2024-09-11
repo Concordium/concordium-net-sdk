@@ -114,12 +114,15 @@ public class WalletAccount : ITransactionSigner
         return From(genesisWallet);
     }
 
+    /// <summary> Get credential-key-map of the account.</summary>
     public ImmutableDictionary<
         AccountCredentialIndex,
         ImmutableDictionary<AccountKeyIndex, ISigner>
     > GetSignerEntries() => this._signer.GetSignerEntries();
 
+    /// <summary> Get the number of signatures included in the AccountSignature when signing using this account.</summary>
     public byte GetSignatureCount() => this._signer.GetSignatureCount();
 
+    /// <summary> Produce an AccountTransactionSignature using this account. </summary>
     public AccountTransactionSignature Sign(byte[] data) => this._signer.Sign(data);
 }

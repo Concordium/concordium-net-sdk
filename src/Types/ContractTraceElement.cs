@@ -75,7 +75,7 @@ public sealed record Updated(
     IList<ContractEvent> Events) : IContractTraceElement
 {
     /// <summary>
-    /// Deserialize message from <see cref="schema"/>.
+    /// Deserialize message using a <see cref="VersionedModuleSchema"/>.
     /// </summary>
     /// <param name="schema">Versioned module schema.</param>
     /// <returns><see cref="Message"/> deserialized as json uft8 encoded.</returns>
@@ -84,13 +84,13 @@ public sealed record Updated(
         GetDeserializeMessage(schema, this.ReceiveName.GetContractName(), this.ReceiveName.GetEntrypoint(), this.Message);
 
     /// <summary>
-    /// Deserialize message from <see cref="schema"/>.
+    /// Deserialize message using a <see cref="VersionedModuleSchema"/>.
     /// </summary>
     /// <param name="schema">Module schema.</param>
     /// <param name="contractIdentifier">Contract name.</param>
     /// <param name="entryPoint">Entrypoint on contract.</param>
     /// <param name="message">Message to entrypoint.</param>
-    /// <returns><see cref="message"/> deserialized as json uft8 encoded.</returns>
+    /// <returns><see cref="Parameter"/> deserialized as json uft8 encoded.</returns>
     /// <exception cref="SchemaJsonException">Thrown when message wasn't able to be deserialized from schema.</exception>
     public static Utf8Json GetDeserializeMessage(
         VersionedModuleSchema schema,
@@ -101,7 +101,7 @@ public sealed record Updated(
         InteropBinding.GetReceiveContractParameter(schema, contractIdentifier, entryPoint, message);
 
     /// <summary>
-    /// Deserialize events from <see cref="schema"/>.
+    /// Deserialize events using a <see cref="VersionedModuleSchema"/>.
     /// </summary>
     /// <param name="schema">Module schema.</param>
     /// <returns>List of deserialized json uft8 encoded events. Possible null if this was returned from deserialization.</returns>
@@ -136,7 +136,7 @@ public sealed record Transferred(ContractAddress From, CcdAmount Amount, Account
 public sealed record Interrupted(ContractAddress Address, IList<ContractEvent> Events) : IContractTraceElement
 {
     /// <summary>
-    /// Deserialize events from <see cref="schema"/>.
+    /// Deserialize events using a <see cref="VersionedModuleSchema"/>.
     /// </summary>
     /// <param name="schema">Module schema.</param>
     /// <param name="contractName">Contract name.</param>

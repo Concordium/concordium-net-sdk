@@ -136,10 +136,17 @@ public readonly record struct CcdAmount
     /// </summary>
     public byte[] ToBytes() => Serialization.ToBytes(this.Value);
 
+    /// <summary>
+    /// Return the largest of two amounts.
+    /// </summary>
+    public static CcdAmount Max(CcdAmount first, CcdAmount second) => first < second ? second : first;
+
+    /// <summary> Determines whether one CcdAmount is less than a second CcdAmount. </summary>
     public static bool operator <(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) < 0;
+    /// <summary> Determines whether one CcdAmount is greater than a second CcdAmount. </summary>
     public static bool operator >(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) > 0;
-
+    /// <summary> Determines whether one CcdAmount is less or equal than a second CcdAmount. </summary>
     public static bool operator <=(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) <= 0;
-
+    /// <summary> Determines whether one CcdAmount is greater or equal than a second CcdAmount. </summary>
     public static bool operator >=(CcdAmount left, CcdAmount right) => left.Value.CompareTo(right.Value) >= 0;
 }

@@ -714,5 +714,8 @@ public sealed class RawClient : IDisposable
         return channelOptions;
     }
 
+    /// <summary>
+    /// Dispose the RawClient.
+    /// </summary>
     public void Dispose() => this._grpcChannel.Dispose();
 }

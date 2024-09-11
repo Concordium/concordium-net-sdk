@@ -27,6 +27,7 @@ internal static class DelegationEventFactory
                 DelegationAdded.From(delegationEvent.DelegationAdded),
             DelegationEvent.EventOneofCase.DelegationRemoved =>
                 DelegationRemoved.From(delegationEvent.DelegationRemoved),
+            DelegationEvent.EventOneofCase.BakerRemoved => throw new NotImplementedException(),
             DelegationEvent.EventOneofCase.None =>
                 throw new MissingEnumException<DelegationEvent.EventOneofCase>(delegationEvent.EventCase),
             _ => throw new MissingEnumException<DelegationEvent.EventOneofCase>(delegationEvent.EventCase)

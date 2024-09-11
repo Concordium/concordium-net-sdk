@@ -51,6 +51,7 @@ internal static class BakerEventFactory
                 ),
             BakerEvent.EventOneofCase.None =>
                 throw new MissingEnumException<BakerEvent.EventOneofCase>(bakerEvent.EventCase),
+            BakerEvent.EventOneofCase.DelegationRemoved => throw new NotImplementedException(),
             _ => throw new MissingEnumException<BakerEvent.EventOneofCase>(bakerEvent.EventCase)
         };
 }

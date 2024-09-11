@@ -10,6 +10,9 @@ namespace Concordium.Sdk.Types;
 /// </summary>
 public readonly record struct Expiry : IEquatable<Expiry>
 {
+    /// <summary>
+    /// Get the number of bytes used to represent an expiry when serialized.
+    /// </summary>
     public const int BytesLength = sizeof(ulong);
 
     /// <summary>
@@ -104,13 +107,17 @@ public readonly record struct Expiry : IEquatable<Expiry>
     public Grpc.V2.TransactionTime ToProto() =>
         new() { Value = (ulong)this._timestamp.ToUnixTimeSeconds() };
 
+    /// <summary> Determines whether one Expiry is less than a second Expiry\. </summary>
     public static bool operator <(Expiry left, Expiry right) => left._timestamp < right._timestamp;
 
+    /// <summary> Determines whether one Expiry is greater than a second Expiry\. </summary>
     public static bool operator >(Expiry left, Expiry right) => left._timestamp > right._timestamp;
 
+    /// <summary> Determines whether one Expiry is less or equal than a second Expiry\. </summary>
     public static bool operator <=(Expiry left, Expiry right) =>
         left._timestamp <= right._timestamp;
 
+    /// <summary> Determines whether one Expiry is greater or equal than a second Expiry\. </summary>
     public static bool operator >=(Expiry left, Expiry right) =>
         left._timestamp >= right._timestamp;
 }

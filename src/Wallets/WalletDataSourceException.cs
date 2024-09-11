@@ -10,11 +10,14 @@ namespace Concordium.Sdk.Wallets;
 /// </summary>
 public class WalletDataSourceException : Exception
 {
+    /// <summary>Initialize instance with no message.</summary>
     public WalletDataSourceException() { }
 
+    /// <summary>Initialize instance with a message.</summary>
     public WalletDataSourceException(string message)
         : base(message) { }
 
+    /// <summary>Initialize instance with a message and a reference to an inner exception.</summary>
     public WalletDataSourceException(string message, Exception inner)
         : base(message, inner) { }
 }

@@ -2,6 +2,9 @@ using Concordium.Sdk.Exceptions;
 
 namespace Concordium.Sdk.Types;
 
+/// <summary>
+/// The status of the baker pool in regards to delegations.
+/// </summary>
 public enum BakerPoolOpenStatus
 {
     /// <summary>

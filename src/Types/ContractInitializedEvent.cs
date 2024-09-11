@@ -41,7 +41,7 @@ public sealed record ContractInitializedEvent(
     }
 
     /// <summary>
-    /// Deserialize events from <see cref="schema"/>.
+    /// Deserialize events using a <see cref="VersionedModuleSchema"/>.
     /// </summary>
     /// <param name="schema">Module schema in hexadecimal.</param>
     /// <returns>List of deserialized json uft8 encoded events. Possible null if this was returned from deserialization.</returns>

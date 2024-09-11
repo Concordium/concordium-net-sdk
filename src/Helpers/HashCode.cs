@@ -5,6 +5,10 @@ namespace Concordium.Sdk.Helpers;
 /// </summary>
 public static class HashCode
 {
+
+    /// <summary>
+    /// Helper for getting a hash code for a byte array.
+    /// </summary>
     public static int GetHashCodeByteArray(byte[] array)
     {
         unchecked

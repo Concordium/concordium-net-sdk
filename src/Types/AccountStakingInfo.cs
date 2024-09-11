@@ -2,6 +2,9 @@ using Concordium.Sdk.Exceptions;
 
 namespace Concordium.Sdk.Types;
 
+/// <summary>
+/// Information related to staking for a specific account.
+/// </summary>
 public interface IAccountStakingInfo { }
 
 internal static class AccountStakingInfo

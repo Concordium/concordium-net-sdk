@@ -31,7 +31,7 @@ public interface ITransactionSigner
     /// <summary>
     /// Sign a transaction hash.
     /// </summary>
-    /// <param name="bytes">A byte array representing the transaction hash to sign.</param>
+    /// <param name="data">A byte array representing the transaction hash to sign.</param>
     /// <returns>A <see cref="AccountTransactionSignature"/> representing the transaction signature.</returns>
     /// <exception cref="ArgumentException">Unexpected length of a signature returned by the signing.</exception>
     public AccountTransactionSignature Sign(byte[] data);

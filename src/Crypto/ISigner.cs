@@ -1,5 +1,6 @@
 namespace Concordium.Sdk.Crypto;
 
+/// <summary> Implementers of this interface hold keys for signing data. </summary>
 public interface ISigner
 {
     /// <summary>

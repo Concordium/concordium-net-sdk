@@ -2,9 +2,12 @@ using Concordium.Sdk.Exceptions;
 
 namespace Concordium.Sdk.Types;
 
+/// <summary>
+/// The target for delegation of stake.
+/// </summary>
 public abstract record DelegationTarget
 {
-    public static DelegationTarget From(Grpc.V2.DelegationTarget stakeDelegatorTarget) =>
+    internal static DelegationTarget From(Grpc.V2.DelegationTarget stakeDelegatorTarget) =>
         stakeDelegatorTarget.TargetCase switch
         {
             Grpc.V2.DelegationTarget.TargetOneofCase.Passive =>
