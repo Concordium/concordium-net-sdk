@@ -377,6 +377,8 @@ public sealed record BakerConfigured(IList<IBakerEvent> Data) : IAccountTransact
                 case BakerStakeIncreasedEvent bakerStakeIncreasedEvent:
                     yield return bakerStakeIncreasedEvent.BakerId;
                     break;
+                case BakerEventDelegationRemoved delegatorId:
+                    break;
                 default:
                     throw new MissingTypeException<IBakerEvent>(bakerEvent);
             }
