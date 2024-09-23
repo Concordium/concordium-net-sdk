@@ -15,7 +15,7 @@ public enum CredentialType
     Initial = 0,
     /// <summary>
     /// A normal credential is one where the identity behind it is only known to
-    /// the owner of the account, unless the identity disclosure process was
+    /// the owner of the account, unless the identity disclosure process
     /// has been initiated.
     /// </summary>
     Normal = 1
