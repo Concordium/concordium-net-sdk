@@ -9,14 +9,14 @@ public enum CredentialType
 {
     /// <summary>
     /// Initial credential is a credential that is submitted by the identity
-    /// provider on behalf of the user. There is only one initial credential
+    /// provider on behalf of the user. There is at most one initial credential
     /// per identity.
     /// </summary>
     Initial = 0,
     /// <summary>
     /// A normal credential is one where the identity behind it is only known to
-    /// the owner of the account, unless the anonymity revocation process was
-    /// followed.
+    /// the owner of the account, unless the identity disclosure process was
+    /// has been initiated.
     /// </summary>
     Normal = 1
 }
