@@ -72,7 +72,7 @@ public enum TransactionType : byte
     /// </summary>
     RegisterData = 21,
     /// <summary>
-    /// Same as transfer but with a memo field.
+    /// Same as transfer, but with a memo field.
     /// </summary>
     TransferWithMemo = 22,
     /// <summary>
