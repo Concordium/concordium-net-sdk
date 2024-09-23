@@ -15,4 +15,10 @@ public sealed record ReleaseSchedule(
         CcdAmount.From(schedule.Total),
         schedule.Schedules.Select(Release.From).ToList()
     );
+
+    /// <summary>
+    /// Construct an empty <see cref="ReleaseSchedule"/>.
+    /// Useful for writing test cases.
+    /// </summary>
+    public static ReleaseSchedule Empty() => new(CcdAmount.Zero, new List<Release>());
 }
