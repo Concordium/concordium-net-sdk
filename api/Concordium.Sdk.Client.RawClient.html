@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/main/apiSpec/new?filename=Concordium_Sdk_Client_RawClient.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Client.RawClient%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/releases/concordium-net-sdk/5.0.0/apiSpec/new?filename=Concordium_Sdk_Client_RawClient.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Client.RawClient%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -73,7 +73,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,7 +85,7 @@
 
 
   <h1 id="Concordium_Sdk_Client_RawClient" data-uid="Concordium.Sdk.Client.RawClient" class="text-break">
-Class RawClient  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L14"><i class="bi bi-code-slash"></i></a>
+Class RawClient  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -159,7 +159,7 @@ Concordium Node gRPC API V2.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_InternalClient" data-uid="Concordium.Sdk.Client.RawClient.InternalClient">
   InternalClient
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The &quot;internal&quot; client instance generated from the Concordium gRPC API V2 protocol buffer definition.</p>
@@ -191,11 +191,11 @@ Concordium Node gRPC API V2.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_Options" data-uid="Concordium.Sdk.Client.RawClient.Options">
   Options
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Options used by the client at initialization.
-Some parameters, like <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Net.Client/GrpcChannelOptions.cs">Credentials</a>, may be set if null when given to constructor.
+Some parameters, like <a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Net.Client/GrpcChannelOptions.cs">Credentials</a>, may be set if null when given to constructor.
 Hence properties in this are not neccessary equal to those given to constructor, but they equals those used for
 client initialization.</p>
 </div>
@@ -230,7 +230,7 @@ client initialization.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_BanPeer_Concordium_Grpc_V2_PeerToBan_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.BanPeer(Concordium.Grpc.V2.PeerToBan,System.Threading.CancellationToken)">
   BanPeer(PeerToBan, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L538"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L538"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Request the node to ban the specified peer. Throws a gRPC exception if the action failed.</p>
@@ -269,7 +269,7 @@ client initialization.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_BanPeerAsync_Concordium_Grpc_V2_PeerToBan_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.BanPeerAsync(Concordium.Grpc.V2.PeerToBan,System.Threading.CancellationToken)">
   BanPeerAsync(PeerToBan, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L544"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L544"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Requests the node to ban the specified peer. Throws a gRPC exception if the action failed.</p>
@@ -290,7 +290,7 @@ client initialization.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -308,10 +308,10 @@ client initialization.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_Dispose" data-uid="Concordium.Sdk.Client.RawClient.Dispose">
   Dispose()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L717"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L720"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+  <div class="markdown level1 summary"><p>Dispose the RawClient.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -335,7 +335,7 @@ client initialization.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_DumpStart_Concordium_Grpc_V2_DumpRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.DumpStart(Concordium.Grpc.V2.DumpRequest,System.Threading.CancellationToken)">
   DumpStart(DumpRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L564"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L564"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Request the node to start dumping network packets into the specified file.
@@ -376,7 +376,7 @@ Returns a gRPC error if the network dump failed to start.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_DumpStartAsync_Concordium_Grpc_V2_DumpRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.DumpStartAsync(Concordium.Grpc.V2.DumpRequest,System.Threading.CancellationToken)">
   DumpStartAsync(DumpRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L572"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L572"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Requests the node to start dumping network packets into the specified file.
@@ -399,7 +399,7 @@ Returns a gRPC error if the network dump failed to start.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -417,7 +417,7 @@ Returns a gRPC error if the network dump failed to start.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_DumpStop_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.DumpStop(System.Threading.CancellationToken)">
   DumpStop(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L580"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L580"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Request the node to stop dumping packets, if configured to do so.
@@ -456,7 +456,7 @@ Throws a gRPC error if the network dump could not be stopped.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_DumpStopAsync_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.DumpStopAsync(System.Threading.CancellationToken)">
   DumpStopAsync(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L587"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L587"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Requests the node to stop dumping packets, if configured to do so.
@@ -477,7 +477,7 @@ Throws a gRPC error if the network dump could not be stopped.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -495,7 +495,7 @@ Throws a gRPC error if the network dump could not be stopped.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetAccountInfo_Concordium_Grpc_V2_AccountInfoRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetAccountInfo(Concordium.Grpc.V2.AccountInfoRequest,System.Threading.CancellationToken)">
   GetAccountInfo(AccountInfoRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L125"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information about an account.</p>
@@ -534,7 +534,7 @@ Throws a gRPC error if the network dump could not be stopped.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetAccountInfoAsync_Concordium_Grpc_V2_AccountInfoRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetAccountInfoAsync(Concordium.Grpc.V2.AccountInfoRequest,System.Threading.CancellationToken)">
   GetAccountInfoAsync(AccountInfoRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L131"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns information about an account.</p>
@@ -555,7 +555,7 @@ Throws a gRPC error if the network dump could not be stopped.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.AccountInfo.html">AccountInfo</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.AccountInfo.html">AccountInfo</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -573,7 +573,7 @@ Throws a gRPC error if the network dump could not be stopped.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetAccountList_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetAccountList(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetAccountList(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L137"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all accounts that exist at the end of a given block.</p>
@@ -594,7 +594,7 @@ Throws a gRPC error if the network dump could not be stopped.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.AccountAddress.html">AccountAddress</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.AccountAddress.html">AccountAddress</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -612,7 +612,7 @@ Throws a gRPC error if the network dump could not be stopped.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetAccountNonFinalizedTransactions_Concordium_Grpc_V2_AccountAddress_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetAccountNonFinalizedTransactions(Concordium.Grpc.V2.AccountAddress,System.Threading.CancellationToken)">
   GetAccountNonFinalizedTransactions(AccountAddress, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L438"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L438"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all hashes of non-finalized transactions for a given account.</p>
@@ -633,7 +633,7 @@ Throws a gRPC error if the network dump could not be stopped.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.TransactionHash.html">TransactionHash</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.TransactionHash.html">TransactionHash</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -651,7 +651,7 @@ Throws a gRPC error if the network dump could not be stopped.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetAncestors_Concordium_Grpc_V2_AncestorsRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetAncestors(Concordium.Grpc.V2.AncestorsRequest,System.Threading.CancellationToken)">
   GetAncestors(AncestorsRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L155"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L155"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get ancestors of a given block.
@@ -676,7 +676,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BlockHash.html">BlockHash</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BlockHash.html">BlockHash</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -694,7 +694,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetAnonymityRevokers_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetAnonymityRevokers(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetAnonymityRevokers(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L431"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L431"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all anonymity revokers registered at the end of a given block.</p>
@@ -715,7 +715,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.ArInfo.html">ArInfo</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.ArInfo.html">ArInfo</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -733,7 +733,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBakerList_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBakerList(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetBakerList(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L294"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L294"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get IDs of all bakers at the end of a given block.</p>
@@ -754,7 +754,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BakerId.html">BakerId</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BakerId.html">BakerId</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -772,7 +772,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBannedPeers_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBannedPeers(System.Threading.CancellationToken)">
   GetBannedPeers(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L524"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L524"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a list of peers banned by the node.</p>
@@ -809,7 +809,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBannedPeersAsync_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBannedPeersAsync(System.Threading.CancellationToken)">
   GetBannedPeersAsync(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L530"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L530"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns a list of peers banned by the node.</p>
@@ -828,7 +828,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BannedPeers.html">BannedPeers</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BannedPeers.html">BannedPeers</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -846,7 +846,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockChainParameters_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockChainParameters(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetBlockChainParameters(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L643"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L643"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get values of block chain parameters in a given block.</p>
@@ -885,7 +885,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockChainParametersAsync_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockChainParametersAsync(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetBlockChainParametersAsync(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L649"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L649"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns values of block chain parameters in a given block.</p>
@@ -906,7 +906,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.ChainParameters.html">ChainParameters</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.ChainParameters.html">ChainParameters</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -924,7 +924,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockFinalizationSummary_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockFinalizationSummary(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetBlockFinalizationSummary(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L655"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L655"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a summary of the finalization data in a given block.</p>
@@ -963,7 +963,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockFinalizationSummaryAsync_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockFinalizationSummaryAsync(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetBlockFinalizationSummaryAsync(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L661"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L661"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns a summary of the finalization data in a given block.</p>
@@ -984,7 +984,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BlockFinalizationSummary.html">BlockFinalizationSummary</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BlockFinalizationSummary.html">BlockFinalizationSummary</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1002,7 +1002,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockInfo_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockInfo(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetBlockInfo(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L282"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L282"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information such as height, timings, and transaction counts for a given block.</p>
@@ -1041,7 +1041,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockInfoAsync_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockInfoAsync(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetBlockInfoAsync(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L288"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L288"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns information such as height, timings, and transaction counts for a given block.</p>
@@ -1062,7 +1062,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BlockInfo.html">BlockInfo</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BlockInfo.html">BlockInfo</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1080,7 +1080,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockItemStatus_Concordium_Grpc_V2_TransactionHash_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockItemStatus(Concordium.Grpc.V2.TransactionHash,System.Threading.CancellationToken)">
   GetBlockItemStatus(TransactionHash, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L257"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L257"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the status of and information about a specific block item (transaction).</p>
@@ -1119,7 +1119,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockItemStatusAsync_Concordium_Grpc_V2_TransactionHash_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockItemStatusAsync(Concordium.Grpc.V2.TransactionHash,System.Threading.CancellationToken)">
   GetBlockItemStatusAsync(TransactionHash, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L263"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L263"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns the status of and information about a specific block item (transaction).</p>
@@ -1140,7 +1140,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BlockItemStatus.html">BlockItemStatus</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BlockItemStatus.html">BlockItemStatus</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1158,7 +1158,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockItems_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockItems(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetBlockItems(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L668"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L668"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the items of a block.</p>
@@ -1179,7 +1179,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BlockItem.html">BlockItem</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BlockItem.html">BlockItem</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1197,7 +1197,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockPendingUpdates_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockPendingUpdates(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetBlockPendingUpdates(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L457"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L457"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all pending updates to chain parameters at the end of a given block.</p>
@@ -1218,7 +1218,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.PendingUpdate.html">PendingUpdate</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.PendingUpdate.html">PendingUpdate</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1236,7 +1236,7 @@ strictly shorter, the last block in the list is the genesis block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockSpecialEvents_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockSpecialEvents(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetBlockSpecialEvents(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L451"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L451"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all special events in a given block.
@@ -1258,7 +1258,7 @@ A special event is protocol generated event that is not directly caused by a tra
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BlockSpecialEvent.html">BlockSpecialEvent</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BlockSpecialEvent.html">BlockSpecialEvent</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1276,7 +1276,7 @@ A special event is protocol generated event that is not directly caused by a tra
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlockTransactionEvents_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBlockTransactionEvents(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetBlockTransactionEvents(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L444"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L444"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all transaction events in a given block.</p>
@@ -1297,7 +1297,7 @@ A special event is protocol generated event that is not directly caused by a tra
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BlockItemSummary.html">BlockItemSummary</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BlockItemSummary.html">BlockItemSummary</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1315,7 +1315,7 @@ A special event is protocol generated event that is not directly caused by a tra
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlocks_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBlocks(System.Threading.CancellationToken)">
   GetBlocks(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L108"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Process a stream of blocks that arrive from the time the query is made onward.
@@ -1336,7 +1336,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.ArrivedBlockInfo.html">ArrivedBlockInfo</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.ArrivedBlockInfo.html">ArrivedBlockInfo</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1354,7 +1354,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlocksAtHeight_Concordium_Grpc_V2_BlocksAtHeightRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBlocksAtHeight(Concordium.Grpc.V2.BlocksAtHeightRequest,System.Threading.CancellationToken)">
   GetBlocksAtHeight(BlocksAtHeightRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L325"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L325"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a list of live blocks at a given height.</p>
@@ -1393,7 +1393,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBlocksAtHeightAsync_Concordium_Grpc_V2_BlocksAtHeightRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBlocksAtHeightAsync(Concordium.Grpc.V2.BlocksAtHeightRequest,System.Threading.CancellationToken)">
   GetBlocksAtHeightAsync(BlocksAtHeightRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L331"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L331"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns a list of live blocks at a given height.</p>
@@ -1414,7 +1414,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BlocksAtHeightResponse.html">BlocksAtHeightResponse</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.BlocksAtHeightResponse.html">BlocksAtHeightResponse</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1432,7 +1432,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBranches_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBranches(System.Threading.CancellationToken)">
   GetBranches(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L401"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L401"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the current branches of blocks starting from and including the last finalized block.</p>
@@ -1469,7 +1469,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetBranchesAsync_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetBranchesAsync(System.Threading.CancellationToken)">
   GetBranchesAsync(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L407"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L407"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns the current branches of blocks starting from and including the last finalized block.</p>
@@ -1488,7 +1488,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.Branch.html">Branch</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.Branch.html">Branch</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1506,7 +1506,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetConsensusInfo_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetConsensusInfo(System.Threading.CancellationToken)">
   GetConsensusInfo(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L244"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L244"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information about the current state of consensus.</p>
@@ -1543,7 +1543,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetConsensusInfoAsync_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetConsensusInfoAsync(System.Threading.CancellationToken)">
   GetConsensusInfoAsync(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L250"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L250"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns information about the current state of consensus.</p>
@@ -1562,7 +1562,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.ConsensusInfo.html">ConsensusInfo</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.ConsensusInfo.html">ConsensusInfo</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1580,7 +1580,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetCryptographicParameters_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetCryptographicParameters(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetCryptographicParameters(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L269"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L269"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get cryptographic parameters in a given block.</p>
@@ -1619,7 +1619,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetCryptographicParametersAsync_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetCryptographicParametersAsync(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetCryptographicParametersAsync(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L275"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L275"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns the cryptographic parameters in a given block.</p>
@@ -1640,7 +1640,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.CryptographicParameters.html">CryptographicParameters</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.CryptographicParameters.html">CryptographicParameters</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1658,7 +1658,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetElectionInfo_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetElectionInfo(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetElectionInfo(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L413"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L413"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information related to the baker election for a particular block.</p>
@@ -1697,7 +1697,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetElectionInfoAsync_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetElectionInfoAsync(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetElectionInfoAsync(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L419"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L419"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns information related to the baker election for a particular block.</p>
@@ -1718,7 +1718,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.ElectionInfo.html">ElectionInfo</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.ElectionInfo.html">ElectionInfo</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1736,7 +1736,7 @@ and that blocks may be skipped if the client is unable to keep up with the strea
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetFinalizedBlocks_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetFinalizedBlocks(System.Threading.CancellationToken)">
   GetFinalizedBlocks(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L118"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Process a stream of blocks that are finalized from the time the query is made onward.
@@ -1758,7 +1758,7 @@ however blocks are guaranteed to arrive in order of increasing block height.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.FinalizedBlockInfo.html">FinalizedBlockInfo</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.FinalizedBlockInfo.html">FinalizedBlockInfo</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1776,7 +1776,7 @@ however blocks are guaranteed to arrive in order of increasing block height.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetIdentityProviders_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetIdentityProviders(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetIdentityProviders(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L425"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L425"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all identity providers registered at the end of a given block.</p>
@@ -1797,7 +1797,7 @@ however blocks are guaranteed to arrive in order of increasing block height.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.IpInfo.html">IpInfo</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.IpInfo.html">IpInfo</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1815,7 +1815,7 @@ however blocks are guaranteed to arrive in order of increasing block height.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetInstanceInfo_Concordium_Grpc_V2_InstanceInfoRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetInstanceInfo(Concordium.Grpc.V2.InstanceInfoRequest,System.Threading.CancellationToken)">
   GetInstanceInfo(InstanceInfoRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L182"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L182"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information about a smart contract instance as it appears at the end of a
@@ -1855,7 +1855,7 @@ given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetInstanceInfoAsync_Concordium_Grpc_V2_InstanceInfoRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetInstanceInfoAsync(Concordium.Grpc.V2.InstanceInfoRequest,System.Threading.CancellationToken)">
   GetInstanceInfoAsync(InstanceInfoRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L189"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns information about a smart contract instance as it
@@ -1877,7 +1877,7 @@ appears at the end of a given block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.InstanceInfo.html">InstanceInfo</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.InstanceInfo.html">InstanceInfo</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1895,7 +1895,7 @@ appears at the end of a given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetInstanceList_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetInstanceList(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetInstanceList(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L174"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L174"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the addresses of all smart contract instances in a given block.</p>
@@ -1916,7 +1916,7 @@ appears at the end of a given block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.ContractAddress.html">ContractAddress</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.ContractAddress.html">ContractAddress</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1934,7 +1934,7 @@ appears at the end of a given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetInstanceState_Concordium_Grpc_V2_InstanceInfoRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetInstanceState(Concordium.Grpc.V2.InstanceInfoRequest,System.Threading.CancellationToken)">
   GetInstanceState(InstanceInfoRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L196"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L196"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get key-value pairs representing the entire state of a specific contract instance in a given block.
@@ -1956,7 +1956,7 @@ The resulting sequence consists of key-value pairs ordered lexicographically acc
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.InstanceStateKVPair.html">InstanceStateKVPair</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.InstanceStateKVPair.html">InstanceStateKVPair</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1974,7 +1974,7 @@ The resulting sequence consists of key-value pairs ordered lexicographically acc
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetModuleList_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetModuleList(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetModuleList(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L144"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L144"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all smart contract modules that exist at the end of a given block.</p>
@@ -1995,7 +1995,7 @@ The resulting sequence consists of key-value pairs ordered lexicographically acc
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.ModuleRef.html">ModuleRef</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.ModuleRef.html">ModuleRef</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -2013,7 +2013,7 @@ The resulting sequence consists of key-value pairs ordered lexicographically acc
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetModuleSource_Concordium_Grpc_V2_ModuleSourceRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetModuleSource(Concordium.Grpc.V2.ModuleSourceRequest,System.Threading.CancellationToken)">
   GetModuleSource(ModuleSourceRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L162"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L162"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the source of a smart contract module.</p>
@@ -2052,7 +2052,7 @@ The resulting sequence consists of key-value pairs ordered lexicographically acc
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetModuleSourceAsync_Concordium_Grpc_V2_ModuleSourceRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetModuleSourceAsync(Concordium.Grpc.V2.ModuleSourceRequest,System.Threading.CancellationToken)">
   GetModuleSourceAsync(ModuleSourceRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L168"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L168"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns the source of a smart contract module.</p>
@@ -2073,7 +2073,7 @@ The resulting sequence consists of key-value pairs ordered lexicographically acc
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.VersionedModuleSource.html">VersionedModuleSource</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.VersionedModuleSource.html">VersionedModuleSource</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -2091,7 +2091,7 @@ The resulting sequence consists of key-value pairs ordered lexicographically acc
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetNextAccountSequenceNumber_Concordium_Grpc_V2_AccountAddress_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetNextAccountSequenceNumber(Concordium.Grpc.V2.AccountAddress,System.Threading.CancellationToken)">
   GetNextAccountSequenceNumber(AccountAddress, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L225"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L225"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the best guess as to what the next account sequence number (nonce) should be
@@ -2134,7 +2134,7 @@ committed to blocks and eventually finalized.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetNextAccountSequenceNumberAsync_Concordium_Grpc_V2_AccountAddress_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetNextAccountSequenceNumberAsync(Concordium.Grpc.V2.AccountAddress,System.Threading.CancellationToken)">
   GetNextAccountSequenceNumberAsync(AccountAddress, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L235"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L235"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns the best guess as to what the next account sequence number (nonce)
@@ -2159,7 +2159,7 @@ committed to blocks and eventually finalized.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.NextAccountSequenceNumber.html">NextAccountSequenceNumber</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.NextAccountSequenceNumber.html">NextAccountSequenceNumber</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -2177,7 +2177,7 @@ committed to blocks and eventually finalized.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetNextUpdateSequenceNumbers_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetNextUpdateSequenceNumbers(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetNextUpdateSequenceNumbers(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L463"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L463"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get next available sequence numbers for updating chain parameters after a given block.</p>
@@ -2216,7 +2216,7 @@ committed to blocks and eventually finalized.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetNextUpdateSequenceNumbersAsync_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetNextUpdateSequenceNumbersAsync(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetNextUpdateSequenceNumbersAsync(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L469"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L469"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns the next available sequence numbers for updating chain parameters after a given block.</p>
@@ -2237,7 +2237,7 @@ committed to blocks and eventually finalized.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.NextUpdateSequenceNumbers.html">NextUpdateSequenceNumbers</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.NextUpdateSequenceNumbers.html">NextUpdateSequenceNumbers</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -2255,7 +2255,7 @@ committed to blocks and eventually finalized.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetNodeInfo_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetNodeInfo(System.Threading.CancellationToken)">
   GetNodeInfo(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L605"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L605"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information about the node.</p>
@@ -2292,7 +2292,7 @@ committed to blocks and eventually finalized.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetNodeInfoAsync_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetNodeInfoAsync(System.Threading.CancellationToken)">
   GetNodeInfoAsync(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L611"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L611"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns information about the node.</p>
@@ -2311,7 +2311,7 @@ committed to blocks and eventually finalized.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.NodeInfo.html">NodeInfo</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.NodeInfo.html">NodeInfo</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -2329,7 +2329,7 @@ committed to blocks and eventually finalized.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPassiveDelegationInfo_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetPassiveDelegationInfo(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetPassiveDelegationInfo(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L312"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L312"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information about the passive delegators at the end of a given block.</p>
@@ -2368,7 +2368,7 @@ committed to blocks and eventually finalized.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPassiveDelegationInfoAsync_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetPassiveDelegationInfoAsync(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetPassiveDelegationInfoAsync(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L318"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L318"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns information about the passive delegators at the end of a given block.</p>
@@ -2389,7 +2389,7 @@ committed to blocks and eventually finalized.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.PassiveDelegationInfo.html">PassiveDelegationInfo</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.PassiveDelegationInfo.html">PassiveDelegationInfo</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -2407,7 +2407,7 @@ committed to blocks and eventually finalized.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPassiveDelegators_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetPassiveDelegators(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetPassiveDelegators(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L382"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L382"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all registered passive delegators at the end of a given block.</p>
@@ -2428,7 +2428,7 @@ committed to blocks and eventually finalized.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.DelegatorInfo.html">DelegatorInfo</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.DelegatorInfo.html">DelegatorInfo</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -2446,7 +2446,7 @@ committed to blocks and eventually finalized.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPassiveDelegatorsRewardPeriod_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetPassiveDelegatorsRewardPeriod(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetPassiveDelegatorsRewardPeriod(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L392"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L392"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all fixed passive delegators for the reward period of a given block.
@@ -2470,7 +2470,7 @@ stake in the reward period containing the given block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.DelegatorRewardPeriodInfo.html">DelegatorRewardPeriodInfo</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.DelegatorRewardPeriodInfo.html">DelegatorRewardPeriodInfo</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -2488,7 +2488,7 @@ stake in the reward period containing the given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPeersInfo_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetPeersInfo(System.Threading.CancellationToken)">
   GetPeersInfo(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L593"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L593"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a list of the peers that the node is connected to as well as network-related information for each such peer.</p>
@@ -2525,7 +2525,7 @@ stake in the reward period containing the given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPeersInfoAsync_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetPeersInfoAsync(System.Threading.CancellationToken)">
   GetPeersInfoAsync(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L599"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L599"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns a list of the peers that the node is connected to as well as network-related information for each such peer.</p>
@@ -2544,7 +2544,7 @@ stake in the reward period containing the given block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.PeersInfo.html">PeersInfo</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.PeersInfo.html">PeersInfo</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -2562,7 +2562,7 @@ stake in the reward period containing the given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPoolDelegators_Concordium_Grpc_V2_GetPoolDelegatorsRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetPoolDelegators(Concordium.Grpc.V2.GetPoolDelegatorsRequest,System.Threading.CancellationToken)">
   GetPoolDelegators(GetPoolDelegatorsRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L363"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L363"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all registered delegators of a given pool at the end of a given block.</p>
@@ -2583,7 +2583,7 @@ stake in the reward period containing the given block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.DelegatorInfo.html">DelegatorInfo</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.DelegatorInfo.html">DelegatorInfo</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -2601,7 +2601,7 @@ stake in the reward period containing the given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPoolDelegatorsRewardPeriod_Concordium_Grpc_V2_GetPoolDelegatorsRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetPoolDelegatorsRewardPeriod(Concordium.Grpc.V2.GetPoolDelegatorsRequest,System.Threading.CancellationToken)">
   GetPoolDelegatorsRewardPeriod(GetPoolDelegatorsRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L373"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L373"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get all fixed delegators of a given pool for the reward period of a given block.
@@ -2625,7 +2625,7 @@ in the reward period containing the given block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.DelegatorRewardPeriodInfo.html">DelegatorRewardPeriodInfo</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncServerStreamingCall.cs">AsyncServerStreamingCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.DelegatorRewardPeriodInfo.html">DelegatorRewardPeriodInfo</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -2643,7 +2643,7 @@ in the reward period containing the given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPoolInfo_Concordium_Grpc_V2_PoolInfoRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetPoolInfo(Concordium.Grpc.V2.PoolInfoRequest,System.Threading.CancellationToken)">
   GetPoolInfo(PoolInfoRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L300"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L300"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information about a given pool at the end of a given block.</p>
@@ -2682,7 +2682,7 @@ in the reward period containing the given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetPoolInfoAsync_Concordium_Grpc_V2_PoolInfoRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetPoolInfoAsync(Concordium.Grpc.V2.PoolInfoRequest,System.Threading.CancellationToken)">
   GetPoolInfoAsync(PoolInfoRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L306"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L306"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns information about a given pool at the end of a given block.</p>
@@ -2703,7 +2703,7 @@ in the reward period containing the given block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.PoolInfoResponse.html">PoolInfoResponse</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.PoolInfoResponse.html">PoolInfoResponse</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -2721,7 +2721,7 @@ in the reward period containing the given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetTokenomicsInfo_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetTokenomicsInfo(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetTokenomicsInfo(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L337"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L337"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get information about tokenomics at the end of a given block.</p>
@@ -2760,7 +2760,7 @@ in the reward period containing the given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_GetTokenomicsInfoAsync_Concordium_Grpc_V2_BlockHashInput_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.GetTokenomicsInfoAsync(Concordium.Grpc.V2.BlockHashInput,System.Threading.CancellationToken)">
   GetTokenomicsInfoAsync(BlockHashInput, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L343"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L343"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns information about tokenomics at the end of a given block.</p>
@@ -2781,7 +2781,7 @@ in the reward period containing the given block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.TokenomicsInfo.html">TokenomicsInfo</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.TokenomicsInfo.html">TokenomicsInfo</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -2799,7 +2799,7 @@ in the reward period containing the given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_InstanceStateLookup_Concordium_Grpc_V2_InstanceStateLookupRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.InstanceStateLookup(Concordium.Grpc.V2.InstanceStateLookupRequest,System.Threading.CancellationToken)">
   InstanceStateLookup(InstanceStateLookupRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L205"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L205"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the value at a specific key of a contract state. In contrast to
@@ -2840,7 +2840,7 @@ the specific key to look up in advance.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_InstanceStateLookupAsync_Concordium_Grpc_V2_InstanceStateLookupRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.InstanceStateLookupAsync(Concordium.Grpc.V2.InstanceStateLookupRequest,System.Threading.CancellationToken)">
   InstanceStateLookupAsync(InstanceStateLookupRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L213"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L213"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns the value at a specific key of a contract state. In contrast to
@@ -2863,7 +2863,7 @@ the specific key to look up in advance.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.InstanceStateValueAtKey.html">InstanceStateValueAtKey</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.InstanceStateValueAtKey.html">InstanceStateValueAtKey</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -2881,7 +2881,7 @@ the specific key to look up in advance.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_InvokeInstance_Concordium_Grpc_V2_InvokeInstanceRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.InvokeInstance(Concordium.Grpc.V2.InvokeInstanceRequest,System.Threading.CancellationToken)">
   InvokeInstance(InvokeInstanceRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L350"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L350"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Instructs the node to run a smart contract entrypoint in the given context and
@@ -2921,7 +2921,7 @@ state at the end of a given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_InvokeInstanceAsync_Concordium_Grpc_V2_InvokeInstanceRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.InvokeInstanceAsync(Concordium.Grpc.V2.InvokeInstanceRequest,System.Threading.CancellationToken)">
   InvokeInstanceAsync(InvokeInstanceRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L357"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L357"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Instructs the node to run a smart contract entrypoint in the given context and
@@ -2943,7 +2943,7 @@ state at the end of a given block.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.InvokeInstanceResponse.html">InvokeInstanceResponse</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.InvokeInstanceResponse.html">InvokeInstanceResponse</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -2961,7 +2961,7 @@ state at the end of a given block.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_PeerConnect_Concordium_Grpc_V2_IpSocketAddress_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.PeerConnect(Concordium.Grpc.V2.IpSocketAddress,System.Threading.CancellationToken)">
   PeerConnect(IpSocketAddress, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L492"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L492"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Request that the node connect to the peer with the specified details.
@@ -3003,7 +3003,7 @@ instantly, in which case the call will still succeed.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_PeerConnectAsync_Concordium_Grpc_V2_IpSocketAddress_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.PeerConnectAsync(Concordium.Grpc.V2.IpSocketAddress,System.Threading.CancellationToken)">
   PeerConnectAsync(IpSocketAddress, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L502"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L502"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Requests that the node connect to the peer with
@@ -3028,7 +3028,7 @@ instantly, in which case the call will still succeed.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -3046,7 +3046,7 @@ instantly, in which case the call will still succeed.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_PeerDisconnect_Concordium_Grpc_V2_IpSocketAddress_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.PeerDisconnect(Concordium.Grpc.V2.IpSocketAddress,System.Threading.CancellationToken)">
   PeerDisconnect(IpSocketAddress, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L510"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L510"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Request the node to disconnect from the peer with the specified details.
@@ -3087,7 +3087,7 @@ Otherwise a gRPC exception is returned.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_PeerDisconnectAsync_Concordium_Grpc_V2_IpSocketAddress_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.PeerDisconnectAsync(Concordium.Grpc.V2.IpSocketAddress,System.Threading.CancellationToken)">
   PeerDisconnectAsync(IpSocketAddress, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L518"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L518"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Requests the node to disconnect from the peer with the specified
@@ -3110,7 +3110,7 @@ Otherwise a gRPC exception is returned.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -3128,7 +3128,7 @@ Otherwise a gRPC exception is returned.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_SendBlockItem_Concordium_Grpc_V2_SendBlockItemRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.SendBlockItem(Concordium.Grpc.V2.SendBlockItemRequest,System.Threading.CancellationToken)">
   SendBlockItem(SendBlockItemRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L624"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L624"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Send a block item to the node. A block item is either an account transaction,
@@ -3173,7 +3173,7 @@ the governance committee.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_SendBlockItemAsync_Concordium_Grpc_V2_SendBlockItemRequest_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.SendBlockItemAsync(Concordium.Grpc.V2.SendBlockItemRequest,System.Threading.CancellationToken)">
   SendBlockItemAsync(SendBlockItemRequest, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L637"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L637"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Send a block item to the node. A block item is either an
@@ -3200,7 +3200,7 @@ can only be sent by the governance committee.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.TransactionHash.html">TransactionHash</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.TransactionHash.html">TransactionHash</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -3218,7 +3218,7 @@ can only be sent by the governance committee.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_Shutdown_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.Shutdown(System.Threading.CancellationToken)">
   Shutdown(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L478"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L478"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Request that the node shut down. Throws an exception if the shutdown failed.</p>
@@ -3255,7 +3255,7 @@ can only be sent by the governance committee.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_ShutdownAsync_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.ShutdownAsync(System.Threading.CancellationToken)">
   ShutdownAsync(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L483"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L483"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Requests that the node shut down. Throws an exception if the shutdown failed.</p>
@@ -3274,7 +3274,7 @@ can only be sent by the governance committee.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -3292,7 +3292,7 @@ can only be sent by the governance committee.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_UnbanPeer_Concordium_Grpc_V2_BannedPeer_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.UnbanPeer(Concordium.Grpc.V2.BannedPeer,System.Threading.CancellationToken)">
   UnbanPeer(BannedPeer, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L550"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L550"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Request the node to unban the specified peer. Throws a gRPC error if the action failed.</p>
@@ -3331,7 +3331,7 @@ can only be sent by the governance committee.</p>
 
   <h3 id="Concordium_Sdk_Client_RawClient_UnbanPeerAsync_Concordium_Grpc_V2_BannedPeer_System_Threading_CancellationToken_" data-uid="Concordium.Sdk.Client.RawClient.UnbanPeerAsync(Concordium.Grpc.V2.BannedPeer,System.Threading.CancellationToken)">
   UnbanPeerAsync(BannedPeer, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L556"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L556"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Requests the node to unban the specified peer. Throws a gRPC error if the action failed.</p>
@@ -3352,7 +3352,7 @@ can only be sent by the governance committee.</p>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/main/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a>&gt;</dt>
+    <dt><a class="xref" href="https://github.com/grpc/grpc-dotnet/blob/releases/concordium-net-sdk/5.0.0/src/Grpc.Core.Api/AsyncUnaryCall.cs">AsyncUnaryCall</a>&lt;<a class="xref" href="Concordium.Grpc.V2.Empty.html">Empty</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -3370,7 +3370,7 @@ can only be sent by the governance committee.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Client/RawClient.cs/#L14" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Client/RawClient.cs/#L14" class="edit-link">Edit this page</a>
         </div>
 
 

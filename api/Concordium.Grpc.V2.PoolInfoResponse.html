@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class PoolInfoResponse ">
       
-      <meta name="description" content="Type for the response of GetPoolInfo. Contains information about a given pool at the end of a given block.">
+      <meta name="description" content="Type for the response of GetPoolInfo. Contains information about a given pool at the end of a given block. From protocol version 7, pool removal has immediate effect, however, the pool may still be present for the current (and possibly next) reward period. In this case, the current_payday_info field will be set, but the equity_capital, delegated_capital, delegated_capital_cap and, pool_info fields will all be absent. The equity_pending_change field will also be absent, as stake changes are immediate.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/main/apiSpec/new?filename=Concordium_Grpc_V2_PoolInfoResponse.md&amp;value=---%0Auid%3A%20Concordium.Grpc.V2.PoolInfoResponse%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/releases/concordium-net-sdk/5.0.0/apiSpec/new?filename=Concordium_Grpc_V2_PoolInfoResponse.md&amp;value=---%0Auid%3A%20Concordium.Grpc.V2.PoolInfoResponse%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -73,7 +73,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,7 +85,7 @@
 
 
   <h1 id="Concordium_Grpc_V2_PoolInfoResponse" data-uid="Concordium.Grpc.V2.PoolInfoResponse" class="text-break">
-Class PoolInfoResponse  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60325"><i class="bi bi-code-slash"></i></a>
+Class PoolInfoResponse  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61280"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -94,7 +94,13 @@ Class PoolInfoResponse  <a class="header-action link-secondary" title="View sour
   </div>
 
   <div class="markdown summary"><p>Type for the response of GetPoolInfo.
-Contains information about a given pool at the end of a given block.</p>
+Contains information about a given pool at the end of a given block.
+From protocol version 7, pool removal has immediate effect, however, the
+pool may still be present for the current (and possibly next) reward period.
+In this case, the <code>current_payday_info</code> field will be set, but the
+<code>equity_capital</code>, <code>delegated_capital</code>, <code>delegated_capital_cap</code> and,
+<code>pool_info</code> fields will all be absent. The <code>equity_pending_change</code> field
+will also be absent, as stake changes are immediate.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -152,7 +158,7 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse__ctor" data-uid="Concordium.Grpc.V2.PoolInfoResponse.#ctor">
   PoolInfoResponse()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60348"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61303"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -178,7 +184,7 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse__ctor_Concordium_Grpc_V2_PoolInfoResponse_" data-uid="Concordium.Grpc.V2.PoolInfoResponse.#ctor(Concordium.Grpc.V2.PoolInfoResponse)">
   PoolInfoResponse(PoolInfoResponse)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60356"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61311"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -212,7 +218,7 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_AddressFieldNumber" data-uid="Concordium.Grpc.V2.PoolInfoResponse.AddressFieldNumber">
   AddressFieldNumber
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60393"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61348"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Field number for the &quot;address&quot; field.</p>
@@ -243,7 +249,7 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_AllPoolTotalCapitalFieldNumber" data-uid="Concordium.Grpc.V2.PoolInfoResponse.AllPoolTotalCapitalFieldNumber">
   AllPoolTotalCapitalFieldNumber
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60498"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61456"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Field number for the &quot;all_pool_total_capital&quot; field.</p>
@@ -274,7 +280,7 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_BakerFieldNumber" data-uid="Concordium.Grpc.V2.PoolInfoResponse.BakerFieldNumber">
   BakerFieldNumber
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60378"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61333"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Field number for the &quot;baker&quot; field.</p>
@@ -305,7 +311,7 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_CurrentPaydayInfoFieldNumber" data-uid="Concordium.Grpc.V2.PoolInfoResponse.CurrentPaydayInfoFieldNumber">
   CurrentPaydayInfoFieldNumber
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60483"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61441"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Field number for the &quot;current_payday_info&quot; field.</p>
@@ -336,7 +342,7 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_DelegatedCapitalCapFieldNumber" data-uid="Concordium.Grpc.V2.PoolInfoResponse.DelegatedCapitalCapFieldNumber">
   DelegatedCapitalCapFieldNumber
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60438"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61393"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Field number for the &quot;delegated_capital_cap&quot; field.</p>
@@ -367,7 +373,7 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_DelegatedCapitalFieldNumber" data-uid="Concordium.Grpc.V2.PoolInfoResponse.DelegatedCapitalFieldNumber">
   DelegatedCapitalFieldNumber
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60423"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61378"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Field number for the &quot;delegated_capital&quot; field.</p>
@@ -398,7 +404,7 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_EquityCapitalFieldNumber" data-uid="Concordium.Grpc.V2.PoolInfoResponse.EquityCapitalFieldNumber">
   EquityCapitalFieldNumber
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60408"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61363"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Field number for the &quot;equity_capital&quot; field.</p>
@@ -429,7 +435,7 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_EquityPendingChangeFieldNumber" data-uid="Concordium.Grpc.V2.PoolInfoResponse.EquityPendingChangeFieldNumber">
   EquityPendingChangeFieldNumber
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60468"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61425"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Field number for the &quot;equity_pending_change&quot; field.</p>
@@ -460,7 +466,7 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_PoolInfoFieldNumber" data-uid="Concordium.Grpc.V2.PoolInfoResponse.PoolInfoFieldNumber">
   PoolInfoFieldNumber
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60453"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61409"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Field number for the &quot;pool_info&quot; field.</p>
@@ -496,7 +502,7 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_Address" data-uid="Concordium.Grpc.V2.PoolInfoResponse.Address">
   Address
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60398"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61353"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The account address of the pool owner.</p>
@@ -528,7 +534,7 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_AllPoolTotalCapital" data-uid="Concordium.Grpc.V2.PoolInfoResponse.AllPoolTotalCapital">
   AllPoolTotalCapital
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60503"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61461"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Total capital staked across all pools, including passive delegation.</p>
@@ -560,7 +566,7 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_Baker" data-uid="Concordium.Grpc.V2.PoolInfoResponse.Baker">
   Baker
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60383"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61338"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The 'BakerId' of the pool owner.</p>
@@ -592,7 +598,7 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_CurrentPaydayInfo" data-uid="Concordium.Grpc.V2.PoolInfoResponse.CurrentPaydayInfo">
   CurrentPaydayInfo
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60488"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61446"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Information of the pool in the current reward period.</p>
@@ -624,10 +630,10 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_DelegatedCapital" data-uid="Concordium.Grpc.V2.PoolInfoResponse.DelegatedCapital">
   DelegatedCapital
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60428"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61383"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The capital delegated to the pool by other accounts.</p>
+  <div class="markdown level1 summary"><p>The capital delegated to the pool by other accounts. Absent if the pool is removed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -656,10 +662,11 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_DelegatedCapitalCap" data-uid="Concordium.Grpc.V2.PoolInfoResponse.DelegatedCapitalCap">
   DelegatedCapitalCap
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60443"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61399"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The maximum amount that may be delegated to the pool, accounting for leverage and stake limits.</p>
+  <div class="markdown level1 summary"><p>The maximum amount that may be delegated to the pool, accounting for leverage and stake limits.
+Absent if the pool is removed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -688,7 +695,7 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_Descriptor" data-uid="Concordium.Grpc.V2.PoolInfoResponse.Descriptor">
   Descriptor
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60336"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61291"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -719,10 +726,10 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_EquityCapital" data-uid="Concordium.Grpc.V2.PoolInfoResponse.EquityCapital">
   EquityCapital
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60413"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61368"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The equity capital provided by the pool owner.</p>
+  <div class="markdown level1 summary"><p>The equity capital provided by the pool owner. Absent if the pool is removed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -751,10 +758,11 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_EquityPendingChange" data-uid="Concordium.Grpc.V2.PoolInfoResponse.EquityPendingChange">
   EquityPendingChange
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60473"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61431"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Any pending change to the equity carpital.</p>
+  <div class="markdown level1 summary"><p>Any pending change to the equity capital.
+This is not used from protocol version 7 onwards, as stake changes are immediate.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -783,7 +791,7 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_Parser" data-uid="Concordium.Grpc.V2.PoolInfoResponse.Parser">
   Parser
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60332"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61287"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -814,10 +822,11 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_PoolInfo" data-uid="Concordium.Grpc.V2.PoolInfoResponse.PoolInfo">
   PoolInfo
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60458"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61415"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The pool info associated with the pool: open status, metadata URL and commission rates.</p>
+  <div class="markdown level1 summary"><p>The pool info associated with the pool: open status, metadata URL and commission rates.
+Absent if the pool is removed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -850,7 +859,7 @@ Contains information about a given pool at the end of a given block.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_CalculateSize" data-uid="Concordium.Grpc.V2.PoolInfoResponse.CalculateSize">
   CalculateSize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60658"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61616"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Calculates the size of this message in Protocol Buffer wire format, in bytes.</p>
@@ -884,7 +893,7 @@ to a coded output stream.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_Clone" data-uid="Concordium.Grpc.V2.PoolInfoResponse.Clone">
   Clone()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60371"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61326"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates a deep clone of this object.</p>
@@ -917,7 +926,7 @@ to a coded output stream.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_Equals_Concordium_Grpc_V2_PoolInfoResponse_" data-uid="Concordium.Grpc.V2.PoolInfoResponse.Equals(Concordium.Grpc.V2.PoolInfoResponse)">
   Equals(PoolInfoResponse)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60518"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61476"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
@@ -956,7 +965,7 @@ to a coded output stream.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_Equals_System_Object_" data-uid="Concordium.Grpc.V2.PoolInfoResponse.Equals(System.Object)">
   Equals(object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60512"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61470"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines whether the specified object is equal to the current object.</p>
@@ -994,7 +1003,7 @@ to a coded output stream.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_GetHashCode" data-uid="Concordium.Grpc.V2.PoolInfoResponse.GetHashCode">
   GetHashCode()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60539"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61497"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Serves as the default hash function.</p>
@@ -1027,7 +1036,7 @@ to a coded output stream.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_MergeFrom_Concordium_Grpc_V2_PoolInfoResponse_" data-uid="Concordium.Grpc.V2.PoolInfoResponse.MergeFrom(Concordium.Grpc.V2.PoolInfoResponse)">
   MergeFrom(PoolInfoResponse)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60695"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61653"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Merges the given message into this one.</p>
@@ -1062,7 +1071,7 @@ to a coded output stream.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_MergeFrom_Google_Protobuf_CodedInputStream_" data-uid="Concordium.Grpc.V2.PoolInfoResponse.MergeFrom(Google.Protobuf.CodedInputStream)">
   MergeFrom(CodedInputStream)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60758"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61716"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Merges the data from the specified coded input stream with the current message.</p>
@@ -1097,7 +1106,7 @@ to a coded output stream.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_ToString" data-uid="Concordium.Grpc.V2.PoolInfoResponse.ToString">
   ToString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60558"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61516"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns a string that represents the current object.</p>
@@ -1130,7 +1139,7 @@ to a coded output stream.</p>
 
   <h3 id="Concordium_Grpc_V2_PoolInfoResponse_WriteTo_Google_Protobuf_CodedOutputStream_" data-uid="Concordium.Grpc.V2.PoolInfoResponse.WriteTo(Google.Protobuf.CodedOutputStream)">
   WriteTo(CodedOutputStream)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60564"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61522"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Writes the data to the given coded output stream.</p>
@@ -1163,7 +1172,7 @@ to a coded output stream.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L60325" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/obj/Debug/net6.0/v2/concordium/Types.cs/#L61280" class="edit-link">Edit this page</a>
         </div>
 
 

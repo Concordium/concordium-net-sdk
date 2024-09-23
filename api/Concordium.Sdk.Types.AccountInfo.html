@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/main/apiSpec/new?filename=Concordium_Sdk_Types_AccountInfo.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Types.AccountInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/releases/concordium-net-sdk/5.0.0/apiSpec/new?filename=Concordium_Sdk_Types_AccountInfo.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Types.AccountInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -73,7 +73,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,7 +85,7 @@
 
 
   <h1 id="Concordium_Sdk_Types_AccountInfo" data-uid="Concordium.Sdk.Types.AccountInfo" class="text-break">
-Class AccountInfo  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountInfo.cs/#L21"><i class="bi bi-code-slash"></i></a>
+Class AccountInfo  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/AccountInfo.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -155,9 +155,9 @@ an account in a specific block.</p>
 
   <a id="Concordium_Sdk_Types_AccountInfo__ctor_" data-uid="Concordium.Sdk.Types.AccountInfo.#ctor*"></a>
 
-  <h3 id="Concordium_Sdk_Types_AccountInfo__ctor_Concordium_Sdk_Types_AccountSequenceNumber_Concordium_Sdk_Types_CcdAmount_Concordium_Sdk_Types_AccountIndex_Concordium_Sdk_Types_AccountAddress_Concordium_Sdk_Types_IAccountStakingInfo_" data-uid="Concordium.Sdk.Types.AccountInfo.#ctor(Concordium.Sdk.Types.AccountSequenceNumber,Concordium.Sdk.Types.CcdAmount,Concordium.Sdk.Types.AccountIndex,Concordium.Sdk.Types.AccountAddress,Concordium.Sdk.Types.IAccountStakingInfo)">
-  AccountInfo(AccountSequenceNumber, CcdAmount, AccountIndex, AccountAddress, IAccountStakingInfo?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountInfo.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Concordium_Sdk_Types_AccountInfo__ctor_Concordium_Sdk_Types_AccountSequenceNumber_Concordium_Sdk_Types_CcdAmount_Concordium_Sdk_Types_AccountIndex_Concordium_Sdk_Types_AccountAddress_Concordium_Sdk_Types_IAccountStakingInfo_Concordium_Sdk_Types_ReleaseSchedule_System_Collections_Generic_IList_Concordium_Sdk_Types_Cooldown__Concordium_Sdk_Types_CcdAmount_" data-uid="Concordium.Sdk.Types.AccountInfo.#ctor(Concordium.Sdk.Types.AccountSequenceNumber,Concordium.Sdk.Types.CcdAmount,Concordium.Sdk.Types.AccountIndex,Concordium.Sdk.Types.AccountAddress,Concordium.Sdk.Types.IAccountStakingInfo,Concordium.Sdk.Types.ReleaseSchedule,System.Collections.Generic.IList{Concordium.Sdk.Types.Cooldown},Concordium.Sdk.Types.CcdAmount)">
+  AccountInfo(AccountSequenceNumber, CcdAmount, AccountIndex, AccountAddress, IAccountStakingInfo?, ReleaseSchedule, IList&lt;Cooldown&gt;, CcdAmount)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/AccountInfo.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Account information exposed via the node's API. This is always the state of
@@ -166,7 +166,7 @@ an account in a specific block.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AccountInfo(AccountSequenceNumber AccountNonce, CcdAmount AccountAmount, AccountIndex AccountIndex, AccountAddress AccountAddress, IAccountStakingInfo? AccountStakingInfo)</code></pre>
+    <pre><code class="lang-csharp hljs">public AccountInfo(AccountSequenceNumber AccountNonce, CcdAmount AccountAmount, AccountIndex AccountIndex, AccountAddress AccountAddress, IAccountStakingInfo? AccountStakingInfo, ReleaseSchedule Schedule, IList&lt;Cooldown&gt; Cooldowns, CcdAmount AvailableBalance)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -191,6 +191,22 @@ account is a baker. Hence it is exposed here as well.</p>
     <dd><p>Not null if and only if the account is a baker or delegator. In that case
 it is the information about the baker or delegator.</p>
 </dd>
+    <dt><code>Schedule</code> <a class="xref" href="Concordium.Sdk.Types.ReleaseSchedule.html">ReleaseSchedule</a></dt>
+    <dd><p>Release schedule for any locked up amount. This could be an empty
+release schedule.</p>
+</dd>
+    <dt><code>Cooldowns</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Concordium.Sdk.Types.Cooldown.html">Cooldown</a>&gt;</dt>
+    <dd><p>The stake on the account that is in cooldown.
+There can be multiple amounts in cooldown that expire at different times.
+This was introduced in protocol version 7, and so is not present in
+earlier protocol versions.</p>
+</dd>
+    <dt><code>AvailableBalance</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
+    <dd><p>The available (unencrypted) balance of the account (i.e. that can be transferred
+or used to pay for transactions). This is the balance minus the locked amount.
+The locked amount is the maximum of the amount in the release schedule and
+the total amount that is actively staked or in cooldown (inactive stake).</p>
+</dd>
   </dl>
 
 
@@ -212,7 +228,7 @@ it is the information about the baker or delegator.</p>
 
   <h3 id="Concordium_Sdk_Types_AccountInfo_AccountAddress" data-uid="Concordium.Sdk.Types.AccountInfo.AccountAddress">
   AccountAddress
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountInfo.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/AccountInfo.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Canonical address of the account.</p>
@@ -244,7 +260,7 @@ it is the information about the baker or delegator.</p>
 
   <h3 id="Concordium_Sdk_Types_AccountInfo_AccountAmount" data-uid="Concordium.Sdk.Types.AccountInfo.AccountAmount">
   AccountAmount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountInfo.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/AccountInfo.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Current (unencrypted) balance of the account.</p>
@@ -276,7 +292,7 @@ it is the information about the baker or delegator.</p>
 
   <h3 id="Concordium_Sdk_Types_AccountInfo_AccountIndex" data-uid="Concordium.Sdk.Types.AccountInfo.AccountIndex">
   AccountIndex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountInfo.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/AccountInfo.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Internal index of the account. Accounts on the chain get sequential
@@ -312,7 +328,7 @@ account is a baker. Hence it is exposed here as well.</p>
 
   <h3 id="Concordium_Sdk_Types_AccountInfo_AccountNonce" data-uid="Concordium.Sdk.Types.AccountInfo.AccountNonce">
   AccountNonce
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountInfo.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/AccountInfo.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Next nonce to be used for transactions signed from this account.</p>
@@ -344,7 +360,7 @@ account is a baker. Hence it is exposed here as well.</p>
 
   <h3 id="Concordium_Sdk_Types_AccountInfo_AccountStakingInfo" data-uid="Concordium.Sdk.Types.AccountInfo.AccountStakingInfo">
   AccountStakingInfo
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountInfo.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/AccountInfo.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Not null if and only if the account is a baker or delegator. In that case
@@ -373,11 +389,114 @@ it is the information about the baker or delegator.</p>
 
 
 
+  <a id="Concordium_Sdk_Types_AccountInfo_AvailableBalance_" data-uid="Concordium.Sdk.Types.AccountInfo.AvailableBalance*"></a>
+
+  <h3 id="Concordium_Sdk_Types_AccountInfo_AvailableBalance" data-uid="Concordium.Sdk.Types.AccountInfo.AvailableBalance">
+  AvailableBalance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/AccountInfo.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The available (unencrypted) balance of the account (i.e. that can be transferred
+or used to pay for transactions). This is the balance minus the locked amount.
+The locked amount is the maximum of the amount in the release schedule and
+the total amount that is actively staked or in cooldown (inactive stake).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CcdAmount AvailableBalance { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_AccountInfo_Cooldowns_" data-uid="Concordium.Sdk.Types.AccountInfo.Cooldowns*"></a>
+
+  <h3 id="Concordium_Sdk_Types_AccountInfo_Cooldowns" data-uid="Concordium.Sdk.Types.AccountInfo.Cooldowns">
+  Cooldowns
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/AccountInfo.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The stake on the account that is in cooldown.
+There can be multiple amounts in cooldown that expire at different times.
+This was introduced in protocol version 7, and so is not present in
+earlier protocol versions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;Cooldown&gt; Cooldowns { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Concordium.Sdk.Types.Cooldown.html">Cooldown</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Concordium_Sdk_Types_AccountInfo_Schedule_" data-uid="Concordium.Sdk.Types.AccountInfo.Schedule*"></a>
+
+  <h3 id="Concordium_Sdk_Types_AccountInfo_Schedule" data-uid="Concordium.Sdk.Types.AccountInfo.Schedule">
+  Schedule
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/AccountInfo.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Release schedule for any locked up amount. This could be an empty
+release schedule.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReleaseSchedule Schedule { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Concordium.Sdk.Types.ReleaseSchedule.html">ReleaseSchedule</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/AccountInfo.cs/#L21" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/AccountInfo.cs/#L37" class="edit-link">Edit this page</a>
         </div>
 
 

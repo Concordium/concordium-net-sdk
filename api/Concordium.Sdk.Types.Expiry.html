@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/main/apiSpec/new?filename=Concordium_Sdk_Types_Expiry.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Types.Expiry%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/releases/concordium-net-sdk/5.0.0/apiSpec/new?filename=Concordium_Sdk_Types_Expiry.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Types.Expiry%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -73,7 +73,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,7 +85,7 @@
 
 
   <h1 id="Concordium_Sdk_Types_Expiry" data-uid="Concordium.Sdk.Types.Expiry" class="text-break">
-Struct Expiry  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Expiry.cs/#L11"><i class="bi bi-code-slash"></i></a>
+Struct Expiry  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/Expiry.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -146,10 +146,11 @@ Struct Expiry  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="Concordium_Sdk_Types_Expiry_BytesLength" data-uid="Concordium.Sdk.Types.Expiry.BytesLength">
   BytesLength
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Expiry.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/Expiry.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get the number of bytes used to represent an expiry when serialized.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -181,7 +182,7 @@ Struct Expiry  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="Concordium_Sdk_Types_Expiry_AtMinutesFromNow_System_UInt64_" data-uid="Concordium.Sdk.Types.Expiry.AtMinutesFromNow(System.UInt64)">
   AtMinutesFromNow(ulong)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Expiry.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/Expiry.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates a new expiration time that is <code class="paramref">minutes</code> ahead of the current system time.</p>
@@ -219,7 +220,7 @@ Struct Expiry  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="Concordium_Sdk_Types_Expiry_AtSecondsFromNow_System_UInt64_" data-uid="Concordium.Sdk.Types.Expiry.AtSecondsFromNow(System.UInt64)">
   AtSecondsFromNow(ulong)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Expiry.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/Expiry.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates a new expiration time that is <code class="paramref">seconds</code> from the current system time.</p>
@@ -257,7 +258,7 @@ Struct Expiry  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="Concordium_Sdk_Types_Expiry_From_System_DateTime_" data-uid="Concordium.Sdk.Types.Expiry.From(System.DateTime)">
   From(DateTime)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Expiry.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/Expiry.cs/#L78"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates an instance from a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>.</p>
@@ -294,7 +295,7 @@ Struct Expiry  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="Concordium_Sdk_Types_Expiry_From_System_DateTimeOffset_" data-uid="Concordium.Sdk.Types.Expiry.From(System.DateTimeOffset)">
   From(DateTimeOffset)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Expiry.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/Expiry.cs/#L83"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates an instance from a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>.</p>
@@ -331,7 +332,7 @@ Struct Expiry  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="Concordium_Sdk_Types_Expiry_From_System_UInt64_" data-uid="Concordium.Sdk.Types.Expiry.From(System.UInt64)">
   From(ulong)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Expiry.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/Expiry.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates an instance from a expiration time represented by the elapsed number of seconds since the UNIX epoch.</p>
@@ -375,7 +376,7 @@ Struct Expiry  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="Concordium_Sdk_Types_Expiry_GetValue" data-uid="Concordium.Sdk.Types.Expiry.GetValue">
   GetValue()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Expiry.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/Expiry.cs/#L89"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the expiration time represented by the elapsed number of seconds since
@@ -408,7 +409,7 @@ the UNIX epoch.</p>
 
   <h3 id="Concordium_Sdk_Types_Expiry_Now" data-uid="Concordium.Sdk.Types.Expiry.Now">
   Now()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Expiry.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/Expiry.cs/#L62"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates an instance whose expiration time is the current system time.</p>
@@ -446,7 +447,7 @@ the UNIX epoch.</p>
 
   <h3 id="Concordium_Sdk_Types_Expiry_ToBytes" data-uid="Concordium.Sdk.Types.Expiry.ToBytes">
   ToBytes()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Expiry.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/Expiry.cs/#L95"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Copies the expiration time represented by the elapsed number of seconds since
@@ -479,7 +480,7 @@ the UNIX epoch written as a 64-bit integer in big-endian format to a byte array.
 
   <h3 id="Concordium_Sdk_Types_Expiry_ToProto" data-uid="Concordium.Sdk.Types.Expiry.ToProto">
   ToProto()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Expiry.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/Expiry.cs/#L107"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts the expiration time to its corresponding protocol buffer message instance.</p>
@@ -512,7 +513,7 @@ the UNIX epoch written as a 64-bit integer in big-endian format to a byte array.
 
   <h3 id="Concordium_Sdk_Types_Expiry_ToString" data-uid="Concordium.Sdk.Types.Expiry.ToString">
   ToString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Expiry.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/Expiry.cs/#L100"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get a string representation of the date and time in the calendar used by the current culture.</p>
@@ -548,10 +549,11 @@ the UNIX epoch written as a 64-bit integer in big-endian format to a byte array.
 
   <h3 id="Concordium_Sdk_Types_Expiry_op_GreaterThan_Concordium_Sdk_Types_Expiry_Concordium_Sdk_Types_Expiry_" data-uid="Concordium.Sdk.Types.Expiry.op_GreaterThan(Concordium.Sdk.Types.Expiry,Concordium.Sdk.Types.Expiry)">
   operator &gt;(Expiry, Expiry)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Expiry.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/Expiry.cs/#L114"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Determines whether one Expiry is greater than a second Expiry.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -586,10 +588,11 @@ the UNIX epoch written as a 64-bit integer in big-endian format to a byte array.
 
   <h3 id="Concordium_Sdk_Types_Expiry_op_GreaterThanOrEqual_Concordium_Sdk_Types_Expiry_Concordium_Sdk_Types_Expiry_" data-uid="Concordium.Sdk.Types.Expiry.op_GreaterThanOrEqual(Concordium.Sdk.Types.Expiry,Concordium.Sdk.Types.Expiry)">
   operator &gt;=(Expiry, Expiry)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Expiry.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/Expiry.cs/#L121"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Determines whether one Expiry is greater or equal than a second Expiry.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -624,10 +627,11 @@ the UNIX epoch written as a 64-bit integer in big-endian format to a byte array.
 
   <h3 id="Concordium_Sdk_Types_Expiry_op_LessThan_Concordium_Sdk_Types_Expiry_Concordium_Sdk_Types_Expiry_" data-uid="Concordium.Sdk.Types.Expiry.op_LessThan(Concordium.Sdk.Types.Expiry,Concordium.Sdk.Types.Expiry)">
   operator &lt;(Expiry, Expiry)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Expiry.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/Expiry.cs/#L111"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Determines whether one Expiry is less than a second Expiry.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -662,10 +666,11 @@ the UNIX epoch written as a 64-bit integer in big-endian format to a byte array.
 
   <h3 id="Concordium_Sdk_Types_Expiry_op_LessThanOrEqual_Concordium_Sdk_Types_Expiry_Concordium_Sdk_Types_Expiry_" data-uid="Concordium.Sdk.Types.Expiry.op_LessThanOrEqual(Concordium.Sdk.Types.Expiry,Concordium.Sdk.Types.Expiry)">
   operator &lt;=(Expiry, Expiry)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Expiry.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/Expiry.cs/#L117"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Determines whether one Expiry is less or equal than a second Expiry.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -700,7 +705,7 @@ the UNIX epoch written as a 64-bit integer in big-endian format to a byte array.
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/Expiry.cs/#L11" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/Expiry.cs/#L11" class="edit-link">Edit this page</a>
         </div>
 
 

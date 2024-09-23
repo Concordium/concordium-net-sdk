@@ -654,6 +654,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.DelegationRemoved.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.DelegationRemoved.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Grpc.V2.BakerEvent.Types.yml",
       "output": {
         ".html": {
@@ -1444,6 +1454,36 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Cooldown.Types.CooldownStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Cooldown.Types.CooldownStatus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Cooldown.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Cooldown.Types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.Cooldown.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.Cooldown.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Grpc.V2.CooldownParametersCpv1.yml",
       "output": {
         ".html": {
@@ -1548,6 +1588,16 @@
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Grpc.V2.DelegationEvent.EventOneofCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Grpc.V2.DelegationEvent.Types.BakerRemoved.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.V2.DelegationEvent.Types.BakerRemoved.html"
         }
       },
       "version": ""
@@ -4754,6 +4804,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.BakerEventDelegationRemoved.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.BakerEventDelegationRemoved.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.BakerId.yml",
       "output": {
         ".html": {
@@ -5334,6 +5394,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Cooldown.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Cooldown.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Types.CooldownParameters.yml",
       "output": {
         ".html": {
@@ -5348,6 +5418,16 @@
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.CooldownParametersCpv1Update.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.CooldownStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.CooldownStatus.html"
         }
       },
       "version": ""
@@ -5448,6 +5528,16 @@
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.DelegationConfigured.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.DelegationEventBakerRemoved.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.DelegationEventBakerRemoved.html"
         }
       },
       "version": ""
@@ -7188,6 +7278,26 @@
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Types.RelativeHeight.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.Release.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.Release.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.Types.ReleaseSchedule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.Types.ReleaseSchedule.html"
         }
       },
       "version": ""

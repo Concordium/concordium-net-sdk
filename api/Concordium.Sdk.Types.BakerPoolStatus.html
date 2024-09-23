@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/main/apiSpec/new?filename=Concordium_Sdk_Types_BakerPoolStatus.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Types.BakerPoolStatus%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Concordium/concordium-net-sdk/new/releases/concordium-net-sdk/5.0.0/apiSpec/new?filename=Concordium_Sdk_Types_BakerPoolStatus.md&amp;value=---%0Auid%3A%20Concordium.Sdk.Types.BakerPoolStatus%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -73,7 +73,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,7 +85,7 @@
 
 
   <h1 id="Concordium_Sdk_Types_BakerPoolStatus" data-uid="Concordium.Sdk.Types.BakerPoolStatus" class="text-break">
-Class BakerPoolStatus  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BakerPoolStatus.cs/#L28"><i class="bi bi-code-slash"></i></a>
+Class BakerPoolStatus  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/BakerPoolStatus.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -149,6 +149,10 @@ the state of the baker that is currently eligible for baking.</p>
 
 
 
+  <h2 id="Concordium_Sdk_Types_BakerPoolStatus_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>From protocol version 7, pool removal has immediate effect, however, the
+pool may still be present for the current (and possibly next) reward period.</p>
+</div>
 
 
   <h2 class="section" id="constructors">Constructors
@@ -157,9 +161,9 @@ the state of the baker that is currently eligible for baking.</p>
 
   <a id="Concordium_Sdk_Types_BakerPoolStatus__ctor_" data-uid="Concordium.Sdk.Types.BakerPoolStatus.#ctor*"></a>
 
-  <h3 id="Concordium_Sdk_Types_BakerPoolStatus__ctor_Concordium_Sdk_Types_BakerId_Concordium_Sdk_Types_AccountAddress_Concordium_Sdk_Types_CcdAmount_Concordium_Sdk_Types_CcdAmount_Concordium_Sdk_Types_CcdAmount_Concordium_Sdk_Types_BakerPoolInfo_Concordium_Sdk_Types_CurrentPaydayBakerPoolStatus_Concordium_Sdk_Types_CcdAmount_Concordium_Sdk_Types_BakerPoolPendingChange_" data-uid="Concordium.Sdk.Types.BakerPoolStatus.#ctor(Concordium.Sdk.Types.BakerId,Concordium.Sdk.Types.AccountAddress,Concordium.Sdk.Types.CcdAmount,Concordium.Sdk.Types.CcdAmount,Concordium.Sdk.Types.CcdAmount,Concordium.Sdk.Types.BakerPoolInfo,Concordium.Sdk.Types.CurrentPaydayBakerPoolStatus,Concordium.Sdk.Types.CcdAmount,Concordium.Sdk.Types.BakerPoolPendingChange)">
-  BakerPoolStatus(BakerId, AccountAddress, CcdAmount, CcdAmount, CcdAmount, BakerPoolInfo, CurrentPaydayBakerPoolStatus?, CcdAmount, BakerPoolPendingChange?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BakerPoolStatus.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Concordium_Sdk_Types_BakerPoolStatus__ctor_Concordium_Sdk_Types_BakerId_Concordium_Sdk_Types_AccountAddress_System_Nullable_Concordium_Sdk_Types_CcdAmount__System_Nullable_Concordium_Sdk_Types_CcdAmount__System_Nullable_Concordium_Sdk_Types_CcdAmount__Concordium_Sdk_Types_BakerPoolInfo_Concordium_Sdk_Types_CurrentPaydayBakerPoolStatus_Concordium_Sdk_Types_CcdAmount_Concordium_Sdk_Types_BakerPoolPendingChange_" data-uid="Concordium.Sdk.Types.BakerPoolStatus.#ctor(Concordium.Sdk.Types.BakerId,Concordium.Sdk.Types.AccountAddress,System.Nullable{Concordium.Sdk.Types.CcdAmount},System.Nullable{Concordium.Sdk.Types.CcdAmount},System.Nullable{Concordium.Sdk.Types.CcdAmount},Concordium.Sdk.Types.BakerPoolInfo,Concordium.Sdk.Types.CurrentPaydayBakerPoolStatus,Concordium.Sdk.Types.CcdAmount,Concordium.Sdk.Types.BakerPoolPendingChange)">
+  BakerPoolStatus(BakerId, AccountAddress, CcdAmount?, CcdAmount?, CcdAmount?, BakerPoolInfo?, CurrentPaydayBakerPoolStatus?, CcdAmount, BakerPoolPendingChange?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/BakerPoolStatus.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The state of the baker currently registered on the account.
@@ -170,7 +174,7 @@ the state of the baker that is currently eligible for baking.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BakerPoolStatus(BakerId BakerId, AccountAddress BakerAddress, CcdAmount BakerEquityCapital, CcdAmount DelegatedCapital, CcdAmount DelegatedCapitalCap, BakerPoolInfo PoolInfo, CurrentPaydayBakerPoolStatus? CurrentPaydayStatus, CcdAmount AllPoolTotalCapital, BakerPoolPendingChange? BakerStakePendingChange)</code></pre>
+    <pre><code class="lang-csharp hljs">public BakerPoolStatus(BakerId BakerId, AccountAddress BakerAddress, CcdAmount? BakerEquityCapital, CcdAmount? DelegatedCapital, CcdAmount? DelegatedCapitalCap, BakerPoolInfo? PoolInfo, CurrentPaydayBakerPoolStatus? CurrentPaydayStatus, CcdAmount AllPoolTotalCapital, BakerPoolPendingChange? BakerStakePendingChange)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -181,19 +185,21 @@ the state of the baker that is currently eligible for baking.</p>
     <dt><code>BakerAddress</code> <a class="xref" href="Concordium.Sdk.Types.AccountAddress.html">AccountAddress</a></dt>
     <dd><p>The account address of the pool owner.</p>
 </dd>
-    <dt><code>BakerEquityCapital</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
-    <dd><p>The equity capital provided by the pool owner.</p>
+    <dt><code>BakerEquityCapital</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a>?</dt>
+    <dd><p>The equity capital provided by the pool owner. Absent if the pool is removed.</p>
 </dd>
-    <dt><code>DelegatedCapital</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
-    <dd><p>The capital delegated to the pool by other accounts.</p>
+    <dt><code>DelegatedCapital</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a>?</dt>
+    <dd><p>The capital delegated to the pool by other accounts. Absent if the pool is removed.</p>
 </dd>
-    <dt><code>DelegatedCapitalCap</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
+    <dt><code>DelegatedCapitalCap</code> <a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a>?</dt>
     <dd><p>The maximum amount that may be delegated to the pool, accounting for
-leverage and stake limits.</p>
+leverage and stake limits.
+Absent if the pool is removed.</p>
 </dd>
     <dt><code>PoolInfo</code> <a class="xref" href="Concordium.Sdk.Types.BakerPoolInfo.html">BakerPoolInfo</a></dt>
     <dd><p>The pool info associated with the pool: open status, metadata URL
-and commission rates.</p>
+and commission rates.
+Absent if the pool is removed.</p>
 </dd>
     <dt><code>CurrentPaydayStatus</code> <a class="xref" href="Concordium.Sdk.Types.CurrentPaydayBakerPoolStatus.html">CurrentPaydayBakerPoolStatus</a></dt>
     <dd><p>Status of the pool in the current reward period. This will be null
@@ -215,6 +221,10 @@ registered and a new payday has not started yet).</p>
 
 
 
+  <h4 class="section" id="Concordium_Sdk_Types_BakerPoolStatus__ctor_Concordium_Sdk_Types_BakerId_Concordium_Sdk_Types_AccountAddress_System_Nullable_Concordium_Sdk_Types_CcdAmount__System_Nullable_Concordium_Sdk_Types_CcdAmount__System_Nullable_Concordium_Sdk_Types_CcdAmount__Concordium_Sdk_Types_BakerPoolInfo_Concordium_Sdk_Types_CurrentPaydayBakerPoolStatus_Concordium_Sdk_Types_CcdAmount_Concordium_Sdk_Types_BakerPoolPendingChange__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>From protocol version 7, pool removal has immediate effect, however, the
+pool may still be present for the current (and possibly next) reward period.</p>
+</div>
 
 
 
@@ -227,7 +237,7 @@ registered and a new payday has not started yet).</p>
 
   <h3 id="Concordium_Sdk_Types_BakerPoolStatus_AllPoolTotalCapital" data-uid="Concordium.Sdk.Types.BakerPoolStatus.AllPoolTotalCapital">
   AllPoolTotalCapital
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BakerPoolStatus.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/BakerPoolStatus.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Total capital staked across all pools.</p>
@@ -259,7 +269,7 @@ registered and a new payday has not started yet).</p>
 
   <h3 id="Concordium_Sdk_Types_BakerPoolStatus_BakerAddress" data-uid="Concordium.Sdk.Types.BakerPoolStatus.BakerAddress">
   BakerAddress
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BakerPoolStatus.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/BakerPoolStatus.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The account address of the pool owner.</p>
@@ -291,15 +301,15 @@ registered and a new payday has not started yet).</p>
 
   <h3 id="Concordium_Sdk_Types_BakerPoolStatus_BakerEquityCapital" data-uid="Concordium.Sdk.Types.BakerPoolStatus.BakerEquityCapital">
   BakerEquityCapital
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BakerPoolStatus.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/BakerPoolStatus.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The equity capital provided by the pool owner.</p>
+  <div class="markdown level1 summary"><p>The equity capital provided by the pool owner. Absent if the pool is removed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CcdAmount BakerEquityCapital { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public CcdAmount? BakerEquityCapital { get; init; }</code></pre>
   </div>
 
 
@@ -308,7 +318,7 @@ registered and a new payday has not started yet).</p>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
+    <dt><a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a>?</dt>
     <dd></dd>
   </dl>
 
@@ -323,7 +333,7 @@ registered and a new payday has not started yet).</p>
 
   <h3 id="Concordium_Sdk_Types_BakerPoolStatus_BakerId" data-uid="Concordium.Sdk.Types.BakerPoolStatus.BakerId">
   BakerId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BakerPoolStatus.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/BakerPoolStatus.cs/#L35"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The 'BakerId' of the pool owner.</p>
@@ -355,7 +365,7 @@ registered and a new payday has not started yet).</p>
 
   <h3 id="Concordium_Sdk_Types_BakerPoolStatus_BakerStakePendingChange" data-uid="Concordium.Sdk.Types.BakerPoolStatus.BakerStakePendingChange">
   BakerStakePendingChange
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BakerPoolStatus.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/BakerPoolStatus.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Any pending change to the baker's stake.</p>
@@ -387,7 +397,7 @@ registered and a new payday has not started yet).</p>
 
   <h3 id="Concordium_Sdk_Types_BakerPoolStatus_CurrentPaydayStatus" data-uid="Concordium.Sdk.Types.BakerPoolStatus.CurrentPaydayStatus">
   CurrentPaydayStatus
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BakerPoolStatus.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/BakerPoolStatus.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Status of the pool in the current reward period. This will be null
@@ -421,15 +431,15 @@ registered and a new payday has not started yet).</p>
 
   <h3 id="Concordium_Sdk_Types_BakerPoolStatus_DelegatedCapital" data-uid="Concordium.Sdk.Types.BakerPoolStatus.DelegatedCapital">
   DelegatedCapital
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BakerPoolStatus.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/BakerPoolStatus.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The capital delegated to the pool by other accounts.</p>
+  <div class="markdown level1 summary"><p>The capital delegated to the pool by other accounts. Absent if the pool is removed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CcdAmount DelegatedCapital { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public CcdAmount? DelegatedCapital { get; init; }</code></pre>
   </div>
 
 
@@ -438,7 +448,7 @@ registered and a new payday has not started yet).</p>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
+    <dt><a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a>?</dt>
     <dd></dd>
   </dl>
 
@@ -453,16 +463,17 @@ registered and a new payday has not started yet).</p>
 
   <h3 id="Concordium_Sdk_Types_BakerPoolStatus_DelegatedCapitalCap" data-uid="Concordium.Sdk.Types.BakerPoolStatus.DelegatedCapitalCap">
   DelegatedCapitalCap
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BakerPoolStatus.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/BakerPoolStatus.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The maximum amount that may be delegated to the pool, accounting for
-leverage and stake limits.</p>
+leverage and stake limits.
+Absent if the pool is removed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CcdAmount DelegatedCapitalCap { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public CcdAmount? DelegatedCapitalCap { get; init; }</code></pre>
   </div>
 
 
@@ -471,7 +482,7 @@ leverage and stake limits.</p>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a></dt>
+    <dt><a class="xref" href="Concordium.Sdk.Types.CcdAmount.html">CcdAmount</a>?</dt>
     <dd></dd>
   </dl>
 
@@ -486,16 +497,17 @@ leverage and stake limits.</p>
 
   <h3 id="Concordium_Sdk_Types_BakerPoolStatus_PoolInfo" data-uid="Concordium.Sdk.Types.BakerPoolStatus.PoolInfo">
   PoolInfo
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BakerPoolStatus.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/BakerPoolStatus.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The pool info associated with the pool: open status, metadata URL
-and commission rates.</p>
+and commission rates.
+Absent if the pool is removed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BakerPoolInfo PoolInfo { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public BakerPoolInfo? PoolInfo { get; init; }</code></pre>
   </div>
 
 
@@ -519,7 +531,7 @@ and commission rates.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Concordium/concordium-net-sdk/blob/main/src/Types/BakerPoolStatus.cs/#L28" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Concordium/concordium-net-sdk/blob/releases/concordium-net-sdk/5.0.0/src/Types/BakerPoolStatus.cs/#L34" class="edit-link">Edit this page</a>
         </div>
 
 
