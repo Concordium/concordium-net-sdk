@@ -6,17 +6,23 @@ namespace Concordium.Sdk.Types;
 /// by transactions (and rewards). This is in contrast to "epoch baker" which is
 /// the state of the baker that is currently eligible for baking.
 /// </summary>
+/// <remarks>
+/// From protocol version 7, pool removal has immediate effect, however, the
+/// pool may still be present for the current (and possibly next) reward period.
+/// </remarks>
 /// <param name="BakerId">The 'BakerId' of the pool owner.</param>
 /// <param name="BakerAddress">The account address of the pool owner.</param>
-/// <param name="BakerEquityCapital">The equity capital provided by the pool owner.</param>
-/// <param name="DelegatedCapital">The capital delegated to the pool by other accounts.</param>
+/// <param name="BakerEquityCapital">The equity capital provided by the pool owner. Absent if the pool is removed.</param>
+/// <param name="DelegatedCapital">The capital delegated to the pool by other accounts. Absent if the pool is removed.</param>
 /// <param name="DelegatedCapitalCap">
 /// The maximum amount that may be delegated to the pool, accounting for
 /// leverage and stake limits.
+/// Absent if the pool is removed.
 /// </param>
 /// <param name="PoolInfo">
 /// The pool info associated with the pool: open status, metadata URL
 /// and commission rates.
+/// Absent if the pool is removed.
 /// </param>
 /// <param name="CurrentPaydayStatus">
 /// Status of the pool in the current reward period. This will be null
@@ -28,10 +34,10 @@ namespace Concordium.Sdk.Types;
 public sealed record BakerPoolStatus(
         BakerId BakerId,
         AccountAddress BakerAddress,
-        CcdAmount BakerEquityCapital,
-        CcdAmount DelegatedCapital,
-        CcdAmount DelegatedCapitalCap,
-        BakerPoolInfo PoolInfo,
+        CcdAmount? BakerEquityCapital,
+        CcdAmount? DelegatedCapital,
+        CcdAmount? DelegatedCapitalCap,
+        BakerPoolInfo? PoolInfo,
         CurrentPaydayBakerPoolStatus? CurrentPaydayStatus,
         CcdAmount AllPoolTotalCapital,
         BakerPoolPendingChange? BakerStakePendingChange)
@@ -40,10 +46,10 @@ public sealed record BakerPoolStatus(
         new(
             BakerId.From(poolInfoResponse.Baker),
             AccountAddress.From(poolInfoResponse.Address),
-            CcdAmount.From(poolInfoResponse.EquityCapital),
-            CcdAmount.From(poolInfoResponse.DelegatedCapital),
-            CcdAmount.From(poolInfoResponse.DelegatedCapitalCap),
-            BakerPoolInfo.From(poolInfoResponse.PoolInfo)!,
+            poolInfoResponse.EquityCapital != null ? CcdAmount.From(poolInfoResponse.EquityCapital) : null,
+            poolInfoResponse.DelegatedCapital != null ? CcdAmount.From(poolInfoResponse.DelegatedCapital) : null,
+            poolInfoResponse.DelegatedCapitalCap != null ? CcdAmount.From(poolInfoResponse.DelegatedCapitalCap) : null,
+            poolInfoResponse.PoolInfo != null ? BakerPoolInfo.From(poolInfoResponse.PoolInfo) : null,
             CurrentPaydayBakerPoolStatus.From(poolInfoResponse.CurrentPaydayInfo),
             CcdAmount.From(poolInfoResponse.AllPoolTotalCapital),
             BakerPoolPendingChange.From(poolInfoResponse.EquityPendingChange)

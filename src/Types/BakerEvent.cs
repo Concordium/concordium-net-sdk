@@ -49,9 +49,9 @@ internal static class BakerEventFactory
                     BakerId.From(bakerEvent.BakerSetFinalizationRewardCommission.BakerId),
                     AmountFraction.From(bakerEvent.BakerSetFinalizationRewardCommission.FinalizationRewardCommission)
                 ),
+            BakerEvent.EventOneofCase.DelegationRemoved => new BakerEventDelegationRemoved(DelegatorId.From(bakerEvent.DelegationRemoved.DelegatorId)),
             BakerEvent.EventOneofCase.None =>
                 throw new MissingEnumException<BakerEvent.EventOneofCase>(bakerEvent.EventCase),
-            BakerEvent.EventOneofCase.DelegationRemoved => throw new NotImplementedException(),
             _ => throw new MissingEnumException<BakerEvent.EventOneofCase>(bakerEvent.EventCase)
         };
 }
@@ -136,3 +136,9 @@ public sealed record BakerSetBakingRewardCommissionEvent(BakerId BakerId, Amount
 /// <param name="BakerId">Baker's id</param>
 /// <param name="FinalizationRewardCommission">The finalization reward commission</param>
 public sealed record BakerSetFinalizationRewardCommissionEvent(BakerId BakerId, AmountFraction FinalizationRewardCommission) : IBakerEvent;
+
+/// <summary>
+/// An existing delegator was removed.
+/// </summary>
+/// <param name="DelegatorId">Delegator's id</param>
+public sealed record BakerEventDelegationRemoved(DelegatorId DelegatorId) : IBakerEvent;

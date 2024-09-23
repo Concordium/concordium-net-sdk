@@ -1,5 +1,21 @@
 ## Unreleased changes
 
+## 5.0.0
+
+- Added
+  - More documentation comments on various types.
+  - `AccountInfo` now includes the `Schedule` field, which are the locked CCD amounts scheduled for release.
+  - Method `GetStakedAmount` to interface `IAccountStakingInfo` , which provides the staked amount.
+
+- Support Concordium Node version 7 API changes:
+    - `AccountInfo` now have fields `Cooldowns` and `AvailableBalance`, which are respectively describing the stake currently in cooldown and the (unencrypted) balance of an account, which can be transferred.
+    - New baker event `BakerEventDelegationRemoved` signaling a delegator is removed, right before becoming a baker/validator.
+    - New delegation event `DelegationEventBakerRemoved` signaling a baker/validator is removed, right before becoming a delegator.
+    - Some fields of type `BakerPoolStatus` are now nullable, more specifically `BakerEquityCapital`, `DelegatedCapital`, `DelegatedCapitalCap` and `PoolInfo`.
+      Querying blocks prior to Protocol Version 7, these fields will always be present.
+      From protocol version 7, pool removal has immediate effect, however, the pool may still be present for the current (and possibly next) reward period.
+
+
 ## 4.4.0
 - Added
   - New transaction `InitContract`

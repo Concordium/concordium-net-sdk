@@ -52,6 +52,7 @@ public static class Program
 
         Console.WriteLine($"BlockHash: {response.BlockHash}");
 
-        Console.WriteLine($"Baker {bakerId} has baker equity capital {response.Response.BakerEquityCapital.GetFormattedCcd()}");
+        var capital = response.Response.BakerEquityCapital ?? CcdAmount.Zero;
+        Console.WriteLine($"Baker {bakerId} has baker equity capital {capital.GetFormattedCcd()}");
     }
 }
