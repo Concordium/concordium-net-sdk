@@ -18,7 +18,7 @@
       "disableGitFeatures": false,
       "disableDefaultFilter": false,
       "noRestore": false,
-      "namespaceLayout": "flattened",
+      "namespaceLayout": "nested",
       "memberLayout": "samePage",
       "allowCompilationErrors": false
     }
@@ -29,6 +29,7 @@
         "files": [
           "api/**.yml",
           "api/index.md",
+          "api/Concordium.Grpc.md",
           "toc.yml",
           "index.md"
         ]
