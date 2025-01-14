@@ -3943,6 +3943,16 @@
       "version": ""
     },
     {
+      "type": "Redirection",
+      "source_relative_path": "api/Concordium.Grpc.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Grpc.html"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "ManagedReference",
       "source_relative_path": "api/Concordium.Sdk.Client.ConcordiumClient.yml",
       "output": {
@@ -7848,6 +7858,26 @@
       "output": {
         ".html": {
           "relative_path": "api/Concordium.Sdk.Wallets.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.Sdk.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.Sdk.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Concordium.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Concordium.html"
         }
       },
       "version": ""
