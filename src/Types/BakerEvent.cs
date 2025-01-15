@@ -50,6 +50,8 @@ internal static class BakerEventFactory
                     AmountFraction.From(bakerEvent.BakerSetFinalizationRewardCommission.FinalizationRewardCommission)
                 ),
             BakerEvent.EventOneofCase.DelegationRemoved => new BakerEventDelegationRemoved(DelegatorId.From(bakerEvent.DelegationRemoved.DelegatorId)),
+            BakerEvent.EventOneofCase.BakerSuspended => new BakerEventSuspended(BakerId.From(bakerEvent.BakerSuspended.BakerId)),
+            BakerEvent.EventOneofCase.BakerResumed => new BakerEventResumed(BakerId.From(bakerEvent.BakerResumed.BakerId)),
             BakerEvent.EventOneofCase.None =>
                 throw new MissingEnumException<BakerEvent.EventOneofCase>(bakerEvent.EventCase),
             _ => throw new MissingEnumException<BakerEvent.EventOneofCase>(bakerEvent.EventCase)
@@ -142,3 +144,15 @@ public sealed record BakerSetFinalizationRewardCommissionEvent(BakerId BakerId, 
 /// </summary>
 /// <param name="DelegatorId">Delegator's id</param>
 public sealed record BakerEventDelegationRemoved(DelegatorId DelegatorId) : IBakerEvent;
+
+/// <summary>
+/// A baker has been suspended.
+/// </summary>
+/// <param name="BakerId">Suspended baker's id</param>
+public sealed record BakerEventSuspended(BakerId BakerId) : IBakerEvent;
+
+/// <summary>
+/// A baker has been resumed.
+/// </summary>
+/// <param name="BakerId">The resumed baker's id</param>
+public sealed record BakerEventResumed(BakerId BakerId) : IBakerEvent;

@@ -32,6 +32,10 @@ internal static class SpecialEventFactory
                     BlockAccrueReward.From(specialEvent.BlockAccrueReward),
                 BlockSpecialEvent.EventOneofCase.PaydayPoolReward =>
                     PaydayPoolReward.From(specialEvent.PaydayPoolReward),
+                BlockSpecialEvent.EventOneofCase.ValidatorPrimedForSuspension =>
+                    ValidatorPrimedForSuspension.From(specialEvent.ValidatorPrimedForSuspension),
+                BlockSpecialEvent.EventOneofCase.ValidatorSuspended =>
+                    ValidatorSuspended.From(specialEvent.ValidatorSuspended),
                 BlockSpecialEvent.EventOneofCase.None => throw new MissingEnumException<BlockSpecialEvent.EventOneofCase>(specialEvent.EventCase),
                 _ => throw new MissingEnumException<BlockSpecialEvent.EventOneofCase>(specialEvent.EventCase)
             };
@@ -233,3 +237,37 @@ public sealed record PaydayPoolReward(
         );
 }
 
+/// <summary>
+/// A validator that is primed for suspension at the next snapshot epoch due to too
+/// many missed rounds.
+/// </summary>
+/// <param name="BakerId">The id of the primed validator.</param>
+/// <param name="Account">The account of the primed validator.</param>
+public sealed record ValidatorPrimedForSuspension(
+    BakerId BakerId,
+    AccountAddress Account
+) : ISpecialEvent
+{
+    internal static ValidatorPrimedForSuspension From(BlockSpecialEvent.Types.ValidatorPrimedForSuspension primed) =>
+        new(
+            BakerId: BakerId.From(primed.BakerId),
+            Account: AccountAddress.From(primed.Account)
+        );
+}
+
+/// <summary>
+/// The id of a validator that got suspended due to too many missed rounds.
+/// </summary>
+/// <param name="BakerId">The id of the suspended validator.</param>
+/// <param name="Account">The account of the suspended validator.</param>
+public sealed record ValidatorSuspended(
+    BakerId BakerId,
+    AccountAddress Account
+) : ISpecialEvent
+{
+    internal static ValidatorSuspended From(BlockSpecialEvent.Types.ValidatorSuspended suspended) =>
+        new(
+            BakerId: BakerId.From(suspended.BakerId),
+            Account: AccountAddress.From(suspended.Account)
+        );
+}

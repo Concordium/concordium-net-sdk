@@ -62,6 +62,8 @@ public enum UpdateType
     BlockEnergyLimitUpdate,
     /// <summary> Update of finalization committee parameters. </summary>
     FinalizationCommitteeParametersUpdate,
+    /// <summary> Update of validator score parameters. </summary>
+    ValidatorScoreParametersUpdate,
 }
 
 /// <summary>
@@ -99,6 +101,7 @@ public static class UpdatePayloadFactory
             TimeoutParametersUpdate => UpdateType.TimeoutParametersUpdate,
             TimeParametersCpv1Update => UpdateType.TimeParametersCpv1Update,
             TransactionFeeDistributionUpdate => UpdateType.TransactionFeeDistributionUpdate,
+            ValidatorScoreParametersUpdate => UpdateType.ValidatorScoreParametersUpdate,
             _ => throw new MissingTypeException<IUpdatePayload>(payload)
         };
 
@@ -149,6 +152,8 @@ public static class UpdatePayloadFactory
                 BlockEnergyLimitUpdate.From(payload.BlockEnergyLimitUpdate),
             UpdatePayload.PayloadOneofCase.FinalizationCommitteeParametersUpdate =>
                 FinalizationCommitteeParametersUpdate.From(payload.FinalizationCommitteeParametersUpdate),
+            UpdatePayload.PayloadOneofCase.ValidatorScoreParametersUpdate =>
+                ValidatorScoreParametersUpdate.From(payload.ValidatorScoreParametersUpdate),
             UpdatePayload.PayloadOneofCase.None =>
             throw new MissingEnumException<UpdatePayload.PayloadOneofCase>(payload.PayloadCase),
             _ => throw new MissingEnumException<UpdatePayload.PayloadOneofCase>(payload.PayloadCase)
@@ -370,3 +375,11 @@ public sealed record FinalizationCommitteeParametersUpdate
     internal static FinalizationCommitteeParametersUpdate From(Grpc.V2.FinalizationCommitteeParameters parameters) => new(FinalizationCommitteeParameters.From(parameters));
 }
 
+/// <summary>
+/// Finalization committee parameters (chain parameters version 2).
+/// </summary>
+public sealed record ValidatorScoreParametersUpdate
+    (ValidatorScoreParameters ValidatorScoreParameters) : IUpdatePayload
+{
+    internal static ValidatorScoreParametersUpdate From(Grpc.V2.ValidatorScoreParameters parameters) => new(ValidatorScoreParameters.From(parameters));
+}

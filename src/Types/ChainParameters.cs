@@ -21,6 +21,8 @@ internal static class ChainParametersFactory
                 ChainParametersV1.From(chainParameters.V1),
             ChainParameters.ParametersOneofCase.V2 =>
                 ChainParametersV2.From(chainParameters.V2),
+            ChainParameters.ParametersOneofCase.V3 =>
+                ChainParametersV3.From(chainParameters.V3),
             ChainParameters.ParametersOneofCase.None =>
                 throw new MissingEnumException<ChainParameters.ParametersOneofCase>(chainParameters.ParametersCase),
             _ => throw new MissingEnumException<ChainParameters.ParametersOneofCase>(chainParameters.ParametersCase)
@@ -29,7 +31,74 @@ internal static class ChainParametersFactory
 
 /// <summary>
 /// Values of chain parameters that can be updated via chain updates.
-/// This applies to protocol version 6 and up.
+/// This applies to protocol version 8 and up.
+/// </summary>
+/// <param name="TimeoutParameters">Consensus protocol version 2 timeout parameters.</param>
+/// <param name="MinBlockTime">Minimum time interval between blocks.</param>
+/// <param name="BlockEnergyLimit">Maximum energy allowed per block.</param>
+/// <param name="EuroPerEnergy">Euro per energy exchange rate.</param>
+/// <param name="MicroCcdPerEuro">Micro ccd per euro exchange rate.</param>
+/// <param name="CooldownParameters">Parameters related to cooldowns when staking.</param>
+/// <param name="TimeParameters">Parameters related mint rate and reward period.</param>
+/// <param name="AccountCreationLimit">The limit for the number of account creations in a block.</param>
+/// <param name="MintDistribution">Parameters related to the distribution of newly minted CCD.</param>
+/// <param name="TransactionFeeDistribution">Parameters related to the distribution of transaction fees.</param>
+/// <param name="GasRewards">Parameters related to the distribution from the GAS account.</param>
+/// <param name="FoundationAccount">Address of the foundation account.</param>
+/// <param name="PoolParameters">Parameters for baker pools.</param>
+/// <param name="FinalizationCommitteeParameters">The finalization committee parameters.</param>
+/// <param name="ValidatorScoreParameters">Validator score parameters.</param>
+/// <param name="RootKeys">Root Keys</param>
+/// <param name="Level1Keys">Level 1 Keys</param>
+/// <param name="Level2Keys">Level 2 Keys</param>
+public sealed record ChainParametersV3(
+    TimeoutParameters TimeoutParameters,
+    TimeSpan MinBlockTime,
+    EnergyAmount BlockEnergyLimit,
+    ExchangeRate EuroPerEnergy,
+    ExchangeRate MicroCcdPerEuro,
+    CooldownParameters CooldownParameters,
+    TimeParameters TimeParameters,
+    CredentialsPerBlockLimit AccountCreationLimit,
+    MintDistributionCpv1 MintDistribution,
+    TransactionFeeDistribution TransactionFeeDistribution,
+    GasRewardsCpv2 GasRewards,
+    AccountAddress FoundationAccount,
+    PoolParameters PoolParameters,
+    FinalizationCommitteeParameters FinalizationCommitteeParameters,
+    ValidatorScoreParameters ValidatorScoreParameters,
+    HigherLevelKeys RootKeys,
+    HigherLevelKeys Level1Keys,
+    AuthorizationsV1 Level2Keys
+) : IChainParameters
+{
+    internal static ChainParametersV3 From(Grpc.V2.ChainParametersV3 chainParams) =>
+        new(
+            TimeoutParameters.From(chainParams.ConsensusParameters.TimeoutParameters),
+            TimeSpan.FromMilliseconds(chainParams.ConsensusParameters.MinBlockTime.Value),
+            EnergyAmount.From(chainParams.ConsensusParameters.BlockEnergyLimit),
+            ExchangeRate.From(chainParams.EuroPerEnergy),
+            ExchangeRate.From(chainParams.MicroCcdPerEuro),
+            CooldownParameters.From(chainParams.CooldownParameters),
+            TimeParameters.From(chainParams.TimeParameters),
+            CredentialsPerBlockLimit.From(chainParams.AccountCreationLimit),
+            MintDistributionCpv1.From(chainParams.MintDistribution),
+            TransactionFeeDistribution.From(chainParams.TransactionFeeDistribution),
+            GasRewardsCpv2.From(chainParams.GasRewards),
+            AccountAddress.From(chainParams.FoundationAccount),
+            PoolParameters.From(chainParams.PoolParameters),
+            FinalizationCommitteeParameters.From(chainParams.FinalizationCommitteeParameters),
+            ValidatorScoreParameters.From(chainParams.ValidatorScoreParameters),
+            Types.RootKeys.From(chainParams.RootKeys),
+            Types.Level1Keys.From(chainParams.Level1Keys),
+            AuthorizationsV1.From(chainParams.Level2Keys)
+        );
+}
+
+
+/// <summary>
+/// Values of chain parameters that can be updated via chain updates.
+/// This applies to protocol version 6 and 7.
 /// </summary>
 /// <param name="TimeoutParameters">Consensus protocol version 2 timeout parameters.</param>
 /// <param name="MinBlockTime">Minimum time interval between blocks.</param>
