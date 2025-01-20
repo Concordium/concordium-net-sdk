@@ -376,7 +376,7 @@ public sealed record FinalizationCommitteeParametersUpdate
 }
 
 /// <summary>
-/// Finalization committee parameters (chain parameters version 2).
+/// Validator score parameters (chain parameters version 3).
 /// </summary>
 public sealed record ValidatorScoreParametersUpdate
     (ValidatorScoreParameters ValidatorScoreParameters) : IUpdatePayload
