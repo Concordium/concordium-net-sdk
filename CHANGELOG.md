@@ -1,5 +1,17 @@
 ## Unreleased changes
 
+## 6.0.0
+
+- Support for Concordium Node version 8 API changes:
+  - Expand enum `ProtocolVersion` with `P8` variant.
+  - Introduce `IsSuspended` field on `AccountBaker` and `BakerPoolStatus`.
+  - Introduce new baker events `BakerSuspended` and `BakerResumed` for when a validator choose to suspend.
+  - Introduce `ChainParametersV3` with `ValidatorScoreParameters`.
+  - Introduce `Parameter` field for `ContractInitializedEvent`.
+  - Introduce `EffectValidatorScoreParameters` for pending updates to `ValidatorScoreParameters`.
+  - Introduce `ValidatorScoreParametersUpdate` and `UpdateType.ValidatorScoreParametersUpdate` for update payloads.
+  - Introduce `ValidatorPrimedForSuspension` and `ValidatorSuspended` as `ISpecialEvent`.
+
 ## 5.0.0
 
 - Added

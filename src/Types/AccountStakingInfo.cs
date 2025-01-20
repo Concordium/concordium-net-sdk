@@ -43,7 +43,8 @@ public sealed record AccountBaker(
     CcdAmount StakedAmount,
     BakerInfo BakerInfo,
     AccountBakerPendingChange? PendingChange,
-    BakerPoolInfo? BakerPoolInfo
+    BakerPoolInfo? BakerPoolInfo,
+    bool IsSuspended
     ) : IAccountStakingInfo
 {
     internal static AccountBaker From(Grpc.V2.AccountStakingInfo.Types.Baker stakeBaker) =>
@@ -52,7 +53,8 @@ public sealed record AccountBaker(
             PendingChange: AccountBakerPendingChange.From(stakeBaker.PendingChange),
             RestakeEarnings: stakeBaker.RestakeEarnings,
             StakedAmount: CcdAmount.From(stakeBaker.StakedAmount),
-            BakerPoolInfo: BakerPoolInfo.From(stakeBaker.PoolInfo)
+            BakerPoolInfo: BakerPoolInfo.From(stakeBaker.PoolInfo),
+            IsSuspended: stakeBaker.IsSuspended
         );
 
     /// <summary>

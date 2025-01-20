@@ -40,6 +40,13 @@ public enum ProtocolVersion
     /// implements tokenomics changes.
     /// </summary>
     P7,
+    /// <summary>
+    /// Protocol `P8` supports suspending inactive validators automatically
+    /// when they consistently fail to participate in the consensus protocol.
+    /// Suspended validators can be reactivated manually by a transaction
+    /// from the validator's account.
+    /// </summary>
+    P8,
 }
 
 
@@ -66,6 +73,7 @@ internal static class ProtocolVersionFactory
             Grpc.V2.ProtocolVersion._5 => ProtocolVersion.P5,
             Grpc.V2.ProtocolVersion._6 => ProtocolVersion.P6,
             Grpc.V2.ProtocolVersion._7 => ProtocolVersion.P7,
+            Grpc.V2.ProtocolVersion._8 => ProtocolVersion.P8,
             _ => throw new MissingEnumException<Grpc.V2.ProtocolVersion>(protocolVersion)
         };
 }

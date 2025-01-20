@@ -31,6 +31,10 @@ namespace Concordium.Sdk.Types;
 /// </param>
 /// <param name="BakerStakePendingChange">Any pending change to the baker's stake.</param>
 /// <param name="AllPoolTotalCapital">Total capital staked across all pools.</param>
+/// <param name="IsSuspended">
+/// A flag indicating whether the pool owner is suspended.
+/// Also `False` if the protocol version does not support validator suspension or the pool is removed.
+/// </param>
 public sealed record BakerPoolStatus(
         BakerId BakerId,
         AccountAddress BakerAddress,
@@ -40,7 +44,9 @@ public sealed record BakerPoolStatus(
         BakerPoolInfo? PoolInfo,
         CurrentPaydayBakerPoolStatus? CurrentPaydayStatus,
         CcdAmount AllPoolTotalCapital,
-        BakerPoolPendingChange? BakerStakePendingChange)
+        BakerPoolPendingChange? BakerStakePendingChange,
+        bool IsSuspended
+)
 {
     internal static BakerPoolStatus From(Grpc.V2.PoolInfoResponse poolInfoResponse) =>
         new(
@@ -52,6 +58,7 @@ public sealed record BakerPoolStatus(
             poolInfoResponse.PoolInfo != null ? BakerPoolInfo.From(poolInfoResponse.PoolInfo) : null,
             CurrentPaydayBakerPoolStatus.From(poolInfoResponse.CurrentPaydayInfo),
             CcdAmount.From(poolInfoResponse.AllPoolTotalCapital),
-            BakerPoolPendingChange.From(poolInfoResponse.EquityPendingChange)
-            );
+            BakerPoolPendingChange.From(poolInfoResponse.EquityPendingChange),
+            poolInfoResponse.IsSuspended
+        );
 }

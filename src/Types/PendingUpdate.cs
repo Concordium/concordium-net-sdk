@@ -47,6 +47,8 @@ public sealed record PendingUpdate(TransactionTime EffectiveTime, IEffect Effect
                 GrpcEffect.MinBlockTime => new EffectMinBlockTime(TimeSpan.FromMilliseconds(pendingUpdate.MinBlockTime.Value)),
                 GrpcEffect.BlockEnergyLimit => new EffectBlockEnergyLimit(EnergyAmount.From(pendingUpdate.BlockEnergyLimit)),
                 GrpcEffect.FinalizationCommitteeParameters => new EffectFinalizationCommitteeParameters(FinalizationCommitteeParameters.From(pendingUpdate.FinalizationCommitteeParameters)),
+                GrpcEffect.ValidatorScoreParameters =>
+                    new EffectValidatorScoreParameters(ValidatorScoreParameters.From(pendingUpdate.ValidatorScoreParameters)),
                 GrpcEffect.None => throw new NotImplementedException(),
                 _ => throw new MissingEnumException<GrpcEffect>(pendingUpdate.EffectCase),
             }
@@ -104,3 +106,5 @@ public sealed record EffectMinBlockTime(TimeSpan MinBlockTime) : IEffect;
 public sealed record EffectBlockEnergyLimit(EnergyAmount BlockEnergyLimit) : IEffect;
 /// <summary>Updates to the finalization committee for for chain parameters version 2.</summary>
 public sealed record EffectFinalizationCommitteeParameters(FinalizationCommitteeParameters FinalizationCommitteeParameters) : IEffect;
+/// <summary>Updates to the validator score for chain parameters version 3.</summary>
+public sealed record EffectValidatorScoreParameters(ValidatorScoreParameters ValidatorScoreParameters) : IEffect;

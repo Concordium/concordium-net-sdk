@@ -27,7 +27,9 @@ public sealed class ContractInitializedEventTests
             new ContractAddress(1, 0),
             CcdAmount.Zero,
             result.ContractName!,
-            new List<ContractEvent> { new(Convert.FromHexString(eventMessage)) });
+            new List<ContractEvent> { new(Convert.FromHexString(eventMessage)) },
+            Parameter.Empty()
+        );
 
         // Act
         var events = contractInitializedEvent.GetDeserializedEvents(versionedModuleSchema);
