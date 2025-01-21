@@ -387,7 +387,6 @@ public sealed record BakerConfigured(IList<IBakerEvent> Data) : IAccountTransact
                     break;
                 default:
                     throw new MissingTypeException<IBakerEvent>(bakerEvent);
-
             }
         }
     }
