@@ -29,7 +29,7 @@ jobs:
         path: ./rust-bindings/target/release/librust_bindings.so
 
   build-native-macos:
-    runs-on: macos-12
+    runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -41,13 +41,21 @@ jobs:
         rustup default ${{ env.RUST_VERSION }}
 
     - name: Build Rust Project
-      run: cargo build --manifest-path=./rust-bindings/Cargo.toml --release
+      run: |
+        # Build ARM64
+        rustup target add aarch64-apple-darwin
+        cargo build --release --manifest-path rust-bindings/Cargo.toml --target aarch64-apple-darwin
+        # Build x86_64
+        rustup target add x86_64-apple-darwin
+        cargo build --release --manifest-path rust-bindings/Cargo.toml --target x86_64-apple-darwin
+        # Produce universal library
+        lipo -create ./rust-bindings/target/aarch64-apple-darwin/release/librust_bindings.dylib ./rust-bindings/target/x86_64-apple-darwin/release/librust_bindings.dylib -output ./rust-bindings/target/librust_bindings.dylib
 
     - name: Upload macos library
       uses: actions/upload-artifact@master
       with:
         name: macos-library
-        path: ./rust-bindings/target/release/librust_bindings.dylib
+        path: ./rust-bindings/target/librust_bindings.dylib
 
   build-native-windows:
     runs-on: windows-latest
