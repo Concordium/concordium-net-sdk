@@ -379,6 +379,12 @@ public sealed record BakerConfigured(IList<IBakerEvent> Data) : IAccountTransact
                     break;
                 case BakerEventDelegationRemoved delegatorId:
                     break;
+                case BakerEventSuspended suspended:
+                    yield return suspended.BakerId;
+                    break;
+                case BakerEventResumed resumed:
+                    yield return resumed.BakerId;
+                    break;
                 default:
                     throw new MissingTypeException<IBakerEvent>(bakerEvent);
             }
