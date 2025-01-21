@@ -1,5 +1,9 @@
 ## Unreleased changes
 
+## 6.0.1
+
+- Traverse all types in GetBakerIds
+
 ## 6.0.0
 
 - Support for Concordium Node version 8 API changes:
