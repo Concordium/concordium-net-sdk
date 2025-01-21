@@ -385,6 +385,8 @@ public sealed record BakerConfigured(IList<IBakerEvent> Data) : IAccountTransact
                 case BakerEventResumed resumed:
                     yield return resumed.BakerId;
                     break;
+                default:
+                    throw new MissingTypeException<IBakerEvent>(bakerEvent);
 
             }
         }
