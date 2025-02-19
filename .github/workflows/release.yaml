@@ -8,7 +8,7 @@ env:
 
 jobs:
   build-native-ubuntu:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -80,7 +80,7 @@ jobs:
 
   build-and-release:
     needs: [build-native-ubuntu, build-native-macos, build-native-windows]
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     environment: release
 
     steps:
